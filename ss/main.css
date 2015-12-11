@@ -1,5 +1,5 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600|Nunito:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
 img, legend {
   border: 0; }
 
@@ -140,7 +140,8 @@ html, body {
   min-height: 100%;
   margin: 0;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background-color: #fbfcfc; }
 
 .display-none {
   display: none;
@@ -153,6 +154,9 @@ html, body {
   -webkit-transition: all 175ms ease;
   -moz-transition: all 175ms ease;
   transition: all 175ms ease; }
+
+header {
+  margin: 5% auto 0; }
 
 html {
   font-size: 62.5%; }
@@ -171,7 +175,7 @@ html {
 
 body {
   color: #1d1d1d;
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.25em;
   font-weight: 300;
   line-height: 1.25; }
@@ -195,14 +199,14 @@ h {
   font-size: 0.75em; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   line-height: 1.25;
   margin: 0 0 0.625em;
   padding: 0; }
 
 p {
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.125em;
   font-weight: 400;
   line-height: 1.8; }
@@ -214,12 +218,17 @@ a {
   a:active, a:focus, a:hover {
     opacity: 0.8; }
 
+h1.title {
+  color: #262626;
+  font: normal normal 500 2em "Roboto", sans-serif;
+  text-align: center; }
+
 button {
   height: 3.125em;
   width: 12.5em;
   color: #fdfdfd;
   background-color: #229aff;
-  font: normal normal 400 0.32 sans-serif;
+  font: normal normal 400 0.32 "Roboto", sans-serif;
   border: 0;
   border-radius: 1px;
   outline: none;
@@ -239,7 +248,7 @@ input {
   background-color: #fdfdfd;
   border: 0;
   border-radius: 1px;
-  font: normal normal 400 0.29091 sans-serif;
+  font: normal normal 400 0.29091 "Roboto", sans-serif;
   text-align: left;
   outline: none;
   -webkit-transition: all 175ms ease;
@@ -259,15 +268,76 @@ html {
     content: "";
     display: table; }
 
-.container {
+.container, .slot-container {
   width: 860px;
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
   margin: 0 auto; }
-  .container::after {
+  .container::after, .slot-container::after {
     clear: both;
     content: "";
     display: table; }
+
+.slot-container {
+  margin: 3.125em auto 0; }
+
+ul.slots {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  ul.slots li.slot {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 25%; }
+    ul.slots li.slot:last-child {
+      margin-right: 0; }
+    ul.slots li.slot a {
+      color: #262626;
+      font-size: 1.5em;
+      font-weight: 500;
+      text-decoration: none;
+      padding-bottom: 0.125em;
+      opacity: 0.66; }
+    ul.slots li.slot.active a {
+      border-bottom: 2px solid #262626;
+      opacity: 1; }
+
+.enrollment {
+  width: 52.5em;
+  max-width: 100%;
+  margin: 1.5625em auto 0;
+  background: #f7f7f7;
+  -webkit-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15); }
+  .enrollment .session {
+    display: block;
+    padding: 0.9375em 1.5625em; }
+    .enrollment .session::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .enrollment .session .grid-sect, .enrollment .session .tag, .enrollment .session .title, .enrollment .session .remaining {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 25%;
+      font-size: 1.125em; }
+      .enrollment .session .grid-sect:last-child, .enrollment .session .tag:last-child, .enrollment .session .title:last-child, .enrollment .session .remaining:last-child {
+        margin-right: 0; }
+    .enrollment .session .tag {
+      font-weight: 500; }
+    .enrollment .session .title {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 50%;
+      text-align: center; }
+      .enrollment .session .title:last-child {
+        margin-right: 0; }
+    .enrollment .session .remaining {
+      text-align: right; }
 
 /*# sourceMappingURL=main.css.map */

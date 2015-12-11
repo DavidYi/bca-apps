@@ -1,0 +1,62 @@
+// Career Day
+.slot-container {
+	@extend .container;
+	@include margin(em(50px) auto 0);
+}
+
+ul.slots {
+	list-style: none;
+	@include zero-box;
+
+	li.slot {
+		@include span-columns(3);
+
+		a {
+			color: $color-mineshaft;	
+			font-size: em(24px);
+			font-weight: 500;
+			text-decoration: none;
+			padding-bottom: em(2px);
+			opacity: 0.66;
+		}
+
+		&.active a {
+			border-bottom: 2px solid $color-mineshaft;
+			opacity: 1;
+		}
+	}
+}
+
+.enrollment {
+	width: em(840px);
+	max-width: 100%;
+	@include margin(em(25px) auto 0);
+	background: $color-alabaster;
+	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
+
+	.session {
+		@include row;
+		@include padding(em(15px) em(25px));
+
+		.grid-sect {
+			@include span-columns(3);
+			font-size: em(18px);
+		}
+
+		.tag {
+			@extend .grid-sect;
+			font-weight: 500;
+		}
+
+		.title {
+			@extend .grid-sect;
+			@include span-columns(6);
+			text-align: center;
+		}
+
+		.remaining {
+			@extend .grid-sect;
+			text-align: right;
+		}
+	}
+}

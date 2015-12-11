@@ -12,3 +12,9 @@
   @include position(relative, 50% null null null);
   @include transform(translateY(-50%));
 }
+
+@mixin box-shadow($v, $h, $br, $sr, $color) {
+	-webkit-box-shadow: $v $h $br $sr $color;
+	-moz-box-shadow: $v $h $br $sr $color;
+	box-shadow: $v $h $br $sr $color;
+}

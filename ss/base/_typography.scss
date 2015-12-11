@@ -1,5 +1,5 @@
 // Typography
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600|Nunito:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
 
 html {
   font-size: 62.5%;
@@ -50,4 +50,10 @@ a {
   &:hover {
     opacity: 0.8;
   }
+}
+
+h1.title {
+  color: $color-mineshaft;
+  font: normal normal 500 em(64px)/2 $title-font;
+  text-align: center;
 }
