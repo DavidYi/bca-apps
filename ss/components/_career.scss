@@ -28,18 +28,21 @@ ul.slots {
 }
 
 .enrollment {
-	width: em(840px);
-	max-width: 100%;
+	@extend .container;
+	// width: em(840px);
+	// max-width: 100%;
 	@include margin(em(25px) auto 0);
 	background: $color-alabaster;
 	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
 
 	.session {
 		@include row;
-		@include padding(em(15px) em(25px));
+		@include padding(0 em(25px));
+		border-bottom: 1px solid $color-gallery;
 
 		.grid-sect {
 			@include span-columns(3);
+			@include padding(em(20px) 0);
 			font-size: em(18px);
 		}
 
@@ -49,9 +52,21 @@ ul.slots {
 		}
 
 		.title {
-			@extend .grid-sect;
 			@include span-columns(6);
 			text-align: center;
+			@include padding(em(15px) 0);
+
+			.name { 
+				@include zero-box;
+				font-size: em(18px);
+				line-height: em(20px);
+			}
+
+			.host {
+				@include zero-box;
+				font-size: em(14px);
+				font-weight: 500;
+			}
 		}
 
 		.remaining {
