@@ -10,35 +10,6 @@ html {
 }
 
 
-.slot-container {
-	@extend .container;
-	@include margin(em(30px) auto 0);
-}
-
-ul.slots {
-	list-style: none;
-	@include zero-box;
-
-	li.slot {
-		@include span-columns(3);
-
-		a {
-			color: $color-mineshaft;	
-			font-size: em(24px);
-			font-weight: 500;
-			text-decoration: none;
-			padding-bottom: em(2px);
-			opacity: 0.66;
-		}
-
-		&.active a {
-			border-bottom: 2px solid $color-mineshaft;
-			opacity: 1;
-		}
-	}
-}
-
-
 .enrollment {
 	@extend .container;
 	// width: em(840px);
@@ -73,18 +44,18 @@ ul.slots {
 		.slot {
 			@include span-columns(2);
 			text-align: left;
-			padding-top: 10px;
+			padding: 13px 0 0 3px;
 
 			a {
 				color: #e6e6e6;	
-				font-size: em(24px);
-				font-weight: 500;
+				font-size: em(20px);
+				font-weight: 300;
 				text-decoration: none;
-				opacity: 0.9;
+				opacity: 0.8;
 			}
 
 			&.active a {
-				border-bottom: 2px solid #FFF;
+				//border-bottom: 2px solid #FFF;
 				color: #FFF;
 				opacity: 1;
 			}
