@@ -174,7 +174,7 @@ html {
       font-size: 92.5%; } }
 
 body {
-  color: #1d1d1d;
+  color: #333;
   font-family: "Roboto", sans-serif;
   font-size: 1.25em;
   font-weight: 300;
@@ -227,7 +227,7 @@ button {
   height: 3.125em;
   width: 12.5em;
   color: #fdfdfd;
-  background-color: #229aff;
+  background-color: #f0c30f;
   font: normal normal 400 0.32 "Roboto", sans-serif;
   border: 0;
   border-radius: 1px;
@@ -237,14 +237,14 @@ button {
   -moz-transition: all 175ms ease;
   transition: all 175ms ease; }
   button:hover {
-    background-color: #0a2e4d; }
+    background-color: #0f0f0f; }
 
 input {
   height: 3.4375em;
   width: 30em;
   margin: 0 auto;
   padding: 0 auto;
-  color: #1d1d1d;
+  color: #333;
   background-color: #fdfdfd;
   border: 0;
   border-radius: 1px;
@@ -268,64 +268,100 @@ html {
     content: "";
     display: table; }
 
-.container, .slot-container, .enrollment {
+.container, .enrollment, .register {
   width: 70%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   margin: 0 auto; }
-  .container::after, .slot-container::after, .enrollment::after {
+  .container::after, .enrollment::after, .register::after {
     clear: both;
     content: "";
     display: table; }
 
+html {
+  background-color: #e7e7e7; }
+
+.main {
+  height: 100%;
+  overflow-y: hidden;
+  background: #e7e7e7; }
+
+/*
 .slot-container {
-  margin: 3.125em auto 0; }
+	@extend .container;
+	@include margin(em(30px) auto 0);
+}
 
 ul.slots {
-  list-style: none;
-  margin: 0;
-  padding: 0; }
-  ul.slots li.slot {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 25%; }
-    ul.slots li.slot:last-child {
-      margin-right: 0; }
-    ul.slots li.slot a {
-      color: #262626;
-      font-size: 1.5em;
-      font-weight: 500;
-      text-decoration: none;
-      padding-bottom: 0.125em;
-      opacity: 0.66; }
-    ul.slots li.slot.active a {
-      border-bottom: 2px solid #262626;
-      opacity: 1; }
+	list-style: none;
+	@include zero-box;
 
+	li.slot {
+		@include span-columns(3);
+
+		a {
+			color: $color-mineshaft;	
+			font-size: em(24px);
+			font-weight: 500;
+			text-decoration: none;
+			padding-bottom: em(2px);
+			opacity: 0.66;
+		}
+
+		&.active a {
+			border-bottom: 2px solid $color-mineshaft;
+			opacity: 1;
+		}
+	}
+}
+*/
 .enrollment {
-  margin: 1.5625em auto 0;
+  margin: 3.125em auto 0;
   background: #f7f7f7;
   -webkit-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15); }
+  box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+  color: #333; }
+  .enrollment .top-nav {
+    display: block;
+    padding: 0 1.5625em;
+    background-color: #333; }
+    .enrollment .top-nav::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .enrollment .top-nav input {
+      height: 50px;
+      width: 100%;
+      text-align: right;
+      padding: 0 1.5625em;
+      background-color: #333;
+      background-image: url(../images/search.png);
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      background-position: right;
+      background-attachment: scroll; }
+    .enrollment .top-nav input.search-input {
+      color: #fff;
+      text-align: left;
+      padding-right: 100px; }
   .enrollment .session {
     display: block;
     padding: 0 1.5625em;
-    border-bottom: 1px solid #eee; }
+    border-bottom: 1px solid #d6d9da; }
     .enrollment .session::after {
       clear: both;
       content: "";
       display: table; }
-    .enrollment .session .grid-sect, .enrollment .session .tag, .enrollment .session .remaining {
+    .enrollment .session .grid-sect, .enrollment .session .tag, .enrollment .session .room, .enrollment .session .remaining {
       float: left;
       display: block;
       margin-right: 0%;
       width: 25%;
       padding: 1.25em 0;
       font-size: 1.125em; }
-      .enrollment .session .grid-sect:last-child, .enrollment .session .tag:last-child, .enrollment .session .remaining:last-child {
+      .enrollment .session .grid-sect:last-child, .enrollment .session .tag:last-child, .enrollment .session .room:last-child, .enrollment .session .remaining:last-child {
         margin-right: 0; }
     .enrollment .session .tag {
       font-weight: 500; }
@@ -333,7 +369,7 @@ ul.slots {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 50%;
+      width: 41.66667%;
       text-align: center;
       padding: 0.9375em 0; }
       .enrollment .session .title:last-child {
@@ -342,13 +378,42 @@ ul.slots {
         margin: 0;
         padding: 0;
         font-size: 1.125em;
-        line-height: 1.25em; }
+        line-height: 1.25em;
+        font-weight: 500;
+        font-size: 1.5em; }
       .enrollment .session .title .host {
         margin: 0;
         padding: 0;
-        font-size: 0.875em;
-        font-weight: 500; }
+        font-size: 1em;
+        color: #5c666d; }
+    .enrollment .session .room {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 16.66667%;
+      font-weight: 400;
+      text-align: right;
+      font-size: 1.25em; }
+      .enrollment .session .room:last-child {
+        margin-right: 0; }
     .enrollment .session .remaining {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 16.66667%;
       text-align: right; }
+      .enrollment .session .remaining:last-child {
+        margin-right: 0; }
+    .enrollment .session .field-icon {
+      height: 25px;
+      margin: 0 5px -5px 0; }
+
+.register {
+  margin: 3.125em auto 0;
+  text-align: center;
+  horizontal-align: center; }
+  .register button {
+    horizontal-align: center;
+    margin: auto; }
 
 /*# sourceMappingURL=main.css.map */

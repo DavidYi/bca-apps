@@ -1,7 +1,18 @@
 // Career Day
+html {
+	background-color:#e7e7e7;
+}
+
+.main {
+	height: 100%;
+	overflow-y: hidden;
+	background:#e7e7e7;
+}
+
+/*
 .slot-container {
 	@extend .container;
-	@include margin(em(50px) auto 0);
+	@include margin(em(30px) auto 0);
 }
 
 ul.slots {
@@ -26,19 +37,45 @@ ul.slots {
 		}
 	}
 }
+*/
 
 .enrollment {
 	@extend .container;
 	// width: em(840px);
 	// max-width: 100%;
-	@include margin(em(25px) auto 0);
-	background: $color-alabaster;
+	@include margin(em(50px) auto 0);
+	background: #f7f7f7;
 	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
+	color: #333;
+
+	.top-nav {
+		@include row;
+		@include padding(0 em(25px));
+		background-color: #333;
+
+		input {
+			height: 50px;
+			width: 100%;
+			text-align: right;
+			@include padding(0 em(25px));
+			background-color: #333;
+			background-image: url(../images/search.png);
+			background-size: 16px 16px;
+			background-repeat: no-repeat;
+    		background-position: right; 
+    		background-attachment: scroll;
+		}
+		input.search-input {
+			color: #fff;
+			text-align: left;
+			padding-right: 100px;
+		}
+	}
 
 	.session {
 		@include row;
 		@include padding(0 em(25px));
-		border-bottom: 1px solid $color-gallery;
+		border-bottom: 1px solid #d6d9da;
 
 		.grid-sect {
 			@include span-columns(3);
@@ -52,7 +89,7 @@ ul.slots {
 		}
 
 		.title {
-			@include span-columns(6);
+			@include span-columns(5);
 			text-align: center;
 			@include padding(em(15px) 0);
 
@@ -60,18 +97,50 @@ ul.slots {
 				@include zero-box;
 				font-size: em(18px);
 				line-height: em(20px);
+				font-weight: 500;
+				font-size: em(24px);
 			}
 
 			.host {
 				@include zero-box;
-				font-size: em(14px);
-				font-weight: 500;
+				font-size: em(16px);
+				color: #5c666d;
 			}
 		}
 
+		.room {
+			@extend .grid-sect;
+			@include span-columns(2);
+			font-weight: 400;
+			text-align: right;
+			font-size: em(20px);
+		}
+
 		.remaining {
+		@include span-columns(2);
 			@extend .grid-sect;
 			text-align: right;
 		}
+
+		.field-icon {
+			height: 25px;
+			margin: 0 5px -5px 0;
+		}
+	
 	}
 }
+
+.register {
+	@extend .container;
+	@include margin(em(50px) auto 0);
+	text-align: center;
+	horizontal-align: center;
+
+	button {
+		horizontal-align: center;
+		margin: auto;
+
+	}
+}
+
+

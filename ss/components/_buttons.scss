@@ -1,7 +1,7 @@
 button {
 	@include size(em(200px) em(50px));
 	color: $color-white;
-	background-color: $color-dodgerblue;
+	background-color: $color-yellow;
 	font: normal normal $default-font-weight em(16px)/em(50px) $title-font;
 
 	border: 0;
@@ -12,5 +12,5 @@ button {
 
 	@include transition(all $animation-duration $animation-timing);
 
-	&:hover { background-color: shade($color-dodgerblue, 70%); }
+	&:hover { background-color: shade($color-black, 70%); }
 }
