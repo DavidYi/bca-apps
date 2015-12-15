@@ -1,0 +1,136 @@
+// Career Day
+html {
+	background-color:#e7e7e7;
+}
+
+.main {
+	height: 100%;
+	overflow-y: hidden;
+	background:#e7e7e7;
+}
+
+
+.enrollment {
+	@extend .container;
+	// width: em(840px);
+	// max-width: 100%;
+	@include margin(em(50px) auto 0);
+	background: $color-grayblack;
+	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
+	color: $color-black;
+
+	.top-nav {
+		@include row;
+		@include padding(0 em(25px));
+		background-color: $color-black;
+
+		input {
+			height: 50px;
+			width: 30%;
+			right:0;
+			text-align: right;
+			@include padding(0 em(25px));
+			background-color: $color-black;
+			background-image: url(../images/search.png);
+			background-size: 16px 16px;
+			background-repeat: no-repeat;
+    		background-position: right; 
+    		background-attachment: scroll;
+		}
+		input.search-input {
+			color: #fff;
+			text-align: left;
+		}
+		.slot {
+			@include span-columns(2);
+			text-align: left;
+			padding: 13px 0 0 3px;
+
+			a {
+				color: #e6e6e6;	
+				font-size: em(20px);
+				font-weight: 300;
+				text-decoration: none;
+				opacity: 0.8;
+			}
+
+			&.active a {
+				//border-bottom: 2px solid #FFF;
+				color: #FFF;
+				opacity: 1;
+			}
+		}
+	}
+
+	.session {
+		@include row;
+		@include padding(0 em(25px));
+		border-bottom: 1px solid #d6d9da;
+
+		.grid-sect {
+			@include span-columns(3);
+			@include padding(em(20px) 0);
+			font-size: em(18px);
+		}
+
+		.tag {
+			@extend .grid-sect;
+			font-weight: 500;
+		}
+
+		.title {
+			@include span-columns(6);
+			text-align: center;
+			@include padding(em(15px) 0);
+
+			.name { 
+				@include zero-box;
+				font-size: em(18px);
+				line-height: em(20px);
+				font-weight: 500;
+				font-size: em(24px);
+			}
+
+			.host {
+				@include zero-box;
+				font-size: em(16px);
+				color: #5c666d;
+			}
+		}
+
+		.room {
+			@extend .grid-sect;
+			@include span-columns(2);
+			font-weight: 400;
+			text-align: center;
+			font-size: em(20px);
+		}
+
+		.remaining {
+		@include span-columns(1);
+			@extend .grid-sect;
+			text-align: right;
+		}
+
+		.field-icon {
+			height: 25px;
+			margin: 0 5px -5px 0;
+		}
+	
+	}
+}
+
+.register {
+	@extend .container;
+	@include margin(em(50px) auto 0);
+	text-align: center;
+	horizontal-align: center;
+
+	button {
+		horizontal-align: center;
+		margin: auto;
+
+	}
+}
+
+
