@@ -78,5 +78,6 @@ function get_user_list() {
 
     return get_list($query);
 }
-
+// TODO: Implement get all session time query
+// TODO: Implement change session keys query
 ?>
