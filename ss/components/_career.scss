@@ -52,7 +52,7 @@ nav.navbar {
 
 .enrollment {
 	@extend .container;
-	height: 66%;
+	height: 78%;
 	@include margin(0 auto);
 	overflow-y: scroll;
 	background: $color-grayblack;
