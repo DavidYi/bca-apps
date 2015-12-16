@@ -5,9 +5,8 @@
  * Date: 12/14/15
  * Time: 1:04 PM
  */
-
-require_once("../model/presentations_db.php");
 require_once("../model/database.php");
+require_once("../model/presentations_db.php");
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
@@ -24,17 +23,16 @@ switch ($action) {
 
     case 'login':
         /**
-         * Session Variables to set:
+         * The following session variables are set:
          * usr_id
-         * usr_role
-         * user_type
+         * usr_role_cde
+         * user_type_cde
          */
-        $user = get_user($_POST['usr_id']);
-        $_SESSION['usr_id'] = $user['usr_id'];
-        $_SESSION['usr_role_cde'] = $user['usr_role_cde'];
-        $_SESSION['usr_type_cde'] = $user['usr_type_cde'];
-        http_redirect("../index.html", null, true, HTTP_REDIRECT_POST);
-        exit();
+        $user_from_post = get_user(filter_input(INPUT_POST, 'usr_id'));
+        session_start();
+        $_SESSION['usr_id'] = $user_from_post['usr_id'];
+        $_SESSION['usr_role_cde'] = $user_from_post['usr_role_cde'];
+        $_SESSION['usr_type_cde'] = $user_from_post['usr_type_cde'];
 }
 
 ?>
