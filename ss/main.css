@@ -288,8 +288,8 @@ html {
   background: #e7e7e7; }
 
 nav.navbar {
-  height: 4.375em;
-  line-height: 4.375em;
+  height: 3.75em;
+  line-height: 3.75em;
   background: #262626;
   margin: 0 auto; }
   nav.navbar .session-select {
@@ -297,18 +297,25 @@ nav.navbar {
     height: 100%;
     width: 10.9375em;
     margin: 0;
-    padding: 0 1.875em;
-    text-align: center; }
+    padding: 0 1.25em;
+    text-align: center;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease; }
     nav.navbar .session-select a {
       color: #fdfdfd;
       font-size: 1.25em;
       font-weight: 400;
       text-decoration: none; }
-    nav.navbar .session-select.active {
-      background-color: #f7f7f7;
-      border-bottom: 5px solid #f0c30f; }
-      nav.navbar .session-select.active a {
+      nav.navbar .session-select a:hover {
+        color: #fdfdfd;
+        text-decoration: none; }
+    nav.navbar .session-select.active, nav.navbar .session-select:hover {
+      background-color: #f7f7f7; }
+      nav.navbar .session-select.active a, nav.navbar .session-select:hover a {
         color: #333; }
+        nav.navbar .session-select.active a:hover, nav.navbar .session-select:hover a:hover {
+          color: #333; }
 
 .enrollment {
   height: 60%;
@@ -320,7 +327,6 @@ nav.navbar {
   box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
   color: #333; }
   .enrollment .session {
-    display: table;
     display: block;
     height: 3.75em;
     line-height: 3.75em;
@@ -334,22 +340,33 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 25%;
+      width: 28.57143%;
       font-size: 1.125em;
       font-weight: 500;
       color: #555; }
       .enrollment .session .tag:last-child {
         margin-right: 0; }
-    .enrollment .session .title {
-      display: table-cell;
-      vertical-align: middle;
+    .enrollment .session .room, .enrollment .session .remaining {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 50%;
+      width: 14.28571%;
+      font-size: 1.125em;
+      font-weight: 500;
+      color: #555; }
+      .enrollment .session .room:last-child, .enrollment .session .remaining:last-child {
+        margin-right: 0; }
+    .enrollment .session .title {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 42.85714%;
       height: 100%; }
       .enrollment .session .title:last-child {
         margin-right: 0; }
+      .enrollment .session .title .vac {
+        display: table-cell;
+        vertical-align: middle; }
       .enrollment .session .title h3, .enrollment .session .title h5 {
         margin: 0;
         padding: 0;
@@ -357,17 +374,16 @@ nav.navbar {
         line-height: 1.2; }
       .enrollment .session .title h3 {
         color: #333;
+        margin-top: 0.5625em;
         font-size: 1.125em;
         font-weight: 500; }
-    .enrollment .session .host {
-      float: left;
-      display: block;
-      margin-right: 0%;
-      width: 25%;
-      font-size: 1.125em;
-      font-weight: 500; }
-      .enrollment .session .host:last-child {
-        margin-right: 0; }
+      .enrollment .session .title h5 {
+        color: #262626;
+        margin-top: 1px;
+        font-size: 0.875em;
+        font-weight: 400; }
+    .enrollment .session .remaining {
+      text-align: right; }
 
 .register {
   margin: 3.125em auto 0;
@@ -376,5 +392,15 @@ nav.navbar {
   .register button {
     horizontal-align: center;
     margin: auto; }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 0.4375em; }
+
+::-webkit-scrollbar-track {
+  background: #ccc; }
+
+::-webkit-scrollbar-thumb {
+  background: #777; }
 
 /*# sourceMappingURL=main.css.map */

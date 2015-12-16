@@ -12,8 +12,8 @@ html {
 
 nav.navbar {
 	@extend .container;
-	height: em(70px);
-	line-height: em(70px);
+	height: em(60px);
+	line-height: em(60px);
 	background: $color-mineshaft;
 	@include margin(0 auto);
 
@@ -21,22 +21,30 @@ nav.navbar {
 		display: inline-block;
 		@include size(em(175px) 100%);
 		@include margin(0);
-		@include padding(0 em(30px));
+		@include padding(0 em(20px));
 		text-align: center;		
+		@include transition(all $animation-duration $animation-timing);
 
 		a {
 			color: $color-white;
 			font-size: em(20px);
 			font-weight: $default-font-weight;
 			text-decoration: none;
+
+			&:hover {
+				color: $color-white;
+				text-decoration: none;
+			}
 		}
 
-		&.active {
+		&.active, &:hover {
 			background-color: $color-grayblack;
-			border-bottom: 5px solid $color-yellow;
 
 			a {
 				color: $color-black;
+				&:hover {
+					color: $color-black;
+				}
 			}
 		}
 	}
@@ -52,7 +60,6 @@ nav.navbar {
 	color: $color-black;
 
 	.session {
-		display: table;
 		@include row;
 		height: em(60px);
 		line-height: em(60px);
@@ -60,17 +67,28 @@ nav.navbar {
 		border-bottom: 1px solid #d6d9da;
 
 		.tag {
-			@include span-columns(3);
+			@include span-columns(4);
+			font-size: em(18px);
+			font-weight: 500;
+			color: $color-emperor;
+		}
+
+		.room, .remaining {
+			@include span-columns(2);
 			font-size: em(18px);
 			font-weight: 500;
 			color: $color-emperor;
 		}	
 
+
 		.title {
-			display: table-cell;
-			vertical-align: middle;
 			@include span-columns(6);
 			height: 100%;
+
+			.vac {
+				display: table-cell;
+				vertical-align: middle;
+			}
 
 			h3, h5 {
 				@include margin(0);
@@ -81,21 +99,21 @@ nav.navbar {
 
 			h3 {
 				color: $color-black;
+				margin-top: em(9px);
 				font-size: em(18px);
 				font-weight: 500;
 			}
 
 			h5 {
-
+				color: $color-mineshaft;
+				margin-top: 1px;
+				font-size: em(14px);
+				font-weight: $default-font-weight;
 			}
-
-
 		}
 
-		.host {
-			@include span-columns(3);
-			font-size: em(18px);
-			font-weight: 500;	
+		.remaining {
+			text-align: right;
 		}
 	}
 }
