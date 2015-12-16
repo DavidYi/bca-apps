@@ -52,7 +52,7 @@ nav.navbar {
 
 .enrollment {
 	@extend .container;
-	height: 60%;
+	height: 66%;
 	@include margin(0 auto);
 	overflow-y: scroll;
 	background: $color-grayblack;
@@ -120,13 +120,11 @@ nav.navbar {
 
 .register {
 	@extend .container;
-	@include margin(em(50px) auto 0);
+	@include margin(em(25px) auto 0);
 	text-align: center;
-	horizontal-align: center;
+	font-weight: 500;
 
 	button {
-		horizontal-align: center;
-		margin: auto;
 
 	}
 }

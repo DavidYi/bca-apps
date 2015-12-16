@@ -318,7 +318,7 @@ nav.navbar {
           color: #333; }
 
 .enrollment {
-  height: 60%;
+  height: 66%;
   margin: 0 auto;
   overflow-y: scroll;
   background: #f7f7f7;
@@ -386,12 +386,9 @@ nav.navbar {
       text-align: right; }
 
 .register {
-  margin: 3.125em auto 0;
+  margin: 1.5625em auto 0;
   text-align: center;
-  horizontal-align: center; }
-  .register button {
-    horizontal-align: center;
-    margin: auto; }
+  font-weight: 500; }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
