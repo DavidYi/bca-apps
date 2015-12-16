@@ -5,29 +5,25 @@
  * Date: 12/16/15
  * Time: 9:04 AM
  */
-require_once('../tcpdf/config/lang/eng.php');
-require_once('../tcpdf/tcpdf.php');
-
-class signinPDF extends TCPDF{
-
-    public function Header()
-    {
-
-        $this->setJPEGQuality(90);
-
-        $this->Image('logo.png', 62, 36, 72, 0, 'PNG', 'http://php.refulz.com');
-
-    }
-
-    public function Footer()
-    {
-
-        $this->SetY(-15);
-
-        $this->SetFont(PDF_FONT_NAME_MAIN, 'I', 8);
-
-        $this->Cell(0, 10, 'php.refulz.com – Web Developer’s Blog', 0, false, 'C');
-
-    }
-}
 ?>
+<html>
+<head>
+    <title>Generate Sign in PDF</title>
+</head>
+<body>
+
+    <form action="." method="post">
+        <input type="hidden" name="action" value="login">
+        <select name="usr_id"  title="usr_id">
+            <!-- Loop through each user and add them to dropdown -->
+            <?php foreach ($user_list as $user) { ?>
+                <option value="<?php echo htmlspecialchars($user['usr_id'])?>">
+                    <?php echo $user['usr_display_name'] ?>
+                </option>
+            <?php } ?>
+        </select>
+
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

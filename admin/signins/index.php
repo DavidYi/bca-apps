@@ -6,23 +6,29 @@
  * Time: 9:04 AM
  */
 require_once("../util/main.php");
-require_once("../admin/signins/sheetRequest");
+require_once ("../model/presentation_db.php");
 $action =  strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
     if ($action == NULL) {
-        $action = 'mentors';
+        $action = 'show';
     }
 }
 switch ($action){
+    case 'show':
+
+        include("../admin/signins/sheetRequest");
+        break;
+    case 'generate':
+        $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        break;
     case 'mentors': //presenter
         $error_msg = '';
         $mentorList = get_mentor();
         foreach($mentors as $mentor) {
         }
 
-        $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         break;
 
     case 'session':
