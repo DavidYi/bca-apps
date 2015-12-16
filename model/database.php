@@ -4,7 +4,7 @@
 # $username = 'caruser';
 
 # Remote connection option
-$dsn = 'mysql:host=192.168.1.9;dbname=atcsdevb_career_day';
+$dsn = 'mysql:host=webdev01.bergen.org;dbname=atcsdevb_career_day';
 $username = 'atcsdevb_carusr';
 $password = 'W[6V8tgSX=y~';
 $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);

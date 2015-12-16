@@ -23,15 +23,18 @@ switch ($action) {
         break;
 
     case 'login':
-        # TODO: Write Login Code
         /**
          * Session Variables to set:
          * usr_id
          * usr_role
          * user_type
          */
-
-        ?><script>console.log("works")</script><?php
+        $user = get_user($_POST['usr_id']);
+        $_SESSION['usr_id'] = $user['usr_id'];
+        $_SESSION['usr_role_cde'] = $user['usr_role_cde'];
+        $_SESSION['usr_type_cde'] = $user['usr_type_cde'];
+        http_redirect("../index.html", null, true, HTTP_REDIRECT_POST);
+        exit();
 }
 
 ?>
