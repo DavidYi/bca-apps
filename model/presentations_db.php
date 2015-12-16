@@ -48,4 +48,35 @@ function get_presentation_list($ses_id) {
         display_db_error($error_message);
     }  
 }
+
+function get_user($usr_id) {
+    $query = 	'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
+                    usr_first_name, usr_last_name, usr_display_name, usr_active
+                 FROM user
+                 WHERE usr_id = :usr_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
+function get_user_list() {
+    $query = 'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
+                 usr_first_name, usr_last_name, usr_display_name, usr_active
+              from user
+			  order by usr_display_name';
+
+    return get_list($query);
+}
+
 ?>
