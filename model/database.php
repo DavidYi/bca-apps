@@ -22,4 +22,7 @@ function display_db_error($error_message) {
     include '../errors/db_error.php';
     exit;
 }
+
+
+
 ?>
