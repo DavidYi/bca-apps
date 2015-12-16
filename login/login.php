@@ -6,10 +6,10 @@
 
     <form action="." method="post">
         <input type="hidden" name="action" value="login">
-        <select>
+        <select name="usr_id"  title="usr_id">
             <!-- Loop through each user and add them to dropdown -->
             <?php foreach ($user_list as $user) { ?>
-                <option name="usr_id" value="<?php echo $user['usr_id']?>">
+                <option value="<?php echo htmlspecialchars($user['usr_id'])?>">
                     <?php echo $user['usr_display_name'] ?>
                 </option>
             <?php } ?>
