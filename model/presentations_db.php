@@ -50,7 +50,7 @@ function get_presentation_list($ses_id) {
 }
 
 function get_user($usr_id) {
-    $query = 	'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
+    $query = 	'SELECT usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year,
                     usr_first_name, usr_last_name, usr_display_name, usr_active
                  FROM user
                  WHERE usr_id = :usr_id';
@@ -80,4 +80,4 @@ function get_user_list() {
 }
 // TODO: Implement get all session time query
 // TODO: Implement change session keys query
-x?>
+?>
