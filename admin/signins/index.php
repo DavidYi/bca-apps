@@ -7,8 +7,6 @@
  */
 require_once("../util/main.php");
 require_once("../admin/signins/sheetRequest");
-require_once('../tcpdf/config/lang/eng.php');
-require_once('../tcpdf/tcpdf.php');
 $action =  strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {
@@ -20,11 +18,21 @@ if ($action == NULL) {
 switch ($action){
     case 'mentors': //presenter
         $error_msg = '';
+        $mentorList = get_mentor();
+        foreach($mentors as $mentor) {
+        }
+
+        $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         break;
 
     case 'session':
         $error_msg = '';
-        $session = filter_input(INPUT_POST, 'session');
+        $session_id = filter_input(INPUT_POST, 'session_id');
+        if ($session == null)
+            $error_msg = 'Need to know the session to use';
+        $studentList = get_student($session);
+        $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
 
         break;
 }
