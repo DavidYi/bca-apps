@@ -61,7 +61,7 @@ function get_user($usr_id) {
         $statement = $db->prepare($query);
         $statement->bindValue(':usr_id', $usr_id);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetch();
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
