@@ -22,4 +22,22 @@ function display_db_error($error_message) {
     include '../errors/db_error.php';
     exit;
 }
+
+function get_list ($query) {
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
+
+
 ?>

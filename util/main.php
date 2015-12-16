@@ -34,5 +34,17 @@ function display_error($error_message) {
     exit;
 }
 
+function verify_admin() {
+    if (!isset($_SESSION['usr_role_cde'])) {
+        include 'errors/invaliduser.html';
+        exit();
+    } elseif ($_SESSION['usr_role_cde'] != "ADM") {
+        include 'errors/invaliduser.html';
+        exit();
+    } else {
+        return;
+    }
+}
+
 
 ?>
