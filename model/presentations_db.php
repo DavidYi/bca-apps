@@ -1,18 +1,4 @@
 <?php
-function get_list ($query) {
-    global $db;
-
-    try {
-        $statement = $db->prepare($query);  
-        $statement->execute();
-        $result = $statement->fetchAll();
-        $statement->closeCursor();
-        return $result;
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
-    }    
-}
 
 function get_session_times() {
     $query = 	'SELECT ses_id, ses_name, ses_start, ses_end 
