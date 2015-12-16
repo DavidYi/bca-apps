@@ -30,6 +30,7 @@ switch ($action) {
          */
         $user_from_post = get_user(filter_input(INPUT_POST, 'usr_id'));
         session_start();
+
         $_SESSION['usr_id'] = $user_from_post['usr_id'];
         $_SESSION['usr_role_cde'] = $user_from_post['usr_role_cde'];
         $_SESSION['usr_type_cde'] = $user_from_post['usr_type_cde'];
