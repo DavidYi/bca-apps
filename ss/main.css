@@ -323,7 +323,7 @@ html {
       margin-right: 0%;
       width: 16.66667%;
       text-align: left;
-      padding: 13px 0 0 3px; }
+      padding: 0.8125em 0 0 0.1875em; }
       .enrollment .top-nav .slot:last-child {
         margin-right: 0; }
       .enrollment .top-nav .slot a {
