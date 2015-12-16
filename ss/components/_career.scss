@@ -44,7 +44,7 @@ html {
 		.slot {
 			@include span-columns(2);
 			text-align: left;
-			padding: 13px 0 0 3px;
+			padding: em(13px) 0 0 em(3px);
 
 			a {
 				color: #e6e6e6;	
@@ -76,6 +76,7 @@ html {
 		.tag {
 			@extend .grid-sect;
 			font-weight: 500;
+
 		}
 
 		.title {
