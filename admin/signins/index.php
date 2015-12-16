@@ -6,27 +6,33 @@
  * Time: 9:04 AM
  */
 require_once("../util/main.php");
-require_once ("../model/presentation_db.php");
-$action =  strtolower(filter_input(INPUT_POST, 'action'));
+require_once("model/presentation_db.php");
+$action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
     if ($action == NULL) {
-        $action = 'show';
+        $action = 'show_generate_page';
     }
 }
-switch ($action){
-    case 'show':
-
-        include("../admin/signins/sheetRequest");
+switch ($action) {
+    case 'show_generate_page':
+        $choice = filter_input(INPUT_POST, 'choice');
+        $mentors = get_mentors();
+        $sessions = get_session_times();
+        include("admin/signins/sheetRequest.php");
         break;
     case 'generate':
+        $mentor  = filter_input("");
         $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+
         break;
+
     case 'mentors': //presenter
         $error_msg = '';
         $mentorList = get_mentor();
-        foreach($mentors as $mentor) {
+        foreach ($mentors as $mentor) {
         }
 
         break;
@@ -34,8 +40,6 @@ switch ($action){
     case 'session':
         $error_msg = '';
         $session_id = filter_input(INPUT_POST, 'session_id');
-        if ($session == null)
-            $error_msg = 'Need to know the session to use';
         $studentList = get_student($session);
         $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -43,4 +47,4 @@ switch ($action){
         break;
 }
 
-?>
+        ?>
