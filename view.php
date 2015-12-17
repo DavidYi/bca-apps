@@ -7,7 +7,9 @@
 
 		<!-- Styles -->
         <link href="ss/main.css" rel="stylesheet">
-	</head>
+
+        <?php include_analytics(); ?>
+    </head>
 	<body>
 		<section class="main">
 			<header>
