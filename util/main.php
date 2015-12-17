@@ -47,6 +47,11 @@ function verify_admin() {
 }
 
 function include_analytics() {
+    include_page_tracking();
+    include_user_tracking();
+}
+
+function include_page_tracking() {
     echo (
     "<script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -60,16 +65,16 @@ function include_analytics() {
 }
 
 function include_user_tracking() {
-    $cur_user = get_user(filter_input(INPUT_POST, 'usr_id'));
+    $cur_user = get_user($_SESSION['usr_id']);
     if ($cur_user != NULL) {
         echo(
             '<script>
                 ga("create", "UA-71500783-1", "auto", "usr_id", {
-                    usr_id: ' . $cur_user['usr_id'] . '
+                    usr_id: "' . $cur_user['usr_id'] . '"
                 });
 
                 ga("create", "UA-71500783-1", "auto", "usr_type_cde", {
-                    usr_id: ' . $cur_user['usr_type_cde'] . '
+                    usr_type_cde: "' . $cur_user['usr_type_cde'] . '"
                 });
             </script>'
         );
