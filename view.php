@@ -8,7 +8,7 @@
 		<!-- Styles -->
         <link href="ss/main.css" rel="stylesheet">
 
-        <?php include_analytics(); ?>
+        <?php include_analytics(); include_user_tracking(); ?>
     </head>
 	<body>
 		<section class="main">
