@@ -6,7 +6,8 @@
  * Time: 9:04 AM
  */
 require_once("../util/main.php");
-require_once("model/presentation_db.php");
+require_once("../model/database.php");
+require_once("model/signins_db.php");
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {
@@ -30,8 +31,13 @@ switch ($action) {
         $session_id = filter_input(INPUT_POST, 'session');
         $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Nicola Asuni'); //todo: add mentor name
+        $pdf->SetTitle();//todo: add the presentation name
+        $pdf->SetSubject('Sign in');
+        $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
+        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
         break;
 }
-
-        ?>
+?>

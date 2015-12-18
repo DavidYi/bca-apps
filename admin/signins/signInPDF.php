@@ -8,26 +8,24 @@
 require_once('../tcpdf/config/lang/eng.php');
 require_once('../tcpdf/tcpdf.php');
 
-class signinPDF extends TCPDF{
+class signinPDF extends TCPDF
+{
 
     public function Header()
     {
-
-        $this->setJPEGQuality(90);
-
-        $this->Image('logo.png', 62, 36, 72, 0, 'PNG', 'http://php.refulz.com');
-
+        //logo
+        $image_file = K_PATH_IMAGES . '/images/BCAlogo2.png';
+        $this->Image($image_file, 10, 10, 10, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        // Set font
+        $this->SetFont('helvetica', 'B', 20);
+        //title
+        $this->Cell(0, 15, 'Sign In Sheet', 0, false, 'C', 0, '', 0, false, 'M', 'M');
     }
 
     public function Footer()
     {
-
         $this->SetY(-15);
-
-        $this->SetFont(PDF_FONT_NAME_MAIN, 'I', 8);
-
-        $this->Cell(0, 10, 'php.refulz.com – Web Developer’s Blog', 0, false, 'C');
-
     }
 }
+
 ?>
