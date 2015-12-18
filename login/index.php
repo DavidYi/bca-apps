@@ -42,6 +42,8 @@ switch ($action) {
             // The user is a student or teacher, they are directed to sign up page
             header("Location: ../index.php");
         }
+
+        break;
 }
 
 ?>

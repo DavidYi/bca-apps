@@ -30,7 +30,7 @@ function get_presentation_list($ses_id) {
 				INNER JOIN presentation ON presentation.mentor_id = mentor.mentor_id
 				WHERE presentation.ses_id = :ses_id
 				AND mentor.active =1
-				ORDER BY mentor_last_name, mentor_first_name';
+				ORDER BY mentor_field';
 	
     global $db;
 
