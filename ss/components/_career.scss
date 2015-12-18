@@ -67,14 +67,14 @@ nav.navbar {
 		border-bottom: 1px solid #d6d9da;
 
 		.tag {
-			@include span-columns(4);
+			@include span-columns(3);
 			font-size: em(18px);
 			font-weight: 500;
 			color: $color-emperor;
 		}
 
-		.room, .remaining {
-			@include span-columns(2);
+		.remaining {
+			@include span-columns(3);
 			font-size: em(18px);
 			font-weight: 500;
 			color: $color-emperor;

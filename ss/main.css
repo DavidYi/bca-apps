@@ -340,27 +340,27 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 28.57143%;
+      width: 25%;
       font-size: 1.125em;
       font-weight: 500;
       color: #555; }
       .enrollment .session .tag:last-child {
         margin-right: 0; }
-    .enrollment .session .room, .enrollment .session .remaining {
+    .enrollment .session .remaining {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 14.28571%;
+      width: 25%;
       font-size: 1.125em;
       font-weight: 500;
       color: #555; }
-      .enrollment .session .room:last-child, .enrollment .session .remaining:last-child {
+      .enrollment .session .remaining:last-child {
         margin-right: 0; }
     .enrollment .session .title {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 42.85714%;
+      width: 50%;
       height: 100%; }
       .enrollment .session .title:last-child {
         margin-right: 0; }
