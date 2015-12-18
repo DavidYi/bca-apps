@@ -8,6 +8,7 @@
 require_once("../util/main.php");
 require_once("../model/database.php");
 require_once("model/signins_db.php");
+require('fpdf.php');
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {
@@ -29,15 +30,34 @@ switch ($action) {
     case 'generate':
         $mentor  = filter_input(INPUT_POST, 'mentor');
         $session_id = filter_input(INPUT_POST, 'session');
-        $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        if ($mentors == "all"){
+            $title =  "Mentor Sign In";
+        }else{
+            $title = "Session Sign In";
+        }
+        $pdf= new FPDF();
 
-        $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('Nicola Asuni'); //todo: add mentor name
-        $pdf->SetTitle();//todo: add the presentation name
-        $pdf->SetSubject('Sign in');
-        $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+        $pdf->SetAuthor('');//todo: add Mentor Name
+        $pdf->SetTitle('Sign In');
+        $pdf->SetFont('Helvetica','B',20);
+        $pdf->AddPage('P');
+        $pdf->SetDisplayMode(real,'default');
 
-        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+        $pdf->Image('/image/BCAlogo1.png',10,20,33,0,' ','http://www.fpdf.org/');
+
+        $pdf->SetXY(50,20);
+        $pdf->SetDrawColor(50,60,100);
+        $pdf->Cell(100,10,'FPDF Tutorial',1,0,'C',0);
+
+//        $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+//
+//        $pdf->SetCreator(PDF_CREATOR);
+//        $pdf->SetAuthor('Nicola Asuni'); //todo: add mentor name
+//        $pdf->SetTitle();//todo: add the presentation name
+//        $pdf->SetSubject('Sign in');
+//        $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+//
+//        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
         break;
 }
 ?>
