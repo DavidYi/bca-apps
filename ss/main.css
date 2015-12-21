@@ -168,7 +168,7 @@ html {
       font-size: 70%; } }
   @media screen and (min-width: 75em) {
     html {
-      font-size: 80; } }
+      font-size: 80%; } }
   @media screen and (min-width: 100em) {
     html {
       font-size: 92.5%; } }
