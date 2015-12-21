@@ -5,8 +5,8 @@
  * Date: 12/16/2015
  * Time: 10:38 AM
  */
-require_once('../tcpdf/config/lang/eng.php');
-require_once('../tcpdf/tcpdf.php');
+require_once('tcpdf/config/lang/eng.php');
+require_once('tcpdf/tcpdf.php');
 
 
 class signinPDF extends TCPDF
