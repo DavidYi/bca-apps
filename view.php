@@ -15,22 +15,22 @@
 			</header>
 
 			<nav class="navbar">
-                <a href="index.php?session=1">
+                <a href="index.php?session=1&action=register">
                     <div class="session-select">
                         Session 1
                     </div>
                 </a>
-                <a href="index.php?session=2">
+                <a href="index.php?session=2&action=register">
                     <div class="session-select">
                         Session 2
                     </div>
                 </a>
-                <a href="index.php?session=3">
+                <a href="index.php?session=3&action=register">
                     <div class="session-select">
                         Session 3
                     </div>
                 </a>
-                <a href="index.php?session=4">
+                <a href="index.php?session=4&action=register">
                     <div class="session-select">
                         Session 4
                     </div>

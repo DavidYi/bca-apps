@@ -25,7 +25,12 @@ if ($pres_enrolled != NULL) {
 }
 
 
-include("view.php");
+$action = filter_input(INPUT_GET, 'action');
+if ($action == "register") {
+    include("view.php");
+} else {
+    include("home.php");
+}
+
 exit();
 
-?>
