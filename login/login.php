@@ -10,7 +10,9 @@
             <!-- Loop through each user and add them to dropdown -->
             <?php foreach ($user_list as $user) { ?>
                 <option value="<?php echo $user['usr_id']?>">
-                    <?php echo $user['usr_last_name'], $user['usr_first_name'] ?>
+                    <?php echo $user['usr_class_year']?>,
+                    <?php echo $user['usr_last_name']?>,
+                    <?php echo $user['usr_first_name'] ?>
                 </option>
             <?php } ?>
         </select>
