@@ -17,6 +17,13 @@ if ($currentSession < 1 || $currentSession > 4) {
 
 $presentations = get_presentation_list($currentSession);
 
+$pres_enrolled = get_presentation_by_user($user['usr_id'], $currentSession);
+$is_enrolled = FALSE;
+
+if ($pres_enrolled != NULL) {
+    $is_enrolled = TRUE;
+}
+
 
 include("view.php");
 exit();

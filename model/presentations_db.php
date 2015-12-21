@@ -13,7 +13,7 @@ function get_presentation_list($ses_id) {
 					mentor_position , mentor_company ,  mentor_profile ,  mentor_keywords ,  
 					mentor_email ,  mentor_cell_nbr , mentor_phone_nbr ,  mentor_address ,  
 					mentor_source ,  mentor_notes ,  active ,  pres_room , pres_host_teacher ,  
-					pres_max_capacity , presentation.pres_enrolled_count
+					pres_max_capacity , presentation.pres_enrolled_count, presentation.pres_id
 				FROM mentor
 				INNER JOIN presentation ON presentation.mentor_id = mentor.mentor_id
 				WHERE presentation.ses_id = :ses_id
@@ -33,6 +33,29 @@ function get_presentation_list($ses_id) {
         $error_message = $e->getMessage();
         display_db_error($error_message);
     }  
+}
+
+function get_presentation_by_user($usr_id, $ses_id) {
+    $query = 'SELECT presentation.pres_id
+              FROM pres_user_xref
+              INNER JOIN presentation on presentation.pres_id = pres_user_xref.pres_id
+              WHERE ses_id = :ses_id
+              AND usr_id = :usr_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':ses_id', $ses_id);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
 }
 
 function get_user($usr_id) {
