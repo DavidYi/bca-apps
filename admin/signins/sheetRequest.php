@@ -12,11 +12,13 @@
 </head>
 <body>
 
+<h1>Please choose the specific session and mentor to generate out the sign in sheet or choose all mentor to get the
+    mentor sign in sheet:</h1>
 <form action="." method="post">
     <input type="hidden" name="action" value="generate">
     <label>Mentor:</label>
     <select name="mentor">
-        <option value="All" selected="selected">All Mentors</option>
+        <option value="all" selected="selected">All Mentors</option>
         <?php foreach ($mentors as $mentor) :
             if (($mentor['mentor_id'] == $mentor_id)) {
                 $selected = 'selected';
@@ -26,14 +28,13 @@
             ?>
             <option value="<?php echo $mentor['mentor_id']; ?>" selected="<?php
             echo $selected ?>">
-                <?php echo htmlspecialchars($mentor['mentor_last_name'])?>, <?php
+                <?php echo htmlspecialchars($mentor['mentor_last_name']) ?>, <?php
                 echo htmlspecialchars($mentor['mentor_first_name']); ?> (<?php echo
-                htmlspecialchars($mentor[mentor_company])?>)
+                htmlspecialchars($mentor[mentor_company]) ?>)
             </option>
         <?php endforeach; ?>
     </select>
     <select name="session">
-        <option value="All" selected="selected">All Sessions</option>
         <?php foreach ($sessions as $session) :
             if ($session['ses_id'] == $session_id) {
                 $selected = 'selected';

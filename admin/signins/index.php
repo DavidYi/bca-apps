@@ -34,10 +34,13 @@ switch ($action) {
         $session_id = filter_input(INPUT_POST, 'session');
         $header = array("Id","Name","Signature");
         //todo: get query to find the exact session of the exact mentor if they are both specified
-        //todo: get query to find a session with all the presentations if only one is specified
-        //todo: get query to find the meentors
+        //todo: get query to find the mentors if mentor = all
         if ($mentors == "all"){
             $title =  "Mentor Sign In";
+            $header = array("Name", "Rm #", "Company", "Signature");
+            $data = array(
+                array()
+            );
         }else {
             $title = "Session Sign In";
         }
@@ -54,6 +57,8 @@ switch ($action) {
         $pdf->SetXY(50,20);
         $pdf->SetDrawColor(50,60,100);
         $pdf->Cell(100,10,$title,1,0,'C',0);
+
+        FancyTable($header, $data);
 
         $pdf->Output('signin.pdf','I');
 

@@ -1,7 +1,8 @@
 <?php
 # Localhost connection option
-# $dsn = 'mysql:host=localhost;dbname=career_day';
-# $username = 'caruser';
+#$dsn = 'mysql:host=localhost;dbname=career_day';
+#$username = 'careeruser';
+#$password = 'happy';
 
 # Remote connection option
 $dsn = 'mysql:host=webdev01.bergen.org;dbname=atcsdevb_career_day';
@@ -13,7 +14,8 @@ try {
     $db = new PDO($dsn, $username, $password, $options);
 } catch (PDOException $e) {
     $error_message = $e->getMessage();
-    include 'errors/db_error_connect.php';
+    echo $error_message;
+#    include 'errors/db_error_connect.php';
     exit;
 }
 
