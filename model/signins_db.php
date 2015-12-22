@@ -16,4 +16,8 @@ function get_mentors() {
 
     return get_list($query);
 }
+//todo: get the list of students from a specific session and mentor
+//todo: get the list of all presentations
+//todo: get the list of presentations from particular sessio
+//todo: get list of presentations of specific mentor
 ?>
