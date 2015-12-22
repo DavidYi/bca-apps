@@ -7,8 +7,8 @@
  */
 require_once("../model/database.php");
 require_once("../model/presentations_db.php");
-require_once("../errors/db_error.php");
-require_once ("../errors/db_error_connect.php");
+#require_once("../errors/db_error.php");
+#require_once ("../errors/db_error_connect.php");
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 

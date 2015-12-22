@@ -5,10 +5,12 @@
  * Date: 12/16/15
  * Time: 9:04 AM
  */
-require_once("../../util/main.php");
-require_once("model/database.php");
-require_once("model/signins_db.php");
-require('fpdf.php');
+require_once "../util/main.php";
+require_once "../model/database.php";
+require_once "model/signins_db.php";
+require_once "/admin/signins/signInPDF.php";
+require_once '../fpdf/fpdf.php';
+
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {
@@ -30,24 +32,30 @@ switch ($action) {
     case 'generate':
         $mentor  = filter_input(INPUT_POST, 'mentor');
         $session_id = filter_input(INPUT_POST, 'session');
+        $header = array("Id","Name","Signature");
+        //todo: get query to find the exact session of the exact mentor if they are both specified
+        //todo: get query to find a session with all the presentations if only one is specified
+        //todo: get query to find the meentors
         if ($mentors == "all"){
             $title =  "Mentor Sign In";
-        }else{
+        }else {
             $title = "Session Sign In";
         }
         $pdf= new FPDF();
 
         $pdf->SetAuthor('');//todo: add Mentor Name
-        $pdf->SetTitle('Sign In');
+        $pdf->SetTitle($title);
         $pdf->SetFont('Helvetica','B',20);
         $pdf->AddPage('P');
         $pdf->SetDisplayMode(real,'default');
 
-        $pdf->Image('/image/BCAlogo1.png',10,20,33,0,' ','http://www.fpdf.org/');
+        $pdf->Image('/image/BCAlogo2.png',10,20,33,0,' ','http://www.fpdf.org/');
 
         $pdf->SetXY(50,20);
         $pdf->SetDrawColor(50,60,100);
-        $pdf->Cell(100,10,'FPDF Tutorial',1,0,'C',0);
+        $pdf->Cell(100,10,$title,1,0,'C',0);
+
+        $pdf->Output('signin.pdf','I');
 
 //        $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 //
