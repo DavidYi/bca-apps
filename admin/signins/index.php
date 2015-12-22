@@ -5,12 +5,19 @@
  * Date: 12/16/15
  * Time: 9:04 AM
  */
+<<<<<<< HEAD
 require_once "../util/main.php";
 require_once "../model/database.php";
 require_once "model/signins_db.php";
 require_once "/admin/signins/signInPDF.php";
 require_once '../fpdf/fpdf.php';
 
+=======
+require_once("../../util/main.php");
+require_once("model/database.php");
+require_once("model/signins_db.php");
+require('fpdf.php');
+>>>>>>> 07af5d6c41b0c7e5de7fd1b3d78d65df589f9a9e
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {

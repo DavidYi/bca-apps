@@ -5,7 +5,12 @@
  * Date: 12/16/2015
  * Time: 10:38 AM
  */
+<<<<<<< HEAD
 require("fpdf.php");
+=======
+require_once('tcpdf/config/lang/eng.php');
+require_once('tcpdf/tcpdf.php');
+>>>>>>> 07af5d6c41b0c7e5de7fd1b3d78d65df589f9a9e
 
 
 class signinPDF extends FPDF
