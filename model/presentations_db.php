@@ -8,6 +8,26 @@ function get_session_times() {
     return get_list($query);
 }
 
+function get_session_times_by_id($ses_id) {
+    $query = 'SELECT ses_start, ses_end
+              FROM session_times
+              WHERE ses_id = :ses_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':ses_id', $ses_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
 function get_presentation_list($ses_id) {
     $query = 	'SELECT mentor.mentor_id,  mentor_last_name ,  mentor_first_name ,  mentor_field ,
 					mentor_position , mentor_company ,  mentor_profile ,  mentor_keywords ,  
@@ -36,9 +56,11 @@ function get_presentation_list($ses_id) {
 }
 
 function get_presentation_by_user($usr_id, $ses_id) {
-    $query = 'SELECT presentation.pres_id
+    $query = 'SELECT presentation.pres_id, mentor.pres_room, mentor.mentor_first_name,
+                mentor.mentor_last_name, mentor.mentor_position, mentor.mentor_company
               FROM pres_user_xref
               INNER JOIN presentation on presentation.pres_id = pres_user_xref.pres_id
+              INNER JOIN mentor on presentation.mentor_id = mentor.mentor_id
               WHERE ses_id = :ses_id
               AND usr_id = :usr_id';
 
@@ -83,10 +105,9 @@ function get_user_list() {
     $query = 'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
                  usr_first_name, usr_last_name, usr_active
               from user
+              where usr_active = 1
 			  order by usr_display_name';
 
     return get_list($query);
 }
-// TODO: Implement get all session time query
-// TODO: Implement change session keys query
 ?>

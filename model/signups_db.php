@@ -1,18 +1,4 @@
 <?php
-function get_list ($query) {
-    global $db;
-
-    try {
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetchAll();
-        $statement->closeCursor();
-        return $result;
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
-    }
-}
 
 function get_teachers() {
     $query = 'SELECT teacher_id, last_name, first_name, display_name
@@ -42,6 +28,26 @@ function get_signup_dates_list() {
                 where course.active = 1
                 order by course.course_nbr';
     return get_list($query);
+}
+
+function get_signup_dates_by_class_year($class_year) {
+    $query = 'SELECT start, end
+              FROM signup_dates
+              WHERE class_year = :class_year';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':class_year', $class_year);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
 }
 
 function add_signup_dates($class_year, $start, $end) {
