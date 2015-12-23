@@ -24,7 +24,9 @@
                             <?php echo $mentor['mentor_company']?>
                         <?php } ?></td>
                     <td>
-                        <?php if ($mentor == NULL) { ?>
+                        <?php if ($current_date < $start_date || $current_date > $end_date) { ?>
+                            Locked
+                        <?php } else if ($mentor == NULL) { ?>
                             <a href="index.php?session=<?php echo $i?>&action=register">Register</a>
                         <?php } else { ?>
                             <a href="index.php?session=<?php echo $i?>&action=change">Change</a>
