@@ -10,126 +10,121 @@ html {
 }
 
 
+nav.navbar {
+	@extend .container;
+	height: em(60px);
+	line-height: em(60px);
+	background: $color-mineshaft;
+	@include margin(0 auto);
+
+	.session-select {
+		display: inline-block;
+		@include size(em(175px) 100%);
+		@include margin(0);
+		@include padding(0 em(20px));
+		text-align: center;		
+		@include transition(all $animation-duration $animation-timing);
+
+		a {
+			color: $color-white;
+			font-size: em(20px);
+			font-weight: $default-font-weight;
+			text-decoration: none;
+
+			&:hover {
+				color: $color-white;
+				text-decoration: none;
+			}
+		}
+
+		&.active, &:hover {
+			background-color: $color-grayblack;
+
+			a {
+				color: $color-black;
+				&:hover {
+					color: $color-black;
+				}
+			}
+		}
+	}
+}
+
 .enrollment {
 	@extend .container;
-	// width: em(840px);
-	// max-width: 100%;
-	@include margin(em(50px) auto 0);
+	height: 78%;
+	@include margin(0 auto);
+	overflow-y: scroll;
 	background: $color-grayblack;
 	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
 	color: $color-black;
 
-	.top-nav {
-		@include row;
-		@include padding(0 em(25px));
-		background-color: $color-black;
-
-		input {
-			height: 50px;
-			width: 30%;
-			right:0;
-			text-align: right;
-			@include padding(0 em(25px));
-			background-color: $color-black;
-			background-image: url(../images/search.png);
-			background-size: 16px 16px;
-			background-repeat: no-repeat;
-    		background-position: right; 
-    		background-attachment: scroll;
-		}
-		input.search-input {
-			color: #fff;
-			text-align: left;
-		}
-		.slot {
-			@include span-columns(2);
-			text-align: left;
-			padding: em(13px) 0 0 em(3px);
-
-			a {
-				color: #e6e6e6;	
-				font-size: em(20px);
-				font-weight: 300;
-				text-decoration: none;
-				opacity: 0.8;
-			}
-
-			&.active a {
-				//border-bottom: 2px solid #FFF;
-				color: #FFF;
-				opacity: 1;
-			}
-		}
-	}
-
 	.session {
 		@include row;
+		height: em(60px);
+		line-height: em(60px);
 		@include padding(0 em(25px));
 		border-bottom: 1px solid #d6d9da;
 
-		.grid-sect {
-			@include span-columns(3);
-			@include padding(em(20px) 0);
-			font-size: em(18px);
-		}
-
 		.tag {
-			@extend .grid-sect;
+			@include span-columns(3);
+			font-size: em(18px);
 			font-weight: 500;
-
-		}
-
-		.title {
-			@include span-columns(6);
-			text-align: center;
-			@include padding(em(15px) 0);
-
-			.name { 
-				@include zero-box;
-				font-size: em(18px);
-				line-height: em(20px);
-				font-weight: 500;
-				font-size: em(24px);
-			}
-
-			.host {
-				@include zero-box;
-				font-size: em(16px);
-				color: #5c666d;
-			}
-		}
-
-		.room {
-			@extend .grid-sect;
-			@include span-columns(2);
-			font-weight: 400;
-			text-align: center;
-			font-size: em(20px);
+			color: $color-emperor;
 		}
 
 		.remaining {
-		@include span-columns(1);
-			@extend .grid-sect;
-			text-align: right;
+			@include span-columns(3);
+			font-size: em(18px);
+			font-weight: 500;
+			color: $color-emperor;
+		}	
+
+
+		.title {
+			@include span-columns(6);
+			height: 100%;
+
+			.vac {
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			h3, h5 {
+				@include margin(0);
+				@include padding(0);
+				text-align: center;
+				line-height: 1.2;
+			}
+
+			h3 {
+				color: $color-black;
+				margin-top: em(9px);
+				font-size: em(18px);
+				font-weight: 500;
+			}
+
+			h5 {
+				color: $color-mineshaft;
+				margin-top: 1px;
+				font-size: em(14px);
+				font-weight: $default-font-weight;
+			}
 		}
 
-		.field-icon {
-			height: 25px;
-			margin: 0 5px -5px 0;
+		.remaining {
+			text-align: right;
 		}
-	
 	}
 }
 
 .register {
 	@extend .container;
-	@include margin(em(50px) auto 0);
+	@include margin(em(25px) auto 0);
 	text-align: center;
-	horizontal-align: center;
+	font-weight: 500;
 
 	button {
-		horizontal-align: center;
-		margin: auto;
 
 	}
 }

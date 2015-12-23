@@ -34,5 +34,52 @@ function display_error($error_message) {
     exit;
 }
 
+function verify_admin() {
+    if (!isset($_SESSION['usr_role_cde'])) {
+        include 'errors/invaliduser.html';
+        exit();
+    } elseif ($_SESSION['usr_role_cde'] != "ADM") {
+        include 'errors/invaliduser.html';
+        exit();
+    } else {
+        return;
+    }
+}
+
+function include_analytics() {
+    include_page_tracking();
+    include_user_tracking();
+}
+
+function include_page_tracking() {
+    echo (
+    "<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-71500783-1', 'auto');
+        ga('send', 'pageview');
+    </script>"
+    );
+}
+
+function include_user_tracking() {
+    $cur_user = get_user($_SESSION['usr_id']);
+    if ($cur_user != NULL) {
+        echo(
+            '<script>
+                ga("create", "UA-71500783-1", "auto", "usr_id", {
+                    usr_id: "' . $cur_user['usr_id'] . '"
+                });
+
+                ga("create", "UA-71500783-1", "auto", "usr_type_cde", {
+                    usr_type_cde: "' . $cur_user['usr_type_cde'] . '"
+                });
+            </script>'
+        );
+    }
+}
+
 
 ?>

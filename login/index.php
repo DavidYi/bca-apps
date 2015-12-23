@@ -8,6 +8,7 @@
 require_once("../model/database.php");
 require_once("../model/presentations_db.php");
 
+
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {
@@ -34,6 +35,16 @@ switch ($action) {
         $_SESSION['usr_id'] = $user_from_post['usr_id'];
         $_SESSION['usr_role_cde'] = $user_from_post['usr_role_cde'];
         $_SESSION['usr_type_cde'] = $user_from_post['usr_type_cde'];
+
+        if ($user_from_post['usr_role_cde'] == 'ADM') {
+            // The user is an admin, so they are directed to  admin page
+            header("Location: ../admin/index.php");
+        } else {
+            // The user is a student or teacher, they are directed to sign up page
+            header("Location: ../index.php");
+        }
+
+        break;
 }
 
 ?>
