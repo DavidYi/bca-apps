@@ -14,7 +14,7 @@
 				<h1 class="title main-title">Register for Career Day</h1>
 			</header>
 
-			<nav class="navbar">
+			<!-- <nav class="navbar">
                 <a href="index.php?session=1">
                     <div class="session-select">
                         Session 1
@@ -35,13 +35,13 @@
                         Session 4
                     </div>
                 </a>
+            </nav> -->
 				<!-- <form class="searchbar"><input type="text" class="search-input" placeholder="Search"></form> -->
-			</nav>
 
 			<div class="enrollment">
                 <?php foreach ($presentations as $presentation) {
                     if ($presentation['pres_max_capacity'] > $presentation['pres_enrolled_count'] || ($is_enrolled && $pres_enrolled == $presentation['pres_id'])) { ?>
-                        <div class="session">
+                        <div class="session" onclick="postRegister(<?php echo $presentation['pres_id'] ?>">
                             <div class="tag"> <?php echo $presentation['mentor_field'] ?> </div>
                             <div class="title">
                                 <span style="vertical-align: middle;">
@@ -66,12 +66,25 @@
 		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
 		<script type="text/javascript" src="js/jquery.plusanchor.min.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function(){
-			    $('body').plusAnchor({
-			        easing: 'easeInOutExpo',
-			        speed:  700
-			    });
-			});
+		    $('body').plusAnchor({
+		        easing: 'easeInOutExpo',
+		        speed:  700
+		    });
+
+            function postRegister(postObject) {
+                $.post(
+                    "/index.php",
+                    {
+                        "pres_id": postObject
+                    },
+                    function (data) {
+                        data = $.parseJSON(data);
+                        if ( false /* Check if successful */ ) { /* Do something for success ? redirect? */ }
+                        else { /* Do something if error */ }
+                    },
+                    "json"
+                );
+            });
 		</script>
 	</body>
 </html>

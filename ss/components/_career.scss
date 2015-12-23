@@ -62,6 +62,7 @@ nav.navbar {
 	.session {
 		@include row;
 		height: em(60px);
+		overflow: auto;
 		line-height: em(60px);
 		@include padding(0 em(25px));
 		border-bottom: 1px solid #d6d9da;
