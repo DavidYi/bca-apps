@@ -53,6 +53,24 @@ function get_presentation_list()
     return get_list($query);
 }
 
+function get_rm_number()
+{
+    $query = 'SELECT distinct pres_room
+                    FROM mentor
+                    order by pres_room';
+
+    return get_list($query);
+}
+
+function get_host_teacher() {
+    $query = 'SELECT distinct pres_host_teacher
+                    FROM mentor
+                    where pres_host_teacher is not null
+                    and pres_host_teacher !=""
+                    order by pres_host_teacher';
+
+    return get_list($query);
+}
 //todo: get query to find the exact session of the exact mentor if they are both specified
 //todo: get query to find a session with all the presentations if only one is specified
 ?>
