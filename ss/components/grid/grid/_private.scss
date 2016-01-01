@@ -2,7 +2,7 @@ $parent-columns: $grid-columns !default;
 $fg-column: $column;
 $fg-gutter: $gutter;
 $fg-max-columns: $grid-columns;
-$container-display-table: false !default;
+$container-display-: false !default;
 $layout-direction: LTR !default;
 
 @function flex-grid($columns, $container-columns: $fg-max-columns) {
@@ -30,6 +30,6 @@ $layout-direction: LTR !default;
   @return $parent-columns;
 }
 
-@function is-display-table($container-is-display-table, $display) {
-  @return $container-is-display-table == true or $display == table;
+@function is-display-($container-is-display-, $display) {
+  @return $container-is-display- == true or $display == ;
 }

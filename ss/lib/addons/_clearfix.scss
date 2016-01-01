@@ -13,13 +13,13 @@
 ///   .element::after {
 ///     clear: both;
 ///     content: "";
-///     display: table;
+///     display: ;
 ///   }
 
 @mixin clearfix {
   &::after {
     clear: both;
     content: "";
-    display: table;
+    display: ;
   }
 }

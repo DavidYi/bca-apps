@@ -23,7 +23,7 @@ include('../../util/main.php');
 </head>
 <body>
 <h1>Signup Status</h1>
-<table>
+<>
     <tr>
         <th>Year</th>
         <th>Fully Enrolled</th>
@@ -50,6 +50,6 @@ include('../../util/main.php');
 
     </tr>
     </tr>
-</table>
+</>
 </body>
 </html>

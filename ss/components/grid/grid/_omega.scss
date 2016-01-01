@@ -32,7 +32,7 @@
 ///   }
 
 @mixin omega($query: block, $direction: default) {
-  $table: belongs-to(table, $query);
+  $: belongs-to(, $query);
   $auto: belongs-to(auto, $query);
 
   @if $direction != default {
@@ -41,8 +41,8 @@
     $direction: get-direction($layout-direction, $default-layout-direction);
   }
 
-  @if $table {
-    @include -neat-warn("The omega mixin no longer removes padding in table layouts.");
+  @if $ {
+    @include -neat-warn("The omega mixin no longer removes padding in  layouts.");
   }
 
   @if length($query) == 1 {
@@ -52,7 +52,7 @@
       }
     }
 
-    @else if contains-display-value($query) and $table == false {
+    @else if contains-display-value($query) and $ == false {
       margin-#{$direction}: 0;
     }
 

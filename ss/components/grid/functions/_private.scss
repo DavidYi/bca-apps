@@ -20,7 +20,7 @@
 
 // Contains display value
 @function contains-display-value($query) {
-  @return belongs-to(table, $query)
+  @return belongs-to(, $query)
        or belongs-to(block, $query)
        or belongs-to(inline-block, $query)
        or belongs-to(inline, $query);

@@ -2,12 +2,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Tables</title>
+<title>s</title>
 <link type="text/css" rel="stylesheet" href="../fpdf.css">
 </head>
 <body>
-<h1>Tables</h1>
-This tutorial shows different ways to make tables.
+<h1>s</h1>
+This tutorial shows different ways to make s.
 <div class="source">
 <pre><code>&lt;?php
 <span class="kw">require(</span><span class="str">'fpdf.php'</span><span class="kw">);
@@ -25,8 +25,8 @@ class </span>PDF <span class="kw">extends </span>FPDF
     return </span>$data<span class="kw">;
 }
 
-</span><span class="cmt">// Simple table
-</span><span class="kw">function </span>BasicTable<span class="kw">(</span>$header<span class="kw">, </span>$data<span class="kw">)
+</span><span class="cmt">// Simple
+</span><span class="kw">function </span>Basic<span class="kw">(</span>$header<span class="kw">, </span>$data<span class="kw">)
 {
     </span><span class="cmt">// Header
     </span><span class="kw">foreach(</span>$header <span class="kw">as </span>$col<span class="kw">)
@@ -41,8 +41,8 @@ class </span>PDF <span class="kw">extends </span>FPDF
     }
 }
 
-</span><span class="cmt">// Better table
-</span><span class="kw">function </span>ImprovedTable<span class="kw">(</span>$header<span class="kw">, </span>$data<span class="kw">)
+</span><span class="cmt">// Better
+</span><span class="kw">function </span>Improved<span class="kw">(</span>$header<span class="kw">, </span>$data<span class="kw">)
 {
     </span><span class="cmt">// Column widths
     </span>$w <span class="kw">= array(</span>40<span class="kw">, </span>35<span class="kw">, </span>40<span class="kw">, </span>45<span class="kw">);
@@ -63,8 +63,8 @@ class </span>PDF <span class="kw">extends </span>FPDF
     </span>$<span class="kw">this-&gt;</span>Cell<span class="kw">(</span>array_sum<span class="kw">(</span>$w<span class="kw">),</span>0<span class="kw">,</span><span class="str">''</span><span class="kw">,</span><span class="str">'T'</span><span class="kw">);
 }
 
-</span><span class="cmt">// Colored table
-</span><span class="kw">function </span>FancyTable<span class="kw">(</span>$header<span class="kw">, </span>$data<span class="kw">)
+</span><span class="cmt">// Colored
+</span><span class="kw">function </span>Fancy<span class="kw">(</span>$header<span class="kw">, </span>$data<span class="kw">)
 {
     </span><span class="cmt">// Colors, line width and bold font
     </span>$<span class="kw">this-&gt;</span>SetFillColor<span class="kw">(</span>255<span class="kw">,</span>0<span class="kw">,</span>0<span class="kw">);
@@ -104,30 +104,30 @@ class </span>PDF <span class="kw">extends </span>FPDF
 </span>$data <span class="kw">= </span>$pdf<span class="kw">-&gt;</span>LoadData<span class="kw">(</span><span class="str">'countries.txt'</span><span class="kw">);
 </span>$pdf<span class="kw">-&gt;</span>SetFont<span class="kw">(</span><span class="str">'Arial'</span><span class="kw">,</span><span class="str">''</span><span class="kw">,</span>14<span class="kw">);
 </span>$pdf<span class="kw">-&gt;</span>AddPage<span class="kw">();
-</span>$pdf<span class="kw">-&gt;</span>BasicTable<span class="kw">(</span>$header<span class="kw">,</span>$data<span class="kw">);
+</span>$pdf<span class="kw">-&gt;</span>Basic<span class="kw">(</span>$header<span class="kw">,</span>$data<span class="kw">);
 </span>$pdf<span class="kw">-&gt;</span>AddPage<span class="kw">();
-</span>$pdf<span class="kw">-&gt;</span>ImprovedTable<span class="kw">(</span>$header<span class="kw">,</span>$data<span class="kw">);
+</span>$pdf<span class="kw">-&gt;</span>Improved<span class="kw">(</span>$header<span class="kw">,</span>$data<span class="kw">);
 </span>$pdf<span class="kw">-&gt;</span>AddPage<span class="kw">();
-</span>$pdf<span class="kw">-&gt;</span>FancyTable<span class="kw">(</span>$header<span class="kw">,</span>$data<span class="kw">);
+</span>$pdf<span class="kw">-&gt;</span>Fancy<span class="kw">(</span>$header<span class="kw">,</span>$data<span class="kw">);
 </span>$pdf<span class="kw">-&gt;</span>Output<span class="kw">();
 </span>?&gt;</code></pre>
 </div>
 <p class='demo'><a href='tuto5.php' target='_blank' class='demo'>[Demo]</a></p>
-A table being just a collection of cells, it's natural to build one from them. The first
+A  being just a collection of cells, it's natural to build one from them. The first
 example is achieved in the most basic way possible: simple framed cells, all of the same size
 and left aligned. The result is rudimentary but very quick to obtain.
 <br>
 <br>
-The second table brings some improvements: each column has its own width, headings are centered,
+The second  brings some improvements: each column has its own width, headings are centered,
 and numbers right aligned. Moreover, horizontal lines have been removed. This is done by means
 of the <code>border</code> parameter of the <a href='../doc/cell.htm'>Cell()</a> method, which specifies which sides of the
 cell must be drawn. Here we want the left (<code>L</code>) and right (<code>R</code>) ones. It remains
-the problem of the horizontal line to finish the table. There are two possibilities: either
+the problem of the horizontal line to finish the . There are two possibilities: either
 check for the last line in the loop, in which case we use <code>LRB</code> for the <code>border</code>
 parameter; or, as done here, add the line once the loop is over.
 <br>
 <br>
-The third table is similar to the second one but uses colors. Fill, text and line colors are
+The third  is similar to the second one but uses colors. Fill, text and line colors are
 simply specified. Alternate coloring for rows is obtained by using alternatively transparent
 and filled cells.
 </body>

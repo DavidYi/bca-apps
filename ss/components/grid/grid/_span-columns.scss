@@ -16,7 +16,7 @@
 ///
 ///   If passed `block-collapse`, it also removes the margin gutter by adding it to the element width.
 ///
-///   If passed `table`, it sets the display property to `table-cell` and calculates the width of the element without taking gutters into consideration. The result does not align with the block-based grid.
+///   If passed ``, it sets the display property to `-cell` and calculates the width of the element without taking gutters into consideration. The result does not align with the block-based grid.
 ///
 /// @example scss - Usage
 ///   .element {
@@ -59,10 +59,10 @@
   $direction: get-direction($layout-direction, $default-layout-direction);
   $opposite-direction: get-opposite-direction($direction);
 
-  $display-table: is-display-table($container-display-table, $display);
+  $display-: is-display-($container-display-, $display);
 
-  @if $display-table  {
-    display: table-cell;
+  @if $display-  {
+    display: -cell;
     width: percentage($columns / $container-columns);
   } @else {
     float: #{$opposite-direction};

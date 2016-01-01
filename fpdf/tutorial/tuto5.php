@@ -14,8 +14,8 @@ function LoadData($file)
 	return $data;
 }
 
-// Simple table
-function BasicTable($header, $data)
+// Simple
+function Basic($header, $data)
 {
 	// Header
 	foreach($header as $col)
@@ -30,8 +30,8 @@ function BasicTable($header, $data)
 	}
 }
 
-// Better table
-function ImprovedTable($header, $data)
+// Better
+function Improved($header, $data)
 {
 	// Column widths
 	$w = array(40, 35, 40, 45);
@@ -52,8 +52,8 @@ function ImprovedTable($header, $data)
 	$this->Cell(array_sum($w),0,'','T');
 }
 
-// Colored table
-function FancyTable($header, $data)
+// Colored
+function Fancy($header, $data)
 {
 	// Colors, line width and bold font
 	$this->SetFillColor(255,0,0);
@@ -93,10 +93,10 @@ $header = array('Country', 'Capital', 'Area (sq km)', 'Pop. (thousands)');
 $data = $pdf->LoadData('countries.txt');
 $pdf->SetFont('Arial','',14);
 $pdf->AddPage();
-$pdf->BasicTable($header,$data);
+$pdf->Basic($header,$data);
 $pdf->AddPage();
-$pdf->ImprovedTable($header,$data);
+$pdf->Improved($header,$data);
 $pdf->AddPage();
-$pdf->FancyTable($header,$data);
+$pdf->Fancy($header,$data);
 $pdf->Output();
 ?>
