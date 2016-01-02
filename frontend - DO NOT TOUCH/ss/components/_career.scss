@@ -92,17 +92,17 @@ nav.navbar {
 }
 
 .session-selected {
-	background-color: $color-dodgerblue;
+	background-color: $color-yellow;
 	color: $color-white !important;
-	border-bottom: 1px solid $color-dodgerblue;
-	@include box-shadow(0, 0, em(25px), 0, rgba(34, 154, 255, 0.66));
+	border-bottom: 1px solid $color-yellow;
+	@include box-shadow(0, 0, em(25px), 0, rgba(240, 195, 15, 0.66));
 
 	.tag, .title, .presenter, .company, .remaining {
 		color: $color-white !important;
 	}
 
 	&:hover {
-		background-color: $color-dodgerblue !important;
+		background-color: $color-yellow !important;
 	}
 }
 
@@ -116,5 +116,7 @@ nav.navbar {
 
 	}
 }
+
+$grid-columns: 12; // reset
 
 
