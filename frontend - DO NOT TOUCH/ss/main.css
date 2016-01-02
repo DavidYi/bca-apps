@@ -524,4 +524,35 @@ nav.navbar {
 ::-webkit-scrollbar-thumb {
   background: #777; }
 
+.login {
+  background: #fdfdfd; }
+  .login .login-intro {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 50%;
+    padding: 15.625em 9.375em;
+    height: 100%;
+    background-color: rgba(244, 208, 63, 0.5); }
+    .login .login-intro:last-child {
+      margin-right: 0; }
+  .login .login-main {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 50%;
+    padding: 15.625em 9.375em 0 3.125em; }
+    .login .login-main:last-child {
+      margin-right: 0; }
+    .login .login-main input {
+      background-color: rgba(244, 208, 63, 0.3);
+      margin: 10px 0;
+      padding: 0 15px;
+      width: 25em;
+      height: 3.125em; }
+    .login .login-main button {
+      margin: 15px 0;
+      width: 25em;
+      height: 3.125em; }
+
 /*# sourceMappingURL=main.css.map */
