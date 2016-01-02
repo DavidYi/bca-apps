@@ -498,16 +498,16 @@ nav.navbar {
       transition: all 175ms ease; }
 
 .session-selected {
-  background-color: #229aff;
+  background-color: #f0c30f;
   color: #fdfdfd !important;
-  border-bottom: 1px solid #229aff;
-  -webkit-box-shadow: 0 0 1.5625em 0 rgba(34, 154, 255, 0.66);
-  -moz-box-shadow: 0 0 1.5625em 0 rgba(34, 154, 255, 0.66);
-  box-shadow: 0 0 1.5625em 0 rgba(34, 154, 255, 0.66); }
+  border-bottom: 1px solid #f0c30f;
+  -webkit-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
+  -moz-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
+  box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66); }
   .session-selected .tag, .session-selected .title, .session-selected .presenter, .session-selected .company, .session-selected .remaining {
     color: #fdfdfd !important; }
   .session-selected:hover {
-    background-color: #229aff !important; }
+    background-color: #f0c30f !important; }
 
 .register {
   margin: 1.5625em auto 0;
