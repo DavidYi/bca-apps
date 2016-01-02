@@ -4,7 +4,8 @@
 		@include span-columns(6);
 		@include padding(em(250px) em(150px));
 		height: 100%;
-		background-color: rgba(244, 208, 63, 0.5);
+		// background-color: rgba(244, 208, 63, 0.5);
+		background: url('../img/everyend.png');
 	}
 	.login-main {
 		@include span-columns(6);
