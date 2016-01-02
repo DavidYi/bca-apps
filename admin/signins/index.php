@@ -7,8 +7,8 @@
  */
 require_once "../util/main.php";
 require_once "../model/database.php";
-require_once "../model/signins_db.php";
-require_once "../admin/signins/signInPDF.php";
+require_once "model/signins_db.php";
+require_once "/admin/signins/signInPDF.php";
 require_once '../fpdf/fpdf.php';
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
@@ -26,33 +26,23 @@ switch ($action) {
         $mentor_id = filter_input(INPUT_POST, 'mentor_id');
         $sessions = get_session_times();
         $session_id = filter_input(INPUT_POST, 'ses_id');
-        $rmNumbers = get_rm_number();
-        $rmNum = filter_input(INPUT_POST, 'rmNum');
-        $hostTeachers = get_host_teacher();
-        $hostTeach = filter_input(INPUT_POST, 'hostTeach');
-
         include("admin/signins/sheetRequest.php");
         break;
-
     case 'generate':
         $mentor = filter_input(INPUT_POST, 'mentor');
         $session_id = filter_input(INPUT_POST, 'session');
-        $rmNum = filter_input(INPUT_POST, 'rmNum');
-        $hostTeach = filter_input(INPUT_POST, 'hostTeach');
 
         if ($mentor == "all") {
             $title = "Mentor Sign In";
             $mentors = get_mentors();
             $header = array("Rm #", "Name", "Company", "Signature");
             $isSession = false;
-            $data = array();
         } else {
             $title = "Session Sign In";
             $students = get_students_in_ses();
             $header = array("Year", "Name", "Signature");
             $studentList = array();
             $isSession = true;
-            $data = array($rmNum, $hostTeach, $mentor, $students);
         }
         $presentations = get_presentation_list();
         $pdf = new FPDF();
@@ -85,9 +75,9 @@ switch ($action) {
         $pdf->Cell(100, 10, $title, 1, 0, 'C', 0);
 
         if (mentor == 'all')
-            Fancy($header, $data, $isSession);
+            Fancy($header, $mentors, $isSession);
         else
-            Fancy($header, $data, $isSession);
+            Fancy($header, $students, $isSession);
 
         $pdf->Output('signin.pdf', 'I');
         break;

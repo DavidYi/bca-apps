@@ -48,35 +48,6 @@
         <?php endforeach; ?>
     </select>
 
-    //the following select options are there for now
-    <select name="rmNumber">
-        <?php foreach ($rmNumbers as $rm) :
-            if ($rm == $rmNum) {
-                $selected = 'selected';
-            } else{
-                $selected = '';
-            }
-            ?>
-        <option value="<?php echo $rm; ?>" <?php echo $selected ?>>
-            <?php echo htmlspecialchars($rm); ?>
-        </option>
-        <?php endforeach; ?>
-    </select>
-
-    <select name="hostTeacher">
-        <?php foreach ($hostTeachers as $hostTeacher) :
-            if ($hostTeacher == $hostTeach) {
-                $selected = 'selected';
-            } else{
-                $selected = '';
-            }
-            ?>
-            <option value="<?php echo $hostTeacher; ?>" <?php echo $selected ?>>
-                <?php echo htmlspecialchars($hostTeacher); ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
-
     <input type="submit" value="Generate">\
 </form>
 </body>
