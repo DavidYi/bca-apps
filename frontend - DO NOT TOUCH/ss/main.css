@@ -530,17 +530,17 @@ nav.navbar {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 37.5%;
+    width: 66.66667%;
     padding: 15.625em 9.375em;
     height: 100%;
-    background: url("../img/everyend.png"); }
+    background: url("../img/yellow.jpeg"); }
     .login .login-intro:last-child {
       margin-right: 0; }
   .login .login-main {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 37.5%;
+    width: 33.33333%;
     padding: 15.625em 9.375em 0 3.125em; }
     .login .login-main:last-child {
       margin-right: 0; }

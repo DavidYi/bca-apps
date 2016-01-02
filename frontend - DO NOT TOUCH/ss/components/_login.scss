@@ -1,14 +1,14 @@
 .login {
 	background:$color-white;
 	.login-intro {
-		@include span-columns(6);
+		@include span-columns(8);
 		@include padding(em(250px) em(150px));
 		height: 100%;
 		// background-color: rgba(244, 208, 63, 0.5);
-		background: url('../img/everyend.png');
+		background: url('../img/yellow.jpeg');
 	}
 	.login-main {
-		@include span-columns(6);
+		@include span-columns(4);
 		@include padding(em(250px) em(150px) 0 em(50px));
 		input {
 			background-color: rgba(244, 208, 63, 0.3);
