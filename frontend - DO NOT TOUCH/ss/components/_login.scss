@@ -1,0 +1,26 @@
+.login {
+	background:$color-white;
+	.login-intro {
+		@include span-columns(6);
+		@include padding(em(250px) em(150px));
+		height: 100%;
+		background-color: rgba(244, 208, 63, 0.5);
+	}
+	.login-main {
+		@include span-columns(6);
+		@include padding(em(250px) em(150px) 0 em(50px));
+		input {
+			background-color: rgba(244, 208, 63, 0.3);
+			margin: 10px 0;
+			padding: 0 15px;
+			width: em(400px);
+			height: em(50px);
+		}
+		button {
+			margin: 15px 0;
+			width: em(400px);
+			height: em(50px);
+		}
+	}
+
+}
