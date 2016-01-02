@@ -13,7 +13,7 @@
 
     <section>
         <h1>Career Day Sign Up Dates:</h1>
-        < class="grid">
+        <table class="gridtable">
 
             <a href="index.php?action=show_add_signup_dates">Add New Sign Up Date</a>
             <tr>
@@ -40,6 +40,6 @@
                     </td>
                 </tr>
             <?php endforeach; ?>
-        </>
+        </table>
     </section>
 <?php include 'view/footer.php'; ?>

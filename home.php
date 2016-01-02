@@ -3,7 +3,7 @@
         <title>Career Day - Home</title>
     </head>
     <body>
-        < border="1">
+        <table border="1">
             <?php for($i = 1; $i <= 4; $i++) {?>
                 <tr>
                     <td>Session <?php echo $i?></td>
@@ -34,6 +34,6 @@
                     </td>
                 </tr>
             <?php } ?>
-        </>
+        </table>
     </body>
 </html>

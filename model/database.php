@@ -1,13 +1,12 @@
 <?php
 # Localhost connection option
-$dsn = 'mysql:host=localhost;dbname=career_day';
-$username = 'careeruser';
-$password = 'happy';
+# $dsn = 'mysql:host=localhost;dbname=career_day';
+# $username = 'caruser';
 
 # Remote connection option
-#$dsn = 'mysql:host=webdev01.bergen.org;dbname=atcsdevb_career_day';
-#$username = 'atcsdevb_carusr';
-#$password = 'W[6V8tgSX=y~';
+$dsn = 'mysql:host=webdev01.bergen.org;dbname=atcsdevb_career_day';
+$username = 'atcsdevb_carusr';
+$password = 'W[6V8tgSX=y~';
 $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
 try {

@@ -10,7 +10,7 @@
 class TTFParser
 {
 	protected $f;
-	protected $s;
+	protected $tables;
 	protected $numberOfHMetrics;
 	protected $numGlyphs;
 	protected $glyphNames;
@@ -47,7 +47,7 @@ class TTFParser
 
 	function Parse()
 	{
-		$this->ParseOffset();
+		$this->ParseOffsetTable();
 		$this->ParseHead();
 		$this->ParseHhea();
 		$this->ParseMaxp();
@@ -60,23 +60,23 @@ class TTFParser
 		$this->ParsePost();
 	}
 
-	function ParseOffset()
+	function ParseOffsetTable()
 	{
 		$version = $this->Read(4);
 		if($version=='OTTO')
 			$this->Error('OpenType fonts based on PostScript outlines are not supported');
 		if($version!="\x00\x01\x00\x00")
 			$this->Error('Unrecognized file format');
-		$nums = $this->ReadUShort();
+		$numTables = $this->ReadUShort();
 		$this->Skip(3*2); // searchRange, entrySelector, rangeShift
-		$this->s = array();
-		for($i=0;$i<$nums;$i++)
+		$this->tables = array();
+		for($i=0;$i<$numTables;$i++)
 		{
 			$tag = $this->Read(4);
 			$checkSum = $this->Read(4);
 			$offset = $this->ReadULong();
 			$length = $this->ReadULong(4);
-			$this->s[$tag] = array('offset'=>$offset, 'length'=>$length, 'checkSum'=>$checkSum);
+			$this->tables[$tag] = array('offset'=>$offset, 'length'=>$length, 'checkSum'=>$checkSum);
 		}
 	}	
 
@@ -154,12 +154,12 @@ class TTFParser
 
 	function ParseGlyf()
 	{
-		$Offset = $this->s['glyf']['offset'];
+		$tableOffset = $this->tables['glyf']['offset'];
 		foreach($this->glyphs as &$glyph)
 		{
 			if($glyph['length']>0)
 			{
-				fseek($this->f, $Offset+$glyph['offset'], SEEK_SET);
+				fseek($this->f, $tableOffset+$glyph['offset'], SEEK_SET);
 				if($this->ReadShort()<0)
 				{
 					// Composite glyph
@@ -195,9 +195,9 @@ class TTFParser
 	{
 		$this->Seek('cmap');
 		$this->Skip(2); // version
-		$nums = $this->ReadUShort();
+		$numTables = $this->ReadUShort();
 		$offset31 = 0;
-		for($i=0;$i<$nums;$i++)
+		for($i=0;$i<$numTables;$i++)
 		{
 			$platformID = $this->ReadUShort();
 			$encodingID = $this->ReadUShort();
@@ -213,10 +213,10 @@ class TTFParser
 		$idDelta = array();
 		$idRangeOffset = array();
 		$this->chars = array();
-		fseek($this->f, $this->s['cmap']['offset']+$offset31, SEEK_SET);
+		fseek($this->f, $this->tables['cmap']['offset']+$offset31, SEEK_SET);
 		$format = $this->ReadUShort();
 		if($format!=4)
-			$this->Error('Unexpected sub format: '.$format);
+			$this->Error('Unexpected subtable format: '.$format);
 		$this->Skip(2*2); // length, language
 		$segCount = $this->ReadUShort()/2;
 		$this->Skip(3*2); // searchRange, entrySelector, rangeShift
@@ -262,7 +262,7 @@ class TTFParser
 	function ParseName()
 	{
 		$this->Seek('name');
-		$Offset = $this->s['name']['offset'];
+		$tableOffset = $this->tables['name']['offset'];
 		$this->postScriptName = '';
 		$this->Skip(2); // format
 		$count = $this->ReadUShort();
@@ -276,7 +276,7 @@ class TTFParser
 			if($nameID==6)
 			{
 				// PostScript name
-				fseek($this->f, $Offset+$stringOffset+$offset, SEEK_SET);
+				fseek($this->f, $tableOffset+$stringOffset+$offset, SEEK_SET);
 				$s = $this->Read($length);
 				$s = str_replace(chr(0), '', $s);
 				$s = preg_replace('|[ \[\](){}<>/%]|', '', $s);
@@ -425,7 +425,7 @@ class TTFParser
 		$segments[] = array(0xFFFF, 0xFFFF);
 		$segCount = count($segments);
 
-		// Build a Format 4 sub
+		// Build a Format 4 subtable
 		$startCount = array();
 		$endCount = array();
 		$idDelta = array();
@@ -479,19 +479,19 @@ class TTFParser
 			$cmap .= pack('n', $val);
 		$cmap .= $glyphIdArray;
 
-		$data = pack('nn', 0, 1); // version, nums
+		$data = pack('nn', 0, 1); // version, numTables
 		$data .= pack('nnN', 3, 1, 12); // platformID, encodingID, offset
 		$data .= pack('nnn', 4, 6+strlen($cmap), 0); // format, length, language
 		$data .= $cmap;
-		$this->Set('cmap', $data);
+		$this->SetTable('cmap', $data);
 	}
 
 	function BuildHhea()
 	{
-		$this->Load('hhea');
+		$this->LoadTable('hhea');
 		$numberOfHMetrics = count($this->subsettedGlyphs);
-		$data = substr_replace($this->s['hhea']['data'], pack('n',$numberOfHMetrics), 4+15*2, 2);
-		$this->Set('hhea', $data);
+		$data = substr_replace($this->tables['hhea']['data'], pack('n',$numberOfHMetrics), 4+15*2, 2);
+		$this->SetTable('hhea', $data);
 	}
 
 	function BuildHmtx()
@@ -502,7 +502,7 @@ class TTFParser
 			$glyph = $this->glyphs[$id];
 			$data .= pack('nn', $glyph['w'], $glyph['lsb']);
 		}
-		$this->Set('hmtx', $data);
+		$this->SetTable('hmtx', $data);
 	}
 
 	function BuildLoca()
@@ -521,17 +521,17 @@ class TTFParser
 			$data .= pack('n', $offset/2);
 		else
 			$data .= pack('N', $offset);
-		$this->Set('loca', $data);
+		$this->SetTable('loca', $data);
 	}
 
 	function BuildGlyf()
 	{
-		$Offset = $this->s['glyf']['offset'];
+		$tableOffset = $this->tables['glyf']['offset'];
 		$data = '';
 		foreach($this->subsettedGlyphs as $id)
 		{
 			$glyph = $this->glyphs[$id];
-			fseek($this->f, $Offset+$glyph['offset'], SEEK_SET);
+			fseek($this->f, $tableOffset+$glyph['offset'], SEEK_SET);
 			$glyph_data = $this->Read($glyph['length']);
 			if(isset($glyph['components']))
 			{
@@ -544,15 +544,15 @@ class TTFParser
 			}
 			$data .= $glyph_data;
 		}
-		$this->Set('glyf', $data);
+		$this->SetTable('glyf', $data);
 	}
 
 	function BuildMaxp()
 	{
-		$this->Load('maxp');
+		$this->LoadTable('maxp');
 		$numGlyphs = count($this->subsettedGlyphs);
-		$data = substr_replace($this->s['maxp']['data'], pack('n',$numGlyphs), 4, 2);
-		$this->Set('maxp', $data);
+		$data = substr_replace($this->tables['maxp']['data'], pack('n',$numGlyphs), 4, 2);
+		$this->SetTable('maxp', $data);
 	}
 
 	function BuildPost()
@@ -587,7 +587,7 @@ class TTFParser
 			$data = "\x00\x03\x00\x00";
 			$data .= $this->Read(4+2*2+5*4);
 		}
-		$this->Set('post', $data);
+		$this->SetTable('post', $data);
 	}
 
 	function BuildFont()
@@ -595,80 +595,80 @@ class TTFParser
 		$tags = array();
 		foreach(array('cmap', 'cvt ', 'fpgm', 'glyf', 'head', 'hhea', 'hmtx', 'loca', 'maxp', 'name', 'post', 'prep') as $tag)
 		{
-			if(isset($this->s[$tag]))
+			if(isset($this->tables[$tag]))
 				$tags[] = $tag;
 		}
-		$nums = count($tags);
-		$offset = 12 + 16*$nums;
+		$numTables = count($tags);
+		$offset = 12 + 16*$numTables;
 		foreach($tags as $tag)
 		{
-			if(!isset($this->s[$tag]['data']))
-				$this->Load($tag);
-			$this->s[$tag]['offset'] = $offset;
-			$offset += strlen($this->s[$tag]['data']);
+			if(!isset($this->tables[$tag]['data']))
+				$this->LoadTable($tag);
+			$this->tables[$tag]['offset'] = $offset;
+			$offset += strlen($this->tables[$tag]['data']);
 		}
-//		$this->s['head']['data'] = substr_replace($this->s['head']['data'], "\x00\x00\x00\x00", 8, 4);
+//		$this->tables['head']['data'] = substr_replace($this->tables['head']['data'], "\x00\x00\x00\x00", 8, 4);
 
-		// Build offset
+		// Build offset table
 		$entrySelector = 0;
-		$n = $nums;
+		$n = $numTables;
 		while($n!=1)
 		{
 			$n = $n>>1;
 			$entrySelector++;
 		}
 		$searchRange = 16*(1<<$entrySelector);
-		$rangeShift = 16*$nums - $searchRange;
-		$offset = pack('nnnnnn', 1, 0, $nums, $searchRange, $entrySelector, $rangeShift);
+		$rangeShift = 16*$numTables - $searchRange;
+		$offsetTable = pack('nnnnnn', 1, 0, $numTables, $searchRange, $entrySelector, $rangeShift);
 		foreach($tags as $tag)
 		{
-			$ = $this->s[$tag];
-			$offset .= $tag.$['checkSum'].pack('NN', $['offset'], $['length']);
+			$table = $this->tables[$tag];
+			$offsetTable .= $tag.$table['checkSum'].pack('NN', $table['offset'], $table['length']);
 		}
 
 		// Compute checkSumAdjustment (0xB1B0AFBA - font checkSum)
-		$s = $this->CheckSum($offset);
+		$s = $this->CheckSum($offsetTable);
 		foreach($tags as $tag)
-			$s .= $this->s[$tag]['checkSum'];
+			$s .= $this->tables[$tag]['checkSum'];
 		$a = unpack('n2', $this->CheckSum($s));
 		$high = 0xB1B0 + ($a[1]^0xFFFF);
 		$low = 0xAFBA + ($a[2]^0xFFFF) + 1;
 		$checkSumAdjustment = pack('nn', $high+($low>>16), $low);
-		$this->s['head']['data'] = substr_replace($this->s['head']['data'], $checkSumAdjustment, 8, 4);
+		$this->tables['head']['data'] = substr_replace($this->tables['head']['data'], $checkSumAdjustment, 8, 4);
 
-		$font = $offset;
+		$font = $offsetTable;
 		foreach($tags as $tag)
-			$font .= $this->s[$tag]['data'];
+			$font .= $this->tables[$tag]['data'];
 
 		return $font;
 	}
 
-	function Load($tag)
+	function LoadTable($tag)
 	{
 		$this->Seek($tag);
-		$length = $this->s[$tag]['length'];
+		$length = $this->tables[$tag]['length'];
 		$n = $length % 4;
 		if($n>0)
 			$length += 4 - $n;
-		$this->s[$tag]['data'] = $this->Read($length);
+		$this->tables[$tag]['data'] = $this->Read($length);
 	}
 
-	function Set($tag, $data)
+	function SetTable($tag, $data)
 	{
 		$length = strlen($data);
 		$n = $length % 4;
 		if($n>0)
 			$data = str_pad($data, $length+4-$n, "\x00");
-		$this->s[$tag]['data'] = $data;
-		$this->s[$tag]['length'] = $length;
-		$this->s[$tag]['checkSum'] = $this->CheckSum($data);
+		$this->tables[$tag]['data'] = $data;
+		$this->tables[$tag]['length'] = $length;
+		$this->tables[$tag]['checkSum'] = $this->CheckSum($data);
 	}
 
 	function Seek($tag)
 	{
-		if(!isset($this->s[$tag]))
-			$this->Error(' not found: '.$tag);
-		fseek($this->f, $this->s[$tag]['offset'], SEEK_SET);
+		if(!isset($this->tables[$tag]))
+			$this->Error('Table not found: '.$tag);
+		fseek($this->f, $this->tables[$tag]['offset'], SEEK_SET);
 	}
 
 	function Skip($n)

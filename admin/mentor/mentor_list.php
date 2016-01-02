@@ -11,7 +11,7 @@
     </script>
     <section>
         <h1>Teachers List</h1>
-        < class="grid">
+        <table class="gridtable">
 
             <a href="view.php?action=show_add_mentor">Add New Mentor</a>
             <tr>
@@ -61,6 +61,6 @@
 
                 </tr>
             <?php endforeach; ?>
-        </>
+        </table>
     </section>
 <?php include '../../view/footer.php'; ?>

@@ -24,62 +24,48 @@ switch ($action) {
         $choice = filter_input(INPUT_POST, 'choice');
         $mentors = get_mentors();
         $mentor_id = filter_input(INPUT_POST, 'mentor_id');
+        $mentors;
         $sessions = get_session_times();
         $session_id = filter_input(INPUT_POST, 'ses_id');
         include("admin/signins/sheetRequest.php");
         break;
     case 'generate':
-        $mentor = filter_input(INPUT_POST, 'mentor');
+        $mentor  = filter_input(INPUT_POST, 'mentor');
         $session_id = filter_input(INPUT_POST, 'session');
-
-        if ($mentor == "all") {
-            $title = "Mentor Sign In";
-            $mentors = get_mentors();
-            $header = array("Rm #", "Name", "Company", "Signature");
-            $isSession = false;
-        } else {
+        $header = array("Id","Name","Signature");
+        //todo: get query to find the exact session of the exact mentor if they are both specified
+        //todo: get query to find a session with all the presentations if only one is specified
+        //todo: get query to find the meentors
+        if ($mentors == "all"){
+            $title =  "Mentor Sign In";
+        }else {
             $title = "Session Sign In";
-            $students = get_students_in_ses();
-            $header = array("Year", "Name", "Signature");
-            $studentList = array();
-            $isSession = true;
         }
-        $presentations = get_presentation_list();
-        $pdf = new FPDF();
-        $pdf->AddPage("P", "A4");
+        $pdf= new FPDF();
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->SetY(100);
-        $pdf->Cell(100, 13, "Student Details");
-        $pdf->SetFont('Arial', '');
-        $pdf->Cell(250, 13, $_POST['name']);
-        $pdf->SetFont('Arial', 'B');
-        $pdf->Cell(50, 13, "Date:");
-        $pdf->SetFont('Arial', '');
-        $pdf->Cell(100, 13, date('F j, Y'), 0, 1);
-        $pdf->SetFont('Arial', 'I');
-        $pdf->SetX(140);
-        $pdf->Cell(200, 15, $_POST['e-mail'], 0, 2);
-        $pdf->Cell(200, 15, $_POST['Address'] . ',' . $_POST['City'], 0, 2);
-        $pdf->Cell(200, 15, $_POST['Country'], 0, 2);
-
+        $pdf->SetAuthor('');//todo: add Mentor Name
         $pdf->SetTitle($title);
-        $pdf->SetFont('Helvetica', 'B', 20);
+        $pdf->SetFont('Helvetica','B',20);
         $pdf->AddPage('P');
-        $pdf->SetDisplayMode(real, 'default');
+        $pdf->SetDisplayMode(real,'default');
 
-        $pdf->Image('/image/BCAlogo2.png', 10, 20, 33, 0, ' ', 'http://www.fpdf.org/');
+        $pdf->Image('/image/BCAlogo2.png',10,20,33,0,' ','http://www.fpdf.org/');
 
-        $pdf->SetXY(50, 20);
-        $pdf->SetDrawColor(50, 60, 100);
-        $pdf->Cell(100, 10, $title, 1, 0, 'C', 0);
+        $pdf->SetXY(50,20);
+        $pdf->SetDrawColor(50,60,100);
+        $pdf->Cell(100,10,$title,1,0,'C',0);
 
-        if (mentor == 'all')
-            Fancy($header, $mentors, $isSession);
-        else
-            Fancy($header, $students, $isSession);
+        $pdf->Output('signin.pdf','I');
 
-        $pdf->Output('signin.pdf', 'I');
+//        $pdf = new signinPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+//
+//        $pdf->SetCreator(PDF_CREATOR);
+//        $pdf->SetAuthor('Nicola Asuni'); //todo: add mentor name
+//        $pdf->SetTitle();//todo: add the presentation name
+//        $pdf->SetSubject('Sign in');
+//        $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+//
+//        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
         break;
 }
 ?>

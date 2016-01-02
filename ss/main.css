@@ -130,7 +130,7 @@ fieldset {
   margin: 0 2px;
   padding: .35em .625em .75em; }
 
- {
+table {
   border-collapse: collapse;
   border-spacing: 0; }
 
@@ -266,7 +266,7 @@ html {
   .row::after {
     clear: both;
     content: "";
-    display: ; }
+    display: table; }
 
 .container, nav.navbar, .enrollment, .register {
   width: 70%;
@@ -277,7 +277,7 @@ html {
   .container::after, nav.navbar::after, .enrollment::after, .register::after {
     clear: both;
     content: "";
-    display: ; }
+    display: table; }
 
 html {
   background-color: #e7e7e7; }
@@ -336,7 +336,7 @@ nav.navbar {
     .enrollment .session::after {
       clear: both;
       content: "";
-      display: ; }
+      display: table; }
     .enrollment .session .tag {
       float: left;
       display: block;
@@ -366,7 +366,7 @@ nav.navbar {
       .enrollment .session .title:last-child {
         margin-right: 0; }
       .enrollment .session .title .vac {
-        display: -cell;
+        display: table-cell;
         vertical-align: middle; }
       .enrollment .session .title h3, .enrollment .session .title h5 {
         margin: 0;
