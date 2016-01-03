@@ -392,9 +392,9 @@ nav.navbar {
     text-align: right; }
     nav.navbar .remaining:last-child {
       margin-right: 0; }
-  nav.navbar .tag, nav.navbar .title, nav.navbar .presenter, nav.navbar .company, nav.navbar .remaining {
+  nav.navbar .tag, nav.navbar .title, nav.navbar .presenter, nav.navbar .company, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time {
     color: #aaa; }
-    nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .title:hover, nav.navbar .title:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .remaining:hover, nav.navbar .remaining:active {
+    nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .title:hover, nav.navbar .title:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active {
       color: #eee;
       text-decoration: underline; }
 
@@ -491,11 +491,43 @@ nav.navbar {
       text-align: right; }
       .enrollment .session .remaining:last-child {
         margin-right: 0; }
+    .enrollment .session .session-number {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 31.25%;
+      color: #555;
+      margin: 0;
+      padding: 0;
+      font-size: 1.125em;
+      font-weight: 500;
+      text-align: left; }
+      .enrollment .session .session-number:last-child {
+        margin-right: 0; }
+    .enrollment .session .time {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 31.25%;
+      color: #555;
+      margin: 0;
+      padding: 0;
+      font-size: 1.125em;
+      font-weight: 500;
+      text-align: left; }
+      .enrollment .session .time:last-child {
+        margin-right: 0; }
     .enrollment .session:hover {
       background: #eee;
       -webkit-transition: all 175ms ease;
       -moz-transition: all 175ms ease;
       transition: all 175ms ease; }
+  .enrollment .view-session {
+    border-bottom: 1px solid #333; }
+  .enrollment .view-session:hover {
+    background: #333; }
+    .enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time {
+      color: #fdfdfd; }
 
 .session-selected {
   background-color: #f0c30f;
@@ -504,7 +536,7 @@ nav.navbar {
   -webkit-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   -moz-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66); }
-  .session-selected .tag, .session-selected .title, .session-selected .presenter, .session-selected .company, .session-selected .remaining {
+  .session-selected .tag, .session-selected .title, .session-selected .presenter, .session-selected .company, .session-selected .remaining, .session-selected .session-number, .session-selected .time {
     color: #fdfdfd !important; }
   .session-selected:hover {
     background-color: #f0c30f !important; }
@@ -533,7 +565,7 @@ nav.navbar {
     width: 66.66667%;
     padding: 15.625em 9.375em;
     height: 100%;
-    background: url("../img/yellow.jpeg"); }
+    background-color: rgba(244, 208, 63, 0.5); }
     .login .login-intro:last-child {
       margin-right: 0; }
   .login .login-main {
@@ -541,7 +573,7 @@ nav.navbar {
     display: block;
     margin-right: 0%;
     width: 33.33333%;
-    padding: 15.625em 9.375em 0 3.125em; }
+    padding: 15.625em 3.125em 0; }
     .login .login-main:last-child {
       margin-right: 0; }
     .login .login-main input {
@@ -554,5 +586,36 @@ nav.navbar {
       margin: 15px 0;
       width: 25em;
       height: 3.125em; }
+
+.view {
+  background: #fdfdfd; }
+  .view .view-main {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 33.33333%;
+    padding: 15.625em 3.125em 0; }
+    .view .view-main:last-child {
+      margin-right: 0; }
+    .view .view-main input {
+      background-color: rgba(244, 208, 63, 0.3);
+      margin: 10px 0;
+      padding: 0 15px;
+      width: 25em;
+      height: 3.125em; }
+    .view .view-main button {
+      margin: 15px 0;
+      width: 25em;
+      height: 3.125em; }
+  .view .view-signup {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 66.66667%;
+    padding: 15.625em 9.375em;
+    height: 100%;
+    background-color: rgba(240, 195, 15, 0.66); }
+    .view .view-signup:last-child {
+      margin-right: 0; }
 
 /*# sourceMappingURL=main.css.map */

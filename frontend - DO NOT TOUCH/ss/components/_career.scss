@@ -51,7 +51,7 @@ nav.navbar {
 	.company { @include session-column(2, 400, left); }
 	.remaining { @include session-column(2, 500, right); }
 
-	.tag, .title, .presenter, .company, .remaining {
+	.tag, .title, .presenter, .company, .remaining, .session-number, .time{
 		color: $color-silverchalice;
 
 		&:hover, &:active {
@@ -84,9 +84,22 @@ nav.navbar {
 		.company { @include session-column(3, 400, left); }
 		.remaining { @include session-column(1, 500, right); }
 
+		.session-number { @include session-column(5, 500, left); }
+		.time { @include session-column(5, 500, left); }
+
 		&:hover {
 			background: $color-gallery;
 			@include transition(all $animation-duration $animation-timing);
+		}
+	}
+	// For view Page -Su Min
+	.view-session {
+		border-bottom: 1px solid $color-black;
+	}
+	.view-session:hover {
+		background: $color-black;
+		.session-number, .time {
+			color: $color-white;
 		}
 	}
 }
@@ -97,7 +110,7 @@ nav.navbar {
 	border-bottom: 1px solid $color-yellow;
 	@include box-shadow(0, 0, em(25px), 0, rgba(240, 195, 15, 0.66));
 
-	.tag, .title, .presenter, .company, .remaining {
+	.tag, .title, .presenter, .company, .remaining, .session-number, .time{
 		color: $color-white !important;
 	}
 
