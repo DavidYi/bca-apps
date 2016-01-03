@@ -1,7 +1,7 @@
 .view {
 	background:$color-white;
 	.view-main {
-		@include span-columns(4);
+		@include span-columns(5);
 		@include padding(em(250px) em(50px) 0 em(50px));
 		input {
 			background-color: rgba(244, 208, 63, 0.3);
@@ -17,7 +17,7 @@
 		}
 	}
 	.view-signup {
-		@include span-columns(8);
+		@include span-columns(7);
 		@include padding(em(250px) em(150px));
 		height: 100%;
 		background-color: rgba(240, 195, 15, 0.66);

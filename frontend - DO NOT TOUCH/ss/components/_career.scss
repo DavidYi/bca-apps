@@ -95,6 +95,9 @@ nav.navbar {
 	// For view Page -Su Min
 	.view-session {
 		border-bottom: 1px solid $color-black;
+		.time {
+			font-weight: $default-font-weight;
+		}
 	}
 	.view-session:hover {
 		background: $color-black;

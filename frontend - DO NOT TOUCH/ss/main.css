@@ -524,6 +524,8 @@ nav.navbar {
       transition: all 175ms ease; }
   .enrollment .view-session {
     border-bottom: 1px solid #333; }
+    .enrollment .view-session .time {
+      font-weight: 400; }
   .enrollment .view-session:hover {
     background: #333; }
     .enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time {
@@ -593,7 +595,7 @@ nav.navbar {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 33.33333%;
+    width: 41.66667%;
     padding: 15.625em 3.125em 0; }
     .view .view-main:last-child {
       margin-right: 0; }
@@ -611,7 +613,7 @@ nav.navbar {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 66.66667%;
+    width: 58.33333%;
     padding: 15.625em 9.375em;
     height: 100%;
     background-color: rgba(240, 195, 15, 0.66); }
