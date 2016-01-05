@@ -295,6 +295,9 @@ html {
 html {
   background-color: #e7e7e7; }
 
+h1 {
+  font-weight: 500; }
+
 .main {
   height: 100%;
   overflow-y: hidden;
@@ -392,9 +395,9 @@ nav.navbar {
     text-align: right; }
     nav.navbar .remaining:last-child {
       margin-right: 0; }
-  nav.navbar .tag, nav.navbar .title, nav.navbar .presenter, nav.navbar .company, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time {
+  nav.navbar .tag, nav.navbar .title, nav.navbar .presenter, nav.navbar .company, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
     color: #aaa; }
-    nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .title:hover, nav.navbar .title:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active {
+    nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .title:hover, nav.navbar .title:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
       color: #eee;
       text-decoration: underline; }
 
@@ -495,7 +498,7 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 31.25%;
+      width: 6.25%;
       color: #555;
       margin: 0;
       padding: 0;
@@ -508,7 +511,7 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 31.25%;
+      width: 18.75%;
       color: #555;
       margin: 0;
       padding: 0;
@@ -516,6 +519,45 @@ nav.navbar {
       font-weight: 500;
       text-align: left; }
       .enrollment .session .time:last-child {
+        margin-right: 0; }
+    .enrollment .session .room-number {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 12.5%;
+      color: #555;
+      margin: 0;
+      padding: 0;
+      font-size: 1.125em;
+      font-weight: 500;
+      text-align: left; }
+      .enrollment .session .room-number:last-child {
+        margin-right: 0; }
+    .enrollment .session .session-title {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 31.25%;
+      color: #555;
+      margin: 0;
+      padding: 0;
+      font-size: 1.125em;
+      font-weight: 500;
+      text-align: left; }
+      .enrollment .session .session-title:last-child {
+        margin-right: 0; }
+    .enrollment .session .name {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 31.25%;
+      color: #555;
+      margin: 0;
+      padding: 0;
+      font-size: 1.125em;
+      font-weight: 500;
+      text-align: left; }
+      .enrollment .session .name:last-child {
         margin-right: 0; }
     .enrollment .session:hover {
       background: #eee;
@@ -528,7 +570,7 @@ nav.navbar {
       font-weight: 400; }
   .enrollment .view-session:hover {
     background: #333; }
-    .enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time {
+    .enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time, .enrollment .view-session:hover .room-number, .enrollment .view-session:hover .session-title, .enrollment .view-session:hover .name {
       color: #fdfdfd; }
 
 .session-selected {
@@ -538,7 +580,7 @@ nav.navbar {
   -webkit-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   -moz-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66); }
-  .session-selected .tag, .session-selected .title, .session-selected .presenter, .session-selected .company, .session-selected .remaining, .session-selected .session-number, .session-selected .time {
+  .session-selected .tag, .session-selected .title, .session-selected .presenter, .session-selected .company, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
     color: #fdfdfd !important; }
   .session-selected:hover {
     background-color: #f0c30f !important; }
@@ -566,10 +608,15 @@ nav.navbar {
     margin-right: 0%;
     width: 66.66667%;
     padding: 15.625em 9.375em;
-    height: 100%;
-    background-color: rgba(244, 208, 63, 0.5); }
+    -webkit-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    background-color: rgba(240, 195, 15, 0.66);
+    height: 100%; }
     .login .login-intro:last-child {
       margin-right: 0; }
+    .login .login-intro h3 {
+      color: #555; }
   .login .login-main {
     float: left;
     display: block;
@@ -595,26 +642,22 @@ nav.navbar {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 41.66667%;
-    padding: 15.625em 3.125em 0; }
+    width: 33.33333%;
+    padding: 15.625em 3.125em 0;
+    -webkit-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    height: 100%; }
     .view .view-main:last-child {
       margin-right: 0; }
-    .view .view-main input {
-      background-color: rgba(244, 208, 63, 0.3);
-      margin: 10px 0;
-      padding: 0 15px;
-      width: 25em;
-      height: 3.125em; }
-    .view .view-main button {
-      margin: 15px 0;
-      width: 25em;
-      height: 3.125em; }
+    .view .view-main h3 {
+      color: #555; }
   .view .view-signup {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 58.33333%;
-    padding: 15.625em 9.375em;
+    width: 66.66667%;
+    padding: 15.625em 5.625em;
     height: 100%;
     background-color: rgba(240, 195, 15, 0.66); }
     .view .view-signup:last-child {

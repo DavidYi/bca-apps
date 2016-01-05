@@ -3,9 +3,14 @@
 	.login-intro {
 		@include span-columns(8);
 		@include padding(em(250px) em(150px));
-		height: 100%;
-		background-color: rgba(244, 208, 63, 0.5);
+		@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
+		background-color: rgba(240, 195, 15, 0.66);
 		// background: url('../img/yellow.jpeg');
+		height: 100%;
+		
+		h3 {
+			color: #555;
+		}
 	}
 	.login-main {
 		@include span-columns(4);

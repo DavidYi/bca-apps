@@ -3,6 +3,10 @@ html {
 	background-color:#e7e7e7;
 }
 
+h1 {
+	font-weight: 500;
+}
+
 .main {
 	height: 100%;
 	overflow-y: hidden;
@@ -51,7 +55,7 @@ nav.navbar {
 	.company { @include session-column(2, 400, left); }
 	.remaining { @include session-column(2, 500, right); }
 
-	.tag, .title, .presenter, .company, .remaining, .session-number, .time{
+	.tag, .title, .presenter, .company, .remaining, .session-number, .time, .room-number, .session-title, .name{
 		color: $color-silverchalice;
 
 		&:hover, &:active {
@@ -84,8 +88,11 @@ nav.navbar {
 		.company { @include session-column(3, 400, left); }
 		.remaining { @include session-column(1, 500, right); }
 
-		.session-number { @include session-column(5, 500, left); }
-		.time { @include session-column(5, 500, left); }
+		.session-number { @include session-column(1, 500, left); }
+		.time { @include session-column(3, 500, left); }
+		.room-number { @include session-column(2, 500, left); }
+		.session-title { @include session-column(5, 500, left); }
+		.name { @include session-column(5, 500, left); }
 
 		&:hover {
 			background: $color-gallery;
@@ -101,7 +108,7 @@ nav.navbar {
 	}
 	.view-session:hover {
 		background: $color-black;
-		.session-number, .time {
+		.session-number, .time, .room-number, .session-title, .name {
 			color: $color-white;
 		}
 	}
@@ -113,7 +120,7 @@ nav.navbar {
 	border-bottom: 1px solid $color-yellow;
 	@include box-shadow(0, 0, em(25px), 0, rgba(240, 195, 15, 0.66));
 
-	.tag, .title, .presenter, .company, .remaining, .session-number, .time{
+	.tag, .title, .presenter, .company, .remaining, .session-number, .time, .room-number, .session-number, .name{
 		color: $color-white !important;
 	}
 
