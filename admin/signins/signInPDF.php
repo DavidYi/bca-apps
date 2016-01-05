@@ -11,19 +11,20 @@ require("fpdf.php");
 class signinPDF extends FPDF
 {
 
-    public function Header()
+    public function Header($title, $host, $mentor)
     {
         //logo
         $image_file = K_PATH_IMAGES . '/images/BCAlogo2.png';
-        $this->Image($image_file, 10, 10, 10, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-        // Set font
-        $this->SetXY(50, 10);
-        $this->SetFont('helvetica', 'B', 20);
-        //title
-        $this->Cell(0, 15, 'Sign In Sheet', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Image($image_file, 10, 10, 100);
+//        // Set font
+//        $this->SetXY(50, 10);
+//        $this->SetFont('helvetica', 'B', 20);
+//        //title
+//        $this->Cell(0, 15, $title, 0, false, 'C', 0, '', 0, false, 'M', 'M');
+//        $this->Cell();
     }
 
-    function FancyTable($header, $data)
+    function Fancy($header, $data, $isSession)
     {
         // Colors, line width and bold font
         $this->SetFillColor(88,88,88);
@@ -34,7 +35,7 @@ class signinPDF extends FPDF
 
         // Header
         $w = array(40, 35, 40, 45);
-        for($i=0;$i<count($header);$i++)
+        for($i = 0; $i < count($header); $i++)
             $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
         $this->Ln();
         // Color and font restoration
