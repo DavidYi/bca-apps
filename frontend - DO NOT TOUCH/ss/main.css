@@ -566,7 +566,7 @@ nav.navbar {
       transition: all 175ms ease; }
   .enrollment .view-session {
     border-bottom: 1px solid #333; }
-    .enrollment .view-session .time {
+    .enrollment .view-session .time, .enrollment .view-session .room-number {
       font-weight: 400; }
   .enrollment .view-session:hover {
     background: #333; }

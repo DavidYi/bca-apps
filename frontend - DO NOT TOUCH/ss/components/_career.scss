@@ -102,7 +102,7 @@ nav.navbar {
 	// For view Page -Su Min
 	.view-session {
 		border-bottom: 1px solid $color-black;
-		.time {
+		.time,  .room-number {
 			font-weight: $default-font-weight;
 		}
 	}
