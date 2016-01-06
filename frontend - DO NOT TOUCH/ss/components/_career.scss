@@ -66,7 +66,7 @@ nav.navbar {
 }
 
 .enrollment {
-	@include size(75% 85%);
+	@include size(75% 75%);
 	@include outer-container(1200px);
 	@include margin(0 auto);
 	background: $color-grayblack;
@@ -83,10 +83,10 @@ nav.navbar {
 		border-bottom: 1px solid #d6d9da;
 
 		.tag { @include session-column(3, 500, left); }
-		.company { @include session-column(5, 400, left); }
+		.company { @include session-column(5, 500, left); }
 		.presenter { @include session-column(3, 400, left); }
-		.position { @include session-column(3, 500, left); }
-		.remaining { @include session-column(2, 500, right); }
+		.position { @include session-column(4, 400, left); }
+		.remaining { @include session-column(1, 500, right); }
 
 		.session-number { @include session-column(1, 500, left); }
 		.time { @include session-column(3, 500, left); }
@@ -120,7 +120,7 @@ nav.navbar {
 	border-bottom: 1px solid $color-yellow;
 	@include box-shadow(0, 0, em(25px), 0, rgba(240, 195, 15, 0.66));
 
-	.tag, .title, .presenter, .company, .remaining, .session-number, .time, .room-number, .session-number, .name{
+	.tag, .company, .presenter, .position, .remaining, .session-number, .time, .room-number, .session-number, .name{
 		color: $color-white !important;
 	}
 
