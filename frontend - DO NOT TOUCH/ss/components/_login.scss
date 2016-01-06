@@ -1,20 +1,28 @@
 .login {
 	background:$color-white;
+
 	.login-intro {
 		@include span-columns(8);
-		@include padding(em(250px) em(150px));
+		// @include padding(em(250px) em(150px));
 		background-color: rgba(240, 195, 15, 0.66);
 		// background: url('../img/yellow.jpeg');
 		height: 100%;
-		
 		h3 {
 			color: #555;
+		}
+
+		@include media($medium-screen-down) {
+			@include size(100% 50%);
+		}
+
+		@include media($mobile) {
+			@include size(100% 50%);
 		}
 	}
 	.login-main {
 		@include span-columns(4);
 		height: 100%;
-		@include padding(em(250px) em(50px) 0 em(50px));
+		// @include padding(em(250px) em(50px) 0 em(50px));
 		@include box-shadow(0, 0, em(20px), 0, rgba(0, 0, 0, 0.15));
 
 		input {
@@ -27,6 +35,15 @@
 		button {
 			@include size(em(400px) em(50px));
 			@include margin(em(15px) 0);
+		}
+
+		@include media($medium-screen-down) {
+			@include size(100% 50%);
+			font-size: em(12px);
+		}
+		@include media($mobile) {
+			@include size(100% 50%);
+			font-size: em(10px);
 		}
 	}
 
