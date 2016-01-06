@@ -26,7 +26,7 @@ $grid-columns: 16; // temporary for the registration grid
 }
 
 nav.navbar {
-	@include size(75% em(60px));
+	@include size(78% em(60px));
 	@include outer-container(1200px);
 	@include margin(0 auto);
 	@include padding(0 em(25px));
@@ -34,6 +34,9 @@ nav.navbar {
 
 	background: $color-mineshaft;
 	border-right: em(7px) solid $color-mineshaft;
+
+	@include media($medium-screen-down) { @include size(85% em(60px)); }
+	@include media($mobile) { @include size(98% em(60px)); }
 
 	.session-filter {
 		display: inline-block;
@@ -66,13 +69,16 @@ nav.navbar {
 }
 
 .enrollment {
-	@include size(75% 75%);
+	@include size(80% 75%);
 	@include outer-container(1200px);
 	@include margin(0 auto);
 	background: $color-grayblack;
 	overflow-y: scroll;
 	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
 	color: $color-black;
+
+	@include media($medium-screen-down) { @include size(85% 75%); }
+	@include media($mobile) { @include size(98% 75%); }
 
 	.session {
 		@include row;

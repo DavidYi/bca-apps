@@ -305,7 +305,7 @@ h1 {
 
 nav.navbar {
   height: 3.75em;
-  width: 75%;
+  width: 78%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -318,6 +318,14 @@ nav.navbar {
     clear: both;
     content: "";
     display: table; }
+  @media screen and (max-width: 1000px) {
+    nav.navbar {
+      height: 3.75em;
+      width: 85%; } }
+  @media screen and (max-width: 600px) {
+    nav.navbar {
+      height: 3.75em;
+      width: 98%; } }
   nav.navbar .session-filter {
     display: inline-block;
     height: 100%;
@@ -403,7 +411,7 @@ nav.navbar {
 
 .enrollment {
   height: 75%;
-  width: 75%;
+  width: 80%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -418,6 +426,14 @@ nav.navbar {
     clear: both;
     content: "";
     display: table; }
+  @media screen and (max-width: 1000px) {
+    .enrollment {
+      height: 75%;
+      width: 85%; } }
+  @media screen and (max-width: 600px) {
+    .enrollment {
+      height: 75%;
+      width: 98%; } }
   .enrollment .session {
     display: block;
     height: 3.75em;
