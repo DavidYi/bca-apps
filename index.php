@@ -32,6 +32,8 @@ $current_date = strtotime(date("Y-m-d h:i:sa"));
 
 
 $action = filter_input(INPUT_GET, 'action');
+$id = 0;
+$register_id = 0;
 $is_changing = false;
 if ($action == "register") {
     if (!($current_date < $start_date || $current_date > $end_date)) {
@@ -46,9 +48,11 @@ if ($action == "register") {
     } else {
         echo ("<h1>It is not time to enroll.</h1>");
     }
-} else {
-    include("home.php");
+} else if ($action == "commit") {
+    if (!($current_date < $start_date || $current_date > $end_date)) {
+        // TODO: Add / Remove course appropriately
+        header("Location: itinerary/");
+    }
 }
-
 exit();
 

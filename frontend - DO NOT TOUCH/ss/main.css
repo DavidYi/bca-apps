@@ -305,7 +305,7 @@ h1 {
 
 nav.navbar {
   height: 3.75em;
-  width: 75%;
+  width: 78%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -318,6 +318,14 @@ nav.navbar {
     clear: both;
     content: "";
     display: table; }
+  @media screen and (max-width: 1000px) {
+    nav.navbar {
+      height: 3.75em;
+      width: 85%; } }
+  @media screen and (max-width: 600px) {
+    nav.navbar {
+      height: 3.75em;
+      width: 98%; } }
   nav.navbar .session-filter {
     display: inline-block;
     height: 100%;
@@ -343,7 +351,7 @@ nav.navbar {
     text-align: left; }
     nav.navbar .tag:last-child {
       margin-right: 0; }
-  nav.navbar .title {
+  nav.navbar .company {
     float: left;
     display: block;
     margin-right: 0%;
@@ -352,15 +360,15 @@ nav.navbar {
     margin: 0;
     padding: 0;
     font-size: 1.125em;
-    font-weight: 500;
+    font-weight: 400;
     text-align: left; }
-    nav.navbar .title:last-child {
+    nav.navbar .company:last-child {
       margin-right: 0; }
   nav.navbar .presenter {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 25%;
+    width: 18.75%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -369,18 +377,18 @@ nav.navbar {
     text-align: left; }
     nav.navbar .presenter:last-child {
       margin-right: 0; }
-  nav.navbar .company {
+  nav.navbar .position {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 12.5%;
+    width: 18.75%;
     color: #555;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
-    font-weight: 400;
+    font-weight: 500;
     text-align: left; }
-    nav.navbar .company:last-child {
+    nav.navbar .position:last-child {
       margin-right: 0; }
   nav.navbar .remaining {
     float: left;
@@ -395,15 +403,15 @@ nav.navbar {
     text-align: right; }
     nav.navbar .remaining:last-child {
       margin-right: 0; }
-  nav.navbar .tag, nav.navbar .title, nav.navbar .presenter, nav.navbar .company, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
+  nav.navbar .tag, nav.navbar .company, nav.navbar .presenter, nav.navbar .position, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
     color: #aaa; }
-    nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .title:hover, nav.navbar .title:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
+    nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
       color: #eee;
       text-decoration: underline; }
 
 .enrollment {
-  height: 85%;
-  width: 75%;
+  height: 75%;
+  width: 80%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -418,6 +426,14 @@ nav.navbar {
     clear: both;
     content: "";
     display: table; }
+  @media screen and (max-width: 1000px) {
+    .enrollment {
+      height: 75%;
+      width: 85%; } }
+  @media screen and (max-width: 600px) {
+    .enrollment {
+      height: 75%;
+      width: 98%; } }
   .enrollment .session {
     display: block;
     height: 3.75em;
@@ -442,7 +458,7 @@ nav.navbar {
       text-align: left; }
       .enrollment .session .tag:last-child {
         margin-right: 0; }
-    .enrollment .session .title {
+    .enrollment .session .company {
       float: left;
       display: block;
       margin-right: 0%;
@@ -453,22 +469,9 @@ nav.navbar {
       font-size: 1.125em;
       font-weight: 500;
       text-align: left; }
-      .enrollment .session .title:last-child {
+      .enrollment .session .company:last-child {
         margin-right: 0; }
     .enrollment .session .presenter {
-      float: left;
-      display: block;
-      margin-right: 0%;
-      width: 25%;
-      color: #555;
-      margin: 0;
-      padding: 0;
-      font-size: 1.125em;
-      font-weight: 400;
-      text-align: left; }
-      .enrollment .session .presenter:last-child {
-        margin-right: 0; }
-    .enrollment .session .company {
       float: left;
       display: block;
       margin-right: 0%;
@@ -479,7 +482,20 @@ nav.navbar {
       font-size: 1.125em;
       font-weight: 400;
       text-align: left; }
-      .enrollment .session .company:last-child {
+      .enrollment .session .presenter:last-child {
+        margin-right: 0; }
+    .enrollment .session .position {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 25%;
+      color: #555;
+      margin: 0;
+      padding: 0;
+      font-size: 1.125em;
+      font-weight: 400;
+      text-align: left; }
+      .enrollment .session .position:last-child {
         margin-right: 0; }
     .enrollment .session .remaining {
       float: left;
@@ -580,7 +596,7 @@ nav.navbar {
   -webkit-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   -moz-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66); }
-  .session-selected .tag, .session-selected .title, .session-selected .presenter, .session-selected .company, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
+  .session-selected .tag, .session-selected .company, .session-selected .presenter, .session-selected .position, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
     color: #fdfdfd !important; }
   .session-selected:hover {
     background-color: #f0c30f !important; }
