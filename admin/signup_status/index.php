@@ -22,14 +22,15 @@ if ($action == NULL) {
 
 <html>
 <head>
-        <link rel = "stylesheet" type = "text/css" href = "../../ss/main.css" />
+        <link rel = "stylesheet" type = "text/css" href = "../main.css" />
         <title>Signup Status</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <script type="text/javascript">
                 function autoEnroll(year)
                 {
-                    if (confirm('Are you sure you would like to randomly enroll all unenrolled students in presentations?'))
+                    if (confirm('Are you sure you would like to auto-enroll all ' + year + 'th grade students?'))
                         {
-                            post("index.php", {action: 'auto_enroll'}, "post")
+                            post("index.php", {action: 'auto_enroll', grade: year}, "post")
                     }
                 }
                 function post(path, params, method) {
@@ -53,22 +54,6 @@ if ($action == NULL) {
                     form.submit();
                 }
             </script>
-            <style>
-                td {
-                    width: 100px;
-                    text-align:center;
-                    border-width: 2px;
-                }
-                button {
-                    width: 8.75em;
-                    height: 2.5em;
-                }
-                table {
-                    border-spacing: 1px;
-                    border-width: 2px;
-                    height: 50%;
-                }
-            </style>
     </head>
 <body>
 <?php
@@ -76,50 +61,58 @@ switch($action) {
     case "display_status":
         $enroll_list = get_registered_users();
 ?>
-
-<h1 class = "register">Signup Status</h1>
-<br>
-<table class = "enrollment">
-        <thead><tr>
-                <th>Grade</th>
-                <th>Full</th>
-                <th>Partial</th>
-                <th>Not Enrolled</th>
-                <th>Auto-Enroll</th>
-        </tr></thead>
-        <tbody>
+<section class="main">
+<header>
+    <h1 class = "title main-title">Signup Status</h1>
+</header>
+    <nav class="navbar">
+        <a href="#">
+            <div class="session-filter grade">Grade Level</div>
+            <div class="session-filter full">Fully Enrolled</div>
+            <div class="session-filter partial">Partially Enrolled</div>
+            <div class="session-filter none">Not Enrolled</div>
+            <div class="session-filter auto">Auto-Enroll</div>
+        </a>
+    </nav>
+    <div class = "enrollment">
         <?php foreach ($enroll_list as $year) :
             $grade = $year['grade_lvl'];
             $full = $year['Complete'];
             $partial = $year['Partial'];
             $none = $year['None'];
             ?>
-        <tr>
-                <td>
+            <div class = "session">
+                <div class = "grade">
                     <?php echo $grade; ?>
-                    </td>
-                <td>
+                    </div>
+                <div class = "full">
                     <?php echo $full; ?>
-                    </td>
-                <td>
+                    </div>
+                <div class = "partial">
                     <?php echo $partial; ?>
-                    </td>
-                <td>
+                    </div>
+                <div class = "none">
                     <?php echo $none; ?>
-                    </td>
-                <td>
-                    <button onclick= "autoEnroll(0)">Enroll</button>
-                    </td>
-        
-            </tr>
+                    </div>
+                <div class = "auto-enroll">
+                    <button onclick= "autoEnroll(<?php echo $grade?>)">Enroll</button>
+                    </div>
+            </div>
         <?php endforeach; ?>
-        </tbody>
-    </table>
+    </div>
+    </section>
 <?php
         break;
     case "auto_enroll":
+        $grade = filter_input(INPUT_POST, 'grade');
+        if ($grade == NULL) {
+            $grade = filter_input(INPUT_GET, 'grade');
+            if ($grade == NULL) {
+                $grade = 'Invalid!';
+            }
+        }
         // $result = mysql_query('CALL getNodeChildren(2)');
-        echo "filler text";
+        echo $grade;
         break;
 }
 ?>
