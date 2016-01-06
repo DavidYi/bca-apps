@@ -132,8 +132,67 @@ fieldset {
 
 table {
     border-collapse: collapse;
-    border-spacing: 0; }
-
+    border-spacing: 0;
+    height: 85%;
+    width: 75%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+    background: #f7f7f7;
+    overflow-y: scroll;
+    -webkit-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    color: #333; }
+table::after {
+    clear: both;
+    content: "";
+    display: table; }
+table .session {
+    display: block;
+    height: 3.75em;
+    overflow: hidden;
+    line-height: 3.75em;
+    padding: 0 1.5625em;
+    border-bottom: 1px solid #d6d9da; }
+table .session::after {
+    clear: both;
+    content: "";
+    display: table; }
+th {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    margin: 0;
+    padding: 0;
+    font-size: 1.125em;
+    font-weight: 500;
+    text-align: left;
+    color: #aaa;
+}
+th:hover, th:active {
+    color: #eee;
+    text-decoration: underline;
+}
+td {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: inherit;
+    color: #555;
+    margin: 0;
+    padding: 0;
+    font-size: 1.125em;
+    font-weight: 500;
+    text-align: left;
+}
+td:hover {
+    background: #eee;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease;
+}
 html, body {
     height: 100%;
     width: 100%;

@@ -26,7 +26,7 @@ include('../util/main.php');
   ?>
 
 <html>
-<head><link rel = "stylesheet" type="text/css" href="../ss/main.css"></link></head>
+<head><link rel = "stylesheet" type="text/css" href="main.css"></link></head>
 <body>
 <h1>Admin Tools</h1>
 <p><a href = "signins/index.php">Signins</a><br>
