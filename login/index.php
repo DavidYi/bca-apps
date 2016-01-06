@@ -41,7 +41,7 @@ switch ($action) {
             header("Location: ../admin/index.php");
         } else {
             // The user is a student or teacher, they are directed to sign up page
-            header("Location: ../index.php");
+            header("Location: ../itinerary/index.php");
         }
 
         break;

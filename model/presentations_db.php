@@ -38,6 +38,7 @@ function get_presentation_list($ses_id) {
 				INNER JOIN presentation ON presentation.mentor_id = mentor.mentor_id
 				WHERE presentation.ses_id = :ses_id
 				AND mentor.active =1
+				AND presentation.pres_enrolled_count < mentor.pres_max_capacity
 				ORDER BY mentor_field';
 	
     global $db;
@@ -112,11 +113,11 @@ function get_user_list() {
 }
 
 function get_sessions_by_user($usr_id) {
-    $query = 'select session_times.ses_id ses_times, my_ses.ses_id ses_id, pres_room, mentor_position, mentor_company, mentor_last_name, mentor_first_name, ses_name, ses_start, ses_end, session_times.sort_order
+    $query = 'select session_times.ses_id ses_times, my_ses.ses_id ses_id, pres_room, pres_max_capacity, pres_enrolled_count, pres_id, mentor_position, mentor_company, mentor_field, mentor_last_name, mentor_first_name, ses_name, ses_start, ses_end, session_times.sort_order
               from session_times
 
               left join (
-              select ses_id, pres_room, mentor_position, mentor_company, mentor_last_name, mentor_first_name
+              select ses_id, pres_room, mentor_position, mentor_field, mentor_company, mentor_last_name, mentor_first_name, pres_max_capacity, pres_enrolled_count, presentation.pres_id
               from presentation
               inner join mentor on mentor.mentor_id = presentation.mentor_id
               inner join pres_user_xref on presentation.pres_id = pres_user_xref.pres_id
@@ -132,6 +133,43 @@ function get_sessions_by_user($usr_id) {
         $result = $statement->fetchAll();
         $statement->closeCursor();
         return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
+function add_presentation_for_user($pres_id, $usr_id) {
+    $query = 'insert into pres_user_xref (pres_id, usr_id)
+              VALUES (:pres_id, :usr_id)';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":pres_id", $pres_id);
+        $statement->bindValue(":usr_id", $usr_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
+function delete_presentation_for_user($pres_id, $usr_id) {
+    $query = 'delete from pres_user_xref
+              WHERE pres_id = :pres_id
+              and usr_id = :usr_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":pres_id", $pres_id);
+        $statement->bindValue(":usr_id", $usr_id);
+        $statement->execute();
+        $statement->closeCursor();
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);

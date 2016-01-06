@@ -17,7 +17,13 @@
 			</div>
 			<div class="view-signup enrollment">
 				<?php foreach ($sessions as $session) { ?>
-					<div class="session view-session" onclick="">
+					<a href="../index.php?session=<?php echo $session['ses_times']?>&action=<?php
+						if ($session['ses_id'] != NULL) {
+							echo "change";
+						} else {
+							echo "register";
+						}
+					?>"> <div class="session view-session" onclick="">
 						<div class="session-number">Session <?php echo $session['ses_times'] ?></div>
 						<div class="time">
 							<?php echo $session['ses_start']?> ~ <?php echo $session['ses_end']?>
@@ -27,7 +33,7 @@
 						<div class="session-title"><?php echo $session['mentor_company'] ?></div>
 						<div class="name"><?php echo $session['mentor_last_name']?> , <?php echo $session['mentor_first_name'] ?></div>
 						<?php } ?>
-					</div>
+					</div> </a>
 				<?php } ?>
 			</div>
 		</section>
