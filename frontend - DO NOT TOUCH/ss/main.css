@@ -318,7 +318,7 @@ nav.navbar {
     clear: both;
     content: "";
     display: table; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 800px) {
     nav.navbar {
       height: 3.75em;
       width: 85%; } }
@@ -426,7 +426,7 @@ nav.navbar {
     clear: both;
     content: "";
     display: table; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 800px) {
     .enrollment {
       height: 75%;
       width: 85%; } }
