@@ -1,14 +1,21 @@
 .view {
+	@include full-screen;
+	@include zero-box;
 	background:$color-white;
+	@include vertical-parent;
+
 	.view-main {
 		@include span-columns(4);
-		@include padding(em(100px) em(50px) 0 em(50px));
-		@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
 		height: 100%;
+		@include padding(0 em(50px));
+		@include margin(0);
+		@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
 
 		h3 {
 			color: $color-emperor;
 		}
+
+		.vertical-center { @include vertical-center; }
 
 		@include media($medium-screen-down) {
 			@include size(100% 50%);
@@ -17,15 +24,19 @@
 		@include media($mobile) {
 			@include size(100% 50%);
 		}
-
-
 	}
+
 	.view-signup {
 		@include span-columns(8);
-		@include padding(em(100px) em(90px));
+		max-width: 100%;
 		height: 100%;
+		@include padding(0 em(90px));
+		@include margin(0);
 		background-color: rgba(240, 195, 15, 0.66);
 		// background: url('../img/yellow.jpeg');
+
+		.vertical-center { @include vertical-center; }
+		.session:last-child { border-bottom: none; }
 
 		@include media($medium-screen-down) {
 			@include size(100% 50%);
