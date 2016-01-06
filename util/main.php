@@ -65,6 +65,7 @@ function include_page_tracking() {
 }
 
 function include_user_tracking() {
+    require_once ('model/presentations_db.php');
     $cur_user = get_user($_SESSION['usr_id']);
     if ($cur_user != NULL) {
         echo(

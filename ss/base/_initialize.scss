@@ -15,5 +15,10 @@ html, body {
 }
 
 header {
-	@include margin(2.5% auto 0);
+	height: 15%;
+	@include vertical-parent;
+
+	h1 {
+		@include vertical-center;
+	}
 }

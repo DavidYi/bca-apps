@@ -1,0 +1,21 @@
+.view {
+	background:$color-white;
+	.view-main {
+		@include span-columns(4);
+		@include padding(em(250px) em(50px) 0 em(50px));
+		@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
+		height: 100%;
+
+		h3 {
+			color: #555;
+		}
+
+	}
+	.view-signup {
+		@include span-columns(8);
+		@include padding(em(250px) em(90px));
+		height: 100%;
+		background-color: rgba(240, 195, 15, 0.66);
+		// background: url('../img/yellow.jpeg');
+	}
+}

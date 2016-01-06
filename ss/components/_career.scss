@@ -3,6 +3,10 @@ html {
 	background-color:#e7e7e7;
 }
 
+h1 {
+	font-weight: 500;
+}
+
 .main {
 	height: 100%;
 	overflow-y: hidden;
@@ -10,112 +14,118 @@ html {
 }
 
 
-nav.navbar {
-	@extend .container;
-	height: em(60px);
-	line-height: em(60px);
-	background: $color-mineshaft;
-	@include margin(0 auto);
+$grid-columns: 16; // temporary for the registration grid
+@mixin session-column($row-size, $font-weight, $font-align) {
+	@include span-columns($row-size);
+	color: $color-emperor;
+	@include margin(0);
+	@include padding(0);
+	font-size: em(18px);
+	font-weight: $font-weight;
+	text-align: $font-align;
+}
 
-	.session-select {
+nav.navbar {
+	@include size(75% em(60px));
+	@include outer-container(1200px);
+	@include margin(0 auto);
+	@include padding(0 em(25px));
+	line-height: em(60px);
+
+	background: $color-mineshaft;
+	border-right: em(7px) solid $color-mineshaft;
+
+	.session-filter {
 		display: inline-block;
-		@include size(em(175px) 100%);
+		height: 100%;
 		@include margin(0);
-		@include padding(0 em(20px));
-		text-align: center;		
+		@include padding(0);
 		@include transition(all $animation-duration $animation-timing);
 
-		a {
-			color: $color-white;
-			font-size: em(20px);
+		a { 
+			font-size: em(18px);
 			font-weight: $default-font-weight;
 			text-decoration: none;
-
-			&:hover {
-				color: $color-white;
-				text-decoration: none;
-			}
 		}
+	}
 
-		&.active, &:hover {
-			background-color: $color-grayblack;
+	.tag { @include session-column(3, 500, left); }
+	.title { @include session-column(5, 500, left); }
+	.presenter { @include session-column(4, 400, left); }
+	.company { @include session-column(2, 400, left); }
+	.remaining { @include session-column(2, 500, right); }
 
-			a {
-				color: $color-black;
-				&:hover {
-					color: $color-black;
-				}
-			}
+	.tag, .title, .presenter, .company, .remaining, .session-number, .time, .room-number, .session-title, .name{
+		color: $color-silverchalice;
+
+		&:hover, &:active {
+			color: $color-gallery;
+			text-decoration: underline;
 		}
 	}
 }
 
 .enrollment {
-	@extend .container;
-	height: 78%;
+	@include size(75% 85%);
+	@include outer-container(1200px);
 	@include margin(0 auto);
-	overflow-y: scroll;
 	background: $color-grayblack;
+	overflow-y: scroll;
 	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
 	color: $color-black;
 
 	.session {
 		@include row;
 		height: em(60px);
-		overflow: auto;
+		overflow: hidden;
 		line-height: em(60px);
 		@include padding(0 em(25px));
 		border-bottom: 1px solid #d6d9da;
 
-		.tag {
-			@include span-columns(3);
-			font-size: em(18px);
-			font-weight: 500;
-			color: $color-emperor;
+		.tag { @include session-column(3, 500, left); }
+		.title { @include session-column(5, 500, left); }
+		.presenter { @include session-column(4, 400, left); }
+		.company { @include session-column(3, 400, left); }
+		.remaining { @include session-column(1, 500, right); }
+
+		.session-number { @include session-column(1, 500, left); }
+		.time { @include session-column(3, 500, left); }
+		.room-number { @include session-column(2, 500, left); }
+		.session-title { @include session-column(5, 500, left); }
+		.name { @include session-column(5, 500, left); }
+
+		&:hover {
+			background: $color-gallery;
+			@include transition(all $animation-duration $animation-timing);
 		}
-
-		.remaining {
-			@include span-columns(3);
-			font-size: em(18px);
-			font-weight: 500;
-			color: $color-emperor;
-		}	
-
-
-		.title {
-			@include span-columns(6);
-			height: 100%;
-
-			.vac {
-				display: table-cell;
-				vertical-align: middle;
-			}
-
-			h3, h5 {
-				@include margin(0);
-				@include padding(0);
-				text-align: center;
-				line-height: 1.2;
-			}
-
-			h3 {
-				color: $color-black;
-				margin-top: em(9px);
-				font-size: em(18px);
-				font-weight: 500;
-			}
-
-			h5 {
-				color: $color-mineshaft;
-				margin-top: 1px;
-				font-size: em(14px);
-				font-weight: $default-font-weight;
-			}
+	}
+	// For view Page -Su Min
+	.view-session {
+		border-bottom: 1px solid $color-black;
+		.time,  .room-number {
+			font-weight: $default-font-weight;
 		}
-
-		.remaining {
-			text-align: right;
+	}
+	.view-session:hover {
+		background: $color-black;
+		.session-number, .time, .room-number, .session-title, .name {
+			color: $color-white;
 		}
+	}
+}
+
+.session-selected {
+	background-color: $color-yellow;
+	color: $color-white !important;
+	border-bottom: 1px solid $color-yellow;
+	@include box-shadow(0, 0, em(25px), 0, rgba(240, 195, 15, 0.66));
+
+	.tag, .title, .presenter, .company, .remaining, .session-number, .time, .room-number, .session-number, .name{
+		color: $color-white !important;
+	}
+
+	&:hover {
+		background-color: $color-yellow !important;
 	}
 }
 
@@ -129,5 +139,7 @@ nav.navbar {
 
 	}
 }
+
+$grid-columns: 12; // reset
 
 
