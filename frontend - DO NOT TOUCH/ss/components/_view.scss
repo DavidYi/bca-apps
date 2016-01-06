@@ -2,20 +2,40 @@
 	background:$color-white;
 	.view-main {
 		@include span-columns(4);
-		@include padding(em(250px) em(50px) 0 em(50px));
+		@include padding(em(100px) em(50px) 0 em(50px));
 		@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
 		height: 100%;
 
 		h3 {
-			color: #555;
+			color: $color-emperor;
 		}
+
+		@include media($medium-screen-down) {
+			@include size(100% 50%);
+		}
+
+		@include media($mobile) {
+			@include size(100% 50%);
+		}
+
 
 	}
 	.view-signup {
 		@include span-columns(8);
-		@include padding(em(250px) em(90px));
+		@include padding(em(100px) em(90px));
 		height: 100%;
 		background-color: rgba(240, 195, 15, 0.66);
 		// background: url('../img/yellow.jpeg');
+
+		@include media($medium-screen-down) {
+			@include size(100% 50%);
+			@include padding(0);
+			font-size: em(12px);
+		}
+		@include media($mobile) {
+			@include size(100% 50%);
+			@include padding(0);
+			font-size: em(10px);
+		}
 	}
 }

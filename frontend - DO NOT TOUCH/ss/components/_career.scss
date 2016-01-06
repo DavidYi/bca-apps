@@ -89,9 +89,9 @@ nav.navbar {
 		.remaining { @include session-column(1, 500, right); }
 
 		.session-number { @include session-column(1, 500, left); }
-		.time { @include session-column(3, 500, left); }
+		.time { @include session-column(2, 500, left); }
 		.room-number { @include session-column(2, 500, left); }
-		.session-title { @include session-column(5, 500, left); }
+		.session-title { @include session-column(6, 500, left); }
 		.name { @include session-column(5, 500, left); }
 
 		&:hover {
