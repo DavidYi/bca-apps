@@ -70,7 +70,7 @@ function get_registered_users(){
     ) a
 
     group by grade_lvl
-    
+
     ) none on completed.grade_lvl = none.grade_lvl
     order by grade_lvl';
     return get_list($query);

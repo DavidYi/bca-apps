@@ -74,44 +74,52 @@ if ($action == NULL) {
 <?php
 switch($action) {
     case "display_status":
+        $enroll_list = get_registered_users();
 ?>
 
 <h1 class = "register">Signup Status</h1>
 <br>
 <table class = "enrollment">
-        <tr>
+        <thead><tr>
                 <th>Grade</th>
                 <th>Full</th>
                 <th>Partial</th>
                 <th>Not Enrolled</th>
                 <th>Auto-Enroll</th>
-            </tr>
+        </tr></thead>
+        <tbody>
+        <?php foreach ($enroll_list as $year) :
+            $grade = $year['grade_lvl'];
+            $full = $year['Complete'];
+            $partial = $year['Partial'];
+            $none = $year['None'];
+            ?>
         <tr>
                 <td>
-
+                    <?php echo $grade; ?>
                     </td>
                 <td>
-
+                    <?php echo $full; ?>
                     </td>
                 <td>
-
+                    <?php echo $partial; ?>
                     </td>
                 <td>
-
+                    <?php echo $none; ?>
                     </td>
                 <td>
                     <button onclick= "autoEnroll(0)">Enroll</button>
                     </td>
         
             </tr>
-        </tr>
+        <?php endforeach; ?>
+        </tbody>
     </table>
 <?php
         break;
     case "auto_enroll":
         // $result = mysql_query('CALL getNodeChildren(2)');
         echo "filler text";
-
         break;
 }
 ?>
