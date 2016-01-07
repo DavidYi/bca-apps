@@ -15,13 +15,11 @@
     </header>
 
     <nav class="navbar">
-        <a href="#">
-            <div class="session-filter tag">Category</div>
-            <div class="session-filter title">Title</div>
-            <div class="session-filter presenter">Presenter</div>
-            <div class="session-filter company">Company</div>
-            <div class="session-filter remaining">Remaining</div>
-        </a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=1"><div class="session-filter tag">Field</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=2"><div class="session-filter title">Position</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=3"><div class="session-filter presenter">Presenter</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=4"><div class="session-filter company">Company</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=5"><div class="session-filter remaining">Remaining</div></a>
     </nav>
 
     <div class="enrollment">

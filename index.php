@@ -15,8 +15,8 @@ $currentSession = filter_input(INPUT_GET, 'session');
 if ($currentSession < 1 || $currentSession > 4) {
     $currentSession = 1;
 }
-
-$presentations = get_presentation_list($currentSession);
+$sort_by = filter_input(INPUT_GET, "sort");
+$presentations = get_presentation_list($currentSession, $sort_by);
 
 $pres_enrolled = get_presentation_by_user($user['usr_id'], $currentSession);
 $is_enrolled = FALSE;
@@ -64,11 +64,9 @@ if ($action == "register") {
     }
     else {
         if ($is_enrolled) {
-            echo ("Deleting: pres: " . $pres_enrolled['pres_id'] . " for user:".$user['usr_id']);
             delete_presentation_for_user($pres_enrolled['pres_id'], $user['usr_id']);
         }
 
-        echo ("Adding: pres: " . $pres_id . " for user:".$user['usr_id']);
         add_presentation_for_user ($pres_id, $user['usr_id']);
 //        exit();
 //        joinSessionPresentation ($currentSession, $pres_id, $user['usr_id']);

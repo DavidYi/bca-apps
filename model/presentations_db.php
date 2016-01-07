@@ -28,7 +28,7 @@ function get_session_times_by_id($ses_id) {
     }
 }
 
-function get_presentation_list($ses_id) {
+function get_presentation_list($ses_id, $sort_by) {
     $query = 	'SELECT mentor.mentor_id,  mentor_last_name ,  mentor_first_name ,  mentor_field ,
 					mentor_position , mentor_company ,  mentor_profile ,  mentor_keywords ,  
 					mentor_email ,  mentor_cell_nbr , mentor_phone_nbr ,  mentor_address ,  
@@ -38,8 +38,14 @@ function get_presentation_list($ses_id) {
 				INNER JOIN presentation ON presentation.mentor_id = mentor.mentor_id
 				WHERE presentation.ses_id = :ses_id
 				AND mentor.active =1
-				AND presentation.pres_enrolled_count < mentor.pres_max_capacity
-				ORDER BY mentor_field';
+				AND presentation.pres_enrolled_count < mentor.pres_max_capacity ';
+
+    if ($sort_by == 1) $query .= ('ORDER BY mentor_field');
+    else if ($sort_by == 2) $query .= ('ORDER BY mentor_position');
+    else if ($sort_by == 3) $query .= ('ORDER BY mentor_last_name');
+    else if ($sort_by == 4) $query .= ('ORDER BY mentor_company');
+    else if ($sort_by == 5) $query .= ('ORDER BY presentation.pres_enrolled_count');
+    else $query .= ('ORDER BY mentor_field');
 	
     global $db;
 
