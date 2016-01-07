@@ -5,7 +5,7 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="../ss/main.css" rel="stylesheet">
+    <link href="/<?php echo $app_name ?>/ss/main.css" rel="stylesheet">
     <?php include_analytics(); ?>
 </head>
 <body>
