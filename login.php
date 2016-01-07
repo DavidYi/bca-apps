@@ -22,7 +22,7 @@
             <div class="login-main">
             	<div class="vertical-center">
 	                <h1>Login</h1>
-					<form action="login_index.php" method="post">
+					<form action="." method="post">
 						<input type="hidden" name="action" value="login">
 
 						<input type="text" name="username" placeholder="username">

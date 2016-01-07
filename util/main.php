@@ -14,7 +14,7 @@ set_include_path($app_path . PATH_SEPARATOR . get_include_path());
 session_start();
 if (!isset($_SESSION['usr_id']))
 {
-    header('Location: /' . $app_name . '/login/index.php');
+    header('Location: /' . $app_name . '/index.php');
     exit();
 }
 
