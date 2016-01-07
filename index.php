@@ -16,7 +16,6 @@ if ($currentSession < 1 || $currentSession > 4) {
     $currentSession = 1;
 }
 $sort_by = filter_input(INPUT_GET, "sort");
-$presentations = get_presentation_list($currentSession, $sort_by);
 
 $pres_enrolled = get_presentation_by_user($user['usr_id'], $currentSession);
 $is_enrolled = FALSE;
@@ -34,21 +33,15 @@ $current_date = strtotime(date("Y-m-d h:i:sa"));
 $action = filter_input(INPUT_GET, 'action');
 $id = 0;
 $register_id = 0;
-$is_changing = false;
+$is_changing = $is_enrolled;
 if ($action == "register") {
     if (!($current_date < $start_date || $current_date > $end_date)) {
+        $presentations = get_presentation_list($currentSession, $sort_by);
         include("view.php");
     } else {
         echo ("<h1>It is not time to enroll.</h1>");
     }
-} else if ($action == "change") {
-    if (!($current_date < $start_date || $current_date > $end_date)) {
-        $is_changing = true;
-        include("view.php");
-    } else {
-        echo ("<h1>It is not time to enroll.</h1>");
-    }
-} else if ($action == "commit") {
+}  else if ($action == "commit") {
     $pres_id = filter_input(INPUT_GET, 'pres_id');
 
     // Why run this query when we have the value in the get request? To ensure consistency in case
