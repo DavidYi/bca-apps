@@ -28,6 +28,8 @@
         <?php if ($is_changing) {
             $presentation = get_sessions_by_user($user['usr_id'])[$currentSession - 1];
             $id = $presentation['pres_id'] ?>
+            <a href="/<?php echo $app_name ?>/itinerary">
+
             <div class="session session-selected"">
                 <div class="tag"><?php echo $presentation['mentor_field']?></div>
                 <div class="title"><?php echo $presentation['mentor_position']?></div>
@@ -40,10 +42,11 @@
                     <?php echo ($presentation['pres_max_capacity'] - $presentation['pres_enrolled_count'])?>
                 </div>
             </div>
+            </a>
         <?php } ?>
         <?php foreach ($presentations as $presentation) {
             if ($id != $presentation['pres_id']) {?>
-               <a href=""> <div class="session"  onclick="register_for(<?php echo $presentation['pres_id']?>);">
+               <a href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"> <div class="session">
                     <div class="tag"><?php echo $presentation['mentor_field']?></div>
                     <div class="title"><?php echo $presentation['mentor_position']?></div>
                     <div class="presenter">
@@ -65,7 +68,8 @@
 <script type="text/javascript" src="js/jquery.plusanchor.min.js"></script>
 <script>
     function register_for(pres_id) {
-        $(location).attr('href', 'index.php?session=<?php echo $currentSession?>&action=commit&pres_id=' + pres_id);
+        alert ("Hello");
+        $(location).attr('href', );
     }
 </script>
 <script type="text/javascript">
