@@ -26,7 +26,7 @@
 			</div>
 			<div class="view-signup enrollment">
 				<?php foreach ($sessions as $session) { ?>
-					<a href="../index.php?session=<?php echo $session['ses_times']?>&action=register"> <div class="session view-session" onclick="">
+					<a href="../register/index.php?session=<?php echo $session['ses_times']?>&action=register"> <div class="session view-session" onclick="">
 						<div class="session-number">Session <?php echo $session['ses_times'] ?></div>
 						<div class="time">
 							<?php echo $session['ses_start']?> ~ <?php echo $session['ses_end']?>
