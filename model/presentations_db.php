@@ -87,6 +87,27 @@ function get_presentation_by_user($usr_id, $ses_id) {
     }
 }
 
+function get_user_by_username($username) {
+    $query = 	'SELECT usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year,
+                usr_first_name, usr_last_name, usr_active
+             FROM user
+             WHERE usr_bca_id = :username';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':username', $username);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
 function get_user($usr_id) {
     $query = 	'SELECT usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year,
                     usr_first_name, usr_last_name, usr_active
