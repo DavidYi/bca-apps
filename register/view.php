@@ -5,7 +5,7 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="ss/main.css" rel="stylesheet">
+    <link href="../ss/main.css" rel="stylesheet">
     <?php include_analytics(); ?>
 </head>
 <body>
@@ -61,9 +61,9 @@
         <div class="session"></div> <!-- fill design -->
     </div>
 </section>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="js/jquery.plusanchor.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
 <script>
     function register_for(pres_id) {
         alert ("Hello");
