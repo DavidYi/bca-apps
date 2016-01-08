@@ -26,7 +26,7 @@ $grid-columns: 16; // temporary for the registration grid
 }
 
 nav.navbar {
-	@include size(78% em(60px));
+	@include size(75% em(60px));
 	@include outer-container(1200px);
 	@include margin(0 auto);
 	@include padding(0 em(25px));
@@ -34,9 +34,6 @@ nav.navbar {
 
 	background: $color-mineshaft;
 	border-right: em(7px) solid $color-mineshaft;
-
-	@include media($medium-screen-down) { @include size(85% em(60px)); }
-	@include media($mobile) { @include size(98% em(60px)); }
 
 	.session-filter {
 		display: inline-block;
@@ -53,12 +50,12 @@ nav.navbar {
 	}
 
 	.tag { @include session-column(3, 500, left); }
-	.company { @include session-column(5, 400, left); }
-	.presenter { @include session-column(3, 400, left); }
-	.position { @include session-column(3, 500, left); }
+	.title { @include session-column(5, 500, left); }
+	.presenter { @include session-column(4, 400, left); }
+	.company { @include session-column(2, 400, left); }
 	.remaining { @include session-column(2, 500, right); }
 
-	.tag, .company, .presenter, .position, .remaining, .session-number, .time, .room-number, .session-title, .name{
+	.tag, .title, .presenter, .company, .remaining, .session-number, .time, .room-number, .session-title, .name{
 		color: $color-silverchalice;
 
 		&:hover, &:active {
@@ -69,16 +66,13 @@ nav.navbar {
 }
 
 .enrollment {
-	@include size(80% 75%);
+	@include size(75% 85%);
 	@include outer-container(1200px);
 	@include margin(0 auto);
 	background: $color-grayblack;
 	overflow-y: scroll;
 	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
 	color: $color-black;
-
-	@include media($medium-screen-down) { @include size(85% 75%); }
-	@include media($mobile) { @include size(98% 75%); }
 
 	.session {
 		@include row;
@@ -89,15 +83,15 @@ nav.navbar {
 		border-bottom: 1px solid #d6d9da;
 
 		.tag { @include session-column(3, 500, left); }
-		.company { @include session-column(5, 500, left); }
-		.presenter { @include session-column(3, 400, left); }
-		.position { @include session-column(4, 400, left); }
+		.title { @include session-column(5, 500, left); }
+		.presenter { @include session-column(4, 400, left); }
+		.company { @include session-column(3, 400, left); }
 		.remaining { @include session-column(1, 500, right); }
 
 		.session-number { @include session-column(1, 500, left); }
-		.time { @include session-column(2, 500, left); }
+		.time { @include session-column(3, 500, left); }
 		.room-number { @include session-column(2, 500, left); }
-		.session-title { @include session-column(6, 500, left); }
+		.session-title { @include session-column(5, 500, left); }
 		.name { @include session-column(5, 500, left); }
 
 		&:hover {
@@ -126,7 +120,7 @@ nav.navbar {
 	border-bottom: 1px solid $color-yellow;
 	@include box-shadow(0, 0, em(25px), 0, rgba(240, 195, 15, 0.66));
 
-	.tag, .company, .presenter, .position, .remaining, .session-number, .time, .room-number, .session-number, .name{
+	.tag, .title, .presenter, .company, .remaining, .session-number, .time, .room-number, .session-number, .name{
 		color: $color-white !important;
 	}
 
