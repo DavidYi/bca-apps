@@ -28,7 +28,7 @@ function get_session_times_by_id($ses_id) {
     }
 }
 
-function get_presentation_list($ses_id) {
+function get_presentation_list($ses_id, $sort_by) {
     $query = 	'SELECT mentor.mentor_id,  mentor_last_name ,  mentor_first_name ,  mentor_field ,
 					mentor_position , mentor_company ,  mentor_profile ,  mentor_keywords ,  
 					mentor_email ,  mentor_cell_nbr , mentor_phone_nbr ,  mentor_address ,  
@@ -38,8 +38,14 @@ function get_presentation_list($ses_id) {
 				INNER JOIN presentation ON presentation.mentor_id = mentor.mentor_id
 				WHERE presentation.ses_id = :ses_id
 				AND mentor.active =1
-				AND presentation.pres_enrolled_count < mentor.pres_max_capacity
-				ORDER BY mentor_field';
+				AND presentation.pres_enrolled_count < mentor.pres_max_capacity ';
+
+    if ($sort_by == 1) $query .= ('ORDER BY mentor_field');
+    else if ($sort_by == 2) $query .= ('ORDER BY mentor_position');
+    else if ($sort_by == 3) $query .= ('ORDER BY mentor_last_name');
+    else if ($sort_by == 4) $query .= ('ORDER BY mentor_company');
+    else if ($sort_by == 5) $query .= ('ORDER BY presentation.pres_enrolled_count');
+    else $query .= ('ORDER BY mentor_field');
 	
     global $db;
 
@@ -71,6 +77,27 @@ function get_presentation_by_user($usr_id, $ses_id) {
         $statement = $db->prepare($query);
         $statement->bindValue(':ses_id', $ses_id);
         $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
+function get_user_by_username($username) {
+    $query = 	'SELECT usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year,
+                usr_first_name, usr_last_name, usr_active
+             FROM user
+             WHERE usr_bca_id = :username';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':username', $username);
         $statement->execute();
         $result = $statement->fetch();
         $statement->closeCursor();
@@ -157,6 +184,82 @@ function add_presentation_for_user($pres_id, $usr_id) {
     }
 }
 
+function delete_user_presentations_by_session ($ses_id, $usr_id) {
+    $query = 'delete from pres_user_xref
+                where pres_id in (
+                    select pres_id
+                    from presentation
+                    where ses_id = :ses_id)
+                and usr_id = :usr_id;';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":ses_id", $ses_id);
+        $statement->bindValue(":usr_id", $usr_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
+
+// Need to turn this into a transaction.
+function joinSessionPresentation ($ses_id, $pres_id, $usr_id)
+{
+    delete_user_presentations_by_session($ses_id, $usr_id);
+    add_presentation_for_user ($pres_id, $usr_id);
+}
+
+function presentation_has_space ($pres_id) {
+    $query = 'SELECT (pres_max_capacity - pres_enrolled_count) as val
+        from presentation
+		inner join mentor on presentation.mentor_id = mentor.mentor_id
+		where presentation.pres_id = :pres_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":pres_id", $pres_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+
+        if ($result['val'] > 0)
+            return true;
+        else
+            return false;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
+function get_session_for_presentation ($pres_id) {
+    $query = 'SELECT ses_id
+        from presentation
+		where pres_id = :pres_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":pres_id", $pres_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+
+        return $result['ses_id'];
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
 function delete_presentation_for_user($pres_id, $usr_id) {
     $query = 'delete from pres_user_xref
               WHERE pres_id = :pres_id
@@ -175,4 +278,6 @@ function delete_presentation_for_user($pres_id, $usr_id) {
         display_db_error($error_message);
     }
 }
+
+
 ?>

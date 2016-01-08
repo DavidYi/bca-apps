@@ -2,7 +2,12 @@
 
 $app_name = 'bca-apps';     // Name of the app on the web server.  Change this if the directory changes.
 $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING); // Looks like c:/xampp/htdocs
+
+// For development machines
 $app_path = $doc_root . "/" . $app_name;   // Looks like c:/xampp/htdocs/bca-apps
+
+// For DEV Server
+// $app_path =  "/home2/atcsdevbergen/public_html/" . $app_name;   // Looks like c:/xampp/htdocs/bca-apps
 
 // Set the include path
 set_include_path($app_path . PATH_SEPARATOR . get_include_path());
@@ -14,7 +19,7 @@ set_include_path($app_path . PATH_SEPARATOR . get_include_path());
 session_start();
 if (!isset($_SESSION['usr_id']))
 {
-    header('Location: /' . $app_name . '/login/index.php');
+    header('Location: /' . $app_name . '/index.php');
     exit();
 }
 

@@ -5,7 +5,7 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="ss/main.css" rel="stylesheet">
+    <link href="/<?php echo $app_name ?>/ss/main.css" rel="stylesheet">
     <?php include_analytics(); ?>
 </head>
 <body>
@@ -15,19 +15,19 @@
     </header>
 
     <nav class="navbar">
-        <a href="#">
-            <div class="session-filter tag">Category</div>
-            <div class="session-filter title">Title</div>
-            <div class="session-filter presenter">Presenter</div>
-            <div class="session-filter company">Company</div>
-            <div class="session-filter remaining">Remaining</div>
-        </a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=1"><div class="session-filter tag">Field</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=2"><div class="session-filter title">Position</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=3"><div class="session-filter presenter">Presenter</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=4"><div class="session-filter company">Company</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=5"><div class="session-filter remaining">Remaining</div></a>
     </nav>
 
     <div class="enrollment">
         <?php if ($is_changing) {
             $presentation = get_sessions_by_user($user['usr_id'])[$currentSession - 1];
             $id = $presentation['pres_id'] ?>
+            <a href="/<?php echo $app_name ?>/itinerary">
+
             <div class="session session-selected"">
                 <div class="tag"><?php echo $presentation['mentor_field']?></div>
                 <div class="title"><?php echo $presentation['mentor_position']?></div>
@@ -40,10 +40,11 @@
                     <?php echo ($presentation['pres_max_capacity'] - $presentation['pres_enrolled_count'])?>
                 </div>
             </div>
+            </a>
         <?php } ?>
         <?php foreach ($presentations as $presentation) {
             if ($id != $presentation['pres_id']) {?>
-               <a href=""> <div class="session"  onclick="register_for(<?php echo $presentation['pres_id']?>);">
+               <a href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"> <div class="session">
                     <div class="tag"><?php echo $presentation['mentor_field']?></div>
                     <div class="title"><?php echo $presentation['mentor_position']?></div>
                     <div class="presenter">
@@ -60,12 +61,13 @@
         <div class="session"></div> <!-- fill design -->
     </div>
 </section>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="js/jquery.plusanchor.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
 <script>
     function register_for(pres_id) {
-        $(location).attr('href', 'index.php?session=<?php echo $currentSession?>&action=commit&pres_id=' + pres_id);
+        alert ("Hello");
+        $(location).attr('href', );
     }
 </script>
 <script type="text/javascript">
