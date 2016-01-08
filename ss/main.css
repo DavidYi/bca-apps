@@ -637,30 +637,77 @@ nav.navbar {
       height: 3.125em; }
 
 .view {
-  background: #fdfdfd; }
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  margin: 0;
+  padding: 0;
+  background: #fdfdfd;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
   .view .view-main {
+    height: 100%;
     float: left;
     display: block;
     margin-right: 0%;
     width: 33.33333%;
-    padding: 15.625em 3.125em 0;
+    padding: 0 3.125em;
     -webkit-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
-    box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
-    height: 100%; }
+    box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15); }
     .view .view-main:last-child {
       margin-right: 0; }
     .view .view-main h3 {
       color: #555; }
+    .view .view-main .vertical-center {
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    @media screen and (max-width: 800px) {
+      .view .view-main {
+        height: 50%;
+        width: 100%; } }
+    @media screen and (max-width: 600px) {
+      .view .view-main {
+        height: 50%;
+        width: 100%; } }
   .view .view-signup {
     float: left;
     display: block;
     margin-right: 0%;
     width: 66.66667%;
-    padding: 15.625em 5.625em;
+    padding: 0 4.6875em;
     height: 100%;
     background-color: rgba(240, 195, 15, 0.66); }
     .view .view-signup:last-child {
       margin-right: 0; }
+    .view .view-signup .vertical-center {
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    @media screen and (max-width: 800px) {
+      .view .view-signup {
+        height: 50%;
+        width: 100%;
+        padding: 0;
+        font-size: 0.75em; } }
+    @media screen and (max-width: 600px) {
+      .view .view-signup {
+        height: 50%;
+        width: 100%;
+        padding: 0;
+        font-size: 0.625em; } }
 
 /*# sourceMappingURL=main.css.map */

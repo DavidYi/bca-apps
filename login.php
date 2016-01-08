@@ -13,9 +13,9 @@
 				<div class="vertical-center">
 	                <h1>Career Day</h1>
 
-					<h2>
+					<h3>
 					<?php echo $message ?>
-					</h2>
+					</h3>
 
 	            </div>
 			</div>
