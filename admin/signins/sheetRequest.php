@@ -28,10 +28,12 @@
             echo $selected ?>">
                 <?php echo htmlspecialchars($mentor['mentor_last_name'])?>, <?php
                 echo htmlspecialchars($mentor['mentor_first_name']); ?> (<?php echo
-                htmlspecialchars($mentor[mentor_company])?>)
+                htmlspecialchars($mentor['mentor_company'])?>)
             </option>
         <?php endforeach; ?>
     </select>
+    <br>
+    <label>Session:</label>
     <select name="session">
         <option value="All" selected="selected">All Sessions</option>
         <?php foreach ($sessions as $session) :
@@ -48,7 +50,8 @@
         <?php endforeach; ?>
     </select>
 
-    <input type="submit" value="Generate">\
+    <br>
+    <input type="submit" value="Generate">
 </form>
 </body>
 </html>
