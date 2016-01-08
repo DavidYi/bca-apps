@@ -1,31 +1,53 @@
 .login {
 	background:$color-white;
+
 	.login-intro {
 		@include span-columns(8);
-		@include padding(em(250px) em(150px));
-		@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
-		background-color: rgba(240, 195, 15, 0.66);
-		// background: url('../img/yellow.jpeg');
 		height: 100%;
-		
+		@include padding(0 em(150px));
+		background-color: rgba(240, 195, 15, 0.66);
+
+		.vertical-center { @include vertical-center; }
+
 		h3 {
 			color: #555;
+		}
+
+		@include media($medium-screen-down) {
+			@include size(100% 50%);
+		}
+
+		@include media($mobile) {
+			@include size(100% 50%);
 		}
 	}
 	.login-main {
 		@include span-columns(4);
-		@include padding(em(250px) em(50px) 0 em(50px));
+		height: 100%;
+		@include padding(0 em(50px));
+		@include box-shadow(0, 0, em(20px), 0, rgba(0, 0, 0, 0.15));
+
+		.vertical-center { @include vertical-center; }
+
 		input {
-			background-color: rgba(244, 208, 63, 0.3);
-			margin: 10px 0;
-			padding: 0 15px;
-			width: em(400px);
-			height: em(50px);
+			@include size(em(400px) em(50px));
+			@include margin(em(10px) 0);
+			@include padding(0 em(15px));
+			@include background(rgba(244, 208, 63, 0.3));
 		}
+
 		button {
-			margin: 15px 0;
-			width: em(400px);
-			height: em(50px);
+			@include size(em(400px) em(50px));
+			@include margin(em(15px) 0);
+		}
+
+		@include media($medium-screen-down) {
+			@include size(100% 50%);
+			font-size: em(12px);
+		}
+		@include media($mobile) {
+			@include size(100% 50%);
+			font-size: em(10px);
 		}
 	}
 
