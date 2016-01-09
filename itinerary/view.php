@@ -48,11 +48,11 @@
 		<script type="text/javascript" src="../js/jquery.easing.min.js"></script>
 		<script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
 		<script type="text/javascript">
+		$	('.session').last().css("border-bottom", "none");
 		    $('body').plusAnchor({
 		        easing: 'easeInOutExpo',
 		        speed:  700
 		    });
-
 		</script>
 	</body>
 </html>

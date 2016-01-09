@@ -31,6 +31,7 @@
 		height: 100%;
 		background-color: rgba(240, 195, 15, 0.66);
 		.vertical-center { @include vertical-center; }
+		// .session:last-child { border-bottom: none; }
 		// background: url('../img/yellow.jpeg');
 
 		@include media($medium-screen-down) {
