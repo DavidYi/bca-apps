@@ -1,11 +1,11 @@
 <?php
+$error_message = "";
 
 $app_name = 'bca-apps';     // Name of the app on the web server.  Change this if the directory changes.
 $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING); // Looks like c:/xampp/htdocs
 
 // For development machines
 $app_path = $doc_root . "/" . $app_name;   // Looks like c:/xampp/htdocs/bca-apps
-$error_message = "";
 
 // For DEV Server
 // $app_path =  "/home2/atcsdevbergen/public_html/" . $app_name;   // Looks like c:/xampp/htdocs/bca-apps
