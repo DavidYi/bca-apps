@@ -12,10 +12,14 @@
 			<div class="login-intro">
 				<div class="vertical-center">
 	                <h1>Career Day</h1>
-
-					<h3>
-					<?php echo $message ?>
+	                <h3>
+						BCA will hold Career Day on <b>Tuesday, February 2</b>.  At Career Day, you will have the opportunity
+						to participate in presentations by 4 different mentors of your choosing.  Through this experience,
+						our hope is that you can gain insight into the variety and types of career paths available to you.
 					</h3>
+					<!-- <h3>
+						<?php echo $message ?>
+					</h3> -->
 
 	            </div>
 			</div>

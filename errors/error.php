@@ -13,11 +13,11 @@
 		<section class="main login">
 			<div class="error">
 				<div class="vertical-center">
-	                <h1><i>Uh oh...</i></h1>
+	                <h1><i>oops...</i></h1>
 	                <h3><i>
 	                	<?php echo $error_message ?>
 	                </i></h3>
-	                <button>Continue</button>
+	                <button>Back</button>
 	            </div>
 			</div>
 		</section>

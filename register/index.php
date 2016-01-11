@@ -39,7 +39,7 @@ if ($action == "register") {
         $presentations = get_presentation_list($currentSession, $sort_by);
         include("view.php");
     } else {
-        echo ("<h1>It is not time to enroll.</h1>");
+       display_error("It's not time to enroll yet");
     }
 }  else if ($action == "commit") {
     $pres_id = filter_input(INPUT_GET, 'pres_id');
