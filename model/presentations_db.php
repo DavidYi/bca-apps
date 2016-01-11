@@ -25,6 +25,7 @@ function get_session_times_by_id($ses_id) {
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);
+        exit();
     }
 }
 
@@ -59,7 +60,8 @@ function get_presentation_list($ses_id, $sort_by) {
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);
-    }  
+        exit();
+    }
 }
 
 function get_presentation_by_user($usr_id, $ses_id) {
@@ -84,6 +86,7 @@ function get_presentation_by_user($usr_id, $ses_id) {
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);
+        exit();
     }
 }
 
@@ -105,6 +108,7 @@ function get_user_by_username($username) {
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);
+        exit();
     }
 }
 
@@ -126,6 +130,7 @@ function get_user($usr_id) {
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);
+        exit();
     }
 }
 
@@ -163,121 +168,159 @@ function get_sessions_by_user($usr_id) {
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);
+        exit();
     }
 }
 
-function add_presentation_for_user($pres_id, $usr_id) {
-    $query = 'insert into pres_user_xref (pres_id, usr_id)
-              VALUES (:pres_id, :usr_id)';
+class Presentation {
+    public $pres_id, $ses_id, $mentor_id, $pres_enrolled_count, $pres_paired_pres_id, $pres_max_capacity;
 
-    global $db;
-
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(":pres_id", $pres_id);
-        $statement->bindValue(":usr_id", $usr_id);
-        $statement->execute();
-        $statement->closeCursor();
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+    public function __construct ($pres_id, $ses_id, $mentor_id, $pres_enrolled_count, $pres_paired_pres_id, $pres_max_capacity)
+    {
+        $this->pres_id = $pres_id;
+        $this->ses_id = $ses_id;
+        $this->mentor_id = $mentor_id;
+        $this->pres_enrolled_count = $pres_enrolled_count;
+        $this->pres_paired_pres_id = $pres_paired_pres_id;
+        $this->pres_max_capacity = $pres_max_capacity;
     }
-}
 
-function delete_user_presentations_by_session ($ses_id, $usr_id) {
-    $query = 'delete from pres_user_xref
-                where pres_id in (
-                    select pres_id
-                    from presentation
-                    where ses_id = :ses_id)
-                and usr_id = :usr_id;';
-
-    global $db;
-
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(":ses_id", $ses_id);
-        $statement->bindValue(":usr_id", $usr_id);
-        $statement->execute();
-        $statement->closeCursor();
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+    public function __toString ()
+    {
+        return "pres_id:" . $this->pres_id . ";ses_id:" . $this->ses_id .
+                ";enrolled:" . $this->pres_enrolled_count . ";max:" . $this->pres_max_capacity;
     }
-}
+    public static function getPresentation ($pres_id)
+    {
+        $query = 'select pres_id, ses_id, presentation.mentor_id, pres_enrolled_count, pres_paired_pres_id, pres_max_capacity
+              from presentation
+              inner join mentor on mentor.mentor_id = presentation.mentor_id
+              where pres_id = :pres_id';
 
+        global $db;
 
-// Need to turn this into a transaction.
-function joinSessionPresentation ($ses_id, $pres_id, $usr_id)
-{
-    delete_user_presentations_by_session($ses_id, $usr_id);
-    add_presentation_for_user ($pres_id, $usr_id);
-}
-
-function presentation_has_space ($pres_id) {
-    $query = 'SELECT (pres_max_capacity - pres_enrolled_count) as val
-        from presentation
-		inner join mentor on presentation.mentor_id = mentor.mentor_id
-		where presentation.pres_id = :pres_id';
-
-    global $db;
-
-    try {
         $statement = $db->prepare($query);
-        $statement->bindValue(":pres_id", $pres_id);
+        $statement->bindValue(':pres_id', $pres_id);
         $statement->execute();
         $result = $statement->fetch();
         $statement->closeCursor();
 
-        if ($result['val'] > 0)
+        $p = new Presentation($result["pres_id"],$result["ses_id"],$result["mentor_id"],$result["pres_enrolled_count"],
+                                $result["pres_paired_pres_id"], $result["pres_max_capacity"]);
+
+        return $p;
+    }
+
+    public static function getPresentationByUserBySession ($usr_id, $ses_id)
+    {
+        $query = 'select presentation.pres_id, ses_id, presentation.mentor_id, pres_enrolled_count, pres_paired_pres_id, pres_max_capacity
+                  from presentation
+                  inner join mentor on presentation.mentor_id = mentor.mentor_id
+                  inner join pres_user_xref on presentation.pres_id = pres_user_xref.pres_id
+                  where ses_id = :ses_id
+                  and usr_id = :usr_id';
+
+        global $db;
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->bindValue(':ses_id', $ses_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+
+        if ($result == false)
+            return null;
+        else
+            return new Presentation($result["pres_id"],$result["ses_id"],$result["mentor_id"],$result["pres_enrolled_count"],
+                                    $result["pres_paired_pres_id"], $result["pres_max_capacity"]);
+    }
+
+    function has_space()
+    {
+        if ($this->pres_max_capacity > $this->pres_enrolled_count)
             return true;
         else
             return false;
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
     }
-}
 
-function get_session_for_presentation ($pres_id) {
-    $query = 'SELECT ses_id
-        from presentation
-		where pres_id = :pres_id';
+    function insert_presentation_for_user($usr_id) {
+        $query = 'insert into pres_user_xref (pres_id, usr_id, pres_user_updt_usr_id)
+              VALUES (:pres_id, :usr_id, :pres_user_updt_usr_id)';
 
-    global $db;
-
-    try {
+        global $db;
         $statement = $db->prepare($query);
-        $statement->bindValue(":pres_id", $pres_id);
+        $statement->bindValue(":pres_id", $this->pres_id);
+        $statement->bindValue(":usr_id", $usr_id);
+        $statement->bindValue(":pres_user_updt_usr_id", $usr_id);
         $statement->execute();
-        $result = $statement->fetch();
         $statement->closeCursor();
-
-        return $result['ses_id'];
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
     }
-}
 
-function delete_presentation_for_user($pres_id, $usr_id) {
-    $query = 'delete from pres_user_xref
-              WHERE pres_id = :pres_id
-              and usr_id = :usr_id';
+    function delete_presentation_for_user ($usr_id) {
+        $query = 'delete from pres_user_xref
+                where pres_id = :pres_id
+                and usr_id = :usr_id';
 
-    global $db;
-
-    try {
+        global $db;
         $statement = $db->prepare($query);
-        $statement->bindValue(":pres_id", $pres_id);
+        $statement->bindValue(":pres_id", $this->pres_id);
         $statement->bindValue(":usr_id", $usr_id);
         $statement->execute();
         $statement->closeCursor();
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+    }
+
+    public static function deletePresentationsByUserBySession($usr_id, $ses_id)
+    {
+        // Load the existing presentation for the user for this session.
+        $existingPresentation = Presentation::getPresentationByUserBySession($usr_id, $ses_id);
+
+        // If the user has any existing presentations during the same session time, delete them.
+        if ($existingPresentation != null) {
+            $existingPresentation->delete_presentation_for_user($usr_id);
+
+            if ($existingPresentation->pres_paired_pres_id != null) {
+                $pairedExistingPresentation = Presentation::getPresentation($existingPresentation->pres_paired_pres_id);
+                $pairedExistingPresentation->delete_presentation_for_user($usr_id);
+            }
+        }
+    }
+
+    public function addPresForUser ($usr_id)
+    {
+        // begin transaction
+        global $db;
+        $db->beginTransaction();
+
+        try {
+            Presentation::deletePresentationsByUserBySession($usr_id, $this->ses_id);
+
+            // Inserts the new session for the user.
+            $this->insert_presentation_for_user ($usr_id);
+
+            if ($this->pres_paired_pres_id != null) {
+                $pairedPresentation = Presentation::getPresentation($this->pres_paired_pres_id);
+                Presentation::deletePresentationsByUserBySession($usr_id, $pairedPresentation->ses_id);
+
+                // Inserts the new session for the user.
+                $pairedPresentation->insert_presentation_for_user ($usr_id);
+            }
+
+            // commit transaction
+            $db->commit();
+
+        } // any errors from the above database queries will be catched
+        catch (PDOException $e) {
+            // roll back transaction
+            $db->rollback();
+
+            // log any errors to file
+            log_pdo_exception ($e, $usr_id, "Adding Presentation:" . $this, "addPresForUser");
+
+            display_error("Error saving data.");
+            exit();
+        }
     }
 }
-
 
 ?>

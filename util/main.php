@@ -5,6 +5,7 @@ $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
 
 // For development machines
 $app_path = $doc_root . "/" . $app_name;   // Looks like c:/xampp/htdocs/bca-apps
+$error_message = "";
 
 // For DEV Server
 // $app_path =  "/home2/atcsdevbergen/public_html/" . $app_name;   // Looks like c:/xampp/htdocs/bca-apps
@@ -35,8 +36,57 @@ require_once('model/database.php');
 // Add them here.
 //
 function display_error($error_message) {
+    global $app_name;
     include 'errors/error.php';
-    exit;
+    exit();
+}
+
+function log_exception ($exception, $usr_id, $src, $method)
+{
+    $query = 'insert into log (log_lvl_cde, log_msg, log_src, log_mthd, usr_id)
+              VALUES (\'ERR\',:log_msg, :log_src, :log_mthd, :usr_id)';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":log_msg", $exception->getMessage());
+        $statement->bindValue(":log_src", $src);
+        $statement->bindValue(":log_mthd", $method);
+        $statement->bindValue(":usr_id", $usr_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
+function log_pdo_exception ($exception, $usr_id, $src, $method)
+{
+    $query = 'insert into log (log_lvl_cde, log_msg, log_src, log_mthd,
+                usr_id, log_pdo_code, log_pdo_file, log_pdo_line, log_pdo_msg)
+              VALUES (\'ERR\',:log_msg, :log_src, :log_mthd,
+               :usr_id, :log_pdo_code, :log_pdo_file, :log_pdo_line, :log_pdo_msg)';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":log_msg", $exception->getMessage());
+        $statement->bindValue(":log_src", $src);
+        $statement->bindValue(":log_mthd", $method);
+        $statement->bindValue(":usr_id", $usr_id);
+        $statement->bindValue(":log_pdo_code", $exception->getCode());
+        $statement->bindValue(":log_pdo_file", $exception->getFile());
+        $statement->bindValue(":log_pdo_line", $exception->getLine());
+        $statement->bindValue(":log_pdo_msg", $exception->getMessage());
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
 }
 
 function verify_admin() {

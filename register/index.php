@@ -43,27 +43,25 @@ if ($action == "register") {
     }
 }  else if ($action == "commit") {
     $pres_id = filter_input(INPUT_GET, 'pres_id');
+    $presentation = Presentation::getPresentation($pres_id);
 
-    // Why run this query when we have the value in the get request? To ensure consistency in case
-    // of any discrepancies between the pres_id and ses_id in the GET.
-    // We are deleting presentations based upon the ses_id and adding using the pres_id.
-    // $currentSession = get_session_for_presentation($pres_id);
-
+    // Error -- not time to sign up.
     if ($current_date < $start_date || $current_date > $end_date) {
-        echo("<h1>It is not time to enroll.</h1>");
-    }
-    else if (presentation_has_space($pres_id) == false) {
-        echo("<h1>Presentation is full.</h1>");
-    }
-    else {
-        if ($is_enrolled) {
-            delete_presentation_for_user($pres_enrolled['pres_id'], $user['usr_id']);
+        if (!$presentation->has_space()) {
+            display_error("It is not currently time to enroll.  Please check the enrollment dates.");
+            exit();
         }
+    }
 
-        add_presentation_for_user ($pres_id, $user['usr_id']);
-//        exit();
-//        joinSessionPresentation ($currentSession, $pres_id, $user['usr_id']);
+    // Error -- presentation full.
+    else if (!$presentation->has_space()) {
+        display_error("The presentation you selected is already full.  Please select another.");
+        exit();
+    }
 
+    // All good -- add the presentation!
+    else {
+        $presentation->addPresForUser($user['usr_id']);
         header("Location: ../itinerary/");
     }
 }
