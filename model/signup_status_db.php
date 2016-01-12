@@ -19,7 +19,7 @@ function get_registered_users(){
     where usr_active = 1
     and usr_type_cde = \'STD\'
     group by grade_lvl, user.usr_id
-    having num_sessions < 4
+    having num_sessions = 4
     ) temp
     group by grade_lvl ) a
 
