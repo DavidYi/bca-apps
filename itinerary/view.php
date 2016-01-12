@@ -14,12 +14,11 @@
 			<div class="vertical-center">
 				<h1>Career Day</h1>
 				<h3>
-					BCA will hold Career Day on <b>Tuesday, February 2</b>.  At Career Day, you will have the opportunity
-					to participate in presentations by 4 different mentors of your choosing.  Through this experience,
-					our hope is that you can gain insight into the variety and types of career paths available to you.
-				</h3>
-				<h3> You have the opportunity to select the presentations <b>between <?php echo $start_date?> and <?php echo $end_date?></b>.  At that time, if you have not completed
+					You have the opportunity to select the presentations <b>between <?php echo $start_date?> and <?php echo $end_date?></b>.  At that time, if you have not completed
 					the registration process, you will be randomly assigned to presentations.
+				</h3>
+				<h3>
+					<h3>Click <a href="" download>here</a> to get a complete document about the speakers.</h3>
 				</h3>
 				<h3>
 					Please email <a href="mailto:micpin@bergen.org"> Ms. Pinke </a> with any questions
