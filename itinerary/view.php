@@ -5,6 +5,8 @@
 		<!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
 		<!-- Styles -->
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link href="../ss/main.css" rel="stylesheet">
 		<?php include_analytics(); ?>
 	</head>
