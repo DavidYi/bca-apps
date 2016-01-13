@@ -13,10 +13,9 @@
 <body>
 
 <form action="." method="post">
-    <input type="hidden" name="action" value="generate">
+    <input type="hidden" name="action" value="generateS">
     <label>Mentor:</label>
     <select name="mentor">
-        <option value="All" selected="selected">All Mentors</option>
         <?php foreach ($mentors as $mentor) :
             if (($mentor['mentor_id'] == $mentor_id)) {
                 $selected = 'selected';
@@ -51,7 +50,12 @@
     </select>
 
     <br>
-    <input type="submit" value="Generate">
+    <input type="submit" value="Generate Session Sign in">
+</form>
+
+<form action="." method="post">
+    <input type="hidden" name="action" value="generateT">
+    <input type="submit" value="Generate Mentor Check in">
 </form>
 </body>
 </html>
