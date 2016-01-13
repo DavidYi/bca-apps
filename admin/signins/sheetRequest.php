@@ -24,8 +24,8 @@
                 $selected = '';
             }
             ?>
-            <option value="<?php echo $mentor['mentor_id']; ?>" selected="<?php
-            echo $selected ?>">
+            <option value="<?php echo $mentor['mentor_id']; ?>"<?php
+            echo $selected ?>>
                 <?php echo htmlspecialchars($mentor['mentor_last_name'])?>, <?php
                 echo htmlspecialchars($mentor['mentor_first_name']); ?> (<?php echo
                 htmlspecialchars($mentor['mentor_company'])?>)
