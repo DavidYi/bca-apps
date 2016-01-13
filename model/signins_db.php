@@ -89,7 +89,7 @@ function get_presentation_list($mentor_id, $ses_id)
     if ($ses_id != 'All')
         $query .= " and presentation.ses_id= :ses_id";
 
-    $query .= " order by session_times.sort_order, mentor.pres_host_teacher";
+    $query .= " order by mentor_last_name, mentor_first_name, session_times.sort_order";
 
     global $db;
 
@@ -111,7 +111,4 @@ function get_presentation_list($mentor_id, $ses_id)
         display_db_error($error_message);
     }
 }
-
-//todo: get query to find the exact session of the exact mentor if they are both specified
-//todo: get query to find a session with all the presentations if only one is specified
 ?>
