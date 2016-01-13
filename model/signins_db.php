@@ -73,7 +73,7 @@ function get_students_in_ses($pres_id)
 
 }
 
-function get_presentation_list($mentor, $ses_id)
+function get_presentation_list($mentor_id, $ses_id)
 {
     $query = 'SELECT mentor.mentor_id, mentor_last_name, mentor_first_name, mentor_position, mentor_company,
                     pres_room, pres_host_teacher, pres_max_capacity, ses_start, ses_end, ses_name, pres_enrolled_count,
@@ -81,19 +81,35 @@ function get_presentation_list($mentor, $ses_id)
                     from mentor
                     inner join presentation on presentation.mentor_id = mentor.mentor_id
                     inner join session_times on session_times.ses_id = presentation.ses_id
-                    where mentor.active = 1
-                    and pres_id in (257, 349, 93)
+                    where mentor.active = 1';
 
+    if ($mentor_id != 'All')
+        $query .= " and mentor.mentor_id = :mentor_id";
 
+    if ($ses_id != 'All')
+        $query .= " and presentation.ses_id= :ses_id";
 
+    $query .= " order by session_times.sort_order, mentor.pres_host_teacher";
 
-                    order by session_times.sort_order, mentor.pres_host_teacher';
+    global $db;
 
+    try {
+        $statement = $db->prepare($query);
 
+        if ($mentor_id != 'All')
+            $statement->bindValue(':mentor_id', $mentor_id);
 
+        if ($ses_id != 'All')
+            $statement->bindValue(':ses_id', $ses_id);
 
-
-    return get_list($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
 }
 
 //todo: get query to find the exact session of the exact mentor if they are both specified
