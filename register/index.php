@@ -24,6 +24,11 @@ if ($pres_enrolled != NULL) {
     $is_enrolled = TRUE;
 }
 
+$sort_order = filter_input(INPUT_GET, 'order');
+if ($sort_order == NULL) {
+    $sort_order = 1;
+}
+
 $signup_dates = (get_signup_dates_by_class_year($user['usr_class_year']));
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
@@ -36,7 +41,7 @@ $register_id = 0;
 $is_changing = $is_enrolled;
 if ($action == "register") {
     if (!($current_date < $start_date || $current_date > $end_date)) {
-        $presentations = get_presentation_list($currentSession, $sort_by);
+        $presentations = get_presentation_list($currentSession, $sort_by, $sort_order);
         include("view.php");
     } else {
        display_error("It's not time to enroll yet");

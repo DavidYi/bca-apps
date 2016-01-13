@@ -29,7 +29,7 @@ function get_session_times_by_id($ses_id) {
     }
 }
 
-function get_presentation_list($ses_id, $sort_by) {
+function get_presentation_list($ses_id, $sort_by, $order_by) {
     $query = 	'SELECT mentor.mentor_id,  mentor_last_name ,  mentor_first_name ,  mentor_field ,
 					mentor_position , mentor_company ,  mentor_profile ,  mentor_keywords ,  
 					mentor_email ,  mentor_cell_nbr , mentor_phone_nbr ,  mentor_address ,  
@@ -47,6 +47,7 @@ function get_presentation_list($ses_id, $sort_by) {
     else if ($sort_by == 4) $query .= ('ORDER BY mentor_company');
     else if ($sort_by == 5) $query .= ('ORDER BY presentation.pres_enrolled_count');
     else $query .= ('ORDER BY mentor_field');
+    if ($order_by == 2) $query.= (' DESC');
 	
     global $db;
 
