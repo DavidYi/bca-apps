@@ -6,6 +6,8 @@
 
     <!-- Styles -->
     <link href="/<?php echo $app_name ?>/ss/main.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
 </head>
 <body>
