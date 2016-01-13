@@ -319,6 +319,14 @@ nav.navbar {
     clear: both;
     content: "";
     display: table; }
+  @media screen and (max-width: 800px) {
+    nav.navbar {
+      height: 3.75em;
+      width: 85%; } }
+  @media screen and (max-width: 600px) {
+    nav.navbar {
+      height: 3.75em;
+      width: 98%; } }
   nav.navbar .session-filter {
     display: inline-block;
     height: 100%;
@@ -419,6 +427,14 @@ nav.navbar {
     clear: both;
     content: "";
     display: table; }
+  @media screen and (max-width: 800px) {
+    .enrollment {
+      height: 75%;
+      width: 85%; } }
+  @media screen and (max-width: 600px) {
+    .enrollment {
+      height: 75%;
+      width: 98%; } }
   .enrollment .session {
     display: block;
     height: 3.75em;
@@ -651,11 +667,12 @@ nav.navbar {
   -o-transform-style: preserve-3d;
   transform-style: preserve-3d; }
   .view .view-main {
-    height: 100%;
     float: left;
     display: block;
     margin-right: 0%;
     width: 33.33333%;
+    height: 100%;
+    margin: 0;
     padding: 0 3.125em;
     -webkit-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
@@ -685,8 +702,10 @@ nav.navbar {
     display: block;
     margin-right: 0%;
     width: 66.66667%;
-    padding: 0 4.6875em;
+    max-width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0 4.6875em;
     background-color: rgba(240, 195, 15, 0.66); }
     .view .view-signup:last-child {
       margin-right: 0; }
@@ -698,6 +717,8 @@ nav.navbar {
       -ms-transform: translateY(-50%);
       -o-transform: translateY(-50%);
       transform: translateY(-50%); }
+    .view .view-signup a:last-child .session {
+      border-bottom: none; }
     @media screen and (max-width: 800px) {
       .view .view-signup {
         height: 50%;

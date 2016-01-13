@@ -35,6 +35,9 @@ nav.navbar {
 	background: $color-mineshaft;
 	border-right: em(7px) solid $color-mineshaft;
 
+	@include media($medium-screen-down) { @include size(85% em(60px)); }
+	@include media($mobile) { @include size(98% em(60px)); }
+
 	.session-filter {
 		display: inline-block;
 		height: 100%;
@@ -74,6 +77,9 @@ nav.navbar {
 	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
 	color: $color-black;
 
+	@include media($medium-screen-down) { @include size(85% 75%); }
+	@include media($mobile) { @include size(98% 75%); }
+	
 	.session {
 		@include row;
 		height: em(60px);
