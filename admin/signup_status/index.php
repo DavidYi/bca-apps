@@ -15,7 +15,6 @@ if ($action == NULL) {
     }
 }
 $result = "";
-$enroll_list = get_registered_users();
 
 switch($action) {
     case "auto_enroll":
