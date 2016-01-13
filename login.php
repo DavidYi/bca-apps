@@ -17,9 +17,9 @@
 						to participate in presentations by 4 different mentors of your choosing.  Through this experience,
 						our hope is that you can gain insight into the variety and types of career paths available to you.
 					</h3>
-					<!-- <h3>
+					<h3 style="color:red">
 						<?php echo $message ?>
-					</h3> -->
+					</h3>
 
 	            </div>
 			</div>
