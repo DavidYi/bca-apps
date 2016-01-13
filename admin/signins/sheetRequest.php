@@ -16,6 +16,7 @@
     <input type="hidden" name="action" value="generateS">
     <label>Mentor:</label>
     <select name="mentor">
+        <option value="All" selected="selected">All Mentors</option>
         <?php foreach ($mentors as $mentor) :
             if (($mentor['mentor_id'] == $mentor_id)) {
                 $selected = 'selected';

@@ -53,7 +53,7 @@ switch ($action) {
     case 'generates':
         $mentor = filter_input(INPUT_POST, 'mentor');
         $session_id = filter_input(INPUT_POST, 'session');
-        $presentations = get_presentation_list();
+        $presentations = get_presentation_list($mentor, $session_id);
 //todo: if session is all then print all of the sessions
         $header = array("Year", "Academy", "Name", "Signature");
         $pdf = new signinPDF();

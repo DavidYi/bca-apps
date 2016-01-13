@@ -73,7 +73,7 @@ function get_students_in_ses($pres_id)
 
 }
 
-function get_presentation_list()
+function get_presentation_list($mentor, $ses_id)
 {
     $query = 'SELECT mentor.mentor_id, mentor_last_name, mentor_first_name, mentor_position, mentor_company,
                     pres_room, pres_host_teacher, pres_max_capacity, ses_start, ses_end, ses_name, pres_enrolled_count,
@@ -83,7 +83,16 @@ function get_presentation_list()
                     inner join session_times on session_times.ses_id = presentation.ses_id
                     where mentor.active = 1
                     and pres_id in (257, 349, 93)
+
+
+
+
                     order by session_times.sort_order, mentor.pres_host_teacher';
+
+
+
+
+
     return get_list($query);
 }
 
