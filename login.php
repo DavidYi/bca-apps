@@ -1,6 +1,6 @@
 <html lang="en">
 	<head>
-		<title>Career Day 2015 Registration</title>
+		<title>Career Day Registration</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
