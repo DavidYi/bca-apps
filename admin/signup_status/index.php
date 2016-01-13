@@ -27,6 +27,7 @@ switch($action) {
             }
         }
         random_enroll($grade);
+        $enroll_list = get_registered_users();
         include 'view.php';
         break;
     case "undo_auto_enroll":
@@ -38,9 +39,11 @@ switch($action) {
             }
         }
         undo_enroll($grade);
+        $enroll_list = get_registered_users();
         include 'view.php';
         break;
     case "display_status":
+        $enroll_list = get_registered_users();
         include 'view.php';
         break;
     default:
