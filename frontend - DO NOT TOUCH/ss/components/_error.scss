@@ -21,7 +21,7 @@
 
 	h3 {
 		color: $color-dustygray;
-		@include margin(em(0));
+		@include margin(0);
 	}
 
 	button {

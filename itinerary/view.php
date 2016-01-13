@@ -13,11 +13,15 @@
 	<body>
 		<section class="main view">
 			<div class="view-main">
+			<div class="login-status">
+				<h3><b>Su Min Kim</b></h3>
+				<h3 class="log-out">Log Out</h3>
+			</div>
 			<div class="vertical-center">
 				<h1>Career Day (Feb. 2)</h1>
 
 <?php if ($startTime > $currentTime) { ?>
-				<h3> Registration is <b>closed</b>!</h3>
+				<h3> Registration is <b>has not ope</b>!</h3>
 				<h3> Opens: <?php echo $startTimeFormatted ?> </h3>
 
 <?php } elseif ($endTime < $currentTime) { ?>
@@ -64,7 +68,6 @@
 		<script type="text/javascript" src="../js/jquery.easing.min.js"></script>
 		<script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
 		<script type="text/javascript">
-		$	('.session').last().css("border-bottom", "none");
 		    $('body').plusAnchor({
 		        easing: 'easeInOutExpo',
 		        speed:  700
