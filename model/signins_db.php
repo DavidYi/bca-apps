@@ -16,6 +16,26 @@ function get_session_times()
     return get_list($query);
 }
 
+function get_session_times_by_id($ses_id) {
+    $query = 'SELECT ses_name, ses_start, ses_end
+              FROM session_times
+              WHERE ses_id = :ses_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':ses_id', $ses_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
 function get_mentors()
 {
     $query = 'SELECT mentor.mentor_id,  mentor_last_name ,  mentor_first_name ,  mentor_field ,
@@ -29,17 +49,31 @@ function get_mentors()
     return get_list($query);
 }
 
-function get_students_in_ses()
+function get_students_in_ses($pres_id)
 {
-    $query = 'SELECT usr_last_name, usr_first_name, usr_class_year
+    $query = 'SELECT usr_last_name, usr_first_name, usr_class_year, academy_cde
                     from pres_user_xref
                     inner join user on pres_user_xref.usr_id = user.usr_id
-                    where pres_user_xref.pres_id = 257
+                    where pres_user_xref.pres_id = :pres_id
                     order by usr_last_name, usr_first_name';
-    return get_list($query);
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+
 }
 
-function get_presentation_list()
+function get_presentation_list($mentor, $ses_id)
 {
     $query = 'SELECT mentor.mentor_id, mentor_last_name, mentor_first_name, mentor_position, mentor_company,
                     pres_room, pres_host_teacher, pres_max_capacity, ses_start, ses_end, ses_name, pres_enrolled_count,
@@ -49,7 +83,16 @@ function get_presentation_list()
                     inner join session_times on session_times.ses_id = presentation.ses_id
                     where mentor.active = 1
                     and pres_id in (257, 349, 93)
+
+
+
+
                     order by session_times.sort_order, mentor.pres_host_teacher';
+
+
+
+
+
     return get_list($query);
 }
 

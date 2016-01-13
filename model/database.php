@@ -3,6 +3,8 @@
 # $dsn = 'mysql:host=localhost;dbname=career_day';
 # $username = 'caruser';
 # $password = 'caruser';
+# $username = 'root';
+# $password = '';
 
 # Remote connection option
 $dsn = 'mysql:host=webdev01.bergen.org;dbname=atcsdevb_career_day';
