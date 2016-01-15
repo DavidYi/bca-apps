@@ -31,7 +31,9 @@
             <a href="/<?php echo $app_name ?>/itinerary">
 
             <div class="session session-selected"">
-                <div class="tag"><?php echo $presentation['mentor_field']?></div>
+                <div class="tag">
+                    <?php echo $presentation['mentor_field']?>
+                </div>
                 <div class="title"><?php echo $presentation['mentor_position']?></div>
                 <div class="presenter">
                     <?php echo $presentation['mentor_last_name'] ?>,
@@ -47,7 +49,11 @@
         <?php foreach ($presentations as $presentation) {
             if ($id != $presentation['pres_id']) {?>
                <a href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"> <div class="session">
-                    <div class="tag"><?php echo $presentation['mentor_field']?></div>
+                    <div class="tag">
+                        <span data-tooltip="I’m the tooltip text.I’m the tooltip text."><?php echo $presentation['mentor_field']?></span>
+                        
+                        <!-- <div class="show-more">...</div> -->
+                    </div>
                     <div class="title"><?php echo $presentation['mentor_position']?></div>
                     <div class="presenter">
                         <?php echo $presentation['mentor_last_name'] ?>,
