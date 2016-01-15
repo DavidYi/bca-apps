@@ -25,7 +25,7 @@
     </nav>
 
     <div class="enrollment">
-    here
+    <!-- here -->
         <?php if ($is_changing) {
             $presentation = get_sessions_by_user($user['usr_id'])[$currentSession - 1];
             $id = $presentation['pres_id'] ?>
