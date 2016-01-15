@@ -51,10 +51,9 @@ switch ($action) {
         break;
 
     case 'generates':
-        $mentor = filter_input(INPUT_POST, 'mentor');
+        $mentor_id = filter_input(INPUT_POST, 'mentor');
         $session_id = filter_input(INPUT_POST, 'session');
-        $presentations = get_presentation_list($mentor, $session_id);
-//todo: if session is all then print all of the sessions
+        $presentations = get_presentation_list($mentor_id, $session_id);
         $header = array("Year", "Academy", "Name", "Signature");
         $pdf = new signinPDF();
 
@@ -83,5 +82,22 @@ switch ($action) {
 
         $pdf->Output('signin.pdf', 'I');
         break;
+
+//    case 'generater':
+//        $mentor_id = filter_input(INPUT_POST, 'mentor');
+//        $session_id = filter_input(INPUT_POST, 'session');
+//        $presentations = get_presentation_list($mentor_id, $session_id);
+//        $pdf = new signinPDF();
+//
+//        foreach ($presentations as $pres) {
+//            $pdf->AddPage("L", "Letter");
+//            $pdf->SetFont('Arial', '', 60);
+//
+//            $pdf->Cell($pdf->getW(),$pdf->getH(),pres['mentor_first_name'] . " " . pres['mentor_last_name'], 0, 0, "C");
+//        }
+//
+//        $pdf->Output('roomSigns.pdf', 'I');
+//        break;
+
 }
 ?>

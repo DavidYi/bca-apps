@@ -11,18 +11,6 @@ require("/fpdf/fpdf.php");
 class signinPDF extends FPDF
 {
 
-//    public function Header($title, $host, $mentor) {
-//        //logo
-//        $image_file = K_PATH_IMAGES . '/images/BCAlogo2.png';
-//        $this->Image($image_file, 10, 10, 100);
-////        // Set font
-////        $this->SetXY(50, 10);
-////        $this->SetFont('helvetica', 'B', 20);
-////        //title
-////        $this->Cell(0, 15, $title, 0, false, 'C', 0, '', 0, false, 'M', 'M');
-////        $this->Cell();
-//    }
-
     function FancyStudent($header, $data)
     {
         $headHeight = 10;
@@ -55,7 +43,7 @@ class signinPDF extends FPDF
         foreach ($data as $row) {
             $fontSizeTemp = $fontSize;
 
-            if (($this->GetY() >= 250) && ($this->GetY() <= 256)){
+            if (($this->GetY() >= 250) && ($this->GetY() <= 256)) {
                 $this->SetFillColor(88, 88, 88);
                 $this->SetTextColor(255);
                 $this->SetDrawColor(0);
@@ -128,7 +116,7 @@ class signinPDF extends FPDF
 //
 //            $y = $this->GetY();
 //            $this->Cell(100, 9, $y);
-            if (($this->GetY() >= 250) && ($this->GetY() <= 256)){
+            if (($this->GetY() >= 250) && ($this->GetY() <= 256)) {
                 $this->SetFillColor(88, 88, 88);
                 $this->SetTextColor(255);
                 $this->SetDrawColor(0);
@@ -183,12 +171,17 @@ class signinPDF extends FPDF
         }
 
     }
-}
 
-//    public function Footer()
+
+//    function getW()
 //    {
-//        $this->SetY(-15);
+//        return $w;
 //    }
-//}
+//
+//    function getH()
+//    {
+//        return $h;
+//    }
+}
 
 ?>

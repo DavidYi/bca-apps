@@ -13,7 +13,10 @@
 
 		h3 { color: $color-emperor; }
 
-		.vertical-center { @include vertical-center; }
+		.vertical-center {
+			@include position(relative, 40% null null null);
+  			@include transform(translateY(-40%));
+		}
 
 		@include media($medium-screen-down) {
 			@include size(100% 50%);
@@ -24,6 +27,18 @@
 		}
 
 	}
+
+	.login-status {
+		padding: em(20px) 0;
+		h3{
+			display: inline-block;
+		}
+		.log-out{
+			float: right;
+			text-decoration: underline;
+		}
+	}
+
 	.view-signup {
 		@include span-columns(8);
 		max-width: 100%;

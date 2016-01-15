@@ -52,11 +52,17 @@
 
     <br>
     <input type="submit" value="Generate Session Sign in">
+<!--    <input type="hidden" name="action" value="generateR">-->
+<!--    <input type="submit" value="Generate Room Signs">-->
 </form>
 
 <form action="." method="post">
     <input type="hidden" name="action" value="generateT">
     <input type="submit" value="Generate Mentor Check in">
 </form>
+<!--<form action="." method="post">-->
+<!--    <input type="hidden" name="action" value="generateR">-->
+<!--    <input type="submit" value="Generate Room Signs">-->
+<!--</form>-->
 </body>
 </html>
