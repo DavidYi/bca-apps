@@ -15,25 +15,25 @@
 			<div class="view-main">
 			<div class="login-status">
 				<h3><b><?php echo ($user['usr_first_name']." ".$user['usr_last_name']); ?></b></h3>
-				<h3 class="log-out"><a href="../">Log Out</a></h3>
+				<h3 class="log-out"><a href="./index.php?action=logout">Log Out</a></h3>
 			</div>
 			<div class="vertical-center">
 				<h1>Career Day (Feb. 2)</h1>
 
 <?php if ($startTime > $currentTime) { ?>
-				<h3> Registration is <b>has not ope</b>!</h3>
+				<h3> Registration <b>has not opened</b>!</h3>
 				<h3> Opens: <?php echo $startTimeFormatted ?> </h3>
 
 <?php } elseif ($endTime < $currentTime) { ?>
 				<h3> Registration has <b>ended</b>. </h3>
-				<h3> If you did not finish registering, random session will be assigned to you. </h3>
+				<h3> If you did not finish registering, a session will be assigned to you. </h3>
 
 <?php } else { ?>
 				<h3> Registration is <b>open</b>! </h3>
 				<h3> Closes: <?php echo $endTimeFormatted ?> </h3>
 <?php } ?>
 
-				<h3> Click <a href="" download>here</a> to get a complete document about the speakers.</h3>
+				<h3> Click <a href="../../CareerDayMentors.pdf" download>here</a> to read about the mentors.</h3>
 				<h3> Email <a href="mailto:micpin@bergen.org"> Ms. Pinke </a> with any questions.</h3>
 			</div>
 			</div>

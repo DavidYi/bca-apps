@@ -10,6 +10,12 @@ require_once("../util/main.php");
 require_once("model/presentations_db.php");
 require_once ("model/signups_db.php");
 
+$action = filter_input(INPUT_GET, 'action');
+if (isset($action) and ($action == "logout")) {
+    session_destroy();
+    header("Location: ../index.php");
+}
+
 $user = get_user($_SESSION['usr_id']);
 $sessions = get_sessions_by_user($user['usr_id']);
 
