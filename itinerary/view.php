@@ -14,8 +14,8 @@
 		<section class="main view">
 			<div class="view-main">
 			<div class="login-status">
-				<h3><b>Su Min Kim</b></h3>
-				<h3 class="log-out">Log Out</h3>
+				<h3><b><?php echo ($user['usr_first_name']." ".$user['usr_last_name']); ?></b></h3>
+				<h3 class="log-out"><a href="../">Log Out</a></h3>
 			</div>
 			<div class="vertical-center">
 				<h1>Career Day (Feb. 2)</h1>
