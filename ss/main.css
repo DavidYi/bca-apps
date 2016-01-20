@@ -310,9 +310,9 @@ nav.navbar {
   max-width: 75em;
   margin-left: auto;
   margin-right: auto;
+  line-height: 3.75em;
   margin: 0 auto;
   padding: 0 1.5625em;
-  line-height: 3.75em;
   background: #262626;
   border-right: 0.4375em solid #262626; }
   nav.navbar::after {
