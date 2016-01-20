@@ -169,6 +169,15 @@ function no_enroll_download() {
     return get_csv_list($query);
 }
 
+function mentor_download() {
+    $query = 'select mentor_last_name, mentor_first_name, mentor_field, mentor_position, mentor_company, pres_room, pres_host_teacher, ses_id, pres_max_capacity, pres_enrolled_count, pres_max_capacity - pres_enrolled_count as remaining
+    from mentor, presentation
+    where mentor.mentor_id = presentation.mentor_id
+    and active = 1
+    order by mentor_last_name, mentor_first_name';
+    return get_csv_list($query);
+}
+
 function get_csv_list($query)
 {
     global $db;

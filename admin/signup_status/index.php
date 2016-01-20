@@ -79,7 +79,21 @@ switch($action) {
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="not_enrolled.csv";');
 
-        fputcsv($output, array('last','first','username','year','number of Sessions'));
+        fputcsv($output, array('Last','First','Username','Year','Number of Sessions'));
+        foreach($student_list as $student) {
+            fputcsv($output, $student);
+        }
+        fpassthru($output);
+        fclose($output) or die("Can't close file");
+        exit();
+        break;
+    case "mentor_download":
+        $student_list = mentor_download();
+        $output = fopen('php://output', 'w') or die("Can't open file");
+        header("Content-Type:application/csv");
+        header('Content-Disposition: attachment; filename="mentor.csv";');
+
+        fputcsv($output, array('Last','First','Field','Position','Company', 'Room', 'Host', 'Session', 'Max', 'Enrolled', 'Remaining'));
         foreach($student_list as $student) {
             fputcsv($output, $student);
         }

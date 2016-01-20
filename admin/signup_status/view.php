@@ -77,7 +77,7 @@
                 </div>
                 <div class = "auto-enroll">
                     <button onclick= "autoEnroll(<?php echo $grade?>)">Enroll</button>
-                    <button onclick= "undoAutoEnroll(<?php echo $grade?>)">Undo Enroll</button>
+                    <button onclick= "undoAutoEnroll(<?php echo $grade?>)">Undo</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -90,7 +90,9 @@
         <br>
         <a href = "#" onclick= "post('index.php', {action: 'partial_download'}, 'post')">Partially Enrolled Students List</a>
         <br>
-        <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">Unenrolled Students List</a></div>
+        <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">Unenrolled Students List</a>
+        <br>
+        <a href = "#" onclick= "post('index.php', {action: 'mentor_download'}, 'post')">Students by Mentor</a></div>
 </section>
 </body>
 </html>
