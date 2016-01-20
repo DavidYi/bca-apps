@@ -396,7 +396,7 @@ nav.navbar .grade {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 15%;
+    width: 20%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -409,7 +409,7 @@ nav.navbar .full {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 15%;
+    width: 20%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -422,7 +422,7 @@ nav.navbar .partial {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 15%;
+    width: 20%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -435,7 +435,7 @@ nav.navbar .none {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 15%;
+    width: 20%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -455,22 +455,11 @@ nav.navbar .auto {
     font-size: 1.125em;
     font-weight: 500;
     text-align: left; }
-nav.navbar .dl {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 20%;
-    color: #555;
-    margin: 0;
-    padding: 0;
-    font-size: 1.125em;
-    font-weight: 500;
-    text-align: left; }
 nav.navbar .auto:last-child {
     margin-right: 0; }
-nav.navbar .grade, nav.navbar .full, nav.navbar .partial, nav.navbar .none, nav.navbar .auto, nav.navbar .dl, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-full, nav.navbar .name {
+nav.navbar .grade, nav.navbar .full, nav.navbar .partial, nav.navbar .none, nav.navbar .auto, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-full, nav.navbar .name {
     color: #aaa; }
-nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.navbar .full:active, nav.navbar .partial:hover, nav.navbar .partial:active, nav.navbar .none:hover, nav.navbar .none:active, nav.navbar .auto:hover, nav.navbar .auto:active, nav.navbar .dl:hover, nav.navbar .dl:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-full:hover, nav.navbar .session-full:active, nav.navbar .name:hover, nav.navbar .name:active {
+nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.navbar .full:active, nav.navbar .partial:hover, nav.navbar .partial:active, nav.navbar .none:hover, nav.navbar .none:active, nav.navbar .auto:hover, nav.navbar .auto:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-full:hover, nav.navbar .session-full:active, nav.navbar .name:hover, nav.navbar .name:active {
     color: #eee;
     text-decoration: underline; }
 
@@ -505,7 +494,7 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
     float: left;
     display: block;
     margin-right: 0%;
-    width: 15%;
+    width: 20%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -518,7 +507,7 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
     float: left;
     display: block;
     margin-right: 0%;
-    width: 15%;
+    width: 20%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -531,7 +520,7 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
     float: left;
     display: block;
     margin-right: 0%;
-    width: 15%;
+    width: 20%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -544,7 +533,7 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
     float: left;
     display: block;
     margin-right: 0%;
-    width: 15%;
+    width: 20%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -565,19 +554,6 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
     font-weight: 500;
     text-align: left; }
 .enrollment .session .auto:last-child {
-    margin-right: 0; }
-.enrollment .session .dl{
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 20%;
-    color: #555;
-    margin: 0;
-    padding: 0;
-    font-size: 1.125em;
-    font-weight: 500;
-    text-align: left; }
-.enrollment .session .dl:last-child {
     margin-right: 0; }
 .enrollment .session .session-number {
     float: left;
@@ -747,5 +723,8 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
     background-color: rgba(240, 195, 15, 0.66); }
 .view .view-signup:last-child {
     margin-right: 0; }
+#downloads {
+    text-align: center;
+}
 
 /*# sourceMappingURL=main.css.map */

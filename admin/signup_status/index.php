@@ -45,6 +45,38 @@ switch($action) {
         $enroll_list = get_registered_users();
         include 'view.php';
         break;
+    case "partial_download":
+        $student_list = partial_enroll_download();
+        $output = fopen("signup_staus_download.csv",'w') or die("Can't open signup_staus_download.csv");
+        header("Content-Type:application/csv");
+        header('Content-Disposition: attachement; filename="signup_status_download.csv";');
+
+        fputcsv($output, array('last','first','id','year','number of sessions'));
+        foreach($student_list as $student) {
+            fputcsv($output, $student);
+        }
+        fseek($output, 0);
+        fpassthru($output);
+        fclose($output) or die("Can't close signup_staus_download.csv");
+        $enroll_list = get_registered_users();
+        include 'view.php';
+        break;
+    case "no_download":
+        $student_list = no_enroll_download();
+        $output = fopen("signup_staus_download.csv",'w') or die("Can't open signup_staus_download.csv");
+        header("Content-Type:application/csv");
+        header('Content-Disposition: attachement; filename="signup_status_download.csv";');
+
+        fputcsv($output, array('last','first','id','year','number of sessions'));
+        foreach($student_list as $student) {
+            fputcsv($output, $student);
+        }
+        fseek($output, 0);
+        fpassthru($output);
+        fclose($output) or die("Can't close signup_staus_download.csv");
+        $enroll_list = get_registered_users();
+        include 'view.php';
+        break;
     default:
         display_error("Invalid action: " . $action);
         break;

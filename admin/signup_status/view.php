@@ -53,7 +53,6 @@
             <div class="session-filter partial">Partially Enrolled</div>
             <div class="session-filter none">Not Enrolled</div>
             <div class="session-filter auto">Auto-Enroll</div>
-            <div class="session-filter dl">Download Student Lists</div>
         </a>
     </nav>
     <div class = "enrollment">
@@ -80,12 +79,16 @@
                     <button onclick= "autoEnroll(<?php echo $grade?>)">Enroll</button>
                     <button onclick= "undoAutoEnroll(<?php echo $grade?>)">Undo Enroll</button>
                 </div>
-                <div class = "dl">
-
-                </div>
             </div>
         <?php endforeach; ?>
+        <br>
     </div>
+    <br>
+    <br>
+    <div id = "downloads"><h3>Downloads</h3>
+    <a href = "#" onclick= "post('index.php', {action: 'partial_download'}, 'post')">Partially Enrolled Students List</a>
+    <br>
+    <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">Unenrolled Students List</a></div>
 </section>
 </body>
 </html>

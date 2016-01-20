@@ -116,5 +116,39 @@ function random_enroll($year) {
     }
 }
 
+function partial_enroll_download() {
+    $query = 'select usr_last_name, usr_first_name, usr_bca_id, usr_class_year, num_sessions
+    from (
+        SELECT grade_lvl, user.usr_id, count(*) as num_sessions
+           from signup_dates
+             inner join user on user.usr_class_year = signup_dates.class_year
+             inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
+           where usr_active = 1
+    and usr_type_cde = \'STD\'
+           group by grade_lvl, user.usr_id
+           having num_sessions <4
+         ) temp
+    inner join user on user.usr_id = temp.usr_id
+    order by usr_last_name, usr_first_name';
+
+    return get_list($query);
+}
+
+function no_enroll_download() {
+    $query = 'SELECT usr_last_name, usr_first_name, usr_bca_id, usr_class_year
+    FROM (
+        SELECT user.usr_id
+           FROM user
+             INNER JOIN signup_dates ON signup_dates.class_year= user.usr_class_year
+             LEFT JOIN pres_user_xref ON pres_user_xref.usr_id= user.usr_id
+           WHERE pres_user_xref.usr_id IS NULL
+    AND usr_type_cde = \'STD\'
+    AND usr_active = 1
+         ) temp
+    INNER JOIN user ON user.usr_id = temp.usr_id
+    ORDER BY usr_last_name, usr_first_name';
+
+    return get_list($query);
+}
 
 ?>
