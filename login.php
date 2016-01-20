@@ -22,7 +22,7 @@
 					<h3 style="color:red">
 						<?php echo $message ?>
 					</h3>
-
+					<img src="images/logo.svg" alt="">
 	            </div>
 			</div>
             <div class="login-main">
@@ -35,8 +35,6 @@
 	                    <input type="password" name="password" placeholder="password">
 						<button>Login</button>
 	                </form>
-
-					<img src="images/logo.svg" alt="">
             	</div>
             </div>
 		</section>
