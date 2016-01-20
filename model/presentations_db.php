@@ -282,7 +282,13 @@ class Presentation {
 
             if ($existingPresentation->pres_paired_pres_id != null) {
                 $pairedExistingPresentation = Presentation::getPresentation($existingPresentation->pres_paired_pres_id);
-                $pairedExistingPresentation->delete_presentation_for_user($usr_id);
+
+                // iterate through a change of presentation ids until we get back to where we started.
+                // for each one, delete the associated presentations
+                while ($pairedExistingPresentation->pres_id != $existingPresentation->pres_id) {
+                    $pairedExistingPresentation->delete_presentation_for_user($usr_id);
+                    $pairedExistingPresentation = Presentation::getPresentation($pairedExistingPresentation->pres_paired_pres_id);
+                }
             }
         }
     }
@@ -301,10 +307,17 @@ class Presentation {
 
             if ($this->pres_paired_pres_id != null) {
                 $pairedPresentation = Presentation::getPresentation($this->pres_paired_pres_id);
-                Presentation::deletePresentationsByUserBySession($usr_id, $pairedPresentation->ses_id);
 
-                // Inserts the new session for the user.
-                $pairedPresentation->insert_presentation_for_user ($usr_id);
+                // iterate through a change of presentation ids until we get back to where we started.
+                while ($pairedPresentation->pres_id != $this->pres_id) {
+                    Presentation::deletePresentationsByUserBySession($usr_id, $pairedPresentation->ses_id);
+
+                    // Inserts the new session for the user.
+                    $pairedPresentation->insert_presentation_for_user($usr_id);
+
+                    // iterate down the chain of paired presentations.
+                    $pairedPresentation = Presentation::getPresentation($pairedPresentation->pres_paired_pres_id);
+                }
             }
 
             // commit transaction
