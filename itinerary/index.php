@@ -19,6 +19,17 @@ if (isset($action) and ($action == "logout")) {
 $user = get_user($_SESSION['usr_id']);
 $sessions = get_sessions_by_user($user['usr_id']);
 
+//
+// Check if the user has mentors for all of the sessions.
+//
+$registration_complete = true;
+foreach ($sessions as $session) {
+    if (empty($session['mentor_last_name'])) {
+        $registration_complete = false;
+        break;
+    }
+}
+
 $signup_dates = get_signup_dates_by_class_year($user['usr_class_year']);
 
 $currentTime = time();

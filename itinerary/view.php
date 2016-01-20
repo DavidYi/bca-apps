@@ -28,6 +28,10 @@
 				<h3> Registration has <b>ended</b>. </h3>
 				<h3> If you did not finish registering, a session will be assigned to you. </h3>
 
+<?php } elseif ($registration_complete) { ?>
+				<h3> Registration <b>complete</b>! </h3>
+				<h3> Feedback <a href="https://docs.google.com/forms/d/1WIjMjkT5w48ZM-T7vB1A2fo0Ipv-aAVnX0NDsstdF_c/viewform">survey</a> about this site. </h3>
+
 <?php } else { ?>
 				<h3> Registration is <b>open</b>! </h3>
 				<h3> Closes: <?php echo $endTimeFormatted ?> </h3>
