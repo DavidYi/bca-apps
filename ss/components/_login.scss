@@ -12,6 +12,15 @@
 		h3 {
 			color: #555;
 		}
+		@include media($medium-screen-down) {
+			@include padding(em(30px) em(50px));
+			@include size(100% 50%);
+		}
+
+		@include media($mobile) {
+			@include padding(em(30px) em(50px));
+			@include size(100% 50%);
+		}
 	}
 	.login-main {
 		@include span-columns(4);
@@ -23,12 +32,23 @@
 			width: em(400px);
 			font-size: 1em;
 			height: em(50px);
+			width: 90%;
 		}
 		button {
 			font-size: 1em;
 			margin: 15px 0;
-			width: em(400px);
+			width: 90%;
 			height: em(50px);
+		}
+		@include media($medium-screen-down) {
+			@include padding(em(30px) em(50px));
+			@include size(100% 50%);
+			font-size: em(12px);
+		}
+		@include media($mobile) {
+			@include padding(em(30px) em(50px));
+			@include size(100% 50%);
+			font-size: em(10px);
 		}
 	}
 

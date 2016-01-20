@@ -35,6 +35,8 @@
 	                    <input type="password" name="password" placeholder="password">
 						<button>Login</button>
 	                </form>
+
+					<img src="images/logo.svg" alt="">
             	</div>
             </div>
 		</section>

@@ -634,6 +634,16 @@ nav.navbar {
       margin-right: 0; }
     .login .login-intro h3 {
       color: #555; }
+    @media screen and (max-width: 800px) {
+      .login .login-intro {
+        padding: 1.875em 3.125em;
+        height: 50%;
+        width: 100%; } }
+    @media screen and (max-width: 600px) {
+      .login .login-intro {
+        padding: 1.875em 3.125em;
+        height: 50%;
+        width: 100%; } }
   .login .login-main {
     float: left;
     display: block;
@@ -648,12 +658,25 @@ nav.navbar {
       padding: 0 15px;
       width: 25em;
       font-size: 1em;
-      height: 3.125em; }
+      height: 3.125em;
+      width: 90%; }
     .login .login-main button {
       font-size: 1em;
       margin: 15px 0;
-      width: 25em;
+      width: 90%;
       height: 3.125em; }
+    @media screen and (max-width: 800px) {
+      .login .login-main {
+        padding: 1.875em 3.125em;
+        height: 50%;
+        width: 100%;
+        font-size: 0.75em; } }
+    @media screen and (max-width: 600px) {
+      .login .login-main {
+        padding: 1.875em 3.125em;
+        height: 50%;
+        width: 100%;
+        font-size: 0.625em; } }
 
 .view {
   height: 100%;
