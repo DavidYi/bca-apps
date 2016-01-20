@@ -131,7 +131,7 @@ function partial_enroll_download() {
     inner join user on user.usr_id = temp.usr_id
     order by usr_last_name, usr_first_name';
 
-    return get_list($query);
+    return get_csv_list($query);
 }
 
 function no_enroll_download() {
@@ -148,7 +148,23 @@ function no_enroll_download() {
     INNER JOIN user ON user.usr_id = temp.usr_id
     ORDER BY usr_last_name, usr_first_name';
 
-    return get_list($query);
+    return get_csv_list($query);
 }
 
-?>
+function get_csv_list($query)
+{
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
+    ?>

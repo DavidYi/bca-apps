@@ -47,35 +47,31 @@ switch($action) {
         break;
     case "partial_download":
         $student_list = partial_enroll_download();
-        $output = fopen("signup_staus_download.csv",'w') or die("Can't open signup_staus_download.csv");
+        $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
-        header('Content-Disposition: attachement; filename="signup_status_download.csv";');
+        header('Content-Disposition: attachment; filename="partial_enrolled.csv";');
 
-        fputcsv($output, array('last','first','id','year','number of sessions'));
+        fputcsv($output, array('Last','First','Username','Year','Number of Sessions'));
         foreach($student_list as $student) {
             fputcsv($output, $student);
         }
-        fseek($output, 0);
         fpassthru($output);
-        fclose($output) or die("Can't close signup_staus_download.csv");
-        $enroll_list = get_registered_users();
-        include 'view.php';
+        fclose($output) or die("Can't close file");
+        exit();
         break;
     case "no_download":
         $student_list = no_enroll_download();
-        $output = fopen("signup_staus_download.csv",'w') or die("Can't open signup_staus_download.csv");
+        $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
-        header('Content-Disposition: attachement; filename="signup_status_download.csv";');
+        header('Content-Disposition: attachment; filename="not_enrolled.csv";');
 
-        fputcsv($output, array('last','first','id','year','number of sessions'));
+        fputcsv($output, array('last','first','username','year','number of Sessions'));
         foreach($student_list as $student) {
             fputcsv($output, $student);
         }
-        fseek($output, 0);
         fpassthru($output);
-        fclose($output) or die("Can't close signup_staus_download.csv");
-        $enroll_list = get_registered_users();
-        include 'view.php';
+        fclose($output) or die("Can't close file");
+        exit();
         break;
     default:
         display_error("Invalid action: " . $action);
