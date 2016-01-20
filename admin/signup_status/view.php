@@ -86,9 +86,11 @@
     <br>
     <br>
     <div id = "downloads"><h3>Downloads</h3>
-    <a href = "#" onclick= "post('index.php', {action: 'partial_download'}, 'post')">Partially Enrolled Students List</a>
-    <br>
-    <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">Unenrolled Students List</a></div>
+        <a href = "#" onclick= "post('index.php', {action: 'all_download'}, 'post')">Fully Enrolled Students List</a>
+        <br>
+        <a href = "#" onclick= "post('index.php', {action: 'partial_download'}, 'post')">Partially Enrolled Students List</a>
+        <br>
+        <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">Unenrolled Students List</a></div>
 </section>
 </body>
 </html>

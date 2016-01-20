@@ -45,6 +45,20 @@ switch($action) {
         $enroll_list = get_registered_users();
         include 'view.php';
         break;
+    case "all_download":
+        $student_list = all_enroll_download();
+        $output = fopen('php://output', 'w') or die("Can't open file");
+        header("Content-Type:application/csv");
+        header('Content-Disposition: attachment; filename="all_enrolled.csv";');
+
+        fputcsv($output, array('Last','First','Username','Year','Number of Sessions'));
+        foreach($student_list as $student) {
+            fputcsv($output, $student);
+        }
+        fpassthru($output);
+        fclose($output) or die("Can't close file");
+        exit();
+        break;
     case "partial_download":
         $student_list = partial_enroll_download();
         $output = fopen('php://output', 'w') or die("Can't open file");
