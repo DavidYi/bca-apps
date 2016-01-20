@@ -25,6 +25,7 @@ $grid-columns: 16; // temporary for the registration grid
 	text-align: $font-align;
 }
 
+// most up to date SCSS - J
 nav.navbar {
 	@include size(85% em(60px));
 	@include outer-container(em(1200px));
