@@ -26,8 +26,8 @@ $grid-columns: 16; // temporary for the registration grid
 }
 
 nav.navbar {
-	@include size(75% em(60px));
-	@include outer-container(1200px);
+	@include size(85% em(60px));
+	@include outer-container(em(1200px));
 	@include margin(0 auto);
 	@include padding(0 em(25px));
 	line-height: em(60px);
@@ -35,8 +35,8 @@ nav.navbar {
 	background: $color-mineshaft;
 	border-right: em(7px) solid $color-mineshaft;
 
-	@include media($medium-screen-down) { @include size(85% em(60px)); }
-	@include media($mobile) { @include size(98% em(60px)); }
+	@include media($medium-screen-down) { @include size(92.5% em(60px)); }
+	@include media($mobile) { @include size(100% em(60px)); }
 
 	.session-filter {
 		display: inline-block;
@@ -53,12 +53,12 @@ nav.navbar {
 	}
 
 	.tag { @include session-column(3, 500, left); }
-	.title { @include session-column(5, 500, left); }
-	.presenter { @include session-column(4, 400, left); }
-	.company { @include session-column(2, 400, left); }
+	.company { @include session-column(4, 500, left); }
+	.position { @include session-column(5, 500, left); }
+	.presenter { @include session-column(2, 500, left); }
 	.remaining { @include session-column(2, 500, right); }
 
-	.tag, .title, .presenter, .company, .remaining, .session-number, .time, .room-number, .session-title, .name{
+	.tag, .company, .position, .presenter, .remaining, .session-number, .time, .room-number, .session-title, .name {
 		color: $color-silverchalice;
 
 		&:hover, &:active {
@@ -69,16 +69,16 @@ nav.navbar {
 }
 
 .enrollment {
-	@include size(75% 85%);
-	@include outer-container(1200px);
+	@include size(85% 75%);
+	@include outer-container(em(1200px));
 	@include margin(0 auto);
 	background: $color-grayblack;
 	overflow-y: scroll;
 	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
 	color: $color-black;
 
-	@include media($medium-screen-down) { @include size(85% 75%); }
-	@include media($mobile) { @include size(98% 75%); }
+	@include media($medium-screen-down) { @include size(92.5% 75%); }
+	@include media($mobile) { @include size(100% 75%); }
 
 	.session {
 		@include row;
@@ -89,9 +89,9 @@ nav.navbar {
 		border-bottom: 1px solid #d6d9da;
 
 		.tag { @include session-column(3, 500, left); }
-		.title { @include session-column(5, 500, left); }
-		.presenter { @include session-column(4, 400, left); }
-		.company { @include session-column(3, 400, left); }
+		.company { @include session-column(4, 500, left); }
+		.position { @include session-column(5, 400, left); }
+		.presenter { @include session-column(3, 400, left); }
 		.remaining { @include session-column(1, 500, right); }
 
 		.session-number { @include session-column(1, 500, left); }
@@ -103,84 +103,6 @@ nav.navbar {
 		&:hover {
 			background: $color-gallery;
 			@include transition(all $animation-duration $animation-timing);
-		}
-
-		.show-more {
-			position: relative;
-			z-index: 999;
-			display: inline;
-			@include size(em(25px) em(10px));
-			// @include margin(em(25px) 0 0 0);
-			line-height: em(60px);
-			background-color: $color-dustygray;
-			color: $color-white;
-
-		}
-				/**
-		 * Tooltip Styles
-		 */
-
-		/* Add this attribute to the element that needs a tooltip */
-		[data-tooltip] {
-		  position: relative;
-		  z-index: 999;
-		  cursor: pointer;
-		}
-
-		/* Hide the tooltip content by default */
-		[data-tooltip]:before,
-		[data-tooltip]:after {
-		  visibility: hidden;
-		  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-		  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-		  opacity: 0;
-		  pointer-events: none;
-		}
-
-		/* Position tooltip above the element */
-		[data-tooltip]:before {
-		  position: absolute;
-		  bottom: 150%;
-		  z-index: 999;
-		  left: 50%;
-		  margin-bottom: 5px;
-		  margin-left: -80px;
-		  padding: 7px;
-		  width: 160px;
-		  -webkit-border-radius: 3px;
-		  -moz-border-radius: 3px;
-		  border-radius: 3px;
-		  background-color: #000;
-		  background-color: hsla(0, 0%, 20%, 0.9);
-		  color: #fff;
-		  content: attr(data-tooltip);
-		  text-align: center;
-		  font-size: 14px;
-		  line-height: 1.2;
-		}
-
-		[data-tooltip]:after {
-		  position: relative;
-		  bottom: 150%;
-		  z-index: 999;
-		  left: 50%;
-		  margin-left: -5px;
-		  width: 0;
-		  border-top: 5px solid #000;
-		  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
-		  border-right: 5px solid transparent;
-		  border-left: 5px solid transparent;
-		  content: " ";
-		  font-size: 0;
-		  line-height: 0;
-		}
-
-		/* Show tooltip content on hover */
-		[data-tooltip]:hover:before,
-		[data-tooltip]:hover:after {
-		  z-index: 999;
-			visibility: visible;
-		  opacity: 1;
 		}
 }
 
@@ -206,7 +128,7 @@ nav.navbar {
 	border-bottom: 1px solid $color-yellow;
 	@include box-shadow(0, 0, em(25px), 0, rgba(240, 195, 15, 0.66));
 
-	.tag, .title, .presenter, .company, .remaining, .session-number, .time, .room-number, .session-number, .name{
+	.tag, .company, .position, .presenter, .remaining, .session-number, .time, .room-number, .session-number, .name{
 		color: $color-white !important;
 	}
 
