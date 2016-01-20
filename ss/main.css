@@ -712,8 +712,10 @@ nav.navbar {
       margin: 10px 0;
       padding: 0 15px;
       width: 25em;
+      font-size: 1em;
       height: 3.125em; }
     .login .login-main button {
+      font-size: 1em;
       margin: 15px 0;
       width: 25em;
       height: 3.125em; }
