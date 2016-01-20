@@ -1,19 +1,28 @@
 <?php
 $error_message = "";
 
-$app_name = 'bca-apps';     // Name of the app on the web server.  Change this if the directory changes.
 $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING); // Looks like c:/xampp/htdocs
 
-// For development machines
-$app_path = $doc_root . "/" . $app_name;   // Looks like c:/xampp/htdocs/bca-apps
+///////////////////
+// For Production
+// $app_name = 'careerday';     // Name of the app on the web server.  Change this if the directory changes.
+// $app_path =  "/home2/bryres/public_html/" . $app_name;   // Looks like c:/xampp/htdocs/bca-apps
 
-// For DEV Server
+///////////////////
+// For Test Server
+// $app_name = 'bca-apps';     // Name of the app on the web server.  Change this if the directory changes.
 // $app_path =  "/home2/atcsdevbergen/public_html/" . $app_name;   // Looks like c:/xampp/htdocs/bca-apps
 
+//////////////////////////
+// For Developer Machines
+$app_name = 'bca-apps';     // Name of the app on the web server.  Change this if the directory changes.
+$app_path = $doc_root . "/" . $app_name;   // Looks like c:/xampp/htdocs/bca-apps
+
+///////////////////////
 // Set the include path
 set_include_path($app_path . PATH_SEPARATOR . get_include_path());
 
-//
+////////////////////////////
 // Start Session and security check.
 // If the user is not logged in, send them to the login page.
 //
