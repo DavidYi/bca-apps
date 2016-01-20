@@ -4,8 +4,9 @@
 include('../../util/main.php');
 include('../../model/signup_status_db.php');
 
-// add some kind of check here to make sure the user is logged in as an admin
-// util/main checks for logged in, don't know how to check for admin permissions
+if ($_SESSION['usr_role_cde'] != 'ADM') {
+    header("Location: ../itinerary/index.php");
+}
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
@@ -93,7 +94,7 @@ switch($action) {
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="mentor.csv";');
 
-        fputcsv($output, array('Last','First','Field','Position','Company', 'Room', 'Host', 'Session', 'Max', 'Enrolled', 'Remaining'));
+        fputcsv($output, array('Last','First','Field','Position','Company', 'Room', 'Host', 'Timeslot', 'Max', 'Enrolled', 'Remaining'));
         foreach($student_list as $student) {
             fputcsv($output, $student);
         }

@@ -8,9 +8,10 @@ include('../util/main.php');
                 $action = 'list_options';
             }
  }
-  
-  // add some kind of check here to make sure the user is logged in as an admin
-  // util/main checks for logged in, don't know how to check for admin permissions
+
+if ($_SESSION['usr_role_cde'] != 'ADM') {
+    header("Location: ../itinerary/index.php");
+}
   
  switch($action) {
     case 'list_options':
@@ -26,14 +27,17 @@ include('../util/main.php');
   ?>
 
 <html>
-<head><link rel = "stylesheet" type="text/css" href="main.css"></link></head>
+<head><link rel = "stylesheet" type="text/css" href="main.css"></head>
 <body>
-<h1>Admin Tools</h1>
-<p><a href = "signins/index.php">Signins</a><br>
+<section class = "main">
+<header><h1 class = "title main-title">Admin Tools</h1></header>
+    <div style = "width: 75%; max-width: 1200px; margin-left: auto; margin-right: auto;">
+    <p><a href = "signins/index.php">Signins</a><br>
     <a href = "signup_dates/index.php">Signup Dates</a><br>
     <a href = "mentor/view.php">Mentors</a><br>
-    <a href = "signup_status/index.php">Signup Status</a></p>
-
+    <a href = "signup_status/index.php">Signup Status</a></p></div>
+    <div id = "logout"><a href = "../index.php?action=logout">Log Out</a></div> <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
+</section>
 </body>
 </html>
 

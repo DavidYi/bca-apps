@@ -39,6 +39,7 @@
 </head>
 <body>
 <section class="main">
+
     <header>
         <h1 class = "title main-title">Signup Status</h1>
         <?php if ($result != "") { ?>
@@ -92,7 +93,8 @@
         <br>
         <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">Unenrolled Students List</a>
         <br>
-        <a href = "#" onclick= "post('index.php', {action: 'mentor_download'}, 'post')">Students by Mentor</a></div>
+        <a href = "#" onclick= "post('index.php', {action: 'mentor_download'}, 'post')">Mentor List</a></div>
+    <div id = "logout"><a href = "../../index.php?action=logout">Log Out</a></div> <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </section>
 </body>
 </html>
