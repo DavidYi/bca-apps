@@ -13,7 +13,7 @@
 		<section class="main login">
 			<div class="login-intro">
 				<div class="vertical-center">
-	                <h1>Career Day</h1>
+					<h1>Career Day</h1>
 	                <h3>
 						BCA will hold Career Day on <b>Tuesday, February 2</b>.  At Career Day, you will have the opportunity
 						to participate in presentations by 4 different mentors of your choosing.  Through this experience,
@@ -22,7 +22,6 @@
 					<h3 style="color:red">
 						<?php echo $message ?>
 					</h3>
-					<img src="images/logo.svg" alt="">
 	            </div>
 			</div>
             <div class="login-main">

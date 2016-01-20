@@ -652,13 +652,6 @@ nav.navbar {
     padding: 15.625em 3.125em 0; }
     .login .login-main:last-child {
       margin-right: 0; }
-    .login .login-main img {
-      height: 70px;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      margin: auto;
-      margin: 1.875em 3.125em; }
     .login .login-main input {
       background-color: rgba(244, 208, 63, 0.3);
       margin: 10px 0;

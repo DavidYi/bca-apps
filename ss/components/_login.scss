@@ -12,6 +12,16 @@
 		h3 {
 			color: #555;
 		}
+
+		// p {
+		// 	height: 70px;
+		// 	position: absolute;
+		// 	bottom: 0;
+		// 	right: 0;
+		// 	margin: auto;
+		// 	@include margin(em(30px) em(50px));
+		// }
+
 		@include media($medium-screen-down) {
 			@include padding(em(30px) em(50px));
 			@include size(100% 50%);
@@ -26,14 +36,6 @@
 		@include span-columns(4);
 		@include padding(em(250px) em(50px) 0 em(50px));
 
-		img {
-			height: 70px;
-			position: absolute;
-			bottom: 0;
-			right: 0;
-			margin: auto;
-			@include margin(em(30px) em(50px));
-		}
 		input {
 			background-color: rgba(244, 208, 63, 0.3);
 			margin: 10px 0;
