@@ -63,6 +63,11 @@ else {
     $username = filter_input(INPUT_POST, 'username');
     $password = filter_input(INPUT_POST, 'password');
 
+    $pos = strpos($username, "@");
+    if ($pos !== false) {
+        $username = substr($username,0,$pos);
+    }
+
     if (!bergenAuthLDAP($username, $password)) {
         $message = "Username, password combination is not correct.";
         include('login.php');
