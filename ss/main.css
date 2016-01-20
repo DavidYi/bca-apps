@@ -306,8 +306,8 @@ h1 {
 
 nav.navbar {
   height: 3.75em;
-  width: 75%;
-  max-width: 1200px;
+  width: 85%;
+  max-width: 75em;
   margin-left: auto;
   margin-right: auto;
   margin: 0 auto;
@@ -322,11 +322,11 @@ nav.navbar {
   @media screen and (max-width: 800px) {
     nav.navbar {
       height: 3.75em;
-      width: 85%; } }
+      width: 92.5%; } }
   @media screen and (max-width: 600px) {
     nav.navbar {
       height: 3.75em;
-      width: 98%; } }
+      width: 100%; } }
   nav.navbar .session-filter {
     display: inline-block;
     height: 100%;
@@ -352,7 +352,20 @@ nav.navbar {
     text-align: left; }
     nav.navbar .tag:last-child {
       margin-right: 0; }
-  nav.navbar .title {
+  nav.navbar .company {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 25%;
+    color: #555;
+    margin: 0;
+    padding: 0;
+    font-size: 1.125em;
+    font-weight: 500;
+    text-align: left; }
+    nav.navbar .company:last-child {
+      margin-right: 0; }
+  nav.navbar .position {
     float: left;
     display: block;
     margin-right: 0%;
@@ -363,22 +376,9 @@ nav.navbar {
     font-size: 1.125em;
     font-weight: 500;
     text-align: left; }
-    nav.navbar .title:last-child {
+    nav.navbar .position:last-child {
       margin-right: 0; }
   nav.navbar .presenter {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 25%;
-    color: #555;
-    margin: 0;
-    padding: 0;
-    font-size: 1.125em;
-    font-weight: 400;
-    text-align: left; }
-    nav.navbar .presenter:last-child {
-      margin-right: 0; }
-  nav.navbar .company {
     float: left;
     display: block;
     margin-right: 0%;
@@ -387,9 +387,9 @@ nav.navbar {
     margin: 0;
     padding: 0;
     font-size: 1.125em;
-    font-weight: 400;
+    font-weight: 500;
     text-align: left; }
-    nav.navbar .company:last-child {
+    nav.navbar .presenter:last-child {
       margin-right: 0; }
   nav.navbar .remaining {
     float: left;
@@ -404,16 +404,16 @@ nav.navbar {
     text-align: right; }
     nav.navbar .remaining:last-child {
       margin-right: 0; }
-  nav.navbar .tag, nav.navbar .title, nav.navbar .presenter, nav.navbar .company, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
+  nav.navbar .tag, nav.navbar .company, nav.navbar .position, nav.navbar .presenter, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
     color: #aaa; }
-    nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .title:hover, nav.navbar .title:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
+    nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
       color: #eee;
       text-decoration: underline; }
 
 .enrollment {
-  height: 85%;
-  width: 75%;
-  max-width: 1200px;
+  height: 75%;
+  width: 85%;
+  max-width: 75em;
   margin-left: auto;
   margin-right: auto;
   margin: 0 auto;
@@ -430,25 +430,18 @@ nav.navbar {
   @media screen and (max-width: 800px) {
     .enrollment {
       height: 75%;
-      width: 85%; } }
+      width: 92.5%; } }
   @media screen and (max-width: 600px) {
     .enrollment {
       height: 75%;
-      width: 98%; } }
+      width: 100%; } }
   .enrollment .session {
     display: block;
     height: 3.75em;
     overflow: hidden;
     line-height: 3.75em;
     padding: 0 1.5625em;
-    border-bottom: 1px solid #d6d9da;
-    		/**
-     * Tooltip Styles
-     */
-    /* Add this attribute to the element that needs a tooltip */
-    /* Hide the tooltip content by default */
-    /* Position tooltip above the element */
-    /* Show tooltip content on hover */ }
+    border-bottom: 1px solid #d6d9da; }
     .enrollment .session::after {
       clear: both;
       content: "";
@@ -466,20 +459,7 @@ nav.navbar {
       text-align: left; }
       .enrollment .session .tag:last-child {
         margin-right: 0; }
-    .enrollment .session .title {
-      float: left;
-      display: block;
-      margin-right: 0%;
-      width: 31.25%;
-      color: #555;
-      margin: 0;
-      padding: 0;
-      font-size: 1.125em;
-      font-weight: 500;
-      text-align: left; }
-      .enrollment .session .title:last-child {
-        margin-right: 0; }
-    .enrollment .session .presenter {
+    .enrollment .session .company {
       float: left;
       display: block;
       margin-right: 0%;
@@ -488,11 +468,24 @@ nav.navbar {
       margin: 0;
       padding: 0;
       font-size: 1.125em;
+      font-weight: 500;
+      text-align: left; }
+      .enrollment .session .company:last-child {
+        margin-right: 0; }
+    .enrollment .session .position {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 31.25%;
+      color: #555;
+      margin: 0;
+      padding: 0;
+      font-size: 1.125em;
       font-weight: 400;
       text-align: left; }
-      .enrollment .session .presenter:last-child {
+      .enrollment .session .position:last-child {
         margin-right: 0; }
-    .enrollment .session .company {
+    .enrollment .session .presenter {
       float: left;
       display: block;
       margin-right: 0%;
@@ -503,7 +496,7 @@ nav.navbar {
       font-size: 1.125em;
       font-weight: 400;
       text-align: left; }
-      .enrollment .session .company:last-child {
+      .enrollment .session .presenter:last-child {
         margin-right: 0; }
     .enrollment .session .remaining {
       float: left;
@@ -588,64 +581,6 @@ nav.navbar {
       -webkit-transition: all 175ms ease;
       -moz-transition: all 175ms ease;
       transition: all 175ms ease; }
-    .enrollment .session .show-more {
-      position: relative;
-      z-index: 999;
-      display: inline;
-      height: 0.625em;
-      width: 1.5625em;
-      line-height: 3.75em;
-      background-color: #999;
-      color: #fdfdfd; }
-    .enrollment .session [data-tooltip] {
-      position: relative;
-      z-index: 999;
-      cursor: pointer; }
-    .enrollment .session [data-tooltip]:before,
-    .enrollment .session [data-tooltip]:after {
-      visibility: hidden;
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      opacity: 0;
-      pointer-events: none; }
-    .enrollment .session [data-tooltip]:before {
-      position: absolute;
-      bottom: 150%;
-      z-index: 999;
-      left: 50%;
-      margin-bottom: 5px;
-      margin-left: -80px;
-      padding: 7px;
-      width: 160px;
-      -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-      border-radius: 3px;
-      background-color: #000;
-      background-color: rgba(51, 51, 51, 0.9);
-      color: #fff;
-      content: attr(data-tooltip);
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.2; }
-    .enrollment .session [data-tooltip]:after {
-      position: relative;
-      bottom: 150%;
-      z-index: 999;
-      left: 50%;
-      margin-left: -5px;
-      width: 0;
-      border-top: 5px solid #000;
-      border-top: 5px solid rgba(51, 51, 51, 0.9);
-      border-right: 5px solid transparent;
-      border-left: 5px solid transparent;
-      content: " ";
-      font-size: 0;
-      line-height: 0; }
-    .enrollment .session [data-tooltip]:hover:before,
-    .enrollment .session [data-tooltip]:hover:after {
-      z-index: 999;
-      visibility: visible;
-      opacity: 1; }
   .enrollment .view-session {
     border-bottom: 1px solid #333; }
     .enrollment .view-session .time, .enrollment .view-session .room-number {
@@ -662,7 +597,7 @@ nav.navbar {
   -webkit-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   -moz-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66); }
-  .session-selected .tag, .session-selected .title, .session-selected .presenter, .session-selected .company, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
+  .session-selected .tag, .session-selected .company, .session-selected .position, .session-selected .presenter, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
     color: #fdfdfd !important; }
   .session-selected:hover {
     background-color: #f0c30f !important; }

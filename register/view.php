@@ -18,9 +18,9 @@
 
     <nav class="navbar">
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>"><div class="session-filter tag">Field</div></a>
-        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=2&order=<?php if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>"><div class="session-filter title">Position</div></a>
-        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=3&order=<?php if ($sort_order == 1 && $sort_by == 3) { echo 2; } else { echo 1; } ?>"><div class="session-filter presenter">Presenter</div></a>
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=4&order=<?php if ($sort_order == 1 && $sort_by == 4) { echo 2; } else { echo 1; } ?>"><div class="session-filter company">Company</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=2&order=<?php if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>"><div class="session-filter position">Position</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=3&order=<?php if ($sort_order == 1 && $sort_by == 3) { echo 2; } else { echo 1; } ?>"><div class="session-filter presenter">Presenter</div></a>
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=5&order=<?php if ($sort_order == 1 && $sort_by == 5) { echo 2; } else { echo 1; } ?>"><div class="session-filter remaining">Remaining</div></a>
     </nav>
 
@@ -31,43 +31,25 @@
             $id = $presentation['pres_id'] ?>
             <a href="/<?php echo $app_name ?>/itinerary">
 
-            <div class="session session-selected"">
-                <div class="tag">
-                    <?php echo $presentation['mentor_field']?>
-                </div>
-                <div class="title"><?php echo $presentation['mentor_position']?></div>
-                <div class="presenter">
-                    <?php echo $presentation['mentor_last_name'] ?>,
-                    <?php echo $presentation['mentor_first_name'] ?>
-                </div>
+            <div class="session session-selected">
+                <div class="tag"><?php echo $presentation['mentor_field']?></div>
                 <div class="company"><?php echo $presentation['mentor_company']?></div>
-                <div class="remaining">
-                    <?php echo ($presentation['pres_max_capacity'] - $presentation['pres_enrolled_count'])?>
-                </div>
+                <div class="position"><?php echo $presentation['mentor_position']?></div>
+                <div class="presenter"><?php echo ($presentation['mentor_last_name'].", ".$presentation['mentor_first_name'])?></div>
+                <div class="remaining"><?php echo ($presentation['pres_max_capacity'] - $presentation['pres_enrolled_count'])?></div>
             </div>
             </a>
         <?php } ?>
         <?php foreach ($presentations as $presentation) {
             if ($id != $presentation['pres_id']) {?>
                <a href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"> <div class="session">
-                    <div class="tag">
-                        <span data-tooltip="I’m the tooltip text.I’m the tooltip text."><?php echo $presentation['mentor_field']?></span>
-                        
-                        <!-- <div class="show-more">...</div> -->
-                    </div>
-                    <div class="title"><?php echo $presentation['mentor_position']?></div>
-                    <div class="presenter">
-                        <?php echo $presentation['mentor_last_name'] ?>,
-                        <?php echo $presentation['mentor_first_name'] ?>
-                    </div>
+                    <div class="tag"><?php echo $presentation['mentor_field']?></div>
                     <div class="company"><?php echo $presentation['mentor_company']?></div>
-                    <div class="remaining">
-                        <?php echo ($presentation['pres_max_capacity'] - $presentation['pres_enrolled_count'])?>
-                    </div>
+                    <div class="position"><?php echo $presentation['mentor_position']?></div>
+                    <div class="presenter"><?php echo ($presentation['mentor_last_name'].", ".$presentation['mentor_first_name'])?></div>
+                    <div class="remaining"><?php echo ($presentation['pres_max_capacity'] - $presentation['pres_enrolled_count'])?></div>
                 </div> </a>
         <?php } } ?>
-
-        <div class="session"></div> <!-- fill design -->
     </div>
 </section>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
