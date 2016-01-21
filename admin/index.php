@@ -27,7 +27,7 @@ if ($_SESSION['usr_role_cde'] != 'ADM') {
   ?>
 
 <html>
-<head><link rel = "stylesheet" type="text/css" href="main.css"></head>
+<head><link rel = "stylesheet" type="text/css" href="css/main.css"></head>
 <body>
 <section class = "main">
 <header><h1 class = "title main-title">Admin Tools</h1></header>
