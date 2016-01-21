@@ -34,7 +34,8 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
 					mentor_position , mentor_company ,  mentor_profile ,  mentor_keywords ,  
 					mentor_email ,  mentor_cell_nbr , mentor_phone_nbr ,  mentor_address ,  
 					mentor_source ,  mentor_notes ,  active ,  pres_room , pres_host_teacher ,  
-					pres_max_capacity , presentation.pres_enrolled_count, presentation.pres_id
+					pres_max_capacity , presentation.pres_enrolled_count, presentation.pres_id, 
+					pres_max_capacity - presentation.pres_enrolled_count as remaining
 				FROM mentor
 				INNER JOIN presentation ON presentation.mentor_id = mentor.mentor_id
 				WHERE presentation.ses_id = :ses_id
@@ -45,7 +46,7 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
     else if ($sort_by == 2) $query .= ('ORDER BY mentor_position');
     else if ($sort_by == 3) $query .= ('ORDER BY mentor_last_name');
     else if ($sort_by == 4) $query .= ('ORDER BY mentor_company');
-    else if ($sort_by == 5) $query .= ('ORDER BY presentation.pres_enrolled_count');
+    else if ($sort_by == 5) $query .= ('ORDER BY remaining');
     else $query .= ('ORDER BY mentor_field');
     if ($order_by == 2) $query.= (' DESC');
 	
