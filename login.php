@@ -19,9 +19,10 @@
 						to participate in presentations by 4 different mentors of your choosing.  Through this experience,
 						our hope is that you can gain insight into the variety and types of career paths available to you.
 					</h3>
-					<h3 style="color:red">
-						<?php echo $message ?>
+					<h3>
+						This app is brought to you by the students of ATCS.
 					</h3>
+
 	            </div>
 			</div>
             <div class="login-main">
@@ -29,6 +30,10 @@
 	                <h1>Login</h1>
 					<form action="." method="post">
 						<input type="hidden" name="action" value="login">
+
+						<h3 style="color:red">
+							<?php echo $message ?>
+						</h3>
 
 						<input type="text" name="username" placeholder="username">
 	                    <input type="password" name="password" placeholder="password">
