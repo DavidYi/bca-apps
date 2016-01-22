@@ -32,11 +32,14 @@ foreach ($sessions as $session) {
 
 $signup_dates = get_signup_dates_by_class_year($user['usr_class_year']);
 
+date_default_timezone_set('America/New_York');
 $currentTime = time();
 $startTime = strtotime($signup_dates['start']);
 $endTime = strtotime($signup_dates['end']);
+
 $startTimeFormatted = date('M d, g:i  a', $startTime);
 $endTimeFormatted = date('M d, g:i  a', $endTime);
+
 
 if (($currentTime > $startTime) and ($currentTime < $endTime))
     $registrationOpen = true;

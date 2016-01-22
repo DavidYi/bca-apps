@@ -32,8 +32,9 @@ if ($sort_order == NULL) {
 $signup_dates = (get_signup_dates_by_class_year($user['usr_class_year']));
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
-$current_date = strtotime(date("Y-m-d h:i:sa"));
 
+date_default_timezone_set('America/New_York');
+$current_date = time();
 
 $action = filter_input(INPUT_GET, 'action');
 $id = 0;
@@ -52,10 +53,8 @@ if ($action == "register") {
 
     // Error -- not time to sign up.
     if ($current_date < $start_date || $current_date > $end_date) {
-        if (!$presentation->has_space()) {
-            display_error("It is not currently time to enroll.  Please check the enrollment dates.");
-            exit();
-        }
+        display_error("It is not currently time to enroll.  Please check the enrollment dates.");
+        exit();
     }
 
     // Error -- presentation full.
