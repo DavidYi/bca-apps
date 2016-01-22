@@ -6,9 +6,8 @@
  * Time: 9:04 AM
  */
 require_once('../../util/main.php');
-require_once "model/database.php";
-require_once "model/signins_db.php";
-require_once "admin/signins/signInPDF.php";
+require_once("../../model/signins_db.php");
+require_once("../signins/signInPDF.php");
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
