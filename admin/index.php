@@ -16,9 +16,6 @@ if ($_SESSION['usr_role_cde'] != 'ADM') {
  switch($action) {
     case 'list_options':
                 break;
-     case 'auto_enroll':
-                //code here
-                break;
      default:
                 display_error('Unknown account action: ' . $action);
                 exit();
@@ -31,11 +28,15 @@ if ($_SESSION['usr_role_cde'] != 'ADM') {
 <body>
 <section class = "main">
 <header><h1 class = "title main-title">Admin Tools</h1></header>
-    <div style = "width: 75%; max-width: 1200px; margin-left: auto; margin-right: auto;">
+    <div class = "body">
+    <p><a href = "signup_dates/index.php">Signup Dates</a><br>
+    View and edit signup deadlines by grade.</p>
+    <p><a href = "mentor/index.php">Mentors</a><br>
+    Manage mentors and presentations.</p>
     <p><a href = "signins/index.php">Signins</a><br>
-    <a href = "signup_dates/index.php">Signup Dates</a><br>
-    <a href = "mentor/index.php">Mentors</a><br>
-    <a href = "signup_status/index.php">Signup Status</a></p></div>
+    Generate signin sheets and mentor check-in sheet.</p>
+    <p><a href = "signup_status/index.php">Signup Status</a><br>
+    View student registration statistics and automatically enroll students who have not yet registered.</p></div>
     <div id = "logout"><a href = "../index.php?action=logout">Log Out</a></div> <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </section>
 </body>

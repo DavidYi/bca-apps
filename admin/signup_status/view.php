@@ -6,7 +6,7 @@
     <script type="text/javascript">
         function autoEnroll(year)
         {
-            if (confirm('Are you sure you would like to auto-enroll all ' + year + 'th grade students?')) {
+            if (confirm('Are you sure you would like to auto-enroll all ' + year + 'th grade students?')) { //js prompt; includes year for debugging
                 post("index.php", {action: 'auto_enroll', grade: year}, "post")
             }
         }
@@ -15,8 +15,8 @@
                 post("index.php", {action: 'undo_auto_enroll', grade: year}, "post")
             }
         }
-        function post(path, params, method) {
-            method = method || "post";
+        function post(path, params, method) { //sends a post request; used to avoid having to use get to change the url since that looks sloppy and i don't want to bother with an inline form, especially if i want the confirmation prompt
+            method = method || "post"; //also ripped straight off stackoverflow
             var form = document.createElement("form");
             form.setAttribute("method", method);
             form.setAttribute("action", path);
@@ -86,14 +86,17 @@
     </div>
     <br>
     <br>
-    <div id = "downloads"><h3>Downloads</h3>
+    <div class = "center body"><h3>Downloads</h3>
         <a href = "#" onclick= "post('index.php', {action: 'all_download'}, 'post')">Fully Enrolled Students List</a>
         <br>
         <a href = "#" onclick= "post('index.php', {action: 'partial_download'}, 'post')">Partially Enrolled Students List</a>
         <br>
         <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">Unenrolled Students List</a>
         <br>
-        <a href = "#" onclick= "post('index.php', {action: 'mentor_download'}, 'post')">Mentor List</a></div>
+        <a href = "#" onclick= "post('index.php', {action: 'mentor_download'}, 'post')">Mentor List</a>
+        <br><br>
+        <a href = "../">Admin Index</a>
+    </div>
     <div id = "logout"><a href = "../../index.php?action=logout">Log Out</a></div> <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </section>
 </body>
