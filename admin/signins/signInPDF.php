@@ -5,7 +5,7 @@
  * Date: 12/16/2015
  * Time: 10:38 AM
  */
-require("../../fpdf/fpdf.php");
+require("fpdf/fpdf.php");
 
 
 class signinPDF extends FPDF
@@ -44,6 +44,8 @@ class signinPDF extends FPDF
             $fontSizeTemp = $fontSize;
 
             if (($this->GetY() >= 250) && ($this->GetY() <= 256)) {
+                $this->Cell(array_sum($w), 0, '', 'T');
+                $this->Ln();
                 $this->SetFillColor(88, 88, 88);
                 $this->SetTextColor(255);
                 $this->SetDrawColor(0);
@@ -56,6 +58,7 @@ class signinPDF extends FPDF
                 $this->SetFillColor(224, 235, 255);
                 $this->SetTextColor(0);
                 $this->SetFont('', '', $fontSize);
+                $this->Ln();
             }
 
             $studentName = $row[0] . ', ' . $row[1];
@@ -113,10 +116,8 @@ class signinPDF extends FPDF
         $fill = false;
         foreach ($data as $row) {
             $fontSizeTemp = $fontSize;
-//
-//            $y = $this->GetY();
-//            $this->Cell(100, 9, $y);
-            if (($this->GetY() >= 250) && ($this->GetY() <= 256)) {
+
+            if (($this->GetY() >= 250) && ($this->GetY() <= 256)) {//add heading every page
                 $this->SetFillColor(88, 88, 88);
                 $this->SetTextColor(255);
                 $this->SetDrawColor(0);
@@ -132,6 +133,7 @@ class signinPDF extends FPDF
 
             }
 
+            //get the mentor name
             $mentorName = $row[2] . ', ' . $row[3];
 
             //check box
@@ -153,7 +155,7 @@ class signinPDF extends FPDF
             $this->AdjustFontSize($fontSizeTemp, $row[0], $w[4]);
             $this->Cell($w[4], $height, $row[0], 'LR', 0, 'L', $fill);
 
-
+            //go to the next line and change the pattern
             $this->Ln();
             $fill = !$fill;
         }
@@ -162,7 +164,7 @@ class signinPDF extends FPDF
     }
 
     function AdjustFontSize($fontSize, $text, $maxWidth)
-    {
+    {//makes the text fit the width
         $decrement_step = 0.1;
 
         $this->SetFont('', '', $fontSize);
@@ -172,16 +174,35 @@ class signinPDF extends FPDF
 
     }
 
+    function getW()
+    {//width of page
+        return $this->w;
+    }
 
-//    function getW()
-//    {
-//        return $w;
-//    }
-//
-//    function getH()
-//    {
-//        return $h;
-//    }
+    function getH()
+    {//height of page
+        return $this->h;
+    }
+
+    function  getlMargin(){//left margin
+        return $this->lMargin;
+    }
+
+    function  getrMargin(){//right margin
+        return $this->rMargin;
+    }
+
+    function  gettMargin(){//top margin
+        return $this->tMargin;
+    }
+
+    function  getbMargin(){//bottom margin
+        return $this->bMargin;
+    }
+
+    function  getcMargin(){//cell margin
+        return $this->cMargin;
+    }
 }
 
 ?>
