@@ -40,9 +40,11 @@ function bergenAuthLDAP($username, $password)
     if ($ad === FALSE)
         return false;
 
+    if (empty($password))
+        return false;
+
     ldap_set_option($ad, LDAP_OPT_PROTOCOL_VERSION, 3);
     ldap_set_option($ad, LDAP_OPT_REFERRALS, 0);
-
 
     //Test user creds
     if ( @ldap_bind($ad, $username . '@bergen.org', $password) )
