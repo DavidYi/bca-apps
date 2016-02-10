@@ -8,7 +8,6 @@
 require_once("../model/database.php");
 require_once("../../shared/model/user_db.php");
 
-
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {
@@ -29,7 +28,7 @@ switch ($action) {
          * usr_role_cde
          * user_type_cde
          */
-        $user_from_post = get_user(filter_input(INPUT_POST, 'usr_id'), 'CAR');
+        $user_from_post = get_user(filter_input(INPUT_POST, 'usr_id'), 'SENX');
         session_start();
 
         $_SESSION['usr_id'] = $user_from_post['usr_id'];

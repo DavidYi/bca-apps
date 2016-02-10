@@ -92,59 +92,6 @@ function get_presentation_by_user($usr_id, $ses_id) {
     }
 }
 
-function get_user_by_username($username) {
-    $query = 'SELECT user.usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year, usr_first_name, usr_last_name, usr_active
-              FROM user
-              LEFT OUTER JOIN role_application_user_xref ON user.usr_id = role_application_user_xref.usr_id
-              WHERE usr_bca_id =  :username';
-
-    global $db;
-
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(':username', $username);
-        $statement->execute();
-        $result = $statement->fetch();
-        $statement->closeCursor();
-        return $result;
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
-        exit();
-    }
-}
-
-function get_user($usr_id) {
-    $query = 	'SELECT user.usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year, usr_first_name, usr_last_name, usr_active
-                  FROM user
-                  LEFT OUTER JOIN role_application_user_xref ON user.usr_id = role_application_user_xref.usr_id
-                  WHERE user.usr_id = :usr_id';
-
-    global $db;
-
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(':usr_id', $usr_id);
-        $statement->execute();
-        $result = $statement->fetch();
-        $statement->closeCursor();
-        return $result;
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
-        exit();
-    }
-}
-
-function get_user_list() {
-    $query = 'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
-                 usr_first_name, usr_last_name, usr_active
-              from user
-              where usr_active = 1
-			  order by usr_display_name';
-
-    return get_list($query);
-}
 
 function get_sessions_by_user($usr_id) {
     $query = 'select session_times.ses_id ses_times, my_ses.ses_id ses_id, pres_room, pres_max_capacity, pres_enrolled_count, pres_id, mentor_position, mentor_company, mentor_field, mentor_last_name, mentor_first_name, ses_name, ses_start, ses_end, session_times.sort_order

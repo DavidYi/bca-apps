@@ -6,53 +6,7 @@
  * Time: 1:04 PM
  */
 require_once("./model/database.php");
-require_once("./model/presentations_db.php");
-
-//Authenticate a username and password to Bergen Techs AD
-//Username must be in UPN format username@bergen.org
-//Returns True on sucess
-//Returns False on any fails
-/*function bergenAuthLDAP($username, $password)
-{
-    $ad = ldap_connect("ldap://bergen.org");
-
-    if ($ad === FALSE)
-        return false;
-
-    ldap_set_option($ad, LDAP_OPT_PROTOCOL_VERSION, 4);
-
-    //Test user creds
-    if ( @ldap_bind($ad, $username . '@bergen.org', $password) )
-        return true;
-    else
-        return false;
-}
-*/
-
-//Authenticate a username and password to Bergen Techs AD
-//Username must be in UPN format username@bergen.org
-//Returns True on sucess
-//Returns False on any fails
-function bergenAuthLDAP($username, $password)
-{
-    $ad = ldap_connect("168.229.1.240", 3268);
-
-    if ($ad === FALSE)
-        return false;
-
-    if (empty($password))
-        return false;
-
-    ldap_set_option($ad, LDAP_OPT_PROTOCOL_VERSION, 3);
-    ldap_set_option($ad, LDAP_OPT_REFERRALS, 0);
-
-    //Test user creds
-    if ( @ldap_bind($ad, $username . '@bergen.org', $password) )
-        return true;
-    else
-        return false;
-}
-
+require_once("../shared/model/user_db.php");
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
@@ -75,8 +29,7 @@ else {
         include('login.php');
         exit();
     }
-
-    $user = get_user_by_username($username);
+    $user = get_user_by_username($username, 'CAR');
 
     //
     // need to somehow check if the user was not found.

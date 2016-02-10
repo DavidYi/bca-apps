@@ -7,10 +7,11 @@
  */
 
 require_once('../util/main.php');
-require_once('model/presentations_db.php');
-require_once('model/signups_db.php');
+require_once("../../shared/model/user_db.php");
+require_once('../model/presentations_db.php');
+require_once('../model/signups_db.php');
 
-$user = get_user($_SESSION['usr_id']);
+$user = get_user($_SESSION['usr_id'], 'CAR');
 $currentSession = filter_input(INPUT_GET, 'session');
 if ($currentSession < 1 || $currentSession > 4) {
     $currentSession = 1;
