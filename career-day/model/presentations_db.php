@@ -93,10 +93,10 @@ function get_presentation_by_user($usr_id, $ses_id) {
 }
 
 function get_user_by_username($username) {
-    $query = 	'SELECT usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year,
-                usr_first_name, usr_last_name, usr_active
-             FROM user
-             WHERE usr_bca_id = :username';
+    $query = 'SELECT user.usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year, usr_first_name, usr_last_name, usr_active
+              FROM user
+              LEFT OUTER JOIN role_application_user_xref ON user.usr_id = role_application_user_xref.usr_id
+              WHERE usr_bca_id =  :username';
 
     global $db;
 
