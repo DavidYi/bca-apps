@@ -13,9 +13,9 @@
 			<div class="error">
 				<div class="vertical-center">
 	                <h1><i>oops..</i></h1>
-	                <h3><>
+	                <h3><i>
 	                	It's not time to enroll yet.
-	                </></h3>
+	                </i></h3>
 	                <button><a href="#" onclick="history.back();">Go Back</a>	</button>
 	            </div>
 			</div>
