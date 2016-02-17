@@ -8,7 +8,6 @@
 
 require_once("../util/main.php");
 require_once("../../shared/model/user_db.php");
-require_once("../model/presentations_db.php");
 require_once ("../model/signups_db.php");
 
 $action = filter_input(INPUT_GET, 'action');

@@ -7,8 +7,8 @@
  */
 
 require_once("../util/main.php");
-require_once("model/presentations_db.php");
-require_once ("model/signups_db.php");
+require_once("../../shared/model/user_db.php");
+require_once("../model/signups_db.php");
 
 $action = filter_input(INPUT_GET, 'action');
 if (isset($action) and ($action == "logout")) {
@@ -16,19 +16,19 @@ if (isset($action) and ($action == "logout")) {
     header("Location: ../index.php");
 }
 
-$user = get_user($_SESSION['usr_id']);
-$sessions = get_sessions_by_user($user['usr_id']);
+$user = get_user($_SESSION['usr_id'], 'SENX');
+
 
 //
 // Check if the user has mentors for all of the sessions.
 //
 $registration_complete = true;
-foreach ($sessions as $session) {
+/* foreach ($sessions as $session) {
     if (empty($session['mentor_last_name'])) {
         $registration_complete = false;
         break;
     }
-}
+} */
 
 $signup_dates = get_signup_dates_by_class_year($user['usr_class_year']);
 

@@ -26,7 +26,7 @@
 
             <?php } elseif ($endTime < $currentTime) { ?>
                 <h3> Registration has <b>ended</b>. </h3>
-                <h3> If you did not finish registering, a session will be assigned to you. </h3>
+                <h3> If you have not finished registering, sessions will be assigned to you. </h3>
 
             <?php } elseif ($registration_complete) { ?>
                 <h3> Registration <b>complete</b>! </h3>
