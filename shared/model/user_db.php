@@ -82,4 +82,123 @@ function get_user_list() {
     return get_list($query);
 }
 
+class User
+{
+    public $usr_id, $usr_first_name, $usr_last_name, $usr_display_name,
+        $usr_grade_lvl, $usr_bca_id, $user_email, $usr_type_cde,
+        $usr_class_year, $academy_cde, $ps_id, $usr_active;
+
+    private $roles;
+
+    public function __construct($usr_id, $usr_first_name, $usr_last_name, $usr_display_name,
+                                $usr_grade_lvl, $usr_bca_id, $user_email, $usr_type_cde,
+                                $usr_class_year, $academy_cde, $ps_id, $usr_active)
+    {
+        $this->usr_id = $usr_id;
+        $this->usr_first_name = $usr_first_name;
+        $this->usr_last_name = $usr_last_name;
+        $this->usr_display_name = $usr_display_name;
+        $this->usr_grade_lvl = $usr_grade_lvl;
+        $this->usr_bca_id = $usr_bca_id;
+        $this->user_email = $user_email;
+        $this->usr_type_cde = $usr_type_cde;
+        $this->usr_class_year = $usr_class_year;
+        $this->academy_cde = $academy_cde;
+        $this->ps_id = $ps_id;
+        $this->usr_active = $usr_active;
+    }
+
+    public function getRole($app_cde)
+    {
+        if (array_key_exists ($app_cde , $this->roles))
+            return $this->roles[$app_cde];
+        else
+            return '';
+    }
+
+    private function loadRoles()
+    {
+        $query = 'SELECT app_cde, usr_role_cde
+                  FROM role_application_user_xref
+                  WHERE usr_id = :usr_id';
+
+        global $db;
+
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':usr_id', $this->usr_id);
+            $statement->execute();
+            $result = $statement->fetchAll();
+            $statement->closeCursor();
+
+            $this->roles = array();
+
+            foreach ($result as $row) {
+                $this->roles[$row['app_cde']] = $row['usr_role_cde'];
+            }
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+            exit();
+        }
+    }
+
+
+    private static function getUserByColumn($whereColumn, $whereCriteria)
+    {
+        $query = 'SELECT usr_id, usr_first_name, usr_last_name, usr_display_name,
+                        usr_grade_lvl, usr_bca_id, user_email, usr_type_cde,
+                        usr_class_year, academy_cde, ps_id, usr_active
+                  FROM user
+                  WHERE user.' . $whereColumn . ' = :' . $whereColumn;
+
+        global $db;
+
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':' . $whereColumn, $whereCriteria);
+            $statement->execute();
+            $result = $statement->fetch();
+            $statement->closeCursor();
+
+            $u = new User($result["usr_id"], $result["usr_first_name"], $result["usr_last_name"],
+                $result["usr_display_name"], $result["usr_grade_lvl"], $result["usr_bca_id"],
+                $result["user_email"], $result["usr_type_cde"], $result["usr_class_year"],
+                $result["academy_cde"], $result["ps_id"], $result["usr_active"]);
+
+            $u->loadRoles();
+            return $u;
+
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+            exit();
+        }
+    }
+
+    public static function getUserByUsrId($usr_id)
+    {
+        return User::getUserByColumn('usr_id', $usr_id);
+    }
+
+    public static function getUserByBCAId($bca_id)
+    {
+        return User::getUserByColumn('usr_bca_id', $bca_id);
+    }
+
+    public function __toString()
+    {
+        return "usr_id:" . $this->usr_id .
+        ";usr_first_name:" . $this->usr_first_name .
+        ";usr_last_name:" . $this->usr_last_name .
+        ";usr_display_name:" . $this->usr_display_name .
+        ";usr_grade_lvl:" . $this->usr_grade_lvl .
+        ";usr_bca_id:" . $this->usr_bca_id .
+        ";user_email:" . $this->user_email .
+        ";usr_type_cde:" . $this->usr_type_cde .
+        ";usr_class_year:" . $this->usr_class_year .
+        ";academy_cde:" . $this->academy_cde .
+        ";usr_active:" . $this->usr_active;
+    }
+}
 ?>

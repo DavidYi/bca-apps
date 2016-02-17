@@ -14,7 +14,7 @@
 		<section class="main view">
 			<div class="view-main">
 			<div class="login-status">
-				<h3><b><?php echo ($user['usr_first_name']." ".$user['usr_last_name']); ?></b></h3>
+				<h3><b><?php echo ($user->usr_first_name." ".$user->usr_last_name); ?></b></h3>
 				<h3 class="log-out"><a href="./index.php?action=logout">Log Out</a></h3>
 			</div>
 			<div class="vertical-center">

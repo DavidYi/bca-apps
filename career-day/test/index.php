@@ -29,14 +29,12 @@ switch ($action) {
          * usr_role_cde
          * user_type_cde
          */
-        $user_from_post = get_user(filter_input(INPUT_POST, 'usr_id'), 'CAR');
         session_start();
+        $user_from_post = filter_input(INPUT_POST, 'usr_id');
+        $user = User::getUserByUsrId($user_from_post);
+        $_SESSION['user'] = $user;
 
-        $_SESSION['usr_id'] = $user_from_post['usr_id'];
-        $_SESSION['usr_role_cde'] = $user_from_post['usr_role_cde'];
-        $_SESSION['usr_type_cde'] = $user_from_post['usr_type_cde'];
-
-        if ($user_from_post['usr_role_cde'] == 'ADM') {
+        if ($user->getRole('CAR') == 'ADM') {
             // The user is an admin, so they are directed to  admin page
             header("Location: ../admin/index.php");
         } else {

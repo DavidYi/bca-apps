@@ -11,14 +11,13 @@ require_once("../../shared/model/user_db.php");
 require_once('../model/presentations_db.php');
 require_once('../model/signups_db.php');
 
-$user = get_user($_SESSION['usr_id'], 'CAR');
 $currentSession = filter_input(INPUT_GET, 'session');
 if ($currentSession < 1 || $currentSession > 4) {
     $currentSession = 1;
 }
 $sort_by = filter_input(INPUT_GET, "sort");
 
-$pres_enrolled = get_presentation_by_user($user['usr_id'], $currentSession);
+$pres_enrolled = get_presentation_by_user($user->usr_id, $currentSession);
 $is_enrolled = FALSE;
 
 if ($pres_enrolled != NULL) {
@@ -30,7 +29,7 @@ if ($sort_order == NULL) {
     $sort_order = 1;
 }
 
-$signup_dates = (get_signup_dates_by_class_year($user['usr_class_year']));
+$signup_dates = (get_signup_dates_by_grade($user->usr_grade_lvl));
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
 
@@ -66,7 +65,7 @@ if ($action == "register") {
 
     // All good -- add the presentation!
     else {
-        $presentation->addPresForUser($user['usr_id']);
+        $presentation->addPresForUser($user->usr_id);
         header("Location: ../itinerary/");
     }
 }

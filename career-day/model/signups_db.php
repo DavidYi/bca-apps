@@ -30,16 +30,16 @@ function get_signup_dates_list() {
     return get_list($query);
 }
 
-function get_signup_dates_by_class_year($class_year) {
+function get_signup_dates_by_grade($grade_lvl) {
     $query = 'SELECT start, end
               FROM signup_dates
-              WHERE class_year = :class_year';
+              WHERE grade_lvl = :grade_lvl';
 
     global $db;
 
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':class_year', $class_year);
+        $statement->bindValue(':grade_lvl', $grade_lvl);
         $statement->execute();
         $result = $statement->fetch();
         $statement->closeCursor();

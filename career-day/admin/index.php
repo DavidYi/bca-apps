@@ -9,9 +9,7 @@ include('../util/main.php');
             }
  }
 
-if ($_SESSION['usr_role_cde'] != 'ADM') {
-    header("Location: ../itinerary/index.php");
-}
+verify_admin();
   
  switch($action) {
     case 'list_options':

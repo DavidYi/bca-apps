@@ -1,12 +1,9 @@
-
 <?php
 
 include('../../util/main.php');
 include('../../model/signup_status_db.php');
 
-if ($_SESSION['usr_role_cde'] != 'ADM') {
-    header("Location: ../itinerary/index.php");
-}
+verify_admin();
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {

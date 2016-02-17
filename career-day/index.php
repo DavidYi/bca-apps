@@ -29,18 +29,13 @@ else {
         include('login.php');
         exit();
     }
-    $user = get_user_by_username($username, 'CAR');
-
-    //
-    // need to somehow check if the user was not found.
+    $user = User::getUserByBCAId($username);
 
     session_start();
+    $_SESSION['user'] = $user;
+    echo ($user->usr_bca_id);
 
-    $_SESSION['usr_id'] = $user['usr_id'];
-    $_SESSION['usr_role_cde'] = $user['usr_role_cde'];
-    $_SESSION['usr_type_cde'] = $user['usr_type_cde'];
-
-    if ($user['usr_role_cde'] == 'ADM') {
+    if ($user->getRole('CAR') == 'ADM') {
         // The user is an admin, so they are directed to  admin page
         header("Location: ./admin/index.php");
     } else {

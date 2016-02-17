@@ -16,8 +16,7 @@ if (isset($action) and ($action == "logout")) {
     header("Location: ../index.php");
 }
 
-$user = get_user($_SESSION['usr_id'], 'CAR');
-$sessions = get_sessions_by_user($user['usr_id']);
+$sessions = get_sessions_by_user($user->usr_id);
 
 //
 // Check if the user has mentors for all of the sessions.
@@ -30,7 +29,7 @@ foreach ($sessions as $session) {
     }
 }
 
-$signup_dates = get_signup_dates_by_class_year($user['usr_class_year']);
+$signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
 
 date_default_timezone_set('America/New_York');
 $currentTime = time();
@@ -46,5 +45,5 @@ if (($currentTime > $startTime) and ($currentTime < $endTime))
 else
     $registrationOpen = false;
 
-include ("itinerary/view.php");
+include ("./view.php");
 exit();

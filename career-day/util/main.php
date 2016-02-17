@@ -1,5 +1,13 @@
 <?php
+//
+// Common imports that should be available on all pages.
+// Add them here.
+//
+require_once(__DIR__ . "/../model/database.php");
+require_once(__DIR__ . "/../../shared/model/user_db.php");
+
 $error_message = "";
+$app_cde = 'CAR';
 
 $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING); // Looks like c:/xampp/htdocs
 
@@ -27,17 +35,14 @@ set_include_path($app_path . PATH_SEPARATOR . get_include_path());
 // If the user is not logged in, send them to the login page.
 //
 session_start();
-if (!isset($_SESSION['usr_id']))
+$user = $_SESSION['user'];
+if (!isset($user))
 {
     header('Location: /' . $app_name . '/index.php');
     exit();
 }
 
-//
-// Common imports that should be available on all pages.
-// Add them here.
-//
-require_once('model/database.php');
+
 
 
 //
@@ -46,7 +51,7 @@ require_once('model/database.php');
 //
 function display_error($error_message) {
     global $app_name;
-    include 'errors/error.php';
+    include __DIR__ . '/../errors/error.php';
     exit();
 }
 
@@ -99,14 +104,14 @@ function log_pdo_exception ($exception, $usr_id, $src, $method)
 }
 
 function verify_admin() {
-    if (!isset($_SESSION['usr_role_cde'])) {
-        include 'errors/invaliduser.html';
+    global $app_cde;
+    global $app_name;
+
+    if ($_SESSION['user']->getRole($app_cde) != 'ADM') {
+        $app_name = $app_name; // Remove unused variable warning.  Need variable for invaliduser.
+
+        include __DIR__ . '/../errors/invaliduser.html';
         exit();
-    } elseif ($_SESSION['usr_role_cde'] != "ADM") {
-        include 'errors/invaliduser.html';
-        exit();
-    } else {
-        return;
     }
 }
 
@@ -129,17 +134,16 @@ function include_page_tracking() {
 }
 
 function include_user_tracking() {
-    require_once ('model/presentations_db.php');
-    $cur_user = get_user($_SESSION['usr_id'],'CAR');
+    $cur_user = $_SESSION['user'];
     if ($cur_user != NULL) {
         echo(
             '<script>
                 ga("create", "UA-71500783-1", "auto", "usr_id", {
-                    usr_id: "' . $cur_user['usr_id'] . '"
+                    usr_id: "' . $cur_user->usr_id . '"
                 });
 
                 ga("create", "UA-71500783-1", "auto", "usr_type_cde", {
-                    usr_type_cde: "' . $cur_user['usr_type_cde'] . '"
+                    usr_type_cde: "' . $cur_user->usr_type_cde . '"
                 });
             </script>'
         );
