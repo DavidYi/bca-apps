@@ -6,6 +6,7 @@
  * Time: 1:04 PM
  */
 require_once("./model/database.php");
+require_once("../shared/model/database.php");
 require_once("../shared/model/user_db.php");
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
@@ -29,16 +30,10 @@ else {
         include('login.php');
         exit();
     }
-    $user = get_user_by_username($username, 'SENX');
-
-    //
-    // need to somehow check if the user was not found.
+    $user = User::getUserByBCAId($username);
 
     session_start();
-
-    $_SESSION['usr_id'] = $user['usr_id'];
-    $_SESSION['usr_role_cde'] = $user['usr_role_cde'];
-    $_SESSION['usr_type_cde'] = $user['usr_type_cde'];
+    $_SESSION['user'] = $user;
 
     if ($user['usr_role_cde'] == 'ADM') {
         header("Location: admin");

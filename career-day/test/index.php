@@ -6,6 +6,7 @@
  * Time: 1:04 PM
  */
 require_once("../model/database.php");
+require_once("../../shared/model/database.php");
 require_once("../../shared/model/user_db.php");
 
 

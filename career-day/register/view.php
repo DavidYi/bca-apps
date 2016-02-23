@@ -5,7 +5,7 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="/<?php echo $app_name ?>/ss/main.css" rel="stylesheet">
+    <link href="/<?php echo $app_url_path ?>/ss/main.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
@@ -29,7 +29,7 @@
         <?php if ($is_changing) {
             $presentation = get_sessions_by_user($user->usr_id)[$currentSession - 1];
             $id = $presentation['pres_id'] ?>
-            <a href="/<?php echo $app_name ?>/itinerary">
+            <a href="/<?php echo $app_url_path ?>/itinerary">
 
             <div class="session session-selected">
                 <div class="tag"><?php echo $presentation['mentor_field']?></div>

@@ -9,7 +9,7 @@
 		<!-- <?php include_analytics(); ?> -->
 	</head>
 	<body>
-		<form action="/<?php echo $app_name; ?>/itinerary" method="get">
+		<form action="/<?php echo $app_url_path; ?>/itinerary" method="get">
 		<section class="main login">
 			<div class="error">
 				<div class="vertical-center">
