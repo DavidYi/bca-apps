@@ -13,7 +13,7 @@
 
     <label>
         Field Name
-        <input type="text" name="field_name" value="<?php echo htmlspecialchars($field_name) ?>">
+        <input type="text" name="field_name" value="">
     </label>
 
     <input type="submit" name="choice" value="Add">

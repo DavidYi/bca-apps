@@ -23,7 +23,7 @@ if ($action == NULL) {
 } else if ($action == "show_add_room") {
     $rm_nbr = "";
     $rm_cap = "";
-    include ("add_room.php");
+    include ("add_field.php");
     exit();
 } else if ($action == "add_room") {
     $choice = filter_input(INPUT_POST, "choice");
@@ -40,7 +40,7 @@ if ($action == NULL) {
         }
 
         if ($error_msg != "") {
-            include ("add_room.php");
+            include ("add_field.php");
             exit();
         } else {
             add_room($rm_nbr, $rm_cap);

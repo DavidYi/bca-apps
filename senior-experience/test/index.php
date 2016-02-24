@@ -30,22 +30,46 @@ switch ($action) {
          * usr_role_cde
          * user_type_cde
          */
-        $user_from_post = get_user(filter_input(INPUT_POST, 'usr_id'), 'SENX');
         session_start();
+        $user_from_post = filter_input(INPUT_POST, 'usr_id');
+        $user = User::getUserByUsrId($user_from_post);
+        $_SESSION['user'] = $user;
 
-        $_SESSION['usr_id'] = $user_from_post['usr_id'];
-        $_SESSION['usr_role_cde'] = $user_from_post['usr_role_cde'];
-        $_SESSION['usr_type_cde'] = $user_from_post['usr_type_cde'];
 
-        if ($user_from_post['usr_role_cde'] == 'ADM') {
-            // The user is an admin, so they are directed to  admin page
+
+        if ($user->getRole('CAR') == 'ADM') {
+// The user is an admin, so they are directed to  admin page
             header("Location: ../admin/index.php");
-        } else {
-            // The user is a student or teacher, they are directed to sign up page
+        }
+        else if(($user->usr_grade_lvl == 12) && isSeniorTime()){
+            // The user is eligible to make presentation, they are directed to pres add page
+            header("Location: ../senior/index.php");
+        }
+        else {
+// The user is a student or teacher, they are directed to sign up page
             header("Location: ../itinerary/index.php");
         }
-
-        break;
 }
+function isSeniortime()
+{
+    require_once('../model/senior_db.php');
+    global $user;
+    $signup_dates = get_senior_add_pres_dates();
 
+    date_default_timezone_set('America/New_York');
+    $currentTime = time();
+    $startTime = strtotime($signup_dates['start']);
+    $endTime = strtotime($signup_dates['end']);
+
+    //$startTimeFormatted = date('M d, g:i  a', $startTime);
+    //$endTimeFormatted = date('M d, g:i  a', $endTime);
+
+
+    if (($currentTime > $startTime) and ($currentTime < $endTime))
+        return true;
+    else
+        return false;
+}
 ?>
+
+
