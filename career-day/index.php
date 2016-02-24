@@ -5,44 +5,36 @@
  * Date: 12/14/15
  * Time: 1:04 PM
  */
-require_once("./model/database.php");
-require_once("../shared/model/database.php");
-require_once("../shared/model/user_db.php");
 
-$action = strtolower(filter_input(INPUT_POST, 'action'));
+/* These messages are used to customize the login page. */
+$pageTitle = 'Career Day Registration';
+$loginInfo = '<h1>Career Day</h1>
+                <h3>
+                    BCA will hold Career Day on <b>Tuesday, February 2</b>.  At Career Day, you will have the opportunity
+                    to participate in presentations by 4 different mentors of your choosing.  Through this experience,
+                    our hope is that you can gain insight into the variety and types of career paths available to you.
+                </h3>
+                <h3>
+                    This app is brought to you by the students of ATCS.
+                </h3>';
 
-if (($action == NULL) || ($action != 'login' )){
-    $message = "";
-    include('login.php');
-    exit();
-}
-else {
-    $username = filter_input(INPUT_POST, 'username');
-    $password = filter_input(INPUT_POST, 'password');
 
-    $pos = strpos($username, "@");
-    if ($pos !== false) {
-        $username = substr($username,0,$pos);
-    }
-
-    if (!bergenAuthLDAP($username, $password)) {
-        $message = "Username, password combination is not correct.";
-        include('login.php');
-        exit();
-    }
-    $user = User::getUserByBCAId($username);
-
-    session_start();
-    $_SESSION['user'] = $user;
-    echo ($user->usr_bca_id);
+/* This call back function is called once the user is authenticated.  This function handles redirecting the user
+ to their home page. */
+function directToHomePage() {
+    $user = $_SESSION['user'];
 
     if ($user->getRole('CAR') == 'ADM') {
-        // The user is an admin, so they are directed to  admin page
-        header("Location: ./admin/index.php");
+        header("Location: admin");
     } else {
-        // The user is a student or teacher, they are directed to sign up page
-        header("Location: itinerary/index.php");
+        header("Location: itinerary");
     }
 }
+
+/** Include the database credentials and then transfer control to /shared/index,
+ * which contains the meat of the login handling code.
+ */
+include (__DIR__ . "/model/database.php");
+include (__DIR__ . "/../shared/index.php");
 
 ?>

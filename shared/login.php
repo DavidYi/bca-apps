@@ -1,27 +1,19 @@
 <html lang="en">
 	<head>
-		<title>Career Day Registration</title>
+		<title><?php echo pageTitle ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
 		<!-- Styles -->
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="ss/main.css" rel="stylesheet">
+        <link href="./ss/main.css" rel="stylesheet">
 	</head>
 	<body>
 		<section class="main login">
 			<div class="login-intro">
 				<div class="vertical-center">
-					<h1>Career Day</h1>
-	                <h3>
-						BCA will hold Career Day on <b>Tuesday, February 2</b>.  At Career Day, you will have the opportunity
-						to participate in presentations by 4 different mentors of your choosing.  Through this experience,
-						our hope is that you can gain insight into the variety and types of career paths available to you.
-					</h3>
-					<h3>
-						This app is brought to you by the students of ATCS.
-					</h3>
+					<?php echo $loginInfo ?>
 
 	            </div>
 			</div>
@@ -42,9 +34,9 @@
             	</div>
             </div>
 		</section>
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
-		<script type="text/javascript" src="js/jquery.plusanchor.min.js"></script>
+		<script type="text/javascript" src="../career-day/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../career-day/js/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="../career-day/js/jquery.plusanchor.min.js"></script>
 		<script type="text/javascript">
 		    $('body').plusAnchor({
 		        easing: 'easeInOutExpo',
