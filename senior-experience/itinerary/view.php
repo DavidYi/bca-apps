@@ -18,7 +18,7 @@
             <h3 class="log-out"><a href="./index.php?action=logout">Log Out</a></h3>
         </div>
         <div class="vertical-center">
-            <h1>Career Day (Feb. 2)</h1>
+            <h1>Senior Expositions (February)</h1>
 
             <?php if ($startTime > $currentTime) { ?>
                 <h3> Registration <b>has not opened</b>!</h3>

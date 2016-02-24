@@ -8,6 +8,8 @@
 
 require_once("../util/main.php");
 require_once("../../shared/model/user_db.php");
+require_once("../model/signups_db.php");
+require_once ("../model/presentations_db.php");
 
 $action = filter_input(INPUT_GET, 'action');
 if (isset($action) and ($action == "logout")) {
@@ -15,21 +17,20 @@ if (isset($action) and ($action == "logout")) {
     header("Location: ../index.php");
 }
 
-$user = get_user($_SESSION['usr_id'], 'SENX');
+$user = get_user($_SESSION['user'], 'SENX');
+$signup_dates = get_signup_dates_by_grade($user['usr_class_year']);
 
-
+$sessions = get_sessions_by_user($user['usr_id']);
 //
 // Check if the user has mentors for all of the sessions.
 //
-$registration_complete = true;
-/* foreach ($sessions as $session) {
+// $registration_complete = true;
+foreach ($sessions as $session) {
     if (empty($session['mentor_last_name'])) {
         $registration_complete = false;
         break;
     }
-} */
-
-$signup_dates = get_signup_dates_by_class_year($user['usr_class_year']);
+}
 
 date_default_timezone_set('America/New_York');
 $currentTime = time();
@@ -45,5 +46,5 @@ if (($currentTime > $startTime) and ($currentTime < $endTime))
 else
     $registrationOpen = false;
 
-include ("itinerary/view.php");
+include ("view.php");
 exit(); ?>

@@ -24,7 +24,7 @@ function get_session_times_by_id($ses_id) {
         return $result;
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_error($error_message);
         exit();
     }
 }
@@ -61,7 +61,7 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
         return $result;
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_error($error_message);
         exit();
     }
 }
@@ -87,12 +87,12 @@ function get_presentation_by_user($usr_id, $ses_id) {
         return $result;
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_error($error_message);
         exit();
     }
 }
 
-function get_user_by_username($username) {
+/* function get_user_by_username($username) {
     $query = 	'SELECT usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year,
                 usr_first_name, usr_last_name, usr_active
              FROM user
@@ -109,7 +109,7 @@ function get_user_by_username($username) {
         return $result;
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_error($error_message);
         exit();
     }
 }
@@ -131,7 +131,7 @@ function get_user($usr_id) {
         return $result;
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_error($error_message);
         exit();
     }
 }
@@ -144,7 +144,7 @@ function get_user_list() {
 			  order by usr_display_name';
 
     return get_list($query);
-}
+} */
 
 function get_sessions_by_user($usr_id) {
     $query = 'select session_times.ses_id ses_times, my_ses.ses_id ses_id, pres_room, pres_max_capacity, pres_enrolled_count, pres_id, mentor_position, mentor_company, mentor_field, mentor_last_name, mentor_first_name, ses_name, ses_start, ses_end, session_times.sort_order
@@ -169,7 +169,7 @@ function get_sessions_by_user($usr_id) {
         return $result;
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_error($error_message);
         exit();
     }
 }
