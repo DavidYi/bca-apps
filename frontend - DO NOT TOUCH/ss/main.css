@@ -1,0 +1,29 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0; }
+
+body {
+  background-color: #202226; }
+
+.add {
+  margin: 3em auto;
+  width: 75%;
+  text-align: center; }
+  .add input {
+    color: #FFF;
+    width: 100%;
+    margin: 0;
+    font-size: 3em; }
+  .add .input__label-content {
+    font-size: 2em; }
+  .add .half-size {
+    max-width: 75em; }
+  .add h1 {
+    font-size: 3em;
+    color: #EEE; }
+  .add h3 {
+    color: #777; }
+
+/*# sourceMappingURL=main.css.map */
