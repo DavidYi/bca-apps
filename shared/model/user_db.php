@@ -18,16 +18,10 @@ function bergenAuthLDAP($username, $password)
     ldap_set_option($ad, LDAP_OPT_REFERRALS, 0);
 
     //Test user creds
-    try {
-        if (ldap_bind($ad, $username . '@bergen.org', $password))
-            return true;
-        else
-            return false;
-    } catch (Exception $e) {
-        $error_msg = $e->getMessage();
-        display_db_error($error_msg);
-    }
-
+    if ( @ldap_bind($ad, $username . '@bergen.org', $password) )
+        return true;
+    else
+        return false;
 }
 
 function get_user_by_username($username, $app_cde) {
