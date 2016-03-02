@@ -28,7 +28,7 @@ if ($sort_order == NULL) {
     $sort_order = 1;
 }
 
-$signup_dates = (get_signup_dates_by_class_year($user['usr_class_year']));
+$signup_dates = get_signup_dates_by_class_year($user['usr_class_year']);
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
 
