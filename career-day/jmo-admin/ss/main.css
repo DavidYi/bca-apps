@@ -191,7 +191,7 @@ body {
   color: #333;
   font-family: "Roboto", sans-serif;
   font-size: 1.25em;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.25; }
 
 h {
@@ -214,7 +214,7 @@ h {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.25;
   margin: 0 0 0.625em;
   padding: 0; }
@@ -302,5 +302,42 @@ html {
 
 ::-webkit-scrollbar-thumb {
   background: #777; }
+
+* {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500; }
+
+a {
+  color: #333;
+  text-decoration: none; }
+
+main {
+  width: 52.5em;
+  max-width: 90%;
+  margin: 0 auto; }
+
+.feature {
+  position: relative;
+  top: 0;
+  padding: 0.9375em 1.5625em;
+  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 0.625em solid #fbfcfc;
+  -webkit-transition: all 175ms ease;
+  -moz-transition: all 175ms ease;
+  transition: all 175ms ease; }
+  .feature h2 {
+    margin: 0.125em; }
+  .feature h4 {
+    margin: 0.125em;
+    opacity: 0.8; }
+  .feature:hover {
+    top: -5px;
+    background: #262626;
+    background: #262626;
+    box-shadow: 0 0.9375em 1.5625em rgba(0, 0, 0, 0.33);
+    border-bottom: 0.625em solid #262626; }
+    .feature:hover a {
+      color: #fdfdfd; }
 
 /*# sourceMappingURL=main.css.map */

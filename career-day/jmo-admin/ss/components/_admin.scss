@@ -1,0 +1,49 @@
+* {
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+}
+
+h1.title {
+
+}
+
+a {
+	color: $color-black;
+	text-decoration: none;
+}
+
+main {
+	width: em(840px);
+	max-width: 90%;
+	@include margin(0 auto);
+}
+
+.feature {
+	position: relative;
+	top: 0;
+	@include padding(em(15px) em(25px));
+	@include background(rgba(0, 0, 0, 0.05));
+	border-bottom: em(10px) solid #fbfcfc;
+
+	h2 {
+		@include margin(em(2px));
+	}
+
+	h4 {
+		@include margin(em(2px));
+		opacity: 0.8;
+	}
+
+	@include transition(all $animation-duration $animation-timing);
+
+	&:hover {
+		top: -5px;
+		@include background($color-mineshaft);
+		box-shadow: 0 em(15px) em(25px) rgba(0, 0, 0, 0.33);
+		border-bottom: em(10px) solid $color-mineshaft;
+
+		a {
+			color: $color-white;
+		}
+	}
+}
