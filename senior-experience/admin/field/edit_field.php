@@ -14,7 +14,7 @@
 
     <label>
         Field Name
-        <input type="text" name="field_name" value="<?php htmlspecialchars($field['field_name']) ?>">
+        <input type="text" name="field_name" value="<?php echo htmlspecialchars($field['field_name']) ?>">
     </label>
 
     <input type="submit" name="choice" value="Make Changes">
