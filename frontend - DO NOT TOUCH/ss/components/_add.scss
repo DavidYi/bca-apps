@@ -13,12 +13,29 @@ body {
 		margin: 0;
 		font-size: 3em;
 	}
+
+	.input-label {
+		color: #ccc;
+	}
+
 	.input__label-content {
 		font-size: 2em;
 	}
-	
+		
+	.double {
+		max-width: 78em;
+		margin: 0 auto;
+	}
+
 	.half-size {
-		max-width: 75em;
+		margin: 3em auto;
+		max-width: calc(50% - 2.5em);
+	}
+
+	@media screen and (max-width: 800px) {
+		.half-size {
+			max-width: calc(100% - 2em);
+		}	
 	}
 
 	h1 {
@@ -29,4 +46,26 @@ body {
 	h3 {
 		color: #777;
 	}
+
+	.ui.dropdown { 
+		background-color: #202226;
+		color: #FFF;
+		border: none;
+		border-bottom: #FFF solid 2px;
+		border-radius: 0;
+		width: 60em;
+		height: 2em;
+		padding: 0;
+		margin: 4em 1em; 
+
+		.text {
+			font-size: 1.75em;
+		}
+	}
+
+	.ui.dropdown:hover {
+		border-bottom: #FFF solid 2px;
+		height: 2em;
+	}
+
 }
