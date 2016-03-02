@@ -1,6 +1,6 @@
 <html lang="en">
 	<head>
-		<title><?php echo pageTitle ?></title>
+		<title><?php echo $pageTitle ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 

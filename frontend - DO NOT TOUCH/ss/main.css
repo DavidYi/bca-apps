@@ -16,14 +16,51 @@ body {
     width: 100%;
     margin: 0;
     font-size: 3em; }
+  .add .input-label {
+    color: #ccc; }
   .add .input__label-content {
     font-size: 2em; }
+  .add .double {
+    max-width: 78em;
+    margin: 0 auto; }
   .add .half-size {
-    max-width: 75em; }
+    margin: 3em auto;
+    max-width: calc(50% - 2.5em); }
+  @media screen and (max-width: 800px) {
+    .add .half-size {
+      max-width: calc(100% - 2em); } }
   .add h1 {
     font-size: 3em;
     color: #EEE; }
   .add h3 {
     color: #777; }
+  .add .ui.dropdown {
+    background-color: #202226;
+    color: #FFF;
+    border: none;
+    border-bottom: #FFF solid 2px;
+    border-radius: 0;
+    width: 60em;
+    height: 2em;
+    padding: 0;
+    margin: 4em 1em; }
+    .add .ui.dropdown .text {
+      font-size: 1.75em; }
+  .add .ui.dropdown:hover {
+    border-bottom: #FFF solid 2px;
+    height: 2em; }
+  .add .ui.dropdown.team-member {
+    width: 75em;
+    margin: 4em auto; }
+  .add .ui.multiple.search.dropdown > .text {
+    margin: -0.3em 0; }
+  .add .ui.active.search.dropdown input.search:focus + .text {
+    color: #FFF; }
+  .add .ui.upward.selection.dropdown {
+    border-radius: 0 !important;
+    box-shadow: none; }
+  .add .ui.selection.active.dropdown:hover {
+    border-color: #FFF;
+    border-radius: 0; }
 
 /*# sourceMappingURL=main.css.map */

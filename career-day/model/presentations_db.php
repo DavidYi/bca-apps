@@ -201,7 +201,12 @@ class Presentation {
         $statement = $db->prepare($query);
         $statement->bindValue(":pres_id", $this->pres_id);
         $statement->bindValue(":usr_id", $usr_id);
-        $statement->bindValue(":pres_user_updt_usr_id", $usr_id);
+
+        if (isset($_SESSION['prev_usr_id']))
+            $statement->bindValue(":pres_user_updt_usr_id", $_SESSION['prev_usr_id']);
+        else
+            $statement->bindValue(":pres_user_updt_usr_id", $usr_id);
+
         $statement->execute();
         $statement->closeCursor();
     }

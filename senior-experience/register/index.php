@@ -28,7 +28,7 @@ if ($sort_order == NULL) {
     $sort_order = 1;
 }
 
-$signup_dates = (get_signup_dates_by_class_year($user['usr_class_year']));
+$signup_dates = get_signup_dates_by_class_year($user['usr_class_year']);
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
 
@@ -51,14 +51,17 @@ if ($action == "register") {
     $presentation = Presentation::getPresentation($pres_id);
 
     // Error -- not time to sign up.
-    if ($current_date < $start_date || $current_date > $end_date) {
-        display_error("It is not currently time to enroll.  Please check the enrollment dates.");
+    if ($current_date < $start_date) {
+        display_error("It is not time to enroll yet. It starts at " . date_format($start_date,'g:ia \o\n l jS F Y') . ".");
+        exit();
+    } else if ($current_date > $end_date){
+        display_error("Sign up has ended.");
         exit();
     }
 
     // Error -- presentation full.
     else if (!$presentation->has_space()) {
-        display_error("The presentation you selected is already full.  Please select another.");
+        display_error("The presentation you selected is already full.  Please select another presentation.");
         exit();
     }
 

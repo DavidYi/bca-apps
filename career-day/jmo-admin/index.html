@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Admin Tools</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+		<!-- Styles -->
+        <link href="ss/main.css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+	        <h1 class="title">Admin Tools</h1>
+	    </header>
+	    <main>
+	    	<div class="feature">
+	    		<a href="signup-dates/index.html">
+	    			<h2>Signup Dates</h2>
+	    			<h4>View and edit signup deadlines by grade</h4>
+	    		</a>
+	    	</div>
+	    	<div class="feature">
+	    		<a href="mentor/mentor.html">
+	    			<h2>Mentors</h2>
+	    			<h4>Manage mentors and presentations</h4>
+	    		</a>
+	    	</div>
+	    	<div class="feature">
+	    		<a href="signins/signins.html">
+	    			<h2>Signins</h2>
+	    			<h4>Generate signin sheets and mentor check-in sheet</h4>
+	    		</a>
+	    	</div>
+	    	<div class="feature">
+	    		<a href="signup-status/signup-status.html">
+	    			<h2>Signup Status</h2>
+	    			<h4>View student registration statistics and automatically entroll students who have not yet registered</h4>
+	    		</a>
+	    	</div>
+	    </main>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			    $('body').plusAnchor({
+			        easing: 'easeInOutExpo',
+			        speed:  700
+			    });
+			});
+		</script>
+	</body>
+</html>
