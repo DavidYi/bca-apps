@@ -340,4 +340,180 @@ main {
     .feature:hover a {
       color: #fdfdfd; }
 
+.fab {
+  position: fixed;
+  right: 1.875em;
+  bottom: 2.8125em; }
+  .fab a {
+    display: inline-block;
+    height: 4.6875em;
+    width: 4.6875em;
+    background: #EC407A;
+    background: #EC407A;
+    line-height: 4.6875em;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 0.75em 1.5625em #EC407A;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease; }
+    .fab a span.plus {
+      color: #fdfdfd;
+      font-size: 2.625em;
+      -webkit-transition: all 175ms ease;
+      -moz-transition: all 175ms ease;
+      transition: all 175ms ease; }
+    .fab a:hover span.plus {
+      transform: rotate(360deg); }
+
+nav.navbar {
+  height: 3.75em;
+  width: 85%;
+  max-width: 75em;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 3.75em;
+  margin: 0 auto;
+  padding: 0 1.5625em;
+  background: #262626;
+  border-right: 0.4375em solid #262626;
+  box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33); }
+  nav.navbar::after {
+    clear: both;
+    content: "";
+    display: table; }
+  @media screen and (max-width: 800px) {
+    nav.navbar {
+      height: 3.75em;
+      width: 92.5%; } }
+  @media screen and (max-width: 600px) {
+    nav.navbar {
+      height: 3.75em;
+      width: 100%; } }
+
+nav .session-filter:hover, nav .session-filter:active {
+  color: #eee;
+  text-decoration: underline; }
+
+.session-filter {
+  display: inline-block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: white;
+  -webkit-transition: all 175ms ease;
+  -moz-transition: all 175ms ease;
+  transition: all 175ms ease; }
+  .session-filter a {
+    font-size: 1.125em;
+    font-weight: 400;
+    text-decoration: none; }
+
+.name {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 25%;
+  color: #e1e1e1;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left; }
+  .name:last-child {
+    margin-right: 0; }
+
+.company {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 25%;
+  color: #e1e1e1;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left; }
+  .company:last-child {
+    margin-right: 0; }
+
+.position {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 18.75%;
+  color: #e1e1e1;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left; }
+  .position:last-child {
+    margin-right: 0; }
+
+.teacher {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 18.75%;
+  color: #e1e1e1;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left; }
+  .teacher:last-child {
+    margin-right: 0; }
+
+.room {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 6.25%;
+  color: #e1e1e1;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: center; }
+  .room:last-child {
+    margin-right: 0; }
+
+.capacity {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 6.25%;
+  color: #e1e1e1;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: center; }
+  .capacity:last-child {
+    margin-right: 0; }
+
+.list-container {
+  height: auto;
+  width: 85%;
+  max-width: 75em;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto;
+  background: #fdfdfd;
+  background: #fdfdfd;
+  box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33); }
+  .list-container::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .list-container .mentor {
+    height: 3.75em;
+    width: 100%;
+    line-height: 3.75em;
+    padding: 0 1.5625em;
+    border-bottom: 1px solid #aaa; }
+    .list-container .mentor .session-filter {
+      color: #555; }
+
 /*# sourceMappingURL=main.css.map */

@@ -47,3 +47,110 @@ main {
 		}
 	}
 }
+
+.fab {
+	position: fixed;
+	right: em(30px);
+	bottom: em(45px);
+
+	a {
+		display: inline-block;
+		@include size(em(75px) em(75px));
+		@include background(#EC407A);
+		line-height: em(75px);
+		border-radius: 50%;
+		text-align: center;
+
+		box-shadow: 0 em(12px) em(25px) #EC407A;
+	
+		@include transition(all $animation-duration $animation-timing);
+		
+		span.plus {
+			color: $color-white;
+			font-size: em(42px);
+			@include transition(all $animation-duration $animation-timing);
+		}
+
+		&:hover {
+			span.plus {
+				transform: rotate(360deg);
+			}
+		}
+	}
+}
+
+$grid-columns: 16;
+@mixin session-column($row-size, $font-weight, $font-align) {
+	@include span-columns($row-size);
+	color: darken($color-gallery, 5%);
+	@include margin(0);
+	@include padding(0);
+	font-size: em(18px);
+	font-weight: $font-weight;
+	text-align: $font-align;
+}
+
+nav.navbar {
+	@include size(85% em(60px));
+	@include outer-container(em(1200px));
+	line-height: em(60px);
+	@include margin(0 auto);
+	@include padding(0 em(25px));
+
+	background: $color-mineshaft;
+	border-right: em(7px) solid $color-mineshaft;
+	box-shadow: 0 em(5px) em(15px) rgba(0, 0, 0, 0.33);
+
+	@include media($medium-screen-down) { @include size(92.5% em(60px)); }
+	@include media($mobile) { @include size(100% em(60px)); }
+}
+
+nav {
+	.session-filter {
+		&:hover, &:active {
+			color: $color-gallery;
+			text-decoration: underline;
+		}
+	}
+}
+.session-filter {
+	display: inline-block;
+	height: 100%;
+	@include margin(0);
+	@include padding(0);
+	color: lighten($color-gallery, 95%);
+	@include transition(all $animation-duration $animation-timing);
+
+	a { 
+		font-size: em(18px);
+		font-weight: $default-font-weight;
+		text-decoration: none;
+	}
+
+}
+
+.name { @include session-column(4, 500, left); }
+.company { @include session-column(4, 500, left); }
+.position { @include session-column(3, 500, left); }
+.teacher { @include session-column(3, 500, left); }
+.room { @include session-column(1, 500, center); }
+.capacity { @include session-column(1, 500, center); }
+
+.list-container {
+	@include size(85% auto);
+	@include outer-container(em(1200px));
+	@include margin(0 auto);
+	@include background($color-white);
+	box-shadow: 0 em(5px) em(15px) rgba(0, 0, 0, 0.33);
+
+	.mentor {
+		@include size(100% em(60px));
+		line-height: em(60px);
+		@include padding(0 em(25px));
+		border-bottom: 1px solid $color-silverchalice;
+
+		.session-filter {
+			color: $color-emperor;
+		}
+	}
+}
