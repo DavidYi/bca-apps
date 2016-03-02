@@ -49,5 +49,18 @@ body {
   .add .ui.dropdown:hover {
     border-bottom: #FFF solid 2px;
     height: 2em; }
+  .add .ui.dropdown.team-member {
+    width: 75em;
+    margin: 4em auto; }
+  .add .ui.multiple.search.dropdown > .text {
+    margin: -0.3em 0; }
+  .add .ui.active.search.dropdown input.search:focus + .text {
+    color: #FFF; }
+  .add .ui.upward.selection.dropdown {
+    border-radius: 0 !important;
+    box-shadow: none; }
+  .add .ui.selection.active.dropdown:hover {
+    border-color: #FFF;
+    border-radius: 0; }
 
 /*# sourceMappingURL=main.css.map */
