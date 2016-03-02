@@ -13,8 +13,14 @@ require_once ("../model/presentations_db.php");
 
 $action = filter_input(INPUT_GET, 'action');
 if (isset($action) and ($action == "logout")) {
-    session_destroy();
-    header("Location: ../index.php");
+    if (isset($_SESSION['prev_usr_id'])) {
+        $_SESSION['user'] = User::getUserByUsrId($_SESSION['prev_usr_id']);
+        $_SESSION['prev_usr_id'] = NULL;
+        header("Location: ../admin/index.php");
+    } else {
+        session_destroy();
+        header("Location: ../index.php");
+    }
 }
 
 $sessions = get_sessions_by_user($user->usr_id);
