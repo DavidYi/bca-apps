@@ -154,3 +154,70 @@ nav {
 		}
 	}
 }
+
+input {
+	display: block;
+	@include margin(em(7px) auto);
+	@include padding(0 em(25px));
+	box-shadow: 0 em(0) em(4px) rgba(0, 0, 0, 0.1);
+
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: $color-silverchalice;
+	}
+
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: $color-silverchalice;
+	}
+
+	&:-ms-input-placeholder { /* IE 10+ */
+	  color: $color-silverchalice;
+	}
+
+	&:-moz-placeholder { /* Firefox 18- */
+	  color: $color-silverchalice;
+	}
+
+	&:focus {
+		@include margin(em(4px) auto em(10px));
+		box-shadow: 0 em(7px) em(15px) rgba(0, 0, 0, 0.1);
+
+		&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  color: $color-mineshaft;
+		}
+
+		&::-moz-placeholder { /* Firefox 19+ */
+		  color: $color-mineshaft;
+		}
+
+		&:-ms-input-placeholder { /* IE 10+ */
+		  color: $color-mineshaft;
+		}
+
+		&:-moz-placeholder { /* Firefox 18- */
+		  color: $color-mineshaft;
+		}		
+	}
+}
+
+form {
+	width: 100%;
+}
+
+.button-container {
+	width: 100%;
+	text-align: center;
+}
+
+button.add {
+	@include size(em(480px) em(55px));
+	@include background($color-mineshaft);
+	@include margin(em(15px) auto 0);
+	text-align: center;
+
+	&:hover {
+		@include margin(em(10px) auto em(5px));
+		@include background($color-white);
+		color: $color-black;
+		box-shadow: 0 em(7px) em(15px) rgba(0, 0, 0, 0.1);
+	}
+}
