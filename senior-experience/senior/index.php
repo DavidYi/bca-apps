@@ -35,7 +35,7 @@ switch ($action) {
         $pres_location = filter_input(INPUT_POST, 'location');
         $pres_names = filter_input(INPUT_POST, 'names');
 
-        add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $pres_names);
+        add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $pres_names, $user->usr_id);
 
 
         include 'show_pres.php';
