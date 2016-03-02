@@ -26,7 +26,7 @@ else {
 
     if (!bergenAuthLDAP($username, $password)) {
         $message = "Username, password combination is not correct.";
-        include(__DIR__ . 'login.php');
+        include(__DIR__ . '/login.php');
         exit();
     }
     $user = User::getUserByBCAId($username);

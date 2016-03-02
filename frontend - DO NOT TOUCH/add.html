@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+	<title>Senior Experience 2016</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<!-- <link rel="shortcut icon" href="images/logo.ico"> -->
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700italic,700,500italic,500,400italic,300italic,300' rel='stylesheet' type='text/css'>
+
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+	<!-- Styles -->
+    <link href="ss/semantic.css" rel="stylesheet">
+    <link href="ss/set1.css" rel="stylesheet">
+    <link href="ss/demo.css" rel="stylesheet">
+    <link href="ss/main.css" rel="stylesheet">
+
+    
+</head>
+<body>
+	<section class="add">
+		<h1>Add Presentation</h1>
+
+		<div class="input input--add">
+			<input class="input-field add-field" type="text" />
+			<label class="input-label add-label" />
+		<div class="input__label-content input__label-content--add">Presentation Name</div>
+		</div>
+
+		<div class="input input--add">
+			<input class="input-field add-field" type="text" />
+			<label class="input-label add-label" />
+		<div class="input__label-content input__label-content--add">Presentation Description</div>
+		</div>
+
+		<div class="input input--add">
+			<input class="input-field add-field" type="text" />
+			<label class="input-label add-label" />
+		<div class="input__label-content input__label-content--add">Organization</div>
+		</div>
+
+		<div class="input input--add">
+			<input class="input-field add-field" type="text" />
+			<label class="input-label add-label" />
+		<div class="input__label-content input__label-content--add">Location</div>
+		</div>
+
+		<div class="double">
+		<div class="input ui selection dropdown half-size">
+			<input type="hidden" name="room-number">
+			<i class="dropdown icon"></i>
+			<div class="default text">Room Number</div>
+			<div class="menu">
+				<div class="item" data-value="0">130</div>
+				<div class="item" data-value="1">131</div>
+				<div class="item" data-value="2">132</div>
+				<div class="item" data-value="3">133</div>
+				<div class="item" data-value="4">134</div>
+				<div class="item" data-value="5">135</div>
+			</div>
+		</div>
+
+		<div class="input ui selection dropdown half-size">
+			<input type="hidden" name="session-number">
+			<i class="dropdown icon"></i>
+			<div class="default text">Session Number</div>
+			<div class="menu">
+				<div class="item" data-value="0">1</div>
+				<div class="item" data-value="1">2</div>
+				<div class="item" data-value="2">3</div>
+				<div class="item" data-value="3">4</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="input ui loading fluid multiple search selection dropdown team-member">
+			<input type="hidden" name="team-member" value="">
+			<i class="dropdown icon"></i>
+			<input class="search">
+			<div class="default text">Search for team members...</div>
+			<div class="menu">
+				<div class="item">Su Min</div>
+				<div class="item">Ji Eun</div>
+				<div class="item">Dae Sung</div>
+				<div class="item">GD</div>
+				<div class="item">Sublime</div>
+				<div class="item">Daniel Chung</div>
+				<div class="item">Kwon Jiyong</div>
+				<div class="item">IU</div>
+			</div>
+		</div>
+	</section>
+	
+	<!--JavaScript -->
+	<script src="js/classie.js"></script>
+	<script src="js/semantic.min.js"></script>
+	<script type="text/javascript">
+		$('.ui.dropdown')
+		  .dropdown()
+		;
+	</script>
+	
+</body>
+</html>

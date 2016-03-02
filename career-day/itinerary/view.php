@@ -15,37 +15,44 @@
 			<div class="view-main">
 			<div class="login-status">
 				<h3><b><?php echo ($user->usr_first_name." ".$user->usr_last_name); ?></b></h3>
-				<h3 class="log-out"><a href="./index.php?action=logout">Log Out</a></h3>
+				<h3 class="log-out"><a href="./index.php?action=logout">
+                        <?php if (isset($_SESSION['prev_usr_id'])) { ?> Return to Admin Panel <?php }
+                        else { ?> Log Out <?php } ?>
+                    </a></h3>
 			</div>
 			<div class="vertical-center">
-				<h1>Career Day (Feb. 2)</h1>
+                <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
+                    <h1>Career Day (Feb. 2)</h1>
 
-<?php if ($startTime > $currentTime) { ?>
-				<h3> Registration <b>has not opened</b>!</h3>
-				<h3> Opens: <?php echo $startTimeFormatted ?> </h3>
+    <?php if ($startTime > $currentTime) { ?>
+                    <h3> Registration <b>has not opened</b>!</h3>
+                    <h3> Opens: <?php echo $startTimeFormatted ?> </h3>
 
-<?php } elseif ($endTime < $currentTime) { ?>
-				<h3> Registration has <b>ended</b>. </h3>
-				<h3> If you did not finish registering, a session will be assigned to you. </h3>
+    <?php } elseif ($endTime < $currentTime) { ?>
+                    <h3> Registration has <b>ended</b>. </h3>
+                    <h3> If you did not finish registering, a session will be assigned to you. </h3>
 
-<?php } elseif ($registration_complete) { ?>
-				<h3> Registration <b>complete</b>! </h3>
-				<h3> Feedback <a href="https://docs.google.com/forms/d/1WIjMjkT5w48ZM-T7vB1A2fo0Ipv-aAVnX0NDsstdF_c/viewform">survey</a> about this site. </h3>
+    <?php } elseif ($registration_complete) { ?>
+                    <h3> Registration <b>complete</b>! </h3>
+                    <h3> Feedback <a href="https://docs.google.com/forms/d/1WIjMjkT5w48ZM-T7vB1A2fo0Ipv-aAVnX0NDsstdF_c/viewform">survey</a> about this site. </h3>
 
-<?php } else { ?>
-				<h3> Registration is <b>open</b>! </h3>
-				<h3> Closes: <?php echo $endTimeFormatted ?> </h3>
-<?php } ?>
+    <?php } else { ?>
+                    <h3> Registration is <b>open</b>! </h3>
+                    <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
+    <?php } ?>
 
-				<h3> Click <a href="../../CareerDayMentors.pdf" download>here</a> to read about the mentors.</h3>
-				<h3> Email <a href="mailto:micpin@bergen.org"> Ms. Pinke </a> with any questions.</h3>
+                    <h3> Click <a href="../../CareerDayMentors.pdf" download>here</a> to read about the mentors.</h3>
+                    <h3> Email <a href="mailto:micpin@bergen.org"> Ms. Pinke </a> with any questions.</h3>
+                <?php } else { ?>
+                    <h1>Mimic User Mode</h1>
+                <?php } ?>
 			</div>
 			</div>
 			<div class="view-signup enrollment">
 			<div class="vertical-center">
 				<?php foreach ($sessions as $session) { ?>
 
-					<?php if ($registrationOpen) {?>
+					<?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) {?>
 						<a href="../register/index.php?session=<?php echo $session['ses_times']?>&action=register">
 					<?php } ?>
 
@@ -59,7 +66,7 @@
 						<?php } ?>
 					</div>
 
-					<?php if ($registrationOpen) {?>
+					<?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) {?>
 						</a>
 					<?php } ?>
 

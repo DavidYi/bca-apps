@@ -41,7 +41,7 @@ $id = 0;
 $register_id = 0;
 $is_changing = $is_enrolled;
 if ($action == "register") {
-    if (!($current_date < $start_date || $current_date > $end_date)) {
+    if (!($current_date < $start_date || $current_date > $end_date) || isset($_SESSION['prev_usr_id'])) {
         $presentations = get_presentation_list($currentSession, $sort_by, $sort_order);
         include("view.php");
     } else {
@@ -52,15 +52,15 @@ if ($action == "register") {
     $presentation = Presentation::getPresentation($pres_id);
 
     // Error -- not time to sign up.
-    if ($current_date < $start_date || $current_date > $end_date) {
-        display_error("It is not currently time to enroll.  Please check the enrollment dates.");
-        exit();
-    }
-
-    // Error -- presentation full.
-    else if (!$presentation->has_space()) {
-        display_error("The presentation you selected is already full.  Please select another.");
-        exit();
+    if (!isset($_SESSION['prev_usr_id'])) {
+        if ($current_date < $start_date || $current_date > $end_date) {
+            display_error("It is not currently time to enroll.  Please check the enrollment dates.");
+            exit();
+        } // Error -- presentation full.
+        else if (!$presentation->has_space()) {
+            display_error("The presentation you selected is already full.  Please select another.");
+            exit();
+        }
     }
 
     // All good -- add the presentation!
