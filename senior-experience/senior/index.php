@@ -3,16 +3,25 @@
 require_once('../util/main.php');
 //require_once('../../util/tags.php');
 require('../model/senior_db.php');
+require('../model/presentations_db.php');
 
-if(!isSeniortime()){
-    header("Location: ../itinerary");
-}
+//if(!isSeniortime()){
+//    header("Location: ../itinerary");
+//}
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
 }
 
+$pres = Presentation::getPresentationForSenior ($user->usr_id);
+
+if ($pres == NULL) {
+    // Go to add presentation
+}
+else {
+    // go to modify presentation
+}
 
 switch ($action) {
     case 'show_add_pres':
