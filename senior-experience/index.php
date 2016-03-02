@@ -25,7 +25,7 @@ function directToHomePage() {
     if ($user->getRole('SENX') == 'ADM') {
         header("Location: admin");
     } else {
-        header("Location: itinerary");
+        header("Location: senior");
     }
 }
 

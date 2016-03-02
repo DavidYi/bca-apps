@@ -8,7 +8,7 @@
 
 /* These messages are used to customize the login page. */
 $pageTitle = 'Career Day Registration';
-$loginInfo = '<h1>Career Day</h1>
+$loginInfo = '<h1>Career Day </h1>
                 <h3>
                     BCA will hold Career Day on <b>Tuesday, February 2</b>.  At Career Day, you will have the opportunity
                     to participate in presentations by 4 different mentors of your choosing.  Through this experience,

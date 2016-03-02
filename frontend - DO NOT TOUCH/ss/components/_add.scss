@@ -1,0 +1,32 @@
+body {
+	background-color: #202226;
+
+}
+.add {
+	margin: 3em auto;
+	width: 75%;
+	text-align: center;
+
+	input {
+		color: #FFF;
+		width: 100%;
+		margin: 0;
+		font-size: 3em;
+	}
+	.input__label-content {
+		font-size: 2em;
+	}
+	
+	.half-size {
+		max-width: 75em;
+	}
+
+	h1 {
+		font-size: 3em;
+		color: #EEE;
+	}
+
+	h3 {
+		color: #777;
+	}
+}

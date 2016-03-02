@@ -115,7 +115,7 @@ function get_field_list() {
     $query = "SELECT field_id, field_name
               FROM field
               ORDER BY field_name";
-    get_list($query);
+    return get_list($query);
 }
 
 function add_field ($field_name) {
@@ -142,7 +142,7 @@ function modify_field($field_id, $field_name) {
     global $db;
 
     $query = "UPDATE field
-              SET field_name = :field_name,
+              SET field_name = :field_name
               WHERE field_id = :field_id";
 
     try {
