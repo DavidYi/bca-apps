@@ -187,12 +187,13 @@
 
 
 		<div class="fab">
-			<a href=""><span class="plus">+</span></a>
+			<a id="fab-action" trigger="mentor-add.html"><span class="plus">+</span></a>
 		</div>
-		
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
-		<script type="text/javascript" src="js/jquery.plusanchor.min.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
+		<script type="text/javascript" src="../js/featherlight.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 			    $('body').plusAnchor({
@@ -200,6 +201,14 @@
 			        speed:  700
 			    });
 			});
+
+			$('#fab-action').click(function(){
+			  $.featherlight( $('<iframe width="1000" height="800" src="' + $(this).attr('trigger') + '"/>') )
+			})
+
+			$('.mentor').click(function(){
+			  $.featherlight($('<iframe width="1000" height="800" src="mentor-modify.html"/>') )
+			})
 		</script>
 	</body>
 </html>

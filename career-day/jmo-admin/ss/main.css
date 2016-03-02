@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
@@ -512,9 +513,20 @@ nav .session-filter:hover, nav .session-filter:active {
     width: 100%;
     line-height: 3.75em;
     padding: 0 1.5625em;
-    border-bottom: 1px solid #aaa; }
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease; }
     .list-container .mentor .session-filter {
       color: #555; }
+    .list-container .mentor:hover {
+      background: #f0c30f;
+      background: #f0c30f;
+      border-bottom: 1px solid #f0c30f;
+      box-shadow: 0 -0.0625em 0 #f0c30f; }
+      .list-container .mentor:hover .session-filter {
+        color: #fdfdfd; }
 
 input {
   display: block;
@@ -569,5 +581,87 @@ button.add {
     background: #fdfdfd;
     color: #333;
     box-shadow: 0 0.4375em 0.9375em rgba(0, 0, 0, 0.1); }
+
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.3.4 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2015, No├½l Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+@media all {
+  .featherlight {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2147483647;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #333;
+    background: transparent; }
+
+  .featherlight:last-of-type {
+    background: rgba(0, 0, 0, 0.8); }
+
+  .featherlight:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; }
+
+  .featherlight .featherlight-content {
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: auto;
+    padding: 25px 25px 0;
+    border-bottom: 25px solid transparent;
+    min-width: 30%;
+    margin-left: 5%;
+    margin-right: 5%;
+    max-height: 95%;
+    background: #fff;
+    cursor: auto;
+    white-space: normal; }
+
+  .featherlight .featherlight-inner {
+    display: block; }
+
+  .featherlight .featherlight-close-icon {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    line-height: 25px;
+    width: 25px;
+    cursor: pointer;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.3);
+    color: #000; }
+
+  .featherlight .featherlight-image {
+    width: 100%; }
+
+  .featherlight-iframe .featherlight-content {
+    border-bottom: 0;
+    padding: 0; }
+
+  .featherlight iframe {
+    border: 0; } }
+@media only screen and (max-width: 1024px) {
+  .featherlight .featherlight-content {
+    margin-left: 10px;
+    margin-right: 10px;
+    max-height: 98%;
+    padding: 10px 10px 0;
+    border-bottom: 10px solid transparent; } }
 
 /*# sourceMappingURL=main.css.map */

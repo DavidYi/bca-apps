@@ -148,9 +148,21 @@ nav {
 		line-height: em(60px);
 		@include padding(0 em(25px));
 		border-bottom: 1px solid $color-silverchalice;
-
+		cursor: pointer;
+		@include transition(all $animation-duration $animation-timing);
+		
 		.session-filter {
 			color: $color-emperor;
+		}
+
+		&:hover {
+			@include background($color-yellow);
+			border-bottom: 1px solid $color-yellow;
+			box-shadow: 0 em(-1px) 0 $color-yellow;
+
+			.session-filter {
+				color: $color-white;
+			}
 		}
 	}
 }
