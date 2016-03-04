@@ -147,16 +147,17 @@ function get_user_list() {
 } */
 
 function get_sessions_by_user($usr_id) {
-    $query = 'select session_times.ses_id ses_times, my_ses.ses_id ses_id, pres_room, pres_max_capacity, pres_enrolled_count, pres_id, mentor_position, mentor_company, mentor_field, mentor_last_name, mentor_first_name, ses_name, ses_start, ses_end, session_times.sort_order
-              from session_times
-
-              left join (
-              select ses_id, pres_room, mentor_position, mentor_field, mentor_company, mentor_last_name, mentor_first_name, pres_max_capacity, pres_enrolled_count, presentation.pres_id
-              from presentation
-              inner join mentor on mentor.mentor_id = presentation.mentor_id
-              inner join pres_user_xref on presentation.pres_id = pres_user_xref.pres_id
-              where usr_id = :usr_id) my_ses on session_times.ses_id = my_ses.ses_id
-              order by session_times.sort_order';
+    $query = 'select p.pres_id, pres_title, pres_desc, organization, location, rm_nbr, field_name,
+                    get_presenters_comma_list (p.pres_id) presenters,
+                    pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
+                    t.ses_id, t.ses_start, t.ses_end
+            from presentation p
+            left join room r on p.rm_id = r.rm_id
+            left join field f on p.field_id = f.field_id
+            inner join user_presentation_xref x on p.pres_id = x.pres_id
+            inner join session_times t on p.ses_id = t.ses_id
+            and x.usr_id = :usr_id
+            order by t.sort_order';
 
     global $db;
 
