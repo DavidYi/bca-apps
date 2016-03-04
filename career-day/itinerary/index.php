@@ -11,6 +11,8 @@ require_once("../../shared/model/user_db.php");
 require_once ("../model/signups_db.php");
 require_once ("../model/presentations_db.php");
 
+verify_logged_in();
+
 $action = filter_input(INPUT_GET, 'action');
 if (isset($action) and ($action == "logout")) {
     if (isset($_SESSION['prev_usr_id'])) {

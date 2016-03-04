@@ -31,7 +31,9 @@ else {
     }
     $user = User::getUserByBCAId($username);
 
-    session_start();
+    if (!isset($_SESSION))
+        session_start();
+
     $_SESSION['user'] = $user;
 
     /* This method should be defined in the app specific default index.php file. */

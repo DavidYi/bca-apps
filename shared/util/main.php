@@ -14,17 +14,21 @@ require_once(__DIR__ . "/../../shared/model/user_db.php");
 // If the user is not logged in, send them to the login page.
 //
 session_start();
-$user = $_SESSION['user'];
-if (!isset($user))
-{
-    header('Location: /' . $app_url_path . '/index.php');
-    exit();
-}
+if (isset($_SESSION['user']))
+    $user = $_SESSION['user'];
+
 
 //
 // Common methods that should be available on all pages.
 // Add them here.
 //
+function display_user_message ($message, $next_page) {
+    global $app_url_path;
+    global $message_page_path;
+    include $message_page_path;
+    exit();
+}
+
 function display_error($error_message) {
     global $app_url_path;
     global $error_page_path;
@@ -32,6 +36,39 @@ function display_error($error_message) {
     include $error_page_path;
     exit();
 }
+
+function display_db_error($msg) {
+    global $app_url_path;
+    global $error_page_path;
+
+    log_error($msg);
+
+    $error_message = 'A database error has occurred.  Please try again.';
+
+    include $error_page_path;
+    exit();
+}
+
+function log_error ($msg)
+{
+    $query = 'insert into log (log_lvl_cde, log_msg, app_cde)
+              VALUES (\'ERR\',:log_msg, :app_cde)';
+
+    global $db;
+    global $app_cde;
+
+    try {
+        error_log("log_error:" . $msg, 0);
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(":log_msg", $msg);
+        $statement->bindValue(":app_cde", $app_cde);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+    }
+}
+
 
 function log_exception ($exception, $usr_id, $src, $method)
 {
@@ -85,14 +122,27 @@ function log_pdo_exception ($exception, $usr_id, $src, $method)
     }
 }
 
+function verify_logged_in()
+{
+    global $app_url_path;
+    global $user;
+
+    if (!isset($user)) {
+        header('Location: /' . $app_url_path . '/index.php');
+        exit();
+    }
+}
+
 function verify_admin() {
     global $app_cde;
     global $app_url_path;
+    global $user;
 
-    if ($_SESSION['user']->getRole($app_cde) != 'ADM') {
-        $app_url_path = $app_url_path; // Remove unused variable warning.  Need variable for invaliduser.
+    verify_logged_in();
 
-        include __DIR__ . '/../errors/invaliduser.html';
+    if ($user->getRole($app_cde) != 'ADM') {
+        log_error ("Permission exception in verify_admin.  User id:" . $user->usr_id);
+        display_user_message("Permission denied.  You are not an administrator.", '/' . $app_url_path . '/index.php');
         exit();
     }
 }

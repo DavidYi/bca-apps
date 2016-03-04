@@ -1,3 +1,9 @@
+<?php
+include('../util/main.php');
+
+verify_admin();
+?>
+
 <html>
     <head>
         <title>Admin Panel</title>

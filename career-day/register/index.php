@@ -11,6 +11,8 @@ require_once("../../shared/model/user_db.php");
 require_once('../model/presentations_db.php');
 require_once('../model/signups_db.php');
 
+verify_logged_in();
+
 $currentSession = filter_input(INPUT_GET, 'session');
 if ($currentSession < 1 || $currentSession > 4) {
     $currentSession = 1;
@@ -45,7 +47,7 @@ if ($action == "register") {
         $presentations = get_presentation_list($currentSession, $sort_by, $sort_order);
         include("view.php");
     } else {
-       display_error("It's not time to enroll yet");
+        display_user_message("It's not time to enroll yet", "/" . $app_url_path . "/itinerary");
     }
 }  else if ($action == "commit") {
     $pres_id = filter_input(INPUT_GET, 'pres_id');
@@ -54,11 +56,11 @@ if ($action == "register") {
     // Error -- not time to sign up.
     if (!isset($_SESSION['prev_usr_id'])) {
         if ($current_date < $start_date || $current_date > $end_date) {
-            display_error("It is not currently time to enroll.  Please check the enrollment dates.");
+            display_user_message("It is not currently time to enroll.  Please check the enrollment dates.", "/" . $app_url_path . "/itinerary");
             exit();
         } // Error -- presentation full.
         else if (!$presentation->has_space()) {
-            display_error("The presentation you selected is already full.  Please select another.");
+            display_user_message("The presentation you selected is already full.  Please select another.", "/" . $app_url_path . "/itinerary");
             exit();
         }
     }

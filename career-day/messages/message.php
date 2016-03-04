@@ -5,24 +5,26 @@
 		<!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
 		<!-- Styles -->
-        <link href="../ss/main.css" rel="stylesheet">
+		<link href="/<?php echo $app_url_path; ?> /ss/main.css" rel="stylesheet">
 		<!-- <?php include_analytics(); ?> -->
 	</head>
 	<body>
+		<form action="<?php echo $next_page ?>" method="get">
 		<section class="main login">
 			<div class="error">
 				<div class="vertical-center">
-	                <h1><i>oops..</i></h1>
+	                <h1><i>oops...</i></h1>
 	                <h3><i>
-	                	It's not time to enroll yet.
+	                	<?php echo $message ?>
 	                </i></h3>
-	                <button><a href="#" onclick="history.back();">Go Back</a>	</button>
+	                <button>Ok</button>
 	            </div>
 			</div>
 		</section>
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
-		<script type="text/javascript" src="js/jquery.plusanchor.min.js"></script>
+			</form>
+		<script type="text/javascript" src="/<?php echo $app_url_path; ?> /js/jquery.min.js"></script>
+		<script type="text/javascript" src="/<?php echo $app_url_path; ?> /js/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="/<?php echo $app_url_path; ?> /js/jquery.plusanchor.min.js"></script>
 		<script type="text/javascript">
 		    $('body').plusAnchor({
 		        easing: 'easeInOutExpo',

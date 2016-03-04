@@ -4,7 +4,8 @@
 // Add them here.
 //
 $app_cde = 'CAR';
-$error_page_path = __DIR__ . '/../errors/error.php';
+$error_page_path = __DIR__ . '/../messages/error.php';
+$message_page_path = __DIR__ . '/../messages/message.php';
 
 require_once(__DIR__ . "/../model/database.php");
 require_once(__DIR__ . "/../../shared/util/main.php");

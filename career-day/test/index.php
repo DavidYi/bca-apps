@@ -5,10 +5,8 @@
  * Date: 12/14/15
  * Time: 1:04 PM
  */
-require_once("../model/database.php");
-require_once("../../shared/model/database.php");
+require_once("../util/main.php");
 require_once("../../shared/model/user_db.php");
-
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
@@ -30,7 +28,6 @@ switch ($action) {
          * usr_role_cde
          * user_type_cde
          */
-        session_start();
         $user_from_post = filter_input(INPUT_POST, 'usr_id');
         $user = User::getUserByUsrId($user_from_post);
         $_SESSION['user'] = $user;
