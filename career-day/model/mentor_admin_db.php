@@ -55,8 +55,8 @@ function add_mentor($mentor_last_name, $mentor_first_name, $mentor_field, $mento
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -101,8 +101,8 @@ function modify_mentor($mentor_id, $mentor_last_name, $mentor_first_name, $mento
         $statement->closeCursor();
 
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -118,8 +118,8 @@ function get_mentor($mentor_id) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -133,8 +133,8 @@ function delete_mentor($mentor_id){
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 

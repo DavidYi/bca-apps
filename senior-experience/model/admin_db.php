@@ -16,8 +16,8 @@ function get_room($rm_id) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_msg = $e->getMessage();
-        display_db_error($error_msg);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -44,8 +44,8 @@ function add_room($rm_nbr, $rm_cap) {
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_msg = $e->getMessage();
-        display_db_error($error_msg);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -66,8 +66,8 @@ function modify_room($rm_id, $rm_nbr, $rm_cap) {
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_msg = $e->getMessage();
-        display_db_error($error_msg);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -84,8 +84,8 @@ function delete_room($rm_id) {
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_msg = $e->getMessage();
-        display_db_error($error_msg);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -106,8 +106,8 @@ function get_field ($field_id) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_msg = $e->getMessage();
-        display_db_error($error_msg);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -133,8 +133,8 @@ function add_field ($field_name) {
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_msg = $e->getMessage();
-        display_db_error($error_msg);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -153,8 +153,8 @@ function modify_field($field_id, $field_name) {
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_msg = $e->getMessage();
-        display_db_error($error_msg);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -171,8 +171,8 @@ function delete_field($field_id) {
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_msg = $e->getMessage();
-        display_db_error($error_msg);
+        display_db_exception($e);
+        exit();
     }
 }
 

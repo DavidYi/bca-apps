@@ -4,8 +4,7 @@
 // Add them here.
 //
 $app_cde = 'CAR';
-$error_page_path = __DIR__ . '/../messages/error.php';
-$message_page_path = __DIR__ . '/../messages/message.php';
+$app_title = 'Career Day Registration';
 
 require_once(__DIR__ . "/../model/database.php");
 require_once(__DIR__ . "/../../shared/util/main.php");

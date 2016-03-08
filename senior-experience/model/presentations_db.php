@@ -23,8 +23,7 @@ function get_session_times_by_id($ses_id) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_error($error_message);
+        display_db_exception($e);
         exit();
     }
 }
@@ -60,8 +59,7 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_error($error_message);
+        display_db_exception($e);
         exit();
     }
 }
@@ -86,8 +84,7 @@ function get_presentation_by_user($usr_id, $ses_id) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_error($error_message);
+        display_db_exception($e);
         exit();
     }
 }
@@ -169,9 +166,7 @@ function get_sessions_by_user($usr_id) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_error($error_message);
-        exit();
+        display_db_exception($e);
     }
 }
 

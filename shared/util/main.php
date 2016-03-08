@@ -24,29 +24,57 @@ if (isset($_SESSION['user']))
 //
 function display_user_message ($message, $next_page) {
     global $app_url_path;
-    global $message_page_path;
-    include $message_page_path;
+    global $app_title;
+    include __DIR__ . '/../messages/message.php';;
     exit();
 }
 
 function display_error($error_message) {
     global $app_url_path;
-    global $error_page_path;
-
-    include $error_page_path;
+    global $app_title;
+    include __DIR__ . '/../messages/error.php';;
     exit();
 }
 
 function display_db_error($msg) {
-    global $app_url_path;
-    global $error_page_path;
-
     log_error($msg);
-
-    $error_message = 'A database error has occurred.  Please try again.';
-
-    include $error_page_path;
+    display_error('A database error has occurred.  Please try again.');
     exit();
+}
+
+function display_db_exception ($pdo_exception) {
+    if (isset($_SESSION['user']))
+        $usr_id = $_SESSION['user']->usr_id;
+    else
+        $usr_id = "";
+
+    $stack = generateCallTrace();
+    if (strlen($stack) > 1000)
+        $stack = substr($stack,0,1000);
+
+    log_pdo_exception ($pdo_exception, $usr_id, $stack,'');
+
+    display_error('A database error has occurred.  Please try again.');
+    exit();
+}
+
+function generateCallTrace()
+{
+    $e = new Exception();
+    $trace = explode("\n", $e->getTraceAsString());
+    // reverse array to make steps line up chronologically
+    $trace = array_reverse($trace);
+    array_shift($trace); // remove {main}
+    array_pop($trace); // remove call to this method
+    $length = count($trace);
+    $result = array();
+
+    for ($i = 0; $i < $length; $i++)
+    {
+        $result[] = ($i + 1)  . ')' . substr($trace[$i], strpos($trace[$i], ' ')); // replace '#someNum' with '$i)', set the right ordering
+    }
+
+    return "\t" . implode("\n\t", $result);
 }
 
 function log_error ($msg)

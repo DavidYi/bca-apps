@@ -93,8 +93,7 @@ function undo_enroll($year) {
         $statement->closeCursor();
         return;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
         exit();
     }
 }
@@ -110,8 +109,7 @@ function random_enroll($year) {
         $statement->closeCursor();
         return;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
         exit();
     }
 }
@@ -189,8 +187,8 @@ function get_csv_list($query)
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 

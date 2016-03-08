@@ -4,7 +4,7 @@
 // Add them here.
 //
 $app_cde = 'SENX';
-$error_page_path = __DIR__ . '/../messages/error.php';
+$app_title = 'Senior Expositions';
 
 require_once(__DIR__ . "/../model/database.php");
 require_once(__DIR__ . "/../../shared/util/main.php");

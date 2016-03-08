@@ -18,8 +18,8 @@ function add_pres($pres_title, $pres_desc, $organization, $location, $presenter_
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -38,8 +38,8 @@ function get_signup_dates_by_grade($grade_lvl) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -56,8 +56,8 @@ function get_senior_add_pres_dates() {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -81,8 +81,8 @@ function get_session_room_num_pairs(){
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 

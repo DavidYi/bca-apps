@@ -31,8 +31,8 @@ function get_session_times_by_id($ses_id) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -67,8 +67,8 @@ function get_students_in_ses($pres_id)
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 
 }
@@ -107,8 +107,8 @@ function get_presentation_list($mentor_id, $ses_id)
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 ?>

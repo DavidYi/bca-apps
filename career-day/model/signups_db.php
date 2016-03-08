@@ -45,8 +45,8 @@ function get_signup_dates_by_grade($grade_lvl) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -69,8 +69,8 @@ function add_signup_dates($class_year, $start, $end) {
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -100,8 +100,8 @@ function modify_course($course_id, $course_name, $course_short_name, $course_des
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -115,8 +115,8 @@ function delete_course($course_id) {
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
@@ -136,8 +136,8 @@ function get_course($course_id) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
+        exit();
     }
 }
 
