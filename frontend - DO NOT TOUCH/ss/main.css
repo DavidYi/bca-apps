@@ -281,11 +281,11 @@ body {
     width: 100%;
     margin: 5em 0; }
     .add .button button {
-      width: 20em;
-      height: 4em;
+      width: 12em;
+      height: 3em;
       margin: 0 auto;
       border-radius: 0;
-      font-size: 1em; }
+      font-size: 1.5em; }
 
 button {
   height: 3.125em;
