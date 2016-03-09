@@ -2,9 +2,9 @@
 <head>
 
 </head>
-
+<?php $fields = get_field_list();?>
 <body>
-<h1>Add Mentor</h1>
+<h1>Add Presentation</h1>
 <div id="mentor_add">
 
     <BR>
@@ -27,9 +27,15 @@
         <label>Presenter Names</label>
         <input title="" type="text" name="names" required><BR>
 
+        <label>Fields</label>
+        <select name="field_id" title="jowls">
+            <?php foreach ($fields as $field) {?>
+            <option value="<?php echo ($field['field_id']);?>"><?php echo($field['field_name']);  ?></option>
+            <?php } ?>
+        </select>
 
         <input type="submit" value="Add">
-        <button><a href="index.php?action=show_pres" style="text-decoration: none; color: black">Cancel</a></button>
+        <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
     </form>
 </div>
 </body>
