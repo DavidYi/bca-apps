@@ -86,6 +86,27 @@ function get_session_room_num_pairs(){
     }
 }
 
+function isSeniortime()
+{
+    require_once('../model/senior_db.php');
+    global $user;
+    $signup_dates = get_senior_add_pres_dates();
+
+    date_default_timezone_set('America/New_York');
+    $currentTime = time();
+    $startTime = strtotime($signup_dates['start']);
+    $endTime = strtotime($signup_dates['end']);
+
+    //$startTimeFormatted = date('M d, g:i  a', $startTime);
+    //$endTimeFormatted = date('M d, g:i  a', $endTime);
+
+
+    if (($currentTime > $startTime) and ($currentTime < $endTime))
+        return true;
+    else
+        return false;
+}
+
 
 
 

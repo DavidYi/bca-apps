@@ -5,9 +5,9 @@ require_once('../util/main.php');
 require('../model/senior_db.php');
 require('../model/presentations_db.php');
 
-//if(!isSeniortime()){
-//    header("Location: ../itinerary");
-//}
+if(!isSeniortime()){
+    header("Location: ../itinerary");
+}
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
@@ -16,11 +16,14 @@ if ($action == NULL) {
 
 $pres = Presentation::getPresentationForSenior ($user->usr_id);
 
+$pres = null;
+
 if ($pres == NULL) {
-    // Go to add presentation
-}
-else {
+    //go to add presentation
+    header("Location: presentation_add.php");
+} else {
     // go to modify presentation
+    header("Location: modify_pres.php");
 }
 
 switch ($action) {
@@ -35,7 +38,7 @@ switch ($action) {
         $pres_location = filter_input(INPUT_POST, 'location');
         $pres_names = filter_input(INPUT_POST, 'names');
 
-        add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $pres_names, $user->usr_id);
+        add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $pres_names, $user->usr_id, $pres->pres_id);
 
 
         include 'show_pres.php';
