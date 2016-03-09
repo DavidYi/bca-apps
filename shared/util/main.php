@@ -1,13 +1,12 @@
 <?php
+
+
 //
 // Common imports that should be available on all pages.
 // Add them here.
 //
 require_once(__DIR__ . "/../model/database.php");
 require_once(__DIR__ . "/../../shared/model/user_db.php");
-
-# I don't think we need this, but maybe we do?  We shall see.
-# $error_message = "";
 
 ////////////////////////////
 // Start Session and security check.
@@ -17,11 +16,7 @@ session_start();
 if (isset($_SESSION['user']))
     $user = $_SESSION['user'];
 
-
-//
-// Common methods that should be available on all pages.
-// Add them here.
-//
+/* Displays a message to the user.  When the user presses ok, redirects user to $next_page. */
 function display_user_message ($message, $next_page) {
     global $app_url_path;
     global $app_title;
@@ -29,6 +24,7 @@ function display_user_message ($message, $next_page) {
     exit();
 }
 
+/* Displays an error to the user.  When the user presses ok, goes to the prior page in history. */
 function display_error($error_message) {
     global $app_url_path;
     global $app_title;
@@ -36,13 +32,11 @@ function display_error($error_message) {
     exit();
 }
 
-function display_db_error($msg) {
-    log_error($msg);
-    display_error('A database error has occurred.  Please try again.');
-    exit();
-}
-
+/* Call this method whenever a query fails.  The method logs everything about the error in the LOG
+   table and displays a generic error message to the user.  To add: Create a debug mode that will print
+   the error message to the screen. */
 function display_db_exception ($pdo_exception) {
+    global $debug_mode;
     if (isset($_SESSION['user']))
         $usr_id = $_SESSION['user']->usr_id;
     else
@@ -54,10 +48,19 @@ function display_db_exception ($pdo_exception) {
 
     log_pdo_exception ($pdo_exception, $usr_id, $stack,'');
 
-    display_error('A database error has occurred.  Please try again.');
+    if ($debug_mode === true)
+        display_error('A database error has occurred.<br><br>' .
+            'Message:<br>' . $pdo_exception->getMessage() . '<br><br>' .
+            'Stack:<br>' . nl2br($stack) . '<br><br>' .
+            'PDO Code:<br>' . $pdo_exception->getCode() . '<br><br>' .
+            'PDO File:<br>' . $pdo_exception->getFile() . '<br><br>' .
+            'PDO Line:<br>' . $pdo_exception->getLine() . '<br><br>');
+    else
+        display_error('A database error has occurred.  Please try again.');
     exit();
 }
 
+/* Returns the current call stack as a string. */
 function generateCallTrace()
 {
     $e = new Exception();
@@ -77,6 +80,7 @@ function generateCallTrace()
     return "\t" . implode("\n\t", $result);
 }
 
+/* Writes an error message into the LOG table. */
 function log_error ($msg)
 {
     $query = 'insert into log (log_lvl_cde, log_msg, app_cde)
@@ -97,7 +101,7 @@ function log_error ($msg)
     }
 }
 
-
+/* Writes an exception message into the LOG table. */
 function log_exception ($exception, $usr_id, $src, $method)
 {
     $query = 'insert into log (log_lvl_cde, log_msg, log_src, log_mthd, usr_id, app_cde)
@@ -121,6 +125,7 @@ function log_exception ($exception, $usr_id, $src, $method)
     }
 }
 
+/* Writes a pdo exception message into the LOG table. */
 function log_pdo_exception ($exception, $usr_id, $src, $method)
 {
     $query = 'insert into log (log_lvl_cde, log_msg, log_src, log_mthd,
@@ -142,7 +147,7 @@ function log_pdo_exception ($exception, $usr_id, $src, $method)
         $statement->bindValue(":log_pdo_code", $exception->getCode());
         $statement->bindValue(":log_pdo_file", $exception->getFile());
         $statement->bindValue(":log_pdo_line", $exception->getLine());
-        $statement->bindValue(":log_pdo_msg", $exception->getMessage());
+        $statement->bindValue(":log_pdo_msg", "");
         $statement->bindValue(":app_cde", $app_cde);
         $statement->execute();
         $statement->closeCursor();
@@ -150,6 +155,7 @@ function log_pdo_exception ($exception, $usr_id, $src, $method)
     }
 }
 
+/* Verifies that the current user is logged in.  If not, they are redirected to the /index.php page. */
 function verify_logged_in()
 {
     global $app_url_path;
@@ -161,6 +167,7 @@ function verify_logged_in()
     }
 }
 
+/* Verifies that the current user is an administrator.  If not, displays an error. */
 function verify_admin() {
     global $app_cde;
     global $app_url_path;
@@ -194,19 +201,21 @@ function include_page_tracking() {
 }
 
 function include_user_tracking() {
-    $cur_user = $_SESSION['user'];
-    if ($cur_user != NULL) {
-        echo(
-            '<script>
-                ga("create", "UA-71500783-1", "auto", "usr_id", {
-                    usr_id: "' . $cur_user->usr_id . '"
-                });
+    if (isset($_SESSION)) {
+        $cur_user = $_SESSION['user'];
+        if ($cur_user != NULL) {
+            echo(
+                '<script>
+                    ga("create", "UA-71500783-1", "auto", "usr_id", {
+                        usr_id: "' . $cur_user->usr_id . '"
+                    });
 
-                ga("create", "UA-71500783-1", "auto", "usr_type_cde", {
-                    usr_type_cde: "' . $cur_user->usr_type_cde . '"
-                });
-            </script>'
-        );
+                    ga("create", "UA-71500783-1", "auto", "usr_type_cde", {
+                        usr_type_cde: "' . $cur_user->usr_type_cde . '"
+                    });
+                </script>'
+            );
+        }
     }
 }
 

@@ -19,8 +19,7 @@ function get_list ($query) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        log_pdo_exception($e, $_SESSION['user'].usr_id, 'database.php', 'get_list');
-        display_error ("An error has occurred.");
+        display_db_exception($e);
     }
 }
 

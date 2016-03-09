@@ -12,4 +12,5 @@ $username = 'atcsdevb_senxusr';
 $password = 'bz;JKhlJy8]#';
 $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
+$debug_mode = true;
 ?>

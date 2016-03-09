@@ -42,8 +42,7 @@ function get_user_by_username($username, $app_cde) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
         exit();
     }
 }
@@ -66,8 +65,7 @@ function get_user($usr_id, $app_cde) {
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
+        display_db_exception($e);
         exit();
     }
 }
@@ -137,8 +135,7 @@ class User
                 $this->roles[$row['app_cde']] = $row['usr_role_cde'];
             }
         } catch (PDOException $e) {
-            $error_message = $e->getMessage();
-            display_db_error($error_message);
+            display_db_exception($e);
             exit();
         }
     }
@@ -170,8 +167,7 @@ class User
             return $u;
 
         } catch (PDOException $e) {
-            $error_message = $e->getMessage();
-            display_db_error($error_message);
+            display_db_exception($e);
             exit();
         }
     }

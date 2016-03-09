@@ -8,4 +8,6 @@ $username = 'atcsdevb_carusr';
 $password = 'W[6V8tgSX=y~';
 $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
+$debug_mode = true;
+
 ?>

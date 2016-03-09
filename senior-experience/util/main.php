@@ -6,9 +6,6 @@
 $app_cde = 'SENX';
 $app_title = 'Senior Expositions';
 
-require_once(__DIR__ . "/../model/database.php");
-require_once(__DIR__ . "/../../shared/util/main.php");
-
 $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING); // Looks like c:/xampp/htdocs
 
 ///////////////////
@@ -29,5 +26,9 @@ $app_server_path = $doc_root . "/" . $app_url_path;   // Looks like c:/xampp/htd
 ///////////////////////
 // Set the include path
 set_include_path($app_server_path . PATH_SEPARATOR . get_include_path());
+
+/* These includes depend on the variables above, therefore they should be at the end of the file. */
+require_once(__DIR__ . "/../model/database.php");
+require_once(__DIR__ . "/../../shared/util/main.php");
 
 ?>
