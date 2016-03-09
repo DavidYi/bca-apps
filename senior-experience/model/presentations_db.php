@@ -29,25 +29,22 @@ function get_session_times_by_id($ses_id) {
 }
 
 function get_presentation_list($ses_id, $sort_by, $order_by) {
-    $query = 	'SELECT mentor.mentor_id,  mentor_last_name ,  mentor_first_name ,  mentor_field ,
-					mentor_position , mentor_company ,  mentor_profile ,  mentor_keywords ,
-					mentor_email ,  mentor_cell_nbr , mentor_phone_nbr ,  mentor_address ,
-					mentor_source ,  mentor_notes ,  active ,  pres_room , pres_host_teacher ,
-					pres_max_capacity , presentation.pres_enrolled_count, presentation.pres_id,
-					pres_max_capacity - presentation.pres_enrolled_count as remaining
+    $query = 	'SELECT presentation.pres_id, pres_title, pres_desc, organization, location, rm_nbr, field_name,
+                    pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
+					pres_max_students - presentation.pres_enrolled_students as remaining
 				FROM mentor
-				INNER JOIN presentation ON presentation.mentor_id = mentor.mentor_id
 				WHERE presentation.ses_id = :ses_id
 				AND mentor.active =1
 				AND presentation.pres_enrolled_count < mentor.pres_max_capacity ';
 
-    if ($sort_by == 1) $query .= ('ORDER BY mentor_field');
-    else if ($sort_by == 2) $query .= ('ORDER BY mentor_position');
-    else if ($sort_by == 3) $query .= ('ORDER BY mentor_last_name');
-    else if ($sort_by == 4) $query .= ('ORDER BY mentor_company');
+    if ($sort_by == 1) $query .= ('ORDER BY field_name');
+    else if ($sort_by == 2) $query .= ('ORDER BY pres_title');
+    else if ($sort_by == 3) $query .= ('ORDER BY organization');
+    else if ($sort_by == 4) $query .= ('ORDER BY presenter_names');
     else if ($sort_by == 5) $query .= ('ORDER BY remaining');
-    else $query .= ('ORDER BY mentor_field');
+    else $query .= ('ORDER BY field_name');
     if ($order_by == 2) $query.= (' DESC');
+    else $query.= ('ASC');
 
     global $db;
 
@@ -65,11 +62,12 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
 }
 
 function get_presentation_by_user($usr_id, $ses_id) {
-    $query = 'SELECT presentation.pres_id, mentor.pres_room, mentor.mentor_first_name,
-                mentor.mentor_last_name, mentor.mentor_position, mentor.mentor_company
+    $query = 'SELECT presentation.pres_id, rm_id, presenter_names,
+                organization, location, pres_title, room.rm_nbr, rm_id
               FROM pres_user_xref
               INNER JOIN presentation on presentation.pres_id = pres_user_xref.pres_id
-              INNER JOIN mentor on presentation.mentor_id = mentor.mentor_id
+              INNER JOIN presentation on presentation.pres_id = senior_presentation_xref.pres_id
+              INNER JOIN room on presentation.rm_id = room.rm_id
               WHERE ses_id = :ses_id
               AND usr_id = :usr_id';
 
