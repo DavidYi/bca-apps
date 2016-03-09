@@ -170,16 +170,19 @@ function get_sessions_by_user($usr_id) {
 }
 
 class Presentation {
-    public $pres_id, $ses_id, $rm_id, $field_id, $pres_title, $pres_desc, $organization, $location,
+    public $pres_id, $ses_id, $rm_id, $rm_nbr, $rm_cap, $field_id, $field_name, $pres_title, $pres_desc, $organization, $location,
             $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students;
 
-    public function __construct ($pres_id, $ses_id, $rm_id, $field_id, $pres_title, $pres_desc, $organization, $location,
-                                 $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students)
+    public function __construct ($pres_id, $ses_id, $rm_id, $rm_nbr, $rm_cap, $field_id, $field_name, $pres_title, $pres_desc, $organization,
+                                 $location, $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students)
     {
         $this->pres_id = $pres_id;
         $this->ses_id = $ses_id;
         $this->rm_id = $rm_id;
+        $this->rm_nbr = $rm_nbr;
+        $this->rm_cap = $rm_cap;
         $this->field_id = $field_id;
+        $this->field_name = $field_name;
         $this->pres_title = $pres_title;
         $this->pres_desc = $pres_desc;
         $this->organization = $organization;
@@ -228,11 +231,15 @@ class Presentation {
 
     public static function getPresentationForSenior ($usr_id)
     {
-        $query = 'select p.pres_id, p.ses_id, p.rm_id, p.field_id, pres_title, pres_desc, organization, location,
+        $query = 'select p.pres_id, p.ses_id, p.rm_id, rm_nbr, rm_cap, p.field_id, f.field_name, pres_title, pres_desc, organization, location,
   		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students
-                from presentation p, senior_presentation_xref x
-                where p.pres_id = x.pres_id
-                and usr_id = :usr_id';
+                from presentation p
+                left join room r on p.rm_id = r.rm_id
+                left join field f on p.field_id = f.field_id
+                where p.pres_id in (
+					select x.pres_id
+                    from senior_presentation_xref x
+                    where usr_id = :usr_id)';
 
         global $db;
 
@@ -245,8 +252,8 @@ class Presentation {
         if ($result == false)
             return null;
         else
-            return new Presentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["field_id"],
-                $result["pres_title"], $result["pres_desc"], $result["organization"], $result["location"],
+            return new Presentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["rm_nbr"],$result["rm_cap"],$result["field_id"],
+                $result["field_name"],$result["pres_title"], $result["pres_desc"], $result["organization"], $result["location"],
                 $result["pres_max_teachers"], $result["pres_max_students"], $result["pres_enrolled_teachers"], $result["pres_enrolled_students"]);
     }
 
