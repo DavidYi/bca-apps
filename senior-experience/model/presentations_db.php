@@ -148,12 +148,11 @@ function get_sessions_by_user($usr_id) {
                     get_presenters_comma_list (p.pres_id) presenters,
                     pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
                     t.ses_id, t.ses_start, t.ses_end
-            from presentation p
+            from session_times t
+            left join presentation p on t.ses_id = p.ses_id
+            and p.pres_id in (select pres_id from user_presentation_xref where usr_id = :usr_id)
             left join room r on p.rm_id = r.rm_id
             left join field f on p.field_id = f.field_id
-            inner join user_presentation_xref x on p.pres_id = x.pres_id
-            inner join session_times t on p.ses_id = t.ses_id
-            and x.usr_id = :usr_id
             order by t.sort_order';
 
     global $db;
