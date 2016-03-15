@@ -1,5 +1,12 @@
 <?php
 
+function get_field_list() {
+    $query = "SELECT field_id, field_name
+              FROM field
+              ORDER BY field_name";
+    return get_list($query);
+}
+
 function get_session_times() {
     $query = 	'SELECT ses_id, ses_name, ses_start, ses_end
 					from session_times

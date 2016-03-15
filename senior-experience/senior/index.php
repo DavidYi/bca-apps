@@ -14,20 +14,11 @@ if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
 }
 
-$pres = Presentation::getPresentationForSenior ($user->usr_id);
 
-$pres = null;
-
-if ($pres == NULL) {
-    //go to add presentation
-    header("Location: presentation_add.php");
-} else {
-    // go to modify presentation
-    header("Location: modify_pres.php");
-}
 
 switch ($action) {
     case 'show_add_pres':
+        $fields = get_field_list();
         include 'presentation_add.php';
 
         break;
@@ -37,8 +28,10 @@ switch ($action) {
         $pres_organization = filter_input(INPUT_POST, 'organization');
         $pres_location = filter_input(INPUT_POST, 'location');
         $pres_names = filter_input(INPUT_POST, 'names');
+        $pres_field = filter_input(INPUT_POST, 'field');
 
-        add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $pres_names, $user->usr_id, $pres->pres_id);
+
+        add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $user->usr_id, $field, null);
 
 
         include 'show_pres.php';
@@ -47,8 +40,18 @@ switch ($action) {
 
 
     default:
-        include 'show_pres.php';
+        $pres = Presentation::getPresentationForSenior ($user->usr_id);
 
+        if ($pres == NULL) {
+            //go to add presentation
+            $fields = get_field_list();
+            include "presentation_add.php";
+        }
+
+        else {
+            // go to modify presentation
+            header("Location: show_pres.php");
+        }
 
 }
 ?>

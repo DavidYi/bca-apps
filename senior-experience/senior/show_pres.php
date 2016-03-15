@@ -1,7 +1,8 @@
 <?php
 require_once('../util/main.php');
 //require_once('../../util/tags.php');
-
+require_once('../model/senior_db.php');
+require_once ('../model/presentations_db.php');
 if(!isSeniortime()){
 header("Location: ../itinerary");
 }
@@ -12,12 +13,7 @@ $pres = Presentation::getPresentationForSenior($user->usr_id);
 
 if(($pres == NULL)){
     header("location: index.php?action=show_add_pres");
-}
-
-
-
-
-else{
+} else {
      ?>
 
      <section>

@@ -1,9 +1,11 @@
+
+
 <html>
 <head>
 
 </head>
-<?php $fields = get_field_list();?>
 <body>
+
 <h1>Add Presentation</h1>
 <div id="mentor_add">
 
@@ -28,8 +30,8 @@
         <input title="" type="text" name="names" required><BR>
 
         <label>Fields</label>
-        <select name="field_id" title="jowls">
-            <?php foreach ($fields as $field) {?>
+        <select name="field_id" title=".">
+            <?php  foreach ($fields as $field) {?>
             <option value="<?php echo ($field['field_id']);?>"><?php echo($field['field_name']);  ?></option>
             <?php } ?>
         </select>

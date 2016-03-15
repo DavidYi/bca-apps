@@ -1,8 +1,7 @@
 <?php
 
-function add_pres($pres_title, $pres_desc, $organization, $location, $presenter_names, $senior_list, $usr_id){
-    $query = 'call add_presentation(:pres_title,:pres_desc, :organization, :location,
-                                    :presenter_names, :usr_id)';
+function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $field, $room){
+    $query = 'call add_presentation(:pres_title,:pres_desc, :organization, :location, :usr_id, :field, :room)';
 
     global $db;
 
@@ -12,8 +11,10 @@ function add_pres($pres_title, $pres_desc, $organization, $location, $presenter_
         $statement->bindValue(":pres_desc", $pres_desc, PDO::PARAM_STR);
         $statement->bindValue(":organization", $organization, PDO::PARAM_STR);
         $statement->bindValue(":location", $location, PDO::PARAM_STR);
-        $statement->bindValue(":presenter_names", $presenter_names, PDO::PARAM_STR);
         $statement->bindValue(":usr_id", $usr_id, PDO::PARAM_INT);
+        $statement->bindValue(":field", $field, PDO::PARAM_INT);
+        $statement->bindValue(":room", $room, PDO::PARAM_INT);
+
 
         $statement->execute();
         $statement->closeCursor();
