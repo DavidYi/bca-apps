@@ -19,10 +19,9 @@ if (isset($action) and ($action == "logout")) {
     header("Location: ../index.php");
 }
 
-$user = get_user($_SESSION['user'], 'SENX');
-$signup_dates = get_signup_dates_by_grade($user['usr_class_year']);
 
-$sessions = get_sessions_by_user($user['usr_id']);
+$signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
+$sessions = get_sessions_by_user($user->usr_id);
 //
 // Check if the user has mentors for all of the sessions.
 //

@@ -229,8 +229,8 @@ class Presentation {
         $result = $statement->fetch();
         $statement->closeCursor();
 
-        return new Presentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["field_id"],
-            $result["pres_title"], $result["pres_desc"], $result["organization"], $result["location"],
+        return new Presentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["rm_nbr"],$result["rm_cap"],$result["field_id"],
+            $result["field_name"],$result["pres_title"], $result["pres_desc"], $result["organization"], $result["location"],
             $result["pres_max_teachers"], $result["pres_max_students"], $result["pres_enrolled_teachers"], $result["pres_enrolled_students"]);
     }
 
