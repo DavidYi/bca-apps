@@ -3,7 +3,6 @@
         <title>Login</title>
     </head>
     <body>
-    hello
 
     <form action="." method="post">
         <input type="hidden" name="action" value="login">
