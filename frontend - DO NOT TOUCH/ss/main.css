@@ -301,6 +301,7 @@ button {
   -moz-transition: all 175ms ease;
   transition: all 175ms ease; }
   button:hover {
-    background-color: #89e424; }
+    background-color: #000;
+    color: #89e424; }
 
 /*# sourceMappingURL=main.css.map */
