@@ -29,6 +29,7 @@ switch ($action) {
         $pres_location = filter_input(INPUT_POST, 'location');
         $pres_names = filter_input(INPUT_POST, 'names');
         $pres_field = filter_input(INPUT_POST, 'field');
+        //take session and room fields and add
 
 
         add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $user->usr_id, $field, null);

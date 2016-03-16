@@ -1,6 +1,9 @@
 <?php
 
 function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $field, $room){
+    //add room stuff in senior\index.php
+    //add session stuff here
+    //figure out where presentation data is in database
     $query = 'call add_presentation(:pres_title,:pres_desc, :organization, :location, :usr_id, :field, :room)';
 
     global $db;
