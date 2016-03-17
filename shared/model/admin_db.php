@@ -7,7 +7,7 @@
  */
 
 function get_log_messages($app_cde) {
-    $query = "select log_id, log_lvl_cde, log_msg, log_src, log_pdo_file, log_pdo_line, log_dt, user.usr_id, concat (usr_last_name, ', ' ,usr_first_name)
+    $query = "select log_id, log_lvl_cde, log_msg, log_src, log_pdo_file, log_pdo_line, log_dt, user.usr_id, concat (usr_last_name, ', ' ,usr_first_name) as name
               from log
               left join user on log.usr_id = user.usr_id
               where app_cde = :app_cde

@@ -39,6 +39,8 @@ switch ($action) {
             View student registration statistics and automatically enroll students who have not yet registered.</p>
         <p><a href="mimic_user">Mimic User</a><br>
             Log in as any user in the database and use the app as if you were them.</p>
+        <p><a href="log_viewer">Log Viewer</a><br>
+            View the application log.</p>
     </div>
     <div id="logout"><a href="../index.php?action=logout">Log Out</a></div>
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
