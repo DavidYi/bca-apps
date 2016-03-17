@@ -12,5 +12,8 @@ button {
 
 	@include transition(all $animation-duration $animation-timing);
 
-	&:hover { background-color: #89e424; }
+	&:hover { 
+		background-color: #000;
+		color: #89e424;
+	}
 }

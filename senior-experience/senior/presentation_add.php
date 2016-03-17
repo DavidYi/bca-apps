@@ -36,6 +36,10 @@
             <?php } ?>
         </select>
 
+        <!-- Add session and room fields with dropdowns !-->
+        <!-- Figure out if location and room are the same thing !-->
+
+
         <input type="submit" value="Add">
         <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
     </form>
