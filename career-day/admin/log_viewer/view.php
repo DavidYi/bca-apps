@@ -11,7 +11,7 @@
     <table class="gridtable">
 
 
-        <tr class="tablerow">
+        <tr class="tabler">
             <th>Date/Time </th>
             <th>Lvl. </th>
             <th>Name </th>
