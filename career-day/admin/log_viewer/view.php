@@ -11,13 +11,13 @@
     <table class="gridtable">
 
 
-        <tr>
+        <tr class="tablerow">
             <th>Date/Time </th>
             <th>Lvl. </th>
             <th>Name </th>
             <th>Message </th>
 
-        </tr>
+        </>
 
         <?php foreach ($logs as $log) :
         // Get product data
