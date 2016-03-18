@@ -17,7 +17,7 @@
             <th>Name </th>
             <th>Message </th>
 
-        </>
+        </tr>
 
         <?php foreach ($logs as $log) :
         // Get product data
