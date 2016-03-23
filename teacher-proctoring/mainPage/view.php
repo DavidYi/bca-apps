@@ -22,7 +22,7 @@
 			</div>
 			<div class="vertical-center">
                 <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
-                    <h1>Career Day (Feb. 2)</h1>
+                    <h1>Teacher Proctoring (Feb. 2)</h1>
 
     <?php if ($startTime > $currentTime) { ?>
                     <h3> Registration <b>has not opened</b>!</h3>
@@ -41,8 +41,7 @@
                     <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
     <?php } ?>
 
-                    <h3> Click <a href="../../CareerDayMentors.pdf" download>here</a> to read about the mentors.</h3>
-                    <h3> Email <a href="mailto:micpin@bergen.org"> Ms. Pinke </a> with any questions.</h3>
+                    <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
                 <?php } else { ?>
                     <h1>Mimic User Mode</h1>
                 <?php } ?>
@@ -60,9 +59,9 @@
 						<div class="session-number"><?php echo $session['ses_times'] ?></div>
 						<div class="time"><?php echo $session['ses_start']?></div>
 						<?php if ($session['ses_id'] != NULL) { ?>
-						<div class="room-number">RM <?php echo $session['pres_room'] ?></div>
-						<div class="session-title"><?php echo $session['mentor_company'] ?></div>
-						<div class="name"><?php echo $session['mentor_last_name']?>, <?php echo $session['mentor_first_name'] ?></div>
+						<div class="rm_nbr">RM <?php echo $session['pres_room'] ?></div>
+						<div class="session-title"><?php echo $session['test_name'] ?></div>
+						<div class="time"><?php echo $session['mods']?>, <?php echo $session['test_dt'] ?></div>
 						<?php } ?>
 					</div>
 
