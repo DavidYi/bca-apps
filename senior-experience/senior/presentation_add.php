@@ -46,7 +46,6 @@
         <!-- Add session and room fields with dropdowns !-->
         <!--Integrate with Su Min's dynamic page!-->
 
-
         <input type="submit" value="Add">
         <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
     </form>

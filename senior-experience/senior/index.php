@@ -33,7 +33,6 @@ switch ($action) {
 
         add_pres($pres_title, $pres_desc, $organization, $location, $user->usr_id, $field_id, $rm_id, $ses_id);
 
-
         include 'show_pres.php';
 
         break;
