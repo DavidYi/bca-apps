@@ -29,15 +29,10 @@ switch ($action) {
         $pres_location = filter_input(INPUT_POST, 'location');
         $pres_names = filter_input(INPUT_POST, 'names');
         $pres_field = filter_input(INPUT_POST, 'field');
-        $pres_room = filter_input(INPUT_POST, 'room');
-        $pres_session = filter_input(INPUT_POST, 'session');
-
-        //presentation_add needs to post this and currently doesn't
-
-        //take session field and add
+        //take session and room fields and add
 
 
-        add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $user->usr_id, $field, $pres_room, $pres_session);
+        add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $user->usr_id, $field, null);
 
 
         include 'show_pres.php';

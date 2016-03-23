@@ -34,24 +34,6 @@
             <label>Mentor Keywords:</label>
             <input  title="" type="text" name="mentor_keywords" value="<?php echo htmlspecialchars($mentor_keywords);?>" ><BR>
 
-            <label>Mentor Email:</label>
-            <input  title="" type="text" name="mentor_email" value="<?php echo htmlspecialchars($mentor_email);?>"><BR>
-
-            <label>Mentor Cell Number:</label>
-            <input  title="" type="text" name="mentor_cell_nbr" value="<?php echo htmlspecialchars($mentor_cell_nbr);?>"><BR>
-
-            <label>Mentor Phone Number:</label>
-            <input title="" type="text" name="mentor_phone_nbr" value="<?php echo htmlspecialchars($mentor_phone_nbr);?>"><BR>
-
-            <label>Mentor Address:</label>
-            <input  title="" type="text" name="mentor_adress" value="<?php echo htmlspecialchars($mentor_address);?>"><BR>
-
-            <label>Mentor Source:</label>
-            <input  title="" type="text" name="mentor_source" value="<?php echo htmlspecialchars($mentor_source);?>"><BR>
-
-            <label>Mentor Notes:</label>
-            <input title=""  type="text" name="mentor_notes" value="<?php echo htmlspecialchars($mentor_notes);?>"><BR>
-
             <label>Presentation Room:</label>
             <input  title="" type="text" name="pres_room" value="<?php echo htmlspecialchars($pres_room);?>" required><BR>
 
