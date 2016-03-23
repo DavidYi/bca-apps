@@ -6,10 +6,7 @@
  * Time: 2:04 PM
  */
 
-//require_once("../util/main.php");
-require_once("../../shared/model/user_db.php");
-//require_once ("../model/signups_db.php");
-//require_once ("../model/presentations_db.php");
+require_once("../util/main.php");
 
 verify_logged_in();
 
@@ -28,7 +25,7 @@ if (isset($action) and ($action == "logout")) {
 $sessions = get_sessions_by_user($user->usr_id);
 
 //
-// Check if the user has mentors for all of the sessions.
+// Check if teachers have active proctoring sessions.
 //
 $registration_complete = true;
 foreach ($sessions as $session) {
