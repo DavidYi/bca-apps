@@ -43,7 +43,8 @@
             <!-- Add php stuff !-->
         </select><BR>
 
-        <!-- Add session and room fields with dropdowns !-->
+        <!--Add session and room dropdown data!-->
+        <!--Prevent users who have already signed up for a presentation from adding one!-->
         <!--Integrate with Su Min's dynamic page!-->
 
         <input type="submit" value="Add">
