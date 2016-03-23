@@ -1,5 +1,3 @@
-<?php include 'view/header.php'; ?>
-<?php include 'view/sidebar.php'; ?>
 
     <script type="text/javascript">
         function deletesignup_dates(classYear)
