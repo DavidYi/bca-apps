@@ -31,17 +31,17 @@
             <?php  foreach ($fields as $field) {?>
             <option value="<?php echo ($field['field_id']);?>"><?php echo($field['field_name']);  ?></option>
             <?php } ?>
-        </select>
+        </select><BR>
 
         <label>Room</label>
         <select name="rm_id" title=".">
             <!-- Add php stuff !-->
-        </select>
+        </select><BR>
 
         <label>Session</label>
         <select name="ses_id" title=".">
             <!-- Add php stuff !-->
-        </select>
+        </select><BR>
 
         <!-- Add session and room fields with dropdowns !-->
         <!--Integrate with Su Min's dynamic page!-->
