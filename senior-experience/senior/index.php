@@ -23,21 +23,15 @@ switch ($action) {
 
         break;
     case 'add_pres_into_db':
-        $pres_title = filter_input(INPUT_POST, 'title');
-        $pres_desc = filter_input(INPUT_POST, 'desc');
-        $pres_organization = filter_input(INPUT_POST, 'organization');
-        $pres_location = filter_input(INPUT_POST, 'location');
-        $pres_names = filter_input(INPUT_POST, 'names');
-        $pres_field = filter_input(INPUT_POST, 'field');
-        $pres_room = filter_input(INPUT_POST, 'room');
-        $pres_session = filter_input(INPUT_POST, 'session');
+        $pres_title = filter_input(INPUT_POST, 'pres_title');
+        $pres_desc = filter_input(INPUT_POST, 'pres_desc');
+        $organization = filter_input(INPUT_POST, 'organization');
+        $location = filter_input(INPUT_POST, 'location');
+        $field_id = filter_input(INPUT_POST, 'field_id');
+        $room_id = filter_input(INPUT_POST, 'rm_id');
+        $ses_id = filter_input(INPUT_POST, 'ses_id');
 
-        //presentation_add needs to post this and currently doesn't
-
-        //take session field and add
-
-
-        add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $user->usr_id, $field, $pres_room, $pres_session);
+        add_pres($pres_title, $pres_desc, $organization, $location, $user->usr_id, $field_id, $rm_id, $ses_id);
 
 
         include 'show_pres.php';
