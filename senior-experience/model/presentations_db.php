@@ -73,7 +73,6 @@ function get_presentation_by_user($usr_id, $ses_id) {
                 organization, location, pres_title, room.rm_nbr, rm_id
               FROM pres_user_xref
               INNER JOIN presentation on presentation.pres_id = pres_user_xref.pres_id
-              INNER JOIN presentation on presentation.pres_id = senior_presentation_xref.pres_id
               INNER JOIN room on presentation.rm_id = room.rm_id
               WHERE ses_id = :ses_id
               AND usr_id = :usr_id';
@@ -243,8 +242,9 @@ class Presentation {
                 left join field f on p.field_id = f.field_id
                 where p.pres_id in (
 					select x.pres_id
-                    from senior_presentation_xref x
-                    where usr_id = :usr_id)';
+                    from user_presentation_xref x
+                    where usr_id = :usr_id
+                    and presenting = 1)';
 
         global $db;
 
