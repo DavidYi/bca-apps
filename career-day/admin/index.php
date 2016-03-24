@@ -31,7 +31,7 @@ switch ($action) {
 </head>
 <body>
 <main>
-    <header><h1 class="title"><h2>Admin Tools</h1>
+    <header><h1 class="title"><h2>Admin Tools</h1
     <div id="logout"><a href="../index.php?action=logout">Log Out</a></div>
     </header>
     <br>
