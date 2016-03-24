@@ -23,28 +23,38 @@ switch ($action) {
 
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>Admin Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- Styles -->
+    <link href="../admin/ss/main.css" rel="stylesheet">
 </head>
 <body>
-<section class="main">
-    <header><h1 class="title main-title">Admin Tools</h1></header>
-    <div class="body">
-        <p><a href="signup_dates">Signup Dates</a><br>
-            View and edit signup deadlines by grade.</p>
-        <p><a href="mentor">Mentors</a><br>
-            Manage mentors and presentations.</p>
-        <p><a href="signins">Signins</a><br>
-            Generate signin sheets and mentor check-in sheet.</p>
-        <p><a href="signup_status/">Signup Status</a><br>
-            View student registration statistics and automatically enroll students who have not yet registered.</p>
-        <p><a href="mimic_user">Mimic User</a><br>
-            Log in as any user in the database and use the app as if you were them.</p>
-        <p><a href="log_viewer">Log Viewer</a><br>
-            View the application log.</p>
-    </div>
+<main>
+    <header><h1 class="title"><h2>Admin Tools</h1>
     <div id="logout"><a href="../index.php?action=logout">Log Out</a></div>
+    </header>
+    <br>
+    <div class="feature">
+        <a href="signup_dates"><h2>Signup Dates</h2></a>
+        <h4>View and edit signup deadlines by grade.</h4></div>
+    <div class="feature">
+        <a href="mentor"><h2>Mentors</h2></a>
+        <h4>Manage mentors and presentations.</h4></div>
+    <div class="feature">
+        <a href="signins"><h2>Signins</h2></a>
+        <h4>Generate signin sheets and mentor check-in sheet.</h4></div>
+    <div class="feature">
+        <a href="signup_status"><h2>Signup Status</h2></a>
+        <h4>View student registration statistics and automatically enroll students who have not yet registered.</h4></div>
+    <div class="feature">
+        <a href="mimic_user"><h2>Mimic User</h2></a>
+        <h4>Log in as any user in the database and use the app as if you were them.</h4></div>
+    <div class="feature">
+        <a href="log_viewer"><h2>Log Viewer</h2></a>
+        <h4>View the application log.<h4></h4></div>
+
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
-</section>
+</main>
 </body>
 </html>
-

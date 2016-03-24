@@ -24,16 +24,16 @@
 
     <?php echo $error_msg ?>
     <BR>
+    
 
     <form action="." method="post">
         <input type="hidden" name="action" value="add_mentor">
 
         <input title="" type="text" name="mentor_last_name" value="<?php echo htmlspecialchars($mentor_last_name); ?>"
-               placeholder="First Name" required autofocus><BR>
-
+               placeholder="First Name" required autofocus>
+        
         <input title="" type="text" name="mentor_first_name" value="<?php echo htmlspecialchars($mentor_first_name); ?>"
                placeholder="Last Name" required><BR>
-
 
         <input title="" type="text" name="mentor_company" value="<?php echo htmlspecialchars($mentor_company); ?>"
                placeholder="Mentor Company" required><BR>
