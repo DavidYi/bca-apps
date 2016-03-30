@@ -1,11 +1,7 @@
 <?php
-    require_once('../util/main.php');
-    $user = $_SESSION['user'];
-    require_once('../model/presentations_db.php');
-    $presentation = Presentation::getPresentationForSenior($user->);
 ?>
 <div section="add">
-    <h1>Modify Presentation</h1>
+    <h1>Add/Modify Presentation</h1>
 
     <BR>
     <form action="index.php" method="post">
