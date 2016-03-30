@@ -85,6 +85,7 @@ switch ($action) {
 
         $mentor_first_name = $mentor['mentor_first_name'];
         $mentor_last_name = $mentor['mentor_last_name'];
+        $mentor_suffix = $mentor['mentor_suffix'];
         $mentor_field = $mentor['mentor_field'];
         $mentor_position = $mentor['mentor_position'];
         $mentor_company = $mentor['mentor_company'];
@@ -102,12 +103,11 @@ switch ($action) {
 
 
     case 'modify_mentor':
-
-
         $choice = filter_input(INPUT_POST, 'choice');
         $mentorId = filter_input(INPUT_POST, 'mentor_id');
         $mentor_first_name = filter_input(INPUT_POST, 'mentor_first_name');
         $mentor_last_name = filter_input(INPUT_POST, 'mentor_last_name');
+        $mentor_suffix = filter_input(INPUT_POST, 'mentor_suffix');
         $mentor_position = filter_input(INPUT_POST, 'mentor_position');
         $mentor_company = filter_input(INPUT_POST, 'mentor_company');
         $pres_room = filter_input(INPUT_POST, 'pres_room');
@@ -118,9 +118,9 @@ switch ($action) {
         $mentor_field = filter_input(INPUT_POST, 'mentor_field');
         $mentor_keywords = filter_input(INPUT_POST, 'mentor_keywords');
 
-        if(filter_input(INPUT_POST, 'choice') == "Add") {
+        if(filter_input(INPUT_POST, 'choice') == "Modify") {
 
-            modify_mentor($mentorId, $mentor_last_name, $mentor_first_name, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords
+            modify_mentor($mentorId, $mentor_last_name, $mentor_first_name, $mentor_suffix, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords
                 ,  $pres_room,
                 $pres_host_teacher, $pres_max_capacity);
         }

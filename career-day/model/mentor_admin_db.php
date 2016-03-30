@@ -55,12 +55,13 @@ function add_mentor($mentor_last_name, $mentor_first_name, $mentor_field, $mento
 
 
 
-function modify_mentor($mentor_id, $mentor_last_name, $mentor_first_name, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords,
+function modify_mentor($mentor_id, $mentor_last_name, $mentor_first_name, $mentor_suffix, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords,
                        $pres_room,
                        $pres_host_teacher, $pres_max_capacity) {
     global $db;
     $query = 'update mentor set
                  mentor_last_name = :mentor_last_name, mentor_first_name = :mentor_first_name,
+                 mentor_suffix = :mentor_suffix,
                   mentor_field = :mentor_field, mentor_position = :mentor_position,
                   mentor_company = :mentor_company,
                   mentor_profile = :mentor_profile, mentor_keywords = :mentor_keywords
@@ -72,6 +73,7 @@ function modify_mentor($mentor_id, $mentor_last_name, $mentor_first_name, $mento
         $statement->bindValue(':mentor_last_name', $mentor_last_name);
         $statement->bindValue(':mentor_id', $mentor_id);
         $statement->bindValue(':mentor_first_name', $mentor_first_name);
+        $statement->bindValue(':mentor_suffix', $mentor_suffix);
         $statement->bindValue(':mentor_field', $mentor_field);
         $statement->bindValue(':mentor_position', $mentor_position);
         $statement->bindValue(':mentor_company', $mentor_company);

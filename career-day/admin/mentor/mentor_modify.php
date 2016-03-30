@@ -17,7 +17,7 @@
 <header>
     <h1 class="title">Editing: <?php echo htmlspecialchars($mentor_first_name . ', ' . $mentor_last_name); ?></h1>
 </header>
-<action="." method="post">
+<form action="index.php?action=modify_mentor" method="post">
     <input type="hidden" name="action" value="modify_mentor">
     <input type="hidden" name="mentor_id" value="<?php echo htmlspecialchars($mentor_id); ?>">
 
@@ -25,6 +25,8 @@
            value="<?php echo htmlspecialchars($mentor_first_name); ?>" autofocus required>
     <input type="text" name="mentor_last_name"
            value="<?php echo htmlspecialchars($mentor_last_name); ?>" placeholder="Last Name" required>
+    <input type="text" name="mentor_suffix"
+           value="<?php echo htmlspecialchars($mentor_suffix); ?>" placeholder="Suffix" required>
     <input type="text" name="mentor_field"
            value="<?php echo htmlspecialchars($mentor_field); ?>" placeholder="Field" required>
     <input type="text" name="mentor_company"
@@ -43,7 +45,7 @@
            value="<?php echo htmlspecialchars($pres_max_capacity); ?>" placeholder="Max Capacity" required>
 
     <div class="button-container">
-            <button class="add"><form action="index.php?action=modify_mentor">Save Changes</form> </button>
+            <button class="add" name="choice" type="submit" value="Modify">Save Changes</button>
     </div>
 </form>
 </body>
