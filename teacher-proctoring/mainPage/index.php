@@ -29,7 +29,7 @@ $sessions = get_sessions_by_user($user->usr_id);
 //
 $registration_complete = true;
 foreach ($sessions as $session) {
-    if (empty($session['mods'])) {
+    if (empty($session['test_time'])) {
         $registration_complete = false;
         break;
     }

@@ -34,7 +34,7 @@
 
     <?php } elseif ($registration_complete) { ?>
                     <h3> Registration <b>complete</b>! </h3>
-                    <h3> Feedback <a href="https://docs.google.com/forms/d/1WIjMjkT5w48ZM-T7vB1A2fo0Ipv-aAVnX0NDsstdF_c/viewform">survey</a> about this site. </h3>
+                    <h3> Feedback <a href="https://docs.google.com/forms/d/1nfzkqn2NB8m8OeQ_w3XwE2hNp3OK-k8bVtA6DZb300E/viewform">survey</a> about this site. </h3>
 
     <?php } else { ?>
                     <h3> Registration is <b>open</b>! </h3>
@@ -52,18 +52,19 @@
 				<?php foreach ($sessions as $session) { ?>
 
 					<?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) {?>
-						<a href="../register/index.php?session=<?php echo $session['ses_times']?>&action=register">
+						<a href="../register/index.php?session=<?php echo $session['test_times']?>&action=register">
 					<?php } ?>
 
 					<div class="session view-session" onclick="">
-						<div class="session-number"><?php echo $session['ses_times'] ?></div>
-						<div class="time"><?php echo $session['ses_start']?></div>
-						<?php if ($session['ses_id'] != NULL) { ?>
-						<div class="rm_nbr">RM <?php echo $session['pres_room'] ?></div>
-						<div class="session-title"><?php echo $session['test_name'] ?></div>
-						<div class="time"><?php echo $session['mods']?>, <?php echo $session['test_dt'] ?></div>
+						<div class="test-type"><?php echo $session['test_type_cde'] ?></div>
+						<?php if ($session['test_id'] != NULL) { ?>
+						<div class="rm_nbr">RM <?php echo $session['rm_nbr'] ?></div>
+						<div class="test-name"><?php echo $session['test_name'] ?></div>
+						<div class="time"><?php echo $session['test_time_id']?>, <?php echo $session['test_dt'] ?></div>
 						<?php } ?>
 					</div>
+
+                    <?php include ("./delete.php"); ?>
 
 					<?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) {?>
 						</a>
