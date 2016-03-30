@@ -6,7 +6,31 @@ function get_field_list() {
               ORDER BY field_name";
     return get_list($query);
 }
+function get_all_presentations(){
+    $query = "select p.pres_id, p.pres_title, rm_nbr, ses_id, concat (pres_enrolled_teachers, '/',pres_max_teachers) as teachers,
+                concat (pres_enrolled_students, '/',pres_max_students) as students,
+                GROUP_CONCAT( concat (usr_first_name, ' ', usr_last_name) order by usr_last_name SEPARATOR ', ')
+                from user_presentation_xref x, user u, presentation p
+                left join room r on p.rm_id = r.rm_id
+                where p.pres_id = x.pres_id
+                and x.usr_id = u.usr_id
+                and x.presenting = 1
+                group by p.pres_id
+                order by rm_nbr";
 
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $stateme0nt->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
 function get_session_times() {
     $query = 	'SELECT ses_id, ses_name, ses_start, ses_end
 					from session_times
