@@ -3,8 +3,8 @@
 // Common imports that should be available on all pages.
 // Add them here.
 //
-$app_cde = 'CAR';
-$app_title = 'Career Day Registration';
+$app_cde = 'TPOR';
+$app_title = 'Teacher Proctoring Registration';
 
 $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING); // Looks like c:/xampp/htdocs
 
