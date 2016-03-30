@@ -43,7 +43,6 @@
     <header>
         <h1 class = "title main-title">Signup Status</h1>
         <?php if ($result != "") { ?>
-            </br>
             <h3 class = "title main-title" style ="text-align: center;"><?php echo $result; ?></h3>
         <?php } ?>
     </header>
@@ -67,15 +66,19 @@
                 <div class = "grade">
                     <?php echo $grade; ?>
                 </div>
-                <div class = "full">
+
+                <a href="#" class="full" onclick= "post('index.php', {action: 'all_download', grade: <?php echo $grade ?> }, 'post')">
                     <?php echo $full; ?>
-                </div>
-                <div class = "partial">
-                    <?php echo $partial; ?>
-                </div>
-                <div class = "none">
+                </a>
+
+                <a href="#" class="partial" onclick="post('index.php', {action: 'partial_download', grade: <?php echo $grade ?>}, 'post')">
+                    <?php echo $partial ?>
+                </a>
+
+                <a href="#" class="none" onclick= "post('index.php', {action: 'no_download', grade: <?php echo $grade ?>}, 'post')">
                     <?php echo $none; ?>
-                </div>
+                </a>
+
                 <div class = "auto-enroll">
                     <button onclick= "autoEnroll(<?php echo $grade?>)">Enroll</button>
                     <button onclick= "undoAutoEnroll(<?php echo $grade?>)">Undo</button>
