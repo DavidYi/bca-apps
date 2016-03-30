@@ -34,7 +34,7 @@
 
     <?php } elseif ($registration_complete) { ?>
                     <h3> Registration <b>complete</b>! </h3>
-                    <h3> Feedback <a href="https://docs.google.com/forms/d/1WIjMjkT5w48ZM-T7vB1A2fo0Ipv-aAVnX0NDsstdF_c/viewform">survey</a> about this site. </h3>
+                    <h3> Feedback <a href="https://docs.google.com/forms/d/1nfzkqn2NB8m8OeQ_w3XwE2hNp3OK-k8bVtA6DZb300E/viewform">survey</a> about this site. </h3>
 
     <?php } else { ?>
                     <h3> Registration is <b>open</b>! </h3>
