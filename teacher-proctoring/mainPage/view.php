@@ -61,10 +61,10 @@
 						<div class="rm_nbr">RM <?php echo $session['rm_nbr'] ?></div>
 						<div class="test-name"><?php echo $session['test_name'] ?></div>
 						<div class="time"><?php echo $session['test_time_id']?>, <?php echo $session['test_dt'] ?></div>
-						<?php } ?>
+                            <?php include ("./delete.php"); ?>
+                        <?php } ?>
 					</div>
 
-                    <?php include ("./delete.php"); ?>
 
 					<?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) {?>
 						</a>
