@@ -56,13 +56,15 @@
 					<?php } ?>
 
 					<div class="session view-session" onclick="">
-						<div class="test-type"><?php echo $session['test_times'] ?></div>
+						<div class="test-type"><?php echo $session['test_type_cde'] ?></div>
 						<?php if ($session['test_id'] != NULL) { ?>
-						<div class="rm_nbr">RM <?php echo $session['room'] ?></div>
+						<div class="rm_nbr">RM <?php echo $session['rm_nbr'] ?></div>
 						<div class="test-name"><?php echo $session['test_name'] ?></div>
 						<div class="time"><?php echo $session['test_time_id']?>, <?php echo $session['test_dt'] ?></div>
 						<?php } ?>
 					</div>
+
+                    <?php include ("./delete.php"); ?>
 
 					<?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) {?>
 						</a>
