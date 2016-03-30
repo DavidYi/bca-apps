@@ -50,6 +50,7 @@ switch ($action) {
         else {
             // go to modify presentation
             header("Location: show_pres.php");
+            include "presentation_modify.php";
         }
 
 }
