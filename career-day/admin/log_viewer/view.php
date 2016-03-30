@@ -1,6 +1,5 @@
 <html>
-
-<?php sizeof($logs); ?>
+<title>Log Viewer</title>
 
 <link rel="stylesheet" type="text/css" href="../css/mentor_list.css">
 
@@ -9,6 +8,7 @@
 <section>
     <h1>Log Viewer</h1>
     <table class="gridtable">
+
 
 
         <tr class="tablerow">

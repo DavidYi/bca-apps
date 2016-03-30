@@ -17,18 +17,6 @@ function get_course_types() {
 }
 
 
-function get_signup_dates_list() {
-    $query = 'SELECT signup_dates.class_year, class_year, start, end,
-                    GET_SCHEDULE_TIMES_LIST (signup_dates.class_year) as times
-                from signup_dates
-                inner join course_type
-                on course.course_type_cde = course_type.course_type_cde
-                inner join teacher
-                on course.teacher_id = teacher.teacher_id
-                where course.active = 1
-                order by course.course_nbr';
-    return get_list($query);
-}
 
 function get_signup_dates_by_grade($grade_lvl) {
     $query = 'SELECT start, end

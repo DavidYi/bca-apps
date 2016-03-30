@@ -1,8 +1,7 @@
 <?php
 
-function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $field, $room, $ses_id){
-    $query = 'call add_presentation(:pres_title,:pres_desc, :organization, :location, :usr_id, :field_id, :rm_id,:ses_id)';
-    //check that ses_id is correctly added to this
+function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $field_id, $rm_id, $ses_id){
+    $query = 'call add_presentation(:pres_title,:pres_desc, :organization, :location, :usr_id, :field_id, :rm_id, :ses_id)';
     global $db;
 
     try {
@@ -12,8 +11,8 @@ function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $f
         $statement->bindValue(":organization", $organization, PDO::PARAM_STR);
         $statement->bindValue(":location", $location, PDO::PARAM_STR);
         $statement->bindValue(":usr_id", $usr_id, PDO::PARAM_INT);
-        $statement->bindValue(":field_id", $field, PDO::PARAM_INT);
-        $statement->bindValue(":rm_id", $room, PDO::PARAM_INT);
+        $statement->bindValue(":field_id", $field_id, PDO::PARAM_INT);
+        $statement->bindValue(":rm_id", $rm_id, PDO::PARAM_INT);
         $statement->bindValue(":ses_id", $ses_id, PDO::PARAM_INT);
 
 

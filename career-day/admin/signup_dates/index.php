@@ -16,7 +16,6 @@ if ($action == NULL) {
 switch ($action) {
     case 'list_signup_dates':
 
-        $signup_datesList = get_signup_dates_list();
 
         include 'signup_dates_list.php';
         exit();
