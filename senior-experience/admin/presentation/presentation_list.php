@@ -12,15 +12,16 @@
 
     <?php foreach ($presentationList as $presentation) :
     // Get product data
-    $presentationId = $presentation['ses_id'];
+    $sessionId = $presentation['ses_id'];
     $presentationTitle = $presentation['pres_title'];
     $presentationRoomNbr = $presentation['rm_nbr'];
     $students = $presentation['students'];
     $teachers = $presentation['teachers'];
+    $pres_id = $presentation['pres_id'];
     ?>
     <tr>
         <td nowrap>
-            <?php echo $presentationId; ?>
+            <?php echo $sessionId; ?>
         </td>
         <td nowrap>
             <?php echo $presentationTitle; ?>
@@ -35,7 +36,7 @@
             <?php echo $teachers; ?>
         </td>
         <td no wrap>
-            <a href="index.php?action=show_modify_presentation&presentation_id=<?php echo $presentationId; ?>"><img src="../../images/modifyIcon.gif" title="Modify presentation" style="cursor:pointer"></a>
+            <a href="index.php?action=show_modify_presentation&presentation_id=<?php echo $pres_id; ?>"><img src="../../images/modifyIcon.gif" title="Modify presentation" style="cursor:pointer"></a>
         </td>
 
     </tr>

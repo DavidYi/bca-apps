@@ -24,7 +24,7 @@ function get_all_presentations(){
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
-        $stateme0nt->closeCursor();
+        $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
         display_db_exception($e);
@@ -197,13 +197,15 @@ function get_sessions_by_user($usr_id) {
     }
 }
 
-class Presentation {
+class SeniorPresentation {
     public $pres_id, $ses_id, $rm_id, $rm_nbr, $rm_cap, $field_id, $field_name, $pres_title, $pres_desc, $organization, $location,
             $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students;
 
     public function __construct ($pres_id, $ses_id, $rm_id, $rm_nbr, $rm_cap, $field_id, $field_name, $pres_title, $pres_desc, $organization,
                                  $location, $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students)
     {
+        echo $pres_id;
+
         $this->pres_id = $pres_id;
         $this->ses_id = $ses_id;
         $this->rm_id = $rm_id;
@@ -252,7 +254,7 @@ class Presentation {
         $result = $statement->fetch();
         $statement->closeCursor();
 
-        return new Presentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["rm_nbr"],$result["rm_cap"],$result["field_id"],
+        return new SeniorPresentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["rm_nbr"],$result["rm_cap"],$result["field_id"],
             $result["field_name"],$result["pres_title"], $result["pres_desc"], $result["organization"], $result["location"],
             $result["pres_max_teachers"], $result["pres_max_students"], $result["pres_enrolled_teachers"], $result["pres_enrolled_students"]);
     }
