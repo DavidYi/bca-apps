@@ -41,6 +41,7 @@ body {
 
 	h1 {
 		font-size: 3em;
+		font-weight: 400;
 		color: #EEE;
 	}
 
@@ -105,10 +106,10 @@ body {
 		margin: 2em auto;
 	}
 
-	.button {
+	#add-pres {
 		width: 100%;
 		margin: 5em 0;
-		button {
+		.button {
 			width: 12em;
 			height: 3em;
 			margin: 0 auto;
