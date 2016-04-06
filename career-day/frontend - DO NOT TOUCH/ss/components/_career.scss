@@ -69,7 +69,7 @@ nav.navbar {
 }
 
 .enrollment {
-	@include size(80% 75%);
+	@include size(78% 75%);
 	@include outer-container(1200px);
 	@include margin(0 auto);
 	background: $color-grayblack;

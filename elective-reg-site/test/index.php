@@ -34,13 +34,14 @@ switch ($action) {
 
 
 
-        if ($user->getRole('TPOR') == 'ADM') {
+        if ($user->getRole('OELE') == 'ADM') {
 // The user is an admin, so they are directed to  admin page
-            header("Location: ../admin/index.php");
+            header("Location: ../Student/index.php");
+            //Once an admin/teacher side is made, change the above location to /Admin/index.php
         }
         else {
 // The user is a student or teacher, they are directed to sign up page
-            header("Location: ../mainPage/index.php");
+            header("Location: ../Student/index.php");
         }
 }
 

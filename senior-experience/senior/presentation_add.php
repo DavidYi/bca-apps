@@ -72,10 +72,6 @@
 
             <input class="button" type="submit" value="Add">
 
-            <div class="button">
-                <button>SAVE</button>
-            </div>
-
             <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
         </form>
     </section>
