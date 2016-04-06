@@ -68,7 +68,7 @@
                 </div>
 
                 <a href="#" class="full" onclick= "post('index.php', {action: 'all_download', grade: <?php echo $grade ?> }, 'post')" style="font-weight: 400;">
-                    <?php echo $full; ?>
+                    <?php echo $full; ?> 
                 </a>
 
                 <a href="#" class="partial" onclick="post('index.php', {action: 'partial_download', grade: <?php echo $grade ?>}, 'post')">
