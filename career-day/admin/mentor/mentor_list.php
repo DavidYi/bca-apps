@@ -65,7 +65,7 @@
             <div class="session-filter position"><?php echo $mentor_position; ?></div>
             <div class="session-filter teacher"><?php echo $pres_host_teacher; ?></div>
             <div class="session-filter room"><?php echo $pres_room; ?></div>
-            <div class="session-filter capacity"><?php echo $pres_max_capacity; ?></div>
+            <div class="session-filter capacity"><?php echo $pres_max_capacity; ?></div> v
         </div>
         </a>
 
@@ -74,7 +74,7 @@
 
 
 <div class="fab">
-    <a id="fab-action" trigger="./index.php?show_add_mentor"><span class="plus">+</span></a>
+    <a id="fab-action" trigger="index.php?action='show_add_mentor'"><span class="plus">+</span></a>
 </div>
 
 

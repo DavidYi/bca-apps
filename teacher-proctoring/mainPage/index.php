@@ -29,13 +29,13 @@ $sessions = get_sessions_by_user($user->usr_id);
 //
 $registration_complete = true;
 foreach ($sessions as $session) {
-    if (empty($session['mods'])) {
+    if (empty($session['test_time'])) {
         $registration_complete = false;
         break;
     }
 }
 
-$signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
+//$signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
 
 date_default_timezone_set('America/New_York');
 $currentTime = time();
