@@ -855,3 +855,9 @@ button.add:hover {
 }
 
 /*# sourceMappingURL=main.css.map */
+.center {
+    display: block;
+    margin: 0.4375em auto;
+    padding: 0 1.5625em;
+    box-shadow: 0 0em 0.25em rgba(0, 0, 0, 0.1);
+}
