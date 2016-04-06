@@ -5,53 +5,37 @@ require_once('../util/main.php');
 require('../model/senior_db.php');
 require('../model/presentations_db.php');
 
-if(!isSeniortime()){
+/*if(!isSeniortime()){
     header("Location: ../itinerary");
-}
+}*/
+
+$pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
 }
 
-
+if($pres == NULL){
+    include "show_add_pres.php";
+    exit();
+}
 
 switch ($action) {
-    case 'show_add_pres':
+    case 'show_presentation':
+        include "show_presentation.php";
+
+        break;
+
+    case 'show_modify_presentation':
         $fields = get_field_list();
-        include 'presentation_add.php';
+        include 'show_modify_presentation.php';
 
         break;
-    case 'add_pres_into_db':
-        $pres_title = filter_input(INPUT_POST, 'title');
-        $pres_desc = filter_input(INPUT_POST, 'desc');
-        $pres_organization = filter_input(INPUT_POST, 'organization');
-        $pres_location = filter_input(INPUT_POST, 'location');
-        $pres_names = filter_input(INPUT_POST, 'names');
-        $pres_field = filter_input(INPUT_POST, 'field');
-
-
-        add_pres($pres_title, $pres_desc, $pres_organization, $pres_location, $user->usr_id, $field, null);
-
-
-        include 'show_pres.php';
-
-        break;
-
 
     default:
-        $pres = Presentation::getPresentationForSenior ($user->usr_id);
+        include "show_presentation.php";
 
-        if ($pres == NULL) {
-            //go to add presentation
-            $fields = get_field_list();
-            include "presentation_add.php";
-        }
-
-        else {
-            // go to modify presentation
-            header("Location: show_pres.php");
-        }
-
+        break;
 }
 ?>
