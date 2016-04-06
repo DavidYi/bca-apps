@@ -5,10 +5,10 @@
  * Date: 12/16/15
  * Time: 9:04 AM
  */
-require_once('../../util/main.php');
-require_once "model/database.php";
-require_once "model/signins_db.php";
-require_once "admin/signins/signInPDF.php";
+require_once('/../../util/main.php');
+require_once ("/../../model/database.php");
+require_once "../../model/signins_db.php";
+require_once "signInPDF.php";
 
 verify_admin();
  
@@ -27,7 +27,7 @@ switch ($action) {
         $mentor_id = filter_input(INPUT_POST, 'mentor_id');
         $sessions = get_session_times();
         $session_id = filter_input(INPUT_POST, 'ses_id');
-        include("admin/signins/sheetRequest.php");
+        include("sheetRequest.php");
         break;
 
     case 'generatet':
