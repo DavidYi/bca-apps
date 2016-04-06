@@ -6,7 +6,31 @@ function get_field_list() {
               ORDER BY field_name";
     return get_list($query);
 }
+function get_all_presentations(){
+    $query = "select p.pres_id, p.pres_title, rm_nbr, ses_id, concat (pres_enrolled_teachers, '/',pres_max_teachers) as teachers,
+                concat (pres_enrolled_students, '/',pres_max_students) as students,
+                GROUP_CONCAT( concat (usr_first_name, ' ', usr_last_name) order by usr_last_name SEPARATOR ', ')
+                from user_presentation_xref x, user u, presentation p
+                left join room r on p.rm_id = r.rm_id
+                where p.pres_id = x.pres_id
+                and x.usr_id = u.usr_id
+                and x.presenting = 1
+                group by p.pres_id
+                order by rm_nbr";
 
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
 function get_session_times() {
     $query = 	'SELECT ses_id, ses_name, ses_start, ses_end
 					from session_times
@@ -173,13 +197,15 @@ function get_sessions_by_user($usr_id) {
     }
 }
 
-class Presentation {
+class SeniorPresentation {
     public $pres_id, $ses_id, $rm_id, $rm_nbr, $rm_cap, $field_id, $field_name, $pres_title, $pres_desc, $organization, $location,
             $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students;
 
     public function __construct ($pres_id, $ses_id, $rm_id, $rm_nbr, $rm_cap, $field_id, $field_name, $pres_title, $pres_desc, $organization,
                                  $location, $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students)
     {
+        echo $pres_id;
+
         $this->pres_id = $pres_id;
         $this->ses_id = $ses_id;
         $this->rm_id = $rm_id;
@@ -228,7 +254,7 @@ class Presentation {
         $result = $statement->fetch();
         $statement->closeCursor();
 
-        return new Presentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["rm_nbr"],$result["rm_cap"],$result["field_id"],
+        return new SeniorPresentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["rm_nbr"],$result["rm_cap"],$result["field_id"],
             $result["field_name"],$result["pres_title"], $result["pres_desc"], $result["organization"], $result["location"],
             $result["pres_max_teachers"], $result["pres_max_students"], $result["pres_enrolled_teachers"], $result["pres_enrolled_students"]);
     }

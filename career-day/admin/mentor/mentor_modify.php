@@ -40,8 +40,9 @@
     <input type="text" name="mentor_position"
            value="<?php echo htmlspecialchars($mentor_position); ?>" placeholder="Position">
     <label>Profile</label>
-    <input type="text" name="mentor_profile"
-           value="<?php echo htmlspecialchars($mentor_profile); ?>" placeholder="Profile">
+    <textarea rows="4" cols="50" class = "center" type = "text" name="mentor_profile"
+              value="<?php echo htmlspecialchars($mentor_profile);?>" placeholder="Profile">
+    </textarea>
     <label>Keywords</label>
     <input type="text" name="mentor_keywords"
            value="<?php echo htmlspecialchars($mentor_keywords); ?>" placeholder="Keywords">
