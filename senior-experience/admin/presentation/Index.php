@@ -24,22 +24,11 @@ switch ($action) {
 
     case 'show_modify_presentation':
         $presentation_id = filter_input(INPUT_GET, 'presentation_id');
-
-        $presentation = Presentation::getPresentation($presentation_id);
-
-        $error_msg = '';
-        $presentation_nbr = $presentation['presentation_nbr'];
-        $presentation_name = $presentation['presentation_name'];
-        $presentation_short_name = $presentation['presentation_short_name'];
-        $presentation_desc = $presentation['presentation_desc'];
-        $teacher_id = $presentation['teacher_id'];
-        $room = $presentation['room'];
-        $presentation_type = $presentation['presentation_type_cde'];
-
-        $teachers = get_teachers();
-        $presentation_types = get_presentation_types();
-
-        include 'presentation_modify.php';
+        $presentation = SeniorPresentation::getPresentation($presentation_id);
+        $fields = get_field_list();
+        //$teachers = get_teachers();
+        //$presentation_types = get_presentation_types();
+        include '../../senior/show_modify_presentation.php';
         exit();
         break;
 
