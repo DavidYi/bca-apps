@@ -114,7 +114,11 @@ function random_enroll($year) {
     }
 }
 
-function all_enroll_download() {
+function all_enroll_download($grade) {
+    $gradeClause = '';
+    if ($grade != 0) {
+        $gradeClause = ' where usr_grade_lvl = :usr_grade_lvl';
+    }
     $query = 'select usr_last_name, usr_first_name, usr_bca_id, usr_class_year, num_sessions
     from (
         SELECT grade_lvl, user.usr_id, count(*) as num_sessions
@@ -126,13 +130,17 @@ function all_enroll_download() {
            group by grade_lvl, user.usr_id
            having num_sessions = 4
          ) temp
-    inner join user on user.usr_id = temp.usr_id
+    inner join user on user.usr_id = temp.usr_id ' . $gradeClause . '
     order by usr_last_name, usr_first_name';
 
-    return get_csv_list($query);
+    return get_csv_list($query, $grade);
 }
 
-function partial_enroll_download() {
+function partial_enroll_download($grade) {
+    $gradeClause = '';
+    if ($grade != 0) {
+        $gradeClause = ' where usr_grade_lvl = :usr_grade_lvl';
+    }
     $query = 'select usr_last_name, usr_first_name, usr_bca_id, usr_class_year, num_sessions
     from (
         SELECT grade_lvl, user.usr_id, count(*) as num_sessions
@@ -144,13 +152,17 @@ function partial_enroll_download() {
            group by grade_lvl, user.usr_id
            having num_sessions <4
          ) temp
-    inner join user on user.usr_id = temp.usr_id
+    inner join user on user.usr_id = temp.usr_id ' . $gradeClause . '
     order by usr_last_name, usr_first_name';
 
-    return get_csv_list($query);
+    return get_csv_list($query, $grade);
 }
 
-function no_enroll_download() {
+function no_enroll_download($grade) {
+    $gradeClause = '';
+    if ($grade != 0) {
+        $gradeClause = ' where usr_grade_lvl = :usr_grade_lvl';
+    }
     $query = 'SELECT usr_last_name, usr_first_name, usr_bca_id, usr_class_year
     FROM (
         SELECT user.usr_id
@@ -161,10 +173,10 @@ function no_enroll_download() {
     AND usr_type_cde = \'STD\'
     AND usr_active = 1
          ) temp
-    INNER JOIN user ON user.usr_id = temp.usr_id
+    INNER JOIN user ON user.usr_id = temp.usr_id ' . $gradeClause . '
     ORDER BY usr_last_name, usr_first_name';
 
-    return get_csv_list($query);
+    return get_csv_list($query, $grade);
 }
 
 function mentor_download() {
@@ -176,12 +188,16 @@ function mentor_download() {
     return get_csv_list($query);
 }
 
-function get_csv_list($query)
+function get_csv_list($query, $grade = null)
 {
     global $db;
 
     try {
         $statement = $db->prepare($query);
+        if ($grade != 0) {
+            $statement->bindValue(':usr_grade_lvl', $grade);
+        }
+
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         $statement->closeCursor();

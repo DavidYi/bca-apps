@@ -1,4 +1,4 @@
-button {
+.button {
 	@include size(em(200px) em(50px));
 	color: $color-white;
 	background-color: #89e424;

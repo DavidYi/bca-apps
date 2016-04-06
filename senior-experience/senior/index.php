@@ -9,24 +9,16 @@ require('../model/presentations_db.php');
     header("Location: ../itinerary");
 }*/
 
-$pres = Presentation::getPresentationForSenior ($user->usr_id);
-
-if ($pres == NULL) {
-    //go to add presentation
-    $pres_title = '';
-    $pres_desc = '';
-    $organization = '';
-    $location = '';
-    $field_id = '';
-    $room_id = '';
-    $ses_id = '';
-
-    add_pres($pres_title, $pres_desc, $organization, $location, $user->usr_id, $field_id, $rm_id, $ses_id);
-}
+$pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
+}
+
+if($pres == NULL){
+    include "show_add_pres.php";
+    exit();
 }
 
 switch ($action) {
