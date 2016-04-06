@@ -44,7 +44,8 @@ switch($action) {
         include 'view.php';
         break;
     case "all_download":
-        $student_list = all_enroll_download();
+        $grade = filter_input(INPUT_POST, 'grade');
+        $student_list = all_enroll_download($grade);
         $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="all_enrolled.csv";');
@@ -58,7 +59,8 @@ switch($action) {
         exit();
         break;
     case "partial_download":
-        $student_list = partial_enroll_download();
+        $grade = filter_input(INPUT_POST, 'grade');
+        $student_list = partial_enroll_download($grade);
         $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="partial_enrolled.csv";');
@@ -72,7 +74,8 @@ switch($action) {
         exit();
         break;
     case "no_download":
-        $student_list = no_enroll_download();
+        $grade = filter_input(INPUT_POST, 'grade');
+        $student_list = no_enroll_download($grade);
         $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="not_enrolled.csv";');

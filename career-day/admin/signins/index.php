@@ -11,7 +11,7 @@ require_once "model/signins_db.php";
 require_once "admin/signins/signInPDF.php";
 
 verify_admin();
-
+ 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {
