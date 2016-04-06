@@ -34,7 +34,7 @@ switch ($action) {
 
 
 
-        if ($user->getRole('TPOR') == 'ADM') {
+        if ($user->getRole('OELE') == 'ADM') {
 // The user is an admin, so they are directed to  admin page
             header("Location: ../admin/index.php");
         }
