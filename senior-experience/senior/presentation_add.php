@@ -1,30 +1,52 @@
-
-
-<html>
+<html lang="en">
 <head>
+    <title>Senior Experience 2016</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700italic,700,500italic,500,400italic,300italic,300' rel='stylesheet' type='text/css'>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="../ss-add/ss/main.css" >
+
 
 </head>
 <body>
 
-<h1>Add Presentation</h1>
+
 <div id="mentor_add">
-
+    <section class="add">
+        <h1>Add Presentation</h1>
     <BR>
+    <!-- Styles --section class id?-->
 
-    <form action="index.php" method="post">
+    <form id="add-pres" action="index.php" method="post">
         <input type="hidden" name="action" value="add_pres_into_db">
 
-        <label>Presentation Title</label>
-        <input title="" type="text" name="pres_title" required><BR>
+        <div class="input input--add">
+            <input class="input-field add-field" title="" type="text" name="pres_title" required/>
+            <label class="input-label add-label" />
+            <div class="input__label-content input__label-content--add">Presentation Title</div>
+        </div>
 
-        <label>Presentation Description</label>
-        <input title="" type="text" name="pres_desc" required><BR>
+        <div class="input input--add">
+            <input class="input-field add-field" title="" type="text" name="pres_desc" required />
+            <label class="input-label add-label" />
+            <div class="input__label-content input__label-content--add">Presentation Description</div>
+        </div>
 
-        <label>Organization</label>
-        <input title="" type="text" name="organization" required><BR>
+        <div class="input input--add">
+            <input class="input-field add-field"  title="" type="text" name="organization" required/>
+            <label class="input-label add-label" />
+            <div class="input__label-content input__label-content--add">Organization</div>
+        </div>
 
-        <label>Location</label>
-        <input title="" type="text" name="location" required><BR>
+        <div class="input input--add">
+            <input class="input-field add-field" type="text" title="" type="text" name="location" required/>
+            <label class="input-label add-label" />
+            <div class="input__label-content input__label-content--add">Location</div>
+        </div>
 
         <label>Field</label>
         <select name="field_id" title=".">
@@ -47,9 +69,19 @@
         <!--Prevent users who have already signed up for a presentation from adding one!-->
         <!--Integrate with Su Min's dynamic page!-->
 
-        <input type="submit" value="Add">
+        <input class="button" type="submit" value="Add">
+
         <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
     </form>
+    </section>
+    <!--JavaScript -->
+    <script src="js/classie.js"></script>
+    <script src="js/semantic.min.js"></script>
+    <script type="text/javascript">
+        $('.ui.dropdown')
+            .dropdown()
+        ;
+    </script>
 </div>
 </body>
 </html>
