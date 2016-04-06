@@ -35,7 +35,7 @@ foreach ($sessions as $session) {
     }
 }
 
-$signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
+//$signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
 
 date_default_timezone_set('America/New_York');
 $currentTime = time();

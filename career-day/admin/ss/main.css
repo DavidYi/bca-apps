@@ -181,7 +181,7 @@ html, body {
     margin: 0;
     margin: 0;
     padding: 0;
-    background-color: darkviolet;
+    background-color: gold;
 }
 
 .display-none {
@@ -582,6 +582,7 @@ label {
     text-align: center;
     display: block;
     color: white;
+    font-size: 140%;
 }
 
 .teacher {

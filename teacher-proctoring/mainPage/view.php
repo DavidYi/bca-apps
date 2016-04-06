@@ -8,7 +8,7 @@
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link href="../ss/main.css" rel="stylesheet"> -->
-		<?php include_analytics(); ?>
+		<?php //include_analytics(); ?>
 	</head>
 	<body>
 		<section class="main view">
@@ -61,7 +61,6 @@
 						<div class="rm_nbr">RM <?php echo $session['rm_nbr'] ?></div>
 						<div class="test-name"><?php echo $session['test_name'] ?></div>
 						<div class="time"><?php echo $session['test_time_id']?>, <?php echo $session['test_dt'] ?></div>
-                            <?php include ("./delete.php"); ?>
                         <?php } ?>
 					</div>
 
