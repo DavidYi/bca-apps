@@ -5,13 +5,13 @@
  * Date: 12/16/15
  * Time: 9:04 AM
  */
-require_once('../../util/main.php');
-require_once "model/database.php";
-require_once "model/signins_db.php";
-require_once "admin/signins/signInPDF.php";
+require_once('/../../util/main.php');
+require_once ("/../../model/database.php");
+require_once "../../model/signins_db.php";
+require_once "signInPDF.php";
 
 verify_admin();
-
+ 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {
@@ -27,7 +27,7 @@ switch ($action) {
         $mentor_id = filter_input(INPUT_POST, 'mentor_id');
         $sessions = get_session_times();
         $session_id = filter_input(INPUT_POST, 'ses_id');
-        include("admin/signins/sheetRequest.php");
+        include("sheetRequest.php");
         break;
 
     case 'generatet':
@@ -123,6 +123,7 @@ switch ($action) {
                 $pdf->getW() - $pdf->getrMargin() - 50, $pdf->getH()/2 - 2);
 
             //add mentor info
+
             $pdf->SetFont('Courier', 'B', 50);
             $pdf->Cell(0,$pdf->getH()/8, $pres['mentor_first_name'] . " " . $pres['mentor_last_name'], 0, 1, "C");
             $pdf->SetFont('Arial', '', 40);
