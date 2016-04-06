@@ -1,4 +1,5 @@
-
+<html>
+<body>
 <script type="text/javascript">
 	function deleteTest(testId){
 		if(confirm('Are you sure you want to delete this test?')){
@@ -33,7 +34,7 @@
 			<td nowrap><?php echo $testType; ?></td>
 			<td nowrap><?php echo $roomId; ?></td>
 			<td nowrap><?php echo $testDate; ?></td>
-
+			<td nowrap>
 				<img src="../../images/deleteIcon.gif"
 					 onclick="deleteCourse(<?php echo $testId; ?>);"
 					 title="Delete Test"
