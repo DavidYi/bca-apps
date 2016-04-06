@@ -12,36 +12,21 @@
 
     <form action="index.php" method="post">
         <input type="hidden" name="action" value="add_pres_into_db">
-
+        <br>
         <label>Presentation Title</label>
-        <input title="" type="text" name="pres_title" required><BR>
-
+        <br>
         <label>Presentation Description</label>
-        <input title="" type="text" name="pres_desc" required><BR>
-
+        <br>
         <label>Organization</label>
-        <input title="" type="text" name="organization" required><BR>
-
+        <br>
         <label>Location</label>
-        <input title="" type="text" name="location" required><BR>
-
+        <br>
         <label>Field</label>
-        <select name="field_id" title=".">
-            <?php  foreach ($fields as $field) {?>
-            <option value="<?php echo ($field['field_id']);?>"><?php echo($field['field_name']);  ?></option>
-            <?php } ?>
-        </select><BR>
-
+        <br>
         <label>Room</label>
-        <select name="rm_id" title=".">
-            <!-- Add php stuff !-->
-        </select><BR>
-
+        <br>
         <label>Session</label>
-        <select name="ses_id" title=".">
-            <!-- Add php stuff !-->
-        </select><BR>
-
+        <br>
         <!--Add session and room dropdown data!-->
         <!--Prevent users who have already signed up for a presentation from adding one!-->
         <!--Integrate with Su Min's dynamic page!-->
