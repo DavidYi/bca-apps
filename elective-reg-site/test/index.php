@@ -36,7 +36,7 @@ switch ($action) {
 
         if ($user->getRole('OELE') == 'ADM') {
 // The user is an admin, so they are directed to  admin page
-            header("Location: ../admin/index.php");
+            header("Location: ../view/index.php");
         }
         else {
 // The user is a student or teacher, they are directed to sign up page
