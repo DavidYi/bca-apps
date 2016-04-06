@@ -181,7 +181,7 @@ html, body {
     margin: 0;
     margin: 0;
     padding: 0;
-    background-color: #fbfcfc;
+    background-color: gold;
 }
 
 .display-none {
@@ -303,7 +303,7 @@ a:active, a:focus, a:hover {
 }
 
 h1.title {
-    color: #262626;
+    color: white;
     font: normal normal 500 2em "Roboto", sans-serif;
     text-align: center;
 }
@@ -581,6 +581,8 @@ nav .session-filter:hover, nav .session-filter:active {
 label {
     text-align: center;
     display: block;
+    color: white;
+    font-size: 140%;
 }
 
 .teacher {

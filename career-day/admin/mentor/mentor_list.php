@@ -74,7 +74,7 @@
 
 
 <div class="fab">
-    <a id="fab-action" trigger="mentor_add.php"><span class="plus">+</span></a>
+    <a id="fab-action" trigger="index.php?action='show_add_mentor'"><span class="plus">+</span></a>
 </div>
 
 
