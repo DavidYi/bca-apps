@@ -30,7 +30,7 @@
         <input type="hidden" name="action" value="add_mentor">
 
         <label>First Name</label>
-        <input title="" type="text" name="mentor_last_name" value="<?php echo htmlspecialchars($mentor_last_name); ?>"
+        <input title="" type="text" name="mentor_last_name" value="<?php htmlspecialchars($mentor_last_name); ?>"
                placeholder="First Name" required autofocus>
 
         <label>Last Name</label>
