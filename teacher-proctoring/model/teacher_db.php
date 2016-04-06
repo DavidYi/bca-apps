@@ -1,4 +1,18 @@
 <?php
+function get_list ($query) {
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
 
 function get_test_list() {
     $query = 'SELECT test.test_id, test_name, room, test_type_cde, test_dt,
@@ -6,9 +20,9 @@ function get_test_list() {
                 from test
                 inner join test_type
                 on test.test_type_cde = test_type.test_type_cde
-                <--inner join teacher
-                <--on course.teacher_id = teacher.teacher_id
-                where course.active = 1
+                inner join teacher
+                on test.teacher_id = teacher.teacher_id
+                where test.active = 1
                 order by test.test_type';
     return get_list($query);
 }

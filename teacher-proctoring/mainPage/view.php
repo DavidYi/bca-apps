@@ -35,7 +35,7 @@
 			<td nowrap><?php echo $roomId; ?></td>
 			<td nowrap><?php echo $testDate; ?></td>
 			<td nowrap>
-				<img src="../../images/deleteIcon.gif"
+				<img src="../images/deleteIcon.gif"
 					 onclick="deleteCourse(<?php echo $testId; ?>);"
 					 title="Delete Test"
 					 style="cursor:pointer">
@@ -46,7 +46,7 @@
 	</table>
 </section>
 
-	<?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) {?>
+	<?php if (isset($_SESSION['prev_usr_id'])) {?>
 					<?php } ?>
 
 		<script type="text/javascript" src="../js/jquery.min.js"></script>
