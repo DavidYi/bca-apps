@@ -63,11 +63,11 @@
             $none = $year['None'];
             ?>
             <div class = "session">
-                <div class = "grade">
+                <div class = "grade" style="font-weight: 400;">
                     <?php echo $grade; ?>
                 </div>
 
-                <a href="#" class="full" onclick= "post('index.php', {action: 'all_download', grade: <?php echo $grade ?> }, 'post')">
+                <a href="#" class="full" onclick= "post('index.php', {action: 'all_download', grade: <?php echo $grade ?> }, 'post')" style="font-weight: 400;">
                     <?php echo $full; ?>
                 </a>
 
