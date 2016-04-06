@@ -738,10 +738,3 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
 
 /*# sourceMappingURL=main.css.map */
 
-textarea {
-    background-color: rgba(244, 208, 63, 0.3);
-    margin: 10px 0;
-    padding: 0 15px;
-    width: 25em;
-    height: 3.125em;
-}

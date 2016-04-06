@@ -1,3 +1,54 @@
+@font-face {
+    font-family: 'latoheavy';
+    src: url('Lato_font/Lato-Heavy-webfont.eot');
+    src: url('Lato_font/Lato-Heavy-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Lato_font/Lato-Heavy-webfont.woff2') format('woff2'),
+         url('Lato_font/Lato-Heavy-webfont.woff') format('woff'),
+         url('Lato_font/Lato-Heavy-webfont.ttf') format('truetype'),
+         url('Lato_font/Lato-Heavy-webfont.svg#latoheavy') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latoregular';
+    src: url('Lato_font/Lato-Regular-webfont.eot');
+    src: url('Lato_font/Lato-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Lato_font/Lato-Regular-webfont.woff2') format('woff2'),
+         url('Lato_font/Lato-Regular-webfont.woff') format('woff'),
+         url('Lato_font/Lato-Regular-webfont.ttf') format('truetype'),
+         url('Lato_font/Lato-Regular-webfont.svg#latoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latohairline';
+    src: url('Lato_font/Lato-Hairline-webfont.eot');
+    src: url('Lato_font/Lato-Hairline-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Lato_font/Lato-Hairline-webfont.woff2') format('woff2'),
+         url('Lato_font/Lato-Hairline-webfont.woff') format('woff'),
+         url('Lato_font/Lato-Hairline-webfont.ttf') format('truetype'),
+         url('Lato_font/Lato-Hairline-webfont.svg#latohairline') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'latolight';
+    src: url('Lato_font/Lato-Light-webfont.eot');
+    src: url('Lato_font/Lato-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Lato_font/Lato-Light-webfont.woff2') format('woff2'),
+         url('Lato_font/Lato-Light-webfont.woff') format('woff'),
+         url('Lato_font/Lato-Light-webfont.ttf') format('truetype'),
+         url('Lato_font/Lato-Light-webfont.svg#latolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 *,
 *:after,
 *:before {
@@ -6,7 +57,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Hind', sans-serif;
+    font-family: 'latolight', sans-serif;
 }
 
 ::selection {
@@ -634,3 +685,114 @@
 }
 
 /* No CSS3 support: none */
+
+.ui-timepicker-wrapper {
+	overflow-y: auto;
+	height: 150px;
+	width: 6.5em;
+	background: #fff;
+	border: 1px solid #ddd;
+	-webkit-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	outline: none;
+	z-index: 10001;
+	margin: 0;
+}
+
+.ui-timepicker-wrapper.ui-timepicker-with-duration {
+	width: 13em;
+}
+
+.ui-timepicker-wrapper.ui-timepicker-with-duration.ui-timepicker-step-30,
+.ui-timepicker-wrapper.ui-timepicker-with-duration.ui-timepicker-step-60 {
+	width: 11em;
+}
+
+.ui-timepicker-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ui-timepicker-duration {
+	margin-left: 5px; color: #888;
+}
+
+.ui-timepicker-list:hover .ui-timepicker-duration {
+	color: #888;
+}
+
+.ui-timepicker-list li {
+	padding: 3px 0 3px 5px;
+	cursor: pointer;
+	white-space: nowrap;
+	color: #000;
+	list-style: none;
+	margin: 0;
+}
+
+.ui-timepicker-list:hover .ui-timepicker-selected {
+	background: #fff; color: #000;
+}
+
+li.ui-timepicker-selected,
+.ui-timepicker-list li:hover,
+.ui-timepicker-list .ui-timepicker-selected:hover {
+	background: #1980EC; color: #fff;
+}
+
+li.ui-timepicker-selected .ui-timepicker-duration,
+.ui-timepicker-list li:hover .ui-timepicker-duration {
+	color: #ccc;
+}
+
+.ui-timepicker-list li.ui-timepicker-disabled,
+.ui-timepicker-list li.ui-timepicker-disabled:hover,
+.ui-timepicker-list li.ui-timepicker-selected.ui-timepicker-disabled {
+	color: #888;
+	cursor: default;
+}
+
+.ui-timepicker-list li.ui-timepicker-disabled:hover,
+.ui-timepicker-list li.ui-timepicker-selected.ui-timepicker-disabled {
+	background: #f2f2f2;
+}
+
+input {
+    display: block;
+    margin: 10px auto;
+    width: 340px;
+    padding: 11px;
+    font-size: 15px;
+    -webkit-transition: all 0.30s ease;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+}
+
+input:focus {
+  outline: none;
+  border: 0.5px solid #DEDEDE;
+}
+
+a.ui-state-default {
+    border: 1px solid #DBE2DF !important;
+    background: #FBFBFB !Important;
+}
+
+.ui-datepicker-header.ui-widget-header.ui-helper-clearfix.ui-corner-all {
+    background: #FBFBFB;
+    font-weight: 500;
+    border: 0.5px solid #E0E0E0;
+    padding-bottom: 0px;
+}
+
+div#ui-datepicker-div {
+    width: 271px;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0px !important;
+    right: 0;
+}

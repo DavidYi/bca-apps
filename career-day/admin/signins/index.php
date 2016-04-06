@@ -123,6 +123,7 @@ switch ($action) {
                 $pdf->getW() - $pdf->getrMargin() - 50, $pdf->getH()/2 - 2);
 
             //add mentor info
+
             $pdf->SetFont('Courier', 'B', 50);
             $pdf->Cell(0,$pdf->getH()/8, $pres['mentor_first_name'] . " " . $pres['mentor_last_name'], 0, 1, "C");
             $pdf->SetFont('Arial', '', 40);
