@@ -234,34 +234,13 @@
         <script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
 		<script type="text/javascript" src="js/jquery.plusanchor.min.js"></script>
-		<script type="text/javascript">
+        <script type="text/javascript" src="js/popup.js"></script>
+        <script type="text/javascript">
 		    $('body').plusAnchor({
 		        easing: 'easeInOutExpo',
 		        speed:  700
 		    });
 
-//            $( ".presenter" ).mousedown(function() {
-//                alert( "Handler for .mousedown() called." );
-//            });
-
-//            $( ".presenter" ).mousedown(function() {
-//                $('.popup-bg').css('display','block');
-//            });
-//
-//            $('.close').click(function() {
-//                $('.popup-bg').css('display','none');
-//            });
-
-
-            $(document).ready(function() {
-                console.log('test');
-                $('.presenter').click(function() {
-                    $('.popup-bg, .popup').css('display','block');
-                });
-                $('.close').click(function() {
-                    $('.popup-bg, .popup').css('display','none');
-                });
-            });
 
             function selectRegister(selectedObject) {
                 if ($(selectedObject).attr('class').length < 8) {
