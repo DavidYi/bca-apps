@@ -277,10 +277,10 @@ body {
     width: calc(100% - 2em);
     max-width: 75em;
     margin: 2em auto; }
-  .add .button {
+  .add #add-pres {
     width: 100%;
     margin: 5em 0; }
-    .add .button button {
+    .add #add-pres .button {
       width: 12em;
       height: 3em;
       margin: 0 auto;
