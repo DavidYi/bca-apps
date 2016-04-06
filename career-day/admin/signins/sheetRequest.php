@@ -36,7 +36,7 @@
 </head>
 <body>
 
-<a href="../index.php" class="back"><i class="fa fa-arrow-left pad">Go Back</i></a>
+<a href="../index.php" class="back">Return to Admin Tools</a>
 
 <form action="." method="post">
     <input type="radio" name="choice" value="s" class="choice" id="sc">
