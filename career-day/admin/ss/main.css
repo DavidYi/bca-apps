@@ -181,7 +181,7 @@ html, body {
     margin: 0;
     margin: 0;
     padding: 0;
-    background-color: gold;
+    background-color: white;
 }
 
 .display-none {
@@ -200,7 +200,7 @@ html, body {
 
 header {
     height: 15%;
-    -webkit-transform-style: preserve-3d;
+    -webkit-transform-stdle: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     -o-transform-style: preserve-3d;
