@@ -38,7 +38,7 @@ switch ($action) {
 // The user is an admin, so they are directed to  admin page
             header("Location: ../admin/index.php");
         }
-        else if(($user->usr_grade_lvl == 12) && isSeniorTime()){
+        else if(($user->usr_grade_lvl == 12) /*&& isSeniorTime()*/){
             // The user is eligible to make presentation, they are directed to pres add page
             header("Location: ../senior/index.php");
         }
