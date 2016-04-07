@@ -67,7 +67,7 @@ $pres = Presentation::getPresentationForSenior($user->usr_id);
             <?php } ?>
             <div>
                 <form action="." method="post">
-                    <input class="add-mdy add" type="submit" value="Add/Modify">
+                    <input class="add-mdy" type="submit" value="Add/Modify">
                 </form>
             </div>
         </div>

@@ -33,7 +33,7 @@ switch ($action) {
 
         add_pres($pres_title, $pres_desc, $organization, $location, $user->usr_id, $field_id, $rm_id, $ses_id);
 
-        include 'show_pres.php';
+        include 'show_presentation.php';
 
         break;
 
@@ -49,7 +49,7 @@ switch ($action) {
 
         else {
             // go to modify presentation
-            header("Location: show_pres.php");
+            header("Location: show_presentation.php");
         }
 
 }
