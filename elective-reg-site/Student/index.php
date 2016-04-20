@@ -1,13 +1,11 @@
 <?php
-<<<<<<< HEAD
+
 /**
  * Created by PhpStorm.
  * User: joshClune
  * Date: 4/6/16
  * Time: 10:36 AM
  */
-echo "This is the index.php in Student"
-=======
 include('../util/main.php');
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
@@ -26,17 +24,18 @@ switch ($action) {
         break;
     case 'modify_courses':
         echo "will make a modify_courses page later";
+        include('Student/courses/index.php');
         break;
     case 'modify_times':
         echo "Michael is working on the modify_times page";
+        include('Student/times/index.php');
         break;
     case 'logout':
-        echo "will make a logout page later plz work test";
+        echo "will make a logout page later";
         break;
     default:
         display_error('Unknown account action: ' . $action);
         exit();
         break;
 }
->>>>>>> 0df83cfd13f2c74bff6cd6204d2803ed3fba473a
 ?>
