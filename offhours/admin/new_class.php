@@ -18,6 +18,8 @@ if (isset($_POST)) {
 
     $startMod = intval(substr($mods, 0,1));
     $endMod = intval(substr($mods, 2, 1));
+
+    
 }
 
 ?>
