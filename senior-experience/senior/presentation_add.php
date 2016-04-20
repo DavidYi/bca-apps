@@ -53,8 +53,19 @@
                 <i class="dropdown icon"></i>
                 <div class="default text">Field</div>
                 <div class="menu">
-                    <div class="item" data-value="0">1</div>
-                    <!--add javascript code for this dropdown-->
+                    <?php
+                    $i=0;
+                    foreach ($fields as $field) {?>
+                        <div class="item" data-value="<?php echo $i;?>"><?php echo($field['field_name']);  ?></div>
+                    <?php $i+=1;} ?>
+                    <!--need to add code to take the values-->
+                    <!--su min says can be done with javascript-->
+                    <!--below is the php code that idk how to incorporate to the dropdown-->
+                    <select name="field_id" title=".">
+                        <?php  foreach ($field_id as $field) {?>
+                            <option value="<?php echo ($field['field_id']);?>"><?php echo($field['field_name']);  ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
             </div>
 
