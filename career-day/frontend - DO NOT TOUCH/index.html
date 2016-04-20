@@ -22,7 +22,7 @@
                     <div class="session-filter position">Position</div>
                     <div class="session-filter remaining">Remaining</div>
                 </a>
-            </nav> 
+            </nav>
 
             <div class="enrollment">
                 <div class="session" onclick="selectRegister(this);">
@@ -208,14 +208,39 @@
                 } ?>
 			</div> -->
 		</section>
-		<script type="text/javascript" src="js/jquery.min.js"></script>
+
+        <div class="popup-bg">
+        </div>
+
+        <div class="popup">
+            <div class="entpop">
+            <div class="close">
+                <div class="presname">Yang Hyun Suk</div>
+                <div class="x"><a style="color:#f0c30f" href="#">✖</a></div>
+            </div>
+            <div class="popup-c">
+                <p>
+                    Lorem ipsum dolor sit amet, perfecto senserit argumentum ut vim, in debet appareat vis. Et dicta neglegentur vel, legere corrumpit ad qui. Cum solum solet civibus cu. Postea assentior vim eu. At vis modo semper. Nec ut omittam albucius intellegam, partem quidam ad nec. Id error graecis eum, oporteat prodesset ut duo.
+
+                    Tempor mnesarchum vix ea. Quo alienum inimicus ex. His meliore corpora no, ex homero convenire definiebas quo. Ut usu affert quidam hendrerit, dicta essent democritum vix at. Te sed solet apeirian, qui ex idque paulo.
+
+                    His numquam invidunt petentium et, eu est inani civibus complectitur. Timeam ceteros vix eu, est at case principes, an omnes minimum qui. Duo te nominati repudiandae, mel facer dolorum ne. Cu euripidis argumentum eam, delenit eligendi interpretaris usu et.
+
+                    Qui ut audire ponderum interesset. Movet hendrerit reformidans eos an, mel soluta deleniti te, vis cu neglegentur philosophia. His habemus forensibus ullamcorper cu, has ad oblique adipisci. Ex iriure utamur patrioque has, sed prima falli eu, ne mea alii albucius. Sale euripidis ex quo, detraxit indoctum voluptatum eam eu. Qui ex homero audire legimus, has ne iuvaret facilisis efficiantur.                </p>
+            </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
 		<script type="text/javascript" src="js/jquery.plusanchor.min.js"></script>
-		<script type="text/javascript">
+        <script type="text/javascript" src="js/popup.js"></script>
+        <script type="text/javascript">
 		    $('body').plusAnchor({
 		        easing: 'easeInOutExpo',
 		        speed:  700
 		    });
+
 
             function selectRegister(selectedObject) {
                 if ($(selectedObject).attr('class').length < 8) {

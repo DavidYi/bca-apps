@@ -25,26 +25,6 @@ function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $f
     }
 }
 
-function get_signup_dates_by_grade($grade_lvl) {
-    $query = 'SELECT start, end
-              FROM signup_dates
-              WHERE grade_lvl = :grade_lvl';
-
-    global $db;
-
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(':grade_lvl', $grade_lvl);
-        $statement->execute();
-        $result = $statement->fetch();
-        $statement->closeCursor();
-        return $result;
-    } catch (PDOException $e) {
-        display_db_exception($e);
-        exit();
-    }
-}
-
 function get_senior_add_pres_dates() {
     $query = 'SELECT * from signup_dates
               WHERE grade_lvl = 12 and mode_cde = \'PRE\' ';

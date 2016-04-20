@@ -238,6 +238,7 @@ body {
       max-width: calc(100% - 2em); } }
   .add h1 {
     font-size: 3em;
+    font-weight: 400;
     color: #EEE; }
   .add h3 {
     color: #777; }
@@ -277,17 +278,17 @@ body {
     width: calc(100% - 2em);
     max-width: 75em;
     margin: 2em auto; }
-  .add .button {
+  .add #add-pres {
     width: 100%;
     margin: 5em 0; }
-    .add .button button {
+    .add #add-pres .button {
       width: 12em;
       height: 3em;
       margin: 0 auto;
       border-radius: 0;
       font-size: 1.5em; }
 
-button {
+.button {
   height: 3.125em;
   width: 12.5em;
   color: #fdfdfd;
@@ -300,7 +301,7 @@ button {
   -webkit-transition: all 175ms ease;
   -moz-transition: all 175ms ease;
   transition: all 175ms ease; }
-  button:hover {
+  .button:hover {
     background-color: #000;
     color: #89e424; }
 
