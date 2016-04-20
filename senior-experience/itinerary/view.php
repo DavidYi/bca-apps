@@ -52,11 +52,13 @@
                 <div class="session view-session" onclick="">
                     <div class="session-number"><?php echo $session['ses_times'] ?></div>
                     <div class="time"><?php echo $session['ses_start']?></div>
-                    <?php if ($session['ses_id'] != NULL) { ?>
-                        <div class="room-number">RM <?php echo $session['pres_room'] ?></div>
-                        <div class="session-title"><?php echo $session['mentor_company'] ?></div>
-                        <div class="name"><?php echo $session['mentor_last_name']?>, <?php echo $session['mentor_first_name'] ?></div>
-                    <?php } ?>
+                    <?php if ($session['pres_id'] != NULL) { ?>
+                        <div class="room-number">RM <?php echo $session['rm_nbr'] ?></div>
+                        <div class="session-title"><?php echo $session['pres_title'] ?></div>
+                        <div class="name"><?php echo $session['presenters']?></div>
+                    <?php } else {?>
+                        <div class="session-title">Click to register</div>
+                    <?php }?>
                 </div>
 
                 <?php if ($registrationOpen) {?>
