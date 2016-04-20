@@ -1,6 +1,6 @@
 <?php ?>
 <div section="add">
-    <h1>Add/Modify Presentation</h1>
+    <h1>Modify Presentation</h1>
 
     <BR>
     <form action="index.php" method="post">
