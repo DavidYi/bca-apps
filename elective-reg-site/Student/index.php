@@ -16,10 +16,13 @@ switch ($action) {
         include('Student/view/index.php');
         break;
     case 'modify_courses':
-        echo "modify_courses";
+        echo "will make a modify_courses page later";
         break;
     case 'modify_times':
-        echo "modify_times";
+        echo "Michael is working on the modify_times page";
+        break;
+    case 'logout':
+        echo "will make a logout page later";
         break;
     default:
         display_error('Unknown account action: ' . $action);

@@ -4,13 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
-    <link href="../admin/ss/main.css" rel="stylesheet">
+    <link href="../Student/css/main.css" rel="stylesheet">
     <!--Above file doesn't exist yet, copy it from career day later-->
 </head>
 <body>
 <main>
     <header><h1 class="title"><h2>Student Side</h1>
-        <div id="logout"><a href="../index.php?action=logout">Log Out</a></div>
+        <div id="logout"><a href="./index.php?action=logout">Log Out</a></div>
     </header>
     <br>
     <div class="feature">
