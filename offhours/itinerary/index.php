@@ -8,8 +8,8 @@
 
 require_once("../util/main.php");
 require_once("../../shared/model/user_db.php");
-require_once ("../model/signups_db.php");
-require_once ("../model/presentations_db.php");
+//require_once ("../model/signups_db.php");
+//require_once ("../model/presentations_db.php");
 
 verify_logged_in();
 
