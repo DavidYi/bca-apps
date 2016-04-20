@@ -21,7 +21,7 @@
         <BR>
         <!-- Styles --section class id?-->
 
-        <form action="index.php" method="post">
+        <form id="add-pres" action="index.php" method="post">
             <input type="hidden" name="action" value="add_pres_into_db">
 
             <div class="input input--add">
