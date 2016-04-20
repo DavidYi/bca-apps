@@ -50,8 +50,9 @@
                value="<?php echo htmlspecialchars($mentor_position); ?>" placeholder="Mentor Position"><BR>
 
         <label>Mentor Profile</label>
-        <input title="" type="text" name="mentor_profile" value="<?php echo htmlspecialchars($mentor_profile); ?>"
-               placeholder="Mentor Profile"><BR>
+        <textarea rows="4" cols="50" class = "center" type = "text" name="mentor_profile"
+                  value="<?php echo htmlspecialchars($mentor_profile);?>" placeholder="Profile">
+            </textarea>
 
         <label>Mentor Keywords</label>
         <input title="" type="text" name="mentor_keywords"

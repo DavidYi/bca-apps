@@ -40,7 +40,6 @@ switch ($action) {
         $active = 0;
         $pres_max_capacity ='';
         $mentor_keywords = '';
-        echo "If this message does not echo there's a problem";
 
         include 'mentor_add.php';
         break;
