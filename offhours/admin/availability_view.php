@@ -9,10 +9,21 @@
   <html>
   <head>
       <meta charset="utf-8">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="index.css">
       <title>Schedule Preferences</title>
   </head>
+
+  <script>
+
+  $( document ).ready(function() {
+    if(document.getElementsByClassName('mods').checked) {
+        $(this).parent().css("background-color", "yellow");
+    }
+  });
+
+  </script>
 
   <body>
     <h1 class="header">Preferable Elective Times:</h1>
