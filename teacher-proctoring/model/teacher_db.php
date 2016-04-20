@@ -15,15 +15,12 @@ function get_list ($query) {
 }
 
 function get_test_list() {
-    $query = 'SELECT test.test_id, test_name, room, test_type_cde, test_dt,
-                    GET_SCHEDULE_TIMES_LIST (test.test_id) as testDate
+    $query = 'SELECT test_id, test_name, rm_id, test_type_cde, test_dt
                 from test
                 inner join test_type
                 on test.test_type_cde = test_type.test_type_cde
-                inner join teacher
-                on test.teacher_id = teacher.teacher_id
                 where test.active = 1
-                order by test.test_type';
+                order by test.test_type_cde';
     return get_list($query);
 }
 
