@@ -9,16 +9,28 @@
   <html>
   <head>
       <meta charset="utf-8">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="index.css">
       <title>Schedule Preferences</title>
   </head>
+
+  <script>
+
+  $( document ).ready(function() {
+    if(document.getElementsByClassName('mods').checked) {
+        $(this).parent().css("background-color", "yellow");
+    }
+  });
+
+  </script>
 
   <body>
     <h1 class="header">Preferable Elective Times:</h1>
       <form id="admin_schedule" method="get" action="">
         <div class="column">
           <label><input type="checkbox" class="mods" name="time[]" value="Monday 1-3">1-3</label>
+          <label><input type="checkbox" class="mods" name="time[]" value="Tuesday 1-3">1-3</label>
           <label><input type="checkbox" class="mods" name="time[]" value="Monday 4-6">4-6</label>
           <label><input type="checkbox" class="mods" name="time[]" value="Monday 7-9">7-9</label>
           <label><input type="checkbox" class="mods" name="time[]" value="Monday 10-12">10-12</label>
@@ -30,7 +42,6 @@
 
 
           <div class="column">
-            <label><input type="checkbox" class="mods" name="time[]" value="Tuesday 1-3">1-3</label>
             <label><input type="checkbox" class="mods" name="time[]" value="Tuesday 4-6">4-6</label>
             <label><input type="checkbox" class="mods" name="time[]" value="Tuesday 7-9">7-9</label>
             <label><input type="checkbox" class="mods" name="time[]" value="Tuesday 10-12">10-12</label>
