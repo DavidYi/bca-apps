@@ -3,7 +3,7 @@
     <title>Student Side</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-    <!-- Styles -->
+    <!-- Styles comment so i can push -->
 
     <link href="../Student/css/main.css" rel="stylesheet">
     <!--Above file doesn't exist yet, copy it from career day later-->
