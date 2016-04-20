@@ -21,19 +21,8 @@ require_once ('../model/presentations_db.php');
         .view .view-signup{
             background-color: #60CE94;
         }
-        .add-mdy {
-            width: 10em;
-            height: 3em;
-            border: 2px solid black;
-            border-radius: 10%;
-            color: #000;
-            font-size: 17px;
-            font-weight: bold;
-            text-align: center;
-            display: block;
-            margin-top: 20%;
-            vertical-align: bottom;
-            background-color: #9ace60;
+        button {
+            background-color: #166a3d;
         }
     </style>
 </head>
@@ -67,7 +56,8 @@ require_once ('../model/presentations_db.php');
                 <div>
                     <form action="." method="post">
                         <input type="hidden" name="action" value="show_modify_presentation">
-                        <input class="add-mdy" type="submit" value="Modify Presentation">
+                        <br>
+                        <button type="submit" value="Modify Presentation">Modify Presentation</button>
                     </form>
                 </div>
             <?php } else { ?>
@@ -75,7 +65,8 @@ require_once ('../model/presentations_db.php');
                     <h3>Let's get started!  Create your presentation.</h3>
                     <form action="." method="post">
                         <input type="hidden" name="action" value="show_add_presentation">
-                        <input class="add-mdy" type="submit" value="Create Presentation">
+                        <br>
+                        <button type="submit" value="Create Presentation">Create Presentation</button>
                     </form>
                 </div>
             <?php } ?>
