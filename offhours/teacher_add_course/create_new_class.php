@@ -22,6 +22,7 @@
             <option value="Thursday">Thursday</option>
             <option value="Friday">Friday</option>
         </select> <br><br>
+        Description: <br><br><textarea name="description"></textarea><br><br>
         <input type="submit">
     </form>
 </body>
