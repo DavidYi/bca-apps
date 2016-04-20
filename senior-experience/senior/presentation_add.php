@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>Senior Experience 2016</title>
+    <title>Senior Experience</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700italic,700,500italic,500,400italic,300italic,300' rel='stylesheet' type='text/css'>
