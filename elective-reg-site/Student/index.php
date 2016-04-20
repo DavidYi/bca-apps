@@ -24,12 +24,14 @@ switch ($action) {
         break;
     case 'modify_courses':
         echo "will make a modify_courses page later";
+        include('Student/courses/index.php');
         break;
     case 'modify_times':
         echo "Michael is working on the modify_times page";
+        include('Student/times/index.php');
         break;
     case 'logout':
-        echo "will make a logout page later plz work test";
+        echo "will make a logout page later";
         break;
     default:
         display_error('Unknown account action: ' . $action);
