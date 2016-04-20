@@ -31,10 +31,10 @@ function get_signup_dates_list() {
 }
 
 function get_signup_dates_by_grade($grade_lvl) {
-    $query = 'SELECT start, end
+    $query = 'SELECT *
               FROM signup_dates
-              WHERE grade_lvl = :grade_lvl';
-
+              WHERE grade_lvl = :grade_lvl
+              AND mode_cde =\'ENR\'';
     global $db;
 
     try {
@@ -48,6 +48,7 @@ function get_signup_dates_by_grade($grade_lvl) {
         display_db_exception($e);
     }
 }
+
 
 function add_signup_dates($class_year, $start, $end) {
     global $db;

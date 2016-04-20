@@ -303,7 +303,7 @@ a:active, a:focus, a:hover {
 }
 
 h1.title {
-    color: white;
+    color: black;
     font: normal normal 500 2em "Roboto", sans-serif;
     text-align: center;
 }
@@ -581,7 +581,7 @@ nav .session-filter:hover, nav .session-filter:active {
 label {
     text-align: center;
     display: block;
-    color: white;
+    color: black;
     font-size: 140%;
 }
 

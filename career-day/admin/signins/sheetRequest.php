@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="../signins.css">
     <script src="http://code.jquery.com/jquery.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('input[type="radio"]').click(function() {
+        $(document).ready(function () {
+            $('input[type="radio"]').click(function () {
                 if ($(this).attr("value") == "s") {
                     $(".mentor").show();
                     $(".session").show();
@@ -34,19 +34,46 @@
         });
     </script>
 </head>
+
+<a href="../index.php" class="back">
+    <button>Back</button>
+</a>
+
 <body>
 
-<a href="../index.php" class="back">Return to Admin Tools</a>
-
 <form action="." method="post">
-    <input type="radio" name="choice" value="s" class="choice" id="sc">
-    <label class="title" for="sc">Session Sign in </label>
 
-    <input type="radio" name="choice" value="t" class="choice" id="mc">
-    <label class="title" for="mc">Mentor Check In </label>
+    <div class="container">
+        <ul>
+            <li>
+                <input type="radio" name="choice" value="s" class="choice" id="sc">
+                <label class="title" for="sc">Session Sign in </label>
 
-    <input type="radio" name="choice" value="r" class="choice" id="rc">
-    <label class="title" for="rc">Room Signs </label>
+                <div class="check">
+                    <div class="inside"></div>
+                </div>
+            </li>
+
+            <li>
+                <input type="radio" name="choice" value="t" class="choice" id="mc">
+                <label class="title" for="mc">Mentor Check In </label>
+
+                <div class="check">
+                    <div class="inside"></div>
+                </div>
+            </li>
+
+            <li>
+                <input type="radio" name="choice" value="r" class="choice" id="rc">
+                <label class="title" for="rc">Room Signs </label>
+
+                <div class="check">
+                    <div class="inside"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
 
     <div class="mentor select">
         <br>
@@ -90,7 +117,7 @@
     </div>
 
     <br>
-    <input type="hidden" name="action" value="<?php echo 'generate' . $_POST['choice']   ?>">
+    <input type="hidden" name="action" value="<?php echo 'generate' . $_POST['choice'] ?>">
     <input type="submit" value="Generate" class="submit">
 
 </form>
