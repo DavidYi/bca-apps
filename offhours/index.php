@@ -7,10 +7,10 @@
  */
 
 /* These messages are used to customize the login page. */
-$pageTitle = 'Senior Expositions';
-$loginInfo = '<h1>Senior Expo</h1>
+$pageTitle = 'Off-Hour Electives';
+$loginInfo = '<h1>Off-Hour Electives</h1>
 	                <h3>
-						BCA will hold Senior Expositions on <b>June 10</b>.  Yada yada.
+						Create and schedule electives during your free mods.
 					</h3>
 					<h3>
 						This app is brought to you by the students of ATCS.
@@ -32,6 +32,7 @@ function directToHomePage() {
 /** Include the database credentials and then transfer control to /shared/index,
  * which contains the meat of the login handling code.
  */
+
 include (__DIR__ . "/model/database.php");
 include (__DIR__ . "/../shared/index.php");
 
