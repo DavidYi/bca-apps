@@ -53,5 +53,5 @@ if (isset($action) and ($action == "logout")) {
     }
 }
 
-include ("./view.php");
+include ("./newview.php");
 exit();
