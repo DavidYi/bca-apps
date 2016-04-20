@@ -892,6 +892,7 @@ input.modinput {
   border-collapse: collapse;
   border-spacing:0;
   border: none;
+  margin: 0 auto;
 }
 
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding: 10px 0px;border:none;overflow:hidden;word-break:normal;}
@@ -920,4 +921,25 @@ hr {
 
 body {
     background: #636161;
+}
+
+::-webkit-input-placeholder {
+   font-weight: bold;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   font-weight: bold;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   font-weight: bold;
+}
+
+:-ms-input-placeholder {
+   font-weight: bold;
+}
+
+.default.text {
+    font-weight: bold;
+    color: darkgrey !important;
 }
