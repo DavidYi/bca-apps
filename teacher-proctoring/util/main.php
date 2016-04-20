@@ -28,7 +28,7 @@ $app_server_path = $doc_root . "/" . $app_url_path;   // Looks like c:/xampp/htd
 set_include_path($app_server_path . PATH_SEPARATOR . get_include_path());
 
 /* These includes depend on the variables above, therefore they should be at the end of the file. */
-// UNCOMMENT THIS ONCE MADE LOL!!!!!! : require_once(__DIR__ . "/../model/database.php");
+require_once(__DIR__ . "/../model/database.php");
 require_once(__DIR__ . "/../../shared/util/main.php");
 
 ?>
