@@ -22,7 +22,7 @@ switch ($action) {
         echo "Michael is working on the modify_times page";
         break;
     case 'logout':
-        echo "will make a logout page later";
+        echo "will make a logout page later plz work test";
         break;
     default:
         display_error('Unknown account action: ' . $action);
