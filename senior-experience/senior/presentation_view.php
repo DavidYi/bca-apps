@@ -22,7 +22,7 @@ require_once ('../model/presentations_db.php');
             background-color: #60CE94;
         }
         button {
-            background-color: #22A45E;
+            background-color: #166a3d;
         }
     </style>
 </head>
@@ -65,7 +65,8 @@ require_once ('../model/presentations_db.php');
                     <h3>Let's get started!  Create your presentation.</h3>
                     <form action="." method="post">
                         <input type="hidden" name="action" value="show_add_presentation">
-                        <input class="add-mdy" type="submit" value="Create Presentation">
+                        <br>
+                        <button type="submit" value="Create Presentation">Create Presentation</button>
                     </form>
                 </div>
             <?php } ?>

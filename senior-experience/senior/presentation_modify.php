@@ -28,6 +28,5 @@
         <input type="submit" value="Modify">
         <input type="submit" value="Cancel">
 
-        <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
     </form>
 </div>
