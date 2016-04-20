@@ -1,5 +1,16 @@
 <?php
 
+  $mysqlserver="webdev01.bergen.org";
+  $mysqlusername="atcsdevb_tchrusr";
+  $mysqlpassword="^D3cg)*?i2g#";
+  $link=mysql_connect(localhost, $mysqlusername, $mysqlpassword) or die ("Error connecting to mysql server: ".mysql_error());
+
+  $dbname = 'atcsdevb_teacher_dashboard';
+  mysql_select_db($dbname, $link) or die ("Error selecting specified database on mysql server: ".mysql_error());
+
+  $cdquery="SELECT test_type_desc FROM test_type";
+  $cdresult=mysql_query($cdquery) or die ("Query to get data from firsttable failed: ".mysql_error());
+
 ?>
 
 <html>
@@ -40,9 +51,14 @@
 
           <select class="ui dropdown">
             <i class="dropdown icon"></i>
-            <option value="">Location</option>
-            <option value="1">Rm 138</option>
-            <option value="0">Gym</option>
+            <?php
+            while ($cdrow=mysql_fetch_array($cdresult)) {
+            $test_type_desc=$cdrow["test_type_desc"];
+                echo "<option>
+                    $test_type_desc
+                </option>";
+            }
+            ?>
           </select>
 
           <!-- Test -->
