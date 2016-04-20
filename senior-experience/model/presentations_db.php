@@ -199,13 +199,11 @@ function get_sessions_by_user($usr_id) {
 
 class SeniorPresentation {
     public $pres_id, $ses_id, $rm_id, $rm_nbr, $rm_cap, $field_id, $field_name, $pres_title, $pres_desc, $organization, $location,
-            $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students;
+            $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students, $presenters;
 
     public function __construct ($pres_id, $ses_id, $rm_id, $rm_nbr, $rm_cap, $field_id, $field_name, $pres_title, $pres_desc, $organization,
-                                 $location, $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students)
+                                 $location, $pres_max_teachers, $pres_max_students, $pres_enrolled_teachers, $pres_enrolled_students, $presenters)
     {
-        echo $pres_id;
-
         $this->pres_id = $pres_id;
         $this->ses_id = $ses_id;
         $this->rm_id = $rm_id;
@@ -221,6 +219,7 @@ class SeniorPresentation {
         $this->pres_max_students = $pres_max_students;
         $this->pres_enrolled_teachers = $pres_enrolled_teachers;
         $this->pres_enrolled_students = $pres_enrolled_students;
+        $this->presenters = $presenters;
     }
 
     public function __toString ()
@@ -234,6 +233,7 @@ class SeniorPresentation {
             ";pres_desc:" . $this->pres_desc .
             ";organization:" . $this->organization .
             ";location:" . $this->location .
+            ";presenters:" . $this->presenters .
             ";pres_max_teachers:" . $this->pres_max_teachers .
             ";pres_max_students:" . $this->pres_max_students .
             ";pres_enrolled_teachers:" . $this->pres_enrolled_teachers .
@@ -242,7 +242,7 @@ class SeniorPresentation {
     public static function getPresentation ($pres_id)
     {
         $query = 'select p.pres_id, p.ses_id, p.rm_id, p.field_id, pres_title, pres_desc, organization, location,
-  		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students
+  		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, get_presenters_comma_list (p.pres_id) presenters
                 from presentation p
                 where p.pres_id = :pres_id';
 
@@ -256,13 +256,14 @@ class SeniorPresentation {
 
         return new SeniorPresentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["rm_nbr"],$result["rm_cap"],$result["field_id"],
             $result["field_name"],$result["pres_title"], $result["pres_desc"], $result["organization"], $result["location"],
-            $result["pres_max_teachers"], $result["pres_max_students"], $result["pres_enrolled_teachers"], $result["pres_enrolled_students"]);
+            $result["pres_max_teachers"], $result["pres_max_students"], $result["pres_enrolled_teachers"],
+            $result["pres_enrolled_students"], $result["presenters"]);
     }
 
     public static function getPresentationForSenior ($usr_id)
     {
         $query = 'select p.pres_id, p.ses_id, p.rm_id, rm_nbr, rm_cap, p.field_id, f.field_name, pres_title, pres_desc, organization, location,
-  		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students
+  		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, get_presenters_comma_list (p.pres_id) presenters
                 from presentation p
                 left join room r on p.rm_id = r.rm_id
                 left join field f on p.field_id = f.field_id
@@ -283,9 +284,10 @@ class SeniorPresentation {
         if ($result == false)
             return null;
         else
-            return new Presentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["rm_nbr"],$result["rm_cap"],$result["field_id"],
+            return new SeniorPresentation($result["pres_id"],$result["ses_id"],$result["rm_id"],$result["rm_nbr"],$result["rm_cap"],$result["field_id"],
                 $result["field_name"],$result["pres_title"], $result["pres_desc"], $result["organization"], $result["location"],
-                $result["pres_max_teachers"], $result["pres_max_students"], $result["pres_enrolled_teachers"], $result["pres_enrolled_students"]);
+                $result["pres_max_teachers"], $result["pres_max_students"], $result["pres_enrolled_teachers"],
+                $result["pres_enrolled_students"], $result["presenters"]);
     }
 
     public static function getPresentationByUserBySession ($usr_id, $ses_id)
