@@ -1,0 +1,26 @@
+.view {
+	background:$color-white;
+	.view-main {
+		@include span-columns(4);
+		@include padding(em(250px) em(150px));
+		height: 100%;
+		background-color: rgba(244, 208, 63, 0.5);
+		// background: url('../img/yellow.jpeg');
+	}
+	.view-signup {
+		@include span-columns(8);
+		@include padding(em(250px) em(150px) 0 em(50px));
+		input {
+			background-color: rgba(244, 208, 63, 0.3);
+			margin: 10px 0;
+			padding: 0 15px;
+			width: em(400px);
+			height: em(50px);
+		}
+		button {
+			margin: 15px 0;
+			width: em(400px);
+			height: em(50px);
+		}
+	}
+}
