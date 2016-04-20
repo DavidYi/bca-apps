@@ -64,7 +64,7 @@
                 <div class="default text">Room</div>
                 <div class="menu">
                     <div class="item" data-value="0">1</div>
-                    <!--add javascript code for this dropdown-->
+                    <!--add javascript code for this dropdown -->
                 </div>
             </div>
 
