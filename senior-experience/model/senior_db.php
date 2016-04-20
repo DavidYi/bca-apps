@@ -25,6 +25,31 @@ function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $f
     }
 }
 
+function mod_pres($pres_id, $pres_title, $pres_desc, $organization, $location, $field_id) {
+    global $db;
+    $query = 'UPDATE presentation
+              set pres_title = :pres_title,
+                  pres_desc = :pres_desc,
+                  organization = :organization,
+                  location = :location,
+                  field_id = :field_id
+              WHERE pres_id = :pres_id';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
+        $statement->bindValue(':pres_title', $pres_title, PDO::PARAM_STR);
+        $statement->bindValue(':pres_desc', $pres_desc, PDO::PARAM_STR);
+        $statement->bindValue(':organization', $organization, PDO::PARAM_STR);
+        $statement->bindValue(':location', $location, PDO::PARAM_STR);
+        $statement->bindValue(':field_id', $field_id, PDO::PARAM_INT);
+
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+}
+
 function get_senior_add_pres_dates() {
     $query = 'SELECT * from signup_dates
               WHERE grade_lvl = 12 and mode_cde = \'PRE\' ';
