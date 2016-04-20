@@ -6,7 +6,6 @@
  * Time: 1:04 PM
  */
 require_once("../util/main.php");
-require_once ("../model/senior_db.php");
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
@@ -34,13 +33,9 @@ switch ($action) {
 
 
 
-        if ($user->getRole('SENX') == 'ADM') {
+        if ($user->getRole('OFEL') == 'ADM') {
 // The user is an admin, so they are directed to  admin page
             header("Location: ../admin/index.php");
-        }
-        else if(($user->usr_grade_lvl == 12) /*&& isSeniorTime()*/){
-            // The user is eligible to make presentation, they are directed to pres add page
-            header("Location: ../senior/index.php");
         }
         else {
 // The user is a student or teacher, they are directed to sign up page
