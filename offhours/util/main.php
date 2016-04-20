@@ -3,8 +3,8 @@
 // Common imports that should be available on all pages.
 // Add them here.
 //
-$app_cde = 'SENX';
-$app_title = 'Senior Expositions';
+$app_cde = 'OFEL';
+$app_title = 'Off-Hour Electives';
 
 $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING); // Looks like c:/xampp/htdocs
 
@@ -20,7 +20,7 @@ $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
 
 //////////////////////////
 // For Developer Machines
-$app_url_path = 'bca-apps/senior-experience';     // Name of the app on the web server.  Change this if the directory changes.
+$app_url_path = 'bca-apps/offhours';     // Name of the app on the web server.  Change this if the directory changes.
 $app_server_path = $doc_root . "/" . $app_url_path;   // Looks like c:/xampp/htdocs/bca-apps
 
 ///////////////////////

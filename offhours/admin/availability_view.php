@@ -30,6 +30,7 @@
       <form id="admin_schedule" method="get" action="">
         <div class="column">
           <label><input type="checkbox" class="mods" name="time[]" value="Monday 1-3">1-3</label>
+          <label><input type="checkbox" class="mods" name="time[]" value="Tuesday 1-3">1-3</label>
           <label><input type="checkbox" class="mods" name="time[]" value="Monday 4-6">4-6</label>
           <label><input type="checkbox" class="mods" name="time[]" value="Monday 7-9">7-9</label>
           <label><input type="checkbox" class="mods" name="time[]" value="Monday 10-12">10-12</label>
@@ -41,7 +42,6 @@
 
 
           <div class="column">
-            <label><input type="checkbox" class="mods" name="time[]" value="Tuesday 1-3">1-3</label>
             <label><input type="checkbox" class="mods" name="time[]" value="Tuesday 4-6">4-6</label>
             <label><input type="checkbox" class="mods" name="time[]" value="Tuesday 7-9">7-9</label>
             <label><input type="checkbox" class="mods" name="time[]" value="Tuesday 10-12">10-12</label>
