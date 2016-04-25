@@ -30,8 +30,8 @@ switch ($action) {
         $field_id = filter_input(INPUT_POST, 'field_id');
         $rm_id = explode(":", filter_input(INPUT_POST, 'session_room_id'))[1];
         $ses_id = explode(":", filter_input(INPUT_POST, 'session_room_id'))[0];
-        //gives comma separated list: filter_input(INPUT_POST, 'team-members');
-        add_pres($pres_title, $pres_desc, $organization, $location, $user->usr_id, $field_id, $rm_id, $ses_id);
+        $team_members = filter_input(INPUT_POST, 'team-members'). ',';
+        add_pres($pres_title, $pres_desc, $organization, $location, $user->usr_id, $field_id, $rm_id, $ses_id, $team_members);
 
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
         include "presentation_view.php";
