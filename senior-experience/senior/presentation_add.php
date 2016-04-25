@@ -94,7 +94,7 @@
             <!--Prevent users who have already signed up for a presentation from adding one!-->
             <!--Integrate with Su Min's dynamic page!-->
 
-            <input type="submit" value="Add" class="button">
+            <input type="submit" value="Add" class="button" style="color:black">
 
             <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
         </form>
