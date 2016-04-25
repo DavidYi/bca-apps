@@ -17,6 +17,7 @@ if ($action == NULL) {
 switch ($action) {
     case 'show_add_presentation':
         $fields = get_field_list();
+        $sessions = get_session_room_pairs();
         include 'presentation_add.php';
         break;
 

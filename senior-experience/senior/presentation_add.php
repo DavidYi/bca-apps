@@ -49,43 +49,31 @@
             </div>
 
             <div class="input ui selection dropdown half-size">
-                <input type="hidden" name="room-number">
+                <input type="hidden" name="field_id">
                 <i class="dropdown icon"></i>
                 <div class="default text">Field</div>
                 <div class="menu">
                     <?php
-                    $i=0;
                     foreach ($fields as $field) {?>
-                        <div class="item" data-value="<?php echo $i;?>"><?php echo($field['field_name']);  ?></div>
-                    <?php $i+=1;} ?>
+                        <div class="item" data-value="<?php echo $field['field_id'];?>"><?php echo($field['field_name']);  ?></div>
+                    <?php } ?>
                     <!--need to add code to take the values-->
                     <!--su min says can be done with javascript-->
                     <!--below is the php code that idk how to incorporate to the dropdown-->
-                    <select name="field_id" title=".">
-                        <?php  foreach ($field_id as $field) {?>
-                            <option value="<?php echo ($field['field_id']);?>"><?php echo($field['field_name']);  ?></option>
-                        <?php } ?>
-                    </select>
                 </div>
             </div>
 
             <div class="input ui selection dropdown half-size">
-                <input type="hidden" name="room-number">
+                <input type="hidden" name="session-room">
                 <i class="dropdown icon"></i>
-                <div class="default text">Room</div>
+                <div class="default text">Session/Room</div>
                 <div class="menu">
                     <div class="item" data-value="0">1</div>
+                    <?php
+                    foreach ($fields as $field) {?>
+                        <div class="item" data-value="<?php echo $field['field_id'];?>"><?php echo($field['field_name']);  ?></div>
+                    <?php } ?>
                     <!--add javascript code for this dropdown -->
-                </div>
-            </div>
-
-            <div class="input ui selection dropdown half-size">
-                <input type="hidden" name="room-number">
-                <i class="dropdown icon"></i>
-                <div class="default text">Session</div>
-                <div class="menu">
-                    <div class="item" data-value="0">1</div>
-                    <!--add javascript code for this dropdown-->
                 </div>
             </div>
 
