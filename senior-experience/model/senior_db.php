@@ -93,6 +93,19 @@ function get_session_room_num_pairs(){
     }
 }
 
+function get_teammates(){
+    $query = 'select u.usr_last_name, u.usr_first_name, u.usr_id, u.academy_cde
+    from user u
+    left join user_presentation_xref x on x.usr_id = u.usr_id and x.presenting = 1
+    where x.usr_id is null
+    and u.usr_grade_lvl = 12
+    order by u.usr_last_name, u.usr_first_name';
+    global $db;
+
+   return get_list($query);
+}
+
+
 function isSeniortime()
 {
     require_once('../model/senior_db.php');
