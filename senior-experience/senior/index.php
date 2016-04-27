@@ -47,17 +47,19 @@ switch ($action) {
 
     case 'modify_presentation':
 
-        $query = 'update presentation
-                set pres_title = :pres_title,
-                     pres_desc = :pres_desc,
-                     organization = :organization,
-                     location = :location,
-                     field_id = :field_id,
-                where pres_id = :pres_id';
+
+        $pres_title = filter_input(INPUT_POST, 'title');
+        $pres_desc = filter_input(INPUT_POST, 'desc');
+        $organization = filter_input(INPUT_POST, 'organization');
+        $location = filter_input(INPUT_POST, 'location');
+        $field_id = filter_input(INPUT_POST, 'field_id');
+        $rm_id = explode(":", filter_input(INPUT_POST, 'session_room_id'))[1];
+        $ses_id = explode(":", filter_input(INPUT_POST, 'session_room_id'))[0];
+        $team_members = filter_input(INPUT_POST, 'team-members'). ',';
 
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
-        mod_pres($pres->pres_id, $pres_title, $pres_desc, $organization, $location, $field_id);
+        mod_pres($pres->pres_id, $pres_title, $pres_desc, $organization, $location, $field_id, $rm_id,$ses_id, $team_members);
 
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
