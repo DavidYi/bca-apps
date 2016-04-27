@@ -38,7 +38,7 @@ switch ($action) {
         break;
 
     case 'show_modify_presentation':
-        $pres = SeniorPresentation::getPresentationForSenior($user->usr_id);
+        $presentation = SeniorPresentation::getPresentationForSenior($user->usr_id);
         $fields = get_field_list();
         include 'presentation_modify.php';
         break;
