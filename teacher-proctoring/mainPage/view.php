@@ -34,10 +34,10 @@
                         <div class="company"><?php echo $test['test_type_cde']?></div>
                         <div class="position"><?php echo $test['rm_id']?></div>
                         <div class="presenter"><?php echo $test['test_dt']?></div>
-                        <div class="remaining"><img src="../images/deleteIcon.gif"
+                        <div class="remaining"><img src="../images/Trash_Can-256.png"
                                                     onclick="deleteCourse(<?php echo $test['test_id']; ?>);"
                                                     title="Delete Test"
-                                                    style="cursor:pointer"></div>
+                                                    style="cursor:pointer" class="trash"></div>
                 </div>
             <?php } ?>
     </div>
