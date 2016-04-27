@@ -40,6 +40,8 @@ switch ($action) {
     case 'show_modify_presentation':
         $presentation = SeniorPresentation::getPresentationForSenior($user->usr_id);
         $fields = get_field_list();
+        $sessions = get_session_room_pairs();
+        $teammates = get_teammates();
         include 'presentation_modify.php';
         break;
 
