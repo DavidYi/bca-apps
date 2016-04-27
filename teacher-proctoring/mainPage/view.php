@@ -26,6 +26,8 @@
 
     <div class="enrollment">
         <!-- here -->
+        <!--Comment-->
+
         <?php foreach ($testList as $test) { ?>
                 <div class="session">
                         <div class="tag"><?php echo $test['test_name']?></div>
@@ -69,6 +71,7 @@
      );
      });
      */
+
 </script>
 </body>
 </html>
