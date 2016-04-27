@@ -1,15 +1,17 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
 body {
-  background-color: #32a5d7;
+  background-color: rgba(240, 195, 15, 0.66);
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   text-rendering: optimizeLegibility;
 }
 
+
+
 .mods {
-   display: none;
+  display: none;
 }
 
 div.table-title {
@@ -21,13 +23,14 @@ div.table-title {
 }
 
 .table-title h3 {
-   color: #fafafa;
-   font-size: 30px;
-   font-weight: 400;
-   font-style:normal;
-   font-family: "Roboto", helvetica, arial, sans-serif;
-   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-   text-transform:uppercase;
+  /*color: #fafafa;*/
+  color: black;
+  font-size: 30px;
+  font-weight: 400;
+  font-style:normal;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  text-transform:uppercase;
 }
 
 
@@ -47,7 +50,7 @@ div.table-title {
 }
 
 th {
-  color:#D5DDE5;;
+  color:#D5DDE5;
   background:#1b1e24;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
@@ -106,7 +109,7 @@ td:nth-child(odd):hover {
 }
 
 td:hover {
-  background: rgb(254,166,16);
+  background: rgb(254,166,16) !important;
   color: #FFFFFF;
   /*border-top: 1px solid #22262E;
   border-bottom: 1px solid #22262E;*/
@@ -167,7 +170,13 @@ td.text-right {
   text-align: right;
 }
 
+.wrapper {
+  margin-top: 4%;
+  text-align: center;
+}
+
 .submit {
+
   font-family:  'Lato', arial;
   font-size: 15px;
   width: 120px;

@@ -12,35 +12,64 @@
 </head>
 <body>
 <section class="main">
-    <header>
-        <h1 class="title main-title">Register for Proctoring</h1>
-    </header>
+    <div class="view-main">
+        <div class="login-status">
+            <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name); ?></b></h3>
+            <h3 class="log-out"><a href="./index.php?action=logout">
+                    <?php if (isset($_SESSION['prev_usr_id'])) { ?> Return to Admin Panel <?php } else { ?> Log Out <?php } ?>
+                </a></h3>
+        </div>
+        <div class="vertical-center">
+            <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
+                <h1>Register For Proctoring</h1>
 
-    <nav class="navbar">
-        <div class="session-filter tag">Test Name</div>
-        <div class="session-filter company">Test Type</div>
-        <div class="session-filter position">Room</div>
-        <div class="session-filter presenter">Time</div>
-        <div class="session-filter remaining">Actions</div>
-    </nav>
+                <!--<?php if ($startTime > $currentTime) { ?>
+                    <h3> Registration <b>has not opened</b>!</h3>
+                    <h3> Opens: <?php echo $startTimeFormatted ?> </h3>
 
-    <div class="enrollment">
-        <!-- here -->
-        <!--Comment-->
+                <?php } elseif ($endTime < $currentTime) { ?>
+                    <h3> Registration has <b>ended</b>. </h3>
+                    <h3> If you did not finish registering, a session will be assigned to you. </h3>
 
-        <?php foreach ($testList as $test) { ?>
-                <div class="session">
-                        <div class="tag"><?php echo $test['test_name']?></div>
-                        <div class="company"><?php echo $test['test_type_cde']?></div>
-                        <div class="position"><?php echo $test['rm_id']?></div>
-                        <div class="presenter"><?php echo $test['test_dt']?></div>
-                        <div class="remaining"><img src="../images/Trash_Can-256.png"
-                                                    onclick="deleteCourse(<?php echo $test['test_id']; ?>);"
-                                                    title="Delete Test"
-                                                    style="cursor:pointer" class="trash"></div>
-                </div>
+                <?php } elseif ($registration_complete) { ?>
+                    <h3> Registration <b>complete</b>! </h3>
+                    <h3> Feedback <a
+                            href="https://docs.google.com/forms/d/1nfzkqn2NB8m8OeQ_w3XwE2hNp3OK-k8bVtA6DZb300E/viewform">survey</a>
+                        about this site. </h3>
+
+                <?php } else { ?>
+                    <h3> Registration is <b>open</b>! </h3>
+                    <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
+                <?php } ?>-->
+
+                <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
+            <?php } else { ?>
+                <h1>Mimic User Mode</h1>
             <?php } ?>
+        </div>
     </div>
+    <div class="view-signup enrollment">
+        <div class="vertical-center">
+            <nav class="navbar">
+                <div class="session-filter tag">Test Name</div>
+                <div class="session-filter company">Room</div>
+                <div class="session-filter position">Time</div>
+                <div class="session-filter presenter">Mods</div>
+            </nav>
+            <?php foreach ($testList as $test) { ?>
+<!--comment-->
+                <div class="tag"><?php echo $test['test_name']?></div>
+                <div class="company"><?php echo $test['rm_id']?></div>
+                <div class="position"><?php echo $test['test_dt']?></div>
+                <div class="presenter"><?php echo $test['test_time_desc']?></div>
+
+            <?php } ?>
+
+
+
+        </div>
+    </div>
+
 </section>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
