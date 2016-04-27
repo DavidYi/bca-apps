@@ -11,9 +11,7 @@
     <h3>Schedule Preferences</h3>
 </div>
 
-<form action="index.php" method="POST">
-    <input type="hidden" name="action" value="update_times">
-
+<form action="" method="">
     <table class="table-fill">
         <thead>
         <tr>

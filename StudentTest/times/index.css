@@ -109,7 +109,7 @@ td:nth-child(odd):hover {
 }
 
 td:hover {
-  background: rgb(254,166,16) !important;
+  background: rgb(254,166,16);
   color: #FFFFFF;
   /*border-top: 1px solid #22262E;
   border-bottom: 1px solid #22262E;*/
