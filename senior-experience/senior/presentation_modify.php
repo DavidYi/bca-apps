@@ -1,22 +1,37 @@
 <?php ?>
-<div section="add">
-    <h1>Modify Presentation</h1>
+<link rel="stylesheet" type="text/css" href="../ss-entry/ss/main.css">
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700italic,700,500italic,500,400italic,300italic,300' rel='stylesheet' type='text/css'>
 
-    <BR>
-    <form action="index.php" method="post">
+<body>
+    <section class="add">
+        <h1>Modify Presentation</h1>
+        <form action="index.php" method="post">
         <input type="hidden" name="action" value="modify_presentation">
 
-        <label>Presentation Title</label>
-        <input title="" type="text" name="pres_title" required value='<?php echo $pres->pres_title ?>'><BR>
+        <div class="input input--add">
+            <input class="input-field add-field" title="" type="text" name="title" required value='<?php echo $presentation->pres_title ?>' />
+            <label class="input-label add-label" />
+            <div class="input__label-content input__label-content--add">Presentation Title</div>
+        </div>
 
-        <label>Description</label>
-        <input title="" type="text" name="pres_desc" value='<?php echo $pres->pres_desc?>' required><BR>
+        <div class="input input--add">
+            <input class="input-field add-field" title="" type="text" name="desc" value='<?php echo $presentation->pres_desc?>' required/>
+            <label class="input-label add-label" />
+            <div class="input__label-content input__label-content--add">Description</div>
+        </div>
 
-        <label>Organization</label>
-        <input title="" type="text" name="organization" value='<?php echo $pres->organization?>' required><BR>
+        <div class="input input--add">
+            <input class="input-field add-field" title="" title="" type="text" name="organization" value='<?php echo $presentation->organization?>' required/>
+            <label class="input-label add-label" />
+            <div class="input__label-content input__label-content--add">Organization</div>
+        </div>
 
-        <label>Location</label>
-        <input title="" type="text" name="location" value='<?php echo $pres->location ?>'required><BR>
+        <div class="input input--add">
+            <input class="input-field add-field" title="" type="text" name="location" value='<?php echo $presentation->location ?>'required/>
+            <label class="input-label add-label" />
+            <div class="input__label-content input__label-content--add">Location</div>
+        </div>
+
 
         <label>Fields</label>
         <select name="field_id" title="." value='<?php echo $presentation->field_id?>'>
@@ -28,5 +43,7 @@
         <input type="submit" value="Modify">
         <input type="submit" value="Cancel">
 
-    </form>
-</div>
+            <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
+        </form>
+    <section/>
+</body>
