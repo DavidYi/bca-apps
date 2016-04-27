@@ -166,3 +166,19 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
+
+.submit {
+  font-family:  'Lato', arial;
+  font-size: 15px;
+  width: 120px;
+  height: 50px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #DD3F0F;
+  border: 0;
+  border-top: 0.6px solid #DD3F0F;
+  font-weight: bold;
+  border-bottom: 2px solid #c6380d;
+  cursor: pointer;
+}
