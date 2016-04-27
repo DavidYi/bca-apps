@@ -57,7 +57,7 @@
                 <div class="session-filter presenter">Mods</div>
             </nav>
             <?php foreach ($testList as $test) { ?>
-
+<!--comment-->
                 <div class="tag"><?php echo $test['test_name']?></div>
                 <div class="company"><?php echo $test['rm_id']?></div>
                 <div class="position"><?php echo $test['test_dt']?></div>
