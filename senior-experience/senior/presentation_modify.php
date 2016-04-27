@@ -1,5 +1,5 @@
 <?php ?>
-<link rel="stylesheet" type="text/css" href="../ss-entry/ss/main.css">
+<link rel="stylesheet" type="text/css" href="../ss-add/ss/main.css">
 <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700italic,700,500italic,500,400italic,300italic,300' rel='stylesheet' type='text/css'>
 
 <body>
@@ -9,39 +9,74 @@
         <input type="hidden" name="action" value="modify_presentation">
 
         <div class="input input--add">
-            <input class="input-field add-field" title="" type="text" name="title" required value='<?php echo $presentation->pres_title ?>' />
+            <input class="input-field add-field" title="" type="text" name="title" value='<?php echo $presentation->pres_title;?>' required/>
             <label class="input-label add-label" />
             <div class="input__label-content input__label-content--add">Presentation Title</div>
         </div>
 
         <div class="input input--add">
-            <input class="input-field add-field" title="" type="text" name="desc" value='<?php echo $presentation->pres_desc?>' required/>
+            <input class="input-field add-field" title="" type="text" name="desc" value='<?php echo $presentation->pres_desc;?>' required/>
             <label class="input-label add-label" />
-            <div class="input__label-content input__label-content--add">Description</div>
+            <div class="input__label-content input__label-content--add">Presentation Description</div>
         </div>
 
         <div class="input input--add">
-            <input class="input-field add-field" title="" title="" type="text" name="organization" value='<?php echo $presentation->organization?>' required/>
+            <input class="input-field add-field" title="" title="" type="text" name="organization" value='<?php echo $presentation->organization;?>' required/>
             <label class="input-label add-label" />
             <div class="input__label-content input__label-content--add">Organization</div>
         </div>
 
         <div class="input input--add">
-            <input class="input-field add-field" title="" type="text" name="location" value='<?php echo $presentation->location ?>'required/>
+            <input class="input-field add-field" title="" type="text" name="location" value='<?php echo $presentation->location; ?>'required/>
             <label class="input-label add-label" />
             <div class="input__label-content input__label-content--add">Location</div>
         </div>
 
+        <div class="input ui selection dropdown half-size">
+            <input type="hidden" name="field_id">
+            <i class="dropdown icon"></i>
+            <div class="default text">Field</div>
+            <div class="menu">
+                <?php
+                foreach ($fields as $field) {?>
+                    <div class="item" data-value="<?php echo $field['field_id'];?>"><?php echo($field['field_name']);  ?></div>
+                <?php } ?>
+                <!--need to add code to take the values-->
+                <!--su min says can be done with javascript-->
+                <!--below is the php code that idk how to incorporate to the dropdown-->
+            </div>
+        </div>
 
-        <label>Fields</label>
-        <select name="field_id" title="." value='<?php echo $presentation->field_id?>'>
-            <?php  foreach ($fields as $field) {?>
-                <option value="<?php echo ($field['field_id']);?>"><?php echo($field['field_name']);  ?></option>
-            <?php } ?>
-        </select>
+        <div class="input ui selection dropdown half-size">
+            <input type="hidden" name="session_room_id">
+            <i class="dropdown icon"></i>
+            <div class="default text">Session/Room</div>
+            <div class="menu">
+                <?php
+                foreach ($sessions as $session) {?>
+                    <div class="item" data-value=<?php echo $session['ses_id'];?>:<?php echo $session['rm_id'];?>>Ses: <?php echo($session['ses_id']);  ?>, Rm: <?php echo($session['rm_nbr']);  ?></div>
+                <?php } ?>
+                <!--need to add code to take the values-->
+                <!--su min says can be done with javascript-->
+                <!--below is the php code that idk how to incorporate to the dropdown-->
+            </div>
+        </div>
 
-        <input type="submit" value="Modify">
-        <input type="submit" value="Cancel">
+        <div class="input ui loading fluid multiple search selection dropdown team-member">
+            <input type="hidden" name="team-members" value="">
+            <input class="search">
+            <div class="default text">Search for team members...</div>
+            <div class="menu">
+                <?php
+                foreach ($teammates as $teammember) {?>
+                    <div class="item" data-value="<?php echo $teammember['usr_id'];?>"><?php echo($teammember['usr_first_name']);  ?> <?php echo($teammember['usr_last_name']);  ?></div>
+                <?php } ?>
+            </div>
+        </div>
+
+
+        <input type="submit" value="Modify" class="button" style="color:black">
+        <input type="submit" value="Cancel" class="button" style="color:black">
 
             <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
         </form>

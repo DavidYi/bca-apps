@@ -26,8 +26,7 @@ switch ($action) {
         include('./courses/index.php');
         break;
     case 'modify_times':
-        echo "Michael is working on the modify_times page";
-        include('./times/index.php');
+        include('./times/view.php');
         break;
     case 'logout':
         echo "will make a logout page later";
