@@ -1,7 +1,7 @@
 <?php
 
-function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $field_id, $rm_id, $ses_id){
-    $query = 'call add_presentation(:pres_title,:pres_desc, :organization, :location, :usr_id, :field_id, :rm_id, :ses_id)';
+function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $field_id, $rm_id, $ses_id, $team_members){
+    $query = 'call add_presentation(:pres_title,:pres_desc, :organization, :location, :usr_id, :field_id, :rm_id, :ses_id, :team_members)';
     global $db;
 
     try {
@@ -14,14 +14,38 @@ function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $f
         $statement->bindValue(":field_id", $field_id, PDO::PARAM_INT);
         $statement->bindValue(":rm_id", $rm_id, PDO::PARAM_INT);
         $statement->bindValue(":ses_id", $ses_id, PDO::PARAM_INT);
-
-
+        $statement->bindValue(":team_members", $team_members, PDO::PARAM_STR);
 
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
         display_db_exception($e);
         exit();
+    }
+}
+
+function mod_pres($pres_id, $pres_title, $pres_desc, $organization, $location, $field_id) {
+    global $db;
+    $query = 'UPDATE presentation
+              set pres_title = :pres_title,
+                  pres_desc = :pres_desc,
+                  organization = :organization,
+                  location = :location,
+                  field_id = :field_id
+              WHERE pres_id = :pres_id';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
+        $statement->bindValue(':pres_title', $pres_title, PDO::PARAM_STR);
+        $statement->bindValue(':pres_desc', $pres_desc, PDO::PARAM_STR);
+        $statement->bindValue(':organization', $organization, PDO::PARAM_STR);
+        $statement->bindValue(':location', $location, PDO::PARAM_STR);
+        $statement->bindValue(':field_id', $field_id, PDO::PARAM_INT);
+
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        display_db_exception($e);
     }
 }
 
@@ -67,6 +91,19 @@ function get_session_room_num_pairs(){
         exit();
     }
 }
+
+function get_teammates(){
+    $query = 'select u.usr_last_name, u.usr_first_name, u.usr_id, u.academy_cde
+    from user u
+    left join user_presentation_xref x on x.usr_id = u.usr_id and x.presenting = 1
+    where x.usr_id is null
+    and u.usr_grade_lvl = 12
+    order by u.usr_last_name, u.usr_first_name';
+    global $db;
+
+   return get_list($query);
+}
+
 
 function isSeniortime()
 {

@@ -6,6 +6,16 @@ function get_field_list() {
               ORDER BY field_name";
     return get_list($query);
 }
+
+function get_session_room_pairs() {
+    $query = "select a.rm_id, a.ses_id,rm_nbr
+              from (select rm_id, ses_id, rm_nbr, ses_name, sort_order from room r, session_times t) as a
+              left outer join presentation p on a.rm_id = p.rm_id and a.ses_id = p.ses_id
+              where p.rm_id is null and p.ses_id is null
+              order by sort_order, rm_nbr";
+    return get_list($query);
+}
+
 function get_all_presentations(){
     $query = "select p.pres_id, p.pres_title, rm_nbr, ses_id, concat (pres_enrolled_teachers, '/',pres_max_teachers) as teachers,
                 concat (pres_enrolled_students, '/',pres_max_students) as students,
@@ -413,6 +423,8 @@ class SeniorPresentation {
             exit();
         }
     }
+
+
 }
 
 ?>
