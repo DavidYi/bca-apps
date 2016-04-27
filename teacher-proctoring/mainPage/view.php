@@ -1,11 +1,11 @@
 <html lang="en">
 <head>
-    <title>Teacher Proctoring</title>
+    <title>Register for Proctoring</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="../../career-day/ss/main.css" rel="stylesheet">
+    <link href="../ss/main.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
@@ -26,6 +26,8 @@
 
     <div class="enrollment">
         <!-- here -->
+        <!--Comment-->
+
         <?php foreach ($testList as $test) { ?>
                 <div class="session">
                         <div class="tag"><?php echo $test['test_name']?></div>
@@ -69,6 +71,7 @@
      );
      });
      */
+
 </script>
 </body>
 </html>
