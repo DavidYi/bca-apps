@@ -1,7 +1,7 @@
 <?php
 
-function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $field_id, $rm_id, $ses_id){
-    $query = 'call add_presentation(:pres_title,:pres_desc, :organization, :location, :usr_id, :field_id, :rm_id, :ses_id)';
+function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $field_id, $rm_id, $ses_id, $team_members){
+    $query = 'call add_presentation(:pres_title,:pres_desc, :organization, :location, :usr_id, :field_id, :rm_id, :ses_id, :team_members)';
     global $db;
 
     try {
@@ -14,8 +14,7 @@ function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $f
         $statement->bindValue(":field_id", $field_id, PDO::PARAM_INT);
         $statement->bindValue(":rm_id", $rm_id, PDO::PARAM_INT);
         $statement->bindValue(":ses_id", $ses_id, PDO::PARAM_INT);
-
-
+        $statement->bindValue(":team_members", $team_members, PDO::PARAM_STR);
 
         $statement->execute();
         $statement->closeCursor();
@@ -92,6 +91,19 @@ function get_session_room_num_pairs(){
         exit();
     }
 }
+
+function get_teammates(){
+    $query = 'select u.usr_last_name, u.usr_first_name, u.usr_id, u.academy_cde
+    from user u
+    left join user_presentation_xref x on x.usr_id = u.usr_id and x.presenting = 1
+    where x.usr_id is null
+    and u.usr_grade_lvl = 12
+    order by u.usr_last_name, u.usr_first_name';
+    global $db;
+
+   return get_list($query);
+}
+
 
 function isSeniortime()
 {
