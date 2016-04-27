@@ -1,0 +1,153 @@
+// Career Day
+html {
+	background-color:#e7e7e7;
+}
+
+h1 {
+	font-weight: 500;
+}
+
+.main {
+	height: 100%;
+	overflow-y: hidden;
+	background:#e7e7e7;
+}
+
+
+$grid-columns: 16; // temporary for the registration grid
+@mixin session-column($row-size, $font-weight, $font-align) {
+	@include span-columns($row-size);
+	color: $color-emperor;
+	@include margin(0);
+	@include padding(0);
+	font-size: em(18px);
+	font-weight: $font-weight;
+	text-align: $font-align;
+}
+
+nav.navbar {
+	@include size(85% em(60px));
+	@include outer-container(em(1200px));
+	line-height: em(60px);
+	@include margin(0 auto);
+	@include padding(0 em(25px));
+
+	background: $color-mineshaft;
+	border-right: em(7px) solid $color-mineshaft;
+
+	@include media($medium-screen-down) { @include size(92.5% em(60px)); }
+	@include media($mobile) { @include size(100% em(60px)); }
+
+	.session-filter {
+		display: inline-block;
+		height: 100%;
+		@include margin(0);
+		@include padding(0);
+		@include transition(all $animation-duration $animation-timing);
+
+		a { 
+			font-size: em(18px);
+			font-weight: $default-font-weight;
+			text-decoration: none;
+		}
+	}
+
+	.tag { @include session-column(3, 500, left); }
+	.company { @include session-column(4, 500, left); }
+	.position { @include session-column(5, 500, left); }
+	.presenter { @include session-column(2, 500, left); }
+	.remaining { @include session-column(2, 500, right); }
+
+	.tag, .company, .position, .presenter, .remaining, .session-number, .time, .room-number, .session-title, .name {
+		color: $color-silverchalice;
+
+		&:hover, &:active {
+			color: $color-gallery;
+			text-decoration: underline;
+		}
+	}
+}
+
+.enrollment {
+	@include size(85% 75%);
+	@include outer-container(em(1200px));
+	@include margin(0 auto);
+	background: $color-grayblack;
+	overflow-y: scroll;
+	@include box-shadow(0, em(3px), em(7px), 0, rgba(0, 0, 0, 0.15));
+	color: $color-black;
+
+	@include media($medium-screen-down) { @include size(92.5% 75%); }
+	@include media($mobile) { @include size(100% 75%); }
+
+	.session {
+		@include row;
+		height: em(60px);
+		overflow: hidden;
+		line-height: em(60px);
+		@include padding(0 em(25px));
+		border-bottom: 1px solid #d6d9da;
+
+		.tag { @include session-column(3, 500, left); }
+		.company { @include session-column(4, 500, left); }
+		.position { @include session-column(5, 400, left); }
+		.presenter { @include session-column(3, 400, left); }
+		.remaining { @include session-column(1, 500, right); }
+
+		.session-number { @include session-column(1, 500, left); }
+		.time { @include session-column(3, 500, left); }
+		.room-number { @include session-column(2, 500, left); }
+		.session-title { @include session-column(5, 500, left); }
+		.name { @include session-column(5, 500, left); }
+
+		&:hover {
+			background: $color-gallery;
+			@include transition(all $animation-duration $animation-timing);
+		}
+}
+
+	// For view Page -Su Min
+	// Hi Su Min - J
+	.view-session {
+		border-bottom: 1px solid $color-black;
+		.time,  .room-number {
+			font-weight: $default-font-weight;
+		}
+	}
+	.view-session:hover {
+		background: $color-black;
+		.session-number, .time, .room-number, .session-title, .name {
+			color: $color-white;
+		}
+	}
+}
+
+.session-selected {
+	background-color: $color-yellow;
+	color: $color-white !important;
+	border-bottom: 1px solid $color-yellow;
+	@include box-shadow(0, 0, em(25px), 0, rgba(240, 195, 15, 0.66));
+
+	.tag, .company, .position, .presenter, .remaining, .session-number, .time, .room-number, .session-number, .name{
+		color: $color-white !important;
+	}
+
+	&:hover {
+		background-color: $color-yellow !important;
+	}
+}
+
+.register {
+	@extend .container;
+	@include margin(em(25px) auto 0);
+	text-align: center;
+	font-weight: 500;
+
+	button {
+
+	}
+}
+
+$grid-columns: 12; // reset
+
+

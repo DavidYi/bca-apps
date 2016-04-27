@@ -1,0 +1,24 @@
+html, body {
+	@include full-screen;
+	@include zero-box;
+	background-color: $color-cloud;
+}
+
+.display-none {
+	display: none;
+	@include transition(all $animation-duration $animation-timing);
+}
+
+.visible-none {
+	opacity: 0;
+	@include transition(all $animation-duration $animation-timing);
+}
+
+header {
+	height: 15%;
+	@include vertical-parent;
+
+	h1 {
+		@include vertical-center;
+	}
+}

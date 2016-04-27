@@ -7,6 +7,8 @@
  */
 
 require_once("../util/main.php");
+require_once("../model/teacher_db.php");
+
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
@@ -30,8 +32,6 @@ switch ($action) {
     case 'list_tests':
         $testList = get_test_list();
 
-        include "view.php";
-
         break;
 
     default:
@@ -52,35 +52,6 @@ if (isset($action) and ($action == "logout")) {
         header("Location: ../index.php");
     }
 }
-
-$sessions = get_sessions_by_user($user->usr_id);
-
-//
-// Check if teachers have active proctoring sessions.
-//
-$registration_complete = true;
-foreach ($sessions as $session) {
-    if (empty($session['test_time'])) {
-        $registration_complete = false;
-        break;
-    }
-}
-
-//$signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
-
-date_default_timezone_set('America/New_York');
-$currentTime = time();
-$startTime = strtotime($signup_dates['start']);
-$endTime = strtotime($signup_dates['end']);
-
-$startTimeFormatted = date('M d, g:i  a', $startTime);
-$endTimeFormatted = date('M d, g:i  a', $endTime);
-
-
-if (($currentTime > $startTime) and ($currentTime < $endTime))
-    $registrationOpen = true;
-else
-    $registrationOpen = false;
 
 include ("./view.php");
 exit();

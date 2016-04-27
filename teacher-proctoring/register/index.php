@@ -7,7 +7,9 @@
  */
 require_once('../util/main.php');
 require_once("../../shared/model/user_db.php");
-//require_once('../model/presentations_db.php');
+require_once('../model/teacher_db.php');
+
+require_once('../../career-day/model/presentations_db.php');
 
 $user = get_user($_SESSION['usr_id'], 'CAR');
 $currentSession = filter_input(INPUT_GET, 'session');
