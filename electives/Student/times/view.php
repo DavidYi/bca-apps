@@ -1,13 +1,7 @@
-<html lang="en">
-<head>
-    <title>Free Time Selection</title>
-
-    <link href="/<?php echo $app_url_path ?>/ss/main.css" rel="stylesheet">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-</head>
-<body>
-
-
-</body>
-</html>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: joshClune
+ * Date: 4/6/16
+ * Time: 10:27 AM
+ */
