@@ -44,12 +44,14 @@ switch ($action) {
         break;
 
     case 'modify_presentation':
-        // Need to code
-        $pres_title = filter_input(INPUT_POST, 'pres_title');
-        $pres_desc = filter_input(INPUT_POST, 'pres_desc');
-        $organization = filter_input(INPUT_POST, 'organization');
-        $location = filter_input(INPUT_POST, 'location');
-        $field_id = filter_input(INPUT_POST, 'field_id');
+
+        $query = 'update presentation
+                set pres_title = :pres_title,
+                     pres_desc = :pres_desc,
+                     organization = :organization,
+                     location = :location,
+                     field_id = :field_id,
+                where pres_id = :pres_id';
 
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
