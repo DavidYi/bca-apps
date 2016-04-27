@@ -1,4 +1,17 @@
-<?php ?>
+<html lang="en">
+<head>
+    <title>Senior Experience</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700italic,700,500italic,500,400italic,300italic,300' rel='stylesheet' type='text/css'>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="../ss-add/ss/main.css" >
+
+
+</head>
 <link rel="stylesheet" type="text/css" href="../ss-add/ss/main.css">
 <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700italic,700,500italic,500,400italic,300italic,300' rel='stylesheet' type='text/css'>
 
@@ -41,9 +54,6 @@
                 foreach ($fields as $field) {?>
                     <div class="item" data-value="<?php echo $field['field_id'];?>"><?php echo($field['field_name']);  ?></div>
                 <?php } ?>
-                <!--need to add code to take the values-->
-                <!--su min says can be done with javascript-->
-                <!--below is the php code that idk how to incorporate to the dropdown-->
             </div>
         </div>
 
@@ -56,9 +66,6 @@
                 foreach ($sessions as $session) {?>
                     <div class="item" data-value=<?php echo $session['ses_id'];?>:<?php echo $session['rm_id'];?>>Ses: <?php echo($session['ses_id']);  ?>, Rm: <?php echo($session['rm_nbr']);  ?></div>
                 <?php } ?>
-                <!--need to add code to take the values-->
-                <!--su min says can be done with javascript-->
-                <!--below is the php code that idk how to incorporate to the dropdown-->
             </div>
         </div>
 
@@ -80,5 +87,13 @@
 
             <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
         </form>
-    <section/>
+    </section>
+    <!--JavaScript -->
+    <script src="../ss-add/js/classie.js"></script>
+    <script src="../ss-add/js/semantic.min.js"></script>
+    <script type="text/javascript">
+        $('.ui.dropdown')
+            .dropdown()
+        ;
+    </script>
 </body>
