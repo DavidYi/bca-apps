@@ -24,28 +24,28 @@ function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $f
     }
 }
 
-function mod_pres($pres_id, $pres_title, $pres_desc, $organization, $location, $field_id) {
+function mod_pres($pres_id, $pres_title, $pres_desc, $organization, $location, $field_id, $rm_id ,$ses_id, $team_members) {
+    $query = 'call mod_presentation(:pres_id,:pres_title,:pres_desc, :organization, :location, :usr_id, :field_id, :rm_id, :ses_id, :team_members)';
     global $db;
-    $query = 'UPDATE presentation
-              set pres_title = :pres_title,
-                  pres_desc = :pres_desc,
-                  organization = :organization,
-                  location = :location,
-                  field_id = :field_id
-              WHERE pres_id = :pres_id';
+
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
-        $statement->bindValue(':pres_title', $pres_title, PDO::PARAM_STR);
-        $statement->bindValue(':pres_desc', $pres_desc, PDO::PARAM_STR);
-        $statement->bindValue(':organization', $organization, PDO::PARAM_STR);
-        $statement->bindValue(':location', $location, PDO::PARAM_STR);
-        $statement->bindValue(':field_id', $field_id, PDO::PARAM_INT);
+        $statement->bindValue(":pres_id", $pres_id, PDO::PARAM_STR);
+        $statement->bindValue(":pres_title", $pres_title, PDO::PARAM_STR);
+        $statement->bindValue(":pres_desc", $pres_desc, PDO::PARAM_STR);
+        $statement->bindValue(":organization", $organization, PDO::PARAM_STR);
+        $statement->bindValue(":location", $location, PDO::PARAM_STR);
+        $statement->bindValue(":usr_id", $usr_id, PDO::PARAM_INT);
+        $statement->bindValue(":field_id", $field_id, PDO::PARAM_INT);
+        $statement->bindValue(":rm_id", $rm_id, PDO::PARAM_INT);
+        $statement->bindValue(":ses_id", $ses_id, PDO::PARAM_INT);
+        $statement->bindValue(":team_members", $team_members, PDO::PARAM_STR);
 
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
         display_db_exception($e);
+        exit();
     }
 }
 

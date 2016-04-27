@@ -943,3 +943,8 @@ body {
     font-weight: bold;
     color: darkgrey !important;
 }
+
+.trash {
+    height: 50%;
+    width: 50%;
+}

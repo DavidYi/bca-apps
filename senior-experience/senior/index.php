@@ -38,22 +38,28 @@ switch ($action) {
         break;
 
     case 'show_modify_presentation':
-        $pres = SeniorPresentation::getPresentationForSenior($user->usr_id);
+        $presentation = SeniorPresentation::getPresentationForSenior($user->usr_id);
         $fields = get_field_list();
+        $sessions = get_session_room_pairs();
+        $teammates = get_teammates();
         include 'presentation_modify.php';
         break;
 
     case 'modify_presentation':
-        // Need to code
-        $pres_title = filter_input(INPUT_POST, 'pres_title');
-        $pres_desc = filter_input(INPUT_POST, 'pres_desc');
+
+
+        $pres_title = filter_input(INPUT_POST, 'title');
+        $pres_desc = filter_input(INPUT_POST, 'desc');
         $organization = filter_input(INPUT_POST, 'organization');
         $location = filter_input(INPUT_POST, 'location');
         $field_id = filter_input(INPUT_POST, 'field_id');
+        $rm_id = explode(":", filter_input(INPUT_POST, 'session_room_id'))[1];
+        $ses_id = explode(":", filter_input(INPUT_POST, 'session_room_id'))[0];
+        $team_members = filter_input(INPUT_POST, 'team-members'). ',';
 
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
-        mod_pres($pres->pres_id, $pres_title, $pres_desc, $organization, $location, $field_id);
+        mod_pres($pres->pres_id, $pres_title, $pres_desc, $organization, $location, $field_id, $rm_id,$ses_id, $team_members);
 
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
