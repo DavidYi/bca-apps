@@ -20,6 +20,7 @@
         <h1>Modify Presentation</h1>
         <form action="index.php" method="post">
         <input type="hidden" name="action" value="modify_presentation">
+        <input type="hidden" name="pres_id" value="<?php echo $pres->pres_id ?>">
 
         <div class="input input--add">
             <input class="input-field add-field" title="" type="text" name="title" value='<?php echo $presentation->pres_title;?>' required/>
