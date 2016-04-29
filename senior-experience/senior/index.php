@@ -18,7 +18,7 @@ switch ($action) {
     case 'show_add_presentation':
         $fields = get_field_list();
         $sessions = get_session_room_pairs();
-        $teammates = get_teammates();
+        $teammates = get_potential_teammates();
         include 'presentation_add.php';
         break;
 
@@ -39,9 +39,10 @@ switch ($action) {
 
     case 'show_modify_presentation':
         $presentation = SeniorPresentation::getPresentationForSenior($user->usr_id);
+        $presenter_ids = get_presenter_ids($presentation->pres_id);
         $fields = get_field_list();
-        $sessions = get_session_room_pairs();
-        $teammates = get_teammates();
+        $sessions = get_session_room_pairs_plus_presentation($presentation->pres_id);
+        $teammates = get_potential_teammates_plus_presentation($presentation->pres_id);
         include 'presentation_modify.php';
         break;
 
@@ -53,8 +54,8 @@ switch ($action) {
         $organization = filter_input(INPUT_POST, 'organization');
         $location = filter_input(INPUT_POST, 'location');
         $field_id = filter_input(INPUT_POST, 'field_id');
-        $rm_id = explode(":", filter_input(INPUT_POST, 'session_room_id'))[1];
-        $ses_id = explode(":", filter_input(INPUT_POST, 'session_room_id'))[0];
+        $rm_id = explode(":", filter_input(INPUT_POST, 'ses-room-number'))[1];
+        $ses_id = explode(":", filter_input(INPUT_POST, 'ses-room-number'))[0];
         $team_members = filter_input(INPUT_POST, 'team-members'). ',';
 
         // Append the current user to the team list.

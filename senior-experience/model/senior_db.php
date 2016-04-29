@@ -51,7 +51,7 @@ function mod_pres($pres_id, $pres_title, $pres_desc, $organization, $location, $
         $team_members = $team_members . $user->usr_id;
         $query2 = ' delete from user_presentation_xref where usr_id not in (' . $team_members . ') and pres_id = :pres_id and presenting = 1';
         $statement = $db->prepare($query2);
-        $statement->bindValue(':pres_id', pres_id, PDO::PARAM_INT);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
         $statement->execute();
         $statement->closeCursor();
 
@@ -106,12 +106,9 @@ function get_senior_add_pres_dates() {
 
 function get_session_room_num_pairs(){
     $query = 'select pairs.rm_id, rm_nbr, pairs.ses_id, rm_cap, ses_name, sort_order
-    from presentation p
-    right outer join (select ses_id, rm_id, ses_name, sort_order, rm_nbr, rm_cap from session_times, room) pairs
-    on p.ses_id = pairs.ses_id
-    and p.rm_id = pairs.rm_id
-    and p.ses_id is null
-    and p.rm_id is null
+    from (select ses_id, rm_id, ses_name, sort_order, rm_nbr, rm_cap from session_times, room) pairs
+    left outer join presentation p on pairs.ses_id = p.ses_id and pairs.rm_id = p.rm_id 
+    where (p.ses_id is null and p.rm_id is null)
     order by rm_nbr, sort_order';
     global $db;
 
@@ -127,7 +124,29 @@ function get_session_room_num_pairs(){
     }
 }
 
-function get_teammates(){
+function get_session_room_pairs_plus_presentation($pres_id){
+    $query = 'select pairs.rm_id, rm_nbr, pairs.ses_id, rm_cap, ses_name, sort_order
+    from (select ses_id, rm_id, ses_name, sort_order, rm_nbr, rm_cap from session_times, room) pairs
+    left outer join presentation p on pairs.ses_id = p.ses_id and pairs.rm_id = p.rm_id 
+    where (p.ses_id is null and p.rm_id is null) or pres_id = :pres_id
+    order by rm_nbr, sort_order';
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+
+function get_potential_teammates(){
     $query = 'select u.usr_last_name, u.usr_first_name, u.usr_id, u.academy_cde
     from user u
     left join user_presentation_xref x on x.usr_id = u.usr_id and x.presenting = 1
@@ -137,6 +156,51 @@ function get_teammates(){
     global $db;
 
    return get_list($query);
+}
+
+function get_potential_teammates_plus_presentation($pres_id){
+    $query = 'select u.usr_last_name, u.usr_first_name, u.usr_id, u.academy_cde
+    from user u
+    left join user_presentation_xref x on x.usr_id = u.usr_id and x.presenting = 1
+    where (x.usr_id is null or pres_id = :pres_id)
+    and u.usr_grade_lvl = 12
+    order by u.usr_last_name, u.usr_first_name';
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function get_presenter_ids($pres_id) {
+    $query = "select GROUP_CONCAT( concat ('\'', usr_id, '\'') SEPARATOR ', ') as ids
+            from user_presentation_xref
+            where pres_id = :pres_id
+            and presenting = 1
+            group by pres_id";
+    
+    global $db;
+    
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetch()['ids'];
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+
 }
 
 
