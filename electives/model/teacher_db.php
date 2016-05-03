@@ -8,6 +8,7 @@
 
 // function needs teacher id
 function addCourse($course_name, $course_desc) {
-    $query = "";
+    $query = "INSERT INTO elect_course (course_name, course_desc, teacher_id) 
+    VALUES ('$course_name', 'course_desc', '')";
 }
 ?>
