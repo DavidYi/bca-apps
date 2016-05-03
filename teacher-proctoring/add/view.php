@@ -1,17 +1,4 @@
-<?php
 
-  $mysqlserver="webdev01.bergen.org";
-  $mysqlusername="atcsdevb_tchrusr";
-  $mysqlpassword="^D3cg)*?i2g#";
-  $link=mysql_connect(localhost, $mysqlusername, $mysqlpassword) or die ("Error connecting to mysql server: ".mysql_error());
-
-  $dbname = 'atcsdevb_teacher_dashboard';
-  mysql_select_db($dbname, $link) or die ("Error selecting specified database on mysql server: ".mysql_error());
-
-  $cdquery="SELECT test_type_desc FROM test_type";
-  $cdresult=mysql_query($cdquery) or die ("Query to get data from firsttable failed: ".mysql_error());
-
-?>
 
 <html>
 
@@ -51,23 +38,24 @@
 
           <select class="ui dropdown">
             <i class="dropdown icon"></i>
+              <option value="">Test Type</option>
             <?php
-            while ($cdrow=mysql_fetch_array($cdresult)) {
-            $test_type_desc=$cdrow["test_type_desc"];
-                echo "<option>
-                    $test_type_desc
-                </option>";
-            }
-            ?>
+            $num = 0;
+            foreach ($testTypes as $test) { ?>
+                  <option "<?php echo $num;?>"><?php echo $test['test_type_desc']?></option>
+            <?php $num += 1;} ?>
           </select>
 
           <!-- Test -->
 
           <select class="ui dropdown">
             <i class="dropdown icon"></i>
-            <option value="">Test Type</option>
-            <option value="1">PARCC</option>
-            <option value="0">SAT 2</option>
+              <option value="">Room Number</option>
+            <?php
+            $num = 0;
+            foreach ($rooms as $room) { ?>
+                  <option "<?php echo $num;?>"><?php echo $room['rm_nbr']?></option>
+            <?php $num += 1;} ?>
           </select>
 
           <!-- Time -->

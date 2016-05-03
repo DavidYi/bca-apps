@@ -8,4 +8,16 @@ function get_test_list() {
     return get_list($query);
 }
 
+function get_test_types() {
+    $query = 'SELECT test_type_desc
+                from test_type';
+    return get_list($query);
+}
+
+function get_rooms() {
+    $query = 'SELECT rm_nbr
+                from room';
+    return get_list($query);
+}
+
 ?>
