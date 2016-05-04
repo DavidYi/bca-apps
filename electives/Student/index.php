@@ -31,6 +31,11 @@ switch ($action) {
     case 'logout':
         echo "will make a logout page later";
         break;
+    case 'update_times':
+        echo "update_times test ";
+        echo "REMINDER: I need to figure out how to take the button data from the previous page";
+        include('./view.php');
+        break;
     default:
         display_error('Unknown account action: ' . $action);
         exit();
