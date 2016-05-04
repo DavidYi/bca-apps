@@ -47,18 +47,18 @@ switch ($action) {
         break;
 
     case 'delete_presentation':
-        $pres_id = filter_input(INPUT_GET, 'pres_id');
+        $pres_id = filter_input(INPUT_POST, 'pres_id');
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
         if ($pres->pres_id != $pres_id) {
-            display_user_message("You do not have permission to delete this presentation.", "./index.php");
+            display_user_message("You do not have permission to delete this presentation.\n"
+                . $pres_id . ":" . $pres->pres_id, "./index.php");
         }
 
-        echo ("Delete the presentation here.");
-        exit();
+        del_pres($pres_id);
+        $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
+        include "presentation_view.php";
         break;
-
-
 
     case 'modify_presentation':
         // Need to code
