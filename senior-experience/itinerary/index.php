@@ -9,7 +9,7 @@
 require_once("../util/main.php");
 require_once("../../shared/model/user_db.php");
 require_once("../model/signups_db.php");
-require_once ("../model/senior/presentations_db.php");
+require_once ("../model/presentations_db.php");
 
 verify_logged_in();
 
@@ -41,11 +41,12 @@ $endTime = strtotime($signup_dates['end']);
 $startTimeFormatted = date('M d, g:i  a', $startTime);
 $endTimeFormatted = date('M d, g:i  a', $endTime);
 
-
-if (($currentTime > $startTime) and ($currentTime < $endTime))
+$registrationOpen = true;
+/* if (($currentTime > $startTime) and ($currentTime < $endTime))
     $registrationOpen = true;
 else
     $registrationOpen = false;
+*/
 
 include ("view.php");
 exit(); ?>

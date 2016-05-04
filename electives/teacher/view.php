@@ -33,7 +33,7 @@
         <div class="vertical-center">
             <h3><b>Courses</b></h3>
             Show course list table here
-            <a href="teacher_add_course/new_class.php">Add Class</a>
+            <a href="teacher_add_course">Add Class</a>
         </div>
     </div>
 </section>

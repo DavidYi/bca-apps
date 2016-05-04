@@ -10,7 +10,7 @@
 $pageTitle = 'Off-hour Electives';
 $loginInfo = '<h1>Off-hour Electives</h1>
 	                <h3>
-						BCA needs teachers to proctor all standardized tests.
+						Schedule electives during your free mods. 
 					</h3>
 					<h3>
 						This app is brought to you by the students of ATCS.
