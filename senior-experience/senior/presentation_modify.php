@@ -78,21 +78,7 @@
                 <?php } ?>
             </select>
 
-<<<<<<< Updated upstream
-            <select class="input ui selection dropdown half-size" name="ses-room-number" id="ses-room-number">
-                <?php
-                foreach ($sessions as $session) {?>
-                    <option class="item" value="<?php echo $session['ses_id'];?>:<?php echo $session['rm_id'];?>">Ses: <?php echo($session['ses_id']);  ?>, Rm: <?php echo($session['rm_nbr']);?></option>
-                <?php } ?>
-            </select>
         </div>
-
-        <select class="input ui loading fluid multiple search selection dropdown team-member" id="team-member">
-            <?php
-            foreach ($teammates as $teammember) {?>
-                <option class="item" value="<?php echo $teammember['usr_id'];?>"><?php echo($teammember['usr_first_name']);  ?> <?php echo($teammember['usr_last_name']);  ?></option>
-            <?php } ?>
-        </select>
 
         <input type="submit" value="Modify" class="button" style="color:black">
         <input type="submit" onclick="." value="Cancel" class="button" style="color:black">
