@@ -34,7 +34,6 @@ switch ($action) {
     case 'update_times':
         echo "update_times test ";
 
-
         $arr = filter_input_array(INPUT_POST, 'times[]'); /*giving a boolean for some reason*/
         $arr = array_column($arr, 'value');
         echo sizeof($arr);
