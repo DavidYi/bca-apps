@@ -34,10 +34,8 @@ switch ($action) {
     case 'update_times':
         echo "update_times test ";
 
-
-        $arr = filter_input_array(INPUT_POST, 'times[]');
-        echo sizeof($arr);
-
+        $testarr = $_POST['time'];
+        echo sizeof($testarr);
 
         include('./view.php');
         break;
@@ -47,15 +45,3 @@ switch ($action) {
         break;
 }
 ?>
-
-<!-- $checked = false;
-
-        $arr = POST[$time[]'
-        for (int $i
-        arr[i]
-
-
-
-        for($i = 0; $i < sizeof($arr); $i++){
-            echo $arr[$i]->getValue();
-        }-->
