@@ -70,13 +70,13 @@ function get_session_times_by_id($ses_id) {
 }
 
 function get_presentation_list($ses_id, $sort_by, $order_by) {
-    $query = 	'SELECT presentation.pres_id, pres_title, pres_desc, organization, location, rm_id, field_name,
+    $query = 	"SELECT presentation.pres_id, pres_title, pres_desc, organization, location, rm_id, field_name,
                     pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
-					pres_max_students - presentation.pres_enrolled_students as remaining
+					pres_max_students - presentation.pres_enrolled_students as remaining, 'jeff' as presenter_names
 				FROM presentation, field
 				WHERE presentation.ses_id = :ses_id
 				AND presentation.field_id = field.field_id
-				AND presentation.pres_enrolled_students < presentation.pres_max_students ';
+				AND presentation.pres_enrolled_students < presentation.pres_max_students ";
 
     if ($sort_by == 1) $query .= ('ORDER BY field_name');
     else if ($sort_by == 2) $query .= ('ORDER BY pres_title');
