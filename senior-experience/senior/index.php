@@ -46,6 +46,20 @@ switch ($action) {
         include 'presentation_modify.php';
         break;
 
+    case 'delete_presentation':
+        $pres_id = filter_input(INPUT_GET, 'pres_id');
+        $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
+
+        if ($pres->pres_id != $pres_id) {
+            display_user_message("You do not have permission to delete this presentation.", "./index.php");
+        }
+
+        echo ("Delete the presentation here.");
+        exit();
+        break;
+
+
+
     case 'modify_presentation':
         // Need to code
         $pres_id = filter_input(INPUT_POST, 'pres_id');
@@ -69,7 +83,7 @@ switch ($action) {
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
         if ($pres->pres_id != $pres_id) {
-            display_user_message("Presentation id mismatch.");
+            display_user_message("You do not have permission to modify this presentation.");
         }
 
         mod_pres($pres->pres_id, $pres_title, $pres_desc, $organization, $location, $field_id, $team_members);
