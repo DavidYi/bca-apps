@@ -10,6 +10,15 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="../ss-add/ss/main.css" >W
 
+    <script type="text/javascript">
+        function deletePresentation(presID)
+        {
+            if (confirm('Are you sure you would like to delete the presentation?'))
+            {
+                window.parent.parent.location.href = 'index.php?action=delete_presentation&pres_id=' + presID;
+            }
+        }
+    </script>
 
 </head>
 <link rel="stylesheet" type="text/css" href="../ss-add/ss/main.css">
@@ -53,10 +62,7 @@
                     <option class="item" value="<?php echo $field['field_id'];?>"><?php echo($field['field_name']);  ?></option>
                 <?php } ?>
             </select>
-        </div>
 
-
-        <div class="double">
             <select class="input ui selection dropdown half-size" name="ses-room-number" id="ses-room-number">
                 <?php
                 foreach ($sessions as $session) {?>
@@ -74,6 +80,7 @@
 
         <input type="submit" value="Modify" class="button" style="color:black">
         <input type="submit" value="Cancel" class="button" style="color:black">
+        <input type="submit" value="Delete" class="button" onClick="deletePresentation(<?php echo $presentation->pres_id;; ?>);" style="color:black">
 
             <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
         </form>
