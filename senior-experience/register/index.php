@@ -36,11 +36,12 @@ echo $user .'<BR>';
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
 echo $start_date .'<BR>';
-echo $current_date.'<BR>';
+
 echo $end_date;
 
 date_default_timezone_set('America/New_York');
 $current_date = time();
+echo $current_date.'<BR>';
 
 $action = filter_input(INPUT_GET, 'action');
 $id = 0;

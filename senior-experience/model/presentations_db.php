@@ -252,9 +252,11 @@ class SeniorPresentation {
     public static function getPresentation ($pres_id)
     {
         $query = 'select p.pres_id, p.ses_id, p.rm_id, p.field_id, pres_title, pres_desc, organization, location,
-  		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, get_presenters_comma_list (p.pres_id) presenters
-                from presentation p
-                where p.pres_id = :pres_id';
+  		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, get_presenters_comma_list (p.pres_id) presenters, r.rm_nbr, r.rm_cap, f.field_name
+                from presentation p, room r, field f
+                where p.pres_id = :pres_id
+                and r.rm_id = p.rm_id
+                and p.field_id = f.field_id';
 
         global $db;
 
