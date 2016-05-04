@@ -77,6 +77,7 @@ if ($action == "register") {
         $presentation->addPresForUser($user['usr_id']);
         header("Location: ../itinerary/");
     }
+    // Test 
 }
 exit();
 
