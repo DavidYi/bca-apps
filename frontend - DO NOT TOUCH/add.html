@@ -15,74 +15,59 @@
 <body>
 	<section class="add">
 		<h1>Add Presentation</h1>
-
 		<div class="input input--add">
-			<input class="input-field add-field" type="text" />
+			<input class="input-field add-field" id="pres-name" name="pres-name" type="text" />
 			<label class="input-label add-label" />
 		<div class="input__label-content input__label-content--add">Presentation Name</div>
 		</div>
 
 		<div class="input input--add">
-			<input class="input-field add-field" type="text" />
+			<input class="input-field add-field" name="pres-desc" type="text" />
 			<label class="input-label add-label" />
 		<div class="input__label-content input__label-content--add">Presentation Description</div>
 		</div>
 
 		<div class="input input--add">
-			<input class="input-field add-field" type="text" />
+			<input class="input-field add-field" name="organization" type="text" />
 			<label class="input-label add-label" />
 		<div class="input__label-content input__label-content--add">Organization</div>
 		</div>
 
 		<div class="input input--add">
-			<input class="input-field add-field" type="text" />
+			<input class="input-field add-field" name="location" type="text" />
 			<label class="input-label add-label" />
 		<div class="input__label-content input__label-content--add">Location</div>
 		</div>
 
-		<div class="double">
-		<div class="input ui selection dropdown half-size">
-			<input type="hidden" name="room-number">
-			<i class="dropdown icon"></i>
-			<div class="default text">Room Number</div>
-			<div class="menu">
-				<div class="item" data-value="0">130</div>
-				<div class="item" data-value="1">131</div>
-				<div class="item" data-value="2">132</div>
-				<div class="item" data-value="3">133</div>
-				<div class="item" data-value="4">134</div>
-				<div class="item" data-value="5">135</div>
-			</div>
-		</div>
+		<div class="double">			
+			<select class="input ui selection dropdown half-size" id="room-number">				
+				<option class="item" value="0">130</option>
+				<option class="item" value="1">131</option>
+				<option class="item" value="2">132</option>
+				<option class="item" value="3">133</option>
+				<option class="item" value="4">134</option>
+				<option class="item" value="5">135</option>
+			</select>
 
-		<div class="input ui selection dropdown half-size">
-			<input type="hidden" name="session-number">
-			<i class="dropdown icon"></i>
-			<div class="default text">Session Number</div>
-			<div class="menu">
-				<div class="item" onclick="loadDoc()" data-value="0">1</div>
-				<div class="item" onclick="loadDoc()" data-value="1">2</div>
-				<div class="item" onclick="loadDoc()" data-value="2">3</div>
-				<div class="item" onclick="loadDoc()" data-value="3">4</div>
-			</div>
+			<select class="input ui selection dropdown half-size" id="session-number">
+				<option class="item" value="0">1</option>
+				<option class="item" value="1">2</option>
+				<option class="item" value="2">3</option>
+				<option class="item" value="3">4</option>
+			</select>
 		</div>
-		</div>
-
-		<div class="input ui loading fluid multiple search selection dropdown team-member">
-			<input type="hidden" name="team-member" value="">
-			<input class="search">
-			<div class="default text">Search for team members...</div>
-			<div class="menu">
-				<div class="item">Su Min</div>
-				<div class="item">Ji Eun</div>
-				<div class="item">Dae Sung</div>
-				<div class="item">GD</div>
-				<div class="item">Sublime</div>
-				<div class="item">Daniel Chung</div>
-				<div class="item">Kwon Jiyong</div>
-				<div class="item">IU</div>
-			</div>
-		</div>
+		
+<!-- 		<div class="input ui loading fluid multiple search selection dropdown team-member"> -->
+			<select class="input ui loading fluid multiple search selection dropdown team-member" id="team-member">
+				<option class="item" value="0">Jen Kim</option>
+				<option class="item" value="1">Ji Eun</option>
+				<option class="item" value="2">Dae Sung</option>
+				<option class="item" value="3">GD</option>
+				<option class="item" value="4">Sublime</option>
+				<option class="item" value="5">Daniel Chung</option>
+				<option class="item" value="6">Kwon Jiyong</option>
+				<option class="item" value="7">IU</option>
+			</select>
 
 		<div class="button">
 			<button>SAVE</button>
@@ -93,37 +78,21 @@
 	<script src="js/classie.js"></script>
 	<script src="js/semantic.min.js"></script>
 	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#room-number').dropdown('set text', 'Room Number');
+			$('#room-number').dropdown('set value', '2');
+			$('#session-number').dropdown('set text', 'Session Number');
+			$('#session-number').dropdown('set value', '2');
+			document.getElementById("pres-name").value = "Testinggngn";
+
+			//Team members
+			$('#team-member').dropdown('set value', ['0', '1']);
+			document.getElementById("pres-name").click();
+		});
 		$('.ui.dropdown')
 		  .dropdown()
 		;
-	</script>
-
-	<script type="text/javascript">
-		function loadDoc() {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (xhttp.readyState == 4 && xhttp.status == 200) {
-					myFunction(xhttp);
-				}
-			};
-			xhttp.open("GET", "cd_catalog.xml", true);
-			xhttp.send();
-		}
-
-		function myFunction(xml) {
-			var i;
-			var xmlDoc = xml.responseXML;
-			var table="<tr><th>Artist</th><th>Title</th></tr>";
-			var x = xmlDoc.getElementsByTagName("CD");
-			for (i = 0; i <x.length; i++) {
-				table += "<tr><td>" +
-						x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
-						"</td><td>" +
-						x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
-						"</td></tr>";
-			}
-			document.getElementById("demo").innerHTML = table;
-		}
+		// $('#yoyo').val('0');
 	</script>
 	
 </body>
