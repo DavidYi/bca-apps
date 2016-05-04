@@ -6,7 +6,7 @@ img, legend {
 
 legend, td, th {
   padding: 0; }
-
+/*comment*/
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -340,7 +340,7 @@ nav.navbar .session-filter a {
   font-size: 1.125em;
   font-weight: 400;
   text-decoration: none; }
-nav.navbar .tag {
+nav.navbar .name {
   float: left;
   display: block;
   margin-right: 0%;
@@ -351,22 +351,9 @@ nav.navbar .tag {
   font-size: 1.125em;
   font-weight: 500;
   text-align: left; }
-nav.navbar .tag:last-child {
+nav.navbar .name:last-child {
   margin-right: 0; }
-nav.navbar .company {
-  float: left;
-  display: block;
-  margin-right: 0%;
-  width: 20%;
-  color: #555;
-  margin: 0;
-  padding: 0;
-  font-size: 1.125em;
-  font-weight: 500;
-  text-align: left; }
-nav.navbar .company:last-child {
-  margin-right: 0; }
-nav.navbar .position {
+nav.navbar .time {
   float: left;
   display: block;
   margin-right: 0%;
@@ -377,9 +364,9 @@ nav.navbar .position {
   font-size: 1.125em;
   font-weight: 500;
   text-align: left; }
-nav.navbar .position:last-child {
+nav.navbar .time:last-child {
   margin-right: 0; }
-nav.navbar .presenter {
+nav.navbar .mods {
   float: left;
   display: block;
   margin-right: 0%;
@@ -390,7 +377,7 @@ nav.navbar .presenter {
   font-size: 1.125em;
   font-weight: 500;
   text-align: left; }
-nav.navbar .presenter:last-child {
+nav.navbar .mods:last-child {
   margin-right: 0; }
 nav.navbar .remaining {
   float: left;
@@ -405,9 +392,9 @@ nav.navbar .remaining {
   text-align: right; }
 nav.navbar .remaining:last-child {
   margin-right: 0; }
-nav.navbar .tag, nav.navbar .company, nav.navbar .position, nav.navbar .presenter, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
+nav.navbar .name, nav.navbar .time, nav.navbar .mods, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
   color: #aaa; }
-nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
+nav.navbar .name:hover, nav.navbar .name:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .mods:hover, nav.navbar .mods:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
   color: #eee;
   text-decoration: underline; }
 
@@ -447,7 +434,20 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   clear: both;
   content: "";
   display: table; }
-.enrollment .session .tag {
+.enrollment .session .name {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 40%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left; }
+.enrollment .session .name:last-child {
+  margin-right: 0; }
+.enrollment .session .time {
   float: left;
   display: block;
   margin-right: 0%;
@@ -456,48 +456,22 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   margin: 0;
   padding: 0;
   font-size: 1.125em;
-  font-weight: 500;
-  text-align: left; }
-.enrollment .session .tag:last-child {
+  font-weight: 400;
+  text-align: center; }
+.enrollment .session .time:last-child {
   margin-right: 0; }
-.enrollment .session .company {
+.enrollment .session .mods {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 20%;
-  color: #555;
-  margin: 0;
-  padding: 0;
-  font-size: 1.125em;
-  font-weight: 500;
-  text-align: left; }
-.enrollment .session .company:last-child {
-  margin-right: 0; }
-.enrollment .session .position {
-  float: left;
-  display: block;
-  margin-right: 0%;
-  width: 15%;
+  width: 30%;
   color: #555;
   margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 400;
-  text-align: left; }
-.enrollment .session .position:last-child {
-  margin-right: 0; }
-.enrollment .session .presenter {
-  float: left;
-  display: block;
-  margin-right: 0%;
-  width: 20%;
-  color: #555;
-  margin: 0;
-  padding: 0;
-  font-size: 1.125em;
-  font-weight: 400;
-  text-align: left; }
-.enrollment .session .presenter:last-child {
+  text-align: center; }
+.enrollment .session .mods:last-child {
   margin-right: 0; }
 .enrollment .session .remaining {
   float: left;
@@ -529,13 +503,14 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   float: left;
   display: block;
   margin-right: 0%;
-  width: 18.75%;
+  width: 30%;
   color: #555;
   margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 500;
-  text-align: left; }
+  text-align: center;
+}
 .enrollment .session .time:last-child {
   margin-right: 0; }
 .enrollment .session .room-number {
@@ -568,13 +543,14 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   float: left;
   display: block;
   margin-right: 0%;
-  width: 31.25%;
+  width: 40%;
   color: #555;
   margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 500;
-  text-align: left; }
+  text-align: center;
+}
 .enrollment .session .name:last-child {
   margin-right: 0; }
 .enrollment .session:hover {
@@ -587,9 +563,9 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
 .enrollment .view-session .time, .enrollment .view-session .room-number {
   font-weight: 400; }
 .enrollment .view-session:hover {
-  background: #333; }
+  background: #7FFFD4; }
 .enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time, .enrollment .view-session:hover .room-number, .enrollment .view-session:hover .session-title, .enrollment .view-session:hover .name {
-  color: #fdfdfd; }
+  color: #555; }
 
 .session-selected {
   background-color: #f0c30f;
@@ -598,7 +574,7 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   -webkit-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   -moz-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66); }
-.session-selected .tag, .session-selected .company, .session-selected .position, .session-selected .presenter, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
+.session-selected .name, .session-selected .time, .session-selected .mods, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
   color: #fdfdfd !important; }
 .session-selected:hover {
   background-color: #f0c30f !important; }
@@ -739,7 +715,7 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   height: 100%;
   margin: 0;
   padding: 0 4.6875em;
-  background-color: rgba(240, 195, 15, 0.66); }
+  background-color: rgba(15, 204, 142, 0.66); }
 .view .view-signup:last-child {
   margin-right: 0; }
 .view .view-signup .vertical-center {

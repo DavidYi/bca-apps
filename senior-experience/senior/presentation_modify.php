@@ -18,6 +18,13 @@
                 window.parent.parent.location.href = 'index.php?action=delete_presentation&pres_id=' + presID;
             }
         }
+        function cancelPresentation()
+        {
+            if (confirm('Are you sure you would like to go back?'))
+            {
+                window.parent.parent.location.href = 'index.php';
+            }
+        }
     </script>
 
 </head>
@@ -81,7 +88,7 @@
         </div>
 
         <input type="submit" value="Modify" class="button" style="color:black">
-        <input type="submit" onclick="." value="Cancel" class="button" style="color:black">
+        <input type="submit" onClick="cancelPresentation();" value="Cancel" class="button" style="color:black">
         <input type="submit" value="Delete" class="button" onClick="deletePresentation(<?php echo $presentation->pres_id;; ?>);" style="color:black">
 
                 <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
@@ -112,5 +119,6 @@
             .dropdown()
         ;
         // $('#yoyo').val('0');
+
     </script>
 </body>
