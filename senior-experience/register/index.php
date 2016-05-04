@@ -36,8 +36,7 @@ echo $user .'<BR>';
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
 echo $start_date .'<BR>';
-
-echo $end_date;
+echo $end_date .'<BR>';
 
 date_default_timezone_set('America/New_York');
 $current_date = time();
@@ -78,7 +77,7 @@ if ($action == "register") {
         $presentation->addPresForUser($user['usr_id']);
         header("Location: ../itinerary/");
     }
-    // Test 
+    // Test
 }
 exit();
 
