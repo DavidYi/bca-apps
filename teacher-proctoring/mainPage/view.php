@@ -11,7 +11,7 @@
     <?php include_analytics(); ?>
 </head>
 <body>
-<section class="main view">
+<section class="main">
     <div class="view-main">
         <div class="login-status">
             <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name); ?></b></h3>
@@ -23,7 +23,7 @@
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
                 <h1>Register For Proctoring</h1>
 
-                <?php if ($startTime > $currentTime) { ?>
+                <!--<?php if ($startTime > $currentTime) { ?>
                     <h3> Registration <b>has not opened</b>!</h3>
                     <h3> Opens: <?php echo $startTimeFormatted ?> </h3>
 
@@ -40,7 +40,7 @@
                 <?php } else { ?>
                     <h3> Registration is <b>open</b>! </h3>
                     <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
-                <?php } ?>
+                <?php } ?>-->
 
                 <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
             <?php } else { ?>
@@ -74,11 +74,33 @@
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
+<script>
+    function register_for(pres_id) {
+        alert ("Hello");
+        $(location).attr('href', );
+    }
+</script>
 <script type="text/javascript">
     $('body').plusAnchor({
         easing: 'easeInOutExpo',
         speed:  700
     });
+
+    /*
+     function postRegister(postObject) {
+     $.post(
+     "/index.php",
+     {
+     "pres_id": postObject
+     },
+     function (data) {
+     data = $.parseJSON(data);
+     },
+     "json"
+     );
+     });
+     */
+
 </script>
 </body>
 </html>
