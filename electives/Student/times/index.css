@@ -56,7 +56,7 @@ th {
   border-right: 1px solid #343a45;
   font-size:23px;
   font-weight: 100;
-  padding: 34px;
+  padding:24px;
   text-align:left;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align:middle;
@@ -74,7 +74,7 @@ th:last-child {
 tr {
   border-top: 1px solid #C1C3D1;
   border-bottom: 1px solid #C1C3D1;
-  color:#666B85;
+  color:#FF0000;
   font-size:16px;
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
@@ -90,7 +90,7 @@ tr:last-child {
 }
 
 tr:nth-child(odd) td {
-  background:#EBEBEB;
+  background:#FFFFFF;
 }
 
 /*tr:nth-child(odd):hover td {
@@ -109,16 +109,15 @@ td:nth-child(odd):hover {
 }
 
 td:hover {
-  background: rgb(254,166,16) !important;
-  color: #FFFFFF;
+  background: #800080 !important;
+  color: #32CD32;
   /*border-top: 1px solid #22262E;
   border-bottom: 1px solid #22262E;*/
   /*rgb(254,166,16)*/
 }
 
 td:checked {
-  background: #E6E6FA;
-  color:#EEEEEE;
+  color:#32CD32;
   border-top: 1px solid #22262e;
   border-bottom: 1px solid #22262e;
 }
@@ -132,12 +131,12 @@ tr:last-child td:last-child {
 }
 
 td {
-  background:#FFFFFF;
+  background: #d3d3d3;
+  padding:20px;
   text-align:left;
   vertical-align:middle;
   font-weight:300;
   font-size:18px;
-  padding: 20px 0px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
 }
@@ -190,8 +189,4 @@ td.text-right {
   font-weight: bold;
   border-bottom: 2px solid #c6380d;
   cursor: pointer;
-}
-
-label {
-  padding: 20px 48px 20px 12px;
 }

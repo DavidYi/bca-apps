@@ -26,6 +26,7 @@
         </thead>
         <tbody class="table-hover">
 
+
         <tr>
             <td class="text-left"><label><input type="checkbox" class="mods" name="time[]" value="Monday 1-3">1-3</label></td>
             <td class="text-left"><label><input type="checkbox" class="mods" name="time[]" value="Tuesday 1-3">1-3</label></td>
@@ -62,7 +63,7 @@
         <tr>
             <td class="text-left"><label><input type="checkbox" class="mods" name="time[]" value="Monday 13-15">13-15</label></td>
             <td class="text-left"><label><input type="checkbox" class="mods" name="time[]" value="Tuesday 13-15">13-15</label></td>
-            <td class="text-left"><label><input type="checkbox" class="mods" name="time[]" value="Wednesday 13-15">13-15</label></td>
+            <td sclass="text-left"><label><input type="checkbox" class="mods" name="time[]" value="Wednesday 13-15">13-15</label></td>
             <td class="text-left"><label><input type="checkbox" class="mods" name="time[]" value="Thursday 13-15">13-15</label></td>
             <td class="text-left"><label><input type="checkbox" class="mods" name="time[]" value="Friday 13-15">13-15</label></td>
         </tr>
@@ -102,3 +103,4 @@
 
 
 </body>
+q
