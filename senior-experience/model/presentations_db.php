@@ -252,8 +252,8 @@ class SeniorPresentation {
     public static function getPresentation ($pres_id)
     {
         $query = 'select p.pres_id, p.ses_id, p.rm_id, p.field_id, pres_title, pres_desc, organization, location,
-  		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, get_presenters_comma_list (p.pres_id) presenters
-                from presentation p
+  		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, get_presenters_comma_list (p.pres_id) presenters, r.rm_nbr
+                from presentation p, room r
                 where p.pres_id = :pres_id';
 
         global $db;
@@ -302,10 +302,10 @@ class SeniorPresentation {
 
     public static function getPresentationByUserBySession ($usr_id, $ses_id)
     {
-        $query = 'select presentation.pres_id, ses_id, presentation.mentor_id, pres_enrolled_count, pres_paired_pres_id, pres_max_capacity
+        $query = 'select presentation.pres_id, ses_id, presentation.mentor_id, pres_enrolled_students, pres_paired_pres_id, pres_max_students
                   from presentation
-                  inner join mentor on presentation.mentor_id = mentor.mentor_id
-                  inner join pres_user_xref on presentation.pres_id = pres_user_xref.pres_id
+                  inner join mentors on presentation.mentor_id = mentors.mentor_id
+                  inner join user_presentation_xref on presentation.pres_id = user_presentation_xref.pres_id
                   where ses_id = :ses_id
                   and usr_id = :usr_id';
 
@@ -327,7 +327,7 @@ class SeniorPresentation {
 
     function has_space()
     {
-        if ($this->pres_max_capacity > $this->pres_enrolled_count)
+        if ($this->pres_max_students > $this->pres_enrolled_students)
             return true;
         else
             return false;

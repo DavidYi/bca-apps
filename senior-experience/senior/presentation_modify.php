@@ -27,62 +27,64 @@
 <body>
     <section class="add">
         <h1>Modify Presentation</h1>
-        <form action="index.php" method="post">
-        <input type="hidden" name="action" value="modify_presentation">
-        <input type="hidden" name="pres_id" value="<?php echo $presentation->pres_id ?>">
+        <form action="." method="post">
+            <input type="hidden" name="action" value="modify_presentation">
+            <input type="hidden" name="pres_id" value="<?php echo $presentation->pres_id ?>">
 
-        <div class="input input--add">
-            <input class="input-field add-field" type="text" name="title" id="title" required/>
-            <label class="input-label add-label" />
-            <div class="input__label-content input__label-content--add">Presentation Title</div>
-        </div>
+            <div class="input input--add">
+                <input class="input-field add-field" type="text" name="title" id="title" required/>
+                <label class="input-label add-label" />
+                <div class="input__label-content input__label-content--add">Presentation Title</div>
+            </div>
 
-        <div class="input input--add">
-            <input class="input-field add-field"type="text" name="desc" id="desc" required/>
-            <label class="input-label add-label" />
-            <div class="input__label-content input__label-content--add">Presentation Description</div>
-        </div>
+            <div class="input input--add">
+                <input class="input-field add-field"type="text" name="desc" id="desc" required/>
+                <label class="input-label add-label" />
+                <div class="input__label-content input__label-content--add">Presentation Description</div>
+            </div>
 
-        <div class="input input--add">
-            <input class="input-field add-field" type="text" name="organization" id="organization" required/>
-            <label class="input-label add-label" />
-            <div class="input__label-content input__label-content--add">Organization</div>
-        </div>
+            <div class="input input--add">
+                <input class="input-field add-field" type="text" name="organization" id="organization" required/>
+                <label class="input-label add-label" />
+                <div class="input__label-content input__label-content--add">Organization</div>
+            </div>
 
-        <div class="input input--add">
-            <input class="input-field add-field" type="text" name="location" id="location" required/>
-            <label class="input-label add-label" />
-            <div class="input__label-content input__label-content--add">Location</div>
-        </div>
+            <div class="input input--add">
+                <input class="input-field add-field" type="text" name="location" id="location" required/>
+                <label class="input-label add-label" />
+                <div class="input__label-content input__label-content--add">Location</div>
+            </div>
 
-         <div class="double">
-            <select class="input ui selection dropdown half-size" id="field_id">
+             <div class="double">
+                <select class="input ui selection dropdown half-size" id="field_id">
+                    <?php
+                    foreach ($fields as $field) {?>
+                        <option class="item" value="<?php echo $field['field_id'];?>"><?php echo($field['field_name']);  ?></option>
+                    <?php } ?>
+                </select>
+
+                <select class="input ui selection dropdown half-size" name="ses-room-number" id="ses-room-number">
+                    <?php
+                    foreach ($sessions as $session) {?>
+                        <option class="item" value="<?php echo $session['ses_id'];?>:<?php echo $session['rm_id'];?>">Ses: <?php echo($session['ses_id']);  ?>, Rm: <?php echo($session['rm_nbr']);?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <select class="input ui loading fluid multiple search selection dropdown team-member" id="team-member">
                 <?php
-                foreach ($fields as $field) {?>
-                    <option class="item" value="<?php echo $field['field_id'];?>"><?php echo($field['field_name']);  ?></option>
+                foreach ($teammates as $teammember) {?>
+                    <option class="item" value="<?php echo $teammember['usr_id'];?>"><?php echo($teammember['usr_first_name']);  ?> <?php echo($teammember['usr_last_name']);  ?></option>
                 <?php } ?>
             </select>
 
-            <select class="input ui selection dropdown half-size" name="ses-room-number" id="ses-room-number">
-                <?php
-                foreach ($sessions as $session) {?>
-                    <option class="item" value="<?php echo $session['ses_id'];?>:<?php echo $session['rm_id'];?>">Ses: <?php echo($session['ses_id']);  ?>, Rm: <?php echo($session['rm_nbr']);?></option>
-                <?php } ?>
-            </select>
         </div>
-
-        <select class="input ui loading fluid multiple search selection dropdown team-member" id="team-member">
-            <?php
-            foreach ($teammates as $teammember) {?>
-                <option class="item" value="<?php echo $teammember['usr_id'];?>"><?php echo($teammember['usr_first_name']);  ?> <?php echo($teammember['usr_last_name']);  ?></option>
-            <?php } ?>
-        </select>
 
         <input type="submit" value="Modify" class="button" style="color:black">
-        <input type="submit" onclick="window.history.back();" value="Cancel" class="button" style="color:black">
+        <input type="submit" onclick="." value="Cancel" class="button" style="color:black">
         <input type="submit" value="Delete" class="button" onClick="deletePresentation(<?php echo $presentation->pres_id;; ?>);" style="color:black">
 
-            <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
+                <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
         </form>
     </section>
     <!--JavaScript -->

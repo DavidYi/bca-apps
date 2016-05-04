@@ -51,17 +51,18 @@ switch ($action) {
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
         if ($pres->pres_id != $pres_id) {
-            display_user_message("You do not have permission to delete this presentation.", "./index.php");
+            display_user_message("You do not have permission to delete this presentation.\n"
+                . $pres_id . ":" . $pres->pres_id, "./index.php");
         }
 
-        echo ("Delete the presentation here.");
-        exit();
+        del_pres($pres_id);
+        $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
+        include "presentation_view.php";
         break;
-
-
 
     case 'modify_presentation':
         // Need to code
+        $choice = filter_input(INPUT_POST, 'choice');
         $pres_id = filter_input(INPUT_POST, 'pres_id');
         $pres_title = filter_input(INPUT_POST, 'pres_title');
         $pres_desc = filter_input(INPUT_POST, 'pres_desc');
@@ -72,22 +73,24 @@ switch ($action) {
         $ses_id = explode(":", filter_input(INPUT_POST, 'ses-room-number'))[0];
         $team_members = filter_input(INPUT_POST, 'team-members'). ',';
 
-        // Append the current user to the team list.
-        if (strlen($team_members) > 0) {
-            $team_members = $team_members . ',' . $user->usr_id;
+        if ($choice == 'Modify') {
+            // Append the current user to the team list.
+            if (strlen($team_members) > 0) {
+                $team_members = $team_members . ',' . $user->usr_id;
+            }
+            else {
+                $team_members = $user->usr_id;
+            }
+
+            $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
+
+            if ($pres->pres_id != $pres_id) {
+                display_user_message("You do not have permission to modify this presentation.");
+            }
+
+            mod_pres($pres->pres_id, $pres_title, $pres_desc, $organization, $location, $field_id, $team_members);
+
         }
-        else {
-            $team_members = $user->usr_id;
-        }
-
-        $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
-
-        if ($pres->pres_id != $pres_id) {
-            display_user_message("You do not have permission to modify this presentation.");
-        }
-
-        mod_pres($pres->pres_id, $pres_title, $pres_desc, $organization, $location, $field_id, $team_members);
-
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
         include "presentation_view.php";

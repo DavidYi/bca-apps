@@ -33,7 +33,10 @@ switch ($action) {
         break;
     case 'update_times':
         echo "update_times test ";
-        echo "REMINDER: I need to figure out how to take the button data from the previous page";
+
+        $testarr = $_POST['time'];
+        echo sizeof($testarr);
+
         include('./view.php');
         break;
     default:
