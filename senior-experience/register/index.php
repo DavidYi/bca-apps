@@ -74,7 +74,7 @@ if ($action == "register") {
 
     // All good -- add the presentation!
     else {
-        $presentation->addPresForUser($user['usr_id']);
+        $presentation->addPresForUser($user->usr_id);
         header("Location: ../itinerary/");
     }
     // Test
