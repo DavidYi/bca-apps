@@ -40,7 +40,7 @@ switch ($action) {
         echo "will make a logout page later";
         break;
     case 'update_times':
-        $timesarr = $_POST['time'];
+        $timesarr = $_POST['time']; /*This doesn't work if user doesn't choose anything, find a workaround */
 
         $timesString = "";
 
