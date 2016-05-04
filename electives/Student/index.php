@@ -34,8 +34,12 @@ switch ($action) {
     case 'update_times':
         echo "update_times test ";
 
-        $testarr = $_POST['time'];
-        echo sizeof($testarr);
+        $timesarr = $_POST['time'];
+        echo sizeof($timesarr);
+
+        for($i = 0; $i < sizeof($timesarr); $i++){
+            echo $timesarr[$i];
+        } /*Demonstrates that timesarr has the proper array of values*/
 
         include('./view.php');
         break;

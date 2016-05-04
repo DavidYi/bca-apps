@@ -304,7 +304,6 @@ class SeniorPresentation {
     {
         $query = 'select presentation.pres_id, ses_id, presentation.mentor_id, pres_enrolled_students, pres_paired_pres_id, pres_max_students
                   from presentation
-                  inner join mentors on presentation.mentor_id = mentors.mentor_id
                   inner join user_presentation_xref on presentation.pres_id = user_presentation_xref.pres_id
                   where ses_id = :ses_id
                   and usr_id = :usr_id';
@@ -334,8 +333,8 @@ class SeniorPresentation {
     }
 
     function insert_presentation_for_user($usr_id) {
-        $query = 'insert into pres_user_xref (pres_id, usr_id, pres_user_updt_usr_id)
-              VALUES (:pres_id, :usr_id, :pres_user_updt_usr_id)';
+        $query = 'insert into user_presentation_xref (pres_id, usr_id, presenting, user_pres_updt_id)
+              VALUES (:pres_id, :usr_id, 0, :pres_user_updt_usr_id)';
 
         global $db;
         $statement = $db->prepare($query);
@@ -347,8 +346,9 @@ class SeniorPresentation {
     }
 
     function delete_presentation_for_user ($usr_id) {
-        $query = 'delete from pres_user_xref
+        $query = 'delete from user_presentation_xref
                 where pres_id = :pres_id
+                and presenting = 0 
                 and usr_id = :usr_id';
 
         global $db;
@@ -367,17 +367,6 @@ class SeniorPresentation {
         // If the user has any existing presentations during the same session time, delete them.
         if ($existingPresentation != null) {
             $existingPresentation->delete_presentation_for_user($usr_id);
-
-            if ($existingPresentation->pres_paired_pres_id != null) {
-                $pairedExistingPresentation = Presentation::getPresentation($existingPresentation->pres_paired_pres_id);
-
-                // iterate through a change of presentation ids until we get back to where we started.
-                // for each one, delete the associated presentations
-                while ($pairedExistingPresentation->pres_id != $existingPresentation->pres_id) {
-                    $pairedExistingPresentation->delete_presentation_for_user($usr_id);
-                    $pairedExistingPresentation = Presentation::getPresentation($pairedExistingPresentation->pres_paired_pres_id);
-                }
-            }
         }
     }
 
@@ -392,21 +381,6 @@ class SeniorPresentation {
 
             // Inserts the new session for the user.
             $this->insert_presentation_for_user ($usr_id);
-
-            if ($this->pres_paired_pres_id != null) {
-                $pairedPresentation = Presentation::getPresentation($this->pres_paired_pres_id);
-
-                // iterate through a change of presentation ids until we get back to where we started.
-                while ($pairedPresentation->pres_id != $this->pres_id) {
-                    Presentation::deletePresentationsByUserBySession($usr_id, $pairedPresentation->ses_id);
-
-                    // Inserts the new session for the user.
-                    $pairedPresentation->insert_presentation_for_user($usr_id);
-
-                    // iterate down the chain of paired presentations.
-                    $pairedPresentation = Presentation::getPresentation($pairedPresentation->pres_paired_pres_id);
-                }
-            }
 
             // commit transaction
             $db->commit();
