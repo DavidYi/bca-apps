@@ -94,18 +94,21 @@ function del_pres($pres_id) {
         $db->beginTransaction();
 
         $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
         $statement->execute();
         $statement->closeCursor();
 
         $query2 = 'delete from presentation where pres_id = :pres_id';
 
         $statement = $db->prepare($query2);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
         $statement->execute();
         $statement->closeCursor();
 
         $query3 = 'delete from mentors where pres_id = :pres_id';
 
         $statement = $db->prepare($query3);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
         $statement->execute();
         $statement->closeCursor();
 
@@ -118,7 +121,7 @@ function del_pres($pres_id) {
         // log any errors to file
         log_pdo_exception ($e, $user->usr_id, "Deleting Presentation:" . $pres_id, "del_pres");
 
-        display_error("Error saving data.");
+        display_error($e);
         exit();
     }
 }

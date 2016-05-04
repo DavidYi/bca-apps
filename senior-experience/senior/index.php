@@ -47,7 +47,7 @@ switch ($action) {
         break;
 
     case 'delete_presentation':
-        $pres_id = filter_input(INPUT_POST, 'pres_id');
+        $pres_id = filter_input(INPUT_GET, 'pres_id');
         $pres = SeniorPresentation::getPresentationForSenior ($user->usr_id);
 
         if ($pres->pres_id != $pres_id) {
