@@ -46,17 +46,18 @@
             <?php foreach ($sessions as $session) { ?>
 
                 <?php if ($registrationOpen) {?>
-                    <a href="../register/index.php?session=<?php echo $session['ses_times']?>&action=register">
+                    <a href="../register/index.php?session=<?php echo $session['ses_id']?>&action=register">
                 <?php } ?>
 
                 <div class="session view-session" onclick="">
                     <div class="session-number"><?php echo $session['ses_times'] ?></div>
                     <div class="time"><?php echo $session['ses_start']?></div>
                     <?php if ($session['pres_id'] != NULL) { ?>
-                        <div class="room-number">RM <?php echo $session['rm_nbr'] ?></div>
-                        <div class="session-title"><?php echo $session['pres_title'] ?></div>
-                        <div class="name"><?php echo $session['presenters']?></div>
+                        <div class="room-number">RM <?php echo $session['rm_nbr'] ?>&nbsp</div>
+                        <div class="session-title"><?php echo $session['organization'] ?>&nbsp</div>
+                        <div class="name"><?php echo $session['presenter_names']?>&nbsp</div>
                     <?php } else {?>
+                        <div class="room-number">&nbsp</div>
                         <div class="session-title">Click to register</div>
                     <?php }?>
                 </div>

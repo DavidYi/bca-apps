@@ -30,7 +30,7 @@
             <main>
                 <div class="feature">
                     <h3>When I'm available: <a href="index.php?action=modify_times">Modify</a></h3>
-                    <p>There will be a list of available times here</p></div>
+                    <p><?php echo($timesString);?></p></div>
                 <div class="feature">
                     <h3>I want to take: <a href="index.php?action=modify_courses">Modify</a></h3>
                     <p>There will be a list of courses here</p></div>

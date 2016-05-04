@@ -11,7 +11,7 @@
     <?php include_analytics(); ?>
 </head>
 <body>
-<section class="main">
+<section class="main view">
     <div class="view-main">
         <div class="login-status">
             <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name); ?></b></h3>
@@ -22,26 +22,6 @@
         <div class="vertical-center">
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
                 <h1>Register For Proctoring</h1>
-
-                <!--<?php if ($startTime > $currentTime) { ?>
-                    <h3> Registration <b>has not opened</b>!</h3>
-                    <h3> Opens: <?php echo $startTimeFormatted ?> </h3>
-
-                <?php } elseif ($endTime < $currentTime) { ?>
-                    <h3> Registration has <b>ended</b>. </h3>
-                    <h3> If you did not finish registering, a session will be assigned to you. </h3>
-
-                <?php } elseif ($registration_complete) { ?>
-                    <h3> Registration <b>complete</b>! </h3>
-                    <h3> Feedback <a
-                            href="https://docs.google.com/forms/d/1nfzkqn2NB8m8OeQ_w3XwE2hNp3OK-k8bVtA6DZb300E/viewform">survey</a>
-                        about this site. </h3>
-
-                <?php } else { ?>
-                    <h3> Registration is <b>open</b>! </h3>
-                    <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
-                <?php } ?>-->
-
                 <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
             <?php } else { ?>
                 <h1>Mimic User Mode</h1>
@@ -49,23 +29,19 @@
         </div>
     </div>
     <div class="view-signup enrollment">
-        <div class="vertical-center">
-            <nav class="navbar">
-                <div class="session-filter tag">Test Name</div>
-                <div class="session-filter company">Room</div>
-                <div class="session-filter position">Time</div>
-                <div class="session-filter presenter">Mods</div>
-            </nav>
+
+        <div id="" style="overflow-y:scroll; height:500px; margin-top:45px">
             <?php foreach ($testList as $test) { ?>
-<!--comment-->
-                <div class="tag"><?php echo $test['test_name']?></div>
-                <div class="company"><?php echo $test['rm_id']?></div>
-                <div class="position"><?php echo $test['test_dt']?></div>
-                <div class="presenter"><?php echo $test['test_time_desc']?></div>
+                <div class="session view-session" onclick="">
+                    <?php if ($test['test_id'] != NULL) { ?>
+                        <div class="time"><?php echo $test['test_dt']?></div>
+                        <div class="mods"><?php echo $test['test_time_desc']?></div>
+                        <div class="name"><?php echo $test['test_name']?></div>
 
+                    <?php } ?>
+                    <!--comment-->
+                </div>
             <?php } ?>
-
-
 
         </div>
     </div>
@@ -74,33 +50,11 @@
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
-<script>
-    function register_for(pres_id) {
-        alert ("Hello");
-        $(location).attr('href', );
-    }
-</script>
 <script type="text/javascript">
     $('body').plusAnchor({
         easing: 'easeInOutExpo',
         speed:  700
     });
-
-    /*
-     function postRegister(postObject) {
-     $.post(
-     "/index.php",
-     {
-     "pres_id": postObject
-     },
-     function (data) {
-     data = $.parseJSON(data);
-     },
-     "json"
-     );
-     });
-     */
-
 </script>
 </body>
 </html>
