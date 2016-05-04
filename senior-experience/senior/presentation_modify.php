@@ -79,7 +79,7 @@
         </select>
 
         <input type="submit" value="Modify" class="button" style="color:black">
-        <input type="submit" value="Cancel" class="button" style="color:black">
+        <input type="submit" onclick="window.history.back();" value="Cancel" class="button" style="color:black">
         <input type="submit" value="Delete" class="button" onClick="deletePresentation(<?php echo $presentation->pres_id;; ?>);" style="color:black">
 
             <!-- <a href="index.php?" style="text-decoration: none; color: black"><button>Cancel</button></a> !-->
