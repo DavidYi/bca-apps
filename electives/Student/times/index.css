@@ -90,7 +90,7 @@ tr:last-child {
 }
 
 tr:nth-child(odd) td {
-  background:#ff0000;
+  background:#FF6347;
 }
 
 /*tr:nth-child(odd):hover td {
@@ -117,7 +117,7 @@ td:hover {
 }
 
 td:checked {
-  background: #00FF00;
+  background: #32CD32;
   color:#FFFFFF;
   border-top: 1px solid #22262e;
   border-bottom: 1px solid #22262e;
@@ -132,7 +132,7 @@ tr:last-child td:last-child {
 }
 
 td {
-  background: #ff0000;;
+  background: #FF6347;
   padding:20px;
   text-align:left;
   vertical-align:middle;
