@@ -4,7 +4,7 @@ require_once("../model/teacher_db.php");
 $testTypes = get_test_types();
 $rooms = get_rooms();
 
-include ("view.php");
+include("view.php");
 
 // function add_test($test_id, $test_type_cde, $rm_id, $test_name, $test_dt){
 //   $query = '';

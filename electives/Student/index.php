@@ -33,7 +33,14 @@ switch ($action) {
         break;
     case 'update_times':
         echo "update_times test ";
-        echo "REMINDER: I need to figure out how to take the button data from the previous page";
+
+        $timesarr = $_POST['time'];
+        echo sizeof($timesarr);
+
+        for($i = 0; $i < sizeof($timesarr); $i++){
+            echo $timesarr[$i];
+        } /*Demonstrates that timesarr has the proper array of values*/
+
         include('./view.php');
         break;
     default:
