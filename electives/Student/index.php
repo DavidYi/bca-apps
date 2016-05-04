@@ -33,7 +33,12 @@ switch ($action) {
         break;
     case 'update_times':
         echo "update_times test ";
-        echo "REMINDER: I need to figure out how to take the button data from the previous page";
+
+
+        $arr = filter_input_array(INPUT_POST, 'times[]');
+        echo sizeof($arr);
+
+
         include('./view.php');
         break;
     default:
@@ -42,3 +47,15 @@ switch ($action) {
         break;
 }
 ?>
+
+<!-- $checked = false;
+
+        $arr = POST[$time[]'
+        for (int $i
+        arr[i]
+
+
+
+        for($i = 0; $i < sizeof($arr); $i++){
+            echo $arr[$i]->getValue();
+        }-->
