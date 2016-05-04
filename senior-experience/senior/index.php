@@ -5,9 +5,9 @@ require_once('../util/main.php');
 require('../model/senior_db.php');
 require('../model/presentations_db.php');
 
-if(!isSeniortime()){
+/* if(!isSeniortime()){
     header("Location: ../itinerary");
-}
+} */
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
