@@ -42,11 +42,11 @@ $startTimeFormatted = date('M d, g:i  a', $startTime);
 $endTimeFormatted = date('M d, g:i  a', $endTime);
 
 $registrationOpen = true;
-/* if (($currentTime > $startTime) and ($currentTime < $endTime))
+if (($currentTime > $startTime) and ($currentTime < $endTime))
     $registrationOpen = true;
 else
     $registrationOpen = false;
-*/
+
 
 include ("view.php");
 exit(); ?>

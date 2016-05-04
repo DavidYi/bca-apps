@@ -52,10 +52,10 @@
         <?php foreach ($presentations as $presentation) {
             if ($id != $presentation['pres_id']) {?>
                 <a href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"> <div class="session">
-                        <div class="tag"><?php echo $presentation['field_name']?></div>
-                        <div class="company"><?php echo $presentation['pres_title']?></div>
-                        <div class="position"><?php echo $presentation['organization']?></div>
-                        <div class="presenter"><?php echo ($presentation['presenter_names'])?></div>
+                        <div class="tag"><?php echo $presentation['field_name']?>&nbsp</div>
+                        <div class="company"><?php echo $presentation['pres_title']?>&nbsp</div>
+                        <div class="position"><?php echo $presentation['organization']?>&nbsp</div>
+                        <div class="presenter"><?php echo ($presentation['presenter_names'])?>&nbsp</div>
                         <div class="remaining"><?php echo ($presentation['pres_max_students'] - $presentation['pres_enrolled_students'])?></div>
                     </div> </a>
             <?php } } ?>
@@ -64,12 +64,6 @@
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
-<script>
-    function register_for(pres_id) {
-        alert ("Hello");
-        $(location).attr('href', );
-    }
-</script>
 <script type="text/javascript">
     $('body').plusAnchor({
         easing: 'easeInOutExpo',
