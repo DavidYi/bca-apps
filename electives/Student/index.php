@@ -35,7 +35,8 @@ switch ($action) {
         echo "update_times test ";
 
 
-        $arr = filter_input_array(INPUT_POST, 'times[]');
+        $arr = filter_input_array(INPUT_POST, 'times[]'); /*giving a boolean for some reason*/
+        $arr = array_column($arr, 'value');
         echo sizeof($arr);
 
 
@@ -47,15 +48,3 @@ switch ($action) {
         break;
 }
 ?>
-
-<!-- $checked = false;
-
-        $arr = POST[$time[]'
-        for (int $i
-        arr[i]
-
-
-
-        for($i = 0; $i < sizeof($arr); $i++){
-            echo $arr[$i]->getValue();
-        }-->
