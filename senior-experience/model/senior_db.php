@@ -79,7 +79,49 @@ function mod_pres($pres_id, $pres_title, $pres_desc, $organization, $location, $
         // log any errors to file
         log_pdo_exception ($e, $user->usr_id, "Updating Presentation:" . $pres_id, "mod_pres");
 
-        display_error("Error saving data.");
+        display_error($e);
+        exit();
+    }
+}
+
+function del_pres($pres_id) {
+    global $db;
+    global $user;
+
+    $query = 'delete from user_presentation_xref where pres_id = :pres_id';
+
+    try {
+        $db->beginTransaction();
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $query2 = 'delete from presentation where pres_id = :pres_id';
+
+        $statement = $db->prepare($query2);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $query3 = 'delete from mentors where pres_id = :pres_id';
+
+        $statement = $db->prepare($query3);
+        $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $db->commit();
+    } // any errors from the above database queries will be catched
+    catch (PDOException $e) {
+        // roll back transaction
+        $db->rollback();
+
+        // log any errors to file
+        log_pdo_exception ($e, $user->usr_id, "Deleting Presentation:" . $pres_id, "del_pres");
+
+        display_error($e);
         exit();
     }
 }

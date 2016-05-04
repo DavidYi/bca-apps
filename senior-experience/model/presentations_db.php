@@ -70,13 +70,13 @@ function get_session_times_by_id($ses_id) {
 }
 
 function get_presentation_list($ses_id, $sort_by, $order_by) {
-    $query = 	'SELECT presentation.pres_id, pres_title, pres_desc, organization, location, rm_nbr, field_name,
+    $query = 	'SELECT presentation.pres_id, pres_title, pres_desc, organization, location, rm_id, field_name,
                     pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
 					pres_max_students - presentation.pres_enrolled_students as remaining
-				FROM mentor
+				FROM presentation, field
 				WHERE presentation.ses_id = :ses_id
-				AND mentor.active =1
-				AND presentation.pres_enrolled_count < mentor.pres_max_capacity ';
+				AND presentation.field_id = field.field_id
+				AND presentation.pres_enrolled_students < presentation.pres_max_students ';
 
     if ($sort_by == 1) $query .= ('ORDER BY field_name');
     else if ($sort_by == 2) $query .= ('ORDER BY pres_title');
@@ -85,7 +85,7 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
     else if ($sort_by == 5) $query .= ('ORDER BY remaining');
     else $query .= ('ORDER BY field_name');
     if ($order_by == 2) $query.= (' DESC');
-    else $query.= ('ASC');
+    else $query.= (' ASC');
 
     global $db;
 
@@ -103,13 +103,13 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
 }
 
 function get_presentation_by_user($usr_id, $ses_id) {
-    $query = 'SELECT presentation.pres_id, rm_id, presenter_names,
-                organization, location, pres_title, room.rm_nbr, rm_id
-              FROM pres_user_xref
-              INNER JOIN presentation on presentation.pres_id = pres_user_xref.pres_id
-              INNER JOIN room on presentation.rm_id = room.rm_id
+    $query = 'SELECT presentation.pres_id, presentation.rm_id,
+                organization, location, pres_title, room.rm_nbr, room.rm_id, get_presenters_comma_list (presentation.pres_id) presenters
+              FROM presentation, room, user_presentation_xref
               WHERE ses_id = :ses_id
-              AND usr_id = :usr_id';
+              AND usr_id = :usr_id
+              AND presentation.pres_id = user_presentation_xref.pres_id
+              AND presentation.rm_id = room.rm_id';
 
     global $db;
 
@@ -252,8 +252,8 @@ class SeniorPresentation {
     public static function getPresentation ($pres_id)
     {
         $query = 'select p.pres_id, p.ses_id, p.rm_id, p.field_id, pres_title, pres_desc, organization, location,
-  		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, get_presenters_comma_list (p.pres_id) presenters
-                from presentation p
+  		        pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, get_presenters_comma_list (p.pres_id) presenters, r.rm_nbr
+                from presentation p, room r
                 where p.pres_id = :pres_id';
 
         global $db;
@@ -302,10 +302,9 @@ class SeniorPresentation {
 
     public static function getPresentationByUserBySession ($usr_id, $ses_id)
     {
-        $query = 'select presentation.pres_id, ses_id, presentation.mentor_id, pres_enrolled_count, pres_paired_pres_id, pres_max_capacity
+        $query = 'select presentation.pres_id, ses_id, presentation.mentor_id, pres_enrolled_students, pres_paired_pres_id, pres_max_students
                   from presentation
-                  inner join mentor on presentation.mentor_id = mentor.mentor_id
-                  inner join pres_user_xref on presentation.pres_id = pres_user_xref.pres_id
+                  inner join user_presentation_xref on presentation.pres_id = user_presentation_xref.pres_id
                   where ses_id = :ses_id
                   and usr_id = :usr_id';
 
@@ -327,15 +326,15 @@ class SeniorPresentation {
 
     function has_space()
     {
-        if ($this->pres_max_capacity > $this->pres_enrolled_count)
+        if ($this->pres_max_students > $this->pres_enrolled_students)
             return true;
         else
             return false;
     }
 
     function insert_presentation_for_user($usr_id) {
-        $query = 'insert into pres_user_xref (pres_id, usr_id, pres_user_updt_usr_id)
-              VALUES (:pres_id, :usr_id, :pres_user_updt_usr_id)';
+        $query = 'insert into user_presentation_xref (pres_id, usr_id, presenting, user_pres_updt_id)
+              VALUES (:pres_id, :usr_id, 0, :pres_user_updt_usr_id)';
 
         global $db;
         $statement = $db->prepare($query);
@@ -347,8 +346,9 @@ class SeniorPresentation {
     }
 
     function delete_presentation_for_user ($usr_id) {
-        $query = 'delete from pres_user_xref
+        $query = 'delete from user_presentation_xref
                 where pres_id = :pres_id
+                and presenting = 0 
                 and usr_id = :usr_id';
 
         global $db;
@@ -367,17 +367,6 @@ class SeniorPresentation {
         // If the user has any existing presentations during the same session time, delete them.
         if ($existingPresentation != null) {
             $existingPresentation->delete_presentation_for_user($usr_id);
-
-            if ($existingPresentation->pres_paired_pres_id != null) {
-                $pairedExistingPresentation = Presentation::getPresentation($existingPresentation->pres_paired_pres_id);
-
-                // iterate through a change of presentation ids until we get back to where we started.
-                // for each one, delete the associated presentations
-                while ($pairedExistingPresentation->pres_id != $existingPresentation->pres_id) {
-                    $pairedExistingPresentation->delete_presentation_for_user($usr_id);
-                    $pairedExistingPresentation = Presentation::getPresentation($pairedExistingPresentation->pres_paired_pres_id);
-                }
-            }
         }
     }
 
@@ -392,21 +381,6 @@ class SeniorPresentation {
 
             // Inserts the new session for the user.
             $this->insert_presentation_for_user ($usr_id);
-
-            if ($this->pres_paired_pres_id != null) {
-                $pairedPresentation = Presentation::getPresentation($this->pres_paired_pres_id);
-
-                // iterate through a change of presentation ids until we get back to where we started.
-                while ($pairedPresentation->pres_id != $this->pres_id) {
-                    Presentation::deletePresentationsByUserBySession($usr_id, $pairedPresentation->ses_id);
-
-                    // Inserts the new session for the user.
-                    $pairedPresentation->insert_presentation_for_user($usr_id);
-
-                    // iterate down the chain of paired presentations.
-                    $pairedPresentation = Presentation::getPresentation($pairedPresentation->pres_paired_pres_id);
-                }
-            }
 
             // commit transaction
             $db->commit();
