@@ -49,7 +49,7 @@ switch ($action) {
             if($i + 1 != sizeof($timesarr)){
                 $timesString .= ", ";
             }
-            else $timesString .= ".";
+            else $timesSTring .= ".";
         }
 ?>
         <form timesString=<?php echo $timesString?> method="POST">
