@@ -70,13 +70,13 @@ function get_session_times_by_id($ses_id) {
 }
 
 function get_presentation_list($ses_id, $sort_by, $order_by) {
-    $query = 	'SELECT presentation.pres_id, pres_title, pres_desc, organization, location, rm_nbr, field_name,
+    $query = 	'SELECT presentation.pres_id, pres_title, pres_desc, organization, location, rm_id, field_name,
                     pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
 					pres_max_students - presentation.pres_enrolled_students as remaining
-				FROM mentor
+				FROM presentation, field
 				WHERE presentation.ses_id = :ses_id
-				AND mentor.active =1
-				AND presentation.pres_enrolled_count < mentor.pres_max_capacity ';
+				AND presentation.field_id = field.field_id
+				AND presentation.pres_enrolled_students < presentation.pres_max_students ';
 
     if ($sort_by == 1) $query .= ('ORDER BY field_name');
     else if ($sort_by == 2) $query .= ('ORDER BY pres_title');
@@ -85,7 +85,7 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
     else if ($sort_by == 5) $query .= ('ORDER BY remaining');
     else $query .= ('ORDER BY field_name');
     if ($order_by == 2) $query.= (' DESC');
-    else $query.= ('ASC');
+    else $query.= (' ASC');
 
     global $db;
 
@@ -103,13 +103,13 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
 }
 
 function get_presentation_by_user($usr_id, $ses_id) {
-    $query = 'SELECT presentation.pres_id, rm_id, presenter_names,
-                organization, location, pres_title, room.rm_nbr, rm_id
-              FROM pres_user_xref
-              INNER JOIN presentation on presentation.pres_id = pres_user_xref.pres_id
-              INNER JOIN room on presentation.rm_id = room.rm_id
+    $query = 'SELECT presentation.pres_id, presentation.rm_id,
+                organization, location, pres_title, room.rm_nbr, room.rm_id, get_presenters_comma_list (presentation.pres_id) presenters
+              FROM presentation, room, user_presentation_xref
               WHERE ses_id = :ses_id
-              AND usr_id = :usr_id';
+              AND usr_id = :usr_id
+              AND presentation.pres_id = user_presentation_xref.pres_id
+              AND presentation.rm_id = room.rm_id';
 
     global $db;
 

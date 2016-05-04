@@ -8,15 +8,15 @@
 require_once('../util/main.php');
 require_once("../../shared/model/user_db.php");
 require_once('../model/presentations_db.php');
+require_once('../model/signups_db.php');
 
-$user = get_user($_SESSION['usr_id'], 'CAR');
 $currentSession = filter_input(INPUT_GET, 'session');
 if ($currentSession < 1 || $currentSession > 4) {
     $currentSession = 1;
 }
 $sort_by = filter_input(INPUT_GET, "sort");
 
-$pres_enrolled = get_presentation_by_user($user['usr_id'], $currentSession);
+$pres_enrolled = get_presentation_by_user($user->usr_id, $currentSession);
 $is_enrolled = FALSE;
 
 if ($pres_enrolled != NULL) {
@@ -28,9 +28,16 @@ if ($sort_order == NULL) {
     $sort_order = 1;
 }
 
-$signup_dates = get_signup_dates_by_class_year($user['usr_class_year']);
+$signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
+
+echo $user .'<BR>';
+
+
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
+echo $start_date .'<BR>';
+echo $current_date.'<BR>';
+echo $end_date;
 
 date_default_timezone_set('America/New_York');
 $current_date = time();
@@ -40,21 +47,21 @@ $id = 0;
 $register_id = 0;
 $is_changing = $is_enrolled;
 if ($action == "register") {
-    if (!($current_date < $start_date || $current_date > $end_date)) {
+    //if (!($current_date < $start_date || $current_date > $end_date)) {
         $presentations = get_presentation_list($currentSession, $sort_by, $sort_order);
         include("view.php");
-    } else {
-        display_error("It's not time to enroll yet");
-    }
+    //} else {
+        //display_error("It's not time to enroll yet");
+    //}
 }  else if ($action == "commit") {
     $pres_id = filter_input(INPUT_GET, 'pres_id');
-    $presentation = Presentation::getPresentation($pres_id);
+    $presentation = SeniorPresentation::getPresentation($pres_id);
 
     // Error -- not time to sign up.
     if ($current_date < $start_date) {
         display_error("It is not time to enroll yet. It starts at " . date_format($start_date,'g:ia \o\n l jS F Y') . ".");
         exit();
-    } else if ($current_date > $end_date){
+    } else if ($current_date > $end_date) {
         display_error("Sign up has ended.");
         exit();
     }
@@ -70,6 +77,7 @@ if ($action == "register") {
         $presentation->addPresForUser($user['usr_id']);
         header("Location: ../itinerary/");
     }
+    // Test 
 }
 exit();
 
