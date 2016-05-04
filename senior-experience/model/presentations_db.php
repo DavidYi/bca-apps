@@ -344,7 +344,7 @@ class SeniorPresentation {
         $statement->execute();
         $statement->closeCursor();
     }
-
+//hi
     function delete_presentation_for_user ($usr_id) {
         $query = 'delete from user_presentation_xref
                 where pres_id = :pres_id
