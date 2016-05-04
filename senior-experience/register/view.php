@@ -27,8 +27,7 @@
 
     <nav class="navbar">
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>"><div class="session-filter tag">Field</div></a>
-        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=4&order=<?php if ($sort_order == 1 && $sort_by == 4) { echo 2; } else { echo 1; } ?>"><div class="session-filter title">Title</div></a>
-        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=2&order=<?php if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>"><div class="session-filter organization">Organization</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=2&order=<?php if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>"><div class="session-filter position">Organization</div></a>
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=3&order=<?php if ($sort_order == 1 && $sort_by == 3) { echo 2; } else { echo 1; } ?>"><div class="session-filter presenter">Presenters</div></a>
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=5&order=<?php if ($sort_order == 1 && $sort_by == 5) { echo 2; } else { echo 1; } ?>"><div class="session-filter remaining">Remaining</div></a>
     </nav>
@@ -42,7 +41,6 @@
 
                 <div class="session session-selected">
                     <div class="tag"><?php echo $presentation['field_name']?></div>
-                    <div class="company"><?php echo $presentation['pres_title']?></div>
                     <div class="position"><?php echo $presentation['organization']?></div>
                     <div class="presenter"><?php echo ($presentation['presenter_names'])?></div>
                     <div class="remaining"><?php echo ($presentation['pres_max_students'] - $presentation['pres_enrolled_students'])?></div>
@@ -51,9 +49,9 @@
         <?php } ?>
         <?php foreach ($presentations as $presentation) {
             if ($id != $presentation['pres_id']) {?>
-                <a href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"> <div class="session">
+                <a href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"> 
+                    <div class="session">
                         <div class="tag"><?php echo $presentation['field_name']?>&nbsp</div>
-                        <div class="company"><?php echo $presentation['pres_title']?>&nbsp</div>
                         <div class="position"><?php echo $presentation['organization']?>&nbsp</div>
                         <div class="presenter"><?php echo ($presentation['presenter_names'])?>&nbsp</div>
                         <div class="remaining"><?php echo ($presentation['pres_max_students'] - $presentation['pres_enrolled_students'])?></div>

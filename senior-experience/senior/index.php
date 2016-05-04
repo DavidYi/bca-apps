@@ -5,9 +5,9 @@ require_once('../util/main.php');
 require('../model/senior_db.php');
 require('../model/presentations_db.php');
 
-/* if(!isSeniortime()){
+if(!isSeniortime()){
     header("Location: ../itinerary");
-} */
+}
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
@@ -39,7 +39,7 @@ switch ($action) {
 
     case 'show_modify_presentation':
         $presentation = SeniorPresentation::getPresentationForSenior($user->usr_id);
-        $presenter_ids = get_presenter_ids($presentation->pres_id);
+        $presenter_ids = get_presenter_teammate_ids($presentation->pres_id);
         $fields = get_field_list();
         $sessions = get_session_room_pairs_plus_presentation($presentation->pres_id);
         $teammates = get_potential_teammates_plus_presentation($presentation->pres_id);

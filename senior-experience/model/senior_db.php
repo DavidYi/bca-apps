@@ -222,18 +222,21 @@ function get_potential_teammates_plus_presentation($pres_id){
     }
 }
 
-function get_presenter_ids($pres_id) {
+function get_presenter_teammate_ids($pres_id) {
     $query = "select GROUP_CONCAT( concat ('\'', usr_id, '\'') SEPARATOR ', ') as ids
             from user_presentation_xref
             where pres_id = :pres_id
             and presenting = 1
+            and usr_id != :usr_id
             group by pres_id";
     
     global $db;
+    global $user;
     
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':pres_id', $pres_id, PDO::PARAM_INT);
+        $statement->bindValue(':usr_id', $user->usr_id, PDO::PARAM_INT);
         $statement->execute();
         $result = $statement->fetch()['ids'];
         $statement->closeCursor();
