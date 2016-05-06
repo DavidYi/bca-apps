@@ -13,8 +13,8 @@
 //});
 
 //??
-function popup() {
-    $('.popup-bg, .popup').css('display', 'block');
+function popup(str) {
+    $(str).css('display', 'block');
 }
 
 //    $('.close').click(function() {
