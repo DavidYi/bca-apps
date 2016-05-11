@@ -55,6 +55,8 @@ switch ($action) {
                 else $timesString .= ".";
             }
         }
+
+        echo(get_usr_id("Sarah", "Abdelaziz"));
 ?>
         <form timesString=<?php echo $timesString?> method="POST">
         </form>
