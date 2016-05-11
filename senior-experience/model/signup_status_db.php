@@ -1,6 +1,7 @@
 <?php
 
 function get_registered_users(){
+
     $query = 'SELECT completed.grade_lvl, completed.num AS Complete, partial.num AS Partial, none.num AS None
     FROM
     (SELECT grade_lvl, sum(num) AS num
