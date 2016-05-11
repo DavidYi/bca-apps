@@ -793,7 +793,7 @@ div#parents:before {
     height: 100%;
 }
 
-div#inputs {
+form#inputs {
     display: inline-block;
     vertical-align: middle;
     margin: auto;
@@ -845,7 +845,7 @@ input.modinput {
 }
 
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding: 10px 0px;border:none;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding: 4px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;text-align: right;}
+.tg th, .tg td{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding: 7px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;text-align: right;}
 .tg .tg-yw4l{vertical-align:top}
 
 label {
@@ -901,4 +901,33 @@ body {
 .trash {
     height: 50%;
     width: 50%;
+}
+
+.ui.label {
+    background-color: #ECECE9;
+}
+
+.ui.input input:focus, .ui.input.focus input {
+    border-color: #F3EB9A;
+    border-left-color: #F3EB9A !important;
+}
+
+input.modinput, .ui.label {
+    border-radius: 0 !important;
+}
+
+@media only screen and (min-width: 595px) and (max-width: 654px) {
+    form#inputs {
+        padding: 30px;
+    }
+}
+
+@media only screen and (max-width: 595px) {
+    .ui.input {
+        width: 110px !important;
+    }
+
+    form#inputs {
+        padding: 10px;
+    }
 }
