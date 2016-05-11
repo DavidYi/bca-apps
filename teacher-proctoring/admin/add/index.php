@@ -1,6 +1,6 @@
 <?php
-require_once("../util/main.php");
-require_once("../model/teacher_db.php");
+require_once("../../util/main.php");
+require_once("../../model/teacher_db.php");
 $testTypes = get_test_types();
 $rooms = get_rooms();
 
