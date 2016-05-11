@@ -25,6 +25,14 @@
             <option value="Thursday">Thursday</option>
             <option value="Friday">Friday</option>
         </select> <br><br>
+        Day 2 (Optional): <select name="day2">
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+        </select>
+        <br><br>
         <label>Description: </label><br><br><textarea name="description"></textarea><br><br>
         <input type="submit" name="choice" value="Add Course">
         <input type="submit" name="choice" value="Cancel">

@@ -10,6 +10,8 @@ require_once("../../shared/model/user_db.php");
 require_once('../model/presentations_db.php');
 require_once('../model/signups_db.php');
 
+verify_logged_in();
+
 $currentSession = filter_input(INPUT_GET, 'session');
 if ($currentSession < 1 || $currentSession > 4) {
     $currentSession = 1;

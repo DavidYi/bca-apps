@@ -21,35 +21,38 @@
                 </a></h3>
         </div>
         <div class="vertical-center">
-            <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
+
+            <?php /*if (!isset($_SESSION['prev_usr_id'])) { */?><!--
                 <h1>Register For Proctoring</h1>
                 <<<<<<< HEAD
 
-                <?php if ($startTime > $currentTime) { ?>
+                <?php /*if ($startTime > $currentTime) { */?>
                     <h3> Registration <b>has not opened</b>!</h3>
-                    <h3> Opens: <?php echo $startTimeFormatted ?> </h3>
+                    <h3> Opens: <?php /*echo $startTimeFormatted */?> </h3>
 
-                <?php } elseif ($endTime < $currentTime) { ?>
+                <?php /*} elseif ($endTime < $currentTime) { */?>
                     <h3> Registration has <b>ended</b>. </h3>
                     <h3> If you did not finish registering, a session will be assigned to you. </h3>
 
-                <?php } elseif ($registration_complete) { ?>
+                <?php /*} elseif ($registration_complete) { */?>
                     <h3> Registration <b>complete</b>! </h3>
                     <h3> Feedback <a
                             href="https://docs.google.com/forms/d/1nfzkqn2NB8m8OeQ_w3XwE2hNp3OK-k8bVtA6DZb300E/viewform">survey</a>
                         about this site. </h3>
 
-                <?php } else { ?>
+                <?php /*} else { */?>
                     <h3> Registration is <b>open</b>! </h3>
-                    <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
-                <?php } ?>
+                    <h3> Closes: <?php /*echo $endTimeFormatted */?> </h3>
+                <?php /*} */?>
                 <a href="../add/index.php">Add test</a>
                 =======
                 >>>>>>> 9ded0a9ca9b5f73d4014c82581e677ef6dc7323f
                 <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
-            <?php } else { ?>
+            <?php /*} else { */?>
                 <h1>Mimic User Mode</h1>
-            <?php } ?>
+            --><?php /*} */?>
+
+
         </div>
     </div>
     <div class="view-signup enrollment">
