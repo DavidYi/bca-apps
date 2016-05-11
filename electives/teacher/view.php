@@ -44,22 +44,24 @@
         <div class="vertical-center">
             <h3><b>Courses</b> | <a href="teacher_add_course/index.php">Add Class</a></h3>
 
-            <?php foreach ($courses as $course) :
-                $courseName = $course['course_name'];
-                $courseDesc = $course['course_desc'];
-                ?>
-                <table style="width:75%">
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td><?php echo $courseName ?></td>
-                        <td><?php echo $courseDesc ?></td>
-                    </tr>
-                </table>
+            <table style="width:75%">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <?php foreach ($courses as $course) :
+                    $courseName = $course['course_name'];
+                    $courseDesc = $course['course_desc'];
+                    ?>
 
-            <?php endforeach; ?>
+
+                        <tr>
+                            <td><?php echo $courseName ?></td>
+                            <td><?php echo $courseDesc ?></td>
+                        </tr>
+
+                <?php endforeach; ?>
+            </table>
         </div>
     </div>
 </section>
