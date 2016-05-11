@@ -16,19 +16,10 @@
         $(document).ready(function () {
             $('input[type="radio"]').click(function () {
                 if ($(this).attr("value") == "s") {
-                    $(".mentor").show();
-                    $(".session").show();
                     $("input[name='action']").val('generates')
                 }
                 if ($(this).attr("value") == "r") {
-                    $(".mentor").show();
-                    $(".session").hide();
                     $("input[name='action']").val('generater')
-                }
-                if ($(this).attr("value") == "t") {
-                    $(".mentor").hide();
-                    $(".session").hide();
-                    $("input[name='action']").val('generatet')
                 }
             });
         });
@@ -55,15 +46,6 @@
             </li>
 
             <li>
-                <input type="radio" name="choice" value="t" class="choice" id="mc">
-                <label class="title" for="mc">Mentor Check In </label>
-
-                <div class="check">
-                    <div class="inside"></div>
-                </div>
-            </li>
-
-            <li>
                 <input type="radio" name="choice" value="r" class="choice" id="rc">
                 <label class="title" for="rc">Room Signs </label>
 
@@ -72,48 +54,6 @@
                 </div>
             </li>
         </ul>
-    </div>
-
-
-    <div class="mentor select">
-        <br>
-        <label>Mentor:</label>
-        <select name="mentor" class="red">
-            <option value="All" selected="selected">All Mentors</option>
-            <?php foreach ($mentors as $mentor) :
-                if (($mentor['mentor_id'] == $mentor_id)) {
-                    $selected = 'selected';
-                } else {
-                    $selected = '';
-                }
-                ?>
-                <option value="<?php echo $mentor['mentor_id']; ?>"<?php
-                echo $selected ?>>
-                    <?php echo htmlspecialchars($mentor['mentor_last_name']) ?>, <?php
-                    echo htmlspecialchars($mentor['mentor_first_name']); ?> (<?php echo
-                    htmlspecialchars($mentor['mentor_company']) ?>)
-                </option>
-            <?php endforeach; ?>
-        </select>
-    </div>
-    <div class="session select">
-        <br>
-        <label>Session:</label>
-        <select name="session" class="purple">
-            <option value="All" selected="selected">All Sessions</option>
-            <?php foreach ($sessions as $session) :
-                if ($session['ses_id'] == $session_id) {
-                    $selected = 'selected';
-                } else {
-                    $selected = '';
-                }
-                ?>
-                <option value="<?php echo $session['ses_id']; ?>"<?php
-                echo $selected ?>>
-                    <?php echo htmlspecialchars($session['ses_name']); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
     </div>
 
     <br>

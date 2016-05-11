@@ -90,6 +90,7 @@ switch($action) {
         break;
     case "mentor_download":
         $student_list = mentor_download();
+
         $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="mentor.csv";');
@@ -102,7 +103,7 @@ switch($action) {
         fclose($output) or die("Can't close file");
         exit();
         break;
-
+    
     default:
         display_error("Invalid action: " . $action);
         break;

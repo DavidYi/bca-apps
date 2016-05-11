@@ -9,7 +9,7 @@
 
 <html lang="en">
 <head>
-    <title>Senior Experience Registration</title>
+    <title>Senior Expositions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
@@ -17,7 +17,7 @@
     <link href="/<?php echo $app_url_path ?>/ss/main.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <?php include_analytics(); ?>
+    <?php // include_analytics(); ?>
 </head>
 <body>
 <section class="main">
@@ -29,7 +29,12 @@
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>"><div class="session-filter tag">Field</div></a>
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=2&order=<?php if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>"><div class="session-filter position">Organization</div></a>
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=3&order=<?php if ($sort_order == 1 && $sort_by == 3) { echo 2; } else { echo 1; } ?>"><div class="session-filter presenter">Presenters</div></a>
-        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=5&order=<?php if ($sort_order == 1 && $sort_by == 5) { echo 2; } else { echo 1; } ?>"><div class="session-filter remaining">Seats</div></a>
+
+        <?php if ($user->usr_type_cde == 'TCH') { ?>
+            <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=4&order=<?php if ($sort_order == 1 && $sort_by == 4) { echo 2; } else { echo 1; } ?>"><div class="session-filter remaining">Room</div></a>
+        <?php } else { ?>
+            <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=5&order=<?php if ($sort_order == 1 && $sort_by == 5) { echo 2; } else { echo 1; } ?>"><div class="session-filter remaining">Seats</div></a>
+        <?php } ?>
     </nav>
 
     <div class="enrollment">
@@ -43,7 +48,13 @@
                     <div class="tag"><?php echo $presentation['field_name']?></div>
                     <div class="position"><?php echo $presentation['organization']?></div>
                     <div class="presenter"><?php echo ($presentation['presenter_names'])?></div>
-                    <div class="remaining"><?php echo ($presentation['pres_max_students'] - $presentation['pres_enrolled_students'])?></div>
+
+                    <?php if ($user->usr_type_cde == 'TCH') { ?>
+                        <div class="remaining"><?php echo ($presentation['rm_nbr']);?> </div>
+                    <?php } else { ?>
+                        <div class="remaining"><?php echo ($presentation['pres_max_students'] - $presentation['pres_enrolled_students'])?></div>
+                    <?php } ?>
+
                 </div>
             </a>
         <?php } ?>
@@ -54,7 +65,14 @@
                         <div class="tag"><?php echo $presentation['field_name']?>&nbsp</div>
                         <div class="position"><?php echo $presentation['organization']?>&nbsp</div>
                         <div class="presenter"><?php echo ($presentation['presenter_names'])?>&nbsp</div>
-                        <div class="remaining"><?php echo ($presentation['pres_max_students'] - $presentation['pres_enrolled_students'])?></div>
+
+                        <?php if ($user->usr_type_cde == 'TCH') { ?>
+                            <div class="remaining"><?php echo ($presentation['rm_nbr']);?> </div>
+                        <?php } else { ?>
+                            <div class="remaining"><?php echo ($presentation['pres_max_students'] - $presentation['pres_enrolled_students'])?></div>
+                        <?php } ?>
+
+
                     </div> </a>
             <?php } } ?>
     </div>
