@@ -11,7 +11,6 @@ function addCourse($course_name, $course_desc) {
     $query = "INSERT INTO elect_course (course_name, course_desc, teacher_id) 
     VALUES (:course_name, :course_desc, :user_id)";
 
-
     global $db;
     global $user;
 
