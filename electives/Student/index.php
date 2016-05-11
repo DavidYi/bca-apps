@@ -59,12 +59,14 @@ switch ($action) {
         /*Everything below is still in progress. Eventually it will replace the stuff above*/
 
         $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
-        echo($usr_id);
+        echo "this user's id is: ";
+        echo ($usr_id);
 
         $oldtimesarr = get_times($usr_id);
         for($i = 0; $i < sizeof($oldtimesarr); $i++){
             $timesString .= $oldtimesarr['time_name'];
         }
+        /*The fact that nothing prints from this isn't an error, the database doesn't have any times inputted for this person*/
 
 
 ?>
