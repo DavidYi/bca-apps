@@ -24,7 +24,7 @@ if( $timesString == NULL) {
     if( $timesString == NULL) {
         $timesString = "";
     }
-} /*I haven't implemented timesString yet but it will come from update_times */
+}
 
 
 switch ($action) {
