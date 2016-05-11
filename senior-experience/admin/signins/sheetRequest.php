@@ -16,19 +16,10 @@
         $(document).ready(function () {
             $('input[type="radio"]').click(function () {
                 if ($(this).attr("value") == "s") {
-                    $(".mentor").show();
-                    $(".session").show();
                     $("input[name='action']").val('generates')
                 }
                 if ($(this).attr("value") == "r") {
-                    $(".mentor").show();
-                    $(".session").hide();
                     $("input[name='action']").val('generater')
-                }
-                if ($(this).attr("value") == "t") {
-                    $(".mentor").hide();
-                    $(".session").hide();
-                    $("input[name='action']").val('generatet')
                 }
             });
         });
@@ -46,7 +37,7 @@
     <div class="container">
         <ul>
             <li>
-                <input type="radio" name="choice" value="_sessions" class="choice" id="sc">
+                <input type="radio" name="choice" value="s" class="choice" id="sc">
                 <label class="title" for="sc">Session Sign in </label>
 
                 <div class="check">
@@ -63,26 +54,6 @@
                 </div>
             </li>
         </ul>
-    </div>
-
-    <div class="session select">
-        <br>
-        <label>Session:</label>
-        <select name="session" class="purple">
-            <option value="All" selected="selected">All Sessions</option>
-            <?php foreach ($sessions as $session) :
-                if ($session['ses_id'] == $session_id) {
-                    $selected = 'selected';
-                } else {
-                    $selected = '';
-                }
-                ?>
-                <option value="<?php echo $session['ses_id']; ?>"<?php
-                echo $selected ?>>
-                    <?php echo htmlspecialchars($session['ses_name']); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
     </div>
 
     <br>
