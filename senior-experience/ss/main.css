@@ -304,6 +304,73 @@ h1 {
   overflow-y: hidden;
   background: #e7e7e7; }
 
+.feature {
+  position: relative;
+  top: 0;
+  padding: 0.9375em 1.5625em;
+  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 0.625em solid #fbfcfc;
+  -webkit-transition: all 175ms ease;
+  -moz-transition: all 175ms ease;
+  transition: all 175ms ease;
+}
+
+.feature h2 {
+  margin: 0.125em;
+}
+
+.feature h4 {
+  margin: 0.125em;
+  opacity: 0.8;
+}
+
+.feature:hover {
+  top: -5px;
+  background: #262626;
+  background: #262626;
+  box-shadow: 0 0.9375em 1.5625em rgba(0, 0, 0, 0.33);
+  border-bottom: 0.625em solid #262626;
+}
+
+.feature:hover a {
+  color: #fdfdfd;
+}
+
+
+.fab {
+  position: fixed;
+  right: 1.875em;
+  bottom: 2.8125em;
+}
+
+.fab a {
+  display: inline-block;
+  height: 4.6875em;
+  width: 4.6875em;
+  background: #EC407A;
+  background: #EC407A;
+  line-height: 4.6875em;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 0.75em 1.5625em #EC407A;
+  -webkit-transition: all 175ms ease;
+  -moz-transition: all 175ms ease;
+  transition: all 175ms ease;
+}
+
+.fab a span.plus {
+  color: #fdfdfd;
+  font-size: 2.625em;
+  -webkit-transition: all 175ms ease;
+  -moz-transition: all 175ms ease;
+  transition: all 175ms ease;
+}
+
+.fab a:hover span.plus {
+  transform: rotate(360deg);
+}
+
 nav.navbar {
   height: 3.75em;
   width: 85%;

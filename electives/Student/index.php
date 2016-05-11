@@ -7,6 +7,8 @@
  * Time: 10:36 AM
  */
 include('../util/main.php');
+require_once('../model/times_db.php');
+
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
@@ -40,16 +42,18 @@ switch ($action) {
         echo "will make a logout page later";
         break;
     case 'update_times':
-        $timesarr = $_POST['time']; /*This doesn't work if user doesn't choose anything, find a workaround for it*/
-
         $timesString = "";
+        if(filter_has_var(INPUT_POST, 'time')) {
+            $timesarr = $_POST['time'];
 
-        for($i = 0; $i < sizeof($timesarr); $i++){
-            $timesString .= $timesarr[$i];
-            if($i + 1 != sizeof($timesarr)){
-                $timesString .= ", ";
+            for($i = 0; $i < sizeof($timesarr); $i++){
+                $timesString .= $timesarr[$i];
+
+                if($i + 1 != sizeof($timesarr)){
+                    $timesString .= ", ";
+                }
+                else $timesString .= ".";
             }
-            else $timesString .= ".";
         }
 ?>
         <form timesString=<?php echo $timesString?> method="POST">
