@@ -10,10 +10,10 @@
 $pageTitle = 'Senior Expositions';
 $loginInfo = '<h1>Senior Expo</h1>
 	                <h3>
-						BCA will hold Senior Expositions on <b>June 10</b>.  Yada yada.
+						BCA will hold Senior Expositions on <b>June 2</b>.  
 					</h3>
 					<h3>
-						This app is brought to you by the students of ATCS.
+						This app is brought to you by the students of BCA.
 					</h3>';
 
 

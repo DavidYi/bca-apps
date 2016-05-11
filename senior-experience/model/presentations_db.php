@@ -127,71 +127,41 @@ function get_presentation_by_user($usr_id, $ses_id) {
     }
 }
 
-/* function get_user_by_username($username) {
-    $query = 	'SELECT usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year,
-                usr_first_name, usr_last_name, usr_active
-             FROM user
-             WHERE usr_bca_id = :username';
-
+function get_presentations_by_user_by_session($usr_id, $ses_id) {
+    $query = 'SELECT p.pres_id, presenting
+              FROM presentation p, user_presentation_xref x
+              WHERE ses_id = :ses_id
+              AND usr_id = :usr_id
+              AND p.pres_id = x.pres_id';
     global $db;
 
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':username', $username);
-        $statement->execute();
-        $result = $statement->fetch();
-        $statement->closeCursor();
-        return $result;
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_error($error_message);
-        exit();
-    }
-}
-
-function get_user($usr_id) {
-    $query = 	'SELECT usr_id, usr_bca_id, usr_type_cde, usr_role_cde, usr_class_year,
-                    usr_first_name, usr_last_name, usr_active
-                 FROM user
-                 WHERE usr_id = :usr_id';
-
-    global $db;
-
-    try {
-        $statement = $db->prepare($query);
+        $statement->bindValue(':ses_id', $ses_id);
         $statement->bindValue(':usr_id', $usr_id);
         $statement->execute();
-        $result = $statement->fetch();
+        $result = $statement->fetchAll();
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_error($error_message);
+        display_db_exception($e);
         exit();
     }
 }
-
-function get_user_list() {
-    $query = 'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
-                 usr_first_name, usr_last_name, usr_active
-              from user
-              where usr_active = 1
-			  order by usr_display_name';
-
-    return get_list($query);
-} */
 
 function get_sessions_by_user($usr_id) {
     $query = 'select p.pres_id, pres_title, pres_desc, organization, location, rm_nbr, field_name,
                     get_presenters_comma_list (p.pres_id) presenter_names,
                     pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
-                    t.ses_id, t.ses_start, t.ses_end
-            from session_times t
-            left join presentation p on t.ses_id = p.ses_id
-            and p.pres_id in (select pres_id from user_presentation_xref where usr_id = :usr_id)
-            left join room r on p.rm_id = r.rm_id
-            left join field f on p.field_id = f.field_id
-            order by t.sort_order';
+                    t.ses_id, t.ses_start, t.ses_end, presenting
+                from session_times t
+                left join presentation p on t.ses_id = p.ses_id and p.pres_id in (
+                    select pres_id from user_presentation_xref where usr_id = :usr_id
+                )
+                left join user_presentation_xref x on p.pres_id = x.pres_id and x.usr_id = :usr_id            
+                left join room r on p.rm_id = r.rm_id
+                left join field f on p.field_id = f.field_id
+                order by t.sort_order';
 
     global $db;
 
@@ -323,24 +293,16 @@ class SeniorPresentation {
         $statement->closeCursor();
     }
 
-    public static function deletePresentationsByUserBySession($usr_id, $ses_id)
+    public static function deletePresentationsByUser($usr_id, $pres_id)
     {
         $query = 'delete from user_presentation_xref
-                    where pres_id in (
-                        select pres_id 
-                        from (
-                          select p.pres_id from presentation p, user_presentation_xref x 
-                          where p.pres_id = x.pres_id
-                          and presenting = 0
-                          and ses_id = :ses_id
-                          and usr_id = :usr_id) a
-                        ) 
+                    where pres_id = :pres_id 
                     and usr_id = :usr_id';
 
         global $db;
         try {
             $statement = $db->prepare($query);
-            $statement->bindValue(":ses_id", $ses_id);
+            $statement->bindValue(":pres_id", $pres_id);
             $statement->bindValue(":usr_id", $usr_id);
             $statement->execute();
             $statement->closeCursor();
@@ -357,7 +319,21 @@ class SeniorPresentation {
         $db->beginTransaction();
 
         try {
-            SeniorPresentation::deletePresentationsByUserBySession($usr_id, $this->ses_id);
+            // Check if the user currently has a presentation for this session.
+            // If so, remove it.
+            // The loop is a bit of overkill, but in case of an erroneous situation of the user having multiple
+            // presentations for the same session, this will remove those extra cases.
+            //
+            // Include a check to make sure that presenters don't overwrite their presentations through this method.
+            $presentations = get_presentations_by_user_by_session($usr_id, $this->ses_id);
+            foreach ($presentations as $presentation) {
+                if ($presentation['presenting'] == 1) {
+                    $db->rollback();
+                    display_user_message("You cannot add a presentation for this session since you are presenting at the same time.", '../itinerary');
+                    exit();
+                }
+                SeniorPresentation::deletePresentationsByUser($usr_id, $presentation['pres_id']);
+            }
 
             // Inserts the new session for the user.
             $this->insert_presentation_for_user ($usr_id);

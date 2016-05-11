@@ -17,7 +17,7 @@
 	                <h3><i>
 	                	<?php echo $error_message ?>
 	                </i></h3>
-	                <button><a href="#" onclick="history.back();">Go Back</a></button>
+	                <button type="button"><a href="#" onclick="history.back();">Go Back</a></button>
 	            </div>
 			</div>
 		</section>
