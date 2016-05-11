@@ -18,7 +18,8 @@ if (isset($action) and ($action == "logout")) {
     header("Location: ../index.php");
 }
 
-/* Kincent -- add queries to load availability and teacher courses here. */
+
+$courses = get_course_by_user($user->usr_id);
 
 include("./view.php");
 exit();

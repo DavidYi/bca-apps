@@ -744,7 +744,16 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
     text-decoration: underline;
 }
 
+.list_courses {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 /* TEST */
 
 /*# sourceMappingURL=main.css.map */

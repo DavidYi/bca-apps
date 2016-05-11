@@ -7,6 +7,8 @@
  * Time: 10:36 AM
  */
 include('../util/main.php');
+require_once('../model/times_db.php');
+
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {

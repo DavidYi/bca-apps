@@ -23,7 +23,6 @@ if ($action == NULL) {
 switch ($action) {
     case 'show_generate_page':
         $choice = filter_input(INPUT_POST, 'choice');
-        $mentors = get_mentors();
         $mentor_id = filter_input(INPUT_POST, 'mentor_id');
         $sessions = get_session_times();
         $session_id = filter_input(INPUT_POST, 'ses_id');
@@ -52,10 +51,8 @@ switch ($action) {
         $pdf->Output('signin.pdf', 'I');
         break;
 
-    case 'generates':
-        $mentor_id = filter_input(INPUT_POST, 'mentor');
-        $session_id = filter_input(INPUT_POST, 'session');
-        $presentations = get_presentation_list($mentor_id, $session_id);
+    case 'generate_sessions':
+        $presentations = get_presentation_list();
         $header = array("Year", "Academy", "Name", "Signature");
         $pdf = new signinPDF();
 
