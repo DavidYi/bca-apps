@@ -41,7 +41,7 @@
                     <h3> Registration is <b>open</b>! </h3>
                     <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
                 <?php } ?>
-
+                <a href = "../add/index.php">Add test</a>
                 <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
             <?php } else { ?>
                 <h1>Mimic User Mode</h1>

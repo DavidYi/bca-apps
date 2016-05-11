@@ -30,31 +30,33 @@
     <body>
 
       <div id = "parents">
-        <div id = "inputs">
+        <form action = "." method = "post" id = "inputs">
+        <input type="hidden" name = "action" value="add_test">
 
-          <input placeholder="Test Name">
+          <input name = "test_name" placeholder="Test Name">
 
-          <input placeholder="Date" type="text" id="datepicker">
+          <input name = "date" placeholder="Date" type="text" id="datepicker">
 
-          <select class="ui dropdown">
+          <select name = "test_cde" class="ui dropdown">
             <i class="dropdown icon"></i>
               <option value="">Test Type</option>
             <?php
             $num = 0;
             foreach ($testTypes as $test) { ?>
-                  <option "<?php echo $num;?>"><?php echo $test['test_type_desc']?></option>
+                  <option value = "<?php echo $test['test_type_cde'];?>"><?php echo $test['test_type_desc']?></option>
+      
             <?php $num += 1;} ?>
           </select>
 
           <!-- Test -->
 
-          <select class="ui dropdown">
+          <select name = "room_id" class="ui dropdown" >
             <i class="dropdown icon"></i>
               <option value="">Room Number</option>
             <?php
             $num = 0;
             foreach ($rooms as $room) { ?>
-                  <option "<?php echo $num;?>"><?php echo $room['rm_nbr']?></option>
+                  <option value = "<?php echo $room['rm_id'];?>"><?php echo $room['rm_nbr']?></option>
             <?php $num += 1;} ?>
           </select>
 
@@ -66,25 +68,70 @@
 
           <table class="tg">
             <tr>
-              <th class="tg-031e"><input placeholder = "1 - 3"  class = "modinput"></th>
-              <th class="tg-yw4l"><input placeholder = "4 - 6" class = "modinput"></th>
-              <th class="tg-yw4l"><input placeholder = "7 - 9" class = "modinput"></th>
+              <th class="tg-031e">
+                <div class="ui labeled input">
+                  <div class="ui label">01 - 03</div>
+                  <input name = "one_three" type="text" class = "modinput">
+                </div>
+              </th>
+              <th class="tg-yw4l">
+                <div class="ui labeled input">
+                  <div class="ui label">04 - 06</div>
+                  <input name = "four_six" type="text" class = "modinput">
+                </div>
+              </th>
+              <th class="tg-yw4l">
+                <div class="ui labeled input">
+                  <div class="ui label">07 - 09</div>
+                  <input name = "seven_nine" type="text" class = "modinput">
+                </div>
+              </th>
             </tr>
             <tr>
-              <td class="tg-031e"><input placeholder = "10 - 12"  class = "modinput"></td>
-              <td class="tg-yw4l"><input placeholder = "13 - 15" class = "modinput"></td>
-              <td class="tg-yw4l"><input placeholder = "16 - 18" class = "modinput"></td>
+              <td class="tg-031e">
+              <div class="ui labeled input">
+                  <div class="ui label">10 - 12</div>
+                  <input name = "ten_twelve" type="text" class = "modinput">
+                </div>
+              </td>
+              <td class="tg-yw4l">
+              <div class="ui labeled input">
+                  <div class="ui label">13 - 15</div>
+                  <input name = "thirteen_fifteen" type="text" class = "modinput">
+                </div>
+              </td>
+              <td class="tg-yw4l">
+                <div class="ui labeled input">
+                  <div class="ui label">16 - 18</div>
+                  <input name = "sixteen_eighteen" type="text" class = "modinput">
+                </div>
+              </td>
             </tr>
             <tr>
-              <td class="tg-yw4l"><input placeholder = "19 - 21" class = "modinput"></td>
-              <td class="tg-yw4l"><input placeholder = "22 - 24" class = "modinput"></td>
-              <td class="tg-yw4l"><input placeholder = "25 - 27" class = "modinput"></td>
+              <td class="tg-yw4l">
+                <div class="ui labeled input">
+                  <div class="ui label">19 - 21</div>
+                  <input name = "nineteen_twentyone" type="text" class = "modinput">
+                </div>
+              </td>
+              <td class="tg-yw4l">
+                <div class="ui labeled input">
+                  <div class="ui label">22 - 24</div>
+                  <input name = "twentytwo_twentyfour" type="text" class = "modinput">
+                </div>
+              </td>
+              <td class="tg-yw4l">
+                <div class="ui labeled input">
+                  <div class="ui label">25 - 27</div>
+                  <input name = "twentyfive_twentyseven" type="text" class = "modinput">
+                </div>
+              </td>
             </tr>
           </table>
 
-          <button type="submit" value="Submit">Submit</button>
+          <button type="submit" name = "choice" value="Add">Add</button>
 
-        </div>
+        </form>
       </div>
     </body>
 </html>
