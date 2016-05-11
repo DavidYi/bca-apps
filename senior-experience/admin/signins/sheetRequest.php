@@ -46,17 +46,8 @@
     <div class="container">
         <ul>
             <li>
-                <input type="radio" name="choice" value="s" class="choice" id="sc">
+                <input type="radio" name="choice" value="_sessions" class="choice" id="sc">
                 <label class="title" for="sc">Session Sign in </label>
-
-                <div class="check">
-                    <div class="inside"></div>
-                </div>
-            </li>
-
-            <li>
-                <input type="radio" name="choice" value="t" class="choice" id="mc">
-                <label class="title" for="mc">Mentor Check In </label>
 
                 <div class="check">
                     <div class="inside"></div>
@@ -74,28 +65,6 @@
         </ul>
     </div>
 
-
-    <div class="mentor select">
-        <br>
-        <label>Mentor:</label>
-        <select name="mentor" class="red">
-            <option value="All" selected="selected">All Mentors</option>
-            <?php foreach ($mentors as $mentor) :
-                if (($mentor['mentor_id'] == $mentor_id)) {
-                    $selected = 'selected';
-                } else {
-                    $selected = '';
-                }
-                ?>
-                <option value="<?php echo $mentor['mentor_id']; ?>"<?php
-                echo $selected ?>>
-                    <?php echo htmlspecialchars($mentor['mentor_last_name']) ?>, <?php
-                    echo htmlspecialchars($mentor['mentor_first_name']); ?> (<?php echo
-                    htmlspecialchars($mentor['mentor_company']) ?>)
-                </option>
-            <?php endforeach; ?>
-        </select>
-    </div>
     <div class="session select">
         <br>
         <label>Session:</label>
