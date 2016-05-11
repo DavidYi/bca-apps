@@ -22,6 +22,7 @@
         <div class="vertical-center">
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
                 <h1>Register For Proctoring</h1>
+<<<<<<< HEAD
 
                 <?php if ($startTime > $currentTime) { ?>
                     <h3> Registration <b>has not opened</b>!</h3>
@@ -42,6 +43,8 @@
                     <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
                 <?php } ?>
                 <a href = "../add/index.php">Add test</a>
+=======
+>>>>>>> 9ded0a9ca9b5f73d4014c82581e677ef6dc7323f
                 <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
             <?php } else { ?>
                 <h1>Mimic User Mode</h1>
@@ -49,23 +52,19 @@
         </div>
     </div>
     <div class="view-signup enrollment">
-        <div class="vertical-center">
-            <nav class="navbar">
-                <div class="session-filter tag">Test Name</div>
-                <div class="session-filter company">Room</div>
-                <div class="session-filter position">Time</div>
-                <div class="session-filter presenter">Mods</div>
-            </nav>
+
+        <div id="" style="overflow-y:scroll; height:500px; margin-top:45px">
             <?php foreach ($testList as $test) { ?>
-<!--comment-->
-                <div class="tag"><?php echo $test['test_name']?></div>
-                <div class="company"><?php echo $test['rm_id']?></div>
-                <div class="position"><?php echo $test['test_dt']?></div>
-                <div class="presenter"><?php echo $test['test_time_desc']?></div>
+                <div class="session view-session" onclick="">
+                    <?php if ($test['test_id'] != NULL) { ?>
+                        <div class="time"><?php echo $test['test_dt']?></div>
+                        <div class="mods"><?php echo $test['test_time_desc']?></div>
+                        <div class="name"><?php echo $test['test_name']?></div>
 
+                    <?php } ?>
+                    <!--comment-->
+                </div>
             <?php } ?>
-
-
 
         </div>
     </div>

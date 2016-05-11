@@ -22,12 +22,14 @@ if (isset($action) and ($action == "logout")) {
 
 $signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
 $sessions = get_sessions_by_user($user->usr_id);
+
+
 //
-// Check if the user has mentors for all of the sessions.
+// Check if the user has signed up for all of the sessions.
 //
-// $registration_complete = true;
+$registration_complete = true;
 foreach ($sessions as $session) {
-    if (empty($session['mentor_last_name'])) {
+    if (empty($session['presenter_names'])) {
         $registration_complete = false;
         break;
     }
@@ -42,11 +44,11 @@ $startTimeFormatted = date('M d, g:i  a', $startTime);
 $endTimeFormatted = date('M d, g:i  a', $endTime);
 
 $registrationOpen = true;
-/* if (($currentTime > $startTime) and ($currentTime < $endTime))
+if (($currentTime > $startTime) and ($currentTime < $endTime))
     $registrationOpen = true;
 else
     $registrationOpen = false;
-*/
+
 
 include ("view.php");
 exit(); ?>

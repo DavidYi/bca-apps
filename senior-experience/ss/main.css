@@ -343,7 +343,7 @@ nav.navbar {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 18.75%;
+    width: 30%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -356,7 +356,7 @@ nav.navbar {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 25%;
+    width: 35%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -369,7 +369,7 @@ nav.navbar {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 31.25%;
+    width: 35%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -382,7 +382,7 @@ nav.navbar {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 12.5%;
+    width: 20%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -450,7 +450,7 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 18.75%;
+      width: 30%;
       color: #555;
       margin: 0;
       padding: 0;
@@ -463,7 +463,7 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 25%;
+      width: 35%;
       color: #555;
       margin: 0;
       padding: 0;
@@ -476,7 +476,7 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 31.25%;
+      width: 35%;
       color: #555;
       margin: 0;
       padding: 0;
@@ -489,7 +489,7 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 18.75%;
+      width: 20%;
       color: #555;
       margin: 0;
       padding: 0;
@@ -502,7 +502,7 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 6.25%;
+      width: 15%;
       color: #555;
       margin: 0;
       padding: 0;
@@ -511,15 +511,16 @@ nav.navbar {
       text-align: right; }
       .enrollment .session .remaining:last-child {
         margin-right: 0; }
+
     .enrollment .session .session-number {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 6.25%;
+      width: 0%;
       color: #555;
       margin: 0;
       padding: 0;
-      font-size: 1.125em;
+      font-size: 1em;
       font-weight: 500;
       text-align: left; }
       .enrollment .session .session-number:last-child {
@@ -528,11 +529,11 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 18.75%;
+      width: 10%;
       color: #555;
       margin: 0;
       padding: 0;
-      font-size: 1.125em;
+      font-size: 1.05em;
       font-weight: 500;
       text-align: left; }
       .enrollment .session .time:last-child {
@@ -541,11 +542,11 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 12.5%;
+      width: 15%;
       color: #555;
       margin: 0;
       padding: 0;
-      font-size: 1.125em;
+      font-size: 1.05em;
       font-weight: 500;
       text-align: left; }
       .enrollment .session .room-number:last-child {
@@ -554,11 +555,11 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 31.25%;
+      width: 40%;
       color: #555;
       margin: 0;
       padding: 0;
-      font-size: 1.125em;
+      font-size: 1.05em;
       font-weight: 500;
       text-align: left; }
       .enrollment .session .session-title:last-child {
@@ -567,11 +568,11 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 31.25%;
+      width: 35%;
       color: #555;
       margin: 0;
       padding: 0;
-      font-size: 1.125em;
+      font-size: .9em;
       font-weight: 500;
       text-align: left; }
       .enrollment .session .name:last-child {

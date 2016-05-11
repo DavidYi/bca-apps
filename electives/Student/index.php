@@ -16,6 +16,14 @@ if ($action == NULL) {
     }
 }
 
+$timesString = strtolower(filter_input(INPUT_POST, 'timesString'));
+if( $timesString == NULL) {
+    $timesString = strtolower(filter_input(INPUT_GET, 'timesString'));
+    if( $timesString == NULL) {
+        $timesString = "";
+    }
+} /*I haven't implemented timesString yet but it will come from update_times */
+
 
 switch ($action) {
     case 'list_options':
@@ -32,8 +40,24 @@ switch ($action) {
         echo "will make a logout page later";
         break;
     case 'update_times':
-        echo "update_times test ";
-        echo "REMINDER: I need to figure out how to take the button data from the previous page";
+        $timesString = "";
+        if(filter_has_var(INPUT_POST, 'time')) {
+            $timesarr = $_POST['time'];
+
+            for($i = 0; $i < sizeof($timesarr); $i++){
+                $timesString .= $timesarr[$i];
+
+                if($i + 1 != sizeof($timesarr)){
+                    $timesString .= ", ";
+                }
+                else $timesString .= ".";
+            }
+        }
+?>
+        <form timesString=<?php echo $timesString?> method="POST">
+        </form>
+
+<?php
         include('./view.php');
         break;
     default:
