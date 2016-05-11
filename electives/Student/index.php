@@ -55,7 +55,18 @@ switch ($action) {
                 else $timesString .= ".";
             }
         }
-        echo(get_usr_id($user->usr_first_name, $user->usr_last_name));
+        $timesString .= "THAT WAS INPUT FROM LAST PAGE, NEXT IS INPUT FROM DATABASE:\n";
+        /*Everything below is still in progress. Eventually it will replace the stuff above*/
+
+        $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
+        echo($usr_id);
+
+        $oldtimesarr = get_times($usr_id);
+        for($i = 0; $i < sizeof($oldtimesarr); $i++){
+            $timesString .= $oldtimesarr['time_name'];
+        }
+
+
 ?>
         <form timesString=<?php echo $timesString?> method="POST">
         </form>

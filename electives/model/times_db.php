@@ -10,7 +10,24 @@ function get_times_list(){
 }
 
 function get_times($usr_id){
-    /*Will make*/
+    global $db;
+    $query = "select time_name
+              from elect_user_free_xref x, elect_time e
+              where x.usr_id = :usr_id
+              and x.time_id = e.time_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
 }
 
 function get_usr_id($usr_first_name, $usr_last_name){
