@@ -1,5 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin: Presentations</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- Styles -->
+    <link href="../ss/main.css" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <h1 class="title">Presentations</h1>
+</header>
+
 <section>
-    <h1>Presentation List</h1>
     <table class="gridtable">
         <tr>
             <th>Session Number</td>

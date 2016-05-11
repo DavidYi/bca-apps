@@ -47,7 +47,7 @@ switch ($action) {
         <a href="presentation"><h2>View Presentations</h2></a>
         <h4>Log in as any user in the database and use the app as if you were them.</h4></div>
     <div class="feature">
-        <a href="signins"><h2>Sign ins</h2></a>
+        <a href="signins"><h2>Sign Ins</h2></a>
         <h4>Log in as any user in the database and use the app as if you were them.</h4></div>
 
 
