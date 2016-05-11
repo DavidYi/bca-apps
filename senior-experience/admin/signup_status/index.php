@@ -102,7 +102,7 @@ switch($action) {
         fclose($output) or die("Can't close file");
         exit();
         break;
-
+    
     default:
         display_error("Invalid action: " . $action);
         break;
