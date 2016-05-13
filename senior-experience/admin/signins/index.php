@@ -5,8 +5,8 @@
  * Date: 12/16/15
  * Time: 9:04 AM
  */
-require_once('/../../util/main.php');
-require_once ("/../../model/database.php");
+require_once('../../util/main.php');
+require_once ("../../model/database.php");
 require_once "../../model/signins_db.php";
 require_once "signInPDF.php";
 
