@@ -60,23 +60,53 @@
         <?php } ?>
         <?php foreach ($presentations as $presentation) {
             if ($id != $presentation['pres_id']) {?>
-                <a href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"> 
-                    <div class="session">
-                        <div class="tag"><?php echo $presentation['field_name']?>&nbsp</div>
-                        <div class="position"><?php echo $presentation['organization']?>&nbsp</div>
-                        <div class="presenter"><?php echo ($presentation['presenter_names'])?>&nbsp</div>
+            <div class="main-panel" style="position: relative;">
+                <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"></a>
+                <div class="session" style="position: relative;">
+                    <div class="tag"><?php echo $presentation['field_name']?>&nbsp</div>
+                    <div class="position"><?php echo $presentation['organization']?>&nbsp</div>
 
-                        <?php if ($user->usr_type_cde == 'TCH') { ?>
-                            <div class="remaining"><?php echo ($presentation['rm_nbr']);?> </div>
-                        <?php } else { ?>
-                            <div class="remaining"><?php echo ($presentation['pres_max_students'] - $presentation['pres_enrolled_students'])?></div>
-                        <?php } ?>
+                    <div class="presenter"><a class="info" style="float: left; position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;&nbsp;</a><?php echo ($presentation['presenter_names'])?></div>
+
+                    <?php if ($user->usr_type_cde == 'TCH') { ?>
+                        <div class="remaining"><?php echo ($presentation['rm_nbr']);?> </div>
+                    <?php } else { ?>
+                        <div class="remaining"><?php echo ($presentation['pres_max_students'] - $presentation['pres_enrolled_students'])?></div>
+                    <?php } ?>
 
 
-                    </div> </a>
-            <?php } } ?>
+                </div>
+
+                <div class="popup-bg" id="B<?php echo $presentation['pres_id']?>" style="display: none;
+  opacity: 0.7;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  position: fixed;">
+                </div>
+
+                <div class="popup" id="P<?php echo $presentation['pres_id']?>">
+                    <div class="entpop" >
+                        <div class="close">
+                            <div class="presname"><?php echo ($presentation['presenter_names'])?></div>
+                            <div class="x""><a href="#" style="color:#f0c30f" onclick="cpopup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x2716;</a></div>
+                        </div>
+                        <div class="popup-c">
+                            <p><?php echo ($presentation['pres_desc']);?></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+    <?php } } ?>
     </div>
 </section>
+<script type="text/javascript" src="../js/popup.js"></script>
+<script type="text/javascript" src="../js/cpopup.js"></script>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>

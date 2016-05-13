@@ -68,12 +68,12 @@
                             <div class="close">
                                 <div class="presname"><?php echo ($presentation['mentor_last_name'].", ".$presentation['mentor_first_name'])?></div>
                                 <div class="x""><a href="#" style="color:#f0c30f" onclick="cpopup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x2716;</a></div>
-                        </div>
-                        <div class="popup-c">
-                            <p><?php echo ($presentation['mentor_profile']);?></p>
-                        </div>
+                            </div>
+                            <div class="popup-c">
+                              <p><?php echo ($presentation['mentor_profile']);?></p>
+                            </div>
+                         </div>
                     </div>
-                </div>
 
                 </div>
             <?php } } ?>
