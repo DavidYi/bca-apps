@@ -63,11 +63,16 @@ switch ($action) {
         break;
 
     case 'generater':
-        $presentations = get_presentation_list();
+        $rooms = get_rooms();
         $pdf = new signinPDF();
         $pdf->SetAutoPageBreak(false);
 
-        foreach ($presentations as $pres) {
+        foreach ($rooms as $room) {
+            $ses_1 = get_session_by_room($room['rm_id'], 1);
+            $ses_2 = get_session_by_room($room['rm_id'], 2);
+            $ses_3 = get_session_by_room($room['rm_id'], 3);
+            $ses_4 = get_session_by_room($room['rm_id'], 4);
+
             $pdf->AddPage("L", "Letter");
             $pdf->SetFont('Arial', '', 50);
 
@@ -75,37 +80,31 @@ switch ($action) {
             $HMargin = $pdf->gettMargin() + $pdf->gettMargin();
 
             //have double border
-            $pdf->SetDrawColor(0,0,0);
+            $pdf->SetDrawColor(0, 0, 0);
             $pdf->SetLineWidth(1.25);
             $pdf->Rect($pdf->getrMargin(), $pdf->gettMargin(),
                 $pdf->getW() - $WMargin, $pdf->getH() - $HMargin);
             $pdf->Rect($pdf->getrMargin() + 2, $pdf->gettMargin() + 2,
                 $pdf->getW() - $WMargin - 4, $pdf->getH() - $HMargin - 4);
 
-            //Add Career day info
-            $pdf->Cell(0, $pdf->getH()/12, "", 0 , 1);
+            $pdf->Cell(0, $pdf->getH() / 12, "", 0, 1);
             $pdf->SetFont('Arial', 'B');
-            $pdf->Cell(0, $pdf->getH()/6, "BCA Career Day", 0, 1, "C");
-            $pdf->SetFont('', '', 35);
-            $pdf->Cell(0, $pdf->getH()/7, "February 2, 2016", 0, 1, "C");
-            $pdf->Cell(0, $pdf->getH()/10, "", 0 , 1);
-
-            //add 2 lines
+            $pdf->Cell(0, $pdf->getH() / 6, "Room " . $room['rm_nbr'], 0, 1, "C");
             $pdf->SetLineWidth(1.75);
-            $pdf->SetDrawColor(222,174,0);
-            $pdf->Line($pdf->getlMargin()+ 50, $pdf->getH()/2 + 2,
-                $pdf->getW() - $pdf->getrMargin() - 50, $pdf->getH()/2 + 2);
-            $pdf->Line($pdf->getlMargin()+ 50, $pdf->getH()/2 - 2,
-                $pdf->getW() - $pdf->getrMargin() - 50, $pdf->getH()/2 - 2);
+            $pdf->Line($pdf->getlMargin()+ 70, $pdf->getH()/32 * 9,
+                $pdf->getW() - $pdf->getrMargin() - 70, $pdf->getH()/32 * 9);
 
-            //add mentor info
+            $pdf->SetFont('', '', 35);
 
-            $pdf->SetFont('Courier', 'B', 50);
-            $pdf->Cell(0,$pdf->getH()/8, $pres['mentor_first_name'] . " " . $pres['mentor_last_name'], 0, 1, "C");
-            $pdf->SetFont('Arial', '', 40);
-            $pdf->Cell(0,$pdf->getH()/8,$pres['mentor_company'], 0, 1, "C");
-            $pdf->SetFontSize(30);
-            $pdf->Cell(0,$pdf->getH()/8, "Room " . $pres['pres_room'], 0, 0, "C");
+            $pdf->SetFont('Arial', '', 25);
+            $pdf->Cell($pdf->getW()/50, $pdf->getH()/8, "",0,0,"L");
+            $pdf->Cell(0, $pdf->getH() / 8, " Session 1: " . $ses_1['pres_title'], 0, 1, "L");
+            $pdf->Cell($pdf->getW()/50, $pdf->getH()/8, "",0,0,"L");
+            $pdf->Cell(0, $pdf->getH() / 8, " Session 2: " . $ses_2['pres_title'], 0, 1, "L");
+            $pdf->Cell($pdf->getW()/50, $pdf->getH()/8, "",0,0,"L");
+            $pdf->Cell(0, $pdf->getH() / 8, " Session 3: " . $ses_3['pres_title'], 0, 1, "L");
+            $pdf->Cell($pdf->getW()/50, $pdf->getH()/8, "",0,0,"L");
+            $pdf->Cell(0, $pdf->getH() / 8, " Session 4: " . $ses_4['pres_title'], 0, 1, "L");
         }
 
         $pdf->Output('roomSigns.pdf', 'I');

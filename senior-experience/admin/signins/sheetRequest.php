@@ -37,7 +37,7 @@
     <a href="./index.php?action=generates" target="_blank"><h2>Session Sign-ins</h2></a>
     <h4>Generates the PDF for the session sign-ins.</h4></div>
 <div class="feature">
-    <a href="./index.php?action=generaterc" target="_blank"><h2>Room Signs</h2></a>
+    <a href="./index.php?action=generater" target="_blank"><h2>Room Signs</h2></a>
     <h4>Generates the room signs</h4></div>
 <div class="feature">
     <a href="../index.php"><h2>Back to Menu</h2></a>
