@@ -109,6 +109,33 @@ function random_enroll($year) {
     }
 }
 
+
+function presentations_registration_status() {
+    $query =
+        'select p.ses_id, rm_nbr, field_name, pres_title, organization, location, 
+                p.pres_desc, get_presenters_comma_list(p.pres_id),
+                pres_enrolled_students, pres_max_students, pres_max_students - pres_enrolled_students,
+                pres_enrolled_teachers, pres_max_teachers, pres_max_teachers - pres_enrolled_teachers
+        from presentation p, room r, field f
+        where p.rm_id = r.rm_id
+        and p.field_id = f.field_id
+        order by ses_id, field_name ';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+
 function all_registrants_download() {
     $query =
         ' select usr_last_name, usr_first_name, usr_grade_lvl, ses_id, rm_nbr, field_name, pres_title, organization, location, presenting, p.pres_id, p.field_id, u.usr_id

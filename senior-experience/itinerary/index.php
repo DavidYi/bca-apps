@@ -19,6 +19,21 @@ if (isset($action) and ($action == "logout")) {
     header("Location: ../index.php");
 }
 
+if ($action == "presentation_list") {
+    $student_list = all_presentations_download();
+    $output = fopen('php://output', 'w') or die("Can't open file");
+    header("Content-Type:application/csv");
+    header('Content-Disposition: attachment; filename="all_registrations.csv";');
+
+    fputcsv($output, array('Session', 'Room', 'Field', 'Title', 'Organization', 'Location', 'Description', 'Presenters', 'Remaining Slots'));
+
+    foreach($student_list as $student) {
+        fputcsv($output, $student);
+    }
+    fpassthru($output);
+    fclose($output) or die("Can't close file");
+    exit();
+}
 
 $signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
 $sessions = get_sessions_by_user($user->usr_id);
