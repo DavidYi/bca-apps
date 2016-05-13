@@ -20,23 +20,24 @@ if ($action == NULL) {
         $action = 'show_generate_page';
     }
 }
-echo($action);
+
 switch ($action) {
-
     case 'show_generate_page':
-
         include("sheetRequest.php");
         break;
 
     case 'generates':
         $choice = filter_input(INPUT_POST, 'choice');
         $presentations = get_presentation_list();
-        $header = array("Name", "Type", "Signature");
+        $header = array("Name", "Grade", "Academy", "Signature");
         $pdf = new signinPDF();
 
         foreach ($presentations as $pres) {
             $title = $pres['ses_name'] . " sign in";
+            $teachers = get_teachers_in_ses($pres["pres_id"]);
+            $presenters = get_presenters_in_ses($pres["pres_id"]);
             $students = get_students_in_ses($pres["pres_id"]);
+            
             $pdf->AddPage("P", "Letter");
             $pdf->SetFont('Arial', '', 12);
 
@@ -46,6 +47,10 @@ switch ($action) {
             $pdf->Cell(100, 9, "Room: " . $pres['rm_nbr']);
             $pdf->Ln();
             $pdf->Cell(100, 9, "Time: " . $pres['ses_start'] . ":" . $pres['ses_end']);
+            $pdf->Ln();
+            $pdf->Cell(100, 9, "Presenters: " . $presenters);
+            $pdf->Ln();
+            $pdf->Cell(100, 9, "Teachers: " . $teachers);
             $pdf->Ln();
             $pdf->SetX(50);
             $pdf->SetDrawColor(50, 60, 100);

@@ -47,6 +47,8 @@
             <h3 class = "title main-title" style ="text-align: center;"><?php echo $result; ?></h3>
         <?php } ?>
     </header>
+
+
     <nav class="navbar">
         <a href="#">
             <div class="session-filter grade">Grade Level</div>
@@ -108,7 +110,11 @@
         <br><br>
         <a href = "../">Admin Index</a>
     </div>
-    <div id = "logout"><a href = "../../index.php?action=logout">Log Out</a></div> <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
-</section>
+
+    <div id = "logout">
+        <a href = "../index.php">Admin Menu</a> &nbsp &nbsp &nbsp
+        <a href = "../../index.php?action=logout">Log Out</a>
+    </div>
+    </section>
 </body>
 </html>

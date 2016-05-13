@@ -14,7 +14,7 @@ class signinPDF extends FPDF
     function FancyStudent($header, $data)
     {
         $headHeight = 10;
-        $height = 9;
+        $height = 8;
         $fontSize = 11;
         // Colors, line width and bold font
         $this->SetFillColor(88, 88, 88);
@@ -24,7 +24,7 @@ class signinPDF extends FPDF
         $this->SetFont('', 'B', 12);
 
         // Header
-        $w = array(15, 30, 60, 75);
+        $w = array(60, 25, 25, 75);
 
         $this->Ln();
 
@@ -63,17 +63,17 @@ class signinPDF extends FPDF
 
             $studentName = $row[0] . ', ' . $row[1];
 
-            //Year
-            $this->AdjustFontSize($fontSizeTemp, $row[2], $w[0]);
-            $this->Cell($w[0], $height, $row[2], 'LR', 0, 'L', $fill);
+            // Name
+            $this->AdjustFontSize($fontSizeTemp, $studentName, $w[0]);
+            $this->Cell($w[0], $height, $studentName, 'LR', 0, 'L', $fill);
 
-            //Academy
-            $this->AdjustFontSize($fontSizeTemp, $row[3], $w[1]);
-            $this->Cell($w[1], $height, $row[3], 'LR', 0, 'L', $fill);
+            // Grade Level
+            $this->AdjustFontSize($fontSizeTemp, $row[2], $w[1]);
+            $this->Cell($w[1], $height, $row[2], 'LR', 0, 'L', $fill);
 
-            //Name
-            $this->AdjustFontSize($fontSizeTemp, $studentName, $w[2]);
-            $this->Cell($w[2], $height, $studentName, 'LR', 0, 'L', $fill);
+            // Academy
+            $this->AdjustFontSize($fontSizeTemp, $row[3], $w[2]);
+            $this->Cell($w[2], $height, $row[3], 'LR', 0, 'L', $fill);
 
             //Signature
             $this->Cell($w[3], $height, ' ', 'LR', 0, 'L', $fill);

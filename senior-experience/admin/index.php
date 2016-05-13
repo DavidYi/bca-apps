@@ -31,13 +31,19 @@ switch ($action) {
 <body>
 <main>
     <header><h1 class="title"><h2>Admin Tools</h1>
-        <div id="logout"><a href="../index.php?action=logout">Log Out</a></div>
     </header>
     <br>
     <div class="feature">
         <a href="signup_status"><h2>Signup Status</h2></a>
         <h4>View student registration statistics and automatically enroll students who have not yet registered.</h4></div>
-<!--    <div class="feature">
+    <div class="feature">
+        <a href="signins"><h2>PDF Generator</h2></a>
+        <h4>Generate signin sheets and room signs.</h4></div>
+    <div class="feature">
+        <a href="../index.php?action=logout"><h2>Log Out</h2></a>
+        <h4></h4></div>
+
+    <!--    <div class="feature">
         <a href="field"><h2>Field Panel</h2></a>
         <h4>Edit the list of fields in the database.</h4></div>
     <div class="feature">

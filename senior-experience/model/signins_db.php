@@ -5,6 +5,7 @@
  * Date: 5/11/2016
  * Time: 9:22 AM
  */
+
 function get_presentation_list(){
     $query = 'SELECT ses_name, presentation.pres_id, pres_title, pres_desc, organization, location, presentation.rm_id, field_name,
                     pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
@@ -14,18 +15,80 @@ function get_presentation_list(){
                 FROM presentation, field, room, session_times 
                 WHERE presentation.field_id = field.field_id
                     and presentation.rm_id = room.rm_id
-                    and presentation.ses_id = session_times.ses_id';
+                    and presentation.ses_id = session_times.ses_id
+                order by rm_nbr, presentation.ses_id ';
 
     return get_list($query);
 }
 
+function get_presenters_in_ses($pres_id)
+{
+    $query = "select GROUP_CONCAT( concat (usr_first_name, ' ', usr_last_name) order by usr_last_name SEPARATOR ', ') as presenters
+                from user_presentation_xref x, user u, presentation p
+                where x.usr_id = u.usr_id
+                and x.pres_id = p.pres_id
+                and x.presenting = 1
+                and x.pres_id = :pres_id";
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result['presenters'];
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function get_teachers_in_ses($pres_id)
+{
+    $query = "select GROUP_CONCAT( concat (usr_first_name, ' ', usr_last_name) order by usr_last_name SEPARATOR ', ') as teachers
+                from user_presentation_xref x, user u, presentation p
+                where x.usr_id = u.usr_id
+                and x.pres_id = p.pres_id
+                and u.usr_type_cde = 'TCH'
+                and x.pres_id = :pres_id";
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result['teachers'];
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
 function get_students_in_ses($pres_id)
 {
-    $query = 'SELECT usr_last_name, usr_first_name, usr_class_year, academy_cde
-                    from pres_user_xref
-                    inner join user on pres_user_xref.usr_id = user.usr_id
-                    where pres_user_xref.pres_id = :pres_id
+    $query = 'SELECT usr_last_name, usr_first_name, usr_grade_lvl, academy_cde
+                    from user_presentation_xref x, user u
+                    where x.usr_id = u.usr_id
+                    and x.pres_id = :pres_id
+                    and presenting = 0
+                    and usr_grade_lvl != 13
                     order by usr_last_name, usr_first_name';
 
-    return get_list($query);
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
 }
