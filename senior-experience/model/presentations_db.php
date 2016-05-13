@@ -70,16 +70,27 @@ function get_session_times_by_id($ses_id) {
 }
 
 function get_presentation_list($ses_id, $sort_by, $order_by) {
+    global $db;
+    global $user;
+
+    $rem = " pres_max_students - presentation.pres_enrolled_students as remaining, ";
+    $rem_crit = " AND presentation.pres_enrolled_students < presentation.pres_max_students ";
+
+    if ($user->usr_type_cde == 'TCH') {
+        $rem = " pres_max_teachers - presentation.pres_enrolled_teachers as remaining, ";
+        $rem_crit = " AND presentation.pres_enrolled_teachers < presentation.pres_max_teachers ";
+    }
+
     $query = 	"SELECT presentation.pres_id, pres_title, pres_desc, organization, location, presentation.rm_id, field_name,
-                    pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
-					pres_max_students - presentation.pres_enrolled_students as remaining, 
-					get_presenters_comma_list (presentation.pres_id) presenter_names,
+                    pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, "
+                    . $rem .
+					" get_presenters_comma_list (presentation.pres_id) presenter_names,
 					rm_nbr
 				FROM presentation, field, room
 				WHERE presentation.ses_id = :ses_id
 				AND presentation.field_id = field.field_id
-				and presentation.rm_id = room.rm_id
-				AND presentation.pres_enrolled_students < presentation.pres_max_students ";
+				and presentation.rm_id = room.rm_id "
+                . $rem_crit;
 
     if ($sort_by == 1) $query .= ('ORDER BY field_name');
     else if ($sort_by == 2) $query .= ('ORDER BY organization');
@@ -89,8 +100,6 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
     else $query .= ('ORDER BY field_name');
     if ($order_by == 2) $query.= (' DESC');
     else $query.= (' ASC');
-
-    global $db;
 
     try {
         $statement = $db->prepare($query);
@@ -277,7 +286,10 @@ class SeniorPresentation {
 
     function has_space()
     {
-        if ($this->pres_max_students > $this->pres_enrolled_students)
+        global $user;
+
+        if ((($user->usr_type_cde == 'TCH') && ($this->pres_max_teachers > $this->pres_enrolled_teachers)) ||
+            (($user->usr_type_cde == 'STD') && ($this->pres_max_students > $this->pres_enrolled_students)))
             return true;
         else
             return false;

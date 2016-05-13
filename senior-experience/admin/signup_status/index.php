@@ -43,14 +43,14 @@ switch($action) {
         $enroll_list = get_registered_users();
         include 'view.php';
         break;
-    case "all_download":
+    case "all_registrants":
         $grade = filter_input(INPUT_POST, 'grade');
-        $student_list = all_enroll_download($grade);
+        $student_list = all_registrants_download();
         $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
-        header('Content-Disposition: attachment; filename="all_enrolled.csv";');
+        header('Content-Disposition: attachment; filename="all_registrations.csv";');
 
-        fputcsv($output, array('Last','First','Username','Year','Number of Sessions'));
+        fputcsv($output, array('Last', 'First', 'Grade', 'Session', 'Room', 'Field', 'Title', 'Organization', 'Location', 'Presenting', 'Presentation ID', 'Field ID', 'User ID'));
         foreach($student_list as $student) {
             fputcsv($output, $student);
         }

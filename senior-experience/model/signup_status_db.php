@@ -2,89 +2,83 @@
 
 function get_registered_users(){
 
-    $query = 'SELECT completed.grade_lvl, completed.num AS Complete, partial.num AS Partial, none.num AS None
+    $query = 'SELECT completed.usr_grade_lvl, completed.num AS Complete, partial.num AS Partial, none.num AS None
     FROM
-    (SELECT grade_lvl, sum(num) AS num
+    (SELECT usr_grade_lvl, sum(num) AS num
     FROM
-    (SELECT grade_lvl, 0 AS num
+    (SELECT distinct grade_lvl as usr_grade_lvl, 0 AS num
     FROM signup_dates
 
     UNION
 
-    SELECT grade_lvl, count(*) AS num
+    SELECT usr_grade_lvl, count(*) AS num
     FROM (
-    SELECT grade_lvl, user.usr_id, count(*) AS num_sessions
-    FROM signup_dates
-    INNER JOIN user ON user.usr_grade_lvl = signup_dates.grade_lvl
+    SELECT usr_grade_lvl, user.usr_id, count(*) AS num_sessions
+    FROM user 
     INNER JOIN user_presentation_xref ON user_presentation_xref.usr_id = user.usr_id
     WHERE usr_active = 1
-    AND usr_type_cde = \'STD\'
-    GROUP BY grade_lvl, user.usr_id
+    GROUP BY usr_grade_lvl, user.usr_id
     HAVING num_sessions = 4
     ) temp
-    GROUP BY grade_lvl ) a
+    GROUP BY usr_grade_lvl ) a
 
-    GROUP BY grade_lvl) completed
+    GROUP BY usr_grade_lvl) completed
 
     INNER JOIN (
-    SELECT grade_lvl, sum(num) AS num
+    SELECT usr_grade_lvl, sum(num) AS num
     FROM
-    (SELECT grade_lvl, 0 AS num
+    (SELECT distinct grade_lvl as usr_grade_lvl, 0 AS num
     FROM signup_dates
 
     UNION
-    SELECT grade_lvl, count(*) AS num
+    SELECT usr_grade_lvl, count(*) AS num
     FROM (
-    SELECT grade_lvl, user.usr_id, count(*) AS num_sessions
-    FROM signup_dates
-    INNER JOIN user ON user.usr_grade_lvl = signup_dates.grade_lvl
+    SELECT usr_grade_lvl, user.usr_id, count(*) AS num_sessions
+    FROM user 
     INNER JOIN user_presentation_xref ON user_presentation_xref.usr_id = user.usr_id
     WHERE usr_active = 1
-    AND usr_type_cde = \'STD\'
-    GROUP BY grade_lvl, user.usr_id
+    GROUP BY usr_grade_lvl, user.usr_id
     HAVING num_sessions < 4
     ) temp
-    GROUP BY grade_lvl
+    GROUP BY usr_grade_lvl
      ) a
 
-    GROUP BY grade_lvl
+    GROUP BY usr_grade_lvl
 
-    ) partial ON completed.grade_lvl = partial.grade_lvl
+    ) partial ON completed.usr_grade_lvl = partial.usr_grade_lvl
 
 
 
     INNER JOIN (
-    SELECT grade_lvl, sum(num) AS num
+    SELECT usr_grade_lvl, sum(num) AS num
     FROM
-    (SELECT grade_lvl, 0 AS num
+    (SELECT distinct grade_lvl as usr_grade_lvl, 0 AS num
     FROM signup_dates
 
     UNION
-    SELECT grade_lvl, count(*) AS num
+    SELECT usr_grade_lvl, count(*) AS num
     FROM user
-    INNER JOIN signup_dates ON signup_dates.grade_lvl = user.usr_grade_lvl
     LEFT JOIN user_presentation_xref ON user_presentation_xref.usr_id= user.usr_id
     WHERE user_presentation_xref.usr_id IS NULL
-    AND usr_type_cde = \'STD\'
     AND usr_active = 1
-    GROUP BY grade_lvl
+    GROUP BY usr_grade_lvl
     ) a
 
-    GROUP BY grade_lvl
+    GROUP BY usr_grade_lvl
 
-    ) none ON completed.grade_lvl = none.grade_lvl
-    ORDER BY grade_lvl;';
+    ) none ON completed.usr_grade_lvl = none.usr_grade_lvl
+    ORDER BY usr_grade_lvl;';
     return get_list($query);
 }
 function undo_enroll($year) {
-    $query = "delete from pres_user_xref
+    $query = "delete from user_presentation_xref
     where usr_id in (
       SELECT usr_id
       FROM user
-        INNER JOIN signup_dates ON user.usr_class_year = signup_dates.class_year
-      WHERE grade_lvl = :year
+      WHERE usr_grade_lvl = :year
     )
-    AND pres_user_updt_usr_id = -1";
+    AND user_pres_updt_usr_id = -1
+    and presenting = 0";
     global $db;
 
     try {
@@ -115,24 +109,38 @@ function random_enroll($year) {
     }
 }
 
+function all_registrants_download() {
+    $query =
+        ' select usr_last_name, usr_first_name, usr_grade_lvl, ses_id, rm_nbr, field_name, pres_title, organization, location, presenting, p.pres_id, p.field_id, u.usr_id
+            from user u, user_presentation_xref x, presentation p, room r, field f
+            where u.usr_id = x.usr_id
+            and p.pres_id = x.pres_id
+            and p.rm_id = r.rm_id
+            and p.field_id = f.field_id
+            order by usr_last_name, usr_first_name ';
+
+    return get_csv_list($query, 0);
+}
+
 function all_enroll_download($grade) {
     $gradeClause = '';
     if ($grade != 0) {
-        $gradeClause = ' where usr_grade_lvl = :usr_grade_lvl';
+        $gradeClause = ' and usr_grade_lvl = :usr_grade_lvl';
     }
-    $query = 'select usr_last_name, usr_first_name, usr_bca_id, usr_class_year, num_sessions
+    $query =
+        ' select usr_last_name, usr_first_name, usr_bca_id, usr_class_year, num_sessions
     from (
-        SELECT grade_lvl, user.usr_id, count(*) as num_sessions
-           from signup_dates
-             inner join user on user.usr_class_year = signup_dates.class_year
-             inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
-           where usr_active = 1
-    and usr_type_cde = \'STD\'
-           group by grade_lvl, user.usr_id
-           having num_sessions = 4
-         ) temp
-    inner join user on user.usr_id = temp.usr_id ' . $gradeClause . '
-    order by usr_last_name, usr_first_name';
+        SELECT grade_lvl, u.usr_id, count(*) as num_sessions
+			from signup_dates d, user u, user_presentation_xref x  
+			where u.usr_grade_lvl = d.grade_lvl
+			and x.usr_id = u.usr_id
+			and usr_active = 1
+			group by grade_lvl, u.usr_id
+			having num_sessions = 4
+         ) temp, user
+    where user.usr_id = temp.usr_id 
+    ' . $gradeClause . '
+    order by usr_last_name, usr_first_name ';
 
     return get_csv_list($query, $grade);
 }
@@ -140,21 +148,22 @@ function all_enroll_download($grade) {
 function partial_enroll_download($grade) {
     $gradeClause = '';
     if ($grade != 0) {
-        $gradeClause = ' where usr_grade_lvl = :usr_grade_lvl';
+        $gradeClause = ' and usr_grade_lvl = :usr_grade_lvl ';
     }
-    $query = 'select usr_last_name, usr_first_name, usr_bca_id, usr_class_year, num_sessions
+    $query =
+        ' select usr_last_name, usr_first_name, usr_bca_id, usr_class_year, num_sessions
     from (
-        SELECT grade_lvl, user.usr_id, count(*) as num_sessions
-           from signup_dates
-             inner join user on user.usr_class_year = signup_dates.class_year
-             inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
-           where usr_active = 1
-    and usr_type_cde = \'STD\'
-           group by grade_lvl, user.usr_id
-           having num_sessions <4
-         ) temp
-    inner join user on user.usr_id = temp.usr_id ' . $gradeClause . '
-    order by usr_last_name, usr_first_name';
+        SELECT grade_lvl, u.usr_id, count(*) as num_sessions
+			from signup_dates d, user u, user_presentation_xref x  
+			where u.usr_grade_lvl = d.grade_lvl
+			and x.usr_id = u.usr_id
+			and usr_active = 1
+			group by grade_lvl, u.usr_id
+			having num_sessions < 4
+         ) temp, user
+    where user.usr_id = temp.usr_id 
+    ' . $gradeClause . '
+    order by usr_last_name, usr_first_name ';
 
     return get_csv_list($query, $grade);
 }
@@ -162,20 +171,20 @@ function partial_enroll_download($grade) {
 function no_enroll_download($grade) {
     $gradeClause = '';
     if ($grade != 0) {
-        $gradeClause = ' where usr_grade_lvl = :usr_grade_lvl';
+        $gradeClause = ' and usr_grade_lvl = :usr_grade_lvl';
     }
-    $query = 'SELECT usr_last_name, usr_first_name, usr_bca_id, usr_class_year
-    FROM (
-        SELECT user.usr_id
-           FROM user
-             INNER JOIN signup_dates ON signup_dates.class_year= user.usr_class_year
-             LEFT JOIN pres_user_xref ON pres_user_xref.usr_id= user.usr_id
-           WHERE pres_user_xref.usr_id IS NULL
-    AND usr_type_cde = \'STD\'
-    AND usr_active = 1
-         ) temp
-    INNER JOIN user ON user.usr_id = temp.usr_id ' . $gradeClause . '
-    ORDER BY usr_last_name, usr_first_name';
+    $query = 'select usr_last_name, usr_first_name, usr_bca_id, usr_class_year
+    from (
+        SELECT u.usr_id
+		from signup_dates d, user u  
+		LEFT JOIN user_presentation_xref x  ON x.usr_id= u.usr_id
+		WHERE x.usr_id IS NULL
+		and u.usr_grade_lvl = d.grade_lvl
+		and usr_active = 1
+	 ) temp, user
+    where user.usr_id = temp.usr_id 
+    ' . $gradeClause . '
+    order by usr_last_name, usr_first_name';
 
     return get_csv_list($query, $grade);
 }
