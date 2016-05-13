@@ -94,6 +94,8 @@ switch ($action) {
             $pdf->Line($pdf->getlMargin()+ 70, $pdf->getH()/32 * 9,
                 $pdf->getW() - $pdf->getrMargin() - 70, $pdf->getH()/32 * 9);
 
+            $pdf->Cell(0, $pdf->getH() / 12, "", 0, 1);
+
             $pdf->SetFont('', '', 35);
 
             $pdf->SetFont('Arial', '', 25);

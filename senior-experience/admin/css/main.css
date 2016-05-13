@@ -741,6 +741,7 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
     margin-right: 10px;
     position: fixed;
     text-align: right;
+    text-decoration: underline;
 }
 
 

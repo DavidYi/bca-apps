@@ -87,7 +87,7 @@ class signinPDF extends FPDF
 
     function FancyTeacher($header, $data)
     {
-        $headHeight = 10;
+        $headHeight = 15;
         $height = 9;
         $fontSize = 10;
         // Colors, line width and bold font
