@@ -15,7 +15,6 @@ if ($action == NULL) {
 switch ($action) {
 	case 'list_tests':
 		$testList = get_test_list();
-		include '../../mainPage/index.php';
 		break;
 	
 	case 'add_test':
