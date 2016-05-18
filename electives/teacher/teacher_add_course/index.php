@@ -17,13 +17,14 @@ if ($action == NULL) {
         $action = 'default';
     }
 }
+// sdfas
 
 switch ($action) {
     case 'add_course':
         $choice = filter_input(INPUT_POST, 'choice');
         if ($choice == "Add Course") {
             $allFieldsFilled = true;
-            
+
             if (isset($_POST["choice"])) {
 
                 if (!empty($_POST["day"])) {

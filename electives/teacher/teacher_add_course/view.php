@@ -27,8 +27,8 @@
 
 
 
-        <button class="submit" type="submit">Submit</button>
-        <input type="submit" name="choice" value="Back">
+        <button class="submit s" type="submit">Submit</button>
+        <button class="submit back" type="submit" name="choice" value="Back">Back</button>
       </form>
   </div>
   </body>
