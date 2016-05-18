@@ -24,13 +24,9 @@
 
             <?php /*if (!isset($_SESSION['prev_usr_id'])) { */?><!--
                 <h1>Register For Proctoring</h1>
-<<<<<<< HEAD
-                <?php if ($startTime > $currentTime) { ?>
-=======
                 <<<<<<< HEAD
 
                 <?php /*if ($startTime > $currentTime) { */?>
->>>>>>> 2758c5799ec588ebac4c005cd7131a907aa7e3e8
                     <h3> Registration <b>has not opened</b>!</h3>
                     <h3> Opens: <?php /*echo $startTimeFormatted */?> </h3>
 
@@ -49,6 +45,8 @@
                     <h3> Closes: <?php /*echo $endTimeFormatted */?> </h3>
                 <?php /*} */?>
                 <a href="../add/index.php">Add test</a>
+                =======
+                >>>>>>> 9ded0a9ca9b5f73d4014c82581e677ef6dc7323f
                 <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
             <?php /*} else { */?>
                 <h1>Mimic User Mode</h1>
