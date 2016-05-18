@@ -2,11 +2,10 @@
 <head>
     <title>Register for Proctoring</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
+    <!-- <link rel="shortcut icon" href="images/logo.ico"> ->
 
-    <!-- Styles -->
+    <!--Styles-->
     <link href="../ss/main.css" rel="stylesheet">
-    <script src="../js/jquery.min.js"></script>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
@@ -21,49 +20,24 @@
                 </a></h3>
         </div>
         <div class="vertical-center">
-
-            <?php /*if (!isset($_SESSION['prev_usr_id'])) { */?><!--
+            <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
                 <h1>Register For Proctoring</h1>
-                <<<<<<< HEAD
-
-                <?php /*if ($startTime > $currentTime) { */?>
-                    <h3> Registration <b>has not opened</b>!</h3>
-                    <h3> Opens: <?php /*echo $startTimeFormatted */?> </h3>
-
-                <?php /*} elseif ($endTime < $currentTime) { */?>
-                    <h3> Registration has <b>ended</b>. </h3>
-                    <h3> If you did not finish registering, a session will be assigned to you. </h3>
-
-                <?php /*} elseif ($registration_complete) { */?>
-                    <h3> Registration <b>complete</b>! </h3>
-                    <h3> Feedback <a
-                            href="https://docs.google.com/forms/d/1nfzkqn2NB8m8OeQ_w3XwE2hNp3OK-k8bVtA6DZb300E/viewform">survey</a>
-                        about this site. </h3>
-
-                <?php /*} else { */?>
-                    <h3> Registration is <b>open</b>! </h3>
-                    <h3> Closes: <?php /*echo $endTimeFormatted */?> </h3>
-                <?php /*} */?>
-                <a href="../add/index.php">Add test</a>
-                =======
-                >>>>>>> 9ded0a9ca9b5f73d4014c82581e677ef6dc7323f
                 <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
-            <?php /*} else { */?>
+            <?php } else { ?>
                 <h1>Mimic User Mode</h1>
-            --><?php /*} */?>
-
-
+            <?php } ?>
         </div>
     </div>
     <div class="view-signup enrollment">
 
         <div id="" style="overflow-y:scroll; height:500px; margin-top:45px">
-            <?php foreach ($testList as $test) { ?>
+            <?php foreach ($testSelectedList as $test) { ?>
                 <div class="session view-session" onclick="">
                     <?php if ($test['test_id'] != NULL) { ?>
-                        <div class="time"><?php echo $test['test_dt'] ?></div>
-                        <div class="mods"><?php echo $test['test_time_desc'] ?></div>
-                        <div class="name"><?php echo $test['test_name'] ?></div>
+                        <div class="time"><?php echo $test['test_dt']?></div>
+                        <div class="mods"><?php echo $test['test_time_desc']?></div>
+                        <div class="name"><?php echo $test['test_name']?></div>
+                        <div class="update_date"><?php echo $test['updt_dt']?></div>
 
                     <?php } ?>
                     <!--comment-->
@@ -80,7 +54,7 @@
 <script type="text/javascript">
     $('body').plusAnchor({
         easing: 'easeInOutExpo',
-        speed: 700
+        speed:  700
     });
 </script>
 </body>
