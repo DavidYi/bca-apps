@@ -56,19 +56,20 @@ switch ($action) {
             }
         }
         $timesString .= "THAT WAS INPUT FROM LAST PAGE, NEXT IS INPUT FROM DATABASE:\n";
-        /*Everything below is still in progress. Eventually it will replace the stuff above*/
+        //Everything below is still in progress. Eventually it will replace the stuff above
 
         $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
         echo "this user's id is: ";
-        echo ($usr_id);
+        echo ($usr_id); //This works YAY
 
         $oldtimesarr = get_times($usr_id);
-        for($i = 0; $i < sizeof($oldtimesarr); $i++){
-            $timesString .= $oldtimesarr['days'];
+        for($i = 0; $i < count($oldtimesarr); $i++){ //count($oldtimesarr) returning larger values than expected
+            $timesString .= $oldtimesarr['day']; //need to figure out how to incorporate index
             $timesString .= " ";
             $timesString .= $oldtimesarr['mods'];
+            $timesString .= " ";
         }
-        /*The fact that nothing prints from this isn't an error, the database doesn't have any times inputted for this person*/
+        /*The fact that nothing prints from this isn't an error, the database doesn't have any times inputted for most people*/
 
 
 ?>
