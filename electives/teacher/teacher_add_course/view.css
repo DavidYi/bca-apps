@@ -16,6 +16,9 @@ html, body {
   color: black;
   padding-bottom: 8px;
   border-bottom: 4px solid #76c9d4;
+  width: 280px;
+  margin: 14px auto;
+  padding: 7px;
 }
 
 .spacing {
@@ -23,18 +26,18 @@ html, body {
 }
 
 #box {
-	border-radius: 0px;
-	display: block;
-	background-color: white;
- 	width: 500px;
-	height: 495px;
-	position:absolute;
-	left: 50%;
-	top: 50%;
-	margin: -235px 0 0 -235px;
-	-moz-box-shadow: 1px 1px 1px #a8a8a8;
-	-webkit-box-shadow: 1px 1px 1px #a8a8a8;
-	box-shadow: 1px 1px 1px #a8a8a8;
+  border-radius: 0px;
+  display: block;
+  background-color: white;
+  width: 500px;
+  height: 495px;
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  margin: -235px 0 0 -235px;
+  -moz-box-shadow: 1px 1px 1px #a8a8a8;
+  -webkit-box-shadow: 1px 1px 1px #a8a8a8;
+  box-shadow: 1px 1px 1px #a8a8a8;
 }
 
 input {
@@ -54,6 +57,7 @@ span {
   text-align: right;
   vertical-align: top;
   padding: 12px 25px;
+  margin-top: 2px;
 }
 
 .submit {
@@ -81,6 +85,7 @@ textarea {
   padding: 12px;
   border: 1px solid #dbdbdb;
   resize: vertical;
+  margin-top: 10px;
 }
 
 /*.title {
