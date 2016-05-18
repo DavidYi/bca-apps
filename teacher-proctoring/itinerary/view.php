@@ -51,14 +51,10 @@
             $testText = $test['test_id'] . ":" . $test['test_time_id'];
             ?>
                 <div class="session" data-value="<?php echo $testText?>">
-                        <div class="tag"><?php echo $test['test_name']?></div>
-                        <div class="company"><?php echo $test['test_type_cde']?></div>
-                        <div class="position"><?php echo $test['rm_id']?></div>
-                        <div class="presenter"><?php echo $test['test_dt']?></div>
-                        <div class="remaining"><img src="../images/deleteIcon.gif"
-                                                    onclick="deleteCourse(<?php echo $test['test_id']; ?>);"
-                                                    title="Delete Test"
-                                                    style="cursor:pointer"></div>
+                        <div class="tname"><?php echo $test['test_name']?></div>
+                        <div class="ttype"><?php echo $test['test_type_cde']?></div>
+                        <div class="troom"><?php echo $test['rm_id']?></div>
+                        <div class="tdate"><?php echo $test['test_dt']?></div>
                 </div>
             <?php } ?>
     </div>
@@ -66,12 +62,6 @@
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
-<script>
-    function register_for(pres_id) {
-        alert ("Hello");
-        $(location).attr('href', );
-    }
-</script>
 <script type="text/javascript">
     var picked = [];
     $('body').plusAnchor({

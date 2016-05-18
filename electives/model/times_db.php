@@ -11,7 +11,7 @@ function get_times_list(){
 
 function get_times($usr_id){
     global $db;
-    $query = "select time_name
+    $query = "select day, mods
               from elect_user_free_xref x, elect_time e
               where x.usr_id = :usr_id
               and x.time_id = e.time_id";
