@@ -99,31 +99,31 @@
 
 .wrapper-dropdown-1.active:after {
     border-color: #9bc7de transparent;
-    border-width: 6px 6px 0 6px ;
+    border-width: 6px 6px 0 6px;
     margin-top: -3px;
 }
 
 .wrapper-dropdown-1.active {
-  background: #9bc7de;
-  background: -moz-linear-gradient(left,  #9bc7de 0%, #9bc7de 78%, #ffffff 78%, #ffffff 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#9bc7de), color-stop(78%,#9bc7de), color-stop(78%,#ffffff), color-stop(100%,#ffffff));
-  background: -webkit-linear-gradient(left,  #9bc7de 0%,#9bc7de 78%,#ffffff 78%,#ffffff 100%);
-  background: -o-linear-gradient(left,  #9bc7de 0%,#9bc7de 78%,#ffffff 78%,#ffffff 100%);
-  background: -ms-linear-gradient(left,  #9bc7de 0%,#9bc7de 78%,#ffffff 78%,#ffffff 100%);
-  background: linear-gradient(to right,  #0C2E79 0%,#0D2E76 78%,#000000 78%,#000000 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9bc7de', endColorstr='#ffffff',GradientType=1 );
+    background: #9bc7de;
+    background: -moz-linear-gradient(left, #9bc7de 0%, #9bc7de 78%, #ffffff 78%, #ffffff 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #9bc7de), color-stop(78%, #9bc7de), color-stop(78%, #ffffff), color-stop(100%, #ffffff));
+    background: -webkit-linear-gradient(left, #9bc7de 0%, #9bc7de 78%, #ffffff 78%, #ffffff 100%);
+    background: -o-linear-gradient(left, #9bc7de 0%, #9bc7de 78%, #ffffff 78%, #ffffff 100%);
+    background: -ms-linear-gradient(left, #9bc7de 0%, #9bc7de 78%, #ffffff 78%, #ffffff 100%);
+    background: linear-gradient(to right, #0C2E79 0%, #0D2E76 78%, #000000 78%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9bc7de', endColorstr='#ffffff', GradientType=1);
 }
 
 /* No CSS3 support */
 
-.no-opacity       .wrapper-dropdown-1 .dropdown,
+.no-opacity .wrapper-dropdown-1 .dropdown,
 .no-pointerevents .wrapper-dropdown-1 .dropdown {
     display: none;
     opacity: 1; /* If opacity support but no pointer-events support */
     pointer-events: auto; /* If pointer-events support but no pointer-events support */
 }
 
-.no-opacity       .wrapper-dropdown-1.active .dropdown,
+.no-opacity .wrapper-dropdown-1.active .dropdown,
 .no-pointerevents .wrapper-dropdown-1.active .dropdown {
     display: block;
 }
@@ -158,7 +158,7 @@
 }
 
 .wrapper-dropdown-2 .dropdown {
-  /* Size & position */
+    /* Size & position */
     position: absolute;
     top: 100%;
     left: -5px;
@@ -228,14 +228,14 @@
 
 /* No CSS3 support */
 
-.no-opacity       .wrapper-dropdown-2 .dropdown,
+.no-opacity .wrapper-dropdown-2 .dropdown,
 .no-pointerevents .wrapper-dropdown-2 .dropdown {
     display: none;
     opacity: 1; /* If opacity support but no pointer-events support */
     pointer-events: auto; /* If pointer-events support but no pointer-events support */
 }
 
-.no-opacity       .wrapper-dropdown-2.active .dropdown,
+.no-opacity .wrapper-dropdown-2.active .dropdown,
 .no-pointerevents .wrapper-dropdown-2.active .dropdown {
     display: block;
 }
@@ -252,8 +252,8 @@
     /* Styles */
     background: #fff;
     border-radius: 7px;
-    border: 1px solid rgba(0,0,0,0.15);
-    box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);
     cursor: pointer;
     outline: none;
 
@@ -276,7 +276,7 @@
 }
 
 .wrapper-dropdown-3 .dropdown {
-  /* Size & position */
+    /* Size & position */
     position: absolute;
     top: 140%;
     left: 0;
@@ -285,8 +285,8 @@
     /* Styles */
     background: white;
     border-radius: inherit;
-    border: 1px solid rgba(0,0,0,0.17);
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.17);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     font-weight: normal;
     -webkit-transition: all 0.5s ease-in;
     -moz-transition: all 0.5s ease-in;
@@ -321,7 +321,7 @@
     right: 13px;
     border-width: 0 8px 8px 8px;
     border-style: solid;
-    border-color: rgba(0,0,0,0.1) transparent;
+    border-color: rgba(0, 0, 0, 0.1) transparent;
 }
 
 .wrapper-dropdown-3 .dropdown li a {
@@ -330,7 +330,7 @@
     text-decoration: none;
     color: #8aa8bd;
     border-bottom: 1px solid #e6e8ea;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -367,18 +367,17 @@
 
 /* No CSS3 support */
 
-.no-opacity       .wrapper-dropdown-3 .dropdown,
+.no-opacity .wrapper-dropdown-3 .dropdown,
 .no-pointerevents .wrapper-dropdown-3 .dropdown {
     display: none;
     opacity: 1; /* If opacity support but no pointer-events support */
     pointer-events: auto; /* If pointer-events support but no pointer-events support */
 }
 
-.no-opacity       .wrapper-dropdown-3.active .dropdown,
+.no-opacity .wrapper-dropdown-3.active .dropdown,
 .no-pointerevents .wrapper-dropdown-3.active .dropdown {
     display: block;
 }
-
 
 /* DEMO 4 */
 
@@ -480,7 +479,8 @@
     border: none;
 }
 
-.wrapper-dropdown-4 .dropdown li input /* Checkboxes */ {
+.wrapper-dropdown-4 .dropdown li input /* Checkboxes */
+{
     position: absolute;
     display: block;
     right: 10px;
@@ -514,14 +514,14 @@
 
 /* No CSS3 support */
 
-.no-opacity       wrapper-dropdown-4 .dropdown,
+.no-opacity wrapper-dropdown-4 .dropdown,
 .no-pointerevents .wrapper-dropdown-4 .dropdown {
     display: none;
     opacity: 1; /* If opacity support but no pointer-events support */
     pointer-events: auto; /* If pointer-events support but no pointer-events support */
 }
 
-.no-opacity       .wrapper-dropdown-4.active .dropdown,
+.no-opacity .wrapper-dropdown-4.active .dropdown,
 .no-pointerevents .wrapper-dropdown-4.active .dropdown {
     display: block;
 }
@@ -538,7 +538,7 @@
     /* Styles */
     background: #fff;
     border-radius: 5px;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
     outline: none;
     -webkit-transition: all 0.3s ease-out;
@@ -571,7 +571,7 @@
     /* Styles */
     background: #fff;
     border-radius: 0 0 5px 5px;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-top: none;
     border-bottom: none;
     list-style: none;
@@ -587,7 +587,7 @@
 }
 
 .wrapper-dropdown-5 .dropdown li {
-    padding: 0 10px ;
+    padding: 0 10px;
 }
 
 .wrapper-dropdown-5 .dropdown li a {
@@ -630,7 +630,7 @@
 }
 
 .wrapper-dropdown-5.active .dropdown {
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     max-height: 400px;
 }
 
@@ -642,9 +642,9 @@
     width: 6.5em;
     background: #fff;
     border: 1px solid #ddd;
-    -webkit-box-shadow:0 5px 10px rgba(0,0,0,0.2);
-    -moz-box-shadow:0 5px 10px rgba(0,0,0,0.2);
-    box-shadow:0 5px 10px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     outline: none;
     z-index: 10001;
     margin: 0;
@@ -666,7 +666,8 @@
 }
 
 .ui-timepicker-duration {
-    margin-left: 5px; color: #888;
+    margin-left: 5px;
+    color: #888;
 }
 
 .ui-timepicker-list:hover .ui-timepicker-duration {
@@ -683,13 +684,15 @@
 }
 
 .ui-timepicker-list:hover .ui-timepicker-selected {
-    background: #fff; color: #000;
+    background: #fff;
+    color: #000;
 }
 
 li.ui-timepicker-selected,
 .ui-timepicker-list li:hover,
 .ui-timepicker-list .ui-timepicker-selected:hover {
-    background: #1980EC; color: #fff;
+    background: #1980EC;
+    color: #fff;
 }
 
 li.ui-timepicker-selected .ui-timepicker-duration,
@@ -726,8 +729,8 @@ input {
 }
 
 input:focus {
-  outline: none;
-  border: 0.5px solid #DEDEDE;
+    outline: none;
+    border: 0.5px solid #DEDEDE;
 }
 
 a.ui-state-default {
@@ -751,7 +754,7 @@ div#ui-datepicker-div {
     right: 0;
 }
 
-.ui.dropdown>.dropdown.icon:before {
+.ui.dropdown > .dropdown.icon:before {
     content: "\25be";
 }
 
@@ -809,17 +812,17 @@ div#parents {
 }
 
 button {
-  padding: 11px;
-  margin: 0 auto;
-  background: #403D3D;
-  border: none;
-  margin-top: 7px;
-  height: 43.6px;
-  margin-bottom: -13px;
-  width: 97px;
-  transition: all 0.2s ease;
-  margin-left: -9.5px;
-  color: white;
+    padding: 11px;
+    margin: 0 auto;
+    background: #403D3D;
+    border: none;
+    margin-top: 7px;
+    height: 43.6px;
+    margin-bottom: -13px;
+    width: 97px;
+    transition: all 0.2s ease;
+    margin-left: -9.5px;
+    color: white;
 }
 
 button:hover {
@@ -837,16 +840,37 @@ input.modinput {
     margin: 0 auto;
 }
 
-.tg  {
-  border-collapse: collapse;
-  border-spacing:0;
-  border: none;
-  margin: 0 auto;
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
+    margin: 0 auto;
 }
 
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding: 10px 0px;border:none;overflow:hidden;word-break:normal;}
-.tg th, .tg td{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding: 7px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;text-align: right;}
-.tg .tg-yw4l{vertical-align:top}
+.tg td {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px 0px;
+    border: none;
+    overflow: hidden;
+    word-break: normal;
+}
+
+.tg th, .tg td {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 7px 5px;
+    border-style: solid;
+    border-width: 0px;
+    overflow: hidden;
+    word-break: normal;
+    text-align: right;
+}
+
+.tg .tg-yw4l {
+    vertical-align: top
+}
 
 label {
     padding-right: 6px;
@@ -864,6 +888,7 @@ label {
 hr {
     border-color: white;
 }
+
 .ui.selection.active.dropdown, .ui.selection.active.dropdown .menu, .ui.selection.dropdown:focus, .ui.dropdown.selection.active.dropdown:hover, .ui.selection.active.dropdown:hover .menu {
     border-color: #EAEA3E;
 }
@@ -873,23 +898,23 @@ body {
 }
 
 ::-webkit-input-placeholder {
-   font-family: 'Lato';
-   font-weight: 400;
+    font-family: 'Lato';
+    font-weight: 400;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   font-family: 'Lato';
-   font-weight: 400;
+    font-family: 'Lato';
+    font-weight: 400;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-   font-family: 'Lato';
-   font-weight: 400;
+::-moz-placeholder { /* Firefox 19+ */
+    font-family: 'Lato';
+    font-weight: 400;
 }
 
 :-ms-input-placeholder {
-   font-family: 'Lato';
-   font-weight: 400;
+    font-family: 'Lato';
+    font-weight: 400;
 }
 
 .default.text {
