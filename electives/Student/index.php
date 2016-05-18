@@ -64,7 +64,9 @@ switch ($action) {
 
         $oldtimesarr = get_times($usr_id);
         for($i = 0; $i < sizeof($oldtimesarr); $i++){
-            $timesString .= $oldtimesarr['time_name'];
+            $timesString .= $oldtimesarr['days'];
+            $timesString .= " ";
+            $timesString .= $oldtimesarr['mods'];
         }
         /*The fact that nothing prints from this isn't an error, the database doesn't have any times inputted for this person*/
 

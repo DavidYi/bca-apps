@@ -1,9 +1,11 @@
 <?php
 /**
+ *
  * Created by PhpStorm.
  * User: macbook
- * Date: 1/5/16
+ * Date: 1/05/16
  * Time: 2:04 PM
+ *
  */
 
 require_once("../util/main.php");
@@ -14,7 +16,7 @@ $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
     if ($action == NULL) {
-        $action = 'list_tests';
+        $action = 'list_selected_tests';
     }
 }
 
@@ -31,6 +33,10 @@ switch ($action) {
 
     case 'list_tests':
         $testList = get_test_list();
+
+        break;
+    case 'list_selected_tests':
+        $testSelectedList = get_selected_test_list($user->usr_id);
 
         break;
 
@@ -53,5 +59,5 @@ if (isset($action) and ($action == "logout")) {
     }
 }
 
-include("./view.php");
+include ("./view.php");
 exit();

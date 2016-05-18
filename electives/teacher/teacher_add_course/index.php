@@ -17,13 +17,14 @@ if ($action == NULL) {
         $action = 'default';
     }
 }
+// sdfas
 
 switch ($action) {
     case 'add_course':
         $choice = filter_input(INPUT_POST, 'choice');
         if ($choice == "Add Course") {
             $allFieldsFilled = true;
-            
+
             if (isset($_POST["choice"])) {
 
                 if (!empty($_POST["day"])) {
@@ -57,7 +58,7 @@ switch ($action) {
             header('Location: http://localhost/bca-apps/electives/teacher/');
         }
     case 'default':
-        include("/view.php");
+        include("./view.php");
 
 }
 ?>
