@@ -11,7 +11,6 @@ function addCourse($course_name, $course_desc) {
     $query = "INSERT INTO elect_course (course_name, course_desc, teacher_id) 
     VALUES (:course_name, :course_desc, :user_id)";
 
-
     global $db;
     global $user;
 
@@ -27,4 +26,25 @@ function addCourse($course_name, $course_desc) {
         exit();
     }
 }
+
+function get_course_by_user($usr_id) {
+    $query = 'SELECT course_id, course_name, course_desc, teacher_id
+              FROM elect_course
+              WHERE teacher_id = :usr_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
 ?>

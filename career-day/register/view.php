@@ -48,7 +48,7 @@
                         <div class="tag"><?php echo $presentation['mentor_field']?>&nbsp;</div>
                         <div class="company"><?php echo $presentation['mentor_company']?>&nbsp;</div>
                         <div class="position"><?php echo $presentation['mentor_position']?>&nbsp;</div>
-                        <div class="presenter"><a class="info" style="float: left; position: relative; z-index: 100; color: #555555;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;&nbsp;</a><?php echo ($presentation['mentor_last_name'].", ".$presentation['mentor_first_name'])?></div>
+                        <div class="presenter"><a class="info" style="float: left; position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;&nbsp;</a><?php echo ($presentation['mentor_last_name'].", ".$presentation['mentor_first_name'])?></div>
                         <div class="remaining"><?php echo ($presentation['pres_max_capacity'] - $presentation['pres_enrolled_count'])?></div>
                     </div>
 
@@ -68,12 +68,12 @@
                             <div class="close">
                                 <div class="presname"><?php echo ($presentation['mentor_last_name'].", ".$presentation['mentor_first_name'])?></div>
                                 <div class="x""><a href="#" style="color:#f0c30f" onclick="cpopup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x2716;</a></div>
-                        </div>
-                        <div class="popup-c">
-                            <p><?php echo ($presentation['mentor_profile']);?></p>
-                        </div>
+                            </div>
+                            <div class="popup-c">
+                              <p><?php echo ($presentation['mentor_profile']);?></p>
+                            </div>
+                         </div>
                     </div>
-                </div>
 
                 </div>
             <?php } } ?>

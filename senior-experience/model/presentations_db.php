@@ -16,6 +16,32 @@ function get_session_room_pairs() {
     return get_list($query);
 }
 
+# Used for exporting to CSV on itinerary page.
+function all_presentations_download() {
+    $query =
+        'select p.ses_id, rm_nbr, field_name, pres_title, organization, location, 
+                p.pres_desc, get_presenters_comma_list(p.pres_id),
+                pres_max_students - pres_enrolled_students
+        from presentation p, room r, field f
+        where p.rm_id = r.rm_id
+        and p.field_id = f.field_id
+        order by ses_id, field_name ';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+
 function get_all_presentations(){
     $query = "select p.pres_id, p.pres_title, rm_nbr, ses_id, concat (pres_enrolled_teachers, '/',pres_max_teachers) as teachers,
                 concat (pres_enrolled_students, '/',pres_max_students) as students,
@@ -70,24 +96,36 @@ function get_session_times_by_id($ses_id) {
 }
 
 function get_presentation_list($ses_id, $sort_by, $order_by) {
-    $query = 	"SELECT presentation.pres_id, pres_title, pres_desc, organization, location, rm_id, field_name,
-                    pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
-					pres_max_students - presentation.pres_enrolled_students as remaining, get_presenters_comma_list (presentation.pres_id) presenter_names
-				FROM presentation, field
+    global $db;
+    global $user;
+
+    $rem = " pres_max_students - presentation.pres_enrolled_students as remaining, ";
+    $rem_crit = " AND presentation.pres_enrolled_students < presentation.pres_max_students ";
+
+    if ($user->usr_type_cde == 'TCH') {
+        $rem = " pres_max_teachers - presentation.pres_enrolled_teachers as remaining, ";
+        $rem_crit = " AND presentation.pres_enrolled_teachers < presentation.pres_max_teachers ";
+    }
+
+    $query = 	"SELECT presentation.pres_id, pres_title, pres_desc, organization, location, presentation.rm_id, field_name,
+                    pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, "
+                    . $rem .
+					" get_presenters_comma_list (presentation.pres_id) presenter_names,
+					rm_nbr
+				FROM presentation, field, room
 				WHERE presentation.ses_id = :ses_id
 				AND presentation.field_id = field.field_id
-				AND presentation.pres_enrolled_students < presentation.pres_max_students ";
+				and presentation.rm_id = room.rm_id "
+                . $rem_crit;
 
     if ($sort_by == 1) $query .= ('ORDER BY field_name');
-    else if ($sort_by == 2) $query .= ('ORDER BY pres_title');
-    else if ($sort_by == 3) $query .= ('ORDER BY organization');
-    else if ($sort_by == 4) $query .= ('ORDER BY presenter_names');
+    else if ($sort_by == 2) $query .= ('ORDER BY organization');
+    else if ($sort_by == 3) $query .= ('ORDER BY presenter_names');
+    else if ($sort_by == 4) $query .= ('ORDER BY rm_nbr');
     else if ($sort_by == 5) $query .= ('ORDER BY remaining');
     else $query .= ('ORDER BY field_name');
     if ($order_by == 2) $query.= (' DESC');
     else $query.= (' ASC');
-
-    global $db;
 
     try {
         $statement = $db->prepare($query);
@@ -274,7 +312,10 @@ class SeniorPresentation {
 
     function has_space()
     {
-        if ($this->pres_max_students > $this->pres_enrolled_students)
+        global $user;
+
+        if ((($user->usr_type_cde == 'TCH') && ($this->pres_max_teachers > $this->pres_enrolled_teachers)) ||
+            (($user->usr_type_cde == 'STD') && ($this->pres_max_students > $this->pres_enrolled_students)))
             return true;
         else
             return false;

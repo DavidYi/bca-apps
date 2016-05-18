@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="../ss/main.css" rel="stylesheet">
-    <?php include_analytics(); ?>
+    <?php // include_analytics(); ?>
 </head>
 <body>
 <section class="main view">
@@ -35,8 +35,7 @@
                 <h3> Registration is <b>open</b>! </h3>
                 <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
             <?php } ?>
-
-            <h3> Email <a href="mailto:healaw@bergen.org"> Ms. Lawler </a> with any questions.</h3>
+            <a href = "index.php?action=presentation_list">View list of all presentations</a>
         </div>
     </div>
     <div class="view-signup enrollment">

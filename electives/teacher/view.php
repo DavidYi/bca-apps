@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title><?php echo $app_title?></title>
+    <title><?php echo $app_title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
@@ -9,6 +9,13 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="../ss/main.css" rel="stylesheet">
     <?php include_analytics(); ?>
+    <style>
+        th, td {
+            padding: 5px;
+            text-align: left;
+            border-bottom: 1px solid #333333;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,7 +27,8 @@
         </div>
         <div class="vertical-center">
             Teacher Page!
-
+            <br>
+            <br>
             Instructions here.
         </div>
     </div>
@@ -30,16 +38,33 @@
             Show availability table here
             <a href="availability/availability_view.php">Modify Availability</a>
         </div>
+        <br>
+        <br>
+        <br>
         <div class="vertical-center">
-            <h3><b>Courses</b></h3>
-            Show course list table here
-            <a href="teacher_add_course">Add Class</a>
+            <h3><b>Courses</b> | <a href="teacher_add_course/index.php">Add Class</a></h3>
+
+            <table style="width:75%">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <?php foreach ($courses as $course) :
+                    $courseName = $course['course_name'];
+                    $courseDesc = $course['course_desc'];
+                    ?>
+
+
+                        <tr>
+                            <td><?php echo $courseName ?></td>
+                            <td><?php echo $courseDesc ?></td>
+                        </tr>
+
+                <?php endforeach; ?>
+            </table>
         </div>
     </div>
 </section>
-
-
-
 
 
 <script type="text/javascript" src="../js/jquery.easing.min.js"></script>

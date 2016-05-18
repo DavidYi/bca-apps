@@ -8,25 +8,27 @@
 
   </head>
   <body>
-    <form action="">
+    <form action="." method="post">
+      <input type="hidden" name="action" value="add_course">
 
     <div id="box">
       <p class="title">Create Course</p>
 
         <label class="spacing">
           <span>Course Name</span>
-          <input type="text" name="name">
+          <input type="text" name="class_name">
         </label>
 
 
         <label class="spacing">
             <span>Description</span>
-            <textarea name="textarea"></textarea>
+            <textarea name="description"></textarea>
         </label>
 
 
 
         <button class="submit" type="submit">Submit</button>
+        <input type="submit" name="choice" value="Back">
       </form>
   </div>
   </body>
