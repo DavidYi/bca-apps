@@ -41,3 +41,13 @@ div#test-table {
 .table-header {
     font-weight: 800;
 }
+
+html {
+    background: #EFEFEF;
+}
+
+.view-signup.enrollment {
+    width: 95vw;
+    margin: 0 auto;
+    box-shadow: 7px 9px 27px #5A5A5A;
+}

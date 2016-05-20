@@ -29,8 +29,9 @@
         </div>
     </div>
     <div class="view-signup enrollment">
-
-        <div id="" style="overflow-y:scroll; height:500px; margin-top:45px">
+        <h3></h3>
+        <h1>These are your current registration times: </h1>
+        <div id="" style="overflow-y:scroll; height:350px; margin-top:45px">
             <?php foreach ($testSelectedList as $test) { ?>
                 <div class="session view-session" onclick="">
                     <?php if ($test['test_id'] != NULL) { ?>
@@ -40,11 +41,18 @@
                         <div class="update_date"><?php echo $test['updt_dt']?></div>
 
                     <?php } ?>
-                    <!--comment-->
                 </div>
             <?php } ?>
 
+
         </div>
+        <h1></h1>
+        <form action=""." method="post">
+            <input type="hidden" name=""action" value="show_itinerary">
+            <br>
+            <button type = "submit" value="Add/Delete">Add/Delete</button>
+        </form>
+
     </div>
 
 </section>
