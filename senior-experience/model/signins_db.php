@@ -11,7 +11,7 @@ function get_presentation_list(){
                     pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
                     pres_max_students - presentation.pres_enrolled_students as remaining, 
                     get_presenters_comma_list (presentation.pres_id) presenter_names,
-                    rm_nbr, ses_start, ses_end
+                    rm_nbr, ses_start, ses_end, presentation.ses_id
                 FROM presentation, field, room, session_times 
                 WHERE presentation.field_id = field.field_id
                     and presentation.rm_id = room.rm_id
@@ -102,10 +102,11 @@ function get_rooms(){
 }
 
 function get_session_by_room($rm_id, $ses_id){
-    $query = 'select ses_id, pres_title
-                from presentation
-                where rm_id  = :rm_id
-                and ses_id = :ses_id';
+    $query = 'select p.ses_id, pres_title, organization, get_full_name_presenters_comma_list (p.pres_id) full_presenters, ses_start
+                from presentation p, session_times s
+                where p.ses_id = s.ses_id
+                and rm_id  = :rm_id
+                and p.ses_id = :ses_id';
 
     global $db;
     try {

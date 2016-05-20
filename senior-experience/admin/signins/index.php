@@ -41,20 +41,20 @@ switch ($action) {
             $pdf->AddPage("P", "Letter");
             $pdf->SetFont('Arial', '', 12);
 
-            $pdf->SetY(20);
+            $pdf->SetY(10);
             $pdf->Cell(100, 9, "Title: " . $pres['pres_title']);
             $pdf->Ln();
             $pdf->Cell(100, 9, "Room: " . $pres['rm_nbr']);
             $pdf->Ln();
-            $pdf->Cell(100, 9, "Time: " . $pres['ses_start'] . ":" . $pres['ses_end']);
+            $pdf->Cell(100, 9, "Session: " . $pres['ses_id'] . " (" . $pres['ses_start'] . " - " . $pres['ses_end'] . ")");
             $pdf->Ln();
             $pdf->Cell(100, 9, "Presenters: " . $presenters);
             $pdf->Ln();
             $pdf->Cell(100, 9, "Teachers: " . $teachers);
             $pdf->Ln();
-            $pdf->SetX(50);
-            $pdf->SetDrawColor(50, 60, 100);
-            $pdf->Cell(100, 10, $title, 1, 0, 'C', 0);
+//            $pdf->SetX(50);
+//            $pdf->SetDrawColor(50, 60, 100);
+//            $pdf->Cell(100, 10, $title, 1, 0, 'C', 0);
 
             $pdf->FancyStudent($header, $students);
         }
@@ -87,26 +87,95 @@ switch ($action) {
             $pdf->Rect($pdf->getrMargin() + 2, $pdf->gettMargin() + 2,
                 $pdf->getW() - $WMargin - 4, $pdf->getH() - $HMargin - 4);
 
-            $pdf->Cell(0, $pdf->getH() / 12, "", 0, 1);
-            $pdf->SetFont('Arial', 'B');
-            $pdf->Cell(0, $pdf->getH() / 6, "Room " . $room['rm_nbr'], 0, 1, "C");
-            $pdf->SetLineWidth(1.75);
-            $pdf->Line($pdf->getlMargin()+ 70, $pdf->getH()/32 * 9,
-                $pdf->getW() - $pdf->getrMargin() - 70, $pdf->getH()/32 * 9);
+            $pdf->setY ($pdf->getY() + 5);
 
-            $pdf->Cell(0, $pdf->getH() / 12, "", 0, 1);
+            $pdf->SetFont('Arial', 'B', 40);
+            $pdf->Cell(0, 25, "Senior Exhibitions", 0, 1, "C");
 
-            $pdf->SetFont('', '', 35);
+//            $pdf->SetFont('Arial', 'B', 30);
+//            $pdf->Cell(0, $pdf->getH() / 15, "June 1, 2016", 0, 1, "C");
 
-            $pdf->SetFont('Arial', '', 25);
-            $pdf->Cell($pdf->getW()/50, $pdf->getH()/8, "",0,0,"L");
-            $pdf->Cell(0, $pdf->getH() / 8, " Session 1: " . $ses_1['pres_title'], 0, 1, "L");
-            $pdf->Cell($pdf->getW()/50, $pdf->getH()/8, "",0,0,"L");
-            $pdf->Cell(0, $pdf->getH() / 8, " Session 2: " . $ses_2['pres_title'], 0, 1, "L");
-            $pdf->Cell($pdf->getW()/50, $pdf->getH()/8, "",0,0,"L");
-            $pdf->Cell(0, $pdf->getH() / 8, " Session 3: " . $ses_3['pres_title'], 0, 1, "L");
-            $pdf->Cell($pdf->getW()/50, $pdf->getH()/8, "",0,0,"L");
-            $pdf->Cell(0, $pdf->getH() / 8, " Session 4: " . $ses_4['pres_title'], 0, 1, "L");
+            $pdf->setY ($pdf->getY() + 5);
+
+            $pdf->SetFont('Arial', 'B', 30);
+            $pdf->Cell(0, 0, "Room " . $room['rm_nbr'], 0, 1, "C");
+
+            $pdf->setY ($pdf->getY() + 10);
+
+/*            $pdf->SetLineWidth(1.25);
+            $pdf->Line($pdf->getlMargin()+ 40, $pdf->getY(),
+                $pdf->getW() - $pdf->getrMargin() - 40, $pdf->getY());
+*/
+            $lineSpacing = 9;
+            $leftSessionIndent = 20;
+            $hangingIndent = 8;
+
+            $pdf->setY ($pdf->getY() + 7);
+
+            $pdf->SetFont('Arial', '', 20);
+            $pdf->Cell($leftSessionIndent, 25, "", 0, 0, "L");
+            $pdf->Cell(20, $lineSpacing, "9:00", 0, 0, "R");
+            $pdf->Cell($hangingIndent, $lineSpacing, "", 0, 0, "R");
+            $pdf->Cell(0, $lineSpacing, '' . $ses_1['pres_title'], 0, 2, "L");
+            $pdf->SetFont('Arial', '', 15);
+
+            $org = '@ ' . $ses_1['organization'];
+            $pres = 'by ' . $ses_1['full_presenters'];
+            if (empty($ses_1['organization'])) {
+                $org = '';
+                $pres = '';
+            }
+            $pdf->Cell(0, $lineSpacing, $org, 0, 2, "L");
+            $pdf->Cell(0, $lineSpacing, $pres, 0, 1, "L");
+
+            $pdf->setY ($pdf->getY() + 8);
+            $pdf->SetFont('Arial', '', 20);
+            $pdf->Cell($leftSessionIndent, 25, "", 0, 0, "L");
+            $pdf->Cell(20, $lineSpacing, "9:30", 0, 0, "R");
+            $pdf->Cell($hangingIndent, $lineSpacing, "", 0, 0, "R");
+            $pdf->Cell(0, $lineSpacing, '' . $ses_2['pres_title'], 0, 2, "L");
+            $pdf->SetFont('Arial', '', 15);
+            $org = '@ ' . $ses_2['organization'];
+            $pres = 'by ' . $ses_2['full_presenters'];
+            if (empty($ses_2['organization'])) {
+                $org = '';
+                $pres = '';
+            }
+            $pdf->Cell(0, $lineSpacing, $org, 0, 2, "L");
+            $pdf->Cell(0, $lineSpacing, $pres, 0, 1, "L");
+
+            $pdf->setY ($pdf->getY() + 8);
+            $pdf->SetFont('Arial', '', 20);
+            $pdf->Cell($leftSessionIndent, 25, "", 0, 0, "L");
+            $pdf->Cell(20, $lineSpacing, "10:00", 0, 0, "R");
+            $pdf->Cell($hangingIndent, $lineSpacing, "", 0, 0, "R");
+            $pdf->Cell(0, $lineSpacing, '' . $ses_3['pres_title'], 0, 2, "L");
+            $pdf->SetFont('Arial', '', 15);
+            $org = '@ ' . $ses_3['organization'];
+            $pres = 'by ' . $ses_3['full_presenters'];
+            if (empty($ses_3['organization'])) {
+                $org = '';
+                $pres = '';
+            }
+            $pdf->Cell(0, $lineSpacing, $org, 0, 2, "L");
+            $pdf->Cell(0, $lineSpacing, $pres, 0, 1, "L");
+
+            $pdf->setY ($pdf->getY() + 8);
+            $pdf->SetFont('Arial', '', 20);
+            $pdf->Cell($leftSessionIndent, 25, "", 0, 0, "L");
+            $pdf->Cell(20, $lineSpacing, "10:30", 0, 0, "R");
+            $pdf->Cell($hangingIndent, $lineSpacing, "", 0, 0, "R");
+            $pdf->Cell(0, $lineSpacing, '' . $ses_4['pres_title'], 0, 2, "L");
+            $pdf->SetFont('Arial', '', 15);
+            $org = '@ ' . $ses_4['organization'];
+            $pres = 'by ' . $ses_4['full_presenters'];
+            if (empty($ses_4['organization'])) {
+                $org = '';
+                $pres = '';
+            }
+            $pdf->Cell(0, $lineSpacing, $org, 0, 2, "L");
+            $pdf->Cell(0, $lineSpacing, $pres, 0, 1, "L");
+
         }
 
         $pdf->Output('roomSigns.pdf', 'I');

@@ -113,7 +113,7 @@ function random_enroll($year) {
 function presentations_registration_status() {
     $query =
         'select p.ses_id, rm_nbr, field_name, pres_title, organization, location, 
-                p.pres_desc, get_presenters_comma_list(p.pres_id),
+                p.pres_desc, get_full_name_presenters_comma_list(p.pres_id),
                 pres_enrolled_students, pres_max_students, pres_max_students - pres_enrolled_students,
                 pres_enrolled_teachers, pres_max_teachers, pres_max_teachers - pres_enrolled_teachers
         from presentation p, room r, field f

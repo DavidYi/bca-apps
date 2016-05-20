@@ -14,8 +14,8 @@ class signinPDF extends FPDF
     function FancyStudent($header, $data)
     {
         $headHeight = 10;
-        $height = 8;
-        $fontSize = 11;
+        $height = 7;
+        $fontSize = 10;
         // Colors, line width and bold font
         $this->SetFillColor(88, 88, 88);
         $this->SetTextColor(255);
