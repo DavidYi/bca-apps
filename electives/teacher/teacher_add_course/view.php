@@ -33,3 +33,26 @@
   </div>
   </body>
 </html>
+<!-- 
+.submit {
+  display: inline-block;
+  /*border-radius: 2px;*/
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.08);
+  padding: 14px 22px;
+  border: 0;
+  /*margin: 100px 183px 0;*/
+  text-align: center;
+}
+
+.s {
+  margin-left: 160px;
+  background-color: #6caee0;
+  margin-top: 140px;
+}
+
+.back {
+  background-color: #f7b57d;
+  margin-top: 40px;
+} -->
