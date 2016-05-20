@@ -58,7 +58,7 @@ switch ($action) {
             header('Location: http://localhost/bca-apps/electives/teacher/');
         }
     case 'default':
-        include("/view.php");
+        include("./view.php");
 
 }
 ?>

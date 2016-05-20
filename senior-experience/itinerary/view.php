@@ -35,7 +35,7 @@
                 <h3> Registration is <b>open</b>! </h3>
                 <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
             <?php } ?>
-            <a href = "index.php?action=presentation_list">View list of all presentations</a>
+            <h3> Click <a href="../../SeniorPresentationList.pdf" download>here</a> to read about the mentors.</h3>
         </div>
     </div>
     <div class="view-signup enrollment">

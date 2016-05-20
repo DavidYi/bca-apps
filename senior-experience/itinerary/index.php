@@ -19,6 +19,7 @@ if (isset($action) and ($action == "logout")) {
     header("Location: ../index.php");
 }
 
+/*
 if ($action == "presentation_list") {
     $student_list = all_presentations_download();
     $output = fopen('php://output', 'w') or die("Can't open file");
@@ -33,7 +34,7 @@ if ($action == "presentation_list") {
     fpassthru($output);
     fclose($output) or die("Can't close file");
     exit();
-}
+}*/
 
 $signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
 $sessions = get_sessions_by_user($user->usr_id);
