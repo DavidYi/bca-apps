@@ -21,3 +21,5 @@ switch ($action) {
         header('Location: http://localhost/bca-apps/electives/teacher/');
 
 }
+
+?>

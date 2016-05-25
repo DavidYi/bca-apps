@@ -31,7 +31,7 @@
     for ($i = 0; $i < 8; $i++) {
       echo "<tr>";
       for ($j = 0; $j < 5; $j++) {
-        echo "<td class='text-left'><label><input type='checkbox' class='mods' name='time[]' value='$days[$j] $mods[$i]'>$mods[$i]</label></td>";
+        echo "<td class='text-left'><input type='checkbox' class='mods' name='time[]' value='$days[$j] $mods[$i]'>$mods[$i]</td>";
       }
       echo "</tr>";
     }
