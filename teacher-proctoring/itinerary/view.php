@@ -27,6 +27,7 @@
             background-color: #00b8e6;
         }
     </style>
+    <!--comment-->
 </head>
 <body>
 <section class="main">
