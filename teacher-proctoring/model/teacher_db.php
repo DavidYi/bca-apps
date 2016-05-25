@@ -9,7 +9,7 @@ function get_test_list() {
 }
 
 function get_selected_test_list($usr_id) {
-    $query = 'SELECT distinct test.test_id, test_name, rm_id, test_dt, test_time_desc, usr_id, updt_dt
+    $query = 'SELECT distinct test.test_id, test_name, rm_id, test_dt, test_time_desc, usr_id
                 from test, test_type, test_time, test_updt_xref, test_time_xref
                 where test.test_type_cde = test_type.test_type_cde
                 and test_updt_xref.test_id = test_time_xref.test_id
@@ -41,5 +41,6 @@ function get_rooms() {
                 from room';
     return get_list($query);
 }
+
 //made changes in query
 ?>
