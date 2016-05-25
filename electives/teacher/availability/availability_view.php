@@ -12,7 +12,7 @@
 </div>
 
 
-<form action="" method="">
+<form action="." method="POST">
   <table class="table-fill">
     <thead>
       <tr>

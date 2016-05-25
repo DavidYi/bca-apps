@@ -55,7 +55,7 @@ switch ($action) {
             }
         } else {
             // go back to previous page
-            header('Location: http://localhost/bca-apps/electives/teacher/');
+            header('Location: ..');
         }
     case 'default':
         include("./view.php");
