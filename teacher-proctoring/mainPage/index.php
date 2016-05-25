@@ -40,6 +40,11 @@ switch ($action) {
 
         break;
 
+    case 'show_itinerary':
+        header("Location: ../itinerary");
+        break;
+
+
     default:
         echo('Unknown account action: ' . $action);
         break;
