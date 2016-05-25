@@ -111,6 +111,7 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
                     pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students, "
                     . $rem .
 					" get_presenters_comma_list (presentation.pres_id) presenter_names,
+					get_full_name_presenters_comma_list (presentation.pres_id) full_presenters, 
 					rm_nbr
 				FROM presentation, field, room
 				WHERE presentation.ses_id = :ses_id
@@ -142,7 +143,10 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
 
 function get_presentation_by_user($usr_id, $ses_id) {
     $query = 'SELECT presentation.pres_id, presentation.rm_id,
-                organization, location, pres_title, room.rm_nbr, room.rm_id, get_presenters_comma_list (presentation.pres_id) presenters
+                organization, location, pres_title, room.rm_nbr, room.rm_id, 
+                get_presenters_comma_list (presentation.pres_id) presenters,
+                get_full_name_presenters_comma_list (presentation.pres_id) full_presenters
+                
               FROM presentation, room, user_presentation_xref
               WHERE ses_id = :ses_id
               AND usr_id = :usr_id
@@ -190,6 +194,7 @@ function get_presentations_by_user_by_session($usr_id, $ses_id) {
 function get_sessions_by_user($usr_id) {
     $query = 'select p.pres_id, pres_title, pres_desc, organization, location, rm_nbr, field_name,
                     get_presenters_comma_list (p.pres_id) presenter_names,
+                    get_full_name_presenters_comma_list (p.pres_id) full_presenters, 
                     pres_max_teachers, pres_max_students, pres_enrolled_teachers, pres_enrolled_students,
                     t.ses_id, t.ses_start, t.ses_end, presenting
                 from session_times t

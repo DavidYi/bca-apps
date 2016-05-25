@@ -260,7 +260,7 @@ input {
   margin: 0 auto;
   padding: 0 auto;
   color: #333;
-  background-color: #fdfdfd;
+  background-color: #ffff80;
   border: 0;
   border-radius: 1px;
   font: normal normal 400 0.29091 "Roboto", sans-serif;
@@ -558,6 +558,42 @@ nav.navbar .name:hover, nav.navbar .name:active, nav.navbar .time:hover, nav.nav
   -webkit-transition: all 175ms ease;
   -moz-transition: all 175ms ease;
   transition: all 175ms ease; }
+.enrollment .session .tname {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 18.75%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left;
+}
+.enrollment .session .tname:last-child {
+  margin-right: 0; }
+}
+.enrollment .session .ttype {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 25%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left; }
+.enrollment .session .ttype:last-child {
+  margin-right: 0; }
+}
+
+.enrollment .session .troom {
+
+}
+.enrollment .session .tdate {
+
+}
 .enrollment .view-session {
   border-bottom: 1px solid #333; }
 .enrollment .view-session .time, .enrollment .view-session .room-number {

@@ -1,0 +1,123 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(242, 242, 242);
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-family: Roboto;
+  font-size: 23px;
+  color: black;
+  padding-bottom: 8px;
+  border-bottom: 4px solid #76c9d4;
+  width: 280px;
+  margin: 14px auto;
+  padding: 7px;
+}
+
+.spacing {
+  margin-bottom: 20px;
+}
+
+#box {
+  border-radius: 0px;
+  display: block;
+  background-color: white;
+  width: 500px;
+  height: 495px;
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  margin: -235px 0 0 -235px;
+  -moz-box-shadow: 1px 1px 1px #a8a8a8;
+  -webkit-box-shadow: 1px 1px 1px #a8a8a8;
+  box-shadow: 1px 1px 1px #a8a8a8;
+}
+
+input {
+  color: #5f5f5f;
+  box-sizing: border-box;
+  width: 240px;
+  box-shadow: 1px 2px 4px 9 rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  border: 1px solid #dbdbdb;
+}
+span {
+  font-family: Roboto;
+  display: inline-block;
+  box-sizing: border-box;
+  color: #5F5F5F;
+  width: 180px;
+  text-align: right;
+  vertical-align: top;
+  padding: 12px 25px;
+  margin-top: 2px;
+}
+
+.submit {
+  display: block;
+  border-radius: 2px;
+  background-color: #6caee0;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 14px 22px;
+  border: 0;
+  /*margin: 100px 183px 0;*/
+  margin: 0 auto;
+  margin-top: 140px;
+  text-align: center;
+}
+
+textarea {
+  color: #5f5f5f;
+  box-sizing: border-box;
+  width: 240px;
+  height: 80px;
+  box-shadow: 1px 2px 4px 9 rgba(0, 0, 0, 0.08);
+  font: normal 13px sans-serif;
+  padding: 12px;
+  border: 1px solid #dbdbdb;
+  resize: vertical;
+  margin-top: 10px;
+}
+
+/*.title {
+  text-align: center;
+  padding-bottom: 10%;
+  font-family: "Roboto", arial;
+  color: white;
+}
+
+#outer {
+
+  height: 45%;
+  margin: 0 auto;
+  width: 80%;
+  background-color:#BFBFBF;
+
+}
+
+
+#inner {
+  height: 45%;
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+
+}
+.outert {
+  padding-left: 10%;
+  display: inline-block;
+  font-family: "Roboto", arial;
+  position: relative;
+}*/

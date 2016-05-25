@@ -11,6 +11,7 @@
 <head>
     <title>Senior Expositions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
@@ -59,6 +60,11 @@
             </a>
         <?php } ?>
         <?php foreach ($presentations as $presentation) {
+            $presenters = $presentation['full_presenters'];
+            if (strlen($presenters) > 23) {
+                $presenters =  $presentation['presenter_names'];
+            }
+
             if ($id != $presentation['pres_id']) {?>
             <div class="main-panel" style="position: relative;">
                 <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"></a>
@@ -66,7 +72,7 @@
                     <div class="tag"><?php echo $presentation['field_name']?>&nbsp</div>
                     <div class="position"><?php echo $presentation['organization']?>&nbsp</div>
 
-                    <div class="presenter"><a class="info" style="float: left; position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;&nbsp;</a><?php echo ($presentation['presenter_names'])?></div>
+                    <div class="presenter"><a class="info" style="float: left; position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;&nbsp;</a><?php echo ($presenters)?></div>
 
                     <?php if ($user->usr_type_cde == 'TCH') { ?>
                         <div class="remaining"><?php echo ($presentation['rm_nbr']);?> </div>
@@ -91,10 +97,11 @@
                 <div class="popup" id="P<?php echo $presentation['pres_id']?>">
                     <div class="entpop" >
                         <div class="close">
-                            <div class="presname"><?php echo ($presentation['presenter_names'])?></div>
+                            <div class="presname"><?php echo ($presentation['pres_title'])?></div>
                             <div class="x""><a href="#" style="color:#f0c30f" onclick="cpopup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x2716;</a></div>
                         </div>
                         <div class="popup-c">
+                            <h3><?php echo ($presentation['full_presenters']);?></h3>
                             <p><?php echo ($presentation['pres_desc']);?></p>
                         </div>
                     </div>

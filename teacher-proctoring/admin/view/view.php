@@ -5,7 +5,8 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="../ss/main.css" rel="stylesheet">
+     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="styles.css" rel="stylesheet">
     <script src="../js/jquery.min.js"></script>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -15,9 +16,15 @@
 <section class="main view">
     <div class="view-signup enrollment">
 
-        <div id="" style="overflow-y:scroll; height:500px; margin-top:45px">
+        <div id="test-table" style="overflow-y:scroll;">
+            <div class="test view-test" onclick="">
+                <div class="time table-header">Time</div>
+                <div class="mods table-header">Mods</div>
+                <div class="name table-header">Name</div>
+            </div>
             <?php foreach ($testList as $test) { ?>
-                <div class="session view-session" onclick="">
+                <div class="test view-test" onclick="">
+                    
                     <?php if ($test['test_id'] != NULL) { ?>
                         <div class="time"><?php echo $test['test_dt'] ?></div>
                         <div class="mods"><?php echo $test['test_time_desc'] ?></div>
