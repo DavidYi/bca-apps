@@ -48,6 +48,12 @@ h1 {
   font-size: 2em;
   margin: .67em 0; }
 
+h7 {
+  font-size: 2em;
+  margin: .67em 0;
+  position: relative;
+  left: 7%; }
+
 mark {
   background: #ff0;
   color: #000; }
@@ -239,18 +245,23 @@ h1.title {
   text-align: center; }
 
 button {
-  height: 3.125em;
-  width: 12.5em;
+  height: 4.5em;
+  width: 20em;
   color: #fdfdfd;
   background-color: #f0c30f;
   font: normal normal 400 0.32 "Roboto", sans-serif;
-  border: 0;
+  border: 10;
   border-radius: 1px;
   outline: none;
   text-transform: uppercase;
   -webkit-transition: all 175ms ease;
   -moz-transition: all 175ms ease;
-  transition: all 175ms ease; }
+  transition: all 175ms ease;
+  position: relative;
+  left:24%;
+  margin-top:-15px;
+}
+
 button:hover {
   background-color: #0f0f0f; }
 
@@ -298,6 +309,9 @@ html {
   background-color: #e7e7e7; }
 
 h1 {
+  font-weight: 500; }
+
+h7 {
   font-weight: 500; }
 
 .main {
@@ -425,11 +439,12 @@ nav.navbar .name:hover, nav.navbar .name:active, nav.navbar .time:hover, nav.nav
     width: 100%; } }
 .enrollment .session {
   display: block;
-  height: 3.75em;
+  height: 2.75em;
   overflow: hidden;
-  line-height: 3.75em;
+  line-height: 280%;
   padding: 0 1.5625em;
-  border-bottom: 1px solid #d6d9da; }
+  border-bottom: 1px solid #d6d9da;
+}
 .enrollment .session::after {
   clear: both;
   content: "";

@@ -36,7 +36,7 @@
         <div class="vertical-center">
             <h3><b>Availability</b></h3>
             Show availability table here
-            <a href="availability/availability_view.php">Modify Availability</a>
+            <a href="availability/index.php">Modify Availability</a>
         </div>
         <br>
         <br>

@@ -12,7 +12,7 @@
 </div>
 
 
-<form action="" method="">
+<form action="." method="POST">
   <table class="table-fill">
     <thead>
       <tr>
@@ -31,7 +31,7 @@
     for ($i = 0; $i < 8; $i++) {
       echo "<tr>";
       for ($j = 0; $j < 5; $j++) {
-        echo "<td class='text-left'><label><input type='checkbox' class='mods' name='time[]' value='$days[$j] $mods[$i]'>$mods[$i]</label></td>";
+        echo "<td class='text-left'><input type='checkbox' class='mods' name='time[]' value='$days[$j] $mods[$i]'>$mods[$i]</td>";
       }
       echo "</tr>";
     }
@@ -40,8 +40,8 @@
   </tbody>
   </table>
 <div class="wrapper">
-  <button class="submit" type="submit">Submit</button>
+  <button name="action" value="submit" class="submit" type="submit">Submit</button>
+  <button name="action" value="back" class="submit" type="submit">Back</button>
 </div>
 </form>
-
-  </body>
+</body>
