@@ -47,4 +47,29 @@ function get_course_by_user($usr_id) {
     }
 }
 
+
+function get_course_list_for_student ($usr_id) {
+    $query = "select c.course_id, course_name, course_desc, concat(u.usr_last_name, ', ', u.usr_first_name) as teacher,
+            !isnull(x.usr_id) as enrolled
+            from user u, elect_course c
+            left join elect_student_course_xref x on c.course_id = x.course_id and x.usr_id = 1
+            where c.teacher_id = u.usr_id
+            order by course_name";
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+
 ?>
