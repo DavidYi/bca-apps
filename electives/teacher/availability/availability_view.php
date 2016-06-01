@@ -40,8 +40,8 @@
   </tbody>
   </table>
 <div class="wrapper">
-  <button name="action" value="submit" class="submit" type="submit">Submit</button>
-  <button name="action" value="back" class="submit" type="submit">Back</button>
+  <button name="action" value="submit" class="s submit" type="submit">Submit</button>
+  <button name="action" value="back" class="s back" type="submit">Back</button>
 </div>
 </form>
 </body>
