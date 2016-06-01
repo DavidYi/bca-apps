@@ -63,11 +63,17 @@ switch ($action) {
         echo ($usr_id); //This works YAY
 
         $oldtimesarr = get_times($usr_id);
+        echo count($oldtimesarr);
+
         for($i = 0; $i < count($oldtimesarr); $i++){ //count($oldtimesarr) returning larger values than expected
-            $timesString .= $oldtimesarr['day']; //need to figure out how to incorporate index
+            $timesString .= $oldtimesarr[$i]['day']; //need to figure out how to incorporate index
             $timesString .= " ";
-            $timesString .= $oldtimesarr['mods'];
+            $timesString .= $oldtimesarr[$i]['mods'];
             $timesString .= " ";
+            //I THINK THE ABOVE WORKS!!!!
+            //It at least works for Sarah Abdelaziz since I inputted times for her
+
+
         }
         /*The fact that nothing prints from this isn't an error, the database doesn't have any times inputted for most people*/
 

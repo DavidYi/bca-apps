@@ -20,7 +20,7 @@ function get_times($usr_id){
         $statement = $db->prepare($query);
         $statement->bindValue(':usr_id', $usr_id);
         $statement->execute();
-        $result = $statement->fetch();
+        $result = $statement->fetchAll();
         $statement->closeCursor();
 
         return $result;
