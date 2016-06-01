@@ -32,8 +32,8 @@ switch ($action) {
         include('./view.php');
         break;
     case 'modify_courses':
-        echo "will make a modify_courses page later";
-        include('./courses/index.php');
+        header ('Location: ./courses/index.php');
+        exit();
         break;
     case 'modify_times':
         include('./times/view.php');

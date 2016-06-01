@@ -1,18 +1,23 @@
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Table Style</title>
-    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
-    <link rel="stylesheet" href="index.css">
-</head>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: macbook
+ * Date: 1/5/16
+ * Time: 2:04 PM
+ */
 
-<body>
-<div class="table-title">
-    <h3>Course Interests</h3>
-</div>
+require_once("../../util/main.php");
+require_once("../../model/teacher_db.php");
 
-<body>
+verify_logged_in();
 
+$action = filter_input(INPUT_GET, 'action');
+if (isset($action) and ($action == "logout")) {
+    session_destroy();
+    header("Location: ../index.php");
+}
 
-</body>
-</html>
+$courseList = get_course_list_for_student($user->usr_id);
+
+include ("./view.php");
+exit();
