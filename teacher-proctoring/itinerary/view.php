@@ -25,6 +25,7 @@
 
         button {
             background-color: #00b8e6;
+
         }
     </style>
     <!--comment-->
@@ -33,7 +34,7 @@
 <section class="main">
     <header>
         <h1 class="title main-title" style="">Register for Proctoring</h1>
-        <button style="position:absolute; top:25%; right:10%;">Submit Changes</button>
+        <button style="position:absolute; left:70%; top:40%;">Submit Changes</button>
     </header>
 
     <nav class="navbar">
@@ -41,7 +42,6 @@
         <div class="session-filter company">Test Type</div>
         <div class="session-filter position">Room</div>
         <div class="session-filter presenter">Time</div>
-        <div class="session-filter remaining">Actions</div>
     </nav>
 
     <div class="enrollment">
@@ -52,10 +52,10 @@
             $testText = $test['test_id'] . ":" . $test['test_time_id'];
             ?>
                 <div class="session" data-value="<?php echo $testText?>">
-                        <div class="tname"><?php echo $test['test_name']?></div>
-                        <div class="ttype"><?php echo $test['test_type_cde']?></div>
-                        <div class="troom"><?php echo $test['rm_id']?></div>
-                        <div class="tdate"><?php echo $test['test_dt']?></div>
+                        <div class="tag"><?php echo $test['test_name']?></div>
+                        <div class="company"><?php echo $test['test_type_cde']?></div>
+                        <div class="position"><?php echo $test['rm_id']?></div>
+                        <div class="presenter"><?php echo $test['test_dt']?></div>
                 </div>
             <?php } ?>
     </div>

@@ -245,12 +245,12 @@ h1.title {
   text-align: center; }
 
 button {
-  height: 4.5em;
-  width: 20em;
+  height: 3.125em;
+  width: 12.5em;
   color: #fdfdfd;
   background-color: #f0c30f;
   font: normal normal 400 0.32 "Roboto", sans-serif;
-  border: 10;
+  border: 0;
   border-radius: 1px;
   outline: none;
   text-transform: uppercase;
@@ -354,33 +354,20 @@ nav.navbar .session-filter a {
   font-size: 1.125em;
   font-weight: 400;
   text-decoration: none; }
-nav.navbar .name {
+nav.navbar .tag {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 30%;
+  width: 40%;
   color: #555;
   margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 500;
   text-align: left; }
-nav.navbar .name:last-child {
+nav.navbar .tag:last-child {
   margin-right: 0; }
-nav.navbar .time {
-  float: left;
-  display: block;
-  margin-right: 0%;
-  width: 15%;
-  color: #555;
-  margin: 0;
-  padding: 0;
-  font-size: 1.125em;
-  font-weight: 500;
-  text-align: left; }
-nav.navbar .time:last-child {
-  margin-right: 0; }
-nav.navbar .mods {
+nav.navbar .company {
   float: left;
   display: block;
   margin-right: 0%;
@@ -391,7 +378,33 @@ nav.navbar .mods {
   font-size: 1.125em;
   font-weight: 500;
   text-align: left; }
-nav.navbar .mods:last-child {
+nav.navbar .company:last-child {
+  margin-right: 0; }
+nav.navbar .position {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 20%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left; }
+nav.navbar .position:last-child {
+  margin-right: 0; }
+nav.navbar .presenter {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 20%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left; }
+nav.navbar .presenter:last-child {
   margin-right: 0; }
 nav.navbar .remaining {
   float: left;
@@ -406,9 +419,9 @@ nav.navbar .remaining {
   text-align: right; }
 nav.navbar .remaining:last-child {
   margin-right: 0; }
-nav.navbar .name, nav.navbar .time, nav.navbar .mods, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
+nav.navbar .tag, nav.navbar .company, nav.navbar .position, nav.navbar .presenter, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
   color: #aaa; }
-nav.navbar .name:hover, nav.navbar .name:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .mods:hover, nav.navbar .mods:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
+nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
   color: #eee;
   text-decoration: underline; }
 
@@ -439,17 +452,16 @@ nav.navbar .name:hover, nav.navbar .name:active, nav.navbar .time:hover, nav.nav
     width: 100%; } }
 .enrollment .session {
   display: block;
-  height: 2.75em;
+  height: 3.75em;
   overflow: hidden;
-  line-height: 280%;
+  line-height: 3.75em;
   padding: 0 1.5625em;
-  border-bottom: 1px solid #d6d9da;
-}
+  border-bottom: 1px solid #d6d9da; }
 .enrollment .session::after {
   clear: both;
   content: "";
   display: table; }
-.enrollment .session .name {
+.enrollment .session .tag {
   float: left;
   display: block;
   margin-right: 0%;
@@ -460,33 +472,46 @@ nav.navbar .name:hover, nav.navbar .name:active, nav.navbar .time:hover, nav.nav
   font-size: 1.125em;
   font-weight: 500;
   text-align: left; }
-.enrollment .session .name:last-child {
+.enrollment .session .tag:last-child {
   margin-right: 0; }
-.enrollment .session .time {
+.enrollment .session .company {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 30%;
+  width: 20%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left; }
+.enrollment .session .company:last-child {
+  margin-right: 0; }
+.enrollment .session .position {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 20%;
   color: #555;
   margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 400;
-  text-align: center; }
-.enrollment .session .time:last-child {
+  text-align: left; }
+.enrollment .session .position:last-child {
   margin-right: 0; }
-.enrollment .session .mods {
+.enrollment .session .presenter {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 30%;
+  width: 20%;
   color: #555;
   margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 400;
-  text-align: center; }
-.enrollment .session .mods:last-child {
+  text-align: left; }
+.enrollment .session .presenter:last-child {
   margin-right: 0; }
 .enrollment .session .remaining {
   float: left;
@@ -494,7 +519,7 @@ nav.navbar .name:hover, nav.navbar .name:active, nav.navbar .time:hover, nav.nav
   margin-right: 0%;
   width: 6.25%;
   color: #555;
-  margin: 15;
+  margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 500;
@@ -518,14 +543,13 @@ nav.navbar .name:hover, nav.navbar .name:active, nav.navbar .time:hover, nav.nav
   float: left;
   display: block;
   margin-right: 0%;
-  width: 30%;
+  width: 18.75%;
   color: #555;
   margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 500;
-  text-align: center;
-}
+  text-align: left; }
 .enrollment .session .time:last-child {
   margin-right: 0; }
 .enrollment .session .room-number {
@@ -558,14 +582,13 @@ nav.navbar .name:hover, nav.navbar .name:active, nav.navbar .time:hover, nav.nav
   float: left;
   display: block;
   margin-right: 0%;
-  width: 40%;
+  width: 31.25%;
   color: #555;
   margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 500;
-  text-align: center;
-}
+  text-align: left; }
 .enrollment .session .name:last-child {
   margin-right: 0; }
 .enrollment .session:hover {
@@ -573,50 +596,53 @@ nav.navbar .name:hover, nav.navbar .name:active, nav.navbar .time:hover, nav.nav
   -webkit-transition: all 175ms ease;
   -moz-transition: all 175ms ease;
   transition: all 175ms ease; }
-.enrollment .session .tname {
+.enrollment .view-session {
+  border-bottom: 1px solid #333; }
+.enrollment .view-session .time, .enrollment .view-session .room-number {
+  font-weight: 400; }
+.enrollment .view-session:hover {
+  background: #333; }
+.enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time, .enrollment .view-session:hover .room-number, .enrollment .view-session:hover .session-title, .enrollment .view-session:hover .name {
+  color: #fdfdfd; }
+.enrollment .view-session .name {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 18.75%;
-  color: #555;
-  margin: 0;
-  padding: 0;
-  font-size: 1.125em;
-  font-weight: 500;
-  text-align: left;
-}
-.enrollment .session .tname:last-child {
-  margin-right: 0; }
-}
-.enrollment .session .ttype {
-  float: left;
-  display: block;
-  margin-right: 0%;
-  width: 25%;
+  width: 40%;
   color: #555;
   margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 500;
   text-align: left; }
-.enrollment .session .ttype:last-child {
+.enrollment .view-session .name:last-child {
   margin-right: 0; }
-}
-
-.enrollment .session .troom {
-
-}
-.enrollment .session .tdate {
-
-}
-.enrollment .view-session {
-  border-bottom: 1px solid #333; }
-.enrollment .view-session .time, .enrollment .view-session .room-number {
-  font-weight: 400; }
-.enrollment .view-session:hover {
-  background: #7FFFD4; }
-.enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time, .enrollment .view-session:hover .room-number, .enrollment .view-session:hover .session-title, .enrollment .view-session:hover .name {
-  color: #555; }
+.enrollment .view-session .time {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 30%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 400;
+  text-align: center; }
+.enrollment .view-session .time:last-child {
+  margin-right: 0; }
+.enrollment .view-session .mods {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 30%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 400;
+  text-align: center; }
+.enrollment .view-session .mods:last-child {
+  margin-right: 0; }
 
 .session-selected {
   background-color: #f0c30f;

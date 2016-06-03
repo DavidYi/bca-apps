@@ -1,7 +1,7 @@
 <?php
 
 function get_test_list() {
-    $query = 'SELECT test_id, test_name, rm_id, test_dt, test_time_id, test_time_desc
+    $query = 'SELECT test_id, test_name, rm_id, test_dt, test_time_id, test_time_desc, test.test_type_cde
                 from test, test_type, test_time
                 where test.test_type_cde = test_type.test_type_cde
                 order by test_dt, sort_order';

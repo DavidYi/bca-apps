@@ -9,6 +9,12 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
+    <style>
+        button {
+            height: 4.5em;
+            width: 20em;
+        }
+    </style>
 </head>
 <body>
 <section class="main view">
