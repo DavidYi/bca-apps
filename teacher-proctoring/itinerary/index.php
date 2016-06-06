@@ -36,6 +36,11 @@ switch ($action) {
         break;
 
     case 'list_tests':
+        $testSelectedList = get_selected_test_list($user->usr_id);
+        $selList = [];
+        foreach ($testSelectedList as $test) {
+            array_push($selList, $test['test_id'] . ":" . $test['test_time_id']);
+        }
         $testList = get_test_list();
         break;
 
@@ -59,5 +64,5 @@ if (isset($action) and ($action == "logout")) {
     }
 }
 
-include ("./view.php");
+include('./view.php');
 exit();

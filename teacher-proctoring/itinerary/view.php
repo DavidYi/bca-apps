@@ -55,7 +55,8 @@
         <form action="index.php" method="post">
             <input type="hidden" name="action" value="change_user_tests">
             <button type="submit" id="submit_button"
-                    name="submit_button" value="">Submit Changes</button>
+                    name="submit_button"
+                    value=<?php echo implode(",",$selList)?>>Submit Changes</button>
         </form>
 
     </header>
@@ -69,7 +70,7 @@
     </nav>
 
 
-    <div class="enrollment" data-value="">
+    <div class="enrollment">
         <!-- here -->
         <!--Comment-->
         <?php foreach ($testList as $test) {
@@ -91,14 +92,23 @@
 <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
 <script type="text/javascript">
-    var picked = [];
-    var times = {};
-    // times object, properties time_id and time_count;
 
+    var picked = [];
 
     $('body').plusAnchor({
         easing: 'easeInOutExpo',
         speed:  700
+    });
+
+    $(document).ready(function() {
+        var active_times = $("#submit_button").attr('value');
+        if (active_times.length > 0)
+            picked = active_times.split(",");
+        $('.enrollment .session').each(function() {
+            var tData = $(this).data('value');
+            if (picked.indexOf(tData) !== -1)
+                $(this).toggleClass("makeActive", "makeDef");
+        });
     });
 
     $('.enrollment .session').on('click', function() {
@@ -118,9 +128,6 @@
         console.log("Tests: " + picked.toString());
 
     });
-
-
-
 
     /*
      function postRegister(postObject) {

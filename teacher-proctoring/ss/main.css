@@ -258,7 +258,6 @@ button {
   -moz-transition: all 175ms ease;
   transition: all 175ms ease;
   position: relative;
-  left:24%;
   margin-top:-15px;
 }
 
