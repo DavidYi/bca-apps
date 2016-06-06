@@ -13,10 +13,26 @@
 
         .makeActive {
             background: #00b8e6;
+            pointer-events: auto;
+            -moz-transition : background 0.8s ease 0s;
+            -webkit-transition : background 0.8s ease 0s;
+            transition : background 0.8s ease 0s;
         }
 
         .makeDef {
             background: #f7f7f7;
+            pointer-events: auto;
+            -moz-transition : background 0.8s ease 0s;
+            -webkit-transition : background 0.8s ease 0s;
+            transition : background 0.8s ease 0s;
+        }
+
+        .makeDisabled {
+            background: #ff0000;
+            pointer-events: none;
+            -moz-transition : background 0.8s ease 0s;
+            -webkit-transition : background 0.8s ease 0s;
+            transition : background 0.8s ease 0s;
         }
 
         .enrollment .session:hover {
@@ -76,6 +92,10 @@
 <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
 <script type="text/javascript">
     var picked = [];
+    var times = {};
+    // times object, properties time_id and time_count;
+
+
     $('body').plusAnchor({
         easing: 'easeInOutExpo',
         speed:  700
@@ -83,13 +103,10 @@
 
     $('.enrollment .session').on('click', function() {
         $(this).toggleClass("makeActive", "makeDef");
-        $(this).css({
-                '-moz-transition' : 'background 0.8s ease 0s',
-                '-webkit-transition' : 'background 0.8s ease 0s',
-                'transition' : 'background 0.8s ease 0s'
-        });
 
         var tData = $(this).data('value');
+        var arrData = tData.split(":");
+        var timeId = arrData[1];
         if ($(this).hasClass('makeActive')) {
             picked.push(tData);
             console.log("Added: " + tData);
@@ -99,7 +116,10 @@
         }
         $("#submit_button").attr('value', picked);
         console.log("Tests: " + picked.toString());
+
     });
+
+
 
 
     /*

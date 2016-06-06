@@ -55,17 +55,42 @@ function del_user_tests($usr_id) {
 
     $query = 'delete from test_updt_xref where usr_id = :usr_id';
 
+    $statement = $db->prepare($query);
+    $statement->bindValue(':usr_id', $usr_id, PDO::PARAM_INT);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+function change_user_tests($usr_id, $tests) {
+
+    global $db;
+    global $user;
+
     try {
         $db->beginTransaction();
 
-        $statement = $db->prepare($query);
-        $statement->bindValue(':usr_id', $usr_id, PDO::PARAM_INT);
-        $statement->execute();
-        $statement->closeCursor();
+        del_user_tests($user->usr_id);
 
+        $test_list = explode(',', $tests);
+        foreach ($test_list as $test) {
+            $test_split = explode(":", $test);
+
+            $bindDate = date('Y-m-d H:i:s');
+            $test_id = intval($test_split[0]);
+            $test_time_id = intval($test_split[1]);
+            $query = "INSERT INTO test_updt_xref (test_id, test_time_id, usr_id, updt_dt, updt_usr_id)
+                      VALUES (:test_id, :test_time_id, :usr_id, :updt_dt, :updt_usr_id)";
+                $statement = $db->prepare($query);
+                $statement->bindValue(':test_id', $test_id, PDO::PARAM_INT);
+                $statement->bindValue(':test_time_id', $test_time_id, PDO::PARAM_INT);
+                $statement->bindValue(':usr_id', $usr_id, PDO::PARAM_INT);
+                $statement->bindValue(':updt_dt', $bindDate, PDO::PARAM_STR);
+                $statement->bindValue(':updt_usr_id', $usr_id, PDO::PARAM_INT);
+                $statement->execute();
+                $statement->closeCursor();
+        }
         $db->commit();
-    } // any errors from the above database queries will be catched
-    catch (PDOException $e) {
+    } catch (PDOException $e) {
         // roll back transaction
         $db->rollback();
 
@@ -74,39 +99,6 @@ function del_user_tests($usr_id) {
 
         display_error($e);
         exit();
-    }
-}
-
-function change_user_tests($usr_id, $tests) {
-
-    global $db;
-    global $user;
-
-    del_user_tests($user->usr_id);
-
-    $test_list = explode(',', $tests);
-    foreach ($test_list as $test) {
-        $test_split = explode(":", $test);
-
-
-        $bindDate = date('Y-m-d H:i:s');
-        $test_id = intval($test_split[0]);
-        $test_time_id = intval($test_split[1]);
-        $query = "INSERT INTO test_updt_xref (test_id, test_time_id, usr_id, updt_dt, updt_usr_id)
-                  VALUES (:test_id, :test_time_id, :usr_id, :updt_dt, :updt_usr_id)";
-        try {
-            $statement = $db->prepare($query);
-            $statement->bindValue(':test_id', $test_id, PDO::PARAM_INT);
-            $statement->bindValue(':test_time_id', $test_time_id, PDO::PARAM_INT);
-            $statement->bindValue(':usr_id', $usr_id, PDO::PARAM_INT);
-            $statement->bindValue(':updt_dt', $bindDate, PDO::PARAM_STR);
-            $statement->bindValue(':updt_usr_id', $usr_id, PDO::PARAM_INT);
-            $statement->execute();
-            $statement->closeCursor();
-        } catch (PDOException $e) {
-            display_db_exception($e);
-            exit();
-        }
     }
 }
 
