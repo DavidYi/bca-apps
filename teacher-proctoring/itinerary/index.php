@@ -29,10 +29,16 @@ switch ($action) {
 
         break;
 
+    case 'change_user_tests':
+        $changeTestList = filter_input(INPUT_POST, 'submit_button');
+        change_user_tests($user->usr_id, $changeTestList);
+        header("Location: ../mainPage");
+        break;
+
     case 'list_tests':
         $testList = get_test_list();
-
         break;
+
 
     default:
         echo('Unknown account action: ' . $action);

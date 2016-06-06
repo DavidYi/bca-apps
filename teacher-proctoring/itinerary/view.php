@@ -25,7 +25,9 @@
 
         button {
             background-color: #00b8e6;
-
+            position: absolute;
+            left: 70%;
+            top: 40%;
         }
     </style>
     <!--comment-->
@@ -34,30 +36,39 @@
 <section class="main">
     <header>
         <h1 class="title main-title" style="">Register for Proctoring</h1>
-        <button style="position:absolute; left:70%; top:40%;">Submit Changes</button>
+        <form action="index.php" method="post">
+            <input type="hidden" name="action" value="change_user_tests">
+            <button type="submit" id="submit_button"
+                    name="submit_button" value="">Submit Changes</button>
+        </form>
+
     </header>
 
     <nav class="navbar">
         <div class="session-filter tag">Test Name</div>
         <div class="session-filter company">Test Type</div>
-        <div class="session-filter position">Room</div>
+        <div class="session-filter position">Mods</div>
         <div class="session-filter presenter">Time</div>
+        <div class="session-filter remaining">Remaining</div>
     </nav>
 
-    <div class="enrollment">
+
+    <div class="enrollment" data-value="">
         <!-- here -->
         <!--Comment-->
-
         <?php foreach ($testList as $test) {
             $testText = $test['test_id'] . ":" . $test['test_time_id'];
+            $proc_left = intval($test['proc_needed']) - intval($test['proc_enrolled']);
             ?>
                 <div class="session" data-value="<?php echo $testText?>">
                         <div class="tag"><?php echo $test['test_name']?></div>
                         <div class="company"><?php echo $test['test_type_cde']?></div>
-                        <div class="position"><?php echo $test['rm_id']?></div>
+                        <div class="position"><?php echo $test['test_time_desc']?></div>
                         <div class="presenter"><?php echo $test['test_dt']?></div>
+                        <div class="remaining"><?php echo $proc_left?></div>
                 </div>
             <?php } ?>
+        <?php ?>
     </div>
 </section>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -86,6 +97,7 @@
             picked.splice(picked.indexOf(tData), 1);
             console.log("Removed: " + tData);
         }
+        $("#submit_button").attr('value', picked);
         console.log("Tests: " + picked.toString());
     });
 

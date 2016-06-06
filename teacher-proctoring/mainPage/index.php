@@ -31,10 +31,7 @@ switch ($action) {
 
         break;
 
-    case 'list_tests':
-        $testList = get_test_list();
 
-        break;
     case 'list_selected_tests':
         $testSelectedList = get_selected_test_list($user->usr_id);
 
@@ -46,7 +43,8 @@ switch ($action) {
 
 
     default:
-        echo('Unknown account action: ' . $action);
+        $testSelectedList = get_selected_test_list($user->usr_id);
+        include "./view.php";
         break;
 }
 
@@ -63,6 +61,6 @@ if (isset($action) and ($action == "logout")) {
         header("Location: ../index.php");
     }
 }
-
+$testSelectedList = get_selected_test_list($user->usr_id);
 include ("./view.php");
 exit();

@@ -1,3 +1,9 @@
+<?php
+require_once('../util/main.php');
+//require_once('../../util/tags.php');
+require_once('../model/teacher_db.php');
+?>
+
 <html lang="en">
 <head>
     <title>Register for Proctoring</title>
@@ -40,11 +46,10 @@
         <div id="" style="overflow-y:scroll; height:400px; margin-top:25px">
             <?php foreach ($testSelectedList as $test) { ?>
                 <div class="session view-session" onclick="">
-                    <?php if ($test['test_id'] != NULL) { ?>
+                    <?php if ($test != NULL) { ?>
                         <div class="time"><?php echo $test['test_dt']?></div>
                         <div class="mods"><?php echo $test['test_time_desc']?></div>
                         <div class="name"><?php echo $test['test_name']?></div>
-
                     <?php } ?>
                 </div>
             <?php } ?>
@@ -52,7 +57,7 @@
 
         </div>
         <h1></h1>
-        <form action=""." method="post">
+        <form action="." method="post">
             <input type="hidden" name="action" value="show_itinerary">
             <br>
             <button type = "submit" value="Add/Delete">Add/Delete</button>
