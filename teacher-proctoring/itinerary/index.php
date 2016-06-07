@@ -19,19 +19,10 @@ if ($action == NULL) {
 }
 
 switch ($action) {
-    case 'delete_course':
-        $test_id = filter_input(INPUT_GET, 'test_id');
-        delete_course($test_id);
-
-        $testList = get_test_list();
-
-        include "view.php";
-
-        break;
 
     case 'change_user_tests':
         $changeTestList = filter_input(INPUT_POST, 'submit_button');
-        change_user_tests($user->usr_id, $changeTestList);
+        change_user_tests($changeTestList);
         header("Location: ../mainPage");
         break;
 
@@ -42,12 +33,14 @@ switch ($action) {
             array_push($selList, $test['test_id'] . ":" . $test['test_time_id']);
         }
         $testList = get_test_list();
+        include "view.php";
         break;
 
 
     default:
         echo('Unknown account action: ' . $action);
         break;
+
 }
 
 verify_logged_in();
@@ -64,5 +57,4 @@ if (isset($action) and ($action == "logout")) {
     }
 }
 
-include('./view.php');
 exit();

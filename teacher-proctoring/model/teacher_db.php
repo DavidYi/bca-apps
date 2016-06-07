@@ -38,11 +38,6 @@ function get_selected_test_list($usr_id) {
     return get_list($query);
 }
 
-function get_formatted_test_list() {
-    global $user;
-    global $db;
-}
-
 function get_test_types() {
     $query = 'SELECT test_type_desc
                 from test_type';
@@ -67,7 +62,7 @@ function del_user_tests($usr_id) {
     $statement->closeCursor();
 }
 
-function change_user_tests($usr_id, $tests) {
+function change_user_tests($tests) {
 
     global $db;
     global $user;
@@ -92,25 +87,25 @@ function change_user_tests($usr_id, $tests) {
                 $statement = $db->prepare($query);
                 $statement->bindValue(':test_id', $test_id, PDO::PARAM_INT);
                 $statement->bindValue(':test_time_id', $test_time_id, PDO::PARAM_INT);
-                $statement->bindValue(':usr_id', $usr_id, PDO::PARAM_INT);
+                $statement->bindValue(':usr_id', $user->usr_id, PDO::PARAM_INT);
                 $statement->bindValue(':updt_dt', $bindDate, PDO::PARAM_STR);
-                $statement->bindValue(':updt_usr_id', $usr_id, PDO::PARAM_INT);
+                $statement->bindValue(':updt_usr_id', $user->usr_id, PDO::PARAM_INT);
                 $statement->execute();
                 $statement->closeCursor();
             }
         }
+
         $db->commit();
     } catch (PDOException $e) {
         // roll back transaction
         $db->rollback();
 
         // log any errors to file
-        log_pdo_exception ($e, $user->usr_id, "Changing User's Tests:" . $usr_id, "change_user_tests");
+        log_pdo_exception($e, $user->usr_id, "Changing User's Tests:" . $user->usr_id, "change_user_tests");
 
         display_error($e);
         exit();
     }
 }
 
-//made changes in query
 ?>

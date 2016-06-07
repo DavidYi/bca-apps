@@ -10,7 +10,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
     <style>
-
         .makeActive {
             background: #00b8e6;
             pointer-events: auto;
@@ -30,9 +29,13 @@
         .makeDisabled {
             background: #ff0000;
             pointer-events: none;
-            -moz-transition : background 0.8s ease 0s;
-            -webkit-transition : background 0.8s ease 0s;
-            transition : background 0.8s ease 0s;
+            -moz-transition: background 0.8s ease 0s;
+            -webkit-transition: background 0.8s ease 0s;
+            transition: background 0.8s ease 0s;
+        }
+
+        .makeDisabled > * {
+            color: #ffffff !important;
         }
 
         .enrollment .session:hover {
@@ -46,7 +49,6 @@
             top: 40%;
         }
     </style>
-    <!--comment-->
 </head>
 <body>
 <section class="main">
@@ -77,7 +79,7 @@
             $testText = $test['test_id'] . ":" . $test['test_time_id'];
             $proc_left = intval($test['proc_needed']) - intval($test['proc_enrolled']);
             ?>
-                <div class="session" data-value="<?php echo $testText?>">
+                <div class="session makeDef" data-value="<?php echo $testText?>">
                         <div class="tag"><?php echo $test['test_name']?></div>
                         <div class="company"><?php echo $test['test_type_cde']?></div>
                         <div class="position"><?php echo $test['test_time_desc']?></div>
@@ -100,33 +102,54 @@
         speed:  700
     });
 
+    function checkForSameTimes(newTest, chosenTest) {
+        tData = newTest.data('value');
+        timeId = tData.split(":")[1];
+        var sameDay = newTest.find('.presenter').html() == chosenTest.find('.presenter').html();
+        var sameTime = newTest.find('.position').html() == chosenTest.find('.position').html();
+        if (!newTest.is(chosenTest) && !newTest.is('.makeActive') && !newTest.is('.makeDisabled')
+            && sameDay && sameTime) {
+            newTest.toggleClass('makeDef makeDisabled');
+            newTest.find('tag').css('color', '#fff');
+        } else if (!$(this).is(chosenTest) && newTest.is('.makeDisabled') && sameDay && sameTime) {
+            newTest.toggleClass('makeDef makeDisabled');
+            newTest.find('tag').css('color', '#fff');
+        }
+    }
+
+
     $(document).ready(function() {
         var active_times = $("#submit_button").attr('value');
         if (active_times.length > 0)
             picked = active_times.split(",");
         $('.enrollment .session').each(function() {
             var tData = $(this).data('value');
-            if (picked.indexOf(tData) !== -1)
-                $(this).toggleClass("makeActive", "makeDef");
+            if (picked.indexOf(tData) !== -1) {
+                $(this).toggleClass("makeActive makeDef");
+                var chosen = $(this);
+                $('.enrollment .session').each(function() {
+                    checkForSameTimes($(this), chosen);
+                });
+            }
         });
     });
 
     $('.enrollment .session').on('click', function() {
-        $(this).toggleClass("makeActive", "makeDef");
+        $(this).toggleClass("makeActive makeDef");
 
         var tData = $(this).data('value');
-        var arrData = tData.split(":");
-        var timeId = arrData[1];
         if ($(this).hasClass('makeActive')) {
             picked.push(tData);
-            console.log("Added: " + tData);
         } else {
             picked.splice(picked.indexOf(tData), 1);
-            console.log("Removed: " + tData);
         }
         $("#submit_button").attr('value', picked);
         console.log("Tests: " + picked.toString());
 
+        var chosen = $(this);
+        $('.enrollment .session').each(function() {
+            checkForSameTimes($(this), chosen);
+        });
     });
 
     /*
