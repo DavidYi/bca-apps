@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="../ss-add/ss/main.css" >W
+    <link rel="stylesheet" type="text/css" href="../ss-add/ss/main.css" >
 
     <script type="text/javascript">
         function deletePresentation(presID)
