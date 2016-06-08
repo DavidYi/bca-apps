@@ -10,6 +10,14 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
     <style>
+        .makeDefault {
+            background: #f7f7f7;
+            pointer-events: auto;
+            -moz-transition : background 0.8s ease 0s;
+            -webkit-transition : background 0.8s ease 0s;
+            transition : background 0.8s ease 0s;
+        }
+
         .makeActive {
             background: #00b8e6;
             pointer-events: auto;
@@ -18,24 +26,12 @@
             transition : background 0.8s ease 0s;
         }
 
-        .makeDef {
-            background: #f7f7f7;
-            pointer-events: auto;
-            -moz-transition : background 0.8s ease 0s;
-            -webkit-transition : background 0.8s ease 0s;
-            transition : background 0.8s ease 0s;
-        }
-
         .makeDisabled {
-            background: #ff0000;
+            opacity : 0.4;
             pointer-events: none;
             -moz-transition: background 0.8s ease 0s;
             -webkit-transition: background 0.8s ease 0s;
             transition: background 0.8s ease 0s;
-        }
-
-        .makeDisabled > * {
-            color: #ffffff !important;
         }
 
         .enrollment .session:hover {
@@ -73,13 +69,11 @@
 
 
     <div class="enrollment">
-        <!-- here -->
-        <!--Comment-->
         <?php foreach ($testList as $test) {
             $testText = $test['test_id'] . ":" . $test['test_time_id'];
             $proc_left = intval($test['proc_needed']) - intval($test['proc_enrolled']);
             ?>
-                <div class="session makeDef" data-value="<?php echo $testText?>">
+                <div class="session makeDefault" data-value="<?php echo $testText?>">
                         <div class="tag"><?php echo $test['test_name']?></div>
                         <div class="company"><?php echo $test['test_type_cde']?></div>
                         <div class="position"><?php echo $test['test_time_desc']?></div>
@@ -103,20 +97,15 @@
     });
 
     function checkForSameTimes(newTest, chosenTest) {
-        tData = newTest.data('value');
-        timeId = tData.split(":")[1];
-        var sameDay = newTest.find('.presenter').html() == chosenTest.find('.presenter').html();
-        var sameTime = newTest.find('.position').html() == chosenTest.find('.position').html();
+        var sameDay = newTest.find('.presenter').text() == chosenTest.find('.presenter').text();
+        var sameTime = newTest.find('.position').text() == chosenTest.find('.position').text();
         if (!newTest.is(chosenTest) && !newTest.is('.makeActive') && !newTest.is('.makeDisabled')
             && sameDay && sameTime) {
-            newTest.toggleClass('makeDef makeDisabled');
-            newTest.find('tag').css('color', '#fff');
-        } else if (!$(this).is(chosenTest) && newTest.is('.makeDisabled') && sameDay && sameTime) {
-            newTest.toggleClass('makeDef makeDisabled');
-            newTest.find('tag').css('color', '#fff');
+            newTest.toggleClass('makeDefault makeDisabled');
+        } else if (newTest.is('.makeDisabled') && sameDay && sameTime) {
+            newTest.toggleClass('makeDefault makeDisabled');
         }
     }
-
 
     $(document).ready(function() {
         var active_times = $("#submit_button").attr('value');
@@ -125,7 +114,7 @@
         $('.enrollment .session').each(function() {
             var tData = $(this).data('value');
             if (picked.indexOf(tData) !== -1) {
-                $(this).toggleClass("makeActive makeDef");
+                $(this).toggleClass("makeActive makeDefault");
                 var chosen = $(this);
                 $('.enrollment .session').each(function() {
                     checkForSameTimes($(this), chosen);
@@ -135,7 +124,7 @@
     });
 
     $('.enrollment .session').on('click', function() {
-        $(this).toggleClass("makeActive makeDef");
+        $(this).toggleClass("makeActive makeDefault");
 
         var tData = $(this).data('value');
         if ($(this).hasClass('makeActive')) {
@@ -151,21 +140,6 @@
             checkForSameTimes($(this), chosen);
         });
     });
-
-    /*
-     function postRegister(postObject) {
-     $.post(
-     "/index.php",
-     {
-     "pres_id": postObject
-     },
-     function (data) {
-     data = $.parseJSON(data);
-     },
-     "json"
-     );
-     });
-     */
 
 </script>
 </body>
