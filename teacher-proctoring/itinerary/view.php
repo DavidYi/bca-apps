@@ -73,14 +73,14 @@
             $testText = $test['test_id'] . ":" . $test['test_time_id'];
             $proc_left = intval($test['proc_needed']) - intval($test['proc_enrolled']);
             ?>
-                <div class="session makeDefault" data-value="<?php echo $testText?>">
-                        <div class="tag"><?php echo $test['test_name']?></div>
-                        <div class="company"><?php echo $test['test_type_cde']?></div>
-                        <div class="position"><?php echo $test['test_time_desc']?></div>
-                        <div class="presenter"><?php echo $test['test_dt']?></div>
-                        <div class="remaining"><?php echo $proc_left?></div>
-                </div>
-            <?php } ?>
+            <div class="session makeDefault" data-value="<?php echo $testText?>">
+                <div class="tag"><?php echo $test['test_name']?></div>
+                <div class="company"><?php echo $test['test_type_cde']?></div>
+                <div class="position"><?php echo $test['test_time_desc']?></div>
+                <div class="presenter"><?php echo $test['test_dt']?></div>
+                <div class="remaining"><?php echo $proc_left?></div>
+            </div>
+        <?php } ?>
         <?php ?>
     </div>
 </section>
