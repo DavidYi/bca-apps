@@ -5,12 +5,12 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
     <link href="styles.css" rel="stylesheet">
     <script src="../js/jquery.min.js"></script>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <?php include_analytics(); ?>
+    <link rel="shortcut icon" hrcon.ico" type="image/x-icon">
+    <?php include_analytics(); ?ef="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favi>
 </head>
 <body>
 <section class="main view">
@@ -24,7 +24,7 @@
             </div>
             <?php foreach ($testList as $test) { ?>
                 <div class="test view-test" onclick="">
-                    
+
                     <?php if ($test['test_id'] != NULL) { ?>
                         <div class="time"><?php echo $test['test_dt'] ?></div>
                         <div class="mods"><?php echo $test['test_time_desc'] ?></div>
