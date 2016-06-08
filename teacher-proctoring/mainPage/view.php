@@ -1,14 +1,26 @@
+<?php
+require_once('../util/main.php');
+//require_once('../../util/tags.php');
+require_once('../model/teacher_db.php');
+?>
+
 <html lang="en">
 <head>
     <title>Register for Proctoring</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
+    <!-- <link rel="shortcut icon" href="images/logo.ico"> ->
 
-    <!-- Styles -->
+    <!--Styles-->
     <link href="../ss/main.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
+    <style>
+        button {
+            height: 4.5em;
+            width: 20em;
+        }
+    </style>
 </head>
 <body>
 <section class="main view">
@@ -22,26 +34,6 @@
         <div class="vertical-center">
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
                 <h1>Register For Proctoring</h1>
-
-                <?php if ($startTime > $currentTime) { ?>
-                    <h3> Registration <b>has not opened</b>!</h3>
-                    <h3> Opens: <?php echo $startTimeFormatted ?> </h3>
-
-                <?php } elseif ($endTime < $currentTime) { ?>
-                    <h3> Registration has <b>ended</b>. </h3>
-                    <h3> If you did not finish registering, a session will be assigned to you. </h3>
-
-                <?php } elseif ($registration_complete) { ?>
-                    <h3> Registration <b>complete</b>! </h3>
-                    <h3> Feedback <a
-                            href="https://docs.google.com/forms/d/1nfzkqn2NB8m8OeQ_w3XwE2hNp3OK-k8bVtA6DZb300E/viewform">survey</a>
-                        about this site. </h3>
-
-                <?php } else { ?>
-                    <h3> Registration is <b>open</b>! </h3>
-                    <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
-                <?php } ?>
-
                 <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
             <?php } else { ?>
                 <h1>Mimic User Mode</h1>
@@ -49,25 +41,28 @@
         </div>
     </div>
     <div class="view-signup enrollment">
-        <div class="vertical-center">
-            <nav class="navbar">
-                <div class="session-filter tag">Test Name</div>
-                <div class="session-filter company">Room</div>
-                <div class="session-filter position">Time</div>
-                <div class="session-filter presenter">Mods</div>
-            </nav>
-            <?php foreach ($testList as $test) { ?>
-<!--comment-->
-                <div class="tag"><?php echo $test['test_name']?></div>
-                <div class="company"><?php echo $test['rm_id']?></div>
-                <div class="position"><?php echo $test['test_dt']?></div>
-                <div class="presenter"><?php echo $test['test_time_desc']?></div>
-
+        <h3></h3>
+        <h7>These are your current registration times: </h7>
+        <div id="" style="overflow-y:scroll; height:400px; margin-top:25px">
+            <?php foreach ($testSelectedList as $test) { ?>
+                <div class="session view-session" onclick="">
+                    <?php if ($test != NULL) { ?>
+                        <div class="time"><?php echo $test['test_dt']?></div>
+                        <div class="mods"><?php echo $test['test_time_desc']?></div>
+                        <div class="name"><?php echo $test['test_name']?></div>
+                    <?php } ?>
+                </div>
             <?php } ?>
 
 
-
         </div>
+        <h1></h1>
+        <form action="." method="post">
+            <input type="hidden" name="action" value="show_itinerary">
+            <br>
+            <button type = "submit" value="Add/Delete">Add/Delete</button>
+        </form>
+
     </div>
 
 </section>

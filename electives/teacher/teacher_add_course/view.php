@@ -1,55 +1,35 @@
+<!doctype html>
 <html>
-<head>
-    <script type="text/javascript">
-        function post(path, params, method) { //sends a post request; used to avoid having to use get to change the url since that looks sloppy and i don't want to bother with an inline form, especially if i want the confirmation prompt
-            method = method || "post"; //also ripped straight off stackoverflow
-            var form = document.createElement("form");
-            form.setAttribute("method", method);
-            form.setAttribute("action", path);
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="view.css" rel="stylesheet" type="text/css" />
 
-            for(var key in params) {
-                if(params.hasOwnProperty(key)) {
-                    var hiddenField = document.createElement("input");
-                    hiddenField.setAttribute("type", "hidden");
-                    hiddenField.setAttribute("name", key);
-                    hiddenField.setAttribute("value", params[key]);
+  </head>
+  <body>
+    <form action="." method="post">
+      <input type="hidden" name="action" value="add_course">
 
-                    form.appendChild(hiddenField);
-                }
-            }
+    <div id="box">
+      <p class="title">Create Course</p>
 
-            document.body.appendChild(form);
-            form.submit();
-        }
-    </script>
-</head>
-<body>
-    <h1>Create a New Class</h1>
+        <label class="spacing">
+          <span>Course Name</span>
+          <input type="text" name="class_name">
+        </label>
 
-    <form action="post('index.php', {action: 'add_course'}, 'post')" method="post">
-        Class Name: <input name="class_name" type="text"> <br><br>
-        Mods: <select name="mods">
-            <option value="1-3">1-3</option>
-            <option value="4-6">4-6</option>
-            <option value="7-9">7-9</option>
-            <option value="10-12">10-12</option>
-            <option value="13-15">13-15</option>
-            <option value="16-18">16-18</option>
-            <option value="19-21">19-21</option>
-            <option value="22-24">22-24</option>
-            <option value="25-27">25-27</option>
-        </select> <br><br>
-        Day: <select name="day">
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-        </select> <br><br>
-        Description: <br><br><textarea name="description"></textarea><br><br>
-        <input type="submit" name="submit">
-    </form>
 
-</body>
+        <label class="spacing">
+            <span>Description</span>
+            <textarea name="description"></textarea>
+        </label>
+
+
+
+        <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
+        <button class="submit back" type="submit" name="choice" value="Back">Back</button>
+      </form>
+  </div>
+  </body>
 </html>
-

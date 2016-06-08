@@ -6,7 +6,7 @@ img, legend {
 
 legend, td, th {
   padding: 0; }
-
+/*comment*/
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -47,6 +47,12 @@ dfn {
 h1 {
   font-size: 2em;
   margin: .67em 0; }
+
+h7 {
+  font-size: 2em;
+  margin: .67em 0;
+  position: relative;
+  left: 7%; }
 
 mark {
   background: #ff0;
@@ -250,7 +256,11 @@ button {
   text-transform: uppercase;
   -webkit-transition: all 175ms ease;
   -moz-transition: all 175ms ease;
-  transition: all 175ms ease; }
+  transition: all 175ms ease;
+  position: relative;
+  margin-top:-15px;
+}
+
 button:hover {
   background-color: #0f0f0f; }
 
@@ -260,7 +270,7 @@ input {
   margin: 0 auto;
   padding: 0 auto;
   color: #333;
-  background-color: #fdfdfd;
+  background-color: #ffff80;
   border: 0;
   border-radius: 1px;
   font: normal normal 400 0.29091 "Roboto", sans-serif;
@@ -298,6 +308,9 @@ html {
   background-color: #e7e7e7; }
 
 h1 {
+  font-weight: 500; }
+
+h7 {
   font-weight: 500; }
 
 .main {
@@ -344,7 +357,7 @@ nav.navbar .tag {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 30%;
+  width: 40%;
   color: #555;
   margin: 0;
   padding: 0;
@@ -357,7 +370,7 @@ nav.navbar .company {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 20%;
+  width: 15%;
   color: #555;
   margin: 0;
   padding: 0;
@@ -383,7 +396,7 @@ nav.navbar .presenter {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 20%;
+  width: 17.5%;
   color: #555;
   margin: 0;
   padding: 0;
@@ -407,7 +420,8 @@ nav.navbar .remaining:last-child {
   margin-right: 0; }
 nav.navbar .tag, nav.navbar .company, nav.navbar .position, nav.navbar .presenter, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
   color: #aaa; }
-nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
+nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active,
+nav.navbar .mods:hover, nav.navbar .mods:active{
   color: #eee;
   text-decoration: underline; }
 
@@ -451,7 +465,7 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   float: left;
   display: block;
   margin-right: 0%;
-  width: 30%;
+  width: 40%;
   color: #555;
   margin: 0;
   padding: 0;
@@ -464,7 +478,7 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   float: left;
   display: block;
   margin-right: 0%;
-  width: 20%;
+  width: 15%;
   color: #555;
   margin: 0;
   padding: 0;
@@ -503,9 +517,9 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   float: left;
   display: block;
   margin-right: 0%;
-  width: 6.25%;
+  width: 10%;
   color: #555;
-  margin: 15;
+  margin: 0;
   padding: 0;
   font-size: 1.125em;
   font-weight: 500;
@@ -590,6 +604,45 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   background: #333; }
 .enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time, .enrollment .view-session:hover .room-number, .enrollment .view-session:hover .session-title, .enrollment .view-session:hover .name {
   color: #fdfdfd; }
+.enrollment .view-session .name {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 40%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: left; }
+.enrollment .view-session .name:last-child {
+  margin-right: 0; }
+.enrollment .view-session .time {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 30%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 400;
+  text-align: center; }
+.enrollment .view-session .time:last-child {
+  margin-right: 0; }
+.enrollment .view-session .mods {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 30%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 400;
+  text-align: center; }
+.enrollment .view-session .mods:last-child {
+  margin-right: 0; }
 
 .session-selected {
   background-color: #f0c30f;
@@ -598,7 +651,7 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   -webkit-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   -moz-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
   box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66); }
-.session-selected .tag, .session-selected .company, .session-selected .position, .session-selected .presenter, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
+.session-selected .name, .session-selected .time, .session-selected .mods, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
   color: #fdfdfd !important; }
 .session-selected:hover {
   background-color: #f0c30f !important; }
@@ -739,7 +792,7 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
   height: 100%;
   margin: 0;
   padding: 0 4.6875em;
-  background-color: rgba(240, 195, 15, 0.66); }
+  background-color: rgba(15, 204, 142, 0.66); }
 .view .view-signup:last-child {
   margin-right: 0; }
 .view .view-signup .vertical-center {

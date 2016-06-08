@@ -1,9 +1,11 @@
 <?php
 /**
+ *
  * Created by PhpStorm.
  * User: macbook
- * Date: 1/5/16
+ * Date: 1/05/16
  * Time: 2:04 PM
+ *
  */
 
 require_once("../util/main.php");
@@ -14,7 +16,7 @@ $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
     if ($action == NULL) {
-        $action = 'list_tests';
+        $action = 'list_selected_tests';
     }
 }
 
@@ -29,13 +31,20 @@ switch ($action) {
 
         break;
 
-    case 'list_tests':
-        $testList = get_test_list();
+
+    case 'list_selected_tests':
+        $testSelectedList = get_selected_test_list($user->usr_id);
 
         break;
 
+    case 'show_itinerary':
+        header("Location: ../itinerary");
+        break;
+
+
     default:
-        echo('Unknown account action: ' . $action);
+        $testSelectedList = get_selected_test_list($user->usr_id);
+        include "./view.php";
         break;
 }
 
@@ -52,6 +61,6 @@ if (isset($action) and ($action == "logout")) {
         header("Location: ../index.php");
     }
 }
-
+$testSelectedList = get_selected_test_list($user->usr_id);
 include ("./view.php");
 exit();

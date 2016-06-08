@@ -7,6 +7,8 @@
  * Time: 10:36 AM
  */
 include('../util/main.php');
+require_once('../model/times_db.php');
+
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
@@ -16,14 +18,22 @@ if ($action == NULL) {
     }
 }
 
+$timesString = strtolower(filter_input(INPUT_POST, 'timesString'));
+if( $timesString == NULL) {
+    $timesString = strtolower(filter_input(INPUT_GET, 'timesString'));
+    if( $timesString == NULL) {
+        $timesString = "";
+    }
+}
+
 
 switch ($action) {
     case 'list_options':
         include('./view.php');
         break;
     case 'modify_courses':
-        echo "will make a modify_courses page later";
-        include('./courses/index.php');
+        header ('Location: ./courses/index.php');
+        exit();
         break;
     case 'modify_times':
         include('./times/view.php');
@@ -32,8 +42,47 @@ switch ($action) {
         echo "will make a logout page later";
         break;
     case 'update_times':
-        echo "update_times test ";
-        echo "REMINDER: I need to figure out how to take the button data from the previous page";
+        $timesString = "";
+        if(filter_has_var(INPUT_POST, 'time')) {
+            $timesarr = $_POST['time'];
+
+            for($i = 0; $i < sizeof($timesarr); $i++){
+                $timesString .= $timesarr[$i];
+
+                if($i + 1 != sizeof($timesarr)){
+                    $timesString .= ", ";
+                }
+                else $timesString .= ".";
+            }
+        }
+        $timesString .= "THAT WAS INPUT FROM LAST PAGE, NEXT IS INPUT FROM DATABASE:\n";
+        //Everything below is still in progress. Eventually it will replace the stuff above
+
+        $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
+        echo "this user's id is: ";
+        echo ($usr_id); //This works YAY
+
+        $oldtimesarr = get_times($usr_id);
+        echo count($oldtimesarr);
+
+        for($i = 0; $i < count($oldtimesarr); $i++){ //count($oldtimesarr) returning larger values than expected
+            $timesString .= $oldtimesarr[$i]['day']; //need to figure out how to incorporate index
+            $timesString .= " ";
+            $timesString .= $oldtimesarr[$i]['mods'];
+            $timesString .= " ";
+            //I THINK THE ABOVE WORKS!!!!
+            //It at least works for Sarah Abdelaziz since I inputted times for her
+
+
+        }
+        /*The fact that nothing prints from this isn't an error, the database doesn't have any times inputted for most people*/
+
+
+?>
+        <form timesString=<?php echo $timesString?> method="POST">
+        </form>
+
+<?php
         include('./view.php');
         break;
     default:

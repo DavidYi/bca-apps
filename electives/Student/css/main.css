@@ -1,6 +1,3 @@
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
 img, legend {
     border: 0; }
 
@@ -253,22 +250,22 @@ body {
     font-weight: 300;
     line-height: 1.25; }
 
-h {
+h1 {
     font-size: 3em; }
 
-h {
+h2 {
     font-size: 2.25em; }
 
-h {
+h3 {
     font-size: 1.5em; }
 
-h {
+h4 {
     font-size: 1.125em; }
 
-h {
+h5 {
     font-size: 1em; }
 
-h {
+h6 {
     font-size: 0.75em; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -744,7 +741,16 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
     text-decoration: underline;
 }
 
+.list_courses {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 /* TEST */
 
 /*# sourceMappingURL=main.css.map */

@@ -10,10 +10,13 @@ require_once("../../shared/model/user_db.php");
 require_once('../model/presentations_db.php');
 require_once('../model/signups_db.php');
 
+verify_logged_in();
+
 $currentSession = filter_input(INPUT_GET, 'session');
 if ($currentSession < 1 || $currentSession > 4) {
     $currentSession = 1;
 }
+
 $sort_by = filter_input(INPUT_GET, "sort");
 
 $pres_enrolled = get_presentation_by_user($user->usr_id, $currentSession);
@@ -30,29 +33,27 @@ if ($sort_order == NULL) {
 
 $signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
 
-echo $user .'<BR>';
-
-
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
-echo $start_date .'<BR>';
-echo $end_date .'<BR>';
+echo $start_date . '<p>';
 
 date_default_timezone_set('America/New_York');
 $current_date = time();
-echo $current_date.'<BR>';
-
+echo $current_date . '\n';
+echo $end_date . '\n';
 $action = filter_input(INPUT_GET, 'action');
 $id = 0;
 $register_id = 0;
 $is_changing = $is_enrolled;
+
+echo $action;
 if ($action == "register") {
-    //if (!($current_date < $start_date || $current_date > $end_date)) {
+    if (!($current_date < $start_date || $current_date > $end_date)) {
         $presentations = get_presentation_list($currentSession, $sort_by, $sort_order);
         include("view.php");
-    //} else {
-        //display_error("It's not time to enroll yet");
-    //}
+    } else {
+        display_error("It's not time to enroll yet");
+    }
 }  else if ($action == "commit") {
     $pres_id = filter_input(INPUT_GET, 'pres_id');
     $presentation = SeniorPresentation::getPresentation($pres_id);
@@ -74,7 +75,7 @@ if ($action == "register") {
 
     // All good -- add the presentation!
     else {
-        $presentation->addPresForUser($user['usr_id']);
+        $presentation->addPresForUser($user->usr_id);
         header("Location: ../itinerary/");
     }
     // Test

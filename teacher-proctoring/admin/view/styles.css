@@ -1,0 +1,53 @@
+*,
+*:after,
+*:before {
+    font-family: 'Lato', sans-serif;
+}
+
+
+.test.view-test div {
+    display: table-cell;
+    padding: 20px;
+}
+
+.name {
+}
+
+.mods {
+    width: 18vw;
+}
+
+.time {
+    width: 18vw;
+}
+
+.name {
+    width: 24vw;
+}
+
+.test.view-test:nth-child(n) {
+    background: #C5C5C5;
+}
+
+.test.view-test:nth-child(2n) {
+    background: #DADADA;
+}
+
+div#test-table {
+    height: 94vh;
+    margin-top: 2%;
+}
+
+.table-header {
+    font-weight: 800;
+}
+
+html {
+    background: #EFEFEF;
+}
+
+.view-signup.enrollment {
+    width: 95vw;
+    margin: 0 auto;
+    box-shadow: 7px 9px 27px #5A5A5A;
+}
