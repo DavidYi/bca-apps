@@ -46,7 +46,7 @@ switch ($action) {
                 } else $allFieldsFilled = false;
 
                 if ($allFieldsFilled) {
-                    addCourse($courseName, $description);
+                    add_course($courseName, $description);
                     $message = "Course created successfully";
                 } else {
                     $message = "Not all fields were completed";
