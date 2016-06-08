@@ -14,9 +14,7 @@
         $(document).ready(function () {
             $('#basicExample').timepicker();
 
-            $('.ui.dropdown')
-                .dropdown()
-            ;
+            $('.ui.dropdown').selectmenu();
         });
 
 
