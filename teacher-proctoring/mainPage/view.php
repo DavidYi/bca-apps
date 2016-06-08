@@ -19,6 +19,7 @@ require_once('../model/teacher_db.php');
         button {
             height: 4.5em;
             width: 20em;
+            left: 24%;
         }
     </style>
 </head>

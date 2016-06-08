@@ -99,10 +99,11 @@
     function checkForSameTimes(newTest, chosenTest) {
         var sameDay = newTest.find('.presenter').text() == chosenTest.find('.presenter').text();
         var sameTime = newTest.find('.position').text() == chosenTest.find('.position').text();
+        var isFull = newTest.find('.remaining').text() === '0';
         if (!newTest.is(chosenTest) && !newTest.is('.makeActive') && !newTest.is('.makeDisabled')
-            && sameDay && sameTime) {
+            && sameDay && sameTime && !isFull) {
             newTest.toggleClass('makeDefault makeDisabled');
-        } else if (newTest.is('.makeDisabled') && sameDay && sameTime) {
+        } else if (newTest.is('.makeDisabled') && sameDay && sameTime && !isFull) {
             newTest.toggleClass('makeDefault makeDisabled');
         }
     }
@@ -113,10 +114,14 @@
             picked = active_times.split(",");
         $('.enrollment .session').each(function() {
             var tData = $(this).data('value');
+            if ($(this).find('.remaining').text() === '0') {
+                $(this).toggleClass("makeDefault makeDisabled");
+            }
             if (picked.indexOf(tData) !== -1) {
                 $(this).toggleClass("makeActive makeDefault");
                 var chosen = $(this);
                 $('.enrollment .session').each(function() {
+
                     checkForSameTimes($(this), chosen);
                 });
             }
