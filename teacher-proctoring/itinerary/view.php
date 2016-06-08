@@ -73,14 +73,14 @@
             $testText = $test['test_id'] . ":" . $test['test_time_id'];
             $proc_left = intval($test['proc_needed']) - intval($test['proc_enrolled']);
             ?>
-                <div class="session makeDefault" data-value="<?php echo $testText?>">
-                        <div class="tag"><?php echo $test['test_name']?></div>
-                        <div class="company"><?php echo $test['test_type_cde']?></div>
-                        <div class="position"><?php echo $test['test_time_desc']?></div>
-                        <div class="presenter"><?php echo $test['test_dt']?></div>
-                        <div class="remaining"><?php echo $proc_left?></div>
-                </div>
-            <?php } ?>
+            <div class="session makeDefault" data-value="<?php echo $testText?>">
+                <div class="tag"><?php echo $test['test_name']?></div>
+                <div class="company"><?php echo $test['test_type_cde']?></div>
+                <div class="position"><?php echo $test['test_time_desc']?></div>
+                <div class="presenter"><?php echo $test['test_dt']?></div>
+                <div class="remaining"><?php echo $proc_left?></div>
+            </div>
+        <?php } ?>
         <?php ?>
     </div>
 </section>
@@ -99,10 +99,11 @@
     function checkForSameTimes(newTest, chosenTest) {
         var sameDay = newTest.find('.presenter').text() == chosenTest.find('.presenter').text();
         var sameTime = newTest.find('.position').text() == chosenTest.find('.position').text();
+        var isFull = newTest.find('.remaining').text() === '0';
         if (!newTest.is(chosenTest) && !newTest.is('.makeActive') && !newTest.is('.makeDisabled')
-            && sameDay && sameTime) {
+            && sameDay && sameTime && !isFull) {
             newTest.toggleClass('makeDefault makeDisabled');
-        } else if (newTest.is('.makeDisabled') && sameDay && sameTime) {
+        } else if (newTest.is('.makeDisabled') && sameDay && sameTime && !isFull) {
             newTest.toggleClass('makeDefault makeDisabled');
         }
     }
@@ -113,10 +114,14 @@
             picked = active_times.split(",");
         $('.enrollment .session').each(function() {
             var tData = $(this).data('value');
+            if ($(this).find('.remaining').text() === '0') {
+                $(this).toggleClass("makeDefault makeDisabled");
+            }
             if (picked.indexOf(tData) !== -1) {
                 $(this).toggleClass("makeActive makeDefault");
                 var chosen = $(this);
                 $('.enrollment .session').each(function() {
+
                     checkForSameTimes($(this), chosen);
                 });
             }

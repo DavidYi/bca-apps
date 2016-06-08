@@ -5,7 +5,7 @@
 
     <!-- Styles comment so i can push -->
 
-    <link href="/css/main.css" rel="stylesheet">
+    <link href="../ss/main.css" rel="stylesheet">
     <!--Above file doesn't exist yet, copy it from career day later-->
 </head>
 <body>

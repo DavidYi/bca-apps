@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -97,9 +98,12 @@
         </tbody>
     </table>
     <div class="wrapper">
-        <button class="submit" type="submit">Submit</button>
+        <button name="action" value="submit" class="s submit" type="submit">Submit</button>
+        <button name="action" value="back" class="s back" type="submit">Back</button>
     </div>
 </form>
 
 
 </body>
+
+</html>

@@ -8,8 +8,8 @@
 
   </head>
   <body>
-    <form action="." method="post">
-      <input type="hidden" name="action" value="add_course">
+    <form action="index.php" method="post">
+    <input type="hidden" name="action" value="add_course">
 
     <div id="box">
       <p class="title">Create Course</p>
