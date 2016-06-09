@@ -38,6 +38,29 @@ function get_selected_test_list($usr_id) {
     return get_list($query);
 }
 
+function get_count($usr_id){
+    $query = 'SELECT count(distinct test.test_id)
+                from test, test_type, test_time, test_updt_xref, test_time_xref
+                where usr_id = :usr_id
+                and test_time.test_time_id = test_updt_xref.test_time_id
+                and test.test_id = test_updt_xref.test_id
+                and test_time_xref.test_time_id = test_updt_xref.test_time_id
+                and test_time_xref.test_id = test_updt_xref.test_id';
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+    return get_list($query);
+}
+
 function get_test_types() {
     $query = 'SELECT test_type_desc
                 from test_type';

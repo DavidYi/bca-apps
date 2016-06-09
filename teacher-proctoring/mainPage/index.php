@@ -44,11 +44,15 @@ switch ($action) {
 
     default:
         $testSelectedList = get_selected_test_list($user->usr_id);
+        $count = get_count($user->usr_id);
+
         include "./view.php";
         break;
 }
 
 verify_logged_in();
+
+$count = implode("glue", get_count($user->usr_id));
 
 $action = filter_input(INPUT_GET, 'action');
 if (isset($action) and ($action == "logout")) {
