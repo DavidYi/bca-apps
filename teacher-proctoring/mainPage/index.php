@@ -47,13 +47,12 @@ switch ($action) {
         $count = get_count($user->usr_id);
 
         include "./view.php";
-        /*sdfjksdkl*/
         break;
 }
 
 verify_logged_in();
 
-$count = implode("glue", get_count($user->usr_id));
+$count = get_count($user->usr_id);
 
 $action = filter_input(INPUT_GET, 'action');
 if (isset($action) and ($action == "logout")) {

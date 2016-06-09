@@ -39,7 +39,7 @@ function get_selected_test_list($usr_id) {
 }
 
 function get_count($usr_id){
-    $query = 'SELECT count(distinct test.test_id)
+    $query = 'SELECT count(distinct test.test_id, test_time_xref.test_time_id)
                 from test, test_type, test_time, test_updt_xref, test_time_xref
                 where usr_id = :usr_id
                 and test_time.test_time_id = test_updt_xref.test_time_id
@@ -52,7 +52,7 @@ function get_count($usr_id){
         $statement = $db->prepare($query);
         $statement->bindValue(':usr_id', $usr_id);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
@@ -69,12 +69,12 @@ function get_test_types() {
 
 function get_teacher_list()
 {
-    $query = 'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
+    $query = "SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
                  usr_first_name, usr_last_name, usr_active
               FROM user
               WHERE usr_active = 1
-              AND usr_type_cde = "TCH"
-			  ORDER BY usr_display_name';
+              AND usr_type_cde = 'TCH'
+			  ORDER BY usr_display_name";
 
     return get_list($query);
 }
@@ -87,7 +87,6 @@ function get_rooms() {
 
 function del_user_tests($usr_id) {
     global $db;
-    global $user;
 
     $query = 'delete from test_updt_xref where usr_id = :usr_id';
 

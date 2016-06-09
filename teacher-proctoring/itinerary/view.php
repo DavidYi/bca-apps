@@ -81,7 +81,6 @@
                 <div class="remaining"><?php echo $proc_left?></div>
             </div>
         <?php } ?>
-        <?php ?>
     </div>
 </section>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -114,33 +113,34 @@
             picked = active_times.split(",");
         $('.enrollment .session').each(function() {
             var tData = $(this).data('value');
-            if ($(this).find('.remaining').text() === '0') {
-                $(this).toggleClass("makeDefault makeDisabled");
-            }
             if (picked.indexOf(tData) !== -1) {
                 $(this).toggleClass("makeActive makeDefault");
+                if ($(this).find('.remaining').text() === '0' && !$(this).hasClass("makeActive")) {
+                    $(this).toggleClass("makeDefault makeDisabled");
+                }
                 var chosen = $(this);
                 $('.enrollment .session').each(function() {
-
                     checkForSameTimes($(this), chosen);
                 });
+            } else {
+                if ($(this).find('.remaining').text() === '0') {
+                    $(this).toggleClass("makeDefault makeDisabled");
+                }
             }
         });
     });
 
     $('.enrollment .session').on('click', function() {
-        $(this).toggleClass("makeActive makeDefault");
+        var chosen = $(this);
+        chosen.toggleClass("makeActive makeDefault");
 
-        var tData = $(this).data('value');
-        if ($(this).hasClass('makeActive')) {
+        var tData = chosen.data('value');
+        if (chosen.hasClass('makeActive')) {
             picked.push(tData);
         } else {
             picked.splice(picked.indexOf(tData), 1);
         }
         $("#submit_button").attr('value', picked);
-        console.log("Tests: " + picked.toString());
-
-        var chosen = $(this);
         $('.enrollment .session').each(function() {
             checkForSameTimes($(this), chosen);
         });

@@ -36,7 +36,7 @@ require_once('../model/teacher_db.php');
         <div class="vertical-center">
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
                 <h1>Register For Proctoring</h1>
-                <h3> You have completed <?php echo $count ?> hours out of 12. </h3>
+                <h3> You will have completed <?php echo implode($count) ?> hours out of 12. </h3>
                 <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
             <?php } else { ?>
                 <h1>Mimic User Mode</h1>
