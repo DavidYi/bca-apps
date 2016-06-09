@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
 body {
-  background-color: rgba(240, 195, 15, 0.66);
+  background-color: rgb(242, 242, 242);
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -23,14 +23,12 @@ div.table-title {
 }
 
 .table-title h3 {
-  /*color: #fafafa;*/
-  color: black;
-  font-size: 30px;
-  font-weight: 400;
-  font-style:normal;
-  font-family: "Roboto", helvetica, arial, sans-serif;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-  text-transform:uppercase;
+   color: black;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-transform:uppercase;
 }
 
 
@@ -52,29 +50,29 @@ div.table-title {
 th {
   color:#D5DDE5;
   background:#1b1e24;
-  border-bottom:4px solid #9ea7af;
+  border-bottom: 4px solid rgb(118,201,212);
   border-right: 1px solid #343a45;
   font-size:23px;
   font-weight: 100;
-  padding:34px;
+  padding:24px;
   text-align:left;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align:middle;
 }
 
 th:first-child {
-  border-top-left-radius:3px;
+ /* border-top-left-radius:3px;*/
 }
 
 th:last-child {
-  border-top-right-radius:3px;
+  /*border-top-right-radius:3px;*/
   border-right:none;
 }
 
 tr {
   border-top: 1px solid #C1C3D1;
   border-bottom: 1px solid #C1C3D1;
-  color:#FF0000;
+  color: #666B85;
   font-size:16px;
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
@@ -104,16 +102,18 @@ tr:hover td {
   border-bottom: 1px solid #22262e;
 }*/
 
-td:nth-child(odd):hover {
-  background: rgb(254,166,16);
+
+tr:nth-child(odd) td {
+  background:#EBEBEB;
 }
 
-td:hover {
-  background: #800080 !important;
-  color: #32CD32;
-  /*border-top: 1px solid #22262E;
-  border-bottom: 1px solid #22262E;*/
-  /*rgb(254,166,16)*/
+
+td:nth-child(odd):hover {
+  background: rgb(213,221,229);
+}
+
+td:nth-child(even):hover {
+  background: rgb(213,221,229);
 }
 
 td:checked {
@@ -136,9 +136,11 @@ td {
   vertical-align:middle;
   font-weight:300;
   font-size:18px;
-  padding: 20px 0px;
+  padding: 28px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
+  height: 21px;
+  padding: 20px 0px;
 }
 
 td:last-child {
@@ -174,7 +176,7 @@ td.text-right {
   text-align: center;
 }
 
-.submit {
+/*.submit {
   font-family:  'Lato', arial;
   font-size: 15px;
   width: 120px;
@@ -189,8 +191,29 @@ td.text-right {
   border-bottom: 2px solid #c6380d;
   cursor: pointer;
 }
-
+*/
 label {
-  padding: 20px 48px 20px 12px;
+  padding: 20px 20px 20px 20px;
 }
 
+.s {
+  font-family:  'Lato', arial;
+  font-size: 15px;
+  width: 120px;
+  height: 50px;
+  color: white;
+  text-align: center;
+  border: 0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.submit {
+  background: rgb(108,174,224);
+}
+
+
+.back {
+  background: rgb(247,181,125);
+}

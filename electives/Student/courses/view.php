@@ -35,7 +35,7 @@
     </table>
 
     <div class="wrapper">
-        <button class="submit" style="background-color:white;margin-left:auto;margin-right:auto;display:block;margin-top:10%;margin-bottom:0%" type="submit">Submit</button>
+        <button class="submit" type="submit">Submit</button>
     </div>
 </form>
 </body>

@@ -67,6 +67,18 @@ function get_test_types() {
     return get_list($query);
 }
 
+function get_teacher_list()
+{
+    $query = 'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
+                 usr_first_name, usr_last_name, usr_active
+              FROM user
+              WHERE usr_active = 1
+              AND usr_type_cde = "TCH"
+			  ORDER BY usr_display_name';
+
+    return get_list($query);
+}
+
 function get_rooms() {
     $query = 'SELECT rm_nbr
                 from room';
@@ -130,5 +142,4 @@ function change_user_tests($tests) {
         exit();
     }
 }
-
 ?>

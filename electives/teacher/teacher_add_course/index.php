@@ -17,7 +17,6 @@ if ($action == NULL) {
         $action = 'default';
     }
 }
-// sdfas
 
 switch ($action) {
     case 'add_course':
@@ -26,17 +25,6 @@ switch ($action) {
             $allFieldsFilled = true;
 
             if (isset($_POST["choice"])) {
-
-                if (!empty($_POST["day"])) {
-                    $day = $_POST["day"];
-                } else $allFieldsFilled = false;
-
-                if (!empty($_POST["mods"])) {
-                    $mods = $_POST["mods"];
-                    $startMod = intval(substr($mods, 0,1));
-                    $endMod = intval(substr($mods, 2, 1));
-                } else $allFieldsFilled = false;
-
                 if (!empty($_POST["class_name"])) {
                     $courseName = $_POST["class_name"];
                 } else $allFieldsFilled = false;
@@ -46,7 +34,7 @@ switch ($action) {
                 } else $allFieldsFilled = false;
 
                 if ($allFieldsFilled) {
-                    addCourse($courseName, $description);
+                    add_course($courseName, $description);
                     $message = "Course created successfully";
                 } else {
                     $message = "Not all fields were completed";

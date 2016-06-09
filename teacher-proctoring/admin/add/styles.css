@@ -931,3 +931,38 @@ input.modinput, .ui.label {
         padding: 10px;
     }
 }
+
+
+span#ui-id-2-button, span#ui-id-1-button {
+    background: white;
+    width: 340px !important;
+    display: block;
+    margin: 0 auto;
+    border-radius: 0;
+    margin-bottom: 11px;
+    height: 38px;
+    padding-top: 2px;
+    font-size: 14px;
+}
+
+.ui-menu .ui-menu-item {
+    position: relative;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: .714rem 1.14rem;
+}
+
+span.ui-selectmenu-text {
+    font-weight: bold;
+    color: #5A5A5A;
+}
+
+.ui.selectmenu-menu .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    color: black;
+    background: rgba(0,0,0,.03);
+}
+
+span#ui-id-1-button:focus, #ui-id-2-button:focus {
+    border: 1px solid #D6D675;
+    outline: 0;
+}

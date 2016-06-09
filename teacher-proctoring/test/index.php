@@ -16,7 +16,7 @@ if ($action == NULL) {
 
 switch ($action) {
     case 'show_users':
-        $user_list = get_user_list();
+        $user_list = get_teacher_list();
 
         include('login.php');
         break;
@@ -45,5 +45,3 @@ switch ($action) {
 }
 
 ?>
-
-

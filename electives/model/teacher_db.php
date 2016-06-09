@@ -7,7 +7,7 @@
  */
 
 // function needs teacher id
-function addCourse($course_name, $course_desc) {
+function add_course($course_name, $course_desc) {
     $query = "INSERT INTO elect_course (course_name, course_desc, teacher_id) 
     VALUES (:course_name, :course_desc, :user_id)";
 
@@ -47,7 +47,6 @@ function get_course_by_user($usr_id) {
     }
 }
 
-
 function get_course_list_for_student ($usr_id) {
     $query = "select c.course_id, course_name, course_desc, concat(u.usr_last_name, ', ', u.usr_first_name) as teacher,
             !isnull(x.usr_id) as enrolled
@@ -71,5 +70,26 @@ function get_course_list_for_student ($usr_id) {
     }
 }
 
+function edit_course($course_name, $new_course_name, $new_course_desc) {
+    global $db;
+
+    $query = "UPDATE elect_course
+    SET course_name = ':new_course_name', course_desc = ':new_course_desc'
+    WHERE course_name = ':course_name'";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':new_course_name', $new_course_name);
+        $statement->bindValue(':new_course_desc', $new_course_desc);
+        $statement->bindValue(':course_name', $course_name);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
 
 ?>

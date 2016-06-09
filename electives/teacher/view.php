@@ -55,10 +55,11 @@
                     ?>
 
 
-                        <tr>
-                            <td><?php echo $courseName ?></td>
-                            <td><?php echo $courseDesc ?></td>
-                        </tr>
+                    <tr>
+                        <td><?php echo $courseName ?></td>
+                        <td><?php echo $courseDesc ?></td>
+                        <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>">Edit</a></td>
+                    </tr>
 
                 <?php endforeach; ?>
             </table>
