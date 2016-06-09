@@ -1,6 +1,7 @@
 <?php
 require_once('../util/main.php');
 //require_once('../../util/tags.php');
+//comment
 require_once('../model/teacher_db.php');
 ?>
 
@@ -39,6 +40,7 @@ require_once('../model/teacher_db.php');
                 <h3> Email <a href="mailto:viclyn@bergen.org"> Mr. Lynch </a> with any questions.</h3>
             <?php } else { ?>
                 <h1>Mimic User Mode</h1>
+
             <?php } ?>
         </div>
     </div>

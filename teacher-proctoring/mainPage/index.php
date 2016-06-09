@@ -47,6 +47,7 @@ switch ($action) {
         $count = get_count($user->usr_id);
 
         include "./view.php";
+        /*sdfjksdkl*/
         break;
 }
 
