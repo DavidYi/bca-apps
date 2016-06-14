@@ -54,10 +54,10 @@ require_once('../model/teacher_db.php');
             <div class="session-filter presenter">Test Name</div>
         </nav>
 
-        <div id="" style="overflow-y:scroll; height:300px; margin-top:25px">
+        <div style="overflow-y:scroll; height:300px; margin-top:25px">
 
             <?php foreach ($testSelectedList as $test) { ?>
-                <div class="session view-session" onclick="">
+                <div class="session view-session">
                     <?php if ($test != NULL) { ?>
                         <div class="time"><?php echo $test['test_dt']?></div>
                         <div class="mods"><?php echo $test['test_time_desc']?></div>
