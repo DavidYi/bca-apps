@@ -36,7 +36,8 @@
         <div class="vertical-center">
             <h3><b>Availability</b></h3>
             Show availability table here
-            <a href="availability/index.php">Modify Availability</a>
+            <p><?php echo($timesString);?></p>
+        <a href="index.php?action=modify_times">Modify Availability</a>
         </div>
         <br>
         <br>

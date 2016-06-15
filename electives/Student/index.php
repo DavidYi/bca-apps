@@ -41,6 +41,9 @@ switch ($action) {
     case 'logout':
         echo "will make a logout page later";
         break;
+    case 'back':
+        include('./view.php');
+        break;
     case 'update_times':
         $timesString = "";
         if(filter_has_var(INPUT_POST, 'time')) {
