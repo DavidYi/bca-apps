@@ -6,28 +6,24 @@ function get_test_list($usr_id, $sort_by, $filter_full, $filter_past) {
     $query = 'SELECT distinct test_time_xref.test_id, test_time_xref.test_time_id, test_time_desc,
               test_name, test.test_type_cde, rm_id, test_dt, proc_needed, proc_enrolled,
               proc_needed - proc_enrolled as remaining
-              FROM test_time_xref
+              FROM test_updt_xref, test_time_xref
                 INNER JOIN test ON test_time_xref.test_id = test.test_id
                 INNER JOIN test_time ON test_time_xref.test_time_id = test_time.test_time_id
                 INNER JOIN test_type ON test.test_type_cde = test_type.test_type_cde ';
 
-    if ($filter_full == 1 || $filter_past == 1) {
-        $query .= ("INNER JOIN test_updt_xref ON (");
-        if ($filter_past == 1) {
-            $query .= ("test_dt < DATE_SUB(CURDATE(), INTERVAL 7 DAY) ");
-            if ($filter_full == 1) {
-                $query .= ("OR ");
-            } else {
-                $query .= (") ");
-            }
-
-        }
-        if ($filter_full == 1) {
-            $query .= ("proc_needed - proc_enrolled = 0) ");
-        }
-        $query .= ("OR (test_updt_xref.usr_id = :usr_id AND test_updt_xref.test_id = test_time_xref.test_id
-        AND test_updt_xref.test_time_id = test_time_xref.test_time_id) ");
+    $query .= ("WHERE ");
+    if ($filter_full == 1) {
+        $query .= ("proc_needed - proc_enrolled = 0 OR ");
     }
+
+    if ($filter_past == 1) {
+        $query .= ("test_dt < DATE_SUB(CURDATE(), INTERVAL 7 DAY) OR ");
+    }
+
+    $query .= ("test_dt > DATE_SUB(CURDATE(), INTERVAL 7 DAY) OR");
+
+    $query .= ("(test_updt_xref.usr_id = :usr_id AND test_updt_xref.test_id = test_time_xref.test_id
+                   AND test_updt_xref.test_time_id = test_time_xref.test_time_id )");
 
     if ($sort_by == 1) $query .= ('ORDER BY test_name');
     else if ($sort_by == 2) $query .= ('ORDER BY test.test_type_cde');
