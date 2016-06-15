@@ -12,18 +12,19 @@ function get_test_list($usr_id, $sort_by, $filter_full, $filter_past) {
                 INNER JOIN test_type ON test.test_type_cde = test_type.test_type_cde ';
 
     $query .= ("WHERE ");
-    if ($filter_full == 1) {
-        $query .= ("proc_needed - proc_enrolled = 0 OR ");
-    }
+
+    if ($filter_full == 1) $query .= ("proc_needed - proc_enrolled = 0 OR ");
 
     if ($filter_past == 1) {
-        $query .= ("test_dt < DATE_SUB(CURDATE(), INTERVAL 7 DAY) OR ");
+        $query .= ("test_dt < DATE_SUB(CURDATE(), INTERVAL 7 DAY) ");
+        if ($filter_full == 0) $query .= ("AND proc_needed - proc_enrolled > 0 ");
+        $query .= ("OR ");
     }
 
-    $query .= ("test_dt > DATE_SUB(CURDATE(), INTERVAL 7 DAY) OR");
-
-    $query .= ("(test_updt_xref.usr_id = :usr_id AND test_updt_xref.test_id = test_time_xref.test_id
-                   AND test_updt_xref.test_time_id = test_time_xref.test_time_id )");
+    $query .= ("test_dt > DATE_SUB(CURDATE(), INTERVAL 7 DAY)
+                OR (test_updt_xref.usr_id = :usr_id
+                AND test_updt_xref.test_id = test_time_xref.test_id
+                AND test_updt_xref.test_time_id = test_time_xref.test_time_id )");
 
     if ($sort_by == 1) $query .= ('ORDER BY test_name');
     else if ($sort_by == 2) $query .= ('ORDER BY test.test_type_cde');
