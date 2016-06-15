@@ -1,7 +1,6 @@
 <?php
 require_once('../util/main.php');
 //require_once('../../util/tags.php');
-//comment
 require_once('../model/teacher_db.php');
 ?>
 
