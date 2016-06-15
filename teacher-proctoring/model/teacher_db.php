@@ -6,7 +6,7 @@ function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
     $query = 'SELECT distinct test_time_xref.test_id, test_time_xref.test_time_id, test_time_desc,
               test_name, test.test_type_cde, rm_id, test_dt, proc_needed, proc_enrolled,
               proc_needed - proc_enrolled as remaining
-              FROM test_updt_xref, test_time_xref
+              FROM (test_time_xref, test_updt_xref)
                 INNER JOIN test ON test_time_xref.test_id = test.test_id
                 INNER JOIN test_time ON test_time_xref.test_time_id = test_time.test_time_id
                 INNER JOIN test_type ON test.test_type_cde = test_type.test_type_cde ';
@@ -24,11 +24,11 @@ function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
     $query .= ("test_dt > DATE_SUB(CURDATE(), INTERVAL 7 DAY)
                 OR (test_updt_xref.usr_id = :usr_id
                 AND test_updt_xref.test_id = test_time_xref.test_id
-                AND test_updt_xref.test_time_id = test_time_xref.test_time_id )");
+                AND test_updt_xref.test_time_id = test_time_xref.test_time_id) ");
 
     if ($sort_by == 1) $query .= ('ORDER BY test_name');
     else if ($sort_by == 2) $query .= ('ORDER BY test.test_type_cde');
-    else if ($sort_by == 3) $query .= ('ORDER BY test_time_desc');
+    else if ($sort_by == 3) $query .= ('ORDER BY sort_order');
     else if ($sort_by == 4) $query .= ('ORDER BY test_dt');
     else if ($sort_by == 5) $query .= ('ORDER BY remaining');
     else $query .= ('ORDER BY test_dt, test_id, test_time_id');

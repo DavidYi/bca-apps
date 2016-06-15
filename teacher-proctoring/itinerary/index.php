@@ -33,16 +33,17 @@ switch ($action) {
         break;
 
     case 'list_user_tests':
+        $testSelectedList = get_selected_test_list($user->usr_id);
+
         $sort_by = filter_input(INPUT_GET, 'sort');
-        if ($sort_by== NULL) {
+        if ($sort_by == NULL) {
             $sort_by = 1;
         }
-
         $sort_order = filter_input(INPUT_GET, 'order');
         if ($sort_order == NULL) {
             $sort_order = 1;
         }
-        $testSelectedList = get_selected_test_list($user->usr_id);
+
         $filter_full = filter_input(INPUT_POST, 'full_button');
         $filter_past = filter_input(INPUT_POST, 'past_button');
         if (!empty($filter_full)) {
@@ -53,11 +54,14 @@ switch ($action) {
         }
         $full_num = $_SESSION['filter_full'] ? 1 : 0;
         $past_num = $_SESSION['filter_past'] ? 1 : 0;
+
         $selList = [];
         foreach ($testSelectedList as $test) {
             array_push($selList, $test['test_id'] . ":" . $test['test_time_id']);
         }
+
         $testList = get_test_list($user->usr_id, $sort_by, $sort_order, $full_num, $past_num);
+
         include "view.php";
         break;
 

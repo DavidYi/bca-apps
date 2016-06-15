@@ -60,12 +60,12 @@
         <form action="index.php" method="post">
             <input type="hidden" name="action" value="list_user_tests">
             <button style="left: 10%; width: 9em;"
-                    type="submit" id="full_button" class="btn-enabled"
+                    type="submit" id="full_button" class="filter-off"
                     name="full_button"
                     value="Full Selected"
                     data-value=<?php echo $full_num?>>Include Full Sessions</button>
             <button style="left: 22%; width: 9em;"
-                    type="submit" id="past_button"
+                    type="submit" id="past_button" class="filter-off"
                     name="past_button"
                     value="Past Selected"
                     data-value=<?php echo $past_num?>>Include Past Sessions</button>
@@ -135,11 +135,11 @@
     }
 
     $(document).ready(function() {
-        if ($("#full_button").data('value') == 0) {
-            $("#full_button").addClass('filter-off');
+        if ($("#full_button").data('value') == 1) {
+            $("#full_button").removeClass('filter-off');
         }
-        if ($("#past_button").data('value') == 0) {
-            $("#past_button").addClass('filter-off');
+        if ($("#past_button").data('value') == 1) {
+            $("#past_button").removeClass('filter-off');
         }
         var active_times = $("#submit_button").attr('value');
         if (active_times.length > 0)
