@@ -1,3 +1,5 @@
+/*This file is in a directory called "times" because view.php in Student/times requires that the file that directs
+to it is on the same level as a directory called times with css code in a file called index.css*/
 body {
   background-color: rgb(242, 242, 242);
   font-family: "Roboto", helvetica, arial, sans-serif;
