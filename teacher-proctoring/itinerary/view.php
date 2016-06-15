@@ -44,19 +44,37 @@
             left: 70%;
             top: 40%;
         }
+
+        .filter-off {
+            background-color : #ffffff;
+            color : #00b8e6;
+            border: 1px solid #00b8e6;
+        }
     </style>
 </head>
 <body>
 <section class="main">
     <header>
-        <h1 class="title main-title" style="">Register for Proctoring</h1>
+        <h1 class="title main-title">Register for Proctoring</h1>
+        <form action="index.php" method="post">
+            <input type="hidden" name="action" value="list_user_tests">
+            <button style="left: 10%; width: 7em;"
+                    type="submit" id="full_button" class="btn-enabled"
+                    name="full_button"
+                    value="Full Selected"
+                    data-value=<?php echo $full_num?>>Show Full Sessions</button>
+            <button style="left: 20%; width: 7em;"
+                    type="submit" id="past_button"
+                    name="past_button"
+                    value="Past Selected"
+                    data-value=<?php echo $past_num?>>Show Past Sessions</button>
+        </form>
         <form action="index.php" method="post">
             <input type="hidden" name="action" value="change_user_tests">
             <button type="submit" id="submit_button"
                     name="submit_button"
                     value=<?php echo implode(",",$selList)?>>Submit Changes</button>
         </form>
-
     </header>
 
     <nav class="navbar">
@@ -70,15 +88,13 @@
 
     <div class="enrollment">
         <?php foreach ($testList as $test) {
-            $testText = $test['test_id'] . ":" . $test['test_time_id'];
-            $proc_left = intval($test['proc_needed']) - intval($test['proc_enrolled']);
-            ?>
+            $testText = $test['test_id'] . ":" . $test['test_time_id'];?>
             <div class="session makeDefault" data-value="<?php echo $testText?>">
                 <div class="tag"><?php echo $test['test_name']?></div>
                 <div class="company"><?php echo $test['test_type_cde']?></div>
                 <div class="position"><?php echo $test['test_time_desc']?></div>
                 <div class="presenter"><?php echo $test['test_dt']?></div>
-                <div class="remaining"><?php echo $proc_left?></div>
+                <div class="remaining"><?php echo $test['remaining']?></div>
             </div>
         <?php } ?>
     </div>
@@ -108,6 +124,12 @@
     }
 
     $(document).ready(function() {
+        if ($("#full_button").data('value') == 0) {
+            $("#full_button").addClass('filter-off');
+        }
+        if ($("#past_button").data('value') == 0) {
+            $("#past_button").addClass('filter-off');
+        }
         var active_times = $("#submit_button").attr('value');
         if (active_times.length > 0)
             picked = active_times.split(",");
