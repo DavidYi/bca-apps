@@ -2,7 +2,7 @@
 
 date_default_timezone_set('America/New_York');
 
-function get_test_list($usr_id, $sort_by, $filter_full, $filter_past) {
+function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past) {
     $query = 'SELECT distinct test_time_xref.test_id, test_time_xref.test_time_id, test_time_desc,
               test_name, test.test_type_cde, rm_id, test_dt, proc_needed, proc_enrolled,
               proc_needed - proc_enrolled as remaining
@@ -32,6 +32,8 @@ function get_test_list($usr_id, $sort_by, $filter_full, $filter_past) {
     else if ($sort_by == 4) $query .= ('ORDER BY test_dt');
     else if ($sort_by == 5) $query .= ('ORDER BY remaining');
     else $query .= ('ORDER BY test_dt, test_id, test_time_id');
+    if ($order_by == 2) $query .= (' DESC');
+
     global $db;
 
     try {

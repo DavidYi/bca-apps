@@ -79,11 +79,21 @@
     </header>
 
     <nav class="navbar" style="width:85%;">
-        <div class="session-filter tag" style="width:40%;text-align:left">Test Name</div>
-        <div class="session-filter company" style="width:15%;text-align:left">Test Type</div>
-        <div class="session-filter position" style="width:15%;text-align: left">Mods</div>
-        <div class="session-filter presenter" style="width:17.5%;text-align: left">Time</div>
-        <div class="session-filter remaining" style="text-align: right">Remaining</div>
+        <a href="index.php?action=<?php echo $action ?>&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>">
+            <div class="session-filter tag" style="width:40%;text-align:left">Test Name</div>
+        </a>
+        <a href="index.php?action=<?php echo $action ?>&sort=2&order=<?php if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>">
+            <div class="session-filter company" style="width:15%;text-align:left">Test Type</div>
+        </a>
+        <a href="index.php?action=<?php echo $action ?>&sort=3&order=<?php if ($sort_order == 1 && $sort_by == 3) { echo 2; } else { echo 1; } ?>">
+            <div class="session-filter position" style="width:15%;text-align: left">Mods</div>
+        </a>
+        <a href="index.php?action=<?php echo $action ?>&sort=4&order=<?php if ($sort_order == 1 && $sort_by == 4) { echo 2; } else { echo 1; } ?>">
+            <div class="session-filter presenter" style="width:17.5%;text-align: left">Time</div>
+        </a>
+        <a href="index.php?action=<?php echo $action ?>&sort=5&order=<?php if ($sort_order == 1 && $sort_by == 5) { echo 2; } else { echo 1; } ?>">
+            <div class="session-filter remaining" style="text-align: right">Remaining</div>
+        </a>
     </nav>
 
 

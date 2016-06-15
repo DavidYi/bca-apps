@@ -23,6 +23,7 @@ if(!isset($_SESSION['filter_full']))
 if(!isset($_SESSION['filter_past']))
     $_SESSION['filter_past'] = false;
 
+
 switch ($action) {
 
     case 'change_user_tests':
@@ -32,6 +33,15 @@ switch ($action) {
         break;
 
     case 'list_user_tests':
+        $sort_by = filter_input(INPUT_GET, 'sort');
+        if ($sort_by== NULL) {
+            $sort_by = 1;
+        }
+
+        $sort_order = filter_input(INPUT_GET, 'order');
+        if ($sort_order == NULL) {
+            $sort_order = 1;
+        }
         $testSelectedList = get_selected_test_list($user->usr_id);
         $filter_full = filter_input(INPUT_POST, 'full_button');
         $filter_past = filter_input(INPUT_POST, 'past_button');
@@ -47,7 +57,7 @@ switch ($action) {
         foreach ($testSelectedList as $test) {
             array_push($selList, $test['test_id'] . ":" . $test['test_time_id']);
         }
-        $testList = get_test_list($user->usr_id, 0, $full_num, $past_num);
+        $testList = get_test_list($user->usr_id, $sort_by, $sort_order, $full_num, $past_num);
         include "view.php";
         break;
 
