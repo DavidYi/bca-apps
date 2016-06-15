@@ -15,19 +15,25 @@ if ($action == NULL) {
         $action = 'default';
     }
 }
-$course_name = $_GET["course_name"];
+$course_name;
+$course_desc;
+$course_id;
 
 switch ($action) {
     case 'default':
+        $course_name = $_GET["course_name"];
+        $course_desc = $_GET["course_desc"];
+        $course_id = $_GET["course_id"];
         include("view.php");
         break;
     case 'edit_course':
         $choice = filter_input(INPUT_POST, 'choice');
         if ($choice == "Edit Course") {
             $new_course_name = $_POST["new_course_name"];
-            $new_course_dessc = $_POST["new_course_desc"];
-
-            edit_course($course_name, $new_course_name, $new_course_desc);
+            $new_course_desc = $_POST["new_course_desc"];
+            $course_id = $_POST["course_id"];
+            edit_course($course_id, $new_course_name, $new_course_desc);
+            header('Location: ..');
         } else {
             header('Location: ..');
         }

@@ -70,22 +70,25 @@ function get_course_list_for_student ($usr_id) {
     }
 }
 
-function edit_course($course_name, $new_course_name, $new_course_desc) {
+function edit_course($course_id, $new_course_name, $new_course_desc) {
     global $db;
 
+    echo $course_id;
+    echo $new_course_desc;
+    echo $new_course_name;
+
     $query = "UPDATE elect_course
-    SET course_name = ':new_course_name', course_desc = ':new_course_desc'
-    WHERE course_name = ':course_name'";
+    SET course_name = :new_course_name, course_desc = :new_course_desc
+    WHERE course_id = :course_id";
 
     try {
+
         $statement = $db->prepare($query);
         $statement->bindValue(':new_course_name', $new_course_name);
         $statement->bindValue(':new_course_desc', $new_course_desc);
-        $statement->bindValue(':course_name', $course_name);
+        $statement->bindValue(':course_id', $course_id);
         $statement->execute();
-        $result = $statement->fetchAll();
         $statement->closeCursor();
-        return $result;
     } catch (PDOException $e) {
         display_db_exception($e);
         exit();

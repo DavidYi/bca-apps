@@ -52,13 +52,14 @@
                 <?php foreach ($courses as $course) :
                     $courseName = $course['course_name'];
                     $courseDesc = $course['course_desc'];
+                    $courseID = $course['course_id'];
                     ?>
 
 
                     <tr>
                         <td><?php echo $courseName ?></td>
                         <td><?php echo $courseDesc ?></td>
-                        <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>">Edit</a></td>
+                        <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>">Edit</a></td>
                     </tr>
 
                 <?php endforeach; ?>
