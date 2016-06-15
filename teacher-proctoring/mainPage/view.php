@@ -45,35 +45,40 @@ require_once('../model/teacher_db.php');
         </div>
     </div>
     <div class="view-signup enrollment">
-        <h3></h3>
+        <div class="vertical-center">
+
         <h7>These are your current registration times: </h7>
 
-        <nav class="navbar">
-            <div class="session-filter tag">Date</div>
-            <div class="session-filter company">Mods</div>
-            <div class="session-filter presenter">Test Name</div>
-        </nav>
+            <nav class="navbar">
+                <h1></h1>
+                <div class="session-filter tag">Date</div>
+                <div class="session-filter company">Mods</div>
+                <div class="session-filter presenter">Test Name</div>
+            </nav>
 
-        <div style="overflow-y:scroll; height:300px; margin-top:25px">
+            <div style="overflow-y:scroll; height:300px; margin-top:25px">
 
-            <?php foreach ($testSelectedList as $test) { ?>
-                <div class="session view-session">
-                    <?php if ($test != NULL) { ?>
-                        <div class="time"><?php echo $test['test_dt']?></div>
-                        <div class="mods"><?php echo $test['test_time_desc']?></div>
-                        <div class="name"><?php echo $test['test_name']?></div>
-                    <?php } ?>
-                </div>
-            <?php } ?>
+                <?php foreach ($testSelectedList as $test) { ?>
+                 <div class="session view-session">
+                        <?php if ($test != NULL) { ?>
+                            <div class="time"><?php echo $test['test_dt']?></div>
+                            <div class="mods"><?php echo $test['test_time_desc']?></div>
+                            <div class="name"><?php echo $test['test_name']?></div>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
 
+            </div>
+
+            <h1></h1>
+            <form action="." method="post">
+                <input type="hidden" name="action" value="show_itinerary">
+                <br>
+                <button type = "submit" value="Add/Delete">Add/Delete</button>
+            </form>
 
         </div>
-        <h1></h1>
-        <form action="." method="post">
-            <input type="hidden" name="action" value="show_itinerary">
-            <br>
-            <button type = "submit" value="Add/Delete">Add/Delete</button>
-        </form>
+
 
     </div>
 
