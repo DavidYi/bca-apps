@@ -46,15 +46,15 @@ switch ($action) {
         if(filter_has_var(INPUT_POST, 'time')) {
             $timesarr = $_POST['time'];
 
-            for($i = 0; $i < sizeof($timesarr); $i++){
+            for ($i = 0; $i < sizeof($timesarr); $i++) {
                 $timesString .= $timesarr[$i];
 
-                if($i + 1 != sizeof($timesarr)){
+                if ($i + 1 != sizeof($timesarr)) {
                     $timesString .= ", ";
-                }
-                else $timesString .= ".";
+                } else $timesString .= ".";
             }
         }
+
         $timesString .= "THAT WAS INPUT FROM LAST PAGE, NEXT IS INPUT FROM DATABASE:\n";
         //Everything below is still in progress. Eventually it will replace the stuff above
 
@@ -62,8 +62,13 @@ switch ($action) {
         echo "this user's id is: ";
         echo ($usr_id); //This works YAY
 
+        //will add_course(usr_id, timesString) which will use convert(timesString)
+        //that's what I'm working on right now
+
+
+
+
         $oldtimesarr = get_times($usr_id);
-        echo count($oldtimesarr);
 
         for($i = 0; $i < count($oldtimesarr); $i++){ //count($oldtimesarr) returning larger values than expected
             $timesString .= $oldtimesarr[$i]['day']; //need to figure out how to incorporate index

@@ -17,14 +17,17 @@ if ($action == NULL) {
 
 switch ($action) {
     case 'default':
-        include("./availability_view.php");
+        include("../../Student/times/view.php");
     case 'back':
         if ($action == 'back') {
             header('Location: ..');
         }
-    case 'submit':
+    case 'update_times':
         echo "submit";
         echo var_dump($_POST);
+        /*
+         * The code from student will be incorporated here later
+         */
 
 }
 
