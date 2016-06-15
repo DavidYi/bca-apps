@@ -50,6 +50,7 @@
             color : #00b8e6;
             border: 1px solid #00b8e6;
         }
+
     </style>
 </head>
 <body>
@@ -77,12 +78,12 @@
         </form>
     </header>
 
-    <nav class="navbar">
-        <div class="session-filter tag">Test Name</div>
-        <div class="session-filter company">Test Type</div>
-        <div class="session-filter position">Mods</div>
-        <div class="session-filter presenter">Time</div>
-        <div class="session-filter remaining">Remaining</div>
+    <nav class="navbar" style="width:85%;">
+        <div class="session-filter tag" style="width:40%;text-align:left">Test Name</div>
+        <div class="session-filter company" style="width:15%;text-align:left">Test Type</div>
+        <div class="session-filter position" style="width:15%;text-align: left">Mods</div>
+        <div class="session-filter presenter" style="width:17.5%;text-align: left">Time</div>
+        <div class="session-filter remaining" style="text-align: right">Remaining</div>
     </nav>
 
 
@@ -94,7 +95,7 @@
                 <div class="company"><?php echo $test['test_type_cde']?></div>
                 <div class="position"><?php echo $test['test_time_desc']?></div>
                 <div class="presenter"><?php echo $test['test_dt']?></div>
-                <div class="remaining"><?php echo $test['remaining']?></div>
+                <div class="remaining" style="text-align: right"><?php echo $test['remaining']?></div>
             </div>
         <?php } ?>
     </div>
