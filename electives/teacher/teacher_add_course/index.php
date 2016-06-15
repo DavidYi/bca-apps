@@ -45,6 +45,7 @@ switch ($action) {
             // go back to previous page
             header('Location: ..');
         }
+        break;
     case 'default':
         include("./view.php");
 
