@@ -50,11 +50,22 @@ public class BCASharedLoader {
 
 	public static void updateStudentList(ActiveDirectory ad, SharedDB db) throws NamingException, SQLException {
 		ad.searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-		String filter = "(&(objectClass=organizationalPerson)(!(description=Student Test Account)))";
+		
+		/*
+		mail=* requires that the user have an email address.  (Otherwise, this account probably is not a student.)
+		
+		description=* requires that the user have a description.  For students, the description includes 
+		the academy and class year.  Absence of this field implies that this is not a user.
+		
+		sn=* requires that the user have a last name defined.
+		*/
+		
+		String filter = "(&(&(&(objectClass=organizationalPerson)(mail=*))(description=*))(sn=*))";
 		
 		String base = "OU=Students,DC=bca,DC=bergen,DC=org";
 
 		System.out.println("Loading Students...");
+		db.inactiveAllStudents();
 		saveActiveDirectoryRowResult(db, ad.dirContext.search(base, filter, ad.searchCtls), true);
 	}
 
@@ -65,6 +76,7 @@ public class BCASharedLoader {
 		String base = "OU=Teachers,DC=bca,DC=bergen,DC=org";
 
 		System.out.println("Loading Teachers...");
+		db.inactiveAllTeachers();
 		saveActiveDirectoryRowResult(db, ad.dirContext.search(base, filter, ad.searchCtls), false);
 	}
 
@@ -78,6 +90,7 @@ public class BCASharedLoader {
 				SearchResult rs = (SearchResult) result.next();
 				attrs = rs.getAttributes();
 	
+				
 				String email = getStrField(attrs, "mail");
 				u = db.loadUserByEmail(email);
 	
@@ -101,6 +114,12 @@ public class BCASharedLoader {
 				
 				if (student) {
 					String description = getStrField(attrs, "description");
+					
+					// Make sure it contains the student's class year, otherwise, it is a bogus account
+					if (!description.contains("20")) {
+						System.out.println("No class year, skipping: " + attrs);
+						continue;
+					}
 					int classYear = Integer.parseInt(description.substring(description.indexOf("2")));
 					String academy = description.substring(0, description.indexOf("2"));
 	
@@ -126,14 +145,26 @@ public class BCASharedLoader {
 	 * @throws NamingException
 	 */
 	public static void main(String[] args) throws NamingException, IOException, SQLException {
+		Scanner input = new Scanner(System.in);
+
+		//
+		// Development server credentials
+		//
 		String dbServer = "webdev01.bergen.org";
 		String dbPort = "3306";
 		String dbUser = "atcsdevb_shrusr";
-		String dbPassword = "EsM1)Q8?4hd~";
 
-		Scanner input = new Scanner(System.in);
-		System.out.println("\n\nUpdating shared on " + dbServer);
-		System.out.println("------------------------------------");
+		System.out.println("Update 'dev' or 'prod'?");
+		String environment = input.nextLine();
+		
+		if (environment.equals("prod")) {
+			dbServer = "cpanel01.bergen.org";
+			dbPort = "3306";
+			dbUser = "bryres_shrusr";
+		}
+		
+		System.out.println("\nEnter password for " +dbUser + "@" +  dbServer);
+		String dbPassword = input.nextLine();
 
 		System.out.println("Enter bergen password for bryres");
 		String adPw = input.nextLine();

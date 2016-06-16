@@ -81,29 +81,6 @@ public class ActiveDirectory {
         searchCtls.setReturningAttributes(returnAttributes);
     }
     
-    /**
-     * search the Active directory by username/email id for given search base
-     * 
-     * @param searchValue a {@link java.lang.String} object - search value used for AD search for eg. username or email
-     * @param searchBy a {@link java.lang.String} object - scope of search by username or by email id
-     * @param searchBase a {@link java.lang.String} object - search base value for scope tree for eg. DC=myjeeva,DC=com
-     * @return search result a {@link javax.naming.NamingEnumeration} object - active directory search result
-     * @throws NamingException
-     */
-    public NamingEnumeration<SearchResult> searchUser(String searchValue, String searchBy, String searchBase) throws NamingException {
-/* Teacher search
-        searchCtls.setSearchScope(SearchControls.ONELEVEL_SCOPE);
-     	String filter = "(&((&(objectCategory=Person)(objectClass=organizationalPerson)))"
- 
-    			+ "(company=BERGEN COUNTY TECHNICAL SCHOOLS))";  	
-    	String base = "OU=Teachers,DC=bca,DC=bergen,DC=org";
-*/
-        searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-    	String filter = "(&(objectClass=organizationalPerson)(!(description=Student Test Account)))";
-    	String base = "OU=AAST,OU=Students,DC=bca,DC=bergen,DC=org";
-    	  
-		return this.dirContext.search(base, filter, this.searchCtls);
-    }
 
     /**
      * closes the LDAP connection with Domain controller

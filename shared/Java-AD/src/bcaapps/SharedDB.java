@@ -9,7 +9,7 @@ import java.sql.Types;
 import java.util.Properties;
 
 public class SharedDB {
-	public static final String USER_TABLE = "user_load_test";
+	public static final String USER_TABLE = "user";
 	
 	private Connection conn = null;
 
@@ -29,8 +29,10 @@ public class SharedDB {
 		PreparedStatement updateStmt = null;
 
 		try {
-			String updateString = "update  set usr_active = 0 where usr_type_cde='?'";
+			String updateString = "update " + USER_TABLE + " set usr_active = 0 "
+					+ " where usr_ad_allow_updt = 1 and usr_type_cde=?";
 			updateStmt = conn.prepareStatement(updateString);
+			updateStmt.setString(1, userType);
 			updateStmt.executeUpdate();
 		} finally {
 			if (updateStmt != null) {
@@ -58,7 +60,8 @@ public class SharedDB {
 		else
 			query = "update " + USER_TABLE + " set usr_first_name = ?, usr_last_name = ?, usr_display_name = ?, "
 					+ "usr_bca_id = ?, user_email = ?, usr_type_cde = ?, usr_class_year = ?, "
-					+ "academy_cde = ?, ps_id = ?, usr_ad_cn = ?, usr_active = ? " + " where usr_id = ? ";
+					+ "academy_cde = ?, ps_id = ?, usr_ad_cn = ?, usr_active = ? " + 
+					" where usr_ad_allow_updt = 1 and usr_id = ? ";
 
 		try {
 			updateStmt = conn.prepareStatement(query);
