@@ -19,7 +19,7 @@ require_once('../model/teacher_db.php');
         button {
             height: 4.5em;
             width: 20em;
-            left: 24%;
+            left: 35%;
         }
     </style>
 </head>
@@ -46,7 +46,7 @@ require_once('../model/teacher_db.php');
     <div class="view-signup enrollment">
         <div class="vertical-center">
 
-        <h7>These are your current registration times: </h7>
+        <h7 style="left:18%">These are your current registration times: </h7>
 
             <nav class="navbar">
                 <h1></h1>
