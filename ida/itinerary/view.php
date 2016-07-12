@@ -21,7 +21,7 @@
         </div>
         <div class="vertical-center">
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
-                <h1>Career Day (Feb. 2)</h1>
+                <h1>IDA ([DATE])</h1>
 
                 <?php if ($startTime > $currentTime) { ?>
                     <h3> Registration <b>has not opened</b>!</h3>
@@ -42,8 +42,8 @@
                     <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
                 <?php } ?>
 
-                <h3> Click <a href="../../CareerDayMentors.pdf" download>here</a> to read about the mentors.</h3>
-                <h3> Email <a href="mailto:micpin@bergen.org"> Ms. Pinke </a> with any questions.</h3>
+                <h3> Click <a href="../../CareerDayMentors.pdf" download>here</a> to read about the presentations.</h3>
+                <h3> Email <a href="mailto:katbla@bergen.org"> Mrs. Blake </a> with any questions.</h3>
             <?php } else { ?>
                 <h1>Mimic User Mode</h1>
             <?php } ?>

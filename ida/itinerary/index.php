@@ -5,7 +5,7 @@
  * Date: 1/5/16
  * Time: 2:04 PM
  */
-/*test 2*/
+
 require_once("../util/main.php");
 require_once("../../shared/model/user_db.php");
 require_once ("../model/signups_db.php");
