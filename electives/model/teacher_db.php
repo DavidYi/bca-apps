@@ -27,6 +27,24 @@ function add_course($course_name, $course_desc) {
     }
 }
 
+function delete_course($course_id) {
+    $query = "delete from elect_course 
+              where course_id = :course_id";
+    global $db;
+    global $user;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':course_id', $course_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+
+}
+
 function get_course_by_user($usr_id) {
     $query = 'SELECT course_id, course_name, course_desc, teacher_id
               FROM elect_course

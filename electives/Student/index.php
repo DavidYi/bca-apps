@@ -33,7 +33,7 @@ switch ($action) {
         break;
     case 'modify_courses':
         header ('Location: ./courses/index.php');
-        exit();
+        
         break;
     case 'modify_times':
         include('./times/view.php');
