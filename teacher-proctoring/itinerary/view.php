@@ -59,12 +59,12 @@
         <h1 class="title main-title">Register for Proctoring</h1>
         <form action="index.php" method="post">
             <input type="hidden" name="action" value="list_user_tests">
-            <button style="left: 10%; width: 9em;"
+            <button style="left: 15%; width: 9em;"
                     type="submit" id="full_button" class="filter-off"
                     name="full_button"
                     value="Full Selected"
                     data-value=<?php echo $full_num?>>Include Full Sessions</button>
-            <button style="left: 22%; width: 9em;"
+            <button style="left: 25%; width: 9em;"
                     type="submit" id="past_button" class="filter-off"
                     name="past_button"
                     value="Past Selected"
