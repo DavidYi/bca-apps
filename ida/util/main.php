@@ -20,7 +20,7 @@ $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
 
 //////////////////////////
 // For Developer Machines
-$app_url_path = 'bca-apps/career-day';     // Name of the app on the web server.  Change this if the directory changes.
+$app_url_path = 'bca-apps/ida';     // Name of the app on the web server.  Change this if the directory changes.
 $app_server_path = $doc_root . "/" . $app_url_path;   // Looks like c:/xampp/htdocs/bca-apps
 
 ///////////////////////
