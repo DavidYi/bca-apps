@@ -92,10 +92,25 @@ switch($action){
         include('./view.php');
         break;
     /*The fact that nothing prints from this isn't an error, the database doesn't have any times inputted for most people*/
+    case "delete":
+        $action = "delete";
+        $courseName = $_GET["course_name"];
+        $courseID = $_GET["course_id"];
+        $courses = get_course_by_user($user->usr_id);
+        include("./view.php");
+        break;
+    case "delete_course":
+
+        delete_course($_GET['course_id']);
+        $courses = get_course_by_user($user->usr_id);
+        include("./view.php");
+        break;
+
     default:
         $courses = get_course_by_user($user->usr_id);
 
         include("./view.php");
+        break;
 }
 
 
