@@ -14,7 +14,7 @@ if ($action == NULL) {
 
 switch ($action) {
 	case 'list_tests':
-		$testList = get_test_list();
+		$testList = get_test_list($user->usr_id, 0, 0, 0, 0);
 		break;
 	
 	case 'add_test':

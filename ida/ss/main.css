@@ -343,7 +343,7 @@ nav.navbar {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 18.75%;
+    width: 35%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -352,7 +352,20 @@ nav.navbar {
     text-align: left; }
     nav.navbar .tag:last-child {
       margin-right: 0; }
-  nav.navbar .company {
+  nav.navbar .presenter {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 30%;
+    color: #555;
+    margin: 0;
+    padding: 0;
+    font-size: 1.125em;
+    font-weight: 500;
+    text-align: left; }
+    nav.navbar .presenter:last-child {
+      margin-right: 0; }
+  /*nav.navbar .company {
     float: left;
     display: block;
     margin-right: 0%;
@@ -364,12 +377,12 @@ nav.navbar {
     font-weight: 500;
     text-align: left; }
     nav.navbar .company:last-child {
-      margin-right: 0; }
+      margin-right: 0; }*/
   nav.navbar .position {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 31.25%;
+    width: 20%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -378,24 +391,12 @@ nav.navbar {
     text-align: left; }
     nav.navbar .position:last-child {
       margin-right: 0; }
-  nav.navbar .presenter {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 12.5%;
-    color: #555;
-    margin: 0;
-    padding: 0;
-    font-size: 1.125em;
-    font-weight: 500;
-    text-align: left; }
-    nav.navbar .presenter:last-child {
-      margin-right: 0; }
+
   nav.navbar .remaining {
-    float: left;
+    float: right;
     display: block;
     margin-right: 0%;
-    width: 12.5%;
+    width: 10%;
     color: #555;
     margin: 0;
     padding: 0;
@@ -450,7 +451,7 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 18.75%;
+      width: 35%;
       color: #555;
       margin: 0;
       padding: 0;
@@ -459,7 +460,20 @@ nav.navbar {
       text-align: left; }
       .enrollment .session .tag:last-child {
         margin-right: 0; }
-    .enrollment .session .company {
+    .enrollment .session .presenter {
+      float: left;
+      display: block;
+      margin-right: 0%;
+      width: 30%;
+      color: #555;
+      margin: 0;
+      padding: 0;
+      font-size: 1.125em;
+      font-weight: 400;
+      text-align: left; }
+    .enrollment .session .presenter:last-child {
+      margin-right: 0; }
+    /*.enrollment .session .company {
       float: left;
       display: block;
       margin-right: 0%;
@@ -471,12 +485,12 @@ nav.navbar {
       font-weight: 500;
       text-align: left; }
       .enrollment .session .company:last-child {
-        margin-right: 0; }
+        margin-right: 0; }*/
     .enrollment .session .position {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 31.25%;
+      width: 20%;
       color: #555;
       margin: 0;
       padding: 0;
@@ -485,24 +499,11 @@ nav.navbar {
       text-align: left; }
       .enrollment .session .position:last-child {
         margin-right: 0; }
-    .enrollment .session .presenter {
-      float: left;
-      display: block;
-      margin-right: 0%;
-      width: 18.75%;
-      color: #555;
-      margin: 0;
-      padding: 0;
-      font-size: 1.125em;
-      font-weight: 400;
-      text-align: left; }
-      .enrollment .session .presenter:last-child {
-        margin-right: 0; }
     .enrollment .session .remaining {
-      float: left;
+      float: right;
       display: block;
       margin-right: 0%;
-      width: 6.25%;
+      width: 6%;
       color: #555;
       margin: 0;
       padding: 0;
