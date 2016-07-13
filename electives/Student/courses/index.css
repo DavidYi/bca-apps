@@ -234,6 +234,7 @@ div + input[type=checkbox]:checked {
   right: 0;
   bottom: 0;
 
+
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
