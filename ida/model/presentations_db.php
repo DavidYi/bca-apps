@@ -29,7 +29,7 @@ function get_session_times_by_id($ses_id) {
 }
 
 function get_presentation_list($ses_id, $sort_by, $order_by) {
-    $query = 	'SELECT p.pres_id, p.ses_id, presenter_names, org_name, rm_nbr, format_name, f.format_id, wkshp_nme, wkshp_desc
+    $query = 	'SELECT p.pres_id, p.ses_id, presenter_names, org_name, rm_nbr, format_name, f.format_id, wkshp_nme, wkshp_desc,
 					pres_max_seat, p.pres_enrolled_seats,  
 					pres_max_seat - p.pres_enrolled_seats as remaining
                 FROM presentation p, workshop w, format f, room r
