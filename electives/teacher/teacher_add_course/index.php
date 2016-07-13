@@ -35,14 +35,18 @@ switch ($action) {
 
                 if ($allFieldsFilled) {
                     add_course($courseName, $description);
-                    $message = "Course created successfully";
+                    echo "<script type='text/javascript'>
+                            alert('Course created successfully');
+                            window.location.href='..';
+                            </script>";
+                    // header('Location: ..');
+                    include('view.php?action=add_course');
                 } else {
-                    $message = "Not all fields were completed";
+                    echo "<script type='text/javascript'>alert('Not all fields were completed');</script>";
+                    include('view.php');
                 }
-                echo "<script type='text/javascript'>alert('$message');</script>";
             }
         } else {
-            // go back to previous page
             header('Location: ..');
         }
         break;
