@@ -64,13 +64,14 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
 }
 
 function get_presentation_by_user($usr_id, $ses_id) {
-    $query = 'SELECT presentation.pres_id, mentor.pres_room, mentor.mentor_first_name,
-                mentor.mentor_last_name, mentor.mentor_position, mentor.mentor_company
-              FROM pres_user_xref
-              INNER JOIN presentation on presentation.pres_id = pres_user_xref.pres_id
-              INNER JOIN mentor on presentation.mentor_id = mentor.mentor_id
-              WHERE ses_id = :ses_id
-              AND usr_id = :usr_id';
+    $query = 'SELECT p.pres_id, p.ses_id, presenter_names, org_name, rm_nbr, format_name, f.format_id, wkshp_nme, wkshp_desc
+            FROM pres_user_xref x, presentation p, workshop w, format f, room r
+            where x.pres_id = p.pres_id
+            and p.wrkshp_id = w.wrkshp_id
+            and w.format_id = f.format_id
+            and p.rm_id = r.rm_id
+            and ses_id = :ses_id
+            AND usr_id = :usr_id';
 
     global $db;
 
