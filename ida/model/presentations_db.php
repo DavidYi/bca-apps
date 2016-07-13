@@ -116,11 +116,12 @@ function get_sessions_by_user($usr_id) {
               from session_times
             
               left join (
-              select ses_id, rm_nbr, p.pres_id, presenter_names, org_name, wkshp_nme, wkshp_desc, pres_max_seats, pres_enrolled_seats
-              from presentation p, room r, workshop w, pres_user_xref x
+              select ses_id, rm_nbr, p.pres_id, presenter_names, org_name, wkshp_nme, wkshp_desc, pres_max_seats, pres_enrolled_seats, format_name
+              from presentation p, room r, workshop w, pres_user_xref x, format f
               where p.wkshp_id = w.wkshp_id
               and p.pres_id = x.pres_id
               and p.rm_id = r.rm_id
+              and w.format_id = f.format_id
               and x.usr_id = :usr_id) my_ses on session_times.ses_id = my_ses.ses_id
               order by session_times.sort_order';
 
