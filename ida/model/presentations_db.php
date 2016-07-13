@@ -29,17 +29,16 @@ function get_session_times_by_id($ses_id) {
 }
 
 function get_presentation_list($ses_id, $sort_by, $order_by) {
-    $query = 	'SELECT mentor.mentor_id,  mentor_last_name ,  mentor_first_name ,  mentor_field ,
-					mentor_position , mentor_company ,  mentor_profile ,  mentor_keywords ,
-					active ,  pres_room , pres_host_teacher ,
-					pres_max_capacity , presentation.pres_enrolled_count, presentation.pres_id, 
-					pres_max_capacity - presentation.pres_enrolled_count as remaining
-				FROM mentor
-				INNER JOIN presentation ON presentation.mentor_id = mentor.mentor_id
-				WHERE presentation.ses_id = :ses_id
-				AND mentor.active =1
-				AND presentation.pres_enrolled_count < mentor.pres_max_capacity ';
-
+    $query = 	'SELECT p.pres_id, p.ses_id, presenter_names, org_name, rm_nbr, format_name, f.format_id, wkshp_nme, wkshp_desc
+					pres_max_seat, p.pres_enrolled_seats,  
+					pres_max_seat - p.pres_enrolled_seats as remaining
+                FROM presentation p, workshop w, format f, room r
+                where p.wrkshp_id = w.wrkshp_id
+                and w.format_id = f.format_id
+                and p.rm_id = r.rm_id
+                AND p.pres_enrolled_seats < p.pres_max_seat
+				and p.ses_id = :ses_id ';
+/*
     if ($sort_by == 1) $query .= ('ORDER BY mentor_field');
     else if ($sort_by == 2) $query .= ('ORDER BY mentor_position');
     else if ($sort_by == 3) $query .= ('ORDER BY mentor_last_name');
@@ -47,7 +46,7 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
     else if ($sort_by == 5) $query .= ('ORDER BY remaining');
     else $query .= ('ORDER BY mentor_field');
     if ($order_by == 2) $query.= (' DESC');
-	
+*/
     global $db;
 
     try {
