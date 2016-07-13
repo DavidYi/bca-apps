@@ -37,11 +37,12 @@ switch ($action) {
 
         $sort_by = filter_input(INPUT_GET, 'sort');
         if ($sort_by == NULL) {
-            $sort_by = 1;
+            $sort_by = 0;
         }
+        
         $sort_order = filter_input(INPUT_GET, 'order');
         if ($sort_order == NULL) {
-            $sort_order = 1;
+            $sort_order = 0;
         }
 
         $filter_full = filter_input(INPUT_POST, 'full_button');

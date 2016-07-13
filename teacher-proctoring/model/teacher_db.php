@@ -103,7 +103,7 @@ function get_count($usr_id){
 }
 
 function get_test_types() {
-    $query = 'SELECT test_type_desc
+    $query = 'SELECT test_type_cde, test_type_desc
                 from test_type';
     return get_list($query);
 }
@@ -121,9 +121,60 @@ function get_teacher_list()
 }
 
 function get_rooms() {
-    $query = 'SELECT rm_nbr
+    $query = 'SELECT rm_id, rm_nbr
                 from room';
     return get_list($query);
+}
+
+function add_test($test_name, $test_date, $test_cde, $test_room, $test_procs) {
+
+    global $db;
+    global $user;
+
+    try {
+        $db->beginTransaction();
+        $query = 'INSERT INTO test
+                    (test_id, test_type_cde, rm_id, test_name, test_dt)
+                  VALUES
+                    (NULL, :test_type_cde, :rm_id, :test_name, :test_dt)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':test_type_cde', $test_cde);
+        $statement->bindValue(':rm_id', $test_room);
+        $statement->bindValue(':test_name', $test_name);
+        $statement->bindValue(':test_dt', $test_date);
+        $statement->execute();
+        $statement->closeCursor();
+        
+        $test_id =  $db->lastInsertId('test_id');
+        $test_time_id = 1;
+
+        foreach ($test_procs as $test_proc) {
+            if ($test_proc > 0 && $test_proc <= 25) {
+                $query2 = 'INSERT INTO test_time_xref
+                            (test_id, test_time_id, proc_needed, proc_enrolled)
+                          VALUES
+                            (:test_id, :test_time_id, :proc_needed, 0)';
+                $statement = $db->prepare($query2);
+                $statement->bindValue(':test_id', $test_id);
+                $statement->bindValue(':test_time_id', $test_time_id);
+                $statement->bindValue(':proc_needed', $test_proc);
+                $statement->execute();
+                $statement->closeCursor();
+            }
+            $test_time_id++;
+        }
+
+        $db->commit();
+    } catch (PDOException $e) {
+        // roll back transaction
+        $db->rollback();
+
+        // log any errors to file
+        log_pdo_exception($e, $user->usr_id, "Adding Test:" . $user->usr_id, "add_test");
+
+        display_error($e);
+        exit();
+    }
 }
 
 function del_user_tests($usr_id) {

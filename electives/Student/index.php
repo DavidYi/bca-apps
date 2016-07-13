@@ -32,14 +32,17 @@ switch ($action) {
         include('./view.php');
         break;
     case 'modify_courses':
-        header ('Location: ./courses/index.php');
-        
+        header('Location: ./courses/index.php');
+        exit();
         break;
     case 'modify_times':
         include('./times/view.php');
         break;
     case 'logout':
         echo "will make a logout page later";
+        header ('Location: ./courses/index.php');
+        break;
+    case 'modify_times':
         break;
     case 'back':
         include('./view.php');

@@ -45,11 +45,10 @@
                 <div class="main-panel" style="position: relative;">
                     <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"></a>
                     <div class="session" style="position: relative;">
-                        <div class="tag"><?php echo $presentation['mentor_field']?>&nbsp;</div>
-                        <div class="presenter"><a class="info" style="float: left; position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;&nbsp;</a><?php echo ($presentation['mentor_last_name'].", ".$presentation['mentor_first_name'])?></div>
-                        <!--<div class="company"><?php echo $presentation['mentor_company']?>&nbsp;</div>-->
-                        <div class="position"><?php echo $presentation['mentor_position']?>&nbsp;</div>
-                        <div class="remaining"><?php echo ($presentation['pres_max_capacity'] - $presentation['pres_enrolled_count'])?></div>
+                        <div class="tag"><?php echo $presentation['wkshp_nme']?>&nbsp;</div>
+                        <div class="presenter"><a class="info" style="float: left; position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;&nbsp;</a><?php echo $presentation['presenter_names']?></div>
+                        <div class="position"><?php echo $presentation['format_name']?>&nbsp;</div>
+                        <div class="remaining"><?php echo $presentation['pres_max_seat']?></div>
                     </div>
 
                     <div class="popup-bg" id="B<?php echo $presentation['pres_id']?>" style="display: none;
@@ -64,13 +63,14 @@
                     </div>
 
                     <div class="popup" id="P<?php echo $presentation['pres_id']?>">
-                        <div class="entpop" >
+                        <div class="entpop">
                             <div class="close">
-                                <div class="presname"><?php echo ($presentation['mentor_last_name'].", ".$presentation['mentor_first_name'])?></div>
+                                <div class="presname"><?php echo $presentation['presenter_names']?></div>
                                 <div class="x""><a href="#" style="color:#f0c30f" onclick="cpopup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x2716;</a></div>
                             </div>
                             <div class="popup-c">
-                              <p><?php echo ($presentation['mentor_profile']);?></p>
+                                <h3><?php echo $presentation['org_name'];?></h3>
+                                <p><?php echo $presentation['wkshp_desc'];?></p>
                             </div>
                          </div>
                     </div>
