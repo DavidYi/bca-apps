@@ -5,7 +5,7 @@
  * Date: 1/5/16
  * Time: 2:04 PM
  */
-/*test 2*/
+
 require_once("../util/main.php");
 require_once("../../shared/model/user_db.php");
 require_once ("../model/signups_db.php");
@@ -27,6 +27,7 @@ if (isset($action) and ($action == "logout")) {
 
 $sessions = get_sessions_by_user($user->usr_id);
 
+
 //
 // Check if the user has mentors for all of the sessions.
 //
@@ -38,12 +39,15 @@ foreach ($sessions as $session) {
     }
 }
 
+
 $signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
 
 date_default_timezone_set('America/New_York');
 $currentTime = time();
 $startTime = strtotime($signup_dates['start']);
 $endTime = strtotime($signup_dates['end']);
+
+
 
 $startTimeFormatted = date('M d, g:i  a', $startTime);
 $endTimeFormatted = date('M d, g:i  a', $endTime);
