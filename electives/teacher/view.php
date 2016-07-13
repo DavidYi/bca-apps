@@ -51,25 +51,6 @@
             });
         });
 
-        $(document).ready(function()  {
-            var action = <?php echo $action ?>;
-            var animate = 0;
-            if (animate == 0) {
-
-                var header = 'Delete course ' + '<?php $courseName ?>' + '?';
-                $('#popup_header').text(header);
-
-                $('#popup').fadeIn(350);
-            }
-
-
-
-            var targeted_popup_class = jQuery(this).attr('data-popup-open');
-            $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
-
-            e.preventDefault();
-        });
-
         $('body').plusAnchor({
             easing: 'easeInOutExpo',
             speed: 700
@@ -116,13 +97,12 @@
                     ?>
 
 
-                    <tr>
-                        <td><?php echo $courseName ?></td>
-                        <td><?php echo $courseDesc ?></td>
-                        <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>">Edit</a></td>
-<!--                        <td><a href="index.php?action=delete&course_name=--><?php //echo $courseName ?><!--&course_id=--><?php //echo $courseID ?><!--" class="btn" data-popup-open="popup-1" >Delete</a></td>-->
-                        <td><img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);"> </td>
-                    </tr>
+                <tr>
+                    <td><?php echo $courseName ?></td>
+                    <td><?php echo $courseDesc ?></td>
+                    <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>"><img src="../../shared/images/modifyIcon.gif"></a> </td>
+                    <td><img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);"> </td>
+                </tr>
 
                 <?php endforeach; ?>
             </table>
