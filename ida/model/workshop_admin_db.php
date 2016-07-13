@@ -7,10 +7,10 @@
  */
 
 function get_workshop_list() {
-    $query = 'SELECT wrkshp_id, wkshp_nme, wkshp_desc, format_id
+    $query = 'SELECT wkshp_id, wkshp_nme, wkshp_desc, format_id
               from workshop
 
-			  order by wrkshp_id';
+			  order by wkshp_id';
 
     return get_list($query);
 }
@@ -59,13 +59,13 @@ function modify_workshop($wkshp_nme, $wkshp_desc, $format_id) {
     }
 }
 
-function get_workshop($wrkshp_id) {
+function get_workshop($wkshp_id) {
     global $db;
-    $query = 'select * from workshop where wrkshp_id = :wrkshp_id';
+    $query = 'select * from workshop where wkshp_id = :wkshp_id';
 
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':wrkshp_id', $wrkshp_id);
+        $statement->bindValue(':wkshp_id', $wkshp_id);
         $statement->execute();
         $result = $statement->fetch();
         $statement->closeCursor();
@@ -76,13 +76,30 @@ function get_workshop($wrkshp_id) {
     }
 }
 
-function delete_workshop($wrkshp_id){
+function get_format($format_id) {
     global $db;
-    $query = 'delete from workshop
-              where wrkshp_id = :wrkshp_id';
+    $query = 'select * from format where format_id = :format_id';
+
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':wrkshp_id', $wrkshp_id);
+        $statement->bindValue(':format_id', $format_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function delete_workshop($wkshp_id){
+    global $db;
+    $query = 'delete from workshop
+              where wkshp_id = :wkshp_id';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':wkshp_id', $wkshp_id);
 
         $statement->execute();
         $statement->closeCursor();
