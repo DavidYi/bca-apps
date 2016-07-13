@@ -9,139 +9,94 @@ $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
     if ($action == NULL) {
-        $action = 'list_mentors';
+        $action = 'list_workshops';
     }
 }
 
 switch ($action) {
-    case 'list_mentors':
+    case 'list_workshops':
 
         // Get the teacher list
-        $mentorList = get_mentor_list();
+        $workshopList = get_workshop_list();
 
-        // View the list of teachers
-        include 'mentor_list.php';
+        // View the list of workshops
+        include 'workshop_list.php';
         break;
 
-    case 'show_add_mentor':
+    case 'show_add_workshop':
         $error_msg = '';
-        //active not included here right?
-        $mentorId = '';
-        $mentor_first_name = '';
-        $mentor_last_name = '';
-        $mentor_position = '';
-        $mentor_company = '';
-        $pres_room = '';
-        $pres_host_teacher = '';
-        $pres_max_teacher = '';
-        $mentor_profile = '';
-        $mentor_notes = '';
-        $mentor_field = '';
-        $active = 0;
-        $pres_max_capacity ='';
-        $mentor_keywords = '';
+        $wkshpId = '';
+        $wkshp_nme = '';
+        $wkshp_desc = '';
+        $format_id = '';
 
-        include 'mentor_add.php';
+        include 'workshop_add.php';
         break;
 
-    case 'add_mentor':
+    case 'add_workshop':
         $choice = filter_input(INPUT_POST, 'choice');
-        $mentorId = filter_input(INPUT_POST, 'mentorId');
-        $mentor_first_name = filter_input(INPUT_POST, 'mentor_first_name');
-        $mentor_last_name = filter_input(INPUT_POST, 'mentor_last_name');
-        $mentor_position = filter_input(INPUT_POST, 'mentor_position');
-        $mentor_company = filter_input(INPUT_POST, 'mentor_company');
-        $pres_room = filter_input(INPUT_POST, 'pres_room');
-        $pres_host_teacher = filter_input(INPUT_POST, 'pres_host_teacher');
-        $pres_max_teacher = filter_input(INPUT_POST, 'pres_max_teacher');
-        $pres_max_capacity = filter_input(INPUT_POST, 'pres_max_capacity');
-        $mentor_profile = filter_input(INPUT_POST, 'mentor_profile');
-        $mentor_field = filter_input(INPUT_POST, 'mentor_field');
-        $mentor_address = filter_input(INPUT_POST, 'mentor_adress');
-        $mentor_keywords = filter_input(INPUT_POST, 'mentor_keywords');
-        $mentor_source = filter_input(INPUT_POST, 'mentor_source');
-
+        $wkshp_nme = filter_input(INPUT_POST, 'wkshp_name');
+        $wkshp_desc = filter_input(INPUT_POST, 'wkshp_desc');
+        $format_id = filter_input(INPUT_POST, 'format_id');
 
         // The user either pressed Add or Cancel.
-        // If Add, then add the mentor.
+        // If Add, then add the workshop.
         // Otherwise, just skip down to the list redraw.
 
         if ($choice == 'Add') {
-            add_mentor($mentor_last_name, $mentor_first_name, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords
-                , null, null, null, null, null, null, $pres_room,
-                $pres_host_teacher, $pres_max_capacity);
+            add_workshop($wkshp_nme, $wkshp_desc, $format_id);
         }
-        $mentorList = get_mentor_list();
-        include('mentor_list.php');
+        $workshopList = get_workshop_list();
+        include('workshop_list.php');
         break;
 
-    case 'show_modify_mentor':
+    case 'show_modify_workshop':
 
-        $mentor_id = filter_input(INPUT_GET, 'mentor_id');
+        $workshop_id = filter_input(INPUT_GET, 'workshop_id');
 
-        $mentor = get_mentor($mentor_id);
+        $workshop = get_workshop($workshop_id);
 
 
-        $mentor_first_name = $mentor['mentor_first_name'];
-        $mentor_last_name = $mentor['mentor_last_name'];
-        $mentor_suffix = $mentor['mentor_suffix'];
-        $mentor_field = $mentor['mentor_field'];
-        $mentor_position = $mentor['mentor_position'];
-        $mentor_company = $mentor['mentor_company'];
-        $mentor_profile = $mentor['mentor_profile'];
-        $mentor_keywords = $mentor['mentor_keywords'];
-        $pres_room = $mentor['pres_room'];
-        $pres_host_teacher = $mentor['pres_host_teacher'];
-        $pres_max_capacity = $mentor['pres_max_capacity'];
+        $wkshp_nme = $workshop['wkshp_nme'];
+        $wkshp_desc = $workshop['wkshp_desc'];
+        $format_id = $workshop['format_id'];
 
-        include 'mentor_modify.php';
+        include 'workshop_modify.php';
         exit();
         break;
 
 
 
 
-    case 'modify_mentor':
+    case 'modify_workshop':
         $choice = filter_input(INPUT_POST, 'choice');
-        $mentorId = filter_input(INPUT_POST, 'mentor_id');
-        $mentor_first_name = filter_input(INPUT_POST, 'mentor_first_name');
-        $mentor_last_name = filter_input(INPUT_POST, 'mentor_last_name');
-        $mentor_suffix = filter_input(INPUT_POST, 'mentor_suffix');
-        $mentor_position = filter_input(INPUT_POST, 'mentor_position');
-        $mentor_company = filter_input(INPUT_POST, 'mentor_company');
-        $pres_room = filter_input(INPUT_POST, 'pres_room');
-        $pres_host_teacher = filter_input(INPUT_POST, 'pres_host_teacher');
-        $pres_max_teacher = filter_input(INPUT_POST, 'pres_max_teacher');
-        $pres_max_capacity = filter_input(INPUT_POST, 'pres_max_capacity');
-        $mentor_profile = filter_input(INPUT_POST, 'mentor_profile');
-        $mentor_field = filter_input(INPUT_POST, 'mentor_field');
-        $mentor_keywords = filter_input(INPUT_POST, 'mentor_keywords');
+        $workshop_name = filter_input(INPUT_POST, 'workshop_name');
+        $workshop_desc = filter_input(INPUT_POST, 'workshop_desc');
+        $format_id = filter_input(INPUT_POST, 'format_id');
 
         if(filter_input(INPUT_POST, 'choice') == "Modify") {
 
-            modify_mentor($mentorId, $mentor_last_name, $mentor_first_name, $mentor_suffix, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords
-                ,  $pres_room,
-                $pres_host_teacher, $pres_max_capacity);
+            modify_workshop($workshop_name, $workshop_desc, $format_id);
         }
 
 
-        $mentorList = get_mentor_list();
-        include('mentor_list.php');
+        $workshopList = get_workshop_list();
+        include('workshop_list.php');
         exit();
         break;
 
 
-    case 'delete_teacher':
-        $mentor_id = filter_input(INPUT_GET, 'teacher_id');
-        delete_mentor($mentor_id);
+    case 'delete_workshop':
+        $workshop_id = filter_input(INPUT_GET, 'workshop_id');
+        delete_workshop($workshop_id);
 
-        $mentorList = get_mentor_list();
-        include('mentor_list.php');
+        $workshopList = get_workshop_list();
+        include('workshop_list.php');
         exit();
         break;
 
     default:
-        display_error('Unknown mentor action: ' . $action);
+        display_error('Unknown workshop action: ' . $action);
         break;
 }
 ?>
