@@ -23,11 +23,43 @@
         </thead>
         <tbody>
         <?php foreach ($courseList as $course) { ?>
+
+
         <tr>
             <td class="text-left"><label><?php echo $course['course_name']?></label></td>
             <td class="text-left"><label><?php echo $course['teacher']?></label></td>
             <td class="text-left"><label><?php echo $course['course_desc']?></label></td>
-            <td class="text-left"><label><input type="checkbox" class="mods" name="time[]" value="Yes">Yes</label></td>
+            <td  class="text-left">
+
+                <label class="switch">
+                    <input type="checkbox" >
+                    <div class="slider round"></div>
+                </label>
+
+
+
+            <script>
+                document.getElementById("mods").addEventListener("click", myFunction);
+
+                function chageColor() {
+                    document.getElementById("mods").style.color = "blue";
+                }
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </tr>
         <?php } ?>
 

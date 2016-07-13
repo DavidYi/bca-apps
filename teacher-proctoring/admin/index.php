@@ -36,23 +36,17 @@ switch ($action) {
     </header>
     <br>
     <div class="feature">
-        <a href="signup_dates"><h2>Signup Dates</h2></a>
-        <h4>View and edit signup deadlines by grade.</h4></div>
+        <a href="add"><h2>Add Test</h2></a>
+        <h4>Add in a test for teachers to proctor.</h4>
+    </div>
     <div class="feature">
-        <a href="mentor"><h2>Mentors</h2></a>
-        <h4>Manage mentors and presentations.</h4></div>
+        <a href="modify_delete"><h2>Modify/Delete Test</h2></a>
+        <h4>Modify or delete an existing test.</h4>
+    </div>
     <div class="feature">
-        <a href="signins"><h2>Signins</h2></a>
-        <h4>Generate signin sheets and mentor check-in sheet.</h4></div>
-    <div class="feature">
-        <a href="signup_status"><h2>Signup Status</h2></a>
-        <h4>View student registration statistics and automatically enroll students who have not yet registered.</h4></div>
-    <div class="feature">
-        <a href="mimic_user"><h2>Mimic User</h2></a>
-        <h4>Log in as any user in the database and use the app as if you were them.</h4></div>
-    <div class="feature">
-        <a href="log_viewer"><h2>Log Viewer</h2></a>
-        <h4>View the application log.<h4></h4></div>
+        <a href="test_status"><h2>Test Status</h2></a>
+        <h4>Check enrolled count and proctoring teachers in test.</h4>
+    </div>
 
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </main>

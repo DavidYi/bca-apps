@@ -1,7 +1,7 @@
 <?php
 
 require_once('../../util/main.php');
-require_once('../../model/mentor_admin_db.php');
+require_once('../../model/workshop_admin_db.php');
 
 verify_admin();
 

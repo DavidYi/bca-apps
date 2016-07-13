@@ -34,6 +34,13 @@
                 <div class="feature">
                     <h3>I want to take: <a href="index.php?action=modify_courses">Modify</a></h3>
                     <p>There will be a list of courses here</p></div>
+                <table class = "course-table">
+
+
+
+
+
+                </table>
 
 
                 <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
