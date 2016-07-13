@@ -226,7 +226,6 @@ p {
   line-height: 1.8; }
 
 a {
-  color: #229aff;
   text-decoration: none;
   transition: color 175ms ease; }
   a:active, a:focus, a:hover {

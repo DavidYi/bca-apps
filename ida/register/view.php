@@ -33,7 +33,9 @@
 
                 <div class="session session-selected">
                     <div class="tag"><?php echo $presentation['wkshp_nme']?></div>
-                    <div class="presenter"><div class="info" style="position: relative; float: left; z-index: 99;">&#x271A;&#xa0;</div><?php echo $presentation['presenter_names']?></div>
+                    <div class="presenter">
+                        <a class="info" style="position: relative; float: left; z-index: 99;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;</a>
+                    <?php echo $presentation['presenter_names']?></div>
                     <div class="position"><?php echo $presentation['format_name']?></div>
                     <div class="remaining"><?php echo ($presentation['pres_max_seats'] - $presentation['pres_enrolled_seats'])?></div>
                 </div>
