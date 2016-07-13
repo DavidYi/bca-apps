@@ -35,12 +35,12 @@ $signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
 
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
-echo $start_date . '<p>';
+# echo $start_date . '<p>';
 
 date_default_timezone_set('America/New_York');
 $current_date = time();
-echo $current_date . '\n';
-echo $end_date . '\n';
+# echo $current_date . '\n';
+# echo $end_date . '\n';
 $action = filter_input(INPUT_GET, 'action');
 $id = 0;
 $register_id = 0;

@@ -90,15 +90,16 @@ function get_presentation_by_user($usr_id, $ses_id) {
 
 
 function get_sessions_by_user($usr_id) {
-    $query = 'select session_times.ses_id ses_times, my_ses.ses_id ses_id, pres_room, pres_max_capacity, pres_enrolled_count, pres_id, mentor_position, mentor_company, mentor_field, mentor_last_name, mentor_first_name, ses_name, ses_start, ses_end, session_times.sort_order
+    $query = 'select session_times.ses_id ses_times, my_ses.ses_id ses_id, rm_nbr, pres_max_seat, pres_enrolled_seats, pres_id, ses_name, ses_start_time, ses_end_time, session_times.sort_order
               from session_times
-
+            
               left join (
-              select ses_id, pres_room, mentor_position, mentor_field, mentor_company, mentor_last_name, mentor_first_name, pres_max_capacity, pres_enrolled_count, presentation.pres_id
-              from presentation
-              inner join mentor on mentor.mentor_id = presentation.mentor_id
-              inner join pres_user_xref on presentation.pres_id = pres_user_xref.pres_id
-              where usr_id = :usr_id) my_ses on session_times.ses_id = my_ses.ses_id
+              select ses_id, rm_nbr, p.pres_id, presenter_names, org_name, wkshp_nme, wkshp_desc, pres_max_seat, pres_enrolled_seats
+              from presentation p, room r, workshop w, pres_user_xref x
+              where p.wrkshp_id = w.wrkshp_id
+              and p.pres_id = x.pres_id
+              and p.rm_id = r.rm_id
+              and x.usr_id = :usr_id) my_ses on session_times.ses_id = my_ses.ses_id
               order by session_times.sort_order';
 
     global $db;
