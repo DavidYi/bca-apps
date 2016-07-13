@@ -112,7 +112,7 @@ function get_presentations_by_user_by_session($usr_id, $ses_id) {
 
 
 function get_sessions_by_user($usr_id) {
-    $query = 'select session_times.ses_id ses_times, my_ses.ses_id ses_id, rm_nbr, pres_max_seats, pres_enrolled_seats, pres_id, ses_name, ses_start_time, ses_end_time, session_times.sort_order
+    $query = 'select session_times.ses_id ses_times, my_ses.ses_id ses_id, rm_nbr, pres_max_seats, pres_enrolled_seats, pres_id, ses_name, ses_start_time, ses_end_time, session_times.sort_order, presenter_names, org_name, wkshp_nme, wkshp_desc
               from session_times
             
               left join (

@@ -529,7 +529,7 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 18.75%;
+      width: 10%;
       color: #555;
       margin: 0;
       padding: 0;
@@ -555,10 +555,11 @@ nav.navbar {
       float: left;
       display: block;
       margin-right: 0%;
-      width: 31.25%;
+      width: 71%;
       color: #555;
       margin: 0;
       padding: 0;
+      padding-right: 1%;
       font-size: 1.125em;
       font-weight: 500;
       text-align: left; }
