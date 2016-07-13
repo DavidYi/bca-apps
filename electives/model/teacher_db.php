@@ -28,17 +28,31 @@ function add_course($course_name, $course_desc) {
 }
 
 function delete_course($course_id) {
-    $query = "delete from elect_course 
-              where course_id = :course_id";
     global $db;
     global $user;
 
+    $db->beginTransaction();
+
     try {
-        $statement = $db->prepare($query);
+        $query1 = "delete from elect_student_course_xref 
+              where course_id = :course_id";
+        $statement = $db->prepare($query1);
         $statement->bindValue(':course_id', $course_id);
         $statement->execute();
         $statement->closeCursor();
+
+        $query2 = "delete from elect_course 
+              where course_id = :course_id";
+        $statement = $db->prepare($query2);
+        $statement->bindValue(':course_id', $course_id);
+        $statement->execute();
+        $statement->closeCursor();
+
+        // commit transaction
+        $db->commit();
+
     } catch (PDOException $e) {
+        $db->rollback();
         display_db_exception($e);
         exit();
     }
