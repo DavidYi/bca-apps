@@ -39,8 +39,8 @@ switch ($action) {
         <a href="signup_dates"><h2>Signup Dates</h2></a>
         <h4>View and edit signup deadlines by grade.</h4></div>
     <div class="feature">
-        <a href="mentor"><h2>Mentors</h2></a>
-        <h4>Manage mentors and presentations.</h4></div>
+        <a href="workshops"><h2>Workshops</h2></a>
+        <h4>Manage workshops.</h4></div>
     <div class="feature">
         <a href="signins"><h2>Signins</h2></a>
         <h4>Generate signin sheets and mentor check-in sheet.</h4></div>
