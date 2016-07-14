@@ -20,9 +20,11 @@
 
 <body>
 <header>
-    <h1 class="title">Workshops</h1>
+    <h1 style="margin:0;"class="title">Workshops</h1>
 </header>
-
+<div style="text-align:center;padding-bottom:2vh;">
+    <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_add_workshop"><button>Add Workshop</button></a>
+</div>
 <nav class="navbar">
     <div id="navinside">
         <a href="#">
@@ -76,11 +78,6 @@
         </div>
         
      <?php } ?>
-</div>
-
-
-<div class="fab">
-    <a id="fab-action" trigger="./index.php?workshop_id=<?php echo $workshop_id_id?>&action=show_add_workshop"><span class="plus">+</span></a>
 </div>
 
 <script type="text/javascript" src="../../js/popup.js"></script>
