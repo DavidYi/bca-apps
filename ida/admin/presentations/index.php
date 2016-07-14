@@ -20,7 +20,7 @@ switch ($action) {
         $workshopList = get_workshop_list();
 
         // View the list of workshops
-        include 'workshop_list.php';
+        include 'presentation_list.php';
         break;
 
     case 'show_add_workshop':
@@ -30,7 +30,7 @@ switch ($action) {
         $wkshp_desc = '';
         $format_id = '';
 
-        include 'workshop_add.php';
+        include 'presentation_add.php';
         break;
 
     case 'add_workshop':
@@ -47,7 +47,7 @@ switch ($action) {
             add_workshop($wkshp_nme, $wkshp_desc, $format_id);
         }
         $workshopList = get_workshop_list();
-        include('workshop_list.php');
+        include('presentation_list.php');
         break;
 
     case 'show_modify_workshop':
@@ -61,7 +61,7 @@ switch ($action) {
         $wkshp_desc = $workshop['wkshp_desc'];
         $format_id = $workshop['format_id'];
 
-        include 'workshop_modify.php';
+        include 'presentation_modify.php';
         exit();
         break;
 
@@ -81,7 +81,7 @@ switch ($action) {
 
 
         $workshopList = get_workshop_list();
-        include('workshop_list.php');
+        include('presentation_list.php');
         exit();
         break;
 
@@ -91,7 +91,7 @@ switch ($action) {
         delete_workshop($workshop_id);
 
         $workshopList = get_workshop_list();
-        include('workshop_list.php');
+        include('presentation_list.php');
         exit();
         break;
 

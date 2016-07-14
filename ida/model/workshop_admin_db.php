@@ -28,9 +28,9 @@ function get_format_list() {
 function add_workshop($wkshp_nme, $wkshp_desc, $format_id) {
     global $db;
     $query = 'INSERT INTO workshop
-                 ($wkshp_nme, $wkshp_desc, $format_id)
+                 (wkshp_nme, wkshp_desc, format_id)
               VALUES
-                 (:wkshp_nme, $wkshp_desc, $format_id)';
+                 (:wkshp_nme, :wkshp_desc, :format_id)';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':wkshp_nme', $wkshp_nme);
