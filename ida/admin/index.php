@@ -8,7 +8,7 @@ if ($action == NULL) {
         $action = 'list_options';
     }
 }
-
+//some change
 verify_admin();
 
 switch ($action) {
@@ -41,6 +41,9 @@ switch ($action) {
     <div class="feature">
         <a href="workshops"><h2>Workshops</h2></a>
         <h4>Manage workshops.</h4></div>
+    <div class="feature">
+        <a href="presentations"><h2>Presentations</h2></a>
+        <h4>Manage presentations.</h4></div>
     <div class="feature">
         <a href="signins"><h2>Signins</h2></a>
         <h4>Generate signin sheets and mentor check-in sheet.</h4></div>
