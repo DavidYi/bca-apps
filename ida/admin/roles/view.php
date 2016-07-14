@@ -8,27 +8,18 @@
 
 </head>
 <body>
-<?php
-    $grade9 = get_signup_dates_by_grade(9);
-    $grade10 = get_signup_dates_by_grade(10);
-    $grade11 = get_signup_dates_by_grade(11);
-    $grade12 = get_signup_dates_by_grade(12);
-?>
 <form action="index.php" method="post">
     <input type="hidden" name="action" value="modify_dates">
 
     <div id="box">
-        <p class="title">Modify Signup Dates</p>
+        <p class="title">Admin Roles</p>
 
         <div id="header_row">
             <label>
-                <span>Grade</span>
+                <span>User Name</span>
             </label>
-            <label id="start">
-                <span>Start</span>
-            </label>
-            <label id="end">
-                <span>End</span>
+            <label id="role">
+                <span>Role</span>
             </label>
         </div>
 
@@ -63,7 +54,21 @@
             <input type="text" name="start_12" value="<?php echo $grade12['start']?>">
             <input type="text" name="end_12" value="<?php echo $grade12['end']?>">
         </div>
-
+        
+        <div class="add">
+            <select id="user_drop">
+                //php stuff
+                <option>holder 1</option>
+                <option>holder 2</option>
+                <option>holder 3</option>
+            </select>
+            <select id="role_drop">
+                //php stuff
+                <option>holder 1</option>
+                <option>holder 2</option>
+                <option>holder 3</option>
+            </select>
+        </div>
 
 
         <button class="submit s" type="submit" name="choice" value="Modify Dates">Submit</button>
