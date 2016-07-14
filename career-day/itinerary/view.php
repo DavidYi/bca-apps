@@ -7,7 +7,8 @@
     <!-- Styles -->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link href="../ss/main.css" rel="stylesheet">
+    <link href="../../shared/ss/main.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <?php include_analytics(); ?>
 </head>
 <body>
