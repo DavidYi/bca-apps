@@ -32,11 +32,12 @@
             <a href="/<?php echo $app_url_path ?>/itinerary">
 
                 <div class="session session-selected">
-                    <div class="tag"><?php echo $presentation['mentor_field']?></div>
-                    <div class="presenter"><div class="info" style="position: relative; float: left; z-index: 99;">&#x271A;&#xa0;</div><?php echo ($presentation['mentor_last_name'].", ".$presentation['mentor_first_name'])?></div>
-                    <!--<div class="company"><?php echo $presentation['mentor_company']?></div>-->
-                    <div class="position"><?php echo $presentation['mentor_position']?></div>
-                    <div class="remaining"><?php echo ($presentation['pres_max_capacity'] - $presentation['pres_enrolled_count'])?></div>
+                    <div class="tag"><?php echo $presentation['wkshp_nme']?></div>
+                    <div class="presenter">
+                        <a class="info" style="position: relative; float: left; z-index: 99;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;</a>
+                    <?php echo $presentation['presenter_names']?></div>
+                    <div class="position"><?php echo $presentation['format_name']?></div>
+                    <div class="remaining"><?php echo ($presentation['pres_max_seats'] - $presentation['pres_enrolled_seats'])?></div>
                 </div>
             </a>
         <?php } ?>
@@ -48,7 +49,7 @@
                         <div class="tag"><?php echo $presentation['wkshp_nme']?>&nbsp;</div>
                         <div class="presenter"><a class="info" style="float: left; position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;&nbsp;</a><?php echo $presentation['presenter_names']?></div>
                         <div class="position"><?php echo $presentation['format_name']?>&nbsp;</div>
-                        <div class="remaining"><?php echo $presentation['pres_max_seat']?></div>
+                        <div class="remaining"><?php echo ($presentation['pres_max_seats'] - $presentation['pres_enrolled_seats'])?></div>
                     </div>
 
                     <div class="popup-bg" id="B<?php echo $presentation['pres_id']?>" style="display: none;

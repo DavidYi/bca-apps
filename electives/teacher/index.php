@@ -29,6 +29,7 @@ if( $timesString == NULL) {
     }
 }
 
+
 switch($action){
     case "logout":
         session_destroy();
@@ -42,7 +43,6 @@ switch($action){
     echo "submit";
     echo var_dump($_POST);
     */
-        echo "update_times test through teacher";
         $timesString = "";
         if(filter_has_var(INPUT_POST, 'time')) {
             $timesarr = $_POST['time'];
@@ -60,8 +60,6 @@ switch($action){
         //Everything below is still in progress. Eventually it will replace the stuff above
 
         $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
-        echo "this user's id is: ";
-        echo ($usr_id); //This works YAY
 
         //will add_course(usr_id, timesString) which will use convert(timesString)
         //that's what I'm working on right now
@@ -108,7 +106,8 @@ switch($action){
 
     default:
         $courses = get_course_by_user($user->usr_id);
-
+        $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
+        $available_times = get_times($usr_id);
         include("./view.php");
         break;
 }
