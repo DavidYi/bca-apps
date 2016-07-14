@@ -16,6 +16,21 @@ if ($action == NULL) {
 switch ($action) {
 	case 'list_tests':
 		$testList = get_test_list($user->usr_id, 0, 0, 0, 0);
+        $distinct_test_list = array();
+        foreach ($testList as $test) {
+            if (!array_key_exists($test['test_id'], $distinct_test_list)) {
+                $distinct_test_list[$test['test_id']] = array(
+                    'test_name' => $test['test_name'],
+                    'test_type' => $test['test_type_cde'],
+                    'test_dt' => $test['test_dt'],
+                    'rm_id' => $test['rm_id'],
+                    'procs_needed' => [0,0,0,0,0,0,0,0,0]
+                );
+            }
+            $distinct_test_list[$test['test_id']]['procs_needed'][$test['test_time_id'] - 1]
+                = $test['proc_needed'];
+        }
+        $test_keys = array_keys($distinct_test_list);
 		break;
 	
 	case 'add_test':
