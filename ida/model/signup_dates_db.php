@@ -47,9 +47,9 @@ function update_signup_dates ($start9, $end9, $start10, $end10, $start11, $end11
 
     try {
         update_signup_date_for_grade(9, $start9, $end9);
-        update_signup_date_for_grade(9, $start10, $end10);
-        update_signup_date_for_grade(9, $start11, $end11);
-        update_signup_date_for_grade(9, $start12, $end12);
+        update_signup_date_for_grade(10, $start10, $end10);
+        update_signup_date_for_grade(11, $start11, $end11);
+        update_signup_date_for_grade(12, $start12, $end12);
     }
     catch (PDOException $e) {
         $db->rollback();
