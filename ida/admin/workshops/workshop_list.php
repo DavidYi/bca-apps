@@ -37,8 +37,8 @@
 
 <div class="list-container">
 
-    <?php $workshopList=get_workshop_list(); foreach ($workshopList as $workshop) :
-        $workshop_id = $workshop['wrkshp_id'];
+    <?php foreach ($workshopList as $workshop) {
+        $workshop_id = $workshop['wkshp_id'];
         $workshop_name = $workshop['wkshp_nme'];
         $workshop_desc = $workshop['wkshp_desc'];
         $format_id = $workshop['format_id'];
@@ -49,14 +49,11 @@
         <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop">
         <div class="mentor" id="workshop">
             <div class="session-filter"><?php echo($workshop_name); ?></div>
-            <a class="info" style="position: relative; float:left;z-index: 90; color: #555555;" onclick="popup('#B<?php echo $workshop['wkshp_id']?>,#P<?php echo $workshop['wkshp_id']?>')">&#x271A;&#xa0;&nbsp;</a>
+            <a class="info" style="position: relative; float:left;z-index: 90; color: #555555;" onclick="popup('#B<?php echo ($workshop['wkshp_id']);?>,#P<?php echo ($workshop['wkshp_id']);?>')">&#x271A;&#xa0;&nbsp;</a>
             <div class="session-filter"style="float:right;"><?php echo($format_name); ?></div>
         </div>
         </a>
-
-     <?php endforeach; ?>
-    <a class="info" style="float: left; position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo $workshop['wkshp_id']?>
-    <div class="popup-bg" id="B<?php echo $workshop['wkshp_id']?>" style="display: none;
+        <div class="popup-bg" id="B<?php echo $workshop['wkshp_id']?>" style="display: none;
           opacity: 0.7;
           background: #000;
           width: 100%;
@@ -65,26 +62,32 @@
           top: 0;
           left: 0;
           position: fixed;">
-    </div>
+        </div>
 
-    <div class="popup" id="P<?php echo $presentation['pres_id']?>">
-        <div class="entpop" >
-            <div class="close">
-                <div class="presname"><?php echo ($presentation['mentor_last_name'].", ".$presentation['mentor_first_name'])?></div>
-                <div class="x""><a href="#" style="color:#f0c30f" onclick="cpopup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x2716;</a></div>
+        <div class="popup" id="P<?php echo ($workshop['wkshp_id']);?>"
+            <div class="entpop" >
+                <div class="close">
+                    <div class="presname"><?php echo ($workshop['wkshp_nme']);?></div>
+                    <div class="x""><a href="#" style="color:#f0c30f" onclick="cpopup('#B<?php echo $workshop['wkshp_id']?>,#P<?php echo $workshop['wkshp_id']?>')">&#x2716;</a></div>
+            </div>
+            <div class="popup-c">
+                <p><?php echo ($workshop['wkshp_desc']);?></p>
+            </div>
         </div>
-        <div class="popup-c">
-            <p><?php echo ($presentation['mentor_profile']);?></p>
-        </div>
-    </div>
+        
+     <?php } ?>
 </div>
 
 
 <div class="fab">
-    <a id="fab-action" trigger="./index.php?workshop_id=<?php echo $mentor_id?>&action=show_add_workshop"><span class="plus">+</span></a>
+    <a id="fab-action" trigger="./index.php?workshop_id=<?php echo $workshop_id_id?>&action=show_add_workshop"><span class="plus">+</span></a>
 </div>
 
-
+<script type="text/javascript" src="../../js/popup.js"></script>
+<script type="text/javascript" src="../../js/cpopup.js"></script>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.plusanchor.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('body').plusAnchor({
@@ -98,7 +101,7 @@
     })
 
 </script>
-<script type="text/javascript" src="../../js/popup.js"></script>
-<script type="text/javascript" src="../../js/cpopup.js"></script>
+
+
 </body>
 </html>

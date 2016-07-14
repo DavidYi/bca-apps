@@ -8,7 +8,7 @@ if ($action == NULL) {
         $action = 'list_options';
     }
 }
-
+//some change
 verify_admin();
 
 switch ($action) {
