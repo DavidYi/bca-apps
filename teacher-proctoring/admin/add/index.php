@@ -48,13 +48,20 @@ switch ($action) {
             if (empty($test_cde)) $error_msg .= "Test Type is required.<BR>";
             if (empty($room_id)) $error_msg .= "Room is required.<BR>";
             foreach ($proc_times as $proc_time) {
+                if ($proc_time < 0 || $proc_time > 25) {
+                    $error_msg .= "Cannot have less than 0 or more than 
+                        25 proctors in a single hour.<BR>";
+                    $missing_proctors = false;
+                    break;
+                }
                 if ($proc_time != 0) {
                     $missing_proctors = false;
                     break;
                 }
+
             }
             if ($missing_proctors) $error_msg .= "At least one hour needs a 
-                proctor count greater than zero.<BR>";
+                proctor count other than zero.<BR>";
             
             if ($error_msg != "") {
                 echo $error_msg;

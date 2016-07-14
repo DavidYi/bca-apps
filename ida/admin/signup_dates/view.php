@@ -20,17 +20,6 @@
     <div id="box">
         <p class="title">Modify Signup Dates</p>
 
-<!--        <label class="spacing">-->
-<!--            <span>Course Name</span>-->
-<!--            <input type="text" name="class_name">-->
-<!--        </label>-->
-<!---->
-<!---->
-<!--        <label class="spacing">-->
-<!--            <span>Description</span>-->
-<!--            <textarea name="description"></textarea>-->
-<!--        </label>-->
-
         <div id="header_row">
             <label>
                 <span>Grade</span>

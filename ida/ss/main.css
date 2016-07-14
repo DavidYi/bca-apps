@@ -364,7 +364,7 @@ nav.navbar {
     text-align: left; }
     nav.navbar .presenter:last-child {
       margin-right: 0; }
-  /*nav.navbar .company {
+  nav.navbar .company {
     float: left;
     display: block;
     margin-right: 0%;
@@ -376,7 +376,7 @@ nav.navbar {
     font-weight: 500;
     text-align: left; }
     nav.navbar .company:last-child {
-      margin-right: 0; }*/
+      margin-right: 0; }
   nav.navbar .position {
     float: left;
     display: block;
@@ -472,7 +472,7 @@ nav.navbar {
       text-align: left; }
     .enrollment .session .presenter:last-child {
       margin-right: 0; }
-    /*.enrollment .session .company {
+    .enrollment .session .company {
       float: left;
       display: block;
       margin-right: 0%;
@@ -484,7 +484,7 @@ nav.navbar {
       font-weight: 500;
       text-align: left; }
       .enrollment .session .company:last-child {
-        margin-right: 0; }*/
+        margin-right: 0; }
     .enrollment .session .position {
       float: left;
       display: block;

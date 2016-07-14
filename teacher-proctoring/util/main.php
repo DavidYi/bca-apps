@@ -31,4 +31,18 @@ set_include_path($app_server_path . PATH_SEPARATOR . get_include_path());
 require_once(__DIR__ . "/../model/database.php");
 require_once(__DIR__ . "/../../shared/util/main.php");
 
+function verify_test_admin() {
+    global $app_cde;
+    global $app_url_path;
+    global $user;
+
+    verify_logged_in();
+
+    if ($user->getRole($app_cde) == NULL) {
+        log_error ("Permission exception in verify_admin.  User id:" . $user->usr_id);
+        display_user_message("Permission denied.  You are not an administrator.", '/' . $app_url_path . '/index.php');
+        exit();
+    }
+}
+
 ?>

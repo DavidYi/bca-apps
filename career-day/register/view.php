@@ -5,7 +5,8 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="/<?php echo $app_url_path ?>/ss/main.css" rel="stylesheet">
+    <link href="../../shared/ss/main.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
