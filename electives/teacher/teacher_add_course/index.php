@@ -39,7 +39,6 @@ switch ($action) {
                             alert('Course created successfully');
                             window.location.href='..';
                             </script>";
-                    // header('Location: ..');
                     include('view.php?action=add_course');
                 } else {
                     echo "<script type='text/javascript'>alert('Not all fields were completed');</script>";
