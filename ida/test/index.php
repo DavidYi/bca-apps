@@ -32,7 +32,7 @@ switch ($action) {
         $user = User::getUserByUsrId($user_from_post);
         $_SESSION['user'] = $user;
 
-        if ($user->getRole('CAR') == 'ADM') {
+        if ($user->getRole('IDA') == 'ADM') {
             // The user is an admin, so they are directed to  admin page
             header("Location: ../admin/index.php");
         } else {
