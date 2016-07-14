@@ -33,7 +33,7 @@ $sessions = get_sessions_by_user($user->usr_id);
 //
 $registration_complete = true;
 foreach ($sessions as $session) {
-    if (empty($session['mentor_last_name'])) {
+    if (empty($session['presenter_names'])) {
         $registration_complete = false;
         break;
     }

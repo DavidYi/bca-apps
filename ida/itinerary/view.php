@@ -59,12 +59,10 @@
 
                 <div class="session view-session" onclick="">
                     <div class="session-number"><?php echo $session['ses_times'] ?></div>
-                    <div class="time"><?php echo $session['ses_start'] ?></div>
+                    <div class="time"><?php echo $session['ses_start_time'] ?></div>
                     <?php if ($session['ses_id'] != NULL) { ?>
-                        <div class="room-number">RM <?php echo $session['pres_room'] ?></div>
-                        <div class="session-title"><?php echo $session['mentor_company'] ?></div>
-                        <div class="name"><?php echo $session['mentor_last_name'] ?>
-                            , <?php echo $session['mentor_first_name'] ?></div>
+                        <div class="session-title"><?php echo $session['wkshp_nme'] ?></div>
+                        <div class="room-number">RM <?php echo $session['rm_nbr'] ?></div>
                     <?php } ?>
                 </div>
 
