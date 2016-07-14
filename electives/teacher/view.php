@@ -74,42 +74,17 @@
         </div>
     </div>
     <div class="view-signup enrollment">
+        
         <div class="vertical-center">
             <h3><b>Availability</b></h3>
-            
-            <table class="table-fill">
-                <thead id="days">
-                    <th>M</th>
-                    <th>T</th>
-                    <th>W</th>
-                    <th>R</th>
-                    <th>F</th>
-                </thead>
-                <tbody class="table-hover">
-                    <?php
-                    $days = array('M', 'T', 'W', 'R', 'F');
-                    $mods = array('1-3', '4-6', '7-9', '10-12', '13-15', '16-18', '19-21', '22-24');
-                    for ($i = 0; $i < 8; $i++) {
-                        echo "<tr id=$mods[$i]>";
-                        for ($j = 0; $j < 5; $j++) {
-                            echo "<td class='availability' id=" . $days[$j] . ' ' . $mods[$i] . ">" . $mods[$i] . "</td>";
-//                                "<input type='checkbox' class='mods'>"  .
-
-                        }
-                        echo "</tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
-            <p><?php echo($timesString);?></p>
-<!--        <a href="index.php?action=modify_times">Modify Availability</a>-->
-            <a href="index.php?action=update_times">Modify Availability</a>
-
+            <a href="availability/index.php"><h3>Modify Availability</h3></a>
         </div>
         <br>
         <br>
         <br>
         <div class="vertical-center">
+
+
             <h3><b>Courses</b> | <a href="teacher_add_course/index.php">Add Class</a></h3>
 
             <table style="width:75%">
@@ -149,11 +124,4 @@
 
 
 </body>
-
-<script>
-    $('.availability').click(function () {
-        $(this).css("background","yellow");
-    });
-
-</script>
 </html>
