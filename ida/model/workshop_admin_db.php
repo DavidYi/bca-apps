@@ -15,6 +15,15 @@ function get_workshop_list() {
     return get_list($query);
 }
 
+function get_format_list() {
+    $query = 'SELECT format_id, format_name
+              from format
+              
+			  order by format_id';
+
+    return get_list($query);
+}
+
 
 function add_workshop($wkshp_nme, $wkshp_desc, $format_id) {
     global $db;
@@ -39,16 +48,18 @@ function add_workshop($wkshp_nme, $wkshp_desc, $format_id) {
 
 
 
-function modify_workshop($wkshp_nme, $wkshp_desc, $format_id) {
+function modify_workshop($wkshp_nme, $wkshp_desc, $format_id, $workshop_id) {
     global $db;
     $query = 'update workshop set
                  wkshp_nme = :wkshp_nme, wkshp_desc = :wkshp_desc,
-                 format_id = :format_id';
+                 format_id = :format_id
+                 where wkshp_id = :wkshp_id';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':wkshp_nme', $wkshp_nme);
         $statement->bindValue(':wkshp_desc', $wkshp_desc);
         $statement->bindValue(':format_id', $format_id);
+        $statement->bindValue(':wkshp_id', $workshop_id);
 
         $statement->execute();
         $statement->closeCursor();

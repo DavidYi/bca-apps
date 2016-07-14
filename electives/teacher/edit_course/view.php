@@ -16,7 +16,7 @@
 
             <label class="spacing">
                 <span>Description</span>
-                <textarea name="description" name="new_course_desc" value="<?php echo $course_desc ?>"></textarea>
+                <textarea name="description" name="new_course_desc"><?php echo $course_desc ?></textarea>
             </label>
 
 
