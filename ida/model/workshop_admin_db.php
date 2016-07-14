@@ -15,6 +15,15 @@ function get_workshop_list() {
     return get_list($query);
 }
 
+function get_format_list() {
+    $query = 'SELECT format_id, format_name
+              from format
+              
+			  order by format_id';
+
+    return get_list($query);
+}
+
 
 function add_workshop($wkshp_nme, $wkshp_desc, $format_id) {
     global $db;
