@@ -23,7 +23,7 @@ $loginInfo = '<h1>International Day of Acceptance</h1>
 function directToHomePage() {
     $user = $_SESSION['user'];
 
-    if ($user->getRole('CAR') == 'ADM') {
+    if ($user->getRole('IDA') == 'ADM') {
         header("Location: admin");
     } else {
         header("Location: itinerary");
