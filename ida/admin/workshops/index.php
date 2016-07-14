@@ -73,9 +73,10 @@ switch ($action) {
         $workshop_name = filter_input(INPUT_POST, 'wkshp_name');
         $workshop_desc = filter_input(INPUT_POST, 'wkshp_desc');
         $format_id = filter_input(INPUT_POST, 'format_id');
+        $workshop_id = filter_input(INPUT_POST, 'workshop_id');
 
         if(filter_input(INPUT_POST, 'choice') == "Modify") {
-            modify_workshop($workshop_name, $workshop_desc, $format_id);
+            modify_workshop($workshop_name, $workshop_desc, $format_id, $workshop_id);
         }
 
 
