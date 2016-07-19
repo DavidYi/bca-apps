@@ -14,9 +14,8 @@ function get_workshop_list() {
 
     return get_list($query);
 }
-
 function get_presentation_list() {
-    $query = 'SELECT presenter_names, org_name, r.rm_id, r.rm_nbr, pres_max_seats, pres_enrolled_seats, w.wkshp_id, w.wkshp_nme, p.ses_id
+    $query = 'SELECT p.pres_id, presenter_names, org_name, r.rm_id, r.rm_nbr, pres_max_seats, pres_enrolled_seats, w.wkshp_id, w.wkshp_nme, p.ses_id
               from  workshop w, session_times s, presentation p
                 left join room r
                 on p.rm_id = r.rm_id
@@ -36,7 +35,13 @@ function get_format_list() {
 
     return get_list($query);
 }
-
+function get_room_list() {
+    $query = 'SELECT rm_nbr, rm_id
+              from room
+              
+			  order by rm_nbr';
+    return get_list($query);
+}
 
 function add_workshop($wkshp_nme, $wkshp_desc, $format_id) {
     global $db;
@@ -59,19 +64,18 @@ function add_workshop($wkshp_nme, $wkshp_desc, $format_id) {
     }
 }
 
-function add_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $pres_enrolled_seats, $wkshp_id, $ses_id) {
+function add_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id) {
     global $db;
     $query = 'INSERT INTO presentation
-                 (presenter_names, org_name, rm_id, pres_max_seats, pres_enrolled_seats, wkshp_id, ses_id)
+                 (presenter_names, org_name, rm_id, pres_max_seats, wkshp_id, ses_id)
               VALUES
-                 (:presenter_names, :org_name, :rm_id, :pres_max_seats, :pres_enrolled_seats, :wkshp_id, :ses_id)';
+                 (:presenter_names, :org_name, :rm_id, :pres_max_seats, :wkshp_id, :ses_id)';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':presenter_names', $presenter_names);
         $statement->bindValue(':org_name', $org_name);
         $statement->bindValue(':rm_id', $rm_id);
         $statement->bindValue(':pres_max_seats', $pres_max_seats);
-        $statement->bindValue(':pres_enrolled_seats', $pres_enrolled_seats);
         $statement->bindValue(':wkshp_id', $wkshp_id);
         $statement->bindValue(':ses_id', $ses_id);
 

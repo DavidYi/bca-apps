@@ -49,16 +49,17 @@
         $format_name = $format['format_name']
 
     ?>
-        <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop">
+
         <div class="mentor" id="workshop">
             <a class="info" style="position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo ($workshop['wkshp_id']);?>,#P<?php echo ($workshop['wkshp_id']);?>')">&#x271A;&#xa0;&nbsp;</a>
+            <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop">
             <div class="session-filter"><?php echo($workshop_name); ?></div>
+            </a>
             <div style="float:right;">
                 <div class="session-filter"><?php echo($format_name); ?></div>
                 <img style="height:2.5vh;"src="../../../shared/images/garbage_can.png" onclick="deleteWorkshop(<?php echo $workshop_id; ?>);">
             </div>
         </div>
-        </a>
         <div class="popup-bg" id="B<?php echo $workshop['wkshp_id']?>" style="display: none;
           opacity: 0.7;
           background: #000;

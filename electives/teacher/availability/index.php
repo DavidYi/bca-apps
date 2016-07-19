@@ -23,10 +23,13 @@ $available_times = get_times($usr_id);
 
 switch ($action) {
     case "update_times":
-        echo "update_times";
-        $free_mods = json_decode($_POST["id_field"], true);
-
-        echo $free_mods[0];
+        $free_mods = $_POST["id_field"];
+        $decode = json_decode($free_mods, true);
+        reset_times($usr_id);
+        for ($i = 0; $i < $decode["length"]; $i++){
+            update_times($usr_id, $decode[$i]);
+        }
+        header("Location: ../index.php");
         break;
     default:
         include "view.php";

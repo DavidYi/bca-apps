@@ -233,4 +233,18 @@ function change_user_tests($tests) {
         exit();
     }
 }
+
+
+function list_teacher_status()
+{
+    global $db;
+
+    $query = "select u.usr_last_name as Last, u.usr_first_name as First, sum(test_time_id) as Hours
+              from test_updt_xref t, user u
+              where t.usr_id = u.usr_id
+              group by t.usr_id
+              order by Hours;";
+
+    return get_list($query);
+}
 ?>

@@ -27,7 +27,11 @@
         $mods = array('1-3', '4-6', '7-9', '10-12', '13-15', '16-18', '19-21', '22-24');
         // each row
         for ($i = 0; $i < 8; $i++) {
-            echo "<tr id=$mods[$i]>";
+            if ($i % 2 == 1) {
+                echo "<tr class='even' id=$mods[$i]>";
+            } else {
+                echo "<tr class='odd' id=$mods[$i]>";
+            }
 
             // each column
             for ($j = 0; $j < 5; $j++) {
@@ -84,8 +88,8 @@
             $(this).css("background","#F4ABF1");
             $(this).attr("data-chosen", 'true');
         } else {
-            if ($(this).hasClass("even")) {
-                $(this).css("background","#D5DDE5");
+            if ($(this).parents('.even').length == 1) {
+                $(this).css("background","#d3d3d3");
             } else {
                 $(this).css("background","#EBEBEB");
             }
@@ -97,7 +101,8 @@
         var ids = $("td[data-chosen='true']").map(function(index) {
             return this.id;
         });
-        $('#id_field').attr("value", ids);
+        var json = JSON.stringify(ids);
+        $('#id_field').attr("value", json);
 
     }
 </script>
