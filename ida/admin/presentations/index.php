@@ -16,10 +16,10 @@ if ($action == NULL) {
 switch ($action) {
     case 'list_presentations':
 
-        // Get the teacher list
+        // Get the presentation list
         $presentationList = get_presentation_list();
 
-        // View the list of workshops
+        // View the list of presentations
         include 'presentation_list.php';
         break;
 
@@ -33,43 +33,29 @@ switch ($action) {
         $pres_max_seats = '';
         $ses_id = '';
         $wkshp_id = '';
-
+        $workshopList = get_workshop_list();
+        $roomList = get_room_list();
         include 'presentation_add.php';
         break;
 
     case 'add_presentation':
         $choice = filter_input(INPUT_POST, 'choice');
-        $presenter_names = filter_input(INPUT_POST, 'presenter_names');
-        $org_name = filter_input(INPUT_POST, 'org_name');
-        $rm_id = filter_input(INPUT_POST, 'rm_id');
-        $pres_max_seats = filter_input(INPUT_POST, 'pres_max_seats');
-        $wkshp_id = filter_input(INPUT_POST, 'wkshp_id');
-
+        $presenter_names = filter_input(INPUT_POST, 'presenters');
+        $org_name = filter_input(INPUT_POST, 'organization');
+        $rm_id = filter_input(INPUT_POST, 'room');
+        $pres_max_seats = filter_input(INPUT_POST, 'pres_max_capacity');
+        $wkshp_id = filter_input(INPUT_POST, 'workshop');
+        $ses_id = filter_input(INPUT_POST, 'session');
         // The user either pressed Add or Cancel.
         // If Add, then add the presentation.
         // Otherwise, just skip down to the list redraw.
-
         if ($choice == 'Add') {
-            add_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $pres_enrolled_seats, $wkshp_id, $ses_id);
+            add_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id);
         }
         $presentationList = get_presentation_list();
         include('presentation_list.php');
         break;
 
-    case 'show_modify_workshop':
-
-        $workshop_id = filter_input(INPUT_GET, 'workshop_id');
-
-        $workshop = get_workshop($workshop_id);
-
-
-        $wkshp_nme = $workshop['wkshp_nme'];
-        $wkshp_desc = $workshop['wkshp_desc'];
-        $format_id = $workshop['format_id'];
-
-        include 'presentation_modify.php';
-        exit();
-        break;
 
     case 'show_modify_presentation':
 
@@ -77,34 +63,33 @@ switch ($action) {
 
         $presentation = get_presentation($pres_id);
 
-        $presenter_names = $presentation['pres_id'];
+        $presenter_names = $presentation['presenter_names'];
         $org_name = $presentation['org_name'];
         $wkshp_id = $presentation['wkshp_id'];
         $rm_id = $presentation['rm_id'];
         $pres_max_seats = $presentation['pres_max_seats'];
         $ses_id = $presentation['ses_id'];
-        $wkshp_id = $presentation['wkshp_id'];
-
+        $workshopList = get_workshop_list();
+        $roomList = get_room_list();
         include 'presentation_modify.php';
         exit();
         break;
-
-
-
-
-    case 'modify_workshop':
+    
+    case 'modify_presentation':
         $choice = filter_input(INPUT_POST, 'choice');
-        $workshop_name = filter_input(INPUT_POST, 'wkshp_name');
-        $workshop_desc = filter_input(INPUT_POST, 'wkshp_desc');
-        $format_id = filter_input(INPUT_POST, 'format_id');
-        $workshop_id = filter_input(INPUT_POST, 'workshop_id');
+        $presenter_names = filter_input(INPUT_POST, 'presenters');
+        $org_name = filter_input(INPUT_POST, 'organization');
+        $rm_id = filter_input(INPUT_POST, 'room');
+        $pres_max_seats = filter_input(INPUT_POST, 'pres_max_capacity');
+        $wkshp_id = filter_input(INPUT_POST, 'workshop');
+        $ses_id = filter_input(INPUT_POST, 'session');
 
         if(filter_input(INPUT_POST, 'choice') == "Modify") {
-            modify_workshop($workshop_name, $workshop_desc, $format_id, $workshop_id);
+            add_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id);
         }
 
 
-        $workshopList = get_workshop_list();
+        $presentationList = get_presentation_list();
         include('presentation_list.php');
         exit();
         break;

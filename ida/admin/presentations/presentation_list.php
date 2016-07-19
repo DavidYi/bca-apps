@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script type="text/javascript">
-    function deleteMentor(mentorID) {
+    function deletePresentation(presID) {
         if (confirm('Are you sure you would like to delete the presentation?')) {
             window.parent.parent.location.href = 'view.php?action=delete_mentor&mentor_id=' + mentorID;
         }
@@ -23,30 +23,33 @@
     <h1 class="title">Presentation</h1>
 </header>
 <div style="text-align:center;padding-bottom:2vh;">
-    <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_add_workshop"><button>Add Workshop</button></a>
+    <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_add_presentation"><button>Add Presentation</button></a>
     <a href="../index.php"><button>Return Home</button></a>
 </div>
 <nav class="navbar">
     <a href="#">
-        <div class="session-filter name">Workshop</div>
+        <div class="session-filter organization">Workshop</div>
     </a>
     <a href="#">
-        <div class="session-filter company">Presenters</div>
+        <div class="session-filter organization">Presenters</div>
     </a>
     <a href="#">
-        <div class="session-filter name">Organization</div>
+        <div class="session-filter organization">Organization</div>
     </a>
     <a href="#>">
-        <div class="session-filter capacity">Session</div>
+        <div class="session-filter smallcol">Session</div>
     </a>
     <a href="#>">
-        <div class="session-filter capacity">Room</div>
+        <div class="session-filter smallcol">Room</div>
     </a>
     <a href="#">
-        <div class="session-filter capacity">Seats</div>
+        <div class="session-filter smallcol">Seats</div>
     </a>
     <a href="#">
-        <div class="session-filter capacity">Enrolled</div>
+        <div class="session-filter smallcol">Enrolled</div>
+    </a>
+    <a href="#">
+        <div class="session-filter smallcol"></div>
     </a>
 </nav>
 
@@ -59,21 +62,25 @@
         $presenter_names = $presentation['presenter_names'];
         $org_name = $presentation['org_name'];
         $rm_id = $presentation['rm_id'];
+        $rm_nbr = $presentation['rm_nbr'];
+        $wkshp_nme = $presentation['wkshp_nme'];
         $pres_max_seats = $presentation['pres_max_seats'];
         $pres_enrolled_seats = $presentation['pres_enrolled_seats'];
+        $ses_id = $presentation['ses_id'];
 
         ?>
-        <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_modify_presentation">
-            <div class="mentor" id="workshop">
-                <div class="session-filter name"><?php echo(get_workshop($wkshp_id)); ?></div>
-                <div class="session-filter company"><?php echo $presenter_names; ?></div>
-                <div class="session-filter name"><?php echo $org_name; ?></div>
-                <div class="session-filter capacity"><?php echo $ses_id; ?></div>
-                <div class="session-filter capacity"><?php echo ((get_room($rm_id)['rm_nbr'])); ?></div>
-                <div class="session-filter capacity"><?php echo $pres_max_seats; ?></div>
-                <div class="session-filter capacity"><?php echo $pres_enrolled_seats; ?></div>
+            <div class="mentor row" id="workshop">
+                <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_modify_presentation">
+                <div class="session-filter organization"><?php echo($wkshp_nme); ?></div>
+                <div class="session-filter organization"><?php echo $presenter_names; ?></div>
+                <div class="session-filter organization"><?php echo $org_name; ?></div>
+                <div class="session-filter smallcol"><?php echo $ses_id; ?></div>
+                <div class="session-filter smallcol"><?php echo ($rm_nbr); ?></div>
+                <div class="session-filter smallcol"><?php echo $pres_max_seats; ?></div>
+                <div class="session-filter smallcol"><?php echo $pres_enrolled_seats; ?></div>
+                </a>
+                <img class="session-filter smallcol2" style="z-index:90"src="../../../shared/images/garbage_can.png" onclick="deletePresentation(<?php echo $pres_id; ?>);">
             </div>
-        </a>
 
     <?php } ?>
 </div>
