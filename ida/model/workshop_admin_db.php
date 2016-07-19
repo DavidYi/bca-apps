@@ -162,31 +162,46 @@ function delete_workshop($wkshp_id){
     $query = 'delete from workshop
               where wkshp_id = :wkshp_id';
     try {
+        $db->beginTransaction();
+        delete_users_from_presentations($wkshp_id);
+        delete_presentations($wkshp_id);
+
         $statement = $db->prepare($query);
         $statement->bindValue(':wkshp_id', $wkshp_id);
 
         $statement->execute();
         $statement->closeCursor();
+        $db->commit();
     } catch (PDOException $e) {
+        $db->rollBack();
         display_db_exception($e);
         exit();
     }
 }
 
+function delete_users_from_presentations($wkshp_id){
+    global $db;
+    $query = 'delete from pres_user_xref
+              where pres_id in (select pres_id from presentation where wkshp_id = :wkshp_id)';
+
+    $statement = $db->prepare($query);
+    $statement->bindValue(':wkshp_id', $wkshp_id);
+
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+
 function delete_presentations($wkshp_id){
     global $db;
     $query = 'delete from presentation
               where wkshp_id = :wkshp_id';
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(':wkshp_id', $wkshp_id);
 
-        $statement->execute();
-        $statement->closeCursor();
-    } catch (PDOException $e) {
-        display_db_exception($e);
-        exit();
-    }
+    $statement = $db->prepare($query);
+    $statement->bindValue(':wkshp_id', $wkshp_id);
+
+    $statement->execute();
+    $statement->closeCursor();
 }
 ?>
 

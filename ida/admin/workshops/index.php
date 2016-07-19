@@ -87,7 +87,6 @@ switch ($action) {
 
     case 'delete_workshop':
         $workshop_id = filter_input(INPUT_GET, 'workshop_id');
-        delete_presentations($workshop_id);
         delete_workshop($workshop_id);
 
         $workshopList = get_workshop_list();
