@@ -1,7 +1,7 @@
 <?php
 
 require_once('../../util/main.php');
-//require_once('../../model/admin_db.php');
+require_once('../../model/admin_roles_db.php');
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
@@ -15,23 +15,33 @@ verify_admin();
 
 switch ($action) {
     case 'list_roles':
+        $assigned_roles = get_assigned_roles();
+        $users = get_users();
+        $roles = get_roles();
         include("./view.php");
         break;
-//    case 'modify_dates':
-//        $choice = filter_input(INPUT_POST, 'choice');
-//        if($choice == "Modify Dates"){
-//            $start9 = filter_input(INPUT_POST, 'start_9');
-//            $start10 = filter_input(INPUT_POST, 'start_10');
-//            $start11 = filter_input(INPUT_POST, 'start_11');
-//            $start12 = filter_input(INPUT_POST, 'start_12');
-//            $end9 = filter_input(INPUT_POST, 'end_9');
-//            $end10 = filter_input(INPUT_POST, 'end_10');
-//            $end11 = filter_input(INPUT_POST, 'end_11');
-//            $end12 = filter_input(INPUT_POST, 'end_12');
-//            update_signup_dates ($start9, $end9, $start10, $end10, $start11, $end11, $start12, $end12);
-//        }
-//        header("Location: ..");
-//        break;
+    case 'modify_admin':
+        $choice = filter_input(INPUT_POST, 'choice');
+        if($choice == "Add Admin"){
+            $usr_id = filter_input(INPUT_POST, 'user_drop');
+            $usr_role_cde = filter_input(INPUT_POST, 'role_drop');
+            add_admin($usr_id, $app_cde, $usr_role_cde);
+        }
+        $assigned_roles = get_assigned_roles();
+        $users = get_users();
+        $roles = get_roles();
+        include("./view.php");
+        break;
+    case 'delete_admin':
+        $usr_id = filter_input(INPUT_GET, 'usrID');
+        $usr_role_cde = filter_input(INPUT_GET, 'roleID');
+        delete_admin($usr_id, $usr_role_cde);
+
+        $assigned_roles = get_assigned_roles();
+        $users = get_users();
+        $roles = get_roles();
+        include("./view.php");
+        break;
     default:
         display_error('Unknown account action: ' . $action);
         exit();

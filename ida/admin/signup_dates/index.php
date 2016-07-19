@@ -17,7 +17,7 @@ switch ($action) {
     case 'date_select':
         include("./view.php");
         break;
-    case 'modify_dates':
+    case 'modify_admin':
         $choice = filter_input(INPUT_POST, 'choice');
         if($choice == "Modify Dates"){
             $start9 = filter_input(INPUT_POST, 'start_9');

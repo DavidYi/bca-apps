@@ -29,7 +29,7 @@ switch ($action) {
         $wkshp_nme = '';
         $wkshp_desc = '';
         $format_id = '';
-
+        $formatList = get_format_list();
         include 'workshop_add.php';
         break;
 
