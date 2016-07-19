@@ -9,70 +9,50 @@
 </head>
 <body>
 <form action="index.php" method="post">
-    <input type="hidden" name="action" value="modify_dates">
+    <input type="hidden" name="action" value="modify_admin">
 
     <div id="box">
         <p class="title">Admin Roles</p>
 
         <div id="header_row">
             <label>
-                <span>User Name</span>
+                <span id="user_header"><strong>User Name</strong></span>
             </label>
             <label id="role">
-                <span>Role</span>
+                <span id="role_header"><strong>Role</strong></span>
             </label>
         </div>
 
-        <div class="grade">
-            <label>
-                <span>9</span>
-            </label>
-            <input type="text" name="start_9" value="<?php echo $grade9['start']?>">
-            <input type="text" name="end_9" value="<?php echo $grade9['end']?>">
-        </div>
+        <?php foreach($assigned_roles as $assigned_user) { ?>
 
-        <div class="grade">
-            <label>
-                <span>10</span>
-            </label>
-            <input type="text" name="start_10" value="<?php echo $grade10['start']?>">
-            <input type="text" name="end_10" value="<?php echo $grade10['end']?>">
-        </div>
+            <div class="user_with_role">
+                <label>
+                    <span class="user_name"><?php echo $assigned_user['usr_last_name'] ?>, <?php echo $assigned_user['usr_first_name'] ?></span>
+                    <span class="user_role"><?php echo $assigned_user['usr_role_desc'] ?></span>
+                    <span><a href="./index.php?action=delete_admin&usrID=<?php echo $assigned_user['usr_id'] ?>&roleID=<?php echo $assigned_user['usr_role_cde'] ?>"><img src="../../../shared/images/deleteIcon.gif" /></a></span>
+                </label>
+            </div>
 
-        <div class="grade">
-            <label>
-                <span>11</span>
-            </label>
-            <input type="text" name="start_11" value="<?php echo $grade11['start']?>">
-            <input type="text" name="end_11" value="<?php echo $grade11['end']?>">
-        </div>
-
-        <div class="grade">
-            <label>
-                <span>12</span>
-            </label>
-            <input type="text" name="start_12" value="<?php echo $grade12['start']?>">
-            <input type="text" name="end_12" value="<?php echo $grade12['end']?>">
-        </div>
+        <?php } ?>
         
-        <div class="add">
-            <select id="user_drop">
-                //php stuff
-                <option>holder 1</option>
-                <option>holder 2</option>
-                <option>holder 3</option>
+        <div id="add">
+            <span id="add_header"><strong>Add Admin</strong></span><br>
+            <select id="user_drop" name="user_drop">
+                <?php foreach($users as $user) { ?>
+                    <option value="<?php echo $user['usr_id'] ?>"><?php echo $user['usr_last_name'] ?>, <?php echo $user['usr_first_name'] ?></option>
+                <?php } ?>
             </select>
-            <select id="role_drop">
-                //php stuff
-                <option>holder 1</option>
-                <option>holder 2</option>
-                <option>holder 3</option>
+            <select id="role_drop" name="role_drop">
+                <?php foreach($roles as $role) { ?>
+                    <option value="<?php echo $role['usr_role_cde'] ?>"><?php echo $role['usr_role_desc'] ?></option>
+                <?php } ?>
             </select>
+            <button class="submit s" type="submit" name="choice" value="Add Admin">Submit</button>
+            <button class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
         </div>
 
 
-        <button class="submit s" type="submit" name="choice" value="Modify Dates">Submit</button>
-        <button class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
+
 </form>
 </div>
 </body>
