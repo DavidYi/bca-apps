@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <script type="text/javascript">
-    function deleteMentor(mentorID) {
-        if (confirm('Are you sure you would like to delete this workshop?')) {
-            window.parent.parent.location.href = 'view.php?action=delete_workshop&workshop_id=' + workshopID;
+    function deleteWorkshop(workshopID) {
+        if (confirm('Are you sure you would like to delete this workshop AND ALL presentations associated with it?')) {
+            window.parent.parent.location.href = 'index.php?action=delete_workshop&workshop_id=' + workshopID;
         }
     }
 
@@ -24,8 +24,9 @@
 </header>
 <div style="text-align:center;padding-bottom:2vh;">
     <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_add_workshop"><button>Add Workshop</button></a>
+    <a href="../index.php"><button>Return Home</button></a>
 </div>
-<nav class="navbar">
+<nav  style="width:65%" class="navbar">
     <div id="navinside">
         <a href="#">
             <div id="namenav"class="session-filter">Name</div>
@@ -37,7 +38,7 @@
 </nav>
 
 
-<div class="list-container">
+<div style="width:65%;" class="list-container">
 
     <?php foreach ($workshopList as $workshop) {
         $workshop_id = $workshop['wkshp_id'];
@@ -50,9 +51,12 @@
     ?>
         <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop">
         <div class="mentor" id="workshop">
+            <a class="info" style="position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo ($workshop['wkshp_id']);?>,#P<?php echo ($workshop['wkshp_id']);?>')">&#x271A;&#xa0;&nbsp;</a>
             <div class="session-filter"><?php echo($workshop_name); ?></div>
-            <a class="info" style="position: relative; float:left;z-index: 90; color: #555555;" onclick="popup('#B<?php echo ($workshop['wkshp_id']);?>,#P<?php echo ($workshop['wkshp_id']);?>')">&#x271A;&#xa0;&nbsp;</a>
-            <div class="session-filter"style="float:right;"><?php echo($format_name); ?></div>
+            <div style="float:right;">
+                <div class="session-filter"><?php echo($format_name); ?></div>
+                <img style="height:2.5vh;"src="../../../shared/images/garbage_can.png" onclick="deleteWorkshop(<?php echo $workshop_id; ?>);">
+            </div>
         </div>
         </a>
         <div class="popup-bg" id="B<?php echo $workshop['wkshp_id']?>" style="display: none;
@@ -79,7 +83,6 @@
         
      <?php } ?>
 </div>
-
 <script type="text/javascript" src="../../js/popup.js"></script>
 <script type="text/javascript" src="../../js/cpopup.js"></script>
 <script type="text/javascript" src="../../js/jquery.min.js"></script>
