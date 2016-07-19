@@ -149,7 +149,6 @@
 <script>
     $('#test_list').change(function() {
         var test_value = $(this).val().split(":");
-        var test_id = test_value[0];
         var test_proctors = test_value[1].split(",");
         var test_data = $(this).find('option:selected').text().split("/");
         var test_date = test_data[1].trim().split("-");
@@ -162,7 +161,6 @@
             $(this).val(test_proctors[proc_index++]);
         });
     });
-
 </script>
 </body>
 </html>
