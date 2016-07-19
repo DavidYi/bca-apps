@@ -5,6 +5,7 @@
 //
 $app_cde = 'CAR';
 $app_title = 'Career Day Registration';
+$shared_ss_url = '/bca-apps/shared/ss/main.css';
 
 $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING); // Looks like c:/xampp/htdocs
 

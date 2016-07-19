@@ -1,0 +1,187 @@
+.error {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    background-color: #333;
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 100%;
+    color: #fdfdfd;
+    text-align: center; }
+.error:last-child {
+    margin-right: 0; }
+.error .vertical-center {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+.error h1 {
+    font-size: 10em;
+    font-family: 'Permanent Marker', cursive;
+    margin: 0; }
+.error h2 {
+    font-size: 2em;
+    margin: 0; }
+.error h3 {
+    color: #999;
+    margin: 0; }
+.error button {
+    background-color: #333;
+    border: 1px solid #f0c30f;
+    margin: 2.5em 0; }
+.error button:hover {
+    color: #f6db6f;
+    border: 1px solid #f6db6f; }
+
+
+
+.main {
+    height: 100%;
+    overflow-y: hidden;
+    background: #e7e7e7; }
+
+.error .vertical-center {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+
+button {
+    color: inherit;
+    font: inherit;
+    margin: 0; }
+
+button {
+    overflow: visible; }
+
+button, select {
+    text-transform: none; }
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer; }
+
+button[disabled], html input[disabled] {
+    cursor: default; }
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+
+button {
+    height: 3.125em;
+    width: 12.5em;
+    color: #fdfdfd;
+    background-color: #f0c30f;
+    font: normal normal 400 0.32 "Roboto", sans-serif;
+    border: 0;
+    border-radius: 1px;
+    outline: none;
+    text-transform: uppercase;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease; }
+    button:hover {
+        background-color: #0f0f0f; }
+
+
+button {
+    overflow: visible; }
+
+button, select {
+    text-transform: none; }
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer; }
+
+button[disabled], html input[disabled] {
+    cursor: default; }
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+
+button {
+    color: inherit;
+    font: inherit;
+    margin: 0; }
+
+.main {
+    height: 100%;
+    overflow-y: hidden;
+    background: #e7e7e7; }
+
+.login {
+    background: #fdfdfd; }
+.login .login-intro {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 66.66667%;
+    padding: 15.625em 9.375em;
+    -webkit-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    background-color: rgba(240, 195, 15, 0.66);
+    height: 100%; }
+.login .login-intro:last-child {
+    margin-right: 0; }
+.login .login-intro h3 {
+    color: #555; }
+@media screen and (max-width: 800px) {
+    .login .login-intro {
+        padding: 1.875em 3.125em;
+        height: 50%;
+        width: 100%; } }
+@media screen and (max-width: 600px) {
+    .login .login-intro {
+        padding: 1.875em 3.125em;
+        height: 50%;
+        width: 100%; } }
+.login .login-main {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 33.33333%;
+    padding: 15.625em 3.125em 0; }
+.login .login-main:last-child {
+    margin-right: 0; }
+.login .login-main input {
+    background-color: rgba(244, 208, 63, 0.3);
+    margin: 10px 0;
+    padding: 0 15px;
+    width: 25em;
+    font-size: 1em;
+    height: 3.125em;
+    width: 100%; }
+.login .login-main button {
+    font-size: 1em;
+    margin: 15px 0;
+    width: 100%;
+    height: 3.125em; }
+@media screen and (max-width: 800px) {
+    .login .login-main {
+        padding: 1.875em 3.125em;
+        height: 50%;
+        width: 100%;
+        font-size: 0.75em; } }
+@media screen and (max-width: 600px) {
+    .login .login-main {
+        padding: 1.875em 3.125em;
+        height: 50%;
+        width: 100%;
+        font-size: 0.625em; } }
+
+.main {
+    height: 100%;
+    overflow-y: hidden;
+    background: #e7e7e7; }

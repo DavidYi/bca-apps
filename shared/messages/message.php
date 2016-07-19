@@ -6,6 +6,7 @@
 
 		<!-- Styles -->
 		<link href="/<?php echo $app_url_path; ?>/ss/main.css" rel="stylesheet">
+		<link href="styles.css" rel="stylesheet">
 		<!-- <?php include_analytics(); ?> -->
 	</head>
 	<body>

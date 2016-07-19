@@ -9,7 +9,7 @@ if ($action == NULL) {
     }
 }
 
-verify_admin();
+verify_test_admin();
 
 switch ($action) {
     case 'list_options':
@@ -45,7 +45,7 @@ switch ($action) {
     </div>
     <div class="feature">
         <a href="test_status"><h2>Test Status</h2></a>
-        <h4>Check enrolled count and proctoring teachers in test.</h4>
+        <h4>Check enrolled count and proctoring teachers in a test.</h4>
     </div>
 
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
