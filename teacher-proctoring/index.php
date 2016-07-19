@@ -22,7 +22,7 @@ $loginInfo = '<h1>Teacher Proctoring</h1>
 function directToHomePage() {
     $user = $_SESSION['user'];
 
-    if ($user->getRole('TPOR') == 'ADM') {
+    if ($user->getRole('TPOR') != NULL) {
         header("Location: admin");
     } else {
         header("Location: user");

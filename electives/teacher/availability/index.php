@@ -22,9 +22,11 @@ $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
 $available_times = get_times($usr_id);
 
 switch ($action) {
-    case "back":
-        echo "back";
-        header("Location: ..");
+    case "update_times":
+        echo "update_times";
+        $free_mods = json_decode($_POST["id_field"], true);
+
+        echo $free_mods[0];
         break;
     default:
         include "view.php";
