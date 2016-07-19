@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script type="text/javascript">
-    function deleteMentor(mentorID) {
+    function deletePresentation(presID) {
         if (confirm('Are you sure you would like to delete the presentation?')) {
             window.parent.parent.location.href = 'view.php?action=delete_mentor&mentor_id=' + mentorID;
         }
@@ -9,74 +9,81 @@
 
 </script>
 <head>
-    <title>Admin: Mentor</title>
+    <title>Admin: Presentation</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
     <link href="../../admin/ss/main.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
 <header>
-    <h1 class="title">Mentors</h1>
+    <h1 class="title">Presentation</h1>
 </header>
-
+<div style="text-align:center;padding-bottom:2vh;">
+    <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_add_presentation"><button>Add Presentation</button></a>
+    <a href="../index.php"><button>Return Home</button></a>
+</div>
 <nav class="navbar">
     <a href="#">
-        <div class="session-filter name">Name</div>
+        <div class="session-filter organization">Workshop</div>
     </a>
     <a href="#">
-        <div class="session-filter company">Company</div>
+        <div class="session-filter organization">Presenters</div>
     </a>
     <a href="#">
-        <div class="session-filter position">Position</div>
-    </a>
-    <a href="#">
-        <div class="session-filter teacher">Teacher</div>
+        <div class="session-filter organization">Organization</div>
     </a>
     <a href="#>">
-        <div class="session-filter room">Room</div>
+        <div class="session-filter smallcol">Session</div>
+    </a>
+    <a href="#>">
+        <div class="session-filter smallcol">Room</div>
     </a>
     <a href="#">
-        <div class="session-filter capacity">Max</div>
+        <div class="session-filter smallcol">Seats</div>
+    </a>
+    <a href="#">
+        <div class="session-filter smallcol">Enrolled</div>
+    </a>
+    <a href="#">
+        <div class="session-filter smallcol"></div>
     </a>
 </nav>
 
 
 <div class="list-container">
 
-    <?php foreach ($mentorList as $mentor) :
-
-        $mentor_id = $mentor['mentor_id'];
-        $mentor_last_name = $mentor['mentor_last_name'];
-        $mentor_first_name = $mentor['mentor_first_name'];
-        $mentor_position = $mentor['mentor_position'];
-        $mentor_company = $mentor['mentor_company'];
-        $pres_room = $mentor['pres_room'];
-        $pres_host_teacher = $mentor['pres_host_teacher'];
-        $pres_max_capacity = $mentor['pres_max_capacity'];
+    <?php foreach ($presentationList as $presentation) {
+        $pres_id = $presentation['pres_id'];
+        $wkshp_id = $presentation['wkshp_id'];
+        $presenter_names = $presentation['presenter_names'];
+        $org_name = $presentation['org_name'];
+        $rm_id = $presentation['rm_id'];
+        $rm_nbr = $presentation['rm_nbr'];
+        $wkshp_nme = $presentation['wkshp_nme'];
+        $pres_max_seats = $presentation['pres_max_seats'];
+        $pres_enrolled_seats = $presentation['pres_enrolled_seats'];
+        $ses_id = $presentation['ses_id'];
 
         ?>
-        <a href="./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor">
-            <div class="mentor">
-                <div class="session-filter name"><?php echo($mentor_last_name . ', ' . $mentor_first_name); ?></div>
-                <div class="session-filter company"><?php echo $mentor_company; ?></div>
-                <div class="session-filter position"><?php echo $mentor_position; ?></div>
-                <div class="session-filter teacher"><?php echo $pres_host_teacher; ?></div>
-                <div class="session-filter room"><?php echo $pres_room; ?></div>
-                <div class="session-filter capacity"><?php echo $pres_max_capacity; ?></div> v
+            <div class="mentor row" id="workshop">
+                <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_modify_presentation">
+                <div class="session-filter organization"><?php echo($wkshp_nme); ?></div>
+                <div class="session-filter organization"><?php echo $presenter_names; ?></div>
+                <div class="session-filter organization"><?php echo $org_name; ?></div>
+                <div class="session-filter smallcol"><?php echo $ses_id; ?></div>
+                <div class="session-filter smallcol"><?php echo ($rm_nbr); ?></div>
+                <div class="session-filter smallcol"><?php echo $pres_max_seats; ?></div>
+                <div class="session-filter smallcol"><?php echo $pres_enrolled_seats; ?></div>
+                </a>
+                <img class="session-filter smallcol2" style="z-index:90"src="../../../shared/images/garbage_can.png" onclick="deletePresentation(<?php echo $pres_id; ?>);">
             </div>
-        </a>
 
-    <?php endforeach; ?>
+    <?php } ?>
 </div>
-
-
-<div class="fab">
-    <a id="fab-action" trigger="./index.php?mentor_id=<?php echo $mentor_id?>&action=show_add_mentor"><span class="plus">+</span></a>
-</div>
-
 
 <script type="text/javascript" src="../../admin/js/jquery.min.js"></script>
 <script type="text/javascript" src="../../admin/js/jquery.easing.min.js"></script>

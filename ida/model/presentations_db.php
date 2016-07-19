@@ -38,15 +38,14 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
                 and p.rm_id = r.rm_id
                 AND p.pres_enrolled_seats < p.pres_max_seats
 				and p.ses_id = :ses_id ';
-/*
-    if ($sort_by == 1) $query .= ('ORDER BY mentor_field');
-    else if ($sort_by == 2) $query .= ('ORDER BY mentor_position');
-    else if ($sort_by == 3) $query .= ('ORDER BY mentor_last_name');
-    else if ($sort_by == 4) $query .= ('ORDER BY mentor_company');
-    else if ($sort_by == 5) $query .= ('ORDER BY remaining');
-    else $query .= ('ORDER BY mentor_field');
+
+    if ($sort_by == 1) $query .= ('ORDER BY wkshp_nme');
+    else if ($sort_by == 2) $query .= ('ORDER BY presenter_names');
+    else if ($sort_by == 3) $query .= ('ORDER BY format_name');
+    else if ($sort_by == 4) $query .= ('ORDER BY remaining');
+    else $query .= ('ORDER BY wkshp_nme');
     if ($order_by == 2) $query.= (' DESC');
-*/
+
     global $db;
 
     try {

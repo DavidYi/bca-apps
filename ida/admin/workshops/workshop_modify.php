@@ -31,7 +31,7 @@
     </textarea>
     <label>Format</label>
     <select class="center" name="format_id">
-        <?php $formatList = get_format_list(); foreach ($formatList as $format) {?>
+        <?php foreach ($formatList as $format) {?>
             <option value=<?php echo($format['format_id']); ?>><?php echo($format['format_name']); ?></option>
         <?php } ?>
     </select>

@@ -29,7 +29,7 @@ switch ($action) {
         $wkshp_nme = '';
         $wkshp_desc = '';
         $format_id = '';
-
+        $formatList = get_format_list();
         include 'workshop_add.php';
         break;
 
@@ -50,13 +50,12 @@ switch ($action) {
         include('workshop_list.php');
         break;
 
-    case 'show_modify_workshop':
-
+    case 'show_modify_workshop';
         $workshop_id = filter_input(INPUT_GET, 'workshop_id');
 
         $workshop = get_workshop($workshop_id);
 
-
+        $formatList = get_format_list();
         $wkshp_nme = $workshop['wkshp_nme'];
         $wkshp_desc = $workshop['wkshp_desc'];
         $format_id = $workshop['format_id'];

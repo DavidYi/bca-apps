@@ -12,13 +12,14 @@
 
 <div class="vertical-center">
 
+
     <table class="table-fill">
         <thead id="days">
-            <th>M</th>
-            <th>T</th>
-            <th>W</th>
-            <th>R</th>
-            <th>F</th>
+        <th>M</th>
+        <th>T</th>
+        <th>W</th>
+        <th>R</th>
+        <th>F</th>
         </thead>
         <tbody class="table-hover">
         <?php
@@ -26,7 +27,11 @@
         $mods = array('1-3', '4-6', '7-9', '10-12', '13-15', '16-18', '19-21', '22-24');
         // each row
         for ($i = 0; $i < 8; $i++) {
-            echo "<tr id=$mods[$i]>";
+            if ($i % 2 == 1) {
+                echo "<tr class='even' id=$mods[$i]>";
+            } else {
+                echo "<tr class='odd' id=$mods[$i]>";
+            }
 
             // each column
             for ($j = 0; $j < 5; $j++) {
@@ -41,7 +46,7 @@
                     // if available, make data-chosen true
                     if (strcmp($time, $id) == 0) {
                         echo "<td class='availability' data-chosen='true' id='" . $id . "' 
-                        style='background:#F4ABF1'>" . $mods[$i] . "</td>";
+                    style='background:#F4ABF1'>" . $mods[$i] . "</td>";
                         $available = true;
                         break;
                     }
@@ -57,37 +62,49 @@
             }
             echo "</tr>";
         }
-
-
         ?>
         </tbody>
     </table>
+
+    <form action="index.php" method="post">
+        <input type="hidden" name="id_field" id="id_field" data-ids="">
+        <input type="hidden" name="action" value="update_times">
+        <div class="wrapper">
+            <button onclick="update_times();" id="update" value="update_times" class="s submit" type="submit">Submit</button>
+            <button onclick="location.href='../index.php'" class="s back" type="submit">Back</button>
+        </div>
+    </form>
+
+
     <!--        <a href="index.php?action=modify_times">Modify Availability</a>-->
 <!--    <a href="index.php?action=update_times">Modify Availability</a>-->
 
 </div>
-
-<div class="wrapper">
-    <button name="action" value="update_times" class="s submit" type="submit">Submit</button>
-    <button onclick="location.href='../index.php'" class="s back" type="submit">Back</button>
-</div>
-
 </body>
 
 <script>
-    $('.availability').click(function () {
+    $('.availability').click(function() {
         if ($(this).attr('data-chosen') == 'false'){
             $(this).css("background","#F4ABF1");
             $(this).attr("data-chosen", 'true');
         } else {
-            if ($(this).hasClass("even")) {
-                $(this).css("background","#D5DDE5");
+            if ($(this).parents('.even').length == 1) {
+                $(this).css("background","#d3d3d3");
             } else {
                 $(this).css("background","#EBEBEB");
             }
             $(this).attr("data-chosen", "false");
         }
     });
+
+    function update_times() {
+        var ids = $("td[data-chosen='true']").map(function(index) {
+            return this.id;
+        });
+        var json = JSON.stringify(ids);
+        $('#id_field').attr("value", json);
+
+    }
 </script>
 
 </html>
