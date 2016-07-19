@@ -15,9 +15,9 @@
             <th>Hours</th>
         </tr>
         <?php foreach ($teacher_status_list as $teacher) :
-            $teacher_last_name = $teacher['Last'];
-            $teacher_first_name = $teacher['First'];
-            $teacher_hours = $teacher['Hours'];
+            $teacher_last_name = $teacher['usrLast'];
+            $teacher_first_name = $teacher['usrFirst'];
+            $teacher_hours = $teacher['usrHours'];
 
         ?>
 
