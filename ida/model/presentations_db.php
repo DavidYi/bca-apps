@@ -29,15 +29,27 @@ function get_session_times_by_id($ses_id) {
 }
 
 function get_presentation_list($ses_id, $sort_by, $order_by) {
-    $query = 	'SELECT p.pres_id, p.ses_id, presenter_names, org_name, rm_nbr, format_name, f.format_id, wkshp_nme, wkshp_desc,
-					pres_max_seats, p.pres_enrolled_seats,  
-					pres_max_seats - p.pres_enrolled_seats as remaining
+    global $db;
+    global $user;
+
+    $rem = " pres_max_seats - p.pres_enrolled_seats as remaining, ";
+    $rem_crit = " AND p.pres_enrolled_seats < p.pres_max_seats ";
+
+    if ($user->usr_type_cde == 'TCH') {
+        $rem = " pres_max_teachers - p.pres_enrolled_teachers as remaining, ";
+        $rem_crit = " AND p.pres_enrolled_teachers < p.pres_max_teachers ";
+    }
+
+    $query = 	"SELECT p.pres_id, p.ses_id, presenter_names, org_name, format_name, f.format_id, wkshp_nme, wkshp_desc,
+					pres_max_seats, p.pres_enrolled_seats, "
+                . $rem .
+                " rm_nbr
                 FROM presentation p, workshop w, format f, room r
                 where p.wkshp_id = w.wkshp_id
                 and w.format_id = f.format_id
                 and p.rm_id = r.rm_id
-                AND p.pres_enrolled_seats < p.pres_max_seats
-				and p.ses_id = :ses_id ';
+				and p.ses_id = :ses_id "
+                . $rem_crit;
 
     if ($sort_by == 1) $query .= ('ORDER BY wkshp_nme');
     else if ($sort_by == 2) $query .= ('ORDER BY presenter_names');
@@ -45,8 +57,7 @@ function get_presentation_list($ses_id, $sort_by, $order_by) {
     else if ($sort_by == 4) $query .= ('ORDER BY remaining');
     else $query .= ('ORDER BY wkshp_nme');
     if ($order_by == 2) $query.= (' DESC');
-
-    global $db;
+    else $query.= (' ASC');
 
     try {
         $statement = $db->prepare($query);  

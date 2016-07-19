@@ -5,7 +5,7 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="/<?php echo $app_url_path ?>/ss/main.css" rel="stylesheet">
+    <link href="/<?php echo $app_url_path ?>/ss-delete/main.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
@@ -20,7 +20,7 @@
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>"><div class="session-filter tag">Title</div></a>
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=2&order=<?php if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>"><div class="session-filter presenter">Presenters</div></a>
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=3&order=<?php if ($sort_order == 1 && $sort_by == 3) { echo 2; } else { echo 1; } ?>"><div class="session-filter position">Format</div></a>
-        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=4&order=<?php if ($sort_order == 1 && $sort_by == 4) { echo 2; } else { echo 1; } ?>"><div class="session-filter remaining">Remaining</div></a>
+        <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=&order=<?php if ($sort_order == 1 && $sort_by == 4) { echo 2; } else { echo 1; } ?>"><div class="session-filter remaining">Remaining</div></a>
     </nav>
 
     <div class="enrollment">
