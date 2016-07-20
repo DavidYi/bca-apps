@@ -20,18 +20,16 @@ switch ($action) {
         $session2 = get_pres_list(2);
         include("./view.php");
         break;
-//    case 'modify_admin':
-//        $choice = filter_input(INPUT_POST, 'choice');
-//        if($choice == "Add Admin"){
-//            $usr_id = filter_input(INPUT_POST, 'user_drop');
-//            $usr_role_cde = filter_input(INPUT_POST, 'role_drop');
-//            add_admin($usr_id, $app_cde, $usr_role_cde);
-//        }
-//        $assigned_roles = get_assigned_roles();
-//        $users = get_users();
-//        $roles = get_roles();
-//        include("./view.php");
-//        break;
+    case 'update_sessions':
+        $choice = filter_input(INPUT_POST, 'choice');
+        if($choice == "Back"){
+            header("Location: ..");
+        }
+        $teachers = get_teachers();
+        $session1 = get_pres_list(1);
+        $session2 = get_pres_list(2);
+        include("./view.php");
+        break;
     default:
         display_error('Unknown account action: ' . $action);
         exit();
