@@ -10,9 +10,10 @@
     <h1>Proctoring Status</h1>
     <table id="ts">
         <tr>
-            <th>Last</th>
-            <th>First</th>
-            <th>Hours</th>
+
+            <th><a href="index.php?action=<?php echo $action ?>&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>">Last <?php if($sort_order == 1 && $sort_by == 1) { echo '&#9650;'; } else { echo '&#9660;';}?></a></th>
+            <th><a href="index.php?action=<?php echo $action ?>&sort=2&order=<?php if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>">First <?php if($sort_order == 1 && $sort_by == 2) { echo '&#9650;'; } else { echo '&#9660;';}?></a></th>
+            <th><a href="index.php?action=<?php echo $action ?>&sort=3&order=<?php if ($sort_order == 1 && $sort_by == 3) { echo 2; } else { echo 1; } ?>">Hours <?php if($sort_order == 1 && $sort_by == 3) { echo '&#9650;'; } else { echo '&#9660;';}?></a></th>
         </tr>
         <?php foreach ($teacher_status_list as $teacher) :
         $teacher_last_name = $teacher['usrLast'];

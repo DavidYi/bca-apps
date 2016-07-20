@@ -17,6 +17,9 @@ if ($action == NULL) {
     }
 }
 
+if(!isset($_SESSION['filter_past']))
+    $_SESSION['filter_past'] = false;
+
 switch ($action) {
 
     case 'list_admin_tests':
@@ -31,7 +34,13 @@ switch ($action) {
             $sort_order = 0;
         }
 
-        $testList = get_test_list($user->usr_id, $sort_by, $sort_order, 1, 1);
+        $filter_past = filter_input(INPUT_POST, 'past_button');
+        if (!empty($filter_past)) {
+            $_SESSION['filter_past'] = !$_SESSION['filter_past'];
+        }
+        $past_num = $_SESSION['filter_past'] ? 1 : 0;
+
+        $testList = get_test_list($user->usr_id, $sort_by, $sort_order, 1, $past_num);
 
         $teacher_data = array();
 

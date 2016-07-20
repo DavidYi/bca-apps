@@ -139,7 +139,8 @@
 
         <button type="submit" name="choice" value="Modify">Modify</button>
         &nbsp;  &nbsp;  &nbsp;  &nbsp;
-        <button type="submit" name="choice" value="Delete">Delete</button>
+        <button type="submit" name="choice" value="Delete"
+            onclick="return confirm('Are you sure you want to delete this test?')">Delete</button>
 
     </form>
 </div>

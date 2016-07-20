@@ -36,6 +36,8 @@ function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
     else if ($sort_by == 3) $query .= ('ORDER BY sort_order');
     else if ($sort_by == 4) $query .= ('ORDER BY test_dt');
     else if ($sort_by == 5) $query .= ('ORDER BY remaining');
+    else if ($sort_by == 6) $query .= ('ORDER BY proc_needed');
+    else if ($sort_by == 7) $query .= ('ORDER BY proc_enrolled');
     else $query .= ('ORDER BY test_dt, test_id, test_time_id');
     if ($order_by == 2) $query .= (' DESC');
 
@@ -225,6 +227,47 @@ function add_test($test_name, $test_date, $test_cde, $test_room, $test_procs) {
     }
 }
 
+function del_test($test_id) {
+
+    global $db;
+
+    try {
+        $db->beginTransaction();
+
+        $query = 'DELETE FROM test_updt_xref
+                    WHERE test_id = :test_id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $query2 = 'DELETE FROM test_time_xref
+                    WHERE test_id = :test_id';
+        $statement = $db->prepare($query2);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $query3 = 'DELETE FROM test
+                    WHERE test_id = :test_id';
+        $statement = $db->prepare($query3);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $db->commit();
+    } catch (PDOException $e) {
+        // roll back transaction
+        $db->rollback();
+
+        // log any errors to file
+        log_pdo_exception($e, $test_id, "Deleting Test:" . $test_id, "del_test");
+
+        display_error($e);
+        exit();
+    }
+}
+
 function change_test($test_id, $test_name, $test_cde, $test_room, $test_date, $proc_times) {
 
     global $db;
@@ -346,5 +389,51 @@ function change_user_tests($tests) {
         display_error($e);
         exit();
     }
+}
+
+function list_teacher_status($sort_by, $sort_order)
+{
+    global $db;
+
+    $query = "select u.usr_id, u.usr_last_name as usrLast, u.usr_first_name as usrFirst, sum(test_time_id) as usrHours
+              from test_updt_xref t, user u
+              where t.usr_id = u.usr_id
+              group by t.usr_id";
+
+    if($sort_by == 1) $query .= (' order by usrLast');
+    else if($sort_by == 2) $query .= (' order by usrFirst');
+    else if($sort_by == 3) $query .= (' order by usrHours');
+    else $query .= (' order by usrLast, usrFirst, usrHours');
+
+    if ($sort_order == 2) $query .= (' desc');
+
+    return get_list($query);
+}
+
+
+function list_teacher_selected_tests($usr_id)
+{
+    global $db;
+
+    //list all tests a teacher signed up for
+    $query = 'select t.test_name, t.test_dt
+              from test t, test_updt_xref tux, user u
+              where t.test_id = tux.test_id
+              and tux.usr_id = u.usr_id
+              and u.usr_id = :usr_id
+              order by test_dt';
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+    return get_list($query);
+
 }
 ?>
