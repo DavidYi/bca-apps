@@ -144,6 +144,23 @@ function modify_workshop($wkshp_nme, $wkshp_desc, $format_id, $workshop_id) {
         exit();
     }
 }
+function display_db_exception_v2 ($pdo_exception) {
+    global $debug_mode;
+    if (isset($_SESSION['user']))
+        $usr_id = $_SESSION['user']->usr_id;
+    else
+        $usr_id = "";
+
+    $stack = generateCallTrace();
+    if (strlen($stack) > 1000)
+        $stack = substr($stack,0,1000);
+
+    log_pdo_exception ($pdo_exception, $usr_id, $stack,'');
+
+    display_error('You have tried to delete a format which is being used by a workshop. Please remove the format from the workshops before deleting the format.');
+    exit();
+}
+
 function modify_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id) {
     global $db;
     $query = 'update presentation set
@@ -206,7 +223,7 @@ function modify_room($rm_id, $rm_nbr) {
 function modify_format($format_id, $format_name) {
     global $db;
     $query = 'update format set
-                 format_name = :format_name_nbr
+                 format_name = :format_name
                  where format_id = :format_id';
     try {
         $statement = $db->prepare($query);

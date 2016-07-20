@@ -25,7 +25,6 @@ switch ($action) {
             $end2 = filter_input(INPUT_POST, 'end2');
             update_session_times ($start1, $end1, $start2, $end2);
         }
-        exit();
         header("Location ..");
         break;
     default:
