@@ -36,12 +36,12 @@ switch ($action) {
     </header>
     <br>
     <div class="feature">
-        <a href="add"><h2>Add Test</h2></a>
-        <h4>Add in a test for teachers to proctor.</h4>
+        <a href="roles"><h2>Roles</h2></a>
+        <h4>Set user roles for proctoring.</h4>
     </div>
     <div class="feature">
-        <a href="modify_delete"><h2>Modify/Delete Test</h2></a>
-        <h4>Modify or delete an existing test.</h4>
+        <a href="status"><h2>Teacher Status</h2></a>
+        <h4>Check tests that an individual teacher signed up for.</h4>
     </div>
     <div class="feature">
         <a href="test_status"><h2>Test Status</h2></a>

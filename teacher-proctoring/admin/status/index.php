@@ -6,7 +6,7 @@ $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
     if ($action == NULL) {
-        $action = '';
+        $action = 'list_teacher_status';
     }
 }
 

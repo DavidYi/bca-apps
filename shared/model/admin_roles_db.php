@@ -26,7 +26,7 @@ and app_cde = :app_code';
 function get_users() {
     $query = 'select usr_last_name, usr_first_name, usr_id
 from user
-where usr_type_cde = \'TCH\'
+where usr_type_cde = \'TCH\' or usr_type_cde = \'ADM\'
 order by usr_last_name, usr_first_name';
 
     global $db;

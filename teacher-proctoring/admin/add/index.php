@@ -69,6 +69,7 @@ switch ($action) {
                 $date = explode("/", $date);
                 $datetime = $date[2].'-'.$date[0].'-'.$date[1];
                 add_test($test_name, $datetime, $test_cde, $room_id, $proc_times);
+                header("Location: ../test_status");
             }
         }
 
