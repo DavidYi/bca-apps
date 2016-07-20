@@ -10,21 +10,8 @@ if ($action == NULL) {
     }
 }
 
-
-//switch ($action) {
-//
-//    case 'list_teacher_status':
-//        $teacher_status_list = get_teacher_status();
-//
-//        break;
-//
-//    default:
-//        display_error('Unknown teacher action: ' . $action);
-//        break;
-//}
 $teacher_status_list = list_teacher_status();
+
 include ("view.php");
-
-
 
 ?>
