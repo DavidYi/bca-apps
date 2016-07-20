@@ -11,7 +11,7 @@ function get_workshop_list() {
               from workshop
 
 			  order by wkshp_id';
-
+//change
     return get_list($query);
 }
 function get_presentation_list() {
