@@ -11,7 +11,7 @@
     <h3>Course Interests</h3>
 </div>
 
-<form action="." method="POST">
+<form action="index.php" method="POST">
     <table class="table-fill">
         <thead>
         <tr>
@@ -32,10 +32,11 @@
             <td  class="text-left">
 
                 <label class="switch">
-                    <input type="checkbox" >
+                    <input type="checkbox" id="<?php $course['course_id'] ?>" name="checkbox[]" >
                     <div class="slider round"></div>
                 </label>
 
+                <!-- to find course id: $course['course_id']-->
 
 
             <script>
