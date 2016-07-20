@@ -104,7 +104,6 @@ function get_course_list_for_student ($usr_id) {
 
 function edit_course($course_id, $new_course_name, $new_course_desc) {
     global $db;
-
     echo $course_id;
     echo $new_course_desc;
     echo $new_course_name;

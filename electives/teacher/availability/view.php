@@ -11,8 +11,6 @@
 </div>
 
 <div class="vertical-center">
-
-
     <table class="table-fill">
         <thead id="days">
         <th>M</th>
@@ -23,9 +21,11 @@
         </thead>
         <tbody class="table-hover">
         <?php
-        $days = array('M', 'T', 'W', 'R', 'F');
         $mods = array('1-3', '4-6', '7-9', '10-12', '13-15', '16-18', '19-21', '22-24');
-        // each row
+        $time_ids = array(1, 10, 17, 25, 33, 2, 11, 18, 26, 34, 3, 41, 19, 27, 35, 4, 12, 20, 28, 36,
+                            5, 13, 21, 29, 37, 6, 14, 22, 30, 38, 7, 15, 23, 31, 39, 8, 16, 24, 32, 40);
+        // each row, 8 rows for 8 periods
+        $index = 0;
         for ($i = 0; $i < 8; $i++) {
             if ($i % 2 == 1) {
                 echo "<tr class='even' id=$mods[$i]>";
@@ -33,30 +33,28 @@
                 echo "<tr class='odd' id=$mods[$i]>";
             }
 
-            // each column
+            // each column, 5 columns for 5 days of the week
             for ($j = 0; $j < 5; $j++) {
                 $available = false;
-                $id = $days[$j] . ' ' . $mods[$i];
-
                 // check if the time is available
                 $time;
                 foreach ($available_times as $name) {
-                    $time = $name['time_short_desc'];
+                    $time = $name['time_id'];
 
                     // if available, make data-chosen true
-                    if (strcmp($time, $id) == 0) {
-                        echo "<td class='availability' data-chosen='true' id='" . $id . "' 
-                    style='background:#F4ABF1'>" . $mods[$i] . "</td>";
+                    if (strcmp($time_ids[$index], $time) == 0) {
+                        echo "<td class='availability' data-chosen='true' id='" . $time_ids[$index] . "' 
+                                style='background:#F4ABF1'>" . $mods[$i] . "</td>";
                         $available = true;
+                        $index++;
                         break;
                     }
                 }
 
                 // if not, make data-chosen false
                 if (!$available) {
-                    echo "<td class='availability' data-chosen='false' id='" . $id . "'>" . $mods[$i] . "</td>";
-                } else {
-                    unset($available_times[$time]);
+                    echo "<td class='availability' data-chosen='false' id='" . $time_ids[$index] . "'>" . $mods[$i] . "</td>";
+                    $index++;
                 }
                 $available = false;
             }
@@ -65,19 +63,15 @@
         ?>
         </tbody>
     </table>
-
-    <form action="index.php" method="post">
-        <input type="hidden" name="id_field" id="id_field" data-ids="">
-        <input type="hidden" name="action" value="update_times">
-        <div class="wrapper">
+    <div class="wrapper">
+        <form action="index.php" method="post">
+            <input type="hidden" name="id_field" id="id_field" data-ids="">
+            <input type="hidden" name="action" value="update_times">
             <button onclick="update_times();" id="update" value="update_times" class="s submit" type="submit">Submit</button>
-            <button onclick="location.href='../index.php'" class="s back" type="submit">Back</button>
-        </div>
-    </form>
+        </form>
 
-
-    <!--        <a href="index.php?action=modify_times">Modify Availability</a>-->
-<!--    <a href="index.php?action=update_times">Modify Availability</a>-->
+        <button onclick="location.href='../index.php'" class="s back" type="submit">Back</button>
+    </div>
 
 </div>
 </body>
