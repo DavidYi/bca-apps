@@ -64,7 +64,7 @@ switch ($action) {
         <h4>Assign teachers to sessions.</h4></div>
     <div class="feature">
         <a href="roles"><h2>Roles</h2></a>
-        <h4>Assign admin roles</h4></div>
+        <h4>Assign administrator roles.</h4></div>
     <div class="feature">
         <a href="mimic_user"><h2>Mimic User</h2></a>
         <h4>Log in as any user in the database and use the app as if you were them.</h4></div>
