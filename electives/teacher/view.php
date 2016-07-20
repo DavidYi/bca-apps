@@ -75,38 +75,54 @@
     </div>
     <div class="view-signup enrollment">
         
-        <div class="vertical-center">
-            <h3><b>Availability</b></h3>
-            <a href="availability/index.php"><h3>Modify Availability</h3></a>
+        <div class="vertical-center" style="padding-bottom:70px">
+            <h3><b>Availability</b> | <a href="availability/index.php?teacher=1">Modify Availability</a></h3>
+            <?php
+            if (empty($time_strings)) {
+                echo "<p>None</p>";
+            } else {
+                foreach ($time_strings as $string) {
+                    echo "<p>" . $string["day"] . ": " . $string["mods_available"];
+                }
+            }
+            ?>
         </div>
-        <br>
-        <br>
-        <br>
+
         <div class="vertical-center">
+            <h3><b>Courses</b> | <a href="teacher_add_course/index.php">Add Course</a></h3>
 
-
-            <h3><b>Courses</b> | <a href="teacher_add_course/index.php">Add Class</a></h3>
 
             <table style="width:75%">
-                <thead>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th></th>
-                    <th></th>
-                </thead>
+                <?php
+                if (empty($courses)) {
+                    echo "<p>None</p>";
+                } else {
+                    echo "
+                        <thead>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                    ";
+                }
+                ?>
+
                 <?php foreach ($courses as $course) :
                     $courseName = $course['course_name'];
                     $courseDesc = $course['course_desc'];
                     $courseID = $course['course_id'];
                     ?>
+                    
+                    <tr>
+                        <td><?php echo $courseName ?></td>
+                        <td><?php echo $courseDesc ?></td>
+                        <td><a href="edit_course/index.php?course_name=
+                        <?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>
+                            &course_id=<?php echo $courseID?>"><img src="../../shared/images/modifyIcon.gif"></a></td>
 
-
-                <tr>
-                    <td><?php echo $courseName ?></td>
-                    <td><?php echo $courseDesc ?></td>
-                    <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>"><img src="../../shared/images/modifyIcon.gif"></a></td>
-                    <td><img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);"> </td>
-                </tr>
+                        <td><img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);"> </td>
+                    </tr>
 
                 <?php endforeach; ?>
             </table>

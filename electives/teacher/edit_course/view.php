@@ -11,7 +11,7 @@
             <input type="hidden" name="course_id" value="<?php echo $course_id; ?>"
             <label class="spacing">
                 <span>Course Name</span>
-                <input type="text" name="new_course_name" value="<?php echo $course_name ?>">
+                <input type="text" name="new_course_name" value="<?php echo trim($course_name); ?>">
             </label>
 
             <label class="spacing">
