@@ -26,7 +26,7 @@ html, body {
     display: block;
     background-color: white;
     width: 1000px;
-    height: 4725px;
+    height: 4500px;
     position:absolute;
     left: 31%;
     margin: 10px 0 20px -235px;
@@ -41,13 +41,15 @@ html, body {
 }
 
 #s1_header{
-    text-align: left;
-    margin-left: 150px;
+    text-align: right;
+    margin-left: 50px;
+    width: 243px;
 }
 
 #s2_header {
-    text-align: left;
-    margin-left: 130px;
+    text-align: right;
+    margin-left: 30px;
+    width: 283px;
 }
 
 input {
@@ -64,11 +66,10 @@ span {
     display: inline-block;
     box-sizing: border-box;
     color: #5F5F5F;
-    width: 180px;
+    width: 200px;
     text-align: center;
-    vertical-align: top;
-    padding: 12px 25px;
-    margin-top: 2px;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .teacher_name {
