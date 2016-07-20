@@ -75,7 +75,7 @@
                 <div class="session-filter organization"><?php echo $presenter_names; ?></div>
                 <div class="session-filter organization"><?php echo $org_name; ?></div>
                 <div class="session-filter smallcol"><?php echo $ses_id; ?></div>
-                <div class="session-filter smallcol"><?php echo ($rm_nbr); ?></div>
+                <div class="session-filter smallcol"><?php if($rm_nbr == null) {echo("Null");} else {echo($rm_nbr);} ?></div>
                 <div class="session-filter smallcol"><?php echo $pres_max_seats; ?></div>
                 <div class="session-filter smallcol"><?php echo $pres_enrolled_seats; ?></div>
                 </a>

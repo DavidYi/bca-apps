@@ -48,6 +48,9 @@ switch ($action) {
         <a href="room"><h2>Rooms</h2></a>
         <h4>Manage rooms.</h4></div>
     <div class="feature">
+        <a href="format"><h2>Formats</h2></a>
+        <h4>Manage formats.</h4></div>
+    <div class="feature">
         <a href="session_times"><h2>Session Times</h2></a>
         <h4>Manage when each session will take place.</h4></div>
     <div class="feature">
