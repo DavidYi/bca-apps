@@ -29,16 +29,16 @@
         <?php if ($is_changing) {
             $presentation = get_sessions_by_user($user->usr_id)[$currentSession - 1];
             $id = $presentation['pres_id'] ?>
-            <a href="/<?php echo $app_url_path ?>/itinerary">
-
+            <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="/<?php echo $app_url_path ?>/itinerary"></a>
                 <div class="session session-selected">
                     <div class="tag"><?php echo $presentation['wkshp_nme']?></div>
                     <div class="presenter">
-                        <a class="info" style="float: left; position: relative;" onclick="popup('#B<?php echo $id?>, #P<?php echo $id?>');">
+                        <a class="info" style="float: left; position: relative; z-index: 9" onclick="popup('#B<?php echo $id?>, #P<?php echo $id?>')">
                             &#x271A;&#xa0;
                         </a>
                         <?php echo $presentation['presenter_names']?>
                     </div>
+
                     <div class="position"><?php echo $presentation['format_name']?></div>
                     <div class="remaining"><?php echo ($presentation['pres_max_seats'] - $presentation['pres_enrolled_seats'])?></div>
                 </div>
@@ -66,7 +66,6 @@ position: fixed;">
                         </div>
                     </div>
                 </div>
-            </a>
         <?php } ?>
     <?php foreach ($presentations as $presentation) {
         if ($id != $presentation['pres_id']) {?>
@@ -112,12 +111,7 @@ position: fixed;">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
-<script>
-    function register_for(pres_id) {
-        alert ("Hello");
-        $(location).attr('href', );
-    }
-</script>
+
 <script type="text/javascript">
     $('body').plusAnchor({
         easing: 'easeInOutExpo',
