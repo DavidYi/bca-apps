@@ -207,5 +207,63 @@ function delete_presentations($wkshp_id){
     $statement->execute();
     $statement->closeCursor();
 }
-?>
+
+function get_session_times($ses_id) {
+    $query = 'SELECT ses_start_time, ses_end_time
+              FROM session_times
+              WHERE ses_id = :ses_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':ses_id', $ses_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+//
+// This method provides no exception handling as the errors are handled in update_signup_dates.
+// Do not call this method directly.
+//
+function update_session_times_for_session ($ses_id, $start, $end)
+{
+    $query = 'update session_times      
+                set ses_start_time = :ses_start, ses_end_time = :ses_end
+                WHERE ses_id = :ses_id';
+
+    global $db;
+
+
+    $statement = $db->prepare($query);
+    $statement->bindValue(':ses_id', $ses_id);
+    $statement->bindValue(':ses_start', $start);
+    $statement->bindValue(':ses_end', $end);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+function update_session_times ($start1, $end1, $start2, $end2)
+{
+    global $db;
+    $db->beginTransaction();
+
+    try {
+        update_session_times_for_session(1, $start1, $end1);
+        update_session_times_for_session(2, $start2, $end2);
+        $db->commit();
+    }
+    catch (PDOException $e) {
+        $db->rollback();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}?>
 

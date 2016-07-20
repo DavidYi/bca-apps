@@ -8,12 +8,6 @@
 
 </head>
 <body>
-<?php
-    $grade9 = get_signup_dates_by_grade(9);
-    $grade10 = get_signup_dates_by_grade(10);
-    $grade11 = get_signup_dates_by_grade(11);
-    $grade12 = get_signup_dates_by_grade(12);
-?>
 <form action="index.php" method="post">
     <input type="hidden" name="action" value="modify_dates">
 
