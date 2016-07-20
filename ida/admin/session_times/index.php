@@ -1,5 +1,4 @@
 <?php
-
 require_once('../../util/main.php');
 require_once('../../model/workshop_admin_db.php');
 
@@ -10,9 +9,7 @@ if ($action == NULL) {
         $action = 'time_select';
     }
 }
-
 verify_admin();
-
 switch ($action) {
     case 'time_select':
         $session1 = get_session_times(1);
@@ -28,11 +25,11 @@ switch ($action) {
             $end2 = filter_input(INPUT_POST, 'end2');
             update_session_times ($start1, $end1, $start2, $end2);
         }
-        header("Location: ..");
+        exit();
+        header("Location ..");
         break;
     default:
         display_error('Unknown account action: ' . $action);
         exit();
         break;
-}
-?>
+}?>
