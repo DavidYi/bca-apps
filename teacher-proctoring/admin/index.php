@@ -47,7 +47,6 @@ switch ($action) {
         <a href="test_status"><h2>Test Status</h2></a>
         <h4>Check enrolled count and proctoring teachers in a test.</h4>
     </div>
-
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </main>
 </body>

@@ -1,5 +1,5 @@
 @import "grid/_grid-settings";
-@import "grid/neat";
+@import "grid/_neat";
 
 .row { @include row(); }
 

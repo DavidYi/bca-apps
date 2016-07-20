@@ -79,6 +79,53 @@ function get_selected_test_list($usr_id) {
     return get_list($query);
 }
 
+function get_selected_test($test_id) {
+    $query = 'SELECT test_time_xref.test_id, test_time_xref.test_time_id, test_time_desc,
+              test_name, test.test_type_cde, rm_id, test_dt, proc_needed, proc_enrolled,
+              proc_needed - proc_enrolled as remaining, sort_order
+              FROM test_time_xref
+                INNER JOIN test ON test_time_xref.test_id = test.test_id
+                INNER JOIN test_time ON test_time_xref.test_time_id = test_time.test_time_id
+                INNER JOIN test_type ON test.test_type_cde = test_type.test_type_cde
+              WHERE test_time_xref.test_id = :test_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+    return get_list($query);
+}
+
+function get_teachers_from_test($test_id, $test_time_id) {
+    $query = 'SELECT distinct usr_last_name, usr_first_name
+                FROM user, test_updt_xref
+                WHERE test_id = :test_id AND test_time_id = :test_time_id
+                  AND test_updt_xref.usr_id = user.usr_id
+                ORDER BY usr_last_name, usr_first_name';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->bindValue(':test_time_id', $test_time_id);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+}
+
 function get_count($usr_id){
     $query = 'SELECT count(distinct test.test_id, test_time_xref.test_time_id)
                 from test, test_type, test_time, test_updt_xref, test_time_xref
@@ -87,6 +134,7 @@ function get_count($usr_id){
                 and test.test_id = test_updt_xref.test_id
                 and test_time_xref.test_time_id = test_updt_xref.test_time_id
                 and test_time_xref.test_id = test_updt_xref.test_id';
+
     global $db;
 
     try {
@@ -177,6 +225,72 @@ function add_test($test_name, $test_date, $test_cde, $test_room, $test_procs) {
     }
 }
 
+function change_test($test_id, $test_name, $test_cde, $test_room, $test_date, $proc_times) {
+
+    global $db;
+
+    try {
+        $db->beginTransaction();
+        $query = 'UPDATE test
+                    SET test_name = :test_name, test_type_cde = :test_type_cde,
+                        rm_id = :rm_id, test_dt = :test_dt
+                    WHERE test_id = :test_id';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->bindValue(':test_type_cde', $test_cde);
+        $statement->bindValue(':rm_id', $test_room);
+        $statement->bindValue(':test_name', $test_name);
+        $statement->bindValue(':test_dt', $test_date);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $proc_index = 1;
+        foreach($proc_times as $proc_num) {
+            if ($proc_num > 0) {
+                $query2 = 'INSERT INTO test_time_xref (test_id, test_time_id, proc_needed, proc_enrolled)
+                              VALUES (:test_id, :test_time_id, :proc_needed, 0)
+                           ON DUPLICATE KEY UPDATE proc_needed = :proc_needed';
+                $statement = $db->prepare($query2);
+                $statement->bindValue(':test_id', $test_id);
+                $statement->bindValue(':test_time_id', $proc_index);
+                $statement->bindValue(':proc_needed', $proc_num);
+                $statement->execute();
+                $statement->closeCursor();
+            } else {
+                $query3 = 'DELETE FROM test_updt_xref
+                            WHERE test_id = :test_id
+                              AND test_time_id = :test_time_id';
+                $statement = $db->prepare($query3);
+                $statement->bindValue(':test_id', $test_id);
+                $statement->bindValue(':test_time_id', $proc_index);
+                $statement->execute();
+                $statement->closeCursor();
+
+                $query4 = 'DELETE FROM test_time_xref
+                            WHERE test_id = :test_id
+                              AND test_time_id = :test_time_id';
+                $statement = $db->prepare($query4);
+                $statement->bindValue(':test_id', $test_id);
+                $statement->bindValue(':test_time_id', $proc_index);
+                $statement->execute();
+                $statement->closeCursor();
+            }
+            $proc_index++;
+        }
+        $db->commit();
+    } catch (PDOException $e) {
+        // roll back transaction
+        $db->rollback();
+
+        // log any errors to file
+        log_pdo_exception($e, $test_id, "Changing Test:" . $test_id, "change_test");
+
+        display_error($e);
+        exit();
+    }
+}
+
 function del_user_tests($usr_id) {
     global $db;
 
@@ -232,19 +346,5 @@ function change_user_tests($tests) {
         display_error($e);
         exit();
     }
-}
-
-
-function list_teacher_status()
-{
-    global $db;
-
-    $query = "select u.usr_last_name as Last, u.usr_first_name as First, sum(test_time_id) as Hours
-              from test_updt_xref t, user u
-              where t.usr_id = u.usr_id
-              group by t.usr_id
-              order by Hours;";
-
-    return get_list($query);
 }
 ?>
