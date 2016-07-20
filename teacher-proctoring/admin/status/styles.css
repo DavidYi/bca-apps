@@ -6,7 +6,7 @@ body {
     background: #636161;
     font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-size: 14px;
-    align-content: center;
+
 }
 
 table {
@@ -17,8 +17,13 @@ table {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    vertical-align: center;
     box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+    top: 50%;
+    left: 50%;
+}
+
+#ts{
+    overflow-y: scroll;
 }
 
 td, th, tr {

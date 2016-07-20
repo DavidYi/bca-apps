@@ -7,7 +7,7 @@
 <body>
 
 <div id="content">
-
+    <h1>Proctoring Status</h1>
     <table id="ts">
         <tr>
             <th>Last</th>
