@@ -425,9 +425,22 @@ nav.navbar .remaining {
   text-align: center; }
 nav.navbar .remaining:last-child {
   margin-right: 0; }
-nav.navbar .tag, nav.navbar .company, nav.navbar .position, nav.navbar .presenter, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
+nav.navbar .proctorsleft {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 5%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: center; }
+nav.navbar .proctorsleft:last-child {
+    margin-right: 0; }
+nav.navbar .tag, nav.navbar .company, nav.navbar .position, nav.navbar .presenter, nav.navbar .remaining, nav.navbar .proctorsleft, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
   color: #aaa; }
-nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active,
+nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .proctorsleft:hover, nav.navbar .proctorsleft:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active,
 nav.navbar .mods:hover, nav.navbar .mods:active{
   color: #eee;
   text-decoration: underline; }
@@ -529,9 +542,22 @@ nav.navbar .mods:hover, nav.navbar .mods:active{
   margin: 0;
   padding: 0;
   font-size: 1.125em;
-  font-weight: 500;
+  font-weight: 400;
   text-align: center; }
 .enrollment .session .remaining:last-child {
+  margin-right: 0; }
+.enrollment .session .proctorsleft {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 15%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: right; }
+.enrollment .session .proctorsleft:last-child {
   margin-right: 0; }
 .enrollment .session .session-number {
   float: left;
