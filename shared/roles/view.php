@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="view.css" rel="stylesheet" type="text/css" />
-
+    <link href="/<?php echo $app_url_path ?>/../shared/roles/view.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <form action="index.php" method="post">
@@ -29,7 +28,7 @@
                 <label>
                     <span class="user_name"><?php echo $assigned_user['usr_last_name'] ?>, <?php echo $assigned_user['usr_first_name'] ?></span>
                     <span class="user_role"><?php echo $assigned_user['usr_role_desc'] ?></span>
-                    <span><a href="./index.php?action=delete_admin&usrID=<?php echo $assigned_user['usr_id'] ?>&roleID=<?php echo $assigned_user['usr_role_cde'] ?>"><img src="../../../shared/images/deleteIcon.gif" /></a></span>
+                    <span><a href="index.php?action=delete_admin&usrID=<?php echo $assigned_user['usr_id'] ?>&roleID=<?php echo $assigned_user['usr_role_cde'] ?>"><img src="../../../shared/images/deleteIcon.gif" /></a></span>
                 </label>
             </div>
 
@@ -48,8 +47,8 @@
                 <?php } ?>
             </select>
             <button class="submit s" type="submit" name="choice" value="Add Admin">Submit</button>
-            <button class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
         </div>
+        <button class="submit back" type="submit" name="choice" value="Back">Back</button>
 
 
 
