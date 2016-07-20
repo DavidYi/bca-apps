@@ -85,7 +85,7 @@ switch ($action) {
         $ses_id = filter_input(INPUT_POST, 'session');
 
         if(filter_input(INPUT_POST, 'choice') == "Modify") {
-            add_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id);
+            modify_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id);
         }
 
 
@@ -95,11 +95,11 @@ switch ($action) {
         break;
 
 
-    case 'delete_workshop':
-        $workshop_id = filter_input(INPUT_GET, 'workshop_id');
-        delete_workshop($workshop_id);
+    case 'delete_presentation':
+        $pres_id = filter_input(INPUT_GET, 'pres_id');
+        delete_presentation($pres_id);
 
-        $workshopList = get_workshop_list();
+        $presentationList = get_presentation_list();
         include('presentation_list.php');
         exit();
         break;

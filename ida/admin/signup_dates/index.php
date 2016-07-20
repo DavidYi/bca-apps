@@ -15,9 +15,13 @@ verify_admin();
 
 switch ($action) {
     case 'date_select':
+        $grade9 = get_signup_dates_by_grade(9);
+        $grade10 = get_signup_dates_by_grade(10);
+        $grade11 = get_signup_dates_by_grade(11);
+        $grade12 = get_signup_dates_by_grade(12);
         include("./view.php");
         break;
-    case 'modify_admin':
+    case 'modify_dates':
         $choice = filter_input(INPUT_POST, 'choice');
         if($choice == "Modify Dates"){
             $start9 = filter_input(INPUT_POST, 'start_9');

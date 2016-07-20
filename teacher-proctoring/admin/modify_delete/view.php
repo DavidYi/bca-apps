@@ -30,23 +30,11 @@
 
         <input type="hidden" name="action" value="modify_delete_test">
 
-        <select id="test_list" name="test_list">
-            <i class="dropdown icon"></i>
-            <option value="" disabled selected>Test List</option>
-            <?php $keyIndex = 0;
-            foreach($distinct_test_list as $test) { ?>
-                <?php $test_key = $test_keys[$keyIndex++];
-                $testval = $test_key . ":" .
-                    implode(",", $distinct_test_list[$test_key]['procs_needed']) ?>
-                <option value="<?php echo $testval?>">
-                    <?php echo $test['test_name']."/".$test['test_dt']."/".$test['test_type']."/".$test['rm_id']?>
-                </option>
-            <?php } ?>
-        </select>
+        <input type="hidden" name="test_id" value="<?php echo $test_id?>">
 
-        <input name="test_name" placeholder="Test Name">
+        <input name="test_name" placeholder="Test Name" value="<?php echo $test_name?>">
 
-        <input name="date" placeholder="Date" type="text" id="datepicker">
+        <input name="date" placeholder="Date" type="text" id="datepicker" value="<?php echo $test_date?>">
 
         <select name="test_cde" class="ui dropdown">
             <i class="dropdown icon"></i>
@@ -82,19 +70,22 @@
                 <th class="tg-031e">
                     <div class="ui labeled input">
                         <div class="ui label">01 - 03</div>
-                        <input name="one_three" type="text" class="modinput" value="0">
+                        <input name="one_three" type="text" class="modinput"
+                               value="<?php echo $procs_list[0]?>">
                     </div>
                 </th>
                 <th class="tg-yw4l">
                     <div class="ui labeled input">
                         <div class="ui label">04 - 06</div>
-                        <input name="four_six" type="text" class="modinput" value="0">
+                        <input name="four_six" type="text" class="modinput"
+                               value="<?php echo $procs_list[1]?>">
                     </div>
                 </th>
                 <th class="tg-yw4l">
                     <div class="ui labeled input">
                         <div class="ui label">07 - 09</div>
-                        <input name="seven_nine" type="text" class="modinput" value="0">
+                        <input name="seven_nine" type="text" class="modinput"
+                               value="<?php echo $procs_list[2]?>">
                     </div>
                 </th>
             </tr>
@@ -102,19 +93,22 @@
                 <td class="tg-031e">
                     <div class="ui labeled input">
                         <div class="ui label">10 - 12</div>
-                        <input name="ten_twelve" type="text" class="modinput" value="0">
+                        <input name="ten_twelve" type="text" class="modinput"
+                               value="<?php echo $procs_list[3]?>">
                     </div>
                 </td>
                 <td class="tg-yw4l">
                     <div class="ui labeled input">
                         <div class="ui label">13 - 15</div>
-                        <input name="thirteen_fifteen" type="text" class="modinput" value="0">
+                        <input name="thirteen_fifteen" type="text" class="modinput"
+                               value="<?php echo $procs_list[4]?>">
                     </div>
                 </td>
                 <td class="tg-yw4l">
                     <div class="ui labeled input">
                         <div class="ui label">16 - 18</div>
-                        <input name="sixteen_eighteen" type="text" class="modinput" value="0">
+                        <input name="sixteen_eighteen" type="text" class="modinput"
+                               value="<?php echo $procs_list[5]?>">
                     </div>
                 </td>
             </tr>
@@ -122,19 +116,22 @@
                 <td class="tg-yw4l">
                     <div class="ui labeled input">
                         <div class="ui label">19 - 21</div>
-                        <input name="nineteen_twentyone" type="text" class="modinput" value="0">
+                        <input name="nineteen_twentyone" type="text" class="modinput"
+                               value="<?php echo $procs_list[6]?>">
                     </div>
                 </td>
                 <td class="tg-yw4l">
                     <div class="ui labeled input">
                         <div class="ui label">22 - 24</div>
-                        <input name="twentytwo_twentyfour" type="text" class="modinput" value="0">
+                        <input name="twentytwo_twentyfour" type="text" class="modinput"
+                               value="<?php echo $procs_list[7]?>">
                     </div>
                 </td>
                 <td class="tg-yw4l">
                     <div class="ui labeled input">
                         <div class="ui label">25 - 27</div>
-                        <input name="twentyfive_twentyseven" type="text" class="modinput" value="0">
+                        <input name="twentyfive_twentyseven" type="text" class="modinput"
+                               value="<?php echo $procs_list[8]?>">
                     </div>
                 </td>
             </tr>
@@ -142,25 +139,10 @@
 
         <button type="submit" name="choice" value="Modify">Modify</button>
         &nbsp;  &nbsp;  &nbsp;  &nbsp;
-        <button type="submit" name="choice" value="Delete">Delete</button>
+        <button type="submit" name="choice" value="Delete"
+            onclick="return confirm('Are you sure you want to delete this test?')">Delete</button>
 
     </form>
 </div>
-<script>
-    $('#test_list').change(function() {
-        var test_value = $(this).val().split(":");
-        var test_proctors = test_value[1].split(",");
-        var test_data = $(this).find('option:selected').text().split("/");
-        var test_date = test_data[1].trim().split("-");
-        test_date = test_date[1] + "/" + test_date[2] + "/" + test_date[0];
-        $('input[name=test_name]').val(test_data[0].trim());
-        $('input[name=date]').val(test_date);
-        $('select[name=test_cde]').val(test_data[2]);
-        var proc_index = 0;
-        $(".modinput").each(function() {
-            $(this).val(test_proctors[proc_index++]);
-        });
-    });
-</script>
 </body>
 </html>
