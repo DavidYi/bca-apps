@@ -22,7 +22,7 @@ table {
     left: 50%;
 }
 
-#ts{
+#ts {
     overflow-y: scroll;
 }
 
@@ -34,8 +34,13 @@ td {
 
 }
 
-th {
+th a {
+    color: #000000;
+    text-decoration: none;
+}
 
+th a:visited {
+    color: #000000;
 }
 
 tr {
