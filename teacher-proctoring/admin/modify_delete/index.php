@@ -9,36 +9,34 @@ $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
 	$action = strtolower(filter_input(INPUT_GET, 'action'));
 	if ($action == NULL) {
-		$action = 'list_tests';
+		$action = 'list_test';
 	}
 }
 
 switch ($action) {
-	case 'list_tests':
-		$testList = get_test_list($user->usr_id, 0, 0, 0, 0);
-        $distinct_test_list = array();
-        foreach ($testList as $test) {
-            if (!array_key_exists($test['test_id'], $distinct_test_list)) {
-                $distinct_test_list[$test['test_id']] = array(
-                    'test_name' => $test['test_name'],
-                    'test_type' => $test['test_type_cde'],
-                    'test_dt' => $test['test_dt'],
-                    'rm_id' => $test['rm_id'],
-                    'procs_needed' => [0,0,0,0,0,0,0,0,0]
-                );
-            }
-            $distinct_test_list[$test['test_id']]['procs_needed'][$test['test_time_id'] - 1]
-                = $test['proc_needed'];
+	case 'list_test':
+        $test_id = filter_input(INPUT_GET, 'test_id');
+		$tests = get_selected_test($test_id);
+        $test_name = $tests[0]['test_name'];
+        $test_date_data = explode('-', $tests[0]['test_dt']);
+        $test_date = $test_date_data[1] . "/" . $test_date_data[2] . "/" . $test_date_data[0];
+        $test_cde = $tests[0]['test_type_cde'];
+        $test_room = $tests[0]['rm_id'];
+        $procs_list = [0,0,0,0,0,0,0,0,0];
+        foreach ($tests as $test) {
+            $procs_list[$test['sort_order'] - 1] = $test['proc_needed'];
         }
-        $test_keys = array_keys($distinct_test_list);
 		break;
 	
-	case 'add_test':
+	case 'modify_delete_test':
 		$error_msg = '';
 
         $choice = filter_input(INPUT_POST, 'choice');
+        $test_id = filter_input(INPUT_POST, 'test_id');
         $test_name = filter_input(INPUT_POST, 'test_name');
         $date = filter_input(INPUT_POST, 'date');
+        $test_cde = filter_input(INPUT_POST, 'test_cde');
+        $room_id = filter_input(INPUT_POST, 'room_id');
         
         $one_three = intval(filter_input(INPUT_POST, 'one_three'));
         $four_six = intval(filter_input(INPUT_POST, 'four_six'));
@@ -49,14 +47,12 @@ switch ($action) {
         $nineteen_twentyone = intval(filter_input(INPUT_POST, 'nineteen_twentyone'));
         $twentytwo_twentyfour = intval(filter_input(INPUT_POST, 'twentytwo_twentyfour'));
         $twentyfive_twentyseven = intval(filter_input(INPUT_POST, 'twentyfive_twentyseven'));
-        $test_cde = filter_input(INPUT_POST, 'test_cde');
-        $room_id = filter_input(INPUT_POST, 'room_id');
 
         $proc_times = [$one_three, $four_six, $seven_nine, $ten_twelve,
             $thirteen_fifteen, $sixteen_eighteen, $nineteen_twentyone,
             $twentytwo_twentyfour, $twentyfive_twentyseven];
 
-        if ($choice == 'Add') {
+        if ($choice == 'Modify') {
             $missing_proctors = true;
             if (empty($test_name)) $error_msg .= "Test Name is required.<BR>";
             if (empty($date)) $error_msg .= "Date is required.<BR>";
@@ -80,10 +76,12 @@ switch ($action) {
             
             if ($error_msg != "") {
                 echo $error_msg;
+                
             } else {
                 $date = explode("/", $date);
                 $datetime = $date[2].'-'.$date[0].'-'.$date[1];
-                add_test($test_name, $datetime, $test_cde, $room_id, $proc_times);
+                change_test($test_id, $test_name, $test_cde, $room_id, $datetime, $proc_times);
+                header("Location: ../test_status");
             }
         }
 
