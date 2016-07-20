@@ -29,7 +29,7 @@
         <?php if ($is_changing) {
             $presentation = get_sessions_by_user($user->usr_id)[$currentSession - 1];
             $id = $presentation['pres_id'] ?>
-            <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="/<?php echo $app_url_path ?>/itinerary"></a>
+            <a class="default-link" style="position: absolute; width: 90%; height: 10%; z-index: 1;" href="/<?php echo $app_url_path ?>/itinerary"></a>
                 <div class="session session-selected">
                     <div class="tag"><?php echo $presentation['wkshp_nme']?></div>
                     <div class="presenter">
