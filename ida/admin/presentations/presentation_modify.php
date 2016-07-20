@@ -62,7 +62,7 @@
                placeholder="Seats" required><BR>
 
         <div class="button-container">
-            <button class="add" name="choice" type="submit" value="Add">Add Presentation</button>
+            <button class="add" name="choice" type="submit" value="Modify">Modify Presentation</button>
             <button class="add" name="choice" type="submit" value="Back">Go Back</button>
         </div>
     </form>

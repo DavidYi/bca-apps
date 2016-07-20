@@ -3,7 +3,7 @@
 <script type="text/javascript">
     function deletePresentation(presID) {
         if (confirm('Are you sure you would like to delete the presentation?')) {
-            window.parent.parent.location.href = 'view.php?action=delete_mentor&mentor_id=' + mentorID;
+            window.parent.parent.location.href = 'index.php?action=delete_presentation&pres_id=' + presID;
         }
     }
 

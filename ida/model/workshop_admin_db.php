@@ -63,7 +63,24 @@ function add_workshop($wkshp_nme, $wkshp_desc, $format_id) {
         exit();
     }
 }
+function add_room($rm_nbr) {
+    global $db;
+    $query = 'INSERT INTO room
+                 (rm_nbr)
+              VALUES
+                 (:rm_nbr)';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':rm_nbr', $rm_nbr);
 
+
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
 function add_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id) {
     global $db;
     $query = 'INSERT INTO presentation
@@ -109,7 +126,48 @@ function modify_workshop($wkshp_nme, $wkshp_desc, $format_id, $workshop_id) {
         exit();
     }
 }
+function modify_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id) {
+    global $db;
+    $query = 'update presentation set
+                 presenter_names = :presenter_names, org_name = :org_name,
+                 rm_id = :rm_id, pres_max_seats = :pres_max_seats,
+                 wkshp_id = :wkshp_id, ses_id = :ses_id
+                 where wkshp_id = :wkshp_id';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':presenter_names', $presenter_names);
+        $statement->bindValue(':org_name', $org_name);
+        $statement->bindValue(':rm_id', $rm_id);
+        $statement->bindValue(':pres_max_seats', $pres_max_seats);
+        $statement->bindValue(':wkshp_id', $wkshp_id);
+        $statement->bindValue(':ses_id', $ses_id);
 
+        $statement->execute();
+        $statement->closeCursor();
+
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+function modify_room($rm_id, $rm_nbr) {
+    global $db;
+    $query = 'update room set
+                 rm_nbr = :rm_nbr
+                 where rm_id = :rm_id';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':rm_id', $rm_id);
+        $statement->bindValue(':rm_nbr', $rm_nbr);
+
+        $statement->execute();
+        $statement->closeCursor();
+
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
 function get_workshop($wkshp_id) {
     global $db;
     $query = 'select * from workshop where wkshp_id = :wkshp_id';
@@ -126,7 +184,22 @@ function get_workshop($wkshp_id) {
         exit();
     }
 }
+function get_room($rm_id) {
+    global $db;
+    $query = 'select * from room where rm_id = :rm_id';
 
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':rm_id', $rm_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
 function get_presentation($pres_id) {
     global $db;
     $query = 'select * from presentation where pres_id = :pres_id';
@@ -182,6 +255,47 @@ function delete_workshop($wkshp_id){
         exit();
     }
 }
+function delete_presentation($pres_id){
+    global $db;
+    $query = 'delete from presentation
+              where pres_id = :pres_id';
+    try {
+        $db->beginTransaction();
+        delete_users_from_presentations_pres($pres_id);
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':pres_id', $pres_id);
+
+        $statement->execute();
+        $statement->closeCursor();
+        $db->commit();
+    } catch (PDOException $e) {
+        $db->rollBack();
+        display_db_exception($e);
+        exit();
+    }
+}
+function delete_room($rm_id){
+    global $db;
+    $query = 'delete from room
+              where rm_id = :rm_id';
+    try {
+        $db->beginTransaction();
+        delete_users_from_presentations_rooms($rm_id);
+        delete_rooms_presentations($rm_id);
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':rm_id', $rm_id);
+
+        $statement->execute();
+        $statement->closeCursor();
+        $db->commit();
+    } catch (PDOException $e) {
+        $db->rollBack();
+        display_db_exception($e);
+        exit();
+    }
+}
 
 function delete_users_from_presentations($wkshp_id){
     global $db;
@@ -190,6 +304,28 @@ function delete_users_from_presentations($wkshp_id){
 
     $statement = $db->prepare($query);
     $statement->bindValue(':wkshp_id', $wkshp_id);
+
+    $statement->execute();
+    $statement->closeCursor();
+}
+function delete_users_from_presentations_pres($pres_id){
+    global $db;
+    $query = 'delete from pres_user_xref
+              where pres_id in (select pres_id from presentation where pres_id = :pres_id)';
+
+    $statement = $db->prepare($query);
+    $statement->bindValue(':pres_id', $pres_id);
+
+    $statement->execute();
+    $statement->closeCursor();
+}
+function delete_users_from_presentations_rooms($room_id){
+    global $db;
+    $query = 'delete from pres_user_xref
+              where pres_id in (select pres_id from presentation where rm_id = :rm_id)';
+
+    $statement = $db->prepare($query);
+    $statement->bindValue(':rm_id', $room_id);
 
     $statement->execute();
     $statement->closeCursor();
@@ -207,7 +343,17 @@ function delete_presentations($wkshp_id){
     $statement->execute();
     $statement->closeCursor();
 }
+function delete_rooms_presentations($rm_id){
+    global $db;
+    $query = 'delete from presentation
+              where rm_id = :rm_id';
 
+    $statement = $db->prepare($query);
+    $statement->bindValue(':rm_id', $rm_id);
+
+    $statement->execute();
+    $statement->closeCursor();
+}
 function get_session_times($ses_id) {
     $query = 'SELECT ses_start_time, ses_end_time
               FROM session_times
