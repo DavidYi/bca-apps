@@ -21,6 +21,9 @@ switch ($action) {
         break;
     case 'modify_admin':
         $choice = filter_input(INPUT_POST, 'choice');
+        if($choice == "Back"){
+            header("Location: ..");
+        }
         if($choice == "Add Admin"){
             $usr_id = filter_input(INPUT_POST, 'user_drop');
             $usr_role_cde = filter_input(INPUT_POST, 'role_drop');

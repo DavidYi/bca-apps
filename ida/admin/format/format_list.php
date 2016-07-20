@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <script type="text/javascript">
-    function deleteRoom(roomID) {
-        if (confirm('Are you sure you would like to delete this room?')) {
-            window.parent.parent.location.href = 'index.php?action=delete_room&room_id=' + roomID;
+    function deleteFormat(formatID) {
+        if (confirm('Are you sure you would like to delete this format?')) {
+            window.parent.parent.location.href = 'index.php?action=delete_format&format_id=' + formatID;
         }
     }
 
 </script>
 <head>
-    <title>Admin: Room</title>
+    <title>Admin: Format</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -20,16 +20,16 @@
 
 <body>
 <header>
-    <h1 style="margin:0;"class="title">Rooms</h1>
+    <h1 style="margin:0;"class="title">Formats</h1>
 </header>
 <div style="text-align:center;padding-bottom:2vh;">
-    <a href="./index.php?room_id=<?php echo $room_id ?>&action=show_add_room"><button>Add Room</button></a>
+    <a href="./index.php?format_id=<?php echo $format_id ?>&action=show_add_format"><button>Add Format</button></a>
     <a href="../index.php"><button>Return Home</button></a>
 </div>
 <nav  style="width:40%" class="navbar">
     <div id="navinside">
         <a href="#">
-            <div id="namenav"class="session-filter name">Room</div>
+            <div id="namenav"class="session-filter name">Format</div>
         </a>
         <a href="#">
             <div style="float:right;" id="namenav"class="session-filter capacity">Delete</div>
@@ -40,19 +40,19 @@
 
 <div style="width:40%;" class="list-container">
 
-    <?php foreach ($roomList as $room) {
-        $room_id = $room['rm_id'];
-        $room_nbr = $room['rm_nbr'];
+    <?php foreach ($formatList as $format) {
+        $format_id = $format['format_id'];
+        $format_name = $format['format_name'];
 
     ?>
 
         <div class="mentor row" id="workshop">
-            <a href="./index.php?room_id=<?php echo $room_id ?>&action=show_modify_room">
-            <div class="session-filter name"><?php echo($room_nbr); ?></div>
+            <a href="./index.php?format_id=<?php echo $format_id ?>&action=show_modify_format">
+            <div class="session-filter"><?php echo($format_name); ?></div>
             </a>
             <div style="float:right;">
                 <div class="session-filter capacity">
-                    <img style="z-index:90;height:2.5vh;"src="../../../shared/images/garbage_can.png" onclick="deleteRoom(<?php echo $room_id; ?>);">
+                    <img style="z-index:90;height:2.5vh;"src="../../../shared/images/garbage_can.png" onclick="deleteFormat(<?php echo $format_id; ?>);">
                 </div>
             </div>
         </div>

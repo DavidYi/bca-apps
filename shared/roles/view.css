@@ -77,7 +77,8 @@ span {
 }
 
 #add {
-
+    position: absolute;
+    bottom: 70px;
     margin-top: 100px;
 }
 
@@ -110,4 +111,12 @@ span {
     margin-left: 60px;
     background-color: #6caee0;
     margin-top: 0px;
+}
+
+.back {
+    padding: 14px 22px;
+    margin-top: 10px;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
 }
