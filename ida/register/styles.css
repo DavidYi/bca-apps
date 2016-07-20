@@ -304,3 +304,11 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
 .session-selected a {
     color: inherit;
 }
+/*.presenter a {
+    width: 10px;
+    height: 10px;
+    background-color: #0ea432;
+}*/
+.presenter .info:hover {
+    cursor: hand;
+}

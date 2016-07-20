@@ -34,7 +34,7 @@
                 <div class="session session-selected">
                     <div class="tag"><?php echo $presentation['wkshp_nme']?></div>
                     <div class="presenter">
-                        <a class="info" style="float: left; position: relative;" onclick="popup('#B<?php echo $id?>, #P<?php echo $id?>'); return false;">
+                        <a class="info" style="float: left; position: relative;" onclick="popup('#B<?php echo $id?>, #P<?php echo $id?>');">
                             &#x271A;&#xa0;
                         </a>
                         <?php echo $presentation['presenter_names']?>
