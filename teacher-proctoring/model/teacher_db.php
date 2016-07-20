@@ -347,4 +347,50 @@ function change_user_tests($tests) {
         exit();
     }
 }
+
+function list_teacher_status($sort_by, $sort_order)
+{
+    global $db;
+
+    $query = "select u.usr_id, u.usr_last_name as usrLast, u.usr_first_name as usrFirst, sum(test_time_id) as usrHours
+              from test_updt_xref t, user u
+              where t.usr_id = u.usr_id
+              group by t.usr_id";
+
+    if($sort_by == 1) $query .= (' order by usrLast');
+    else if($sort_by == 2) $query .= (' order by usrFirst');
+    else if($sort_by == 3) $query .= (' order by usrHours');
+    else $query .= (' order by usrLast, usrFirst, usrHours');
+
+    if ($sort_order == 2) $query .= (' desc');
+
+    return get_list($query);
+}
+
+
+function list_teacher_selected_tests($usr_id)
+{
+    global $db;
+
+    //list all tests a teacher signed up for
+    $query = 'select t.test_name, t.test_dt
+              from test t, test_updt_xref tux, user u
+              where t.test_id = tux.test_id
+              and tux.usr_id = u.usr_id
+              and u.usr_id = :usr_id
+              order by test_dt';
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+    return get_list($query);
+
+}
 ?>
