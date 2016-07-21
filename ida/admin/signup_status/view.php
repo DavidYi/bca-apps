@@ -60,7 +60,7 @@
     </nav>
     <div class = "enrollment">
         <?php foreach ($enroll_list as $year) :
-            $grade = $year['usr_grade_lvl'];
+            $grade = $year['grade_lvl'];
             $full = $year['Complete'];
             $partial = $year['Partial'];
             $none = $year['None'];
@@ -75,7 +75,7 @@
                 </div>
 
                 <a href="#" class="full" onclick= "post('index.php', {action: 'all_download', grade: <?php echo $grade ?> }, 'post')" style="font-weight: 400;">
-                    <?php echo $full; ?> 
+                    <?php echo $full; ?>
                 </a>
 
                 <a href="#" class="partial" onclick="post('index.php', {action: 'partial_download', grade: <?php echo $grade ?>}, 'post')">
@@ -108,13 +108,10 @@
         <br>
         <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">List of "Not Enrolled" Students and Teachers</a>
         <br><br>
-        <a href = "../">Admin Index</a>
-    </div>
 
-    <div id = "logout">
-        <a href = "../index.php">Admin Menu</a> &nbsp &nbsp &nbsp
+        <a href = "../index.php">Admin Menu</a><br>
         <a href = "../../index.php?action=logout">Log Out</a>
     </div>
-    </section>
+</section>
 </body>
 </html>
