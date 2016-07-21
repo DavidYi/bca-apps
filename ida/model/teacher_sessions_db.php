@@ -56,6 +56,39 @@ order by wkshp_nme, rm_nbr';
 
 }
 
+function update_teacher_sessions($presId, $usrId, $sesId, $currentUserId){
+    $query = 'call insert_update_delete_user_pres(:presId, :usrId, :sesId, :currentUserId);';
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":usrId", $usrId, PDO::PARAM_INT);
+        $statement->bindValue(":presId", $presId, PDO::PARAM_INT || PDO::PARAM_NULL);
+        $statement->bindValue(":sesId", $sesId, PDO::PARAM_INT);
+        $statement->bindValue(":currentUserId", $currentUserId, PDO::PARAM_INT);
+
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function update_all_teacher_sessions($teachers, $session1, $session2){
+    global $user;
+    $i = 0;
+    $presId1 = $session1[$i] == "null" ? null : $session1[$i];
+    $presId2 = $session2[$i] == "null" ? null : $session2[$i];
+    $usrId = $teachers[$i];
+    $currentUserId = $user->usr_id;
+    echo $presId1."<br>".$presId2."<br>".$usrId."<br>".$currentUserId;
+    exit();
+        update_teacher_sessions($presId1, $usrId, 1, $currentUserId);
+        update_teacher_sessions($presId2, $usrId, 2, $currentUserId);
+
+}
+
 
 
 ?>

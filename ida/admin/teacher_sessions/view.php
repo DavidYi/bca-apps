@@ -26,25 +26,28 @@
         </div>
 
         <?php foreach($teachers as $teacher) { ?>
+            <?php $i = 0; ?>
 
             <div class="row">
                 <label>
                     <span class="teacher_name"><?php echo $teacher['usr_name'] ?></span>
                 </label>
-                <input type="hidden" name="hdUserID" value="<?php echo $teacher['usr_id'] ?>">
-                <select name="session1" class="s1_select">
-                    <option value=""></option>
+                <input type="hidden" name="hdUserID[<?php echo $i ?>]" value="<?php echo $teacher['usr_id'] ?>">
+                <select name="session1[<?php echo $i ?>]" class="s1_select">
+                    <option value="null"></option>
                     <?php foreach($session1 as $pres) { ?>
                         <option value="<?php echo $pres['pres_id'] ?>" <?php if($teacher['pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?> (<?php echo $pres['rm_nbr'] ?>)</option>
                     <?php } ?>
                 </select>
-                <select name="session2" class="s2_select">
-                    <option value=""></option>
+                <select name="session2[<?php echo $i ?>]" class="s2_select">
+                    <option value="null"></option>
                     <?php foreach($session2 as $pres) { ?>
                         <option value="<?php echo $pres['pres_id'] ?>" <?php if($teacher['pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?> (<?php echo $pres['rm_nbr'] ?>)</option>
                     <?php } ?>
                 </select>
             </div>
+
+            <?php $i++; ?>
 
         <?php } ?>
 
