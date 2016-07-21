@@ -22,7 +22,6 @@
 <body>
 <div id="mentor_add">
 
-    <?php echo $error_msg ?>
     <BR>
 
 

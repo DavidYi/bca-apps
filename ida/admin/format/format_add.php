@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add Room</title>
+    <title>Add Format</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -16,7 +16,7 @@
 
 </head>
 <header>
-    <h1 class="title">Admin: Room</h1>
+    <h1 class="title">Admin: Format</h1>
 </header>
 
 <body>
@@ -27,13 +27,13 @@
     
 
     <form action="." method="post">
-        <input type="hidden" name="action" value="add_room">
+        <input type="hidden" name="action" value="add_format">
 
-        <label>Room</label>
-        <input type="text" placeholder="Room" name="room_nbr" autofocus required>
+        <label>Format Name</label>
+        <input type="text" placeholder="Name" name="format_name" autofocus required>
 
         <div class="button-container">
-            <button class="add" name="choice" type="submit" value="Add">Add Room</button>
+            <button class="add" name="choice" type="submit" value="Add">Add Format</button>
             <button class="add" name="choice" type="submit" value="Back">Go Back</button>
         </div>
     </form>

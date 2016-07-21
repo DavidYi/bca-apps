@@ -62,7 +62,7 @@ switch ($action) {
         $format_id = filter_input(INPUT_POST, 'format_id');
         
         if(filter_input(INPUT_POST, 'choice') == "Modify") {
-            modify_room($format_id, $format_name);
+            modify_format($format_id, $format_name);
         }
 
 

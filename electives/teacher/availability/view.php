@@ -64,13 +64,20 @@
         </tbody>
     </table>
     <div class="wrapper">
-        <form action="index.php" method="post">
+        <form action="index.php?teacher=<?php echo $teacher_or_student ?>" method="post">
             <input type="hidden" name="id_field" id="id_field" data-ids="">
             <input type="hidden" name="action" value="update_times">
             <button onclick="update_times();" id="update" value="update_times" class="s submit" type="submit">Submit</button>
         </form>
 
-        <button onclick="location.href='../index.php'" class="s back" type="submit">Back</button>
+        <?php
+        if ($teacher_or_student) {
+            echo "<button onclick=" . "\"location.href = '../index.php'\"" . "class='s back' type='submit'>Back</button>";
+        } else {
+            echo "<button onclick=" . "\"location.href = '../../Student/index.php'\"" . "class='s back' type='submit'>Back</button>";
+        }
+        ?>
+
     </div>
 
 </div>
