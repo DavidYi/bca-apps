@@ -11,7 +11,9 @@
     <input type="hidden" name="action" value="update_sessions">
 
     <div id="box">
+        <button class="submit s" type="submit" name="choice" value="Update Teachers">Update</button>
         <p class="title">Teacher Sessions</p>
+        <button class="submit back" type="submit" name="choice" value="Back">Back</button>
 
         <div id="header_row">
             <label>
@@ -51,8 +53,8 @@
         <?php } ?>
 
         <div id="buttons">
-            <button class="submit s" type="submit" name="choice" value="Update Teachers">Update</button>
-            <button class="submit back" type="submit" name="choice" value="Back">Back</button>
+
+
         </div>
 
 
