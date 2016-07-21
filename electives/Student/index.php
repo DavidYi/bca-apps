@@ -24,6 +24,11 @@ switch ($action) {
     case 'list_options':
         include('./view.php');
         break;
+    case 'delete_course':
+        $course_id = $_GET["course_id"];
+        student_delete_course($usr_id, $course_id);
+        include('./view.php');
+        break;
     case 'modify_courses':
         header('Location: ./courses/index.php');
         exit();

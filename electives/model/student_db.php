@@ -44,3 +44,21 @@ function student_add_course($usr_id, $course_id) {
         exit();
     }
 }
+
+function student_delete_course($usr_id, $course_id) {
+    global $db;
+    $query = "delete from elect_student_course_xref
+              where usr_id = :usr_id
+              and course_id = :course_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':course_id', $course_id);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}

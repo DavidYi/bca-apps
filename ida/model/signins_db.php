@@ -84,11 +84,11 @@ function get_rooms(){
 
 
 function get_session_by_room($rm_id, $ses_id){
-    $query = 'select p.ses_id, p.org_name, p.presenter_names, s.ses_start_time, w.wkshp_nme
+    $query = 'select p.ses_id, org_name, presenter_names, ses_start_time, wkshp_nme
                 from presentation p, session_times s, workshop w
                 where p.ses_id = s.ses_id
-                and rm_id  = :rm_id
                 and p.wkshp_id = w.wkshp_id
+                and rm_id  = :rm_id
                 and p.ses_id = :ses_id';
 
     global $db;
@@ -97,7 +97,7 @@ function get_session_by_room($rm_id, $ses_id){
         $statement->bindValue(':rm_id', $rm_id);
         $statement->bindValue(':ses_id', $ses_id);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetch();
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
