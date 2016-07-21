@@ -14,7 +14,7 @@ function get_registered_users(){
     from (
     SELECT grade_lvl, user.usr_id, count(*) as num_sessions
     from signup_dates
-    inner join user on user.usr_class_year = signup_dates.class_year
+    inner join user on user.usr_grade_lvl = signup_dates.grade_lvl
     inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
     where usr_active = 1
     and usr_type_cde = \'STD\'
@@ -36,7 +36,7 @@ function get_registered_users(){
     from (
     SELECT grade_lvl, user.usr_id, count(*) as num_sessions
     from signup_dates
-    inner join user on user.usr_class_year = signup_dates.class_year
+    inner join user on user.usr_grade_lvl = signup_dates.grade_lvl
     inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
     where usr_active = 1
     and usr_type_cde = \'STD\'
@@ -61,7 +61,7 @@ function get_registered_users(){
     union
     SELECT grade_lvl, count(*) as num
     from user
-    inner join signup_dates on signup_dates.class_year= user.usr_class_year
+    inner join signup_dates on signup_dates.grade_lvl= user.usr_grade_lvl
     left join pres_user_xref on pres_user_xref.usr_id= user.usr_id
     where pres_user_xref.usr_id is null
     and usr_type_cde = \'STD\'
@@ -80,7 +80,7 @@ function undo_enroll($year) {
     where usr_id in (
       SELECT usr_id
       FROM user
-        INNER JOIN signup_dates ON user.usr_class_year = signup_dates.class_year
+        INNER JOIN signup_dates ON user.usr_grade_lvl = signup_dates.grade_lvl
       WHERE grade_lvl = :year
     )
     AND pres_user_updt_usr_id = -1";
@@ -96,6 +96,18 @@ function undo_enroll($year) {
         display_db_exception($e);
         exit();
     }
+}
+function all_registrants_download() {
+    $query =
+        ' select usr_last_name, usr_first_name, usr_grade_lvl, ses_id, rm_nbr, w.wkshp_nme, org_name, presenter_names, p.pres_id, u.usr_id
+            from user u, pres_user_xref x, presentation p, room r, workshop w
+            where u.usr_id = x.usr_id
+            and p.pres_id = x.pres_id
+            and p.rm_id = r.rm_id
+            and w.wkshp_id = p.wkshp_id
+            order by usr_last_name, usr_first_name ';
+
+    return get_csv_list($query, 0);
 }
 
 function random_enroll($year) {
@@ -113,6 +125,30 @@ function random_enroll($year) {
         exit();
     }
 }
+function presentations_registration_status() {
+    $query =
+        'select p.ses_id, rm_nbr, w.wkshp_nme, org_name, 
+                w.wkshp_desc,
+                pres_enrolled_seats, pres_max_seats, pres_max_seats - pres_enrolled_seats,
+                pres_enrolled_teachers, pres_max_teachers, pres_max_teachers - pres_enrolled_teachers
+        from presentation p, room r, workshop w
+        where p.rm_id = r.rm_id
+        and w.wkshp_id = p.wkshp_id
+        order by ses_id ';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
 
 function all_enroll_download($grade) {
     $gradeClause = '';
@@ -123,7 +159,7 @@ function all_enroll_download($grade) {
     from (
         SELECT grade_lvl, user.usr_id, count(*) as num_sessions
            from signup_dates
-             inner join user on user.usr_class_year = signup_dates.class_year
+             inner join user on user.usr_grade_lvl = signup_dates.grade_lvl
              inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
            where usr_active = 1
     and usr_type_cde = \'STD\'
@@ -145,7 +181,7 @@ function partial_enroll_download($grade) {
     from (
         SELECT grade_lvl, user.usr_id, count(*) as num_sessions
            from signup_dates
-             inner join user on user.usr_class_year = signup_dates.class_year
+             inner join user on user.usr_grade_lvl = signup_dates.grade_lvl
              inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
            where usr_active = 1
     and usr_type_cde = \'STD\'
@@ -167,7 +203,7 @@ function no_enroll_download($grade) {
     FROM (
         SELECT user.usr_id
            FROM user
-             INNER JOIN signup_dates ON signup_dates.class_year= user.usr_class_year
+             INNER JOIN signup_dates ON signup_dates.grade_lvl= user.usr_grade_lvl
              LEFT JOIN pres_user_xref ON pres_user_xref.usr_id= user.usr_id
            WHERE pres_user_xref.usr_id IS NULL
     AND usr_type_cde = \'STD\'
