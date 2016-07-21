@@ -425,9 +425,22 @@ nav.navbar .remaining {
   text-align: center; }
 nav.navbar .remaining:last-child {
   margin-right: 0; }
-nav.navbar .tag, nav.navbar .company, nav.navbar .position, nav.navbar .presenter, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
+nav.navbar .proctorsleft {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 5%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: center; }
+nav.navbar .proctorsleft:last-child {
+    margin-right: 0; }
+nav.navbar .tag, nav.navbar .company, nav.navbar .position, nav.navbar .presenter, nav.navbar .remaining, nav.navbar .proctorsleft, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
   color: #aaa; }
-nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active,
+nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .proctorsleft:hover, nav.navbar .proctorsleft:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active,
 nav.navbar .mods:hover, nav.navbar .mods:active{
   color: #eee;
   text-decoration: underline; }
@@ -529,9 +542,22 @@ nav.navbar .mods:hover, nav.navbar .mods:active{
   margin: 0;
   padding: 0;
   font-size: 1.125em;
-  font-weight: 500;
+  font-weight: 400;
   text-align: center; }
 .enrollment .session .remaining:last-child {
+  margin-right: 0; }
+.enrollment .session .proctorsleft {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 15%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125em;
+  font-weight: 500;
+  text-align: right; }
+.enrollment .session .proctorsleft:last-child {
   margin-right: 0; }
 .enrollment .session .session-number {
   float: left;
@@ -823,6 +849,77 @@ nav.navbar .mods:hover, nav.navbar .mods:active{
     width: 100%;
     padding: 0;
     font-size: 0.625em; } }
+
+/*popup*/
+.popup {
+  padding: 1% 0 2% 0;
+  display: none;
+  z-index: 100;
+  background-color: #f7f7f7;
+  width: 50%;
+  height: 60%;
+  margin-left: -1%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /*word-wrap: break-word;*/
+  /*overflow: auto;*/ }
+
+.popup-c {
+  height: 90%;
+  width: 90%;
+  position: relative;
+  word-wrap: break-word;
+  overflow: auto;
+  display: block;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.popup-c p {
+  text-align: justify;
+  padding-right: 3%;
+  margin: auto; }
+
+.close {
+  padding: 0 4% 0;
+  font-size: 150%;
+  text-align: right;
+  width: 100%;
+  float: right; }
+
+.popup-bg {
+  display: none;
+  opacity: 0.7;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  position: fixed; }
+
+.presenter {
+  z-index: 10; }
+
+.presname {
+  float: left;
+  font-weight: 500; }
+
+.entpop {
+  width: 100%;
+  height: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+
+a.info:hover {
+  cursor: hand;
+}
 
 .error {
   height: 100%;

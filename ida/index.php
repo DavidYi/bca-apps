@@ -7,7 +7,7 @@
  */
 
 /* These messages are used to customize the login page. */
-$pageTitle = 'Career Day Registration';
+$pageTitle = 'IDA Registration';
 $loginInfo = '<h1>International Day of Acceptance</h1>
                 <h3>
                     BCA will celebrate IDA on <b>[DATE]</b>. During IDA, you will have the opportunity
@@ -23,7 +23,7 @@ $loginInfo = '<h1>International Day of Acceptance</h1>
 function directToHomePage() {
     $user = $_SESSION['user'];
 
-    if ($user->getRole('CAR') == 'ADM') {
+    if ($user->getRole('IDA') == 'ADM') {
         header("Location: admin");
     } else {
         header("Location: itinerary");
@@ -34,6 +34,6 @@ function directToHomePage() {
  * which contains the meat of the login handling code.
  */
 require_once("util/main.php");
-include (__DIR__ . "/../shared/index.php");
+//include (__DIR__ . "/../shared/index.php");
 
 ?>

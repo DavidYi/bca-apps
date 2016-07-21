@@ -8,7 +8,7 @@
 
 require_once("../util/main.php");
 require_once("../../shared/model/user_db.php");
-require_once ("../model/signups_db.php");
+require_once ("../model/signup_dates_db.php");
 require_once ("../model/presentations_db.php");
 
 verify_logged_in();
@@ -33,7 +33,7 @@ $sessions = get_sessions_by_user($user->usr_id);
 //
 $registration_complete = true;
 foreach ($sessions as $session) {
-    if (empty($session['mentor_last_name'])) {
+    if (empty($session['presenter_names'])) {
         $registration_complete = false;
         break;
     }

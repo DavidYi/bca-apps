@@ -1,13 +1,14 @@
 <html lang="en">
 <head>
-    <title>Career Day Registration</title>
+    <title>IDA Registration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link href="../ss/main.css" rel="stylesheet">
+    <link href="../../shared/ss/main.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <?php include_analytics(); ?>
 </head>
 <body>
@@ -59,12 +60,10 @@
 
                 <div class="session view-session" onclick="">
                     <div class="session-number"><?php echo $session['ses_times'] ?></div>
-                    <div class="time"><?php echo $session['ses_start'] ?></div>
+                    <div class="time"><?php echo $session['ses_start_time'] ?></div>
                     <?php if ($session['ses_id'] != NULL) { ?>
-                        <div class="room-number">RM <?php echo $session['pres_room'] ?></div>
-                        <div class="session-title"><?php echo $session['mentor_company'] ?></div>
-                        <div class="name"><?php echo $session['mentor_last_name'] ?>
-                            , <?php echo $session['mentor_first_name'] ?></div>
+                        <div class="session-title"><?php echo $session['wkshp_nme'] ?></div>
+                        <div class="room-number">RM <?php echo $session['rm_nbr'] ?></div>
                     <?php } ?>
                 </div>
 

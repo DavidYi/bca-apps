@@ -15,9 +15,6 @@ if ($action == NULL) {
         $action = 'default';
     }
 }
-$course_name;
-$course_desc;
-$course_id;
 
 switch ($action) {
     case 'default':
@@ -32,6 +29,7 @@ switch ($action) {
             $new_course_name = $_POST["new_course_name"];
             $new_course_desc = $_POST["new_course_desc"];
             $course_id = $_POST["course_id"];
+
             edit_course($course_id, $new_course_name, $new_course_desc);
             header('Location: ..');
         } else {

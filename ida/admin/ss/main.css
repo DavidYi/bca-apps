@@ -406,6 +406,12 @@ main {
 }
 
 .feature {
+    width: 15em;
+    height: 11em;
+    display: inline-block;
+}
+
+.feature {
     position: relative;
     top: 0;
     padding: 0.9375em 1.5625em;
@@ -434,7 +440,7 @@ main {
     border-bottom: 0.625em solid #262626;
 }
 
-.feature:hover a {
+.feature:hover h2, .feature:hover h4 {
     color: #fdfdfd;
 }
 

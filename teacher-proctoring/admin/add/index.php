@@ -1,4 +1,5 @@
 <?php
+
 require_once("../../util/main.php");
 require_once("../../model/teacher_db.php");
 $testTypes = get_test_types();
@@ -18,47 +19,58 @@ switch ($action) {
 		break;
 	
 	case 'add_test':
-
 		$error_msg = '';
 
         $choice = filter_input(INPUT_POST, 'choice');
         $test_name = filter_input(INPUT_POST, 'test_name');
         $date = filter_input(INPUT_POST, 'date');
-        $date = explode("/", $date);
-        $datetime = $date[2].'-'.$date[0].'-'.$date[1];
         
-        $one_three = filter_input(INPUT_POST, 'one_three');
-        $four_six = filter_input(INPUT_POST, 'four_six');
-        $seven_nine = filter_input(INPUT_POST, 'seven_nine');
-        $ten_twelve = filter_input(INPUT_POST, 'ten_twelve');
-        $thirteen_fifteen = filter_input(INPUT_POST, 'thirteen_fifteen');
-        $sixteen_eighteen = filter_input(INPUT_POST, 'sixteen_eighteen');
-        $nineteen_twentyone = filter_input(INPUT_POST, 'nineteen_twentyone');
-        $twentytwo_twentyfour = filter_input(INPUT_POST, 'twentytwo_twentyfour');
-        $twentyfive_twentyseven = filter_input(INPUT_POST, 'twentyfive_twentyseven');
+        $one_three = intval(filter_input(INPUT_POST, 'one_three'));
+        $four_six = intval(filter_input(INPUT_POST, 'four_six'));
+        $seven_nine = intval(filter_input(INPUT_POST, 'seven_nine'));
+        $ten_twelve = intval(filter_input(INPUT_POST, 'ten_twelve'));
+        $thirteen_fifteen = intval(filter_input(INPUT_POST, 'thirteen_fifteen'));
+        $sixteen_eighteen = intval(filter_input(INPUT_POST, 'sixteen_eighteen'));
+        $nineteen_twentyone = intval(filter_input(INPUT_POST, 'nineteen_twentyone'));
+        $twentytwo_twentyfour = intval(filter_input(INPUT_POST, 'twentytwo_twentyfour'));
+        $twentyfive_twentyseven = intval(filter_input(INPUT_POST, 'twentyfive_twentyseven'));
         $test_cde = filter_input(INPUT_POST, 'test_cde');
         $room_id = filter_input(INPUT_POST, 'room_id');
 
+        $proc_times = [$one_three, $four_six, $seven_nine, $ten_twelve,
+            $thirteen_fifteen, $sixteen_eighteen, $nineteen_twentyone,
+            $twentytwo_twentyfour, $twentyfive_twentyseven];
 
-        // The user either pressed Add or Cancel.
-        // If Add, then add the teacher.
-        // Otherwise, just skip down to the list redraw.
         if ($choice == 'Add') {
-            if (empty($test_name)) {
-                $error_msg .= "Test Name is required.<BR>";
-            }
-            if (empty($date)) {
-                $error_msg .= "Date is required.<BR>";
-            }
+            $missing_proctors = true;
+            if (empty($test_name)) $error_msg .= "Test Name is required.<BR>";
+            if (empty($date)) $error_msg .= "Date is required.<BR>";
+            if (empty($test_cde)) $error_msg .= "Test Type is required.<BR>";
+            if (empty($room_id)) $error_msg .= "Room is required.<BR>";
+            foreach ($proc_times as $proc_time) {
+                if ($proc_time < 0 || $proc_time > 25) {
+                    $error_msg .= "Cannot have less than 0 or more than 
+                        25 proctors in a single hour.<BR>";
+                    $missing_proctors = false;
+                    break;
+                }
+                if ($proc_time != 0) {
+                    $missing_proctors = false;
+                    break;
+                }
 
+            }
+            if ($missing_proctors) $error_msg .= "At least one hour needs a 
+                proctor count other than zero.<BR>";
+            
             if ($error_msg != "") {
-                include 'teacher_add.php';
-                exit();
+                echo $error_msg;
+            } else {
+                $date = explode("/", $date);
+                $datetime = $date[2].'-'.$date[0].'-'.$date[1];
+                add_test($test_name, $datetime, $test_cde, $room_id, $proc_times);
+                header("Location: ../test_status");
             }
-            else {
-                add_test ($datetime, $test_name, $test_cde, $room_id, $one_three, $four_six, $seven_nine, $ten_twelve, $thirteen_fifteen, $sixteen_eighteen, $nineteen_twentyone, $twentytwo_twentyfour, $twentyfive_twentyseven);
-            }
-
         }
 
         break;

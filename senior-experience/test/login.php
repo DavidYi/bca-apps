@@ -13,6 +13,7 @@
                     <?php echo $user['usr_class_year']?>,
                     <?php echo $user['usr_last_name']?>,
                     <?php echo $user['usr_first_name'] ?>
+                    <?php echo $user['usr_role_cde'] ?>
                 </option>
             <?php } ?>
         </select>

@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <link rel = "stylesheet" type = "text/css" href = "../css/main.css" />
     <title>Signup Status</title>
@@ -46,6 +47,8 @@
             <h3 class = "title main-title" style ="text-align: center;"><?php echo $result; ?></h3>
         <?php } ?>
     </header>
+
+
     <nav class="navbar">
         <a href="#">
             <div class="session-filter grade">Grade Level</div>
@@ -57,14 +60,18 @@
     </nav>
     <div class = "enrollment">
         <?php foreach ($enroll_list as $year) :
-            $grade = $year['grade_lvl'];
+            $grade = $year['usr_grade_lvl'];
             $full = $year['Complete'];
             $partial = $year['Partial'];
             $none = $year['None'];
             ?>
             <div class = "session">
                 <div class = "grade" style="font-weight: 400;">
-                    <?php echo $grade; ?>
+                    <?php if ($grade != 13) { ?>
+                        <?php echo $grade; ?>
+                    <?php } else { ?>
+                        Teachers
+                    <?php } ?>
                 </div>
 
                 <a href="#" class="full" onclick= "post('index.php', {action: 'all_download', grade: <?php echo $grade ?> }, 'post')" style="font-weight: 400;">
@@ -80,9 +87,12 @@
                 </a>
 
                 <div class = "auto-enroll">
-                    <button onclick= "autoEnroll(<?php echo $grade?>)">Enroll</button>
-                    <button onclick= "undoAutoEnroll(<?php echo $grade?>)">Undo</button>
+                    <?php if ($grade != 13) { ?>
+                        <button onclick= "autoEnroll(<?php echo $grade?>)">Enroll</button>
+                        <button onclick= "undoAutoEnroll(<?php echo $grade?>)">Undo</button>
+                    <?php } ?>
                 </div>
+
             </div>
         <?php endforeach; ?>
         <br>
@@ -90,17 +100,21 @@
     <br>
     <br>
     <div class = "center body"><h3>Downloads</h3>
-        <a href = "#" onclick= "post('index.php', {action: 'all_download'}, 'post')">Fully Enrolled Students List</a>
+        <a href = "#" onclick= "post('index.php', {action: 'presentation_status'}, 'post')">Presentation Status and List</a>
         <br>
-        <a href = "#" onclick= "post('index.php', {action: 'partial_download'}, 'post')">Partially Enrolled Students List</a>
+        <a href = "#" onclick= "post('index.php', {action: 'all_registrants'}, 'post')">List of "All Registration Details" for all Students and Teachers</a>
         <br>
-        <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">Unenrolled Students List</a>
+        <a href = "#" onclick= "post('index.php', {action: 'partial_download'}, 'post')">List of "Partially Enrolled" Students and Teachers</a>
         <br>
-        <a href = "#" onclick= "post('index.php', {action: 'mentor_download'}, 'post')">Mentor List</a>
+        <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">List of "Not Enrolled" Students and Teachers</a>
         <br><br>
         <a href = "../">Admin Index</a>
     </div>
-    <div id = "logout"><a href = "../../index.php?action=logout">Log Out</a></div> <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
-</section>
+
+    <div id = "logout">
+        <a href = "../index.php">Admin Menu</a> &nbsp &nbsp &nbsp
+        <a href = "../../index.php?action=logout">Log Out</a>
+    </div>
+    </section>
 </body>
 </html>

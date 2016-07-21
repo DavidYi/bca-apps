@@ -73,6 +73,39 @@ function get_students_in_ses($pres_id)
 
 }
 
+function get_rooms(){
+    $query = 'select distinct rm_nbr, p.rm_id
+                from presentation p, room r
+                where p.rm_id = r.rm_id
+                order by r.rm_nbr;';
+
+    return get_list($query);
+}
+
+
+function get_session_by_room($rm_id, $ses_id){
+    $query = 'select p.ses_id, org_name, presenter_names, ses_start_time, wkshp_nme
+                from presentation p, session_times s, workshop w
+                where p.ses_id = s.ses_id
+                and p.wkshp_id = w.wkshp_id
+                and rm_id  = :rm_id
+                and p.ses_id = :ses_id';
+
+    global $db;
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':rm_id', $rm_id);
+        $statement->bindValue(':ses_id', $ses_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
 function get_presentation_list($mentor_id, $ses_id)
 {
     $query = 'SELECT mentor.mentor_id, mentor_last_name, mentor_first_name, mentor_position, mentor_company,

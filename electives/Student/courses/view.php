@@ -46,23 +46,10 @@
             <script>
                 document.getElementById("mods").addEventListener("click", myFunction);
 
-                function chageColor() {
+                function changeColor() {
                     document.getElementById("mods").style.color = "blue";
                 }
             </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         </tr>
@@ -75,6 +62,9 @@
         <button class="submit" type="submit" onclick="submit_courses">Submit</button>
     </div>
 </form>
+
+<button class="s back" onclick="location.href = '../index.php'" type="submit">Back</button>
+
 </body>
 
 
