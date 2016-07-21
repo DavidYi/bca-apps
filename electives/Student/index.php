@@ -32,7 +32,8 @@ switch ($action) {
     case 'submit':
         
         echo'test';
-    
+
+
     case 'list_options':
         include('./view.php');
         break;

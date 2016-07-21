@@ -4,6 +4,10 @@
     <title>Table Style</title>
     <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
     <link rel="stylesheet" href="index.css">
+    <script src="../../js/jquery/min.js"></script>
+
+
+
 </head>
 
 <body>
@@ -68,8 +72,28 @@
     </table>
 
     <div class="wrapper">
-        <button class="submit" type="submit">Submit</button>
+        <button class="submit" type="submit" onclick="submit_courses">Submit</button>
     </div>
 </form>
 </body>
+
+
+<script>
+
+    function submit_courses(){
+
+        var ids = $("input:checkbox[name='checkbox[]']:checked").map(function(index) {
+            return this.id;
+        });
+
+
+
+    }
+
+
+</script>
+
+
+
+
 </html>
