@@ -434,7 +434,7 @@ main {
     border-bottom: 0.625em solid #262626;
 }
 
-.feature:hover a, .feature:hover h4 {
+.feature:hover h2, .feature:hover h4 {
     color: #fdfdfd;
 }
 

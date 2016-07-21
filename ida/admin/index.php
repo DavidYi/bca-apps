@@ -35,42 +35,78 @@ switch ($action) {
     <div id="logout"><a href="../index.php?action=logout">Log Out</a></div>
     </header>
     <br>
-    <div class="feature">
-        <a href="signup_dates"><h2>Signup Dates</h2></a>
-        <h4>View and edit signup deadlines by grade.</h4></div>
-    <div class="feature">
-        <a href="workshops"><h2>Workshops</h2></a>
-        <h4>Manage workshops.</h4></div>
-    <div class="feature">
-        <a href="presentations"><h2>Presentations</h2></a>
-        <h4>Manage presentations.</h4></div>
-    <div class="feature">
-        <a href="room"><h2>Rooms</h2></a>
-        <h4>Manage rooms.</h4></div>
-    <div class="feature">
-        <a href="format"><h2>Formats</h2></a>
-        <h4>Manage formats.</h4></div>
-    <div class="feature">
-        <a href="session_times"><h2>Session Times</h2></a>
-        <h4>Manage when each session will take place.</h4></div>
-    <div class="feature">
-        <a href="signins"><h2>Signins</h2></a>
-        <h4>Generate signin sheets and mentor check-in sheet.</h4></div>
-    <div class="feature">
-        <a href="signup_status"><h2>Signup Status</h2></a>
-        <h4>View student registration statistics and automatically enroll students who have not yet registered.</h4></div>
-    <div class="feature">
-        <a href="teacher_sessions"><h2>Teacher Sessions</h2></a>
-        <h4>Assign teachers to sessions.</h4></div>
-    <div class="feature">
-        <a href="roles"><h2>Roles</h2></a>
-        <h4>Assign administrator roles.</h4></div>
-    <div class="feature">
-        <a href="mimic_user"><h2>Mimic User</h2></a>
-        <h4>Log in as any user in the database and use the app as if you were them.</h4></div>
-    <div class="feature">
-        <a href="log_viewer"><h2>Log Viewer</h2></a>
-        <h4>View the application log.</h4></div>
+    <a href="signup_dates">
+        <div class="feature">
+            <h2>Signup Dates</h2>
+            <h4>View and edit signup deadlines by grade.</h4>
+        </div>
+    </a>
+    <a href="workshops">
+        <div class="feature">
+            <h2>Workshops</h2>
+            <h4>Manage workshops.</h4>
+        </div>
+    </a>
+    <a href="presentations">
+        <div class="feature">
+            <h2>Presentations</h2>
+            <h4>Manage presentations.</h4>
+        </div>
+    </a>
+    <a href="room">
+        <div class="feature">
+            <h2>Rooms</h2>
+            <h4>Manage rooms.</h4>
+        </div>
+    </a>
+    <a href="format">
+        <div class="feature">
+            <h2>Formats</h2>
+            <h4>Manage formats.</h4>
+        </div>
+    </a>
+    <a href="session_times">
+        <div class="feature">
+            <h2>Session Times</h2>
+            <h4>Manage when each session will take place.</h4>
+        </div>
+    </a>
+    <a href="signins">
+        <div class="feature">
+            <h2>Signins</h2>
+            <h4>Generate signin sheets and mentor check-in sheet.</h4>
+        </div>
+    </a>
+    <a href="signup_status">
+        <div class="feature">
+            <h2>Signup Status</h2>
+            <h4>View student registration statistics and automatically enroll students who have not yet registered.</h4>
+        </div>
+    </a>
+    <a href="teacher_sessions">
+        <div class="feature">
+            <h2>Teacher Sessions</h2>
+            <h4>Assign teachers to sessions.</h4>
+        </div>
+    </a>
+    <a href="roles">
+        <div class="feature">
+            <h2>Roles</h2>
+            <h4>Assign administrator roles.</h4>
+        </div>
+    </a>
+    <a href="mimic_user">
+        <div class="feature">
+            <h2>Mimic User</h2>
+            <h4>Log in as any user in the database and use the app as if you were them.</h4>
+        </div>
+    </a>
+    <a href="log_viewer">
+        <div class="feature">
+        <h2>Log Viewer</h2>
+            <h4>View the application log.</h4>
+        </div>
+    </a>
 
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </main>
