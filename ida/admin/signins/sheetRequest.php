@@ -15,20 +15,20 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('input[type="radio"]').click(function () {
-                if ($(this).attr("value") == "s") {
+                if ($(this).attr("value") == "session-signins") {
                     $(".mentor").show();
                     $(".session").show();
-                    $("input[name='action']").val('generates')
+                    $("input[name='action']").val('generate-session-signins')
                 }
-                if ($(this).attr("value") == "r") {
+                if ($(this).attr("value") == "mentor-signins") {
                     $(".mentor").show();
                     $(".session").hide();
-                    $("input[name='action']").val('generater')
+                    $("input[name='action']").val('generate-mentor-signins')
                 }
-                if ($(this).attr("value") == "t") {
+                if ($(this).attr("value") == "room-signs") {
                     $(".mentor").hide();
                     $(".session").hide();
-                    $("input[name='action']").val('generatet')
+                    $("input[name='action']").val('generate-room-signs')
                 }
             });
         });
@@ -46,7 +46,7 @@
     <div class="container">
         <ul>
             <li>
-                <input type="radio" name="choice" value="s" class="choice" id="sc">
+                <input type="radio" name="choice" value="session-signins" class="choice" id="sc">
                 <label class="title" for="sc">Session Sign in </label>
 
                 <div class="check">
@@ -55,7 +55,7 @@
             </li>
 
             <li>
-                <input type="radio" name="choice" value="t" class="choice" id="mc">
+                <input type="radio" name="choice" value="mentor-signins" class="choice" id="mc">
                 <label class="title" for="mc">Mentor Check In </label>
 
                 <div class="check">
@@ -64,7 +64,7 @@
             </li>
 
             <li>
-                <input type="radio" name="choice" value="r" class="choice" id="rc">
+                <input type="radio" name="choice" value="room-signs" class="choice" id="rc">
                 <label class="title" for="rc">Room Signs </label>
 
                 <div class="check">
@@ -117,7 +117,7 @@
     </div>
 
     <br>
-    <input type="hidden" name="action" value="<?php echo 'generate' . $_POST['choice'] ?>">
+    <input type="hidden" name="action" value="<?php echo 'generate-' . $_POST['choice'] ?>">
     <input type="submit" value="Generate" class="submit">
 
 </form>
