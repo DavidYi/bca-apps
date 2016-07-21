@@ -59,7 +59,7 @@
 
         <label>Max Capacity</label>
         <input title="" type="number" name="pres_max_capacity" value=""
-               placeholder="Seats" required><BR>
+               placeholder="Seats"><BR>
 
         <div class="button-container">
             <button class="add" name="choice" type="submit" value="Add">Add Presentation</button>
