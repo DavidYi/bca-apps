@@ -77,6 +77,18 @@
         });
 
 
+        var index;
+
+        for (index = 0; index < ids.length; ++index) {
+
+
+            console.log (ids[index]);
+
+
+
+
+
+        }
 
     }
 
