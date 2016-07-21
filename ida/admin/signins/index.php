@@ -7,7 +7,7 @@
  */
 require_once('../../util/main.php');
 require_once ("../../model/database.php");
-require_once "../../model/signins_db.php";
+require_once ("../../model/signins_db.php");
 require_once "signInPDF.php";
 
 verify_admin();
@@ -70,10 +70,6 @@ switch ($action) {
             $ses_1 = get_session_by_room($room['rm_id'], 1);
             $ses_2 = get_session_by_room($room['rm_id'], 2);
 
-            echo $ses_1['ses_id'];
-            //exit();
-
-
             $pdf->AddPage("L", "Letter");
             $pdf->SetFont('Arial', '', 50);
 
@@ -91,7 +87,7 @@ switch ($action) {
             $pdf->setY ($pdf->getY() + 5);
 
             $pdf->SetFont('Arial', 'B', 40);
-            $pdf->Cell(0, 25, "Senior Exhibitions", 0, 1, "C");
+            $pdf->Cell(0, 25, "IDA", 0, 1, "C");
 
 //            $pdf->SetFont('Arial', 'B', 30);
 //            $pdf->Cell(0, $pdf->getH() / 15, "June 1, 2016", 0, 1, "C");
