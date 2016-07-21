@@ -18,6 +18,7 @@ if ($action == NULL) {
         $action = 'list_selected_tests';
     }
 }
+
 verify_logged_in();
 
 if (isset($action) and ($action == "logout")) {

@@ -371,7 +371,7 @@ function del_user_tests($test_array, $usr_id) {
         $del_id = $del_arr[0];
         $del_time_id = $del_arr[1];
 
-        $query2 = 'DELETE FROM test_updt_xref WHERE test_id = :test_id 
+        $query2 = 'DELETE FROM test_updt_xref WHERE test_id = :test_id
           AND test_time_id = :test_time_id AND usr_id = :usr_id';
 
         $statement = $db->prepare($query2);

@@ -27,7 +27,7 @@ require_once('../model/teacher_db.php');
 <section class="main view">
     <div class="view-main">
         <div class="login-status">
-            <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name); ?></b></h3>
+            <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name);?></b></h3>
             <h3 class="log-out"><a href="./index.php?action=logout">
                     <?php if (isset($_SESSION['prev_usr_id'])) { ?> Return to Admin Panel <?php } else { ?> Log Out <?php } ?>
                 </a></h3>

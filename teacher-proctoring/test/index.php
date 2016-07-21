@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: macbook
- * Date: 12/14/15
- * Time: 1:04 PM
- */
+
 require_once("../util/main.php");
 require_once ("../model/teacher_db.php");
 
