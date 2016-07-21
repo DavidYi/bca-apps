@@ -6,7 +6,17 @@
     <!-- Styles comment so i can push -->
 
     <link href="../ss/main.css" rel="stylesheet">
+    <link href="../teacher/view.css" rel="stylesheet">
 
+    <script>
+        function deleteCourse(courseId)
+        {
+            if (confirm('Are you sure you would like to delete the course?'))
+            {
+                window.parent.parent.location.href = 'index.php?action=delete_course&course_id=' + courseId;
+            }
+        }
+    </script>
 </head>
 <body>
 <section class="main view">
@@ -50,7 +60,6 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th></th>
-                                    <th></th>
                                 </thead>
                             ";
                         }
@@ -65,12 +74,6 @@
                             <tr>
                                 <td><?php echo $courseName ?></td>
                                 <td><?php echo $courseDesc ?></td>
-
-                                <!-- include all course information for when the course is edited -->
-                                <td><a href="edit_course/index.php?course_name=
-                                    <?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>
-                                    &course_id=<?php echo $courseID?>"><img src="../../shared/images/modifyIcon.gif"></a></td>
-
                                 <td><img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);"> </td>
                             </tr>
 
