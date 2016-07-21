@@ -19,21 +19,26 @@ if ($action == NULL) {
     }
 }
 
+verify_logged_in();
+
+if (isset($action) and ($action == "logout")) {
+    if (isset($_SESSION['prev_usr_id'])) {
+        $_SESSION['user'] = User::getUserByUsrId($_SESSION['prev_usr_id']);
+        unset($_SESSION['prev_usr_id']);
+        header("Location: ../admin/index.php");
+    } else {
+        session_destroy();
+        header("Location: ../index.php");
+    }
+}
+
 switch ($action) {
-    case 'delete_course':
-        $test_id = filter_input(INPUT_GET, 'test_id');
-        delete_course($test_id);
-
-        $testList = get_test_list();
-
-        include "view.php";
-
-        break;
-
 
     case 'list_selected_tests':
+        $count = get_count($user->usr_id);
         $testSelectedList = get_selected_test_list($user->usr_id);
 
+        include ('./view.php');
         break;
 
     case 'show_itinerary':
@@ -42,28 +47,8 @@ switch ($action) {
 
 
     default:
-        $testSelectedList = get_selected_test_list($user->usr_id);
-        $count = get_count($user->usr_id);
-
-        include "./view.php";
+        echo('Unknown account action: ' . $action);
         break;
 }
 
-verify_logged_in();
-
-$count = get_count($user->usr_id);
-
-$action = filter_input(INPUT_GET, 'action');
-if (isset($action) and ($action == "logout")) {
-    if (isset($_SESSION['prev_usr_id'])) {
-        $_SESSION['user'] = User::getUserByUsrId($_SESSION['prev_usr_id']);
-        $_SESSION['prev_usr_id'] = NULL;
-        header("Location: ../admin/index.php");
-    } else {
-        session_destroy();
-        header("Location: ../index.php");
-    }
-}
-$testSelectedList = get_selected_test_list($user->usr_id);
-include ("./view.php");
 exit();

@@ -7,13 +7,7 @@
  */
 
 require_once (__DIR__ . "/../../util/main.php");
-require_once (__DIR__ . "/../../../shared/model/admin_db.php");
-
-verify_admin();
-
-$logs = get_log_messages($app_cde);
-
-include "view.php";
+include ("../../../shared/log_viewer/index.php");
 
 
-exit();
+?>
