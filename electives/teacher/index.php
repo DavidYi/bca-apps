@@ -29,13 +29,6 @@ switch($action){
         session_destroy();
         header("Location: ../index.php");
         break;
-    case "delete":
-        $action = "delete";
-        $courseName = $_GET["course_name"];
-        $courseID = $_GET["course_id"];
-        $courses = get_course_by_user($user->usr_id);
-        include("./view.php");
-        break;
     case "delete_course":
 
         delete_course($_GET['course_id']);
