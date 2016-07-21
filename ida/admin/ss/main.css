@@ -7,9 +7,14 @@ img, legend {
     border: 0;
 }
 
-legend, td, th {
+legend, th {
     padding: 0;
 }
+
+td {
+    padding: 2px;
+}
+
 
 html {
     font-family: sans-serif;
@@ -172,6 +177,9 @@ fieldset {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -25px;
 }
 
 html, body {
@@ -199,7 +207,8 @@ html, body {
 }
 
 header {
-    height: 15%;
+    margin-top: 5px;
+    height: 10%;
     -webkit-transform-stdle: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
@@ -215,6 +224,22 @@ header h1 {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+#admin-tools {
+    overflow: hidden;
+}
+#admin-tools header {
+    clear: both;
+    height: auto;
+}
+
+header h2 {
+    float: left;
+}
+
+#logout {
+    float: right;
 }
 
 html {
@@ -400,7 +425,7 @@ a {
 }
 
 main {
-    width: 52.5em;
+    width: 90%;
     max-width: 90%;
     margin: 0 auto;
 }
@@ -409,15 +434,12 @@ main {
     width: 15em;
     height: 11em;
     display: inline-block;
-}
-
-.feature {
     position: relative;
     top: 0;
     padding: 0.9375em 1.5625em;
     background: rgba(0, 0, 0, 0.05);
     background: rgba(0, 0, 0, 0.05);
-    border-bottom: 0.625em solid #fbfcfc;
+    /*border-bottom: 0.625em solid #fbfcfc;*/
     -webkit-transition: all 175ms ease;
     -moz-transition: all 175ms ease;
     transition: all 175ms ease;
@@ -693,7 +715,6 @@ input {
     padding: 0 1.5625em;
     box-shadow: 0 0em 0.25em rgba(0, 0, 0, 0.1);
 }
-
 input::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: #aaa;
