@@ -170,6 +170,17 @@ function get_teacher_list()
     return get_list($query);
 }
 
+function get_mimic_list() {
+    $query = "SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
+                 usr_first_name, usr_last_name, usr_active
+              FROM user
+              WHERE usr_active = 1
+              AND usr_type_cde = 'TCH'
+			  ORDER BY usr_type_cde, usr_last_name";
+
+    return get_list($query);
+}
+
 function get_rooms() {
     $query = 'SELECT rm_id, rm_nbr
                 from room';
@@ -350,6 +361,9 @@ function change_user_tests($tests) {
     global $db;
     global $user;
 
+
+    $updt_usr_id = (isset($_SESSION['prev_usr_id'])) ? $_SESSION['prev_usr_id'] : $user->usr_id;
+
     try {
         $db->beginTransaction();
 
@@ -366,13 +380,13 @@ function change_user_tests($tests) {
 
                 $query = "INSERT INTO test_updt_xref (test_id, test_time_id, usr_id, updt_dt, updt_usr_id)
                       VALUES (:test_id, :test_time_id, :usr_id, :updt_dt, :updt_usr_id)";
-
+                
                 $statement = $db->prepare($query);
                 $statement->bindValue(':test_id', $test_id, PDO::PARAM_INT);
                 $statement->bindValue(':test_time_id', $test_time_id, PDO::PARAM_INT);
                 $statement->bindValue(':usr_id', $user->usr_id, PDO::PARAM_INT);
                 $statement->bindValue(':updt_dt', $bindDate, PDO::PARAM_STR);
-                $statement->bindValue(':updt_usr_id', $user->usr_id, PDO::PARAM_INT);
+                $statement->bindValue(':updt_usr_id', $updt_usr_id, PDO::PARAM_INT);
                 $statement->execute();
                 $statement->closeCursor();
             }
@@ -393,9 +407,8 @@ function change_user_tests($tests) {
 
 function list_teacher_status($sort_by, $sort_order)
 {
-    global $db;
 
-    $query = "select u.usr_id, u.usr_last_name as usrLast, u.usr_first_name as usrFirst, sum(test_time_id) as usrHours
+    $query = "select u.usr_id, u.usr_last_name as usrLast, u.usr_first_name as usrFirst, count(test_time_id) as usrHours
               from test_updt_xref t, user u
               where t.usr_id = u.usr_id
               group by t.usr_id";

@@ -47,6 +47,14 @@ switch ($action) {
         <a href="test_status"><h2>Test Status</h2></a>
         <h4>Check enrolled count and proctoring teachers in a test.</h4>
     </div>
+    <div class="feature">
+        <a href="mimic_user"><h2>Mimic User</h2></a>
+        <h4>Log in as any user in the database and use the app as if you were them.</h4>
+    </div>
+    <div class="feature">
+        <a href="log_viewer"><h2>Log Viewer</h2></a>
+        <h4>View the application log.</h4>
+    </div>
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </main>
 </body>
