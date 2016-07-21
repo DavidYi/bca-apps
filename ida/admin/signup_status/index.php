@@ -48,9 +48,8 @@ switch($action) {
         $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="presentations.csv";');
-        fputcsv($output, array('Session', 'Room', 'Field', 'Title', 'Organization', 'Location', 'Description', 'Presenters',
-                                'Enrolled Stdnts','Max Stdnts', 'Remaining Stdnts',
-                                'Enrolled Tchrs','Max Tchrs', 'Remaining Tchrs'));
+        fputcsv($output, array('Session', 'Room', 'Title', 'Organization', 'Description', 'Enrolled', 'Max Seats', 'Remaining Seats',
+            'Enrolled Tchrs','Max Tchrs', 'Remaining Tchrs'));
         foreach($student_list as $student) {
             fputcsv($output, $student);
         }
@@ -65,7 +64,7 @@ switch($action) {
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="all_registrations.csv";');
 
-        fputcsv($output, array('Last', 'First', 'Grade', 'Session', 'Room', 'Field', 'Title', 'Organization', 'Location', 'Presenting', 'Presentation ID', 'Field ID', 'User ID'));
+        fputcsv($output, array('Last', 'First', 'Grade', 'Session', 'Room', 'Workshop', 'Organization', 'Presenters', 'Presentation ID', 'User ID'));
         foreach($student_list as $student) {
             fputcsv($output, $student);
         }
@@ -79,6 +78,21 @@ switch($action) {
         $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="partial_enrolled.csv";');
+
+        fputcsv($output, array('Last','First','Username','Year','Number of Sessions'));
+        foreach($student_list as $student) {
+            fputcsv($output, $student);
+        }
+        fpassthru($output);
+        fclose($output) or die("Can't close file");
+        exit();
+        break;
+    case "all_download":
+        $grade = filter_input(INPUT_POST, 'grade');
+        $student_list = all_enroll_download($grade);
+        $output = fopen('php://output', 'w') or die("Can't open file");
+        header("Content-Type:application/csv");
+        header('Content-Disposition: attachment; filename="all_enrolled.csv";');
 
         fputcsv($output, array('Last','First','Username','Year','Number of Sessions'));
         foreach($student_list as $student) {
@@ -118,9 +132,9 @@ switch($action) {
         fclose($output) or die("Can't close file");
         exit();
         break;
-    
+
     default:
         display_error("Invalid action: " . $action);
         break;
-    }
+}
 ?>
