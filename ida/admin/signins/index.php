@@ -25,7 +25,7 @@ switch ($action) {
         include("sheetRequest.php");
         break;
 
-    case 'generates':
+    case 'generate-session-signins':
         $choice = filter_input(INPUT_POST, 'choice');
         $presentations = get_presentation_list();
         $header = array("Name", "Grade", "Academy", "Signature");
@@ -61,7 +61,7 @@ switch ($action) {
         $pdf->Output('signin.pdf', 'I');
         break;
 
-    case 'generater':
+    case 'generate-room-signs':
         $rooms = get_rooms();
         $pdf = new signinPDF();
         $pdf->SetAutoPageBreak(false);
@@ -71,7 +71,7 @@ switch ($action) {
             $ses_2 = get_session_by_room($room['rm_id'], 2);
 
             $pdf->AddPage("L", "Letter");
-            $pdf->SetFont('Arial', '', 50);
+            //$pdf->SetFont('Arial', '', 96);
 
             $WMargin = $pdf->getlMargin() + $pdf->getrMargin();
             $HMargin = $pdf->gettMargin() + $pdf->gettMargin();
@@ -84,9 +84,9 @@ switch ($action) {
             $pdf->Rect($pdf->getrMargin() + 2, $pdf->gettMargin() + 2,
                 $pdf->getW() - $WMargin - 4, $pdf->getH() - $HMargin - 4);
 
-            $pdf->setY ($pdf->getY() + 5);
+            $pdf->setY ($pdf->getY() + 25);
 
-            $pdf->SetFont('Arial', 'B', 40);
+            $pdf->SetFont('Arial', 'B', 72);
             $pdf->Cell(0, 25, "IDA", 0, 1, "C");
 
 //            $pdf->SetFont('Arial', 'B', 30);
@@ -103,42 +103,42 @@ switch ($action) {
                         $pdf->Line($pdf->getlMargin()+ 40, $pdf->getY(),
                             $pdf->getW() - $pdf->getrMargin() - 40, $pdf->getY());
             */
-            $lineSpacing = 9;
+            $lineSpacing = 15;
             $leftSessionIndent = 20;
             $hangingIndent = 8;
 
-            $pdf->setY ($pdf->getY() + 7);
+            $pdf->setY ($pdf->getY() + 10);
 
-            $pdf->SetFont('Arial', '', 20);
+            $pdf->SetFont('Arial', '', 28);
             $pdf->Cell($leftSessionIndent, 25, "", 0, 0, "L");
             $pdf->Cell(20, $lineSpacing, "8:15", 0, 0, "R");
             $pdf->Cell($hangingIndent, $lineSpacing, "", 0, 0, "R");
             $pdf->Cell(0, $lineSpacing, '' . $ses_1['wkshp_nme'], 0, 2, "L");
-            $pdf->SetFont('Arial', '', 15);
+            $pdf->SetFont('Arial', '', 24);
 
-            $pres = 'by ' . $ses_1['presenter_names'];
-            $org = $ses_1['org_name'];
+            $pres = '       by ' . $ses_1['presenter_names'];
+            $org = '       ' . $ses_1['org_name'];
             if (empty($ses_1['org_name'])) {
                 $org = '';
             }
 
-            $pdf->Cell(0, $lineSpacing, $pres, 0, 1, "L");
+            $pdf->Cell(0, $lineSpacing, $pres, 0, 2, "L");
             $pdf->Cell(0, $lineSpacing, $org, 0, 2, "L");
 
-            $pdf->setY ($pdf->getY() + 8);
-            $pdf->SetFont('Arial', '', 20);
+            $pdf->setY ($pdf->getY() + 10);
+            $pdf->SetFont('Arial', '', 28);
             $pdf->Cell($leftSessionIndent, 25, "", 0, 0, "L");
             $pdf->Cell(20, $lineSpacing, "9:15", 0, 0, "R");
             $pdf->Cell($hangingIndent, $lineSpacing, "", 0, 0, "R");
             $pdf->Cell(0, $lineSpacing, '' . $ses_2['wkshp_nme'], 0, 2, "L");
-            $pdf->SetFont('Arial', '', 15);
-            $pres = 'by ' . $ses_1['presenter_names'];
-            $org = $ses_1['org_name'];
+            $pdf->SetFont('Arial', '', 24);
+            $pres = '       by ' . $ses_2['presenter_names'];
+            $org = '       ' . $ses_2['org_name'];
             if (empty($ses_1['org_name'])) {
                 $org = '';
             }
 
-            $pdf->Cell(0, $lineSpacing, $pres, 0, 1, "L");
+            $pdf->Cell(0, $lineSpacing, $pres, 0, 2, "L");
             $pdf->Cell(0, $lineSpacing, $org, 0, 2, "L");
 
         }
