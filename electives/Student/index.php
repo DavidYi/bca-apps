@@ -21,6 +21,12 @@ $time_strings = get_time_strings($usr_id);
 $courses = get_courses($usr_id);
 
 switch ($action) {
+    
+    case 'submit':
+        
+        echo'test';
+
+
     case 'list_options':
         include('./view.php');
         break;
