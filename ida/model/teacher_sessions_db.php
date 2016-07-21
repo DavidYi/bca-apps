@@ -77,16 +77,14 @@ function update_teacher_sessions($presId, $usrId, $sesId, $currentUserId){
 
 function update_all_teacher_sessions($teachers, $session1, $session2){
     global $user;
-    $i = 0;
-    $presId1 = $session1[$i] == "null" ? null : $session1[$i];
-    $presId2 = $session2[$i] == "null" ? null : $session2[$i];
-    $usrId = $teachers[$i];
-    $currentUserId = $user->usr_id;
-    echo $presId1."<br>".$presId2."<br>".$usrId."<br>".$currentUserId;
-    exit();
+    for($i = 0; $i < count($teachers); $i++){
+        $presId1 = $session1[$i] == "null" ? null : $session1[$i];
+        $presId2 = $session2[$i] == "null" ? null : $session2[$i];
+        $usrId = $teachers[$i];
+        $currentUserId = $user->usr_id;
         update_teacher_sessions($presId1, $usrId, 1, $currentUserId);
         update_teacher_sessions($presId2, $usrId, 2, $currentUserId);
-
+    }
 }
 
 
