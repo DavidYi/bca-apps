@@ -25,6 +25,16 @@ switch ($action) {
         if($choice == "Back"){
             header("Location: ..");
         }
+        
+        
+        $teacherList = filter_input(INPUT_POST, 'hdUserID');
+        $s1Choice = filter_input(INPUT_POST, 'session1');
+        $s2Choice = filter_input(INPUT_POST, 'session2');
+        if($choice == "Update Teachers"){
+            update_all_teacher_sessions($teacherList, $s1Choice, $s2Choice);
+        }
+        
+        
         $teachers = get_teachers();
         $session1 = get_pres_list(1);
         $session2 = get_pres_list(2);

@@ -275,7 +275,17 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-
-
+.back {
+    background: rgb(247,181,125);
+    font-family:  'Lato', arial;
+    font-size: 15px;
+    width: 120px;
+    height: 50px;
+    color: white;
+    text-align: center;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 
