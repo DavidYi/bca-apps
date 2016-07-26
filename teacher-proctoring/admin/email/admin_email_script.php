@@ -1,19 +1,29 @@
 <?php
-//Okay idk where to put this thing so it's here for now
 
-require("sendgrid-php/sendgrid-php.php");
+function send_email($email_address, $test_name, $test_dt)
+{
 
-$from = new SendGrid\Email(null, "celper19@bergen.org");
-$subject = "Hello World from the SendGrid PHP Library!";
-$to = new SendGrid\Email(null, "cel.peralta.jmj@gmail.com");
-$content = new SendGrid\Content("text/plain", "It works?");
-$mail = new SendGrid\Mail($from, $subject, $to, $content);
+    require("sendgrid-php/sendgrid-php.php");
+
+    $message = "Hello, you are scheduled to proctor for the following test: \nTest Name: " . $test_name . "\nTest Date: " . $test_dt;
+
+    $from = new SendGrid\Email(null, "celper19@bergen.org");
+    $subject = "Upcoming Tests";
+    $to = new SendGrid\Email(null, $email_address);
+    $content = new SendGrid\Content("text/plain", $message);
+    $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
 //Going to use getenv() later but for now hardcoding it
-$apiKey = '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';
-$sg = new \SendGrid($apiKey);
+    $apiKey = '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';
+    $sg = new \SendGrid($apiKey);
 
-$response = $sg->client->mail()->send()->post($mail);
+    $response = $sg->client->mail()->send()->post($mail);
+    echo $response->statusCode();
+    echo $response->headers();
+    echo $response->body();
+    echo $message;
+}
+
 ?>
 
 <html>

@@ -36,11 +36,46 @@
             <td> <?php echo $test_name; ?> </td>
             <td> <?php echo $test_dt; ?> </td>
             <td> <?php echo $test_days_away; ?> </td>
+            <td>
+                <form method="post">
+                    <input type="submit" value="Mail" name="submit"> <!-- assign a name for the button -->
+                </form>
+            </td>
         </tr>
+
     <?php endforeach; ?>
 </table>
+<?php function send_email($email_address, $test_name, $test_dt)
+{
 
+    require("sendgrid-php/sendgrid-php.php");
+
+    $message = "Hello, you are scheduled to proctor for the following test:";
+    $message .= "\nTest Name: " . $test_name;
+    $message .= "\nTest Date: " . $test_dt;
+
+    $from = new SendGrid\Email(null, "celper19@bergen.org");
+    $subject = "Upcoming Tests";
+    $to = new SendGrid\Email(null, $email_address);
+    $content = new SendGrid\Content("text/plain", $message);
+    $mail = new SendGrid\Mail($from, $subject, $to, $content);
+
+//Going to use getenv() later but for now hardcoding it
+    $apiKey = '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';
+    $sg = new \SendGrid($apiKey);
+
+    $response = $sg->client->mail()->send()->post($mail);
+
+    if($response->statusCode() == 202) {
+        echo 'Email sent!';
+    }
+}
+
+if (isset($_POST['submit'])) {
+    send_email('cel.peralta.jmj@gmail.com', $test_name, $test_dt);
+} ?>
 <h1>Put some weird scheduling thing here.</h1>
+
 
 </body>
 </html>
