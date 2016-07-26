@@ -39,7 +39,7 @@
             <td> <?php echo $test_days_away; ?> </td>
             <td>
                 <form method="post">
-                    <button type="submit" value="Mail" name="submit"><i class="fa fa-envelope" aria-hidden="true"></i>
+                    <button type="submit" value="Mail" name="mail"><i class="fa fa-envelope" aria-hidden="true"></i>
                     </button> <!-- assign a name for the button -->
                 </form>
             </td>
@@ -47,40 +47,31 @@
 
     <?php endforeach; ?>
 </table>
-<?php function send_email($email_address, $test_name, $test_dt)
-{
+<form method="post" class="email-all">
+    <button type="submit" value="Mail All" name="mail-all">Mail All</button> <!-- assign a name for the button -->
+</form>
+<?php
 
-    require("sendgrid-php/sendgrid-php.php");
+if (isset($_POST['mail'])) {
+    send_email('celper19@bergen.org', $test_name, $test_dt);
+    header("Location: ../../admin/email/");
 
-    $message = "Hello, you are scheduled to proctor for the following test:";
-    $message .= "\nTest Name: " . $test_name;
-    $message .= "\nTest Date: " . $test_dt;
-
-    $from = new SendGrid\Email(null, "celper19@bergen.org");
-    $subject = "Upcoming Tests";
-    $to = new SendGrid\Email(null, $email_address);
-    $content = new SendGrid\Content("text/plain", $message);
-    $mail = new SendGrid\Mail($from, $subject, $to, $content);
-
-//Going to use getenv() later but for now hardcoding it
-    $apiKey = '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';
-    $sg = new \SendGrid($apiKey);
-
-    $response = $sg->client->mail()->send()->post($mail);
-
-    if ($response->statusCode() == 202) {
-        echo 'Email sent!';
-    } else {
-        echo $response->statusCode();
-        echo $response->headers();
-        echo $response->body();
-    }
+    echo 'Email sent.';
 }
 
-if (isset($_POST['submit'])) {
-    send_email('cel.peralta.jmj@gmail.com', $test_name, $test_dt);
+if (isset($_POST['mail-all'])) {
+
+    foreach ($upcoming_tests as $test) :
+        if ($test['difference'] <= 7) {
+            send_email('celper19@bergen.org', $test_name, $test_dt);
+        }
+    endforeach;
+
+    echo 'Emails sent.';
     header("Location: ../../admin/email/");
-} ?>
+}
+
+?>
 
 </body>
 </html>
