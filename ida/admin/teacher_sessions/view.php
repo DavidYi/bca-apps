@@ -40,13 +40,16 @@
                     <select name="session1[<?php echo $i ?>]" class="s1_select">
                         <option value="null"></option>
                         <?php foreach($session1 as $pres) { ?>
-                            <option value="<?php echo $pres['pres_id'] ?>" <?php if($teacher['pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?> (<?php echo $pres['rm_nbr'] ?>)</option>
+                            <?php echo $teacher['ses_1_pres_id']?> <BR>
+                            <?php echo $pres['pres_id']?> <BR>
+
+                            <option value="<?php echo $pres['pres_id'] ?>" <?php if($teacher['ses_1_pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?> (<?php echo $pres['rm_nbr'] ?>)</option>
                         <?php } ?>
                     </select>
                     <select name="session2[<?php echo $i ?>]" class="s2_select">
                         <option value="null"></option>
                         <?php foreach($session2 as $pres) { ?>
-                            <option value="<?php echo $pres['pres_id'] ?>" <?php if($teacher['pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?> (<?php echo $pres['rm_nbr'] ?>)</option>
+                            <option value="<?php echo $pres['pres_id'] ?>" <?php if($teacher['ses_2_pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?> (<?php echo $pres['rm_nbr'] ?>)</option>
                         <?php } ?>
                     </select>
                 </div>

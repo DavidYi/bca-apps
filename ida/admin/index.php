@@ -91,7 +91,7 @@ switch ($action) {
                 <a href="signins">
                     <div class="feature">
                         <h2>Signins</h2>
-                        <h4>Generate signin sheets and mentor check-in sheet.</h4>
+                        <h4>Generates signin sheets, a presenter check-in sheet, and room signs.</h4>
                     </div>
                 </a>
             </td>
