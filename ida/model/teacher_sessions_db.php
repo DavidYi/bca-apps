@@ -1,7 +1,7 @@
 <?php
 
 function get_teachers() {
-    $query = 'select u.usr_id, CONCAT(usr_last_name, \', \', usr_first_name) as usr_name, ses_1.pres_id, ses_2.pres_id
+    $query = 'select u.usr_id, CONCAT(usr_last_name, \', \', usr_first_name) as usr_name, ses_1.pres_id as ses_1_pres_id, ses_2.pres_id as ses_2_pres_id
 from user u
 left join 
 (select x.pres_id, x.usr_id
