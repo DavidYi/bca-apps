@@ -11,7 +11,7 @@ function add_pres($pres_title, $pres_desc, $organization, $location, $usr_id, $f
         $statement->bindValue(":organization", $organization, PDO::PARAM_STR);
         $statement->bindValue(":location", $location, PDO::PARAM_STR);
         $statement->bindValue(":usr_id", $usr_id, PDO::PARAM_INT);
- a       $statement->bindValue(":field_id", $field_id, PDO::PARAM_INT);
+        $statement->bindValue(":field_id", $field_id, PDO::PARAM_INT);
         $statement->bindValue(":rm_id", $rm_id, PDO::PARAM_INT);
         $statement->bindValue(":ses_id", $ses_id, PDO::PARAM_INT);
         $statement->bindValue(":team_members", $team_members, PDO::PARAM_STR);
