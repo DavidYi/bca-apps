@@ -10,7 +10,7 @@ and x.app_cde = :app_cde';
 
     global $db;
     global $app_cde;
-
+//
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':app_cde', $app_cde);
