@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
 <div class="table-title">
     <h3>Course Interests</h3>
 </div>
@@ -37,7 +38,14 @@
                     <td class="text-left"><label><?php echo $course['course_desc']?></label></td>
                     <td class="text-left">
                         <label class="switch">
-                            <input type="checkbox" value="<?php echo $course['course_id'] ?>" name="checkbox[]" >
+                            <?php
+                            if ($course["enrolled"] == 1) {
+                                echo "<input type='checkbox' value=" . $course['course_id'] . " name='checkbox[]' checked>";
+                            } else {
+                                echo "<input type='checkbox' value=" . $course['course_id'] . " name='checkbox[]'>";
+                            }
+                            ?>
+
                             <div class="slider round"></div>
                         </label>
                     </td>
@@ -69,17 +77,10 @@
         var index;
 
         for (index = 0; index < ids.length; ++index) {
-
-
             document.write(ids[index]);
         }
 
     }
-
-
+    
 </script>
-
-
-
-
 </html>
