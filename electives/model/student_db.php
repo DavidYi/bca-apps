@@ -36,7 +36,7 @@ function student_add_course($usr_id, $course_id) {
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':course_id', $course_id);
-        $statement->bindValue(':user_id', $usr_id->usr_id);
+        $statement->bindValue(':usr_id', $usr_id);
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {

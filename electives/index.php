@@ -36,7 +36,8 @@ function directToHomePage() {
 /** Include the database credentials and then transfer control to /shared/index,
  * which contains the meat of the login handling code.
  */
+
 include (__DIR__ . "/model/database.php");
-include (__DIR__ . "/../shared/index.php");
+include (__DIR__ . "/../shared/login/index.php");
 
 ?>

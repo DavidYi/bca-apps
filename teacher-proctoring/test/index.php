@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: macbook
- * Date: 12/14/15
- * Time: 1:04 PM
- */
+
 require_once("../util/main.php");
 require_once ("../model/teacher_db.php");
 
@@ -31,9 +26,6 @@ switch ($action) {
         $user_from_post = filter_input(INPUT_POST, 'usr_id');
         $user = User::getUserByUsrId($user_from_post);
         $_SESSION['user'] = $user;
-
-
-
 
         if ($user->getRole('TPOR') != NULL) {
             // The user is an admin, so they are directed to  admin page
