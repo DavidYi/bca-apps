@@ -18,34 +18,35 @@
 <form action="." method="POST">
     <input type="hidden" name="action" value="update_courses">
     <table class="table-fill">
-        <thead>
-        <tr>
-            <th class="text-left">Elective</th>
-            <th class="text-left">Teacher</th>
-            <th class="text-left">Description</th>
-            <th class="text-left">Express Interest</th>
-        </tr>
+        <thead >
+            <tr style="width:800px;">
+                <th class="text-left">Elective</th>
+                <th class="text-left">Teacher</th>
+                <th class="text-left">Description</th>
+                <th class="text-left">Express Interest</th>
+
+            </tr>
+
         </thead>
+
         <tbody>
-        <?php foreach ($courseList as $course) : ?>
-
-
-        <tr>
-            <td class="text-left"><label><?php echo $course['course_name']?></label></td>
-            <td class="text-left"><label><?php echo $course['teacher']?></label></td>
-            <td class="text-left"><label><?php echo $course['course_desc']?></label></td>
-            <td class="text-left">
-
-                <label class="switch">
-                    <input type="checkbox" value="<?php echo $course['course_id'] ?>" name="checkbox[]" >
-                    <div class="slider round"></div>
-                </label>
-            </td>
-        </tr>
-
-        <?php endforeach; ?>
+            <?php foreach ($courseList as $course) :?>
+                <tr>
+                    <td class="text-left"><label><?php echo $course['course_name']?></label></td>
+                    <td class="text-left"><label><?php echo $course['teacher']?></label></td>
+                    <td class="text-left"><label><?php echo $course['course_desc']?></label></td>
+                    <td class="text-left">
+                        <label class="switch">
+                            <input type="checkbox" value="<?php echo $course['course_id'] ?>" name="checkbox[]" >
+                            <div class="slider round"></div>
+                        </label>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
 
         </tbody>
+
+
     </table>
 
     <div class="wrapper">
