@@ -360,7 +360,6 @@ function del_user_tests($test_array, $usr_id)
 {
     global $db;
 
-
     $query = 'SELECT test_id, test_time_id FROM test_updt_xref
                 WHERE usr_id = :usr_id';
 

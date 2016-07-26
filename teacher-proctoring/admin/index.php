@@ -31,7 +31,7 @@ switch ($action) {
 </head>
 <body>
 <main>
-    <header><h1 class="title"><h2>Admin Tools</h1>
+    <header><h1 class="title"><h2>Admin Tools</h2></h1>
     <div id="logout"><a href="../index.php?action=logout">Log Out</a></div>
     </header>
     <br>
@@ -50,6 +50,10 @@ switch ($action) {
     <div class="feature">
         <a href="room"><h2>Edit Rooms</h2></a>
         <h4>Manage rooms.</h4>
+    </div>
+    <div class="feature">
+        <a href="email"><h2>Email Proctors</h2></a>
+        <h4>Notify proctors of an upcoming test.</h4>
     </div>
     <div class="feature">
         <a href="mimic_user"><h2>Mimic User</h2></a>

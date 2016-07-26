@@ -16,7 +16,7 @@ if ($action == NULL) {
 
 switch ($action) {
     case 'show_users':
-        $user_list = get_user_list();
+        $user_list = get_user_list_test_page();
 
         include('login.php');
         break;
