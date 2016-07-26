@@ -81,7 +81,8 @@ function get_user_list() {
 }
 function get_user_list_test_page()
 {
-    $query = 'Select u.usr_id, u.usr_first_name, u.usr_last_name, u.usr_display_name, u.usr_class_year, r.usr_role_cde
+    $query = 'Select u.usr_id, u.usr_first_name, u.usr_last_name, u.usr_display_name, u.usr_class_year, r.usr_role_cde,
+                  u.usr_type_cde, u.usr_grade_lvl
                   from user u
                   left join role_application_user_xref r
                   on u.usr_id = r.usr_id

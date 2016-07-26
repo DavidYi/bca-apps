@@ -32,7 +32,7 @@ switch ($action) {
         $pdf = new signinPDF();
 
         foreach ($presentations as $pres) {
-            $title = $pres['ses_name'] . " sign in";
+            $title = $pres['wkshp_nme'] . " sign in";
             $teachers = get_teachers_in_ses($pres["pres_id"]);
             $presenters = get_presenters_in_ses($pres["pres_id"]);
             $students = get_students_in_ses($pres["pres_id"]);
@@ -41,11 +41,11 @@ switch ($action) {
             $pdf->SetFont('Arial', '', 12);
 
             $pdf->SetY(10);
-            $pdf->Cell(100, 9, "Title: " . $pres['pres_title']);
+            $pdf->Cell(100, 9, "Title: " . $pres['wkshp_nme']);
             $pdf->Ln();
             $pdf->Cell(100, 9, "Room: " . $pres['rm_nbr']);
             $pdf->Ln();
-            $pdf->Cell(100, 9, "Session: " . $pres['ses_id'] . " (" . $pres['ses_start'] . " - " . $pres['ses_end'] . ")");
+            $pdf->Cell(100, 9, "Session: " . $pres['ses_id'] . " (" . $pres['ses_start_time'] . " - " . $pres['ses_end_time'] . ")");
             $pdf->Ln();
             $pdf->Cell(100, 9, "Presenters: " . $presenters);
             $pdf->Ln();
@@ -109,7 +109,7 @@ switch ($action) {
 
             $pdf->setY ($pdf->getY() + 10);
 
-            $pdf->SetFont('Arial', '', 28);
+            $pdf->SetFont('Arial', 'B', 28);
             $pdf->Cell($leftSessionIndent, 25, "", 0, 0, "L");
             $pdf->Cell(20, $lineSpacing, "8:15", 0, 0, "R");
             $pdf->Cell($hangingIndent, $lineSpacing, "", 0, 0, "R");
@@ -126,7 +126,7 @@ switch ($action) {
             $pdf->Cell(0, $lineSpacing, $org, 0, 2, "L");
 
             $pdf->setY ($pdf->getY() + 10);
-            $pdf->SetFont('Arial', '', 28);
+            $pdf->SetFont('Arial', 'B', 28);
             $pdf->Cell($leftSessionIndent, 25, "", 0, 0, "L");
             $pdf->Cell(20, $lineSpacing, "9:15", 0, 0, "R");
             $pdf->Cell($hangingIndent, $lineSpacing, "", 0, 0, "R");

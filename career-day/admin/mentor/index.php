@@ -131,8 +131,8 @@ switch ($action) {
         break;
 
 
-    case 'delete_teacher':
-        $mentor_id = filter_input(INPUT_GET, 'teacher_id');
+    case 'delete_mentor':
+        $mentor_id = filter_input(INPUT_GET, 'mentor_id');
         delete_mentor($mentor_id);
 
         $mentorList = get_mentor_list();

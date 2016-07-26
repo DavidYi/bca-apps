@@ -16,15 +16,13 @@ switch ($action) {
         include("view.php");
         break;
 
-    case 'send_email':
-        include('admin_email_script.php');
-        break;
-
     default:
         echo('Unknown account action: ' . $action);
         break;
 
 }
+
+
 
 
 ?>
