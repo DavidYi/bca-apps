@@ -479,4 +479,28 @@ function list_teacher_selected_tests($usr_id)
     return get_list($query);
 
 }
+
+function list_upcoming_tests()
+{
+    global $db;
+
+    $query = 'select test_name, test_id, CURDATE(), test_dt, datediff(test_dt, curdate()) as difference
+              from test
+              where test_dt >= curdate()
+              order by difference';
+
+    try {
+        $statement = $db->prepare($query);
+        //$statement->bindValue(':days', $days);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+    return get_list($query);
+}
+
+
 ?>

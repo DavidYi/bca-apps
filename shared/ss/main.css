@@ -1,6 +1,33 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
+/*@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);*/
+@import url(https://fonts.googleapis.com/css?family=Lato:300,700&subset=latin-ext);
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+@import url(https://file.myfontastic.com/p563dRgdEAZiX2kTAygwkU/icons.css);
+
+/**********color reference chart**********
+comment ********* color ********
+
+P1, red           rgb(232, 135, 121)
+P2, blue          rgb(182, 226, 249)
+P3, yellow        rgb(247, 224, 97)
+G1, dark          rgb(84, 79, 84)
+G2, med           rgb(147, 146, 149)
+G3, light         rgb(253, 253, 253)
+
+*/
+
+/**********icon reference chart**********
+char ******** icon ********
+
+c             close   (X)
+p             plus    (+)
+i             info    (i)
+d             delete  (trashcan)
+m             modify  (pencil)
+
+*/
+
+
 img, legend {
   border: 0; }
 
@@ -8,7 +35,7 @@ legend, td, th {
   padding: 0; }
 
 html {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
 
@@ -44,13 +71,9 @@ b, optgroup, strong {
 dfn {
   font-style: italic; }
 
-h1 {
-  font-size: 2em;
-  margin: .67em 0; }
-
 mark {
   background: #ff0;
-  color: #000; }
+  color: rgb(84, 79, 84);}
 
 small {
   font-size: 80%; }
@@ -124,9 +147,10 @@ html, body {
   width: 100%;
   min-height: 100%;
   margin: 0;
-  margin: 0;
   padding: 0;
-  background-color: #fbfcfc; }
+  color: rgb(84, 79, 84);
+  /*background-color: rgba(232, 135, 121, 0.7); */
+  }
 
 .display-none {
   display: none;
@@ -171,13 +195,6 @@ html {
     html {
       font-size: 92.5%; } }
 
-body {
-  color: #333;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.25em;
-  font-weight: 300;
-  line-height: 1.25; }
-
 h {
   font-size: 3em; }
 
@@ -197,62 +214,85 @@ h {
   font-size: 0.75em; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", sans-serif;
   font-weight: 300;
   line-height: 1.25;
   margin: 0 0 0.625em;
   padding: 0; }
 
+h1 {
+  font-weight: 700;
+  font-size: 3em;
+  line-height: 1.05em;
+  margin:0 auto;
+  margin-bottom: 1.25em;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+
+h3 {
+  font-weight: 300;
+  font-size: 0.875em;
+  line-height: 0.625em;
+}
+
 p {
-  font-family: "Roboto", sans-serif;
-  font-size: 1.125em;
-  font-weight: 400;
-  line-height: 1.8; }
+  font-weight: 300;
+  font-size: 1em;
+  line-height: 1.375em;
+}
+
+/*icon font*/
+h4 {
+  font-family: 'bca-icons';
+}
 
 a {
-  color: #229aff;
+  color: rgb(182, 226, 249);
   text-decoration: none;
   transition: color 175ms ease; }
   a:active, a:focus, a:hover {
     opacity: 0.8; }
 
 h1.title {
-  color: #262626;
-  font: normal normal 500 2em "Roboto", sans-serif;
   text-align: center; }
 
 button {
-  height: 3.125em;
-  width: 12.5em;
-  width: 12.5em;
-  color: #fdfdfd;
-  background-color: #f0c30f;
-  font: normal normal 400 0.32 "Roboto", sans-serif;
+  height: 2em;
+  width: 8em;
+  color: rgb(253, 253, 253);
+  font-size: 1.5em;
   border: 0;
-  border-radius: 1px;
+  border-radius: 12px;
   outline: none;
   text-transform: uppercase;
+  text-align: center;
+  display: inline-block;
   -webkit-transition: all 175ms ease;
   -moz-transition: all 175ms ease;
   transition: all 175ms ease; }
-  button:hover {
-    background-color: #0f0f0f; }
 
 input {
-  height: 3.4375em;
-  width: 30em;
-  margin: 0 auto;
+  height: 3em;
+  width: 15em;
+  margin: 0.5em 0 0.5em 0;
+  /*margin-bottom: 0.5em;*/
   padding: 0 auto;
-  color: #333;
-  background-color: #fdfdfd;
-  border: 0;
-  border-radius: 1px;
-  font: normal normal 400 0.29091 "Roboto", sans-serif;
+  padding: 12px;
+  color: rgb(84, 79, 84);
+  background-color: transparent;
+  border: 1px solid rgb(182, 226, 249);
+  border-radius: 12px;
+  font: normal normal 300 1em "Lato", sans-serif;
   text-align: left;
   outline: none;
   -webkit-transition: all 175ms ease;
   -moz-transition: all 175ms ease;
-  transition: all 175ms ease; }
+  transition: all 175ms ease;
+}
 
 html {
   box-sizing: border-box; }
@@ -279,16 +319,12 @@ html {
     display: table; }
 
 html {
-  background-color: #e7e7e7; }
-
-h1 {
-  font-weight: 500; }
+  background-color: rgba(232, 135, 121, 0.7); }
 
 
 .register {
   margin: 1.5625em auto 0;
-  text-align: center;
-  font-weight: 500; }
+  text-align: center; }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
@@ -300,5 +336,15 @@ h1 {
 ::-webkit-scrollbar-thumb {
   background: #777; }
 
+::-webkit-input-placeholder { color: rgb(147, 146, 149);}
+:-moz-placeholder { color: rgb(147, 146, 149);}
+::-moz-placeholder {color: rgb(147, 146, 149);}
+:-ms-input-placeholder {color: rgb(147, 146, 149);}
+
 
 /*# sourceMappingURL=main.css.map */
+
+
+a.info:hover {
+  cursor: hand; }
+

@@ -12,7 +12,7 @@ function get_mentor_list() {
                   active, pres_room, pres_host_teacher,
                   pres_max_capacity
               from mentor
-
+              where active = 1
 			  order by mentor_last_name';
 
     return get_list($query);
