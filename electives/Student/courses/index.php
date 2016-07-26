@@ -24,10 +24,11 @@ if ($action == NULL) {
 
 $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
 
-$courseList = get_course_list_for_student($user->usr_id);
+$courseList = get_course_list_for_student($usr_id);
 
 switch ($action) {
     case "update_courses":
+        reset_courses_for_student($usr_id);
         $chosen_courses = $_POST["checkbox"];
         foreach($chosen_courses as $course_id) {
             student_add_course($usr_id, $course_id);
@@ -37,7 +38,6 @@ switch ($action) {
     default:
         include ("./view.php");
         break;
-
 }
 
 exit();

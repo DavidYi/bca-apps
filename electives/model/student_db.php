@@ -62,3 +62,18 @@ function student_delete_course($usr_id, $course_id) {
         exit();
     }
 }
+
+function reset_courses_for_student($usr_id) {
+    global $db;
+    $query = "delete from elect_student_course_xref
+              where usr_id = :usr_id";
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
