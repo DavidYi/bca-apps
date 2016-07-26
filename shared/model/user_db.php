@@ -32,7 +32,7 @@ function get_user_by_username($username, $app_cde) {
               WHERE usr_bca_id =  :username';
 
     global $db;
-    
+
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':username', $username);
@@ -84,23 +84,10 @@ function get_user_list_test_page()
     $query = 'Select u.usr_id, u.usr_first_name, u.usr_last_name, u.usr_display_name, u.usr_class_year, r.usr_role_cde
                   from user u
                   left join role_application_user_xref r
-                  on u.usr_id = r.usr_id and r.app_cde = :app_cde
+                  on u.usr_id = r.usr_id
                   order by usr_role_cde desc, usr_grade_lvl desc, usr_last_name, usr_first_name';
 
-    global $db;
-    global $app_cde;
-
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(':app_cde', $app_cde);
-        $statement->execute();
-        $result = $statement->fetchAll();
-        $statement->closeCursor();
-        return $result;
-    } catch (PDOException $e) {
-        display_db_exception($e);
-        exit();
-    }
+    return get_list($query);
 }
 
 class User

@@ -2,9 +2,9 @@
 <head>
     <meta charset="utf-8" />
     <title>Table Style</title>
-    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+<!--    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">-->
     <link rel="stylesheet" href="index.css">
-    <script src="../../js/jquery/min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
 
 
 
@@ -15,7 +15,8 @@
     <h3>Course Interests</h3>
 </div>
 
-<form action="index.php" method="POST">
+<form action="." method="POST">
+    <input type="hidden" name="action" value="update_courses">
     <table class="table-fill">
         <thead>
         <tr>
@@ -26,40 +27,29 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($courseList as $course) { ?>
+        <?php foreach ($courseList as $course) : ?>
 
 
         <tr>
             <td class="text-left"><label><?php echo $course['course_name']?></label></td>
             <td class="text-left"><label><?php echo $course['teacher']?></label></td>
             <td class="text-left"><label><?php echo $course['course_desc']?></label></td>
-            <td  class="text-left">
+            <td class="text-left">
 
                 <label class="switch">
-                    <input type="checkbox" id="<?php $course['course_id'] ?>" name="checkbox[]" >
+                    <input type="checkbox" value="<?php echo $course['course_id'] ?>" name="checkbox[]" >
                     <div class="slider round"></div>
                 </label>
-
-                <!-- to find course id: $course['course_id']-->
-
-
-            <script>
-                document.getElementById("mods").addEventListener("click", myFunction);
-
-                function changeColor() {
-                    document.getElementById("mods").style.color = "blue";
-                }
-            </script>
-
-
+            </td>
         </tr>
-        <?php } ?>
+
+        <?php endforeach; ?>
 
         </tbody>
     </table>
 
     <div class="wrapper">
-        <button class="submit" type="submit" onclick="submit_courses">Submit</button>
+        <button class="submit" type="submit">Submit</button>
     </div>
 </form>
 
@@ -75,19 +65,12 @@
         var ids = $("input:checkbox[name='checkbox[]']:checked").map(function(index) {
             return this.id;
         });
-
-
         var index;
 
         for (index = 0; index < ids.length; ++index) {
 
 
-            console.log (ids[index]);
-
-
-
-
-
+            document.write(ids[index]);
         }
 
     }

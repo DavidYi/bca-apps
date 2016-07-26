@@ -10,7 +10,8 @@
 <head>
     <title>Generate Sign in PDF</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../signins.css">
+    <link rel="stylesheet" type="text/css" href="../../../shared/ss/main.css">
+    <link rel="stylesheet" type="text/css" href="../signins.css"
     <script src="http://code.jquery.com/jquery.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -20,10 +21,10 @@
                     $(".session").show();
                     $("input[name='action']").val('generate-session-signins')
                 }
-                if ($(this).attr("value") == "mentor-signins") {
+                if ($(this).attr("value") == "presenter-signin") {
                     $(".mentor").show();
                     $(".session").hide();
-                    $("input[name='action']").val('generate-mentor-signins')
+                    $("input[name='action']").val('generate-presenter-signin')
                 }
                 if ($(this).attr("value") == "room-signs") {
                     $(".mentor").hide();
@@ -35,15 +36,66 @@
     </script>
 </head>
 
-<a href="../index.php" class="back">
-    <button>Back</button>
-</a>
-
 <body>
 
-<form action="." method="post">
 
-    <div class="container">
+
+    <header><h1 class="title"><h2>Admin Generator Tools</h2></h1>
+        <div id="logout"><h2><a href="../index.php?action=logout">Log Out</a></h2></div>
+    </header>
+    <form action="." method="post">
+    <br>
+    <table>
+        <tr>
+            <td>
+                <a href="./index.php?action=generate-session-signins" target="_blank">
+                    <div class="feature">
+                        <h2>Session Sign In Sheets</h2>
+                        <h4>Generates sign in sheets for each presentation.</h4>
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="./index.php?action=generate-presenter-signin" target="_blank">
+                    <div class="feature">
+                        <h2>Presenter Sign In Sheet</h2>
+                        <h4>Generates sign in sheet for visitors.</h4>
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="./index.php?action=generate-room-signs" target="_blank">
+                    <div class="feature">
+                        <h2>Room Signs</h2>
+                        <h4>Generates the room signs.</h4>
+                    </div>
+                </a>
+            </td>
+            </tr>
+        </table>
+        </br>
+        <a href="../index.php" class="back">
+            Back
+        </a>
+    <!--<div class="feature">
+        <a href="./index.php?action=generate-session-signins" target="_blank"><h2>Session Sign In Sheets</h2></a>
+        <h4>Generates the sign in sheets for each presentation.</h4></div>
+    <div class="feature">
+        <a href="./index.php?action=generate-presenter-signin" target="_blank"><h2>Presenter Sign In Sheet</h2></a>
+        <h4>Generates sign in sheet for visitors.</h4></div>
+    <div class="feature">
+        <a href="./index.php?action=generate-room-signs" target="_blank"><h2>Room Signs</h2></a>
+        <h4>Generates the room signs</h4></div>
+    <div class="feature">
+        <a href="../index.php"><h2>Back to Menu</h2></a>
+        <h4></h4></div>
+    <a href="../index.php" class="back">
+        <button>Back</button>
+    </a>
+    <div class="feature">
+        <a href="../../index.php?action=logout"><h2>Log Out</h2></a>
+        <h4></h4></div>-->
+    <!--<div class="container">
         <ul>
             <li>
                 <input type="radio" name="choice" value="session-signins" class="choice" id="sc">
@@ -72,10 +124,10 @@
                 </div>
             </li>
         </ul>
-    </div>
+    </div>-->
 
 
-    <div class="mentor select">
+    <!--<div class="mentor select">
         <br>
         <label>Mentor:</label>
         <select name="mentor" class="red">
@@ -118,7 +170,7 @@
 
     <br>
     <input type="hidden" name="action" value="<?php echo 'generate-' . $_POST['choice'] ?>">
-    <input type="submit" value="Generate" class="submit">
+    <input type="submit" value="Generate" class="submit">-->
 
 </form>
 </body>
