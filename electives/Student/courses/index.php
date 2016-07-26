@@ -24,7 +24,6 @@ if ($action == NULL) {
 
 $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
 
-$courseList = get_course_list_for_student($usr_id);
 
 switch ($action) {
     case "update_courses":
@@ -35,7 +34,22 @@ switch ($action) {
         }
         header("Location: ../index.php");
         break;
+    case "sort_courses_by_name":
+        // sorting by course_name is the default
+        $courseList = get_course_list_for_student($usr_id);
+        include("./view.php");
+        break;
+    case "sort_courses_by_teacher":
+        $courseList = get_course_list_for_student($usr_id, "teacher");
+        include("./view.php");
+        break;
+    case "sort_courses_by_interest":
+        // !enrolled will make the enrolled courses to be listed first
+        $courseList = get_course_list_for_student($usr_id, "!enrolled");
+        include("./view.php");
+        break;
     default:
+        $courseList = get_course_list_for_student($usr_id);
         include ("./view.php");
         break;
 }

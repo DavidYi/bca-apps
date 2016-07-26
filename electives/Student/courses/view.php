@@ -21,10 +21,10 @@
     <table class="table-fill">
         <thead >
             <tr style="width:800px;">
-                <th class="text-left">Elective</th>
-                <th class="text-left">Teacher</th>
+                <th class="text-left"><a href="index.php?action=sort_courses_by_names">Elective</a></th>
+                <th class="text-left"><a href="index.php?action=sort_courses_by_teacher">Teacher</a></th>
                 <th class="text-left">Description</th>
-                <th class="text-left">Express Interest</th>
+                <th class="text-left"><a href="index.php?action=sort_courses_by_interest">Express Interest</a></th>
 
             </tr>
 
