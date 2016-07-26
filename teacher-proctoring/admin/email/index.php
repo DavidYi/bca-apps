@@ -6,11 +6,15 @@ $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
     if ($action == NULL) {
-        $action = '';
+        $action = 'list_upcoming_tests';
     }
 }
-
 switch ($action) {
+
+    case 'list_upcoming_tests':
+        $upcoming_tests = list_upcoming_tests();
+        include("view.php");
+        break;
 
     default:
         echo('Unknown account action: ' . $action);
@@ -20,6 +24,5 @@ switch ($action) {
 
 
 
-include("view.php");
 
 ?>

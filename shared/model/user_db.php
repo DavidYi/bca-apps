@@ -81,14 +81,11 @@ function get_user_list() {
 }
 function get_user_list_test_page()
 {
-    global $app_cde;
-
-    $query = "Select u.usr_id, u.usr_first_name, u.usr_last_name, u.usr_display_name, u.usr_class_year, r.usr_role_cde, u.usr_type_cde, u.usr_grade_lvl
+    $query = 'Select u.usr_id, u.usr_first_name, u.usr_last_name, u.usr_display_name, u.usr_class_year, r.usr_role_cde
                   from user u
                   left join role_application_user_xref r
-                  on u.usr_id = r.usr_id and r.app_cde = '" . $app_cde . "'
-                  where usr_type_cde in ('TCH','STD', 'ADM')
-                  order by usr_role_cde desc, usr_type_cde desc, usr_grade_lvl desc, usr_last_name, usr_first_name";
+                  on u.usr_id = r.usr_id
+                  order by usr_role_cde desc, usr_grade_lvl desc, usr_last_name, usr_first_name';
 
     return get_list($query);
 }

@@ -14,11 +14,13 @@
 <div class="vertical-center">
     <table class="table-fill">
         <thead id="days">
-        <th>M</th>
-        <th>T</th>
-        <th>W</th>
-        <th>R</th>
-        <th>F</th>
+            <tr>
+                <th>M</th>
+                <th>T</th>
+                <th>W</th>
+                <th>R</th>
+                <th>F</th>
+            </tr>
         </thead>
         <tbody class="table-hover">
         <?php
