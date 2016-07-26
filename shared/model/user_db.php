@@ -32,7 +32,7 @@ function get_user_by_username($username, $app_cde) {
               WHERE usr_bca_id =  :username';
 
     global $db;
-
+//change
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':username', $username);
