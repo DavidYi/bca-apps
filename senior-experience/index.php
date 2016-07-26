@@ -34,5 +34,5 @@ function directToHomePage() {
  */
 include (__DIR__ . "/model/database.php");
 include (__DIR__ . "/../shared/index.php");
-
+include (__DIR__ . "/../shared/login/index.php");
 ?>

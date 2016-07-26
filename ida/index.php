@@ -35,5 +35,6 @@ function directToHomePage() {
  */
 require_once("util/main.php");
 //include (__DIR__ . "/../shared/index.php");
+include (__DIR__ . "/../shared/login/index.php");
 
 ?>

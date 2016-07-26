@@ -131,3 +131,7 @@ button {
 button:hover {
     cursor: pointer;
 }
+
+.email-all {
+    text-align: center;
+}
