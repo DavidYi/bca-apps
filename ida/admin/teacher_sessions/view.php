@@ -11,50 +11,50 @@
     <input type="hidden" name="action" value="update_sessions">
 
     <div id="box">
-        <p class="title">Teacher Sessions</p>
-
-        <div id="header_row">
-            <label>
-                <span id="name_header"><strong>Name</strong></span>
-            </label>
-            <label id="role">
-                <span id="s1_header"><strong>Session 1</strong></span>
-            </label>
-            <label id="role">
-                <span id="s2_header"><strong>Session 2</strong></span>
-            </label>
-        </div>
-        <?php $i = 0; ?>
-        <?php foreach($teachers as $teacher) { ?>
-
-            <div class="row">
-                <label>
-                    <span class="teacher_name"><?php echo $teacher['usr_name'] ?></span>
-                </label>
-                <input type="hidden" name="hdUserID[<?php echo $i ?>]" value="<?php echo $teacher['usr_id'] ?>">
-                <select name="session1[<?php echo $i ?>]" class="s1_select">
-                    <option value="null"></option>
-                    <?php foreach($session1 as $pres) { ?>
-                        <option value="<?php echo $pres['pres_id'] ?>" <?php if($teacher['pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?> (<?php echo $pres['rm_nbr'] ?>)</option>
-                    <?php } ?>
-                </select>
-                <select name="session2[<?php echo $i ?>]" class="s2_select">
-                    <option value="null"></option>
-                    <?php foreach($session2 as $pres) { ?>
-                        <option value="<?php echo $pres['pres_id'] ?>" <?php if($teacher['pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?> (<?php echo $pres['rm_nbr'] ?>)</option>
-                    <?php } ?>
-                </select>
-            </div>
-
-            <?php $i = $i + 1; ?>
-
-        <?php } ?>
-
-        <div id="buttons">
+        <div id="fixed_div">
             <button class="submit s" type="submit" name="choice" value="Update Teachers">Update</button>
+            <p class="title">Teacher Sessions</p>
             <button class="submit back" type="submit" name="choice" value="Back">Back</button>
-        </div>
 
+            <div id="header_row">
+                <label>
+                    <span id="name_header"><strong>Name</strong></span>
+                </label>
+                <label id="role">
+                    <span id="s1_header"><strong>Session 1</strong></span>
+                </label>
+                <label id="role">
+                    <span id="s2_header"><strong>Session 2</strong></span>
+                </label>
+            </div>
+        </div>
+        <div id="teacher_div">
+            <?php $i = 0; ?>
+            <?php foreach($teachers as $teacher) { ?>
+
+                <div class="row <?php if($i % 2 == 1) { ?>odd<?php } ?>">
+                    <label>
+                        <span class="teacher_name"><?php echo $teacher['usr_name'] ?></span>
+                    </label>
+                    <input type="hidden" name="hdUserID[<?php echo $i ?>]" value="<?php echo $teacher['usr_id'] ?>">
+                    <select name="session1[<?php echo $i ?>]" class="s1_select">
+                        <option value="null"></option>
+                        <?php foreach($session1 as $pres) { ?>
+                            <option value="<?php echo $pres['pres_id'] ?>" <?php if($teacher['pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?> (<?php echo $pres['rm_nbr'] ?>)</option>
+                        <?php } ?>
+                    </select>
+                    <select name="session2[<?php echo $i ?>]" class="s2_select">
+                        <option value="null"></option>
+                        <?php foreach($session2 as $pres) { ?>
+                            <option value="<?php echo $pres['pres_id'] ?>" <?php if($teacher['pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?> (<?php echo $pres['rm_nbr'] ?>)</option>
+                        <?php } ?>
+                    </select>
+                </div>
+
+                <?php $i = $i + 1; ?>
+
+            <?php } ?>
+        </div>
 
 
 </form>

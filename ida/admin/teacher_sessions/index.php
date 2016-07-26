@@ -27,9 +27,9 @@ switch ($action) {
         }
         
         
-        $teacherList = filter_input(INPUT_POST, 'hdUserID');
-        $s1Choice = filter_input(INPUT_POST, 'session1');
-        $s2Choice = filter_input(INPUT_POST, 'session2');
+        $teacherList = $_POST['hdUserID'];
+        $s1Choice = $_POST['session1'];
+        $s2Choice = $_POST['session2'];
         if($choice == "Update Teachers"){
             update_all_teacher_sessions($teacherList, $s1Choice, $s2Choice);
         }
