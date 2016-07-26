@@ -6,7 +6,7 @@ require("sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email(null, "celper19@bergen.org");
 $subject = "Hello World from the SendGrid PHP Library!";
 $to = new SendGrid\Email(null, "cel.peralta.jmj@gmail.com");
-$content = new SendGrid\Content("text/plain", "Hello, Email!");
+$content = new SendGrid\Content("text/plain", "It works?");
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
 //Going to use getenv() later but for now hardcoding it
@@ -21,6 +21,8 @@ $response = $sg->client->mail()->send()->post($mail);
 <?php echo $response->statusCode(); ?> <br>
 <?php echo $response->headers(); ?> <br>
 <?php echo $response->body(); ?> <br>
+
+<p>In the email include name of test signed up for, how many days away it is, and time and stuff.</p>
 
 
 </html>
