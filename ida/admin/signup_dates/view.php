@@ -19,10 +19,10 @@
 
                 <div id ="grades">
                 <h2>Grade</h2>
-                <h2 class="grade">9</h2></td>
-                <h2 class="grade">10</h2></td>
-                <h2 class="grade">11</h2></td>
-                <h2 class="grade">12</h2></td>
+                <h2 class="grade">9</h2>
+                <h2 class="grade">10</h2>
+                <h2 class="grade">11</h2>
+                <h2 class="grade">12</h2>
             </div>
 
             <div id="se-wrap">
