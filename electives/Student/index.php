@@ -8,7 +8,7 @@ $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
     if ($action == NULL) {
-        $action = 'list_options';
+        $action = 'default';
     }
 }
 
@@ -18,21 +18,12 @@ $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
 $time_strings = get_time_strings($usr_id);
 
 // get the courses the student is interested in
-$courses = get_courses($usr_id);
 
 switch ($action) {
-    
-    case 'submit':
-        
-        echo'test';
-
-
-    case 'list_options':
-        include('./view.php');
-        break;
     case 'delete_course':
         $course_id = $_GET["course_id"];
         student_delete_course($usr_id, $course_id);
+        $courses = get_courses($usr_id);
         include('./view.php');
         break;
     case 'modify_courses':
@@ -47,11 +38,8 @@ switch ($action) {
         echo "will make a logout page later";
         header ('Location: ./courses/index.php');
         break;
-    case 'back':
-        include('./view.php');
-        break;
-
     default:
+        $courses = get_courses($usr_id);
         include('./view.php');
         break;
 }

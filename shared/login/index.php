@@ -10,8 +10,11 @@ require_once(__DIR__ . "/../../shared/model/database.php");
 require_once(__DIR__ . "/../../shared/model/user_db.php");
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
+
 if (($action == NULL) || ($action != 'login' )){
+
     $message = "";
+
     include(__DIR__ . '/login.php');
     exit();
 }
