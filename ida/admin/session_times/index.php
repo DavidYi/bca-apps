@@ -1,4 +1,5 @@
 <?php
+
 require_once('../../util/main.php');
 require_once('../../model/workshop_admin_db.php');
 
@@ -9,7 +10,9 @@ if ($action == NULL) {
         $action = 'time_select';
     }
 }
+
 verify_admin();
+
 switch ($action) {
     case 'time_select':
         $session1 = get_session_times(1);
@@ -31,4 +34,5 @@ switch ($action) {
         display_error('Unknown account action: ' . $action);
         exit();
         break;
-}?>
+}
+?>
