@@ -11,6 +11,7 @@
 <html>
 <head>
     <link rel="stylesheet" type='text/css' href="style.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 </head>
 
@@ -38,7 +39,8 @@
             <td> <?php echo $test_days_away; ?> </td>
             <td>
                 <form method="post">
-                    <input type="submit" value="Mail" name="submit"> <!-- assign a name for the button -->
+                    <button type="submit" value="Mail" name="submit"><i class="fa fa-envelope" aria-hidden="true"></i>
+                    </button> <!-- assign a name for the button -->
                 </form>
             </td>
         </tr>
@@ -66,16 +68,19 @@
 
     $response = $sg->client->mail()->send()->post($mail);
 
-    if($response->statusCode() == 202) {
+    if ($response->statusCode() == 202) {
         echo 'Email sent!';
+    } else {
+        echo $response->statusCode();
+        echo $response->headers();
+        echo $response->body();
     }
 }
 
 if (isset($_POST['submit'])) {
     send_email('cel.peralta.jmj@gmail.com', $test_name, $test_dt);
+    header("Location: ../../admin/email/");
 } ?>
-<h1>Put some weird scheduling thing here.</h1>
-
 
 </body>
 </html>

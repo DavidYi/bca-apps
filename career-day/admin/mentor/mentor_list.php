@@ -3,7 +3,7 @@
 <script type="text/javascript">
     function deleteMentor(mentorID) {
         if (confirm('Are you sure you would like to delete the mentor?')) {
-            window.parent.parent.location.href = 'view.php?action=delete_mentor&mentor_id=' + mentorID;
+            window.parent.parent.location.href = 'index.php?action=delete_mentor&mentor_id=' + mentorID;
         }
     }
 
@@ -41,6 +41,9 @@
     <a href="#">
         <div class="session-filter capacity">Max</div>
     </a>
+    <a href="#">
+        <div class="session-filter delete"></div>
+    </a>
 </nav>
 
 
@@ -58,16 +61,16 @@
         $pres_max_capacity = $mentor['pres_max_capacity'];
 
     ?>
-        <a href="./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor">
         <div class="mentor">
-            <div class="session-filter name"><?php echo($mentor_last_name . ', ' . $mentor_first_name); ?></div>
-            <div class="session-filter company"><?php echo $mentor_company; ?></div>
-            <div class="session-filter position"><?php echo $mentor_position; ?></div>
-            <div class="session-filter teacher"><?php echo $pres_host_teacher; ?></div>
-            <div class="session-filter room"><?php echo $pres_room; ?></div>
-            <div class="session-filter capacity"><?php echo $pres_max_capacity; ?></div> v
+            <div class="session-filter name" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo($mentor_last_name . ', ' . $mentor_first_name); ?></div>
+            <div class="session-filter company" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $mentor_company; ?></div>
+            <div class="session-filter position" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $mentor_position; ?></div>
+            <div class="session-filter teacher" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $pres_host_teacher; ?></div>
+            <div class="session-filter room" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $pres_room; ?></div>
+            <div class="session-filter capacity" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $pres_max_capacity; ?></div>
+            <div class="session-filter delete"><img src="../../../shared/images/deleteIcon.gif" id="<?php echo $mentor_id ?>"/></div>
         </div>
-        </a>
+
 
      <?php endforeach; ?>
 </div>
@@ -92,7 +95,12 @@
 
     $('#fab-action').click(function () {
         $.featherlight($('<iframe width="1000" height="800" src="' + $(this).attr('trigger') + '"/>'))
-    })
+    });
+
+    $('img').click(function(){
+        var id = $(this).attr('id');
+        deleteMentor(id);
+    });
 
 </script>
 </body>

@@ -580,7 +580,7 @@ nav .session-filter:hover, nav .session-filter:active {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 25%;
+    width: 24%;
     color: #e1e1e1;
     margin: 0;
     padding: 0;
@@ -649,6 +649,16 @@ label {
 
 .room:last-child {
     margin-right: 0;
+}
+
+.delete {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 1%;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
 }
 
 .capacity {
