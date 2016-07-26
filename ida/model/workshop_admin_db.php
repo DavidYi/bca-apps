@@ -476,5 +476,7 @@ function update_session_times ($start1, $end1, $start2, $end2)
         display_db_exception($e);
         exit();
     }
-}?>
+}
+
+?>
 
