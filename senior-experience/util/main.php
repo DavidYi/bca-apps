@@ -5,6 +5,7 @@
 //
 $app_cde = 'SENX';
 $app_title = 'Senior Expositions';
+$shared_ss_url = '/bca-apps/shared/ss/main.css';
 
 $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING); // Looks like c:/xampp/htdocs
 
