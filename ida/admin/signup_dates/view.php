@@ -18,7 +18,7 @@
                 <h1 class="title">Modify Signup Dates</h1>
 
                 <div id ="grades">
-                <h2>Grade</h2>
+                <h2><strong>Grade</strong></h2>
                 <h2 class="grade">9</h2>
                 <h2 class="grade">10</h2>
                 <h2 class="grade">11</h2>
@@ -27,7 +27,7 @@
 
             <div id="se-wrap">
                 <div id ="start">
-                    <h2>Start</h2>
+                    <h2><strong>Start</strong></h2>
                     <input type="text" name="start_9" value="<?php echo $grade9['start']?>">
                     <input type="text" name="start_10" value="<?php echo $grade10['start']?>">
                     <input type="text" name="start_11" value="<?php echo $grade11['start']?>">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div id ="end">
-                    <h2>End</h2>
+                    <h2><strong>End</strong></h2>
                     <input type="text" name="end_9" value="<?php echo $grade9['end']?>">
                     <input type="text" name="end_10" value="<?php echo $grade10['end']?>">
                     <input type="text" name="end_11" value="<?php echo $grade11['end']?>">
