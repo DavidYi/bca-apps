@@ -496,9 +496,12 @@ function list_upcoming_tests()
 {
     global $db;
 
-    $query = 'select test_name, test_id, CURDATE(), test_dt, datediff(test_dt, curdate()) as difference
-              from test
-              where test_dt >= curdate()
+    $query = 'select t.test_name, t.test_id, CURDATE(), t.test_dt, datediff(test_dt, curdate()) as difference
+              from test t, test_time_xref tx
+              where t.test_dt >= curdate()
+              and t.test_id = tx.test_id
+              and reminder_sent_dt is null
+              group by t.test_id
               order by difference';
 
     try {
@@ -518,11 +521,14 @@ function list_upcoming_teacher_emails($test_id)
 {
     global $db;
 
-    $query = 'SELECT distinct usr_last_name, usr_first_name, user_email
-                FROM user, test_updt_xref
-                WHERE test_id = :test_id
-				AND test_updt_xref.usr_id = user.usr_id
-                ORDER BY usr_last_name, usr_first_name
+    $query = 'select distinct u.usr_id, u.usr_last_name, u.usr_first_name, t.test_id, test_time_desc, user_email
+              from user u, test t, test_time_xref ttx, test_updt_xref tux, test_time tt
+                where u.usr_id = tux.usr_id
+                and tux.test_id = :test_id
+                and tux.test_id =  ttx.test_id
+                and ttx.test_id = t.test_id
+                and ttx.test_time_id = tt.test_time_id
+                order by u.usr_last_name, test_time_desc
 ';
 
     try {
@@ -536,6 +542,26 @@ function list_upcoming_teacher_emails($test_id)
         display_db_exception($e);
     }
     return get_list($query);
+}
+
+function update_reminder_sent($test_id)
+{
+    global $db;
+
+    try {
+        $db->beginTransaction();
+        $query = 'UPDATE test_time_xref
+                    SET reminder_sent_dt = CURRENT_DATE
+                    WHERE test_id = :test_id';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->execute();
+        $statement->closeCursor();
+        $db->commit();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
 }
 
 ?>
