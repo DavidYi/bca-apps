@@ -49,7 +49,7 @@ $startTimeFormatted = date('M d, g:i  a', $startTime);
 $endTimeFormatted = date('M d, g:i  a', $endTime);
 
 
-if (($currentTime > $startTime) and ($currentTime < $endTime))
+if ((($currentTime > $startTime) and ($currentTime < $endTime)) or $_SESSION['allow_signups'])
     $registrationOpen = true;
 else
     $registrationOpen = false;

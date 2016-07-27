@@ -6,6 +6,17 @@
  * Time: 9:39 AM
  */
 
+function get_user_mimic_list() {
+    $query = 'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
+                 usr_first_name, usr_last_name, usr_active
+              from user
+              where usr_active = 1
+              and usr_type_cde = \'STD\'
+			  order by usr_class_year, usr_display_name';
+
+    return get_list($query);
+}
+
 function get_mentor_list() {
     $query = 'SELECT mentor_id, mentor_last_name, mentor_first_name, mentor_field,
                  mentor_position, mentor_company, mentor_profile, mentor_keywords,
