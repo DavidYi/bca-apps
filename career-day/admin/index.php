@@ -88,6 +88,16 @@ switch ($action) {
                 </a>
             </td>
         </tr>
+        <tr>
+            <td>
+                <a href="clear_signups">
+                    <div class="feature">
+                        <h2>Clear Signups</h2>
+                        <h4>Clear All Student Signups.</h4>
+                    </div>
+                </a>
+            </td>
+        </tr>
     </table>
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </main>
