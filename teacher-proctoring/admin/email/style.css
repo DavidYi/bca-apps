@@ -120,3 +120,18 @@ tr {
 a:hover {
     cursor: pointer;
 }
+
+button {
+    border: none;
+    background: white;
+    outline: none;
+    font-size: 125%;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.email-all {
+    text-align: center;
+}

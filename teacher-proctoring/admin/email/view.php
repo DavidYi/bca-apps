@@ -11,6 +11,7 @@
 <html>
 <head>
     <link rel="stylesheet" type='text/css' href="style.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 </head>
 
@@ -36,11 +37,41 @@
             <td> <?php echo $test_name; ?> </td>
             <td> <?php echo $test_dt; ?> </td>
             <td> <?php echo $test_days_away; ?> </td>
+            <td>
+                <form method="post">
+                    <button type="submit" value="Mail" name="mail"><i class="fa fa-envelope" aria-hidden="true"></i>
+                    </button> <!-- assign a name for the button -->
+                </form>
+            </td>
         </tr>
+
     <?php endforeach; ?>
 </table>
+<form method="post" class="email-all">
+    <button type="submit" value="Mail All" name="mail-all">Mail All</button> <!-- assign a name for the button -->
+</form>
+<?php
 
-<h1>Put some weird scheduling thing here.</h1>
+if (isset($_POST['mail'])) {
+    send_email('celper19@bergen.org', $test_name, $test_dt);
+    header("Location: ../../admin/email/");
+
+    echo 'Email sent.';
+}
+
+if (isset($_POST['mail-all'])) {
+
+    foreach ($upcoming_tests as $test) :
+        if ($test['difference'] <= 7) {
+            send_email('celper19@bergen.org', $test_name, $test_dt);
+        }
+    endforeach;
+
+    echo 'Emails sent.';
+    header("Location: ../../admin/email/");
+}
+
+?>
 
 </body>
 </html>

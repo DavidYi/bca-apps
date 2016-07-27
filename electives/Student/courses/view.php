@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
 <div class="table-title">
     <h3>Course Interests</h3>
 </div>
@@ -18,35 +19,33 @@
 <form action="." method="POST">
     <input type="hidden" name="action" value="update_courses">
     <table class="table-fill">
-
-        <col width="15%">
-        <col width="15%">
-        <col width="60%">
-        <col width="10%">
-
-
         <thead >
-        <tr style="width:100%;">
-            <th class="text-left">Elective</th>
-            <th class="text-left">Teacher</th>
-            <th class="text-left">Description</th>
-            <th class="text-left">Express Interest</th>
+            <tr style="width:800px;">
+                <th class="text-left"><a href="index.php?action=sort_courses_by_names">Elective</a></th>
+                <th class="text-left"><a href="index.php?action=sort_courses_by_teacher">Teacher</a></th>
+                <th class="text-left">Description</th>
+                <th class="text-left"><a href="index.php?action=sort_courses_by_interest">Express Interest</a></th>
 
-        </tr>
+            </tr>
 
         </thead>
 
         <tbody>
-        <?php foreach ($courseList as $course) :?>
-
-
+            <?php foreach ($courseList as $course) :?>
                 <tr>
-                    <td class="text-left" id="name-td"><label><?php echo $course['course_name']?></label></td>
-                    <td class="text-left" id="teacher-td"><label><?php echo $course['teacher']?></label></td>
-                    <td class="text-left" id="desc-td"><label><?php echo $course['course_desc']?></label></td>
-                    <td class="text-left" id="check-td">
+                    <td class="text-left"><label><?php echo $course['course_name']?></label></td>
+                    <td class="text-left"><label><?php echo $course['teacher']?></label></td>
+                    <td class="text-left"><label><?php echo $course['course_desc']?></label></td>
+                    <td class="text-left">
                         <label class="switch">
-                            <input type="checkbox" value="<?php echo $course['course_id'] ?>" name="checkbox[]" >
+                            <?php
+                            if ($course["enrolled"] == 1) {
+                                echo "<input type='checkbox' value=" . $course['course_id'] . " name='checkbox[]' checked>";
+                            } else {
+                                echo "<input type='checkbox' value=" . $course['course_id'] . " name='checkbox[]'>";
+                            }
+                            ?>
+
                             <div class="slider round"></div>
                         </label>
                     </td>
@@ -78,17 +77,10 @@
         var index;
 
         for (index = 0; index < ids.length; ++index) {
-
-
             document.write(ids[index]);
         }
 
     }
-
-
+    
 </script>
-
-
-
-
 </html>

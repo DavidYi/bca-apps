@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="view.css" rel="stylesheet" type="text/css" />
+    <link href="../../../shared/ss/main.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -12,40 +13,37 @@
     <input type="hidden" name="action" value="modify_times">
 
     <div id="box">
-        <p class="title">Modify Session Times</p>
+        <div id="wrapper">
+            <div id="columns">
+                <h1 class="title">Modify Session Times</h1>
 
-        <div id="header_row">
-            <label>
-                <span>Session</span>
-            </label>
-            <label id="start">
-                <span>Start</span>
-            </label>
-            <label id="end">
-                <span>End</span>
-            </label>
+                <div id="sessions">
+                    <h2>Session</h2>
+                    <h2 class="session">1</h2>
+                    <h2 class="session">2</h2>
+                </div>
+
+                <div id="se-wrap">
+                    <div id="start">
+                        <h2>Start</h2>
+                        <input type="text" name="start1" value="<?php echo $session1['ses_start_time']?>">
+                        <input type="text" name="start2" value="<?php echo $session2['ses_start_time']?>">
+                    </div>
+
+                    <div id="end">
+                        <h2>End</h2>
+                        <input type="text" name="end1" value="<?php echo $session1['ses_end_time']?>">
+                        <input type="text" name="end2" value="<?php echo $session2['ses_end_time']?>">
+                    </div>
+                </div>
+
+                <div id="button-div">
+                    <button class="submit s" type="submit" name="choice" value="Modify">Submit</button>
+                    <button class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
+                </div>
+            </div>
         </div>
-
-        <div class="grade">
-            <label>
-                <span>1</span>
-            </label>
-            <input type="text" name="start1" value="<?php echo $session1['ses_start_time']?>">
-            <input type="text" name="end1" value="<?php echo $session1['ses_end_time']?>">
-        </div>
-
-        <div class="grade">
-            <label>
-                <span>2</span>
-            </label>
-            <input type="text" name="start2" value="<?php echo $session2['ses_start_time']?>">
-            <input type="text" name="end2" value="<?php echo $session2['ses_end_time']?>">
-        </div>
-
-
-        <button class="submit s" type="submit" name="choice" value="Modify">Submit</button>
-        <button class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
+    </div>
 </form>
-</div>
 </body>
 </html>

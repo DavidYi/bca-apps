@@ -1,7 +1,7 @@
 <?php
 
 require_once("../util/main.php");
-require_once ("../model/teacher_db.php");
+require_once("../../shared/model/user_db.php");
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
@@ -11,7 +11,7 @@ if ($action == NULL) {
 
 switch ($action) {
     case 'show_users':
-        $user_list = get_teacher_list();
+        $user_list = get_user_list_test_page();
 
         include('login.php');
         break;

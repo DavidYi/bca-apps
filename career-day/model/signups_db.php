@@ -128,6 +128,18 @@ function get_course($course_id) {
         exit();
     }
 }
+function clear_signups() {
+    global $db;
+    $query = 'delete from pres_user_xref';
 
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
 
 ?>

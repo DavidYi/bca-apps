@@ -2,7 +2,8 @@
 
 date_default_timezone_set('America/New_York');
 
-function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past) {
+function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
+{
     $query = 'SELECT test_time_xref.test_id, test_time_xref.test_time_id, test_time_desc,
               test_name, test.test_type_cde, rm_id, test_dt, proc_needed, proc_enrolled,
               proc_needed - proc_enrolled as remaining, sort_order
@@ -10,16 +11,16 @@ function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
                 INNER JOIN test ON test_time_xref.test_id = test.test_id
                 INNER JOIN test_time ON test_time_xref.test_time_id = test_time.test_time_id
                 INNER JOIN test_type ON test.test_type_cde = test_type.test_type_cde ';
-    
+
     if ($filter_full == 0 || $filter_past == 0) {
         $query .= ("WHERE ");
-        if ($filter_full == 0){
+        if ($filter_full == 0) {
             $query .= ("proc_needed - proc_enrolled != 0 ");
             if ($filter_past == 0) $query .= ("AND ");
-        } 
+        }
         if ($filter_past == 0) $query .= ("test_dt > DATE_SUB(CURDATE(), INTERVAL 7 DAY) ");
     }
-    
+
     $query .= ("UNION 
         SELECT test_time_xref.test_id, test_time_xref.test_time_id, test_time_desc,
           test_name, test.test_type_cde, rm_id, test_dt, proc_needed, proc_enrolled,
@@ -56,7 +57,8 @@ function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
     }
 }
 
-function get_selected_test_list($usr_id) {
+function get_selected_test_list($usr_id)
+{
     $query = 'SELECT distinct test_updt_xref.test_id, test_name, rm_id, test_dt,
                   test_time_desc, usr_id, test_updt_xref.test_time_id
               FROM test_updt_xref
@@ -81,7 +83,8 @@ function get_selected_test_list($usr_id) {
     return get_list($query);
 }
 
-function get_selected_test($test_id) {
+function get_selected_test($test_id)
+{
     $query = 'SELECT test_time_xref.test_id, test_time_xref.test_time_id, test_time_desc,
               test_name, test.test_type_cde, rm_id, test_dt, proc_needed, proc_enrolled,
               proc_needed - proc_enrolled as remaining, sort_order
@@ -106,7 +109,8 @@ function get_selected_test($test_id) {
     return get_list($query);
 }
 
-function get_teachers_from_test($test_id, $test_time_id) {
+function get_teachers_from_test($test_id, $test_time_id)
+{
     $query = 'SELECT distinct usr_last_name, usr_first_name
                 FROM user, test_updt_xref
                 WHERE test_id = :test_id AND test_time_id = :test_time_id
@@ -128,7 +132,8 @@ function get_teachers_from_test($test_id, $test_time_id) {
     }
 }
 
-function get_count($usr_id){
+function get_count($usr_id)
+{
     $query = 'SELECT count(distinct test.test_id, test_time_xref.test_time_id)
                 from test, test_type, test_time, test_updt_xref, test_time_xref
                 where usr_id = :usr_id
@@ -152,7 +157,8 @@ function get_count($usr_id){
     return get_list($query);
 }
 
-function get_test_types() {
+function get_test_types()
+{
     $query = 'SELECT test_type_cde, test_type_desc
                 from test_type';
     return get_list($query);
@@ -170,7 +176,8 @@ function get_teacher_list()
     return get_list($query);
 }
 
-function get_mimic_list() {
+function get_mimic_list()
+{
     $query = "SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
                  usr_first_name, usr_last_name, usr_active
               FROM user
@@ -181,13 +188,15 @@ function get_mimic_list() {
     return get_list($query);
 }
 
-function get_rooms() {
+function get_rooms()
+{
     $query = 'SELECT rm_id, rm_nbr
                 from room';
     return get_list($query);
 }
 
-function add_test($test_name, $test_date, $test_cde, $test_room, $test_procs) {
+function add_test($test_name, $test_date, $test_cde, $test_room, $test_procs)
+{
 
     global $db;
     global $user;
@@ -205,8 +214,8 @@ function add_test($test_name, $test_date, $test_cde, $test_room, $test_procs) {
         $statement->bindValue(':test_dt', $test_date);
         $statement->execute();
         $statement->closeCursor();
-        
-        $test_id =  $db->lastInsertId('test_id');
+
+        $test_id = $db->lastInsertId('test_id');
         $test_time_id = 1;
 
         foreach ($test_procs as $test_proc) {
@@ -238,7 +247,8 @@ function add_test($test_name, $test_date, $test_cde, $test_room, $test_procs) {
     }
 }
 
-function del_test($test_id) {
+function del_test($test_id)
+{
 
     global $db;
 
@@ -279,7 +289,8 @@ function del_test($test_id) {
     }
 }
 
-function change_test($test_id, $test_name, $test_cde, $test_room, $test_date, $proc_times) {
+function change_test($test_id, $test_name, $test_cde, $test_room, $test_date, $proc_times)
+{
 
     global $db;
 
@@ -300,7 +311,7 @@ function change_test($test_id, $test_name, $test_cde, $test_room, $test_date, $p
         $statement->closeCursor();
 
         $proc_index = 1;
-        foreach($proc_times as $proc_num) {
+        foreach ($proc_times as $proc_num) {
             if ($proc_num > 0) {
                 $query2 = 'INSERT INTO test_time_xref (test_id, test_time_id, proc_needed, proc_enrolled)
                               VALUES (:test_id, :test_time_id, :proc_needed, 0)
@@ -345,9 +356,9 @@ function change_test($test_id, $test_name, $test_cde, $test_room, $test_date, $p
     }
 }
 
-function del_user_tests($test_array, $usr_id) {
+function del_user_tests($test_array, $usr_id)
+{
     global $db;
-
 
     $query = 'SELECT test_id, test_time_id FROM test_updt_xref
                 WHERE usr_id = :usr_id';
@@ -383,11 +394,12 @@ function del_user_tests($test_array, $usr_id) {
     }
 }
 
-function change_user_tests($tests) {
+function change_user_tests($tests)
+{
 
     global $db;
     global $user;
-    
+
     $updt_usr_id = (isset($_SESSION['prev_usr_id'])) ? $_SESSION['prev_usr_id'] : $user->usr_id;
 
     try {
@@ -405,7 +417,7 @@ function change_user_tests($tests) {
                 $test_time_id = intval($test_split[1]);
 
                 $query = "call insert_user_test(:testId, :testTimeId, :usrId, :testDate, :updtUsrId)";
-                
+
                 $statement = $db->prepare($query);
                 $statement->bindValue(':testId', $test_id, PDO::PARAM_INT);
                 $statement->bindValue(':testTimeId', $test_time_id, PDO::PARAM_INT);
@@ -443,9 +455,9 @@ function list_teacher_status($sort_by, $sort_order)
               where t.usr_id = u.usr_id
               group by t.usr_id";
 
-    if($sort_by == 1) $query .= (' order by usrLast');
-    else if($sort_by == 2) $query .= (' order by usrFirst');
-    else if($sort_by == 3) $query .= (' order by usrHours');
+    if ($sort_by == 1) $query .= (' order by usrLast');
+    else if ($sort_by == 2) $query .= (' order by usrFirst');
+    else if ($sort_by == 3) $query .= (' order by usrHours');
     else $query .= (' order by usrLast, usrFirst, usrHours');
 
     if ($sort_order == 2) $query .= (' desc');
@@ -502,5 +514,28 @@ function list_upcoming_tests()
     return get_list($query);
 }
 
+function list_upcoming_teacher_emails($test_id)
+{
+    global $db;
+
+    $query = 'SELECT distinct usr_last_name, usr_first_name, user_email
+                FROM user, test_updt_xref
+                WHERE test_id = :test_id
+				AND test_updt_xref.usr_id = user.usr_id
+                ORDER BY usr_last_name, usr_first_name
+';
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+    return get_list($query);
+}
 
 ?>
