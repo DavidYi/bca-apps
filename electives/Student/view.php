@@ -37,7 +37,7 @@
     <div class="view-signup enrollment">
         <div class="vertical-center">
             <h3><b>Availability</b> | <a href="index.php?action=modify_times">Modify Availability</a></h3>
-            <table style="width:90%">
+            <table class="course-table" style="width:90%">
                 <?php
                 if (empty($time_strings)) {
                     echo "<p>None</p>";
@@ -94,6 +94,8 @@
 
                 <?php endforeach; ?>
             </table>
+            <br>
+            <br>
         </div>
     </div>
 </section>

@@ -1,0 +1,151 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(242, 242, 242);
+}
+
+.title {
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-family: Roboto;
+    font-size: 23px;
+    color: black;
+    border-bottom: 4px solid #76c9d4;
+    width: 280px;
+    margin: 0.5% 5% 0% 10%;
+    padding: 7px;
+}
+
+#box {
+    border-radius: 0px;
+    display: block;
+    background-color: white;
+    width: 1000px;
+    height: 120%;
+    position:absolute;
+    left: 37%;
+    margin: 10px 0 20px -235px;
+    -moz-box-shadow: 1px 1px 1px #a8a8a8;
+    -webkit-box-shadow: 1px 1px 1px #a8a8a8;
+    box-shadow: 1px 1px 1px #a8a8a8;
+}
+
+#name_header {
+    text-align: left;
+    margin-left: 60px;
+}
+
+#s1_header{
+    text-align: right;
+    margin-left: 108px;
+    width: 243px;
+}
+
+#s2_header {
+    text-align: right;
+    margin-left: 38px;
+    width: 283px;
+}
+
+input {
+    font-family: Roboto;
+    color: #5f5f5f;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 200px;
+    height: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-left: 30%;
+    text-align: center;
+}
+
+span {
+    font-family: Roboto;
+    display: inline-block;
+    box-sizing: border-box;
+    color: #5F5F5F;
+    width: 200px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.teacher_name {
+    text-align: left;
+    width: 200px;
+    margin-left: 60px;
+}
+
+.s1_select {
+    margin-left: 50px;
+}
+
+.s2_select {
+    margin-left: 30px;
+}
+
+.submit {
+    display: inline-block;
+    /*border-radius: 2px;*/
+    color: #ffffff;
+    font-weight: bold;
+    padding: 14px 22px;
+    border: 0;
+    /*margin: 100px 183px 0;*/
+    text-align: center;
+}
+
+.s {
+    margin-left: 100px;
+    background-color: #6caee0;
+    margin-top: 0px;
+}
+
+.back {
+    background-color: #f7b57d;
+    margin-top: 0px;
+    margin-left: 2%;
+}
+
+#fixed_div {
+    position: relative;
+    width: 1000px;
+    height: 12.5%;
+    background-color: white;
+    -moz-box-shadow: 1px 0px 0px #a8a8a8;
+    -webkit-box-shadow: 1px 0px 0px #a8a8a8;
+    box-shadow: 1px 0px 1px #a8a8a8;
+}
+
+#teacher_div {
+    position: absolute;
+    top: 13%;
+}
+
+.odd {
+    background-color: #e9e9e9;
+}
+
+textarea {
+    font-family: Roboto;
+    resize: vertical;
+    margin-top:0.5%;
+}
+
+input[type='checkbox'] {
+    width:5%;
+    margin-left:10%;
+    padding:0px;
+    height:15px;
+}
+
+#header_row {
+    position: absolute;
+    bottom:0;
+}

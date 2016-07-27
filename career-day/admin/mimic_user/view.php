@@ -18,6 +18,8 @@
             </select>
 
             <input type="submit" value="Mimic User">
+
+            <input type="checkbox" name="bypass_time" value="Allow Signups"> Allow Signups
         </form>
     </body>
 </html>

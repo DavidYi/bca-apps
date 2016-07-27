@@ -140,5 +140,5 @@ th, td {
     top: 50%;
     transform: translateY(-50%);
     max-height: 90%;
-    overflow: visible;
+    bottom: 10%;
 }
