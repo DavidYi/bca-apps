@@ -20,7 +20,7 @@
     <input type="hidden" name="action" value="update_courses">
     <table class="table-fill">
         <thead >
-            <tr style="width:800px;">
+            <tr style="width:80%;">
                 <th class="text-left"><a href="index.php?action=sort_courses_by_names">Elective</a></th>
                 <th class="text-left"><a href="index.php?action=sort_courses_by_teacher">Teacher</a></th>
                 <th class="text-left">Description</th>
