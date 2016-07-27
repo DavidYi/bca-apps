@@ -496,11 +496,10 @@ function list_upcoming_tests()
 {
     global $db;
 
-    $query = 'select t.test_name, t.test_id, CURDATE(), t.test_dt, datediff(test_dt, curdate()) as difference
+    $query = 'select t.test_name, t.test_id, CURDATE(), t.test_dt, datediff(test_dt, curdate()) as difference, reminder_sent_dt
               from test t, test_time_xref tx
               where t.test_dt >= curdate()
               and t.test_id = tx.test_id
-              and reminder_sent_dt is null
               group by t.test_id
               order by difference';
 

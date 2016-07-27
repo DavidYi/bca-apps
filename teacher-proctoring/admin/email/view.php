@@ -31,6 +31,7 @@
         $test_name = $test['test_name'];
         $test_dt = $test['test_dt'];
         $test_days_away = $test['difference'];
+        $test_sent = $test['reminder_sent_dt'];
         ?>
 
 
@@ -87,12 +88,24 @@
             <td> <?php echo $test_dt; ?> </td>
             <td> <?php echo $test_days_away; ?> </td>
             <td>
-                <a href="index.php?action=send_email&test_id=<?php echo $test_id; ?>&test_name=<?php echo $test_name; ?>&test_dt=<?php echo $test_dt; ?>"><i
+                <a href="index.php?action=<?php if ($test_sent == null) {
+                    echo 'send_email';
+                } else {
+                    echo 'list_upcoming_tests';
+                }; ?>&test_id=<?php echo $test_id; ?>&test_name=<?php echo $test_name; ?>&test_dt=<?php echo $test_dt; ?>&test_sent=<?php echo $test_sent; ?>"><i
                         class="fa fa-envelope"
                         aria-hidden="true"
                         title="Send Email"
                         style="cursor:pointer"></i></a>
             </td>
+            <td> <?php if ($test_sent == null) {
+                    echo '<i class="fa fa-times"
+                        aria-hidden="true"></i>';
+                } else {
+                    echo '<i class="fa fa-check"
+                        aria-hidden="true"></i>';
+                }; ?></td>
+
         </tr>
 
     <?php endforeach; ?>
