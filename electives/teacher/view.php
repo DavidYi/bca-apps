@@ -137,6 +137,8 @@
 
                 <?php endforeach; ?>
             </table>
+            <br>
+            <br>
         </div>
     </div>
 </section>
