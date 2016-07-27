@@ -57,7 +57,7 @@ switch ($action) {
     case 'send_email_all':
         $upcoming_tests = list_upcoming_tests();
         foreach ($upcoming_tests as $test) :
-            if ($test['difference'] <= 100 and $test['reminder_sent_dt'] == null) {
+            if ($test['difference'] <= 7 and $test['reminder_sent_dt'] == null) {
 
                 $email_address = 'celper19@bergen.org';
                 $test_id = $test['test_id'];

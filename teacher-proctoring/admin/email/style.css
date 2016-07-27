@@ -131,13 +131,12 @@ a:hover {
     color: #5A5A5A;
 }
 
-
 .email-all {
     text-align: center;
     background: white;
     padding: 5px;
     outline: none;
-    font-size: 150%;
+    font-size: 175%;
     border: none;
 }
 
