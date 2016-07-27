@@ -56,8 +56,7 @@ function add_mentor($mentor_last_name, $mentor_first_name, $mentor_field, $mento
 
 
 function modify_mentor($mentor_id, $mentor_last_name, $mentor_first_name, $mentor_suffix, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords,
-                       $pres_room,
-                       $pres_host_teacher, $pres_max_capacity) {
+                       $pres_room, $pres_host_teacher, $pres_max_capacity, $mentor_sessions) {
     global $db;
     $query = 'update mentor set
                  mentor_last_name = :mentor_last_name, mentor_first_name = :mentor_first_name,
@@ -83,12 +82,49 @@ function modify_mentor($mentor_id, $mentor_last_name, $mentor_first_name, $mento
         $statement->bindValue(':pres_host_teacher', $pres_host_teacher);
         $statement->bindValue(':pres_max_capacity', $pres_max_capacity);
 
-
         $statement->execute();
         $statement->closeCursor();
 
+        $db->beginTransaction();
+        for ($i = 0; $i < 4; $i++) {
+            $presentation = get_presentation_by_mentor_session($mentor_id, $i+1);
+            if (!empty($presentation) && empty($mentor_sessions[$i])) {
+                $query = 'select pres_id from presentation where mentor_id = :mentor_id
+                            and ses_id = :ses_id';
+                $statement = $db->prepare($query);
+                $statement->bindValue(':mentor_id', $mentor_id);
+                $statement->bindValue(':ses_id', $i+1);
+                $statement->execute();
+                $result = $statement->fetch();
+                $statement->closeCursor();
+
+                $pres_id = $result['pres_id'];
+                $query = 'delete from pres_user_xref where pres_id = :pres_id';
+                $statement = $db->prepare($query);
+                $statement->bindValue(':pres_id', $pres_id);
+                $statement->execute();
+                $statement->closeCursor();
+
+                $query = 'delete from presentation where mentor_id = :mentor_id
+                            and ses_id = :ses_id';
+                $statement = $db->prepare($query);
+                $statement->bindValue(':mentor_id', $mentor_id);
+                $statement->bindValue(':ses_id', $i+1);
+                $statement->execute();
+                $statement->closeCursor();
+            } elseif (empty($presentation) && !empty($mentor_sessions[$i])) {
+                $query = 'insert into presentation values (NULL, :ses_id, :mentor_id, 0, NULL)';
+                $statement = $db->prepare($query);
+                $statement->bindValue(':mentor_id', $mentor_id);
+                $statement->bindValue(':ses_id', $i+1);
+                $statement->execute();
+                $statement->closeCursor();
+            }
+        }
+        $db->commit();
     } catch (PDOException $e) {
         display_db_exception($e);
+        $db->rollBack();
         exit();
     }
 }
@@ -110,9 +146,28 @@ function get_mentor($mentor_id) {
     }
 }
 
+function get_presentation_by_mentor_session($mentor_id, $ses_id) {
+    global $db;
+    $query = 'select * from presentation where mentor_id = :mentor_id
+                and ses_id = :ses_id';
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':mentor_id', $mentor_id);
+        $statement->bindValue(':ses_id', $ses_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
 function delete_mentor($mentor_id){
     global $db;
-    $query = 'update mentor set active = 0 where mentor_id = :mentor_id';
+    $query = 'delete from mentor where mentor_id = :mentor_id';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':mentor_id', $mentor_id);
@@ -126,5 +181,3 @@ function delete_mentor($mentor_id){
 }
 
 ?>
-
-<!--test-->
