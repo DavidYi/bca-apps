@@ -18,7 +18,6 @@ function get_mentor_list() {
     return get_list($query);
 }
 
-
 function add_mentor($mentor_last_name, $mentor_first_name, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords
     ,  $pres_room,
                     $pres_host_teacher, $pres_max_capacity) {
