@@ -21,67 +21,81 @@
 <body>
 <section class="main view">
     <div class="view-main">
-        <main>
-            <div class="login-status">
-                <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name); ?></b></h3>
-                <h3 class="log-out"><a href="./index.php?action=logout">Log Out</a></h3>
-            </div>
+        <div class="login-status">
+            <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name); ?></b></h3>
+            <h3 class="log-out"><a href="./index.php?action=logout">Log Out</a></h3>
+        </div>
 
-            <h2 class="title">Student Side</h2>
-            <p> Instructions </p>
-
-        </main>
+        <div class="vertical-center">
+            Student Page!
+            <br>
+            <br>
+            Instructions here.
+        </div>
     </div>
 
     <div class="view-signup enrollment">
         <div class="vertical-center">
-            <main>
-                <div class="feature">
-                    <h3><b>Availability</b> | <a href="index.php?action=modify_times">Modify Availability</a></h3>
-                    <?php
-                    if (empty($time_strings)) {
-                        echo "<p>None</p>";
-                    } else {
-                        foreach ($time_strings as $string) {
-                            echo "<p>" . $string["day"] . ": " . $string["mods_available"];
-                        }
-                    }
+            <h3><b>Availability</b> | <a href="index.php?action=modify_times">Modify Availability</a></h3>
+            <table class="course-table" style="width:90%">
+                <?php
+                if (empty($time_strings)) {
+                    echo "<p>None</p>";
+                } else {
+                    echo "
+                <thead>
+                    <th>Day</th>
+                    <th>Mods</th>
+                </thead>
+            ";
+                }
+                ?>
+                <?php foreach ($time_strings as $string) :
                     ?>
-                </div>
-                <div class="feature">
-                    <h3><b>Courses I'm Interested In</b> | <a href="index.php?action=modify_courses">Edit</a></h3>
-                    <table class="course-table" style="width:75%">
-                        <?php
-                        if (empty($courses)) {
-                            echo "<p>None</p>";
-                        } else {
-                            echo "
-                                <thead>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th></th>
-                                </thead>
-                            ";
-                        }
-                        ?>
 
-                        <?php foreach ($courses as $course) :
-                            $courseName = $course['course_name'];
-                            $courseDesc = $course['course_desc'];
-                            $courseID = $course['course_id'];
-                            ?>
+                    <tr>
+                        <td><?php echo "<p>" . $string["day"] ?></td>
+                        <td><?php echo $string["mods_available"] ?></td>
+                    </tr>
 
-                            <tr>
-                                <td><?php echo $courseName ?></td>
-                                <td><?php echo $courseDesc ?></td>
-                                <td><img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);"> </td>
-                            </tr>
+                <?php endforeach; ?>
+            </table>
 
-                        <?php endforeach; ?>
-                    </table>
+            <br>
+            <br>
 
-                </div>
-            </main>
+            <h3><b>Courses I'm Interested In</b> | <a href="index.php?action=modify_courses">Edit</a></h3>
+            <table class="course-table" style="width:90%">
+                <?php
+                if (empty($courses)) {
+                    echo "<p>None</p>";
+                } else {
+                    echo "
+                        <thead>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th></th>
+                        </thead>
+                    ";
+                }
+                ?>
+
+                <?php foreach ($courses as $course) :
+                    $courseName = $course['course_name'];
+                    $courseDesc = $course['course_desc'];
+                    $courseID = $course['course_id'];
+                    ?>
+
+                    <tr>
+                        <td><?php echo $courseName ?></td>
+                        <td><?php echo $courseDesc ?></td>
+                        <td><img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);"> </td>
+                    </tr>
+
+                <?php endforeach; ?>
+            </table>
+            <br>
+            <br>
         </div>
     </div>
 </section>

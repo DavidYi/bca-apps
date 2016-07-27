@@ -117,21 +117,29 @@ tr {
     padding-bottom: 3%;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
 a:hover {
     cursor: pointer;
-}
-
-button {
-    border: none;
-    background: white;
-    outline: none;
-    font-size: 125%;
-}
-
-button:hover {
-    cursor: pointer;
+    color: #5A5A5A;
 }
 
 .email-all {
     text-align: center;
+    background: white;
+    padding: 5px;
+    outline: none;
+    font-size: 175%;
+    border: none;
+}
+
+center {
+    margin-top: 5%;
 }
