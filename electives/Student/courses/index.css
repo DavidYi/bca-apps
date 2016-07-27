@@ -38,7 +38,10 @@ div.table-title {
   border-radius:3px;
   border-collapse: collapse;
   margin: auto;
-  width: 800px;
+
+
+
+
   padding:5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
@@ -73,6 +76,7 @@ tr {
   font-size:16px;
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+  width:100%;
 }
 
 
@@ -132,6 +136,8 @@ td {
   font-size:18px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
+  width: 25%;
+
 }
 
 td:last-child {
@@ -291,9 +297,49 @@ thead, tbody {
 }
 
 tbody {
-  height: 600px;       /* Just for the demo          */
-  overflow-y: auto;    /* Trigger vertical scroll    */
-  overflow-x: hidden;  /* Hide the horizontal scroll */
+  height: 600px;   /* Just for the demo          */
+  overflow-y: auto;   /* Trigger vertical scroll    */
+ overflow-x: hidden; /* Hide the horizontal scroll */
 }
+
+
+#name-td {width:15%;}
+#teacher-td {width:15%;}
+#desc-td {width:60%;}
+#check-td {width:10%;}
+
+
+  nav.navbar {
+  height: 3.75em;
+  width: 75%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto;
+  padding: 0 1.5625em;
+  line-height: 3.75em;
+  background: #262626;
+  border-right: 0.4375em solid #262626; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

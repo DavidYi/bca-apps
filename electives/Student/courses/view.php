@@ -18,24 +18,33 @@
 <form action="." method="POST">
     <input type="hidden" name="action" value="update_courses">
     <table class="table-fill">
-        <thead >
-            <tr style="width:800px;">
-                <th class="text-left">Elective</th>
-                <th class="text-left">Teacher</th>
-                <th class="text-left">Description</th>
-                <th class="text-left">Express Interest</th>
 
-            </tr>
+        <col width="15%">
+        <col width="15%">
+        <col width="60%">
+        <col width="10%">
+
+
+        <thead >
+        <tr style="width:100%;">
+            <th class="text-left">Elective</th>
+            <th class="text-left">Teacher</th>
+            <th class="text-left">Description</th>
+            <th class="text-left">Express Interest</th>
+
+        </tr>
 
         </thead>
 
         <tbody>
-            <?php foreach ($courseList as $course) :?>
+        <?php foreach ($courseList as $course) :?>
+
+
                 <tr>
-                    <td class="text-left"><label><?php echo $course['course_name']?></label></td>
-                    <td class="text-left"><label><?php echo $course['teacher']?></label></td>
-                    <td class="text-left"><label><?php echo $course['course_desc']?></label></td>
-                    <td class="text-left">
+                    <td class="text-left" id="name-td"><label><?php echo $course['course_name']?></label></td>
+                    <td class="text-left" id="teacher-td"><label><?php echo $course['teacher']?></label></td>
+                    <td class="text-left" id="desc-td"><label><?php echo $course['course_desc']?></label></td>
+                    <td class="text-left" id="check-td">
                         <label class="switch">
                             <input type="checkbox" value="<?php echo $course['course_id'] ?>" name="checkbox[]" >
                             <div class="slider round"></div>
