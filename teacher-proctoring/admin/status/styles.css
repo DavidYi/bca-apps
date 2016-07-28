@@ -120,3 +120,15 @@ tr {
 a:hover {
     cursor: pointer;
 }
+
+#return_button {
+    text-align: center;
+    background: white;
+    padding: 5px;
+    outline: none;
+    font-size: 175%;
+    border: none;
+    position: absolute;
+    left: 70%;
+    top: 40%;
+}

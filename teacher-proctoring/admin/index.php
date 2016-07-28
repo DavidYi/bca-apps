@@ -36,10 +36,6 @@ switch ($action) {
     </header>
     <br>
     <div class="feature">
-        <a href="roles"><h2>Roles</h2></a>
-        <h4>Set user roles for proctoring.</h4>
-    </div>
-    <div class="feature">
         <a href="status"><h2>Teacher Status</h2></a>
         <h4>Check tests that an individual teacher signed up for.</h4>
     </div>
@@ -47,22 +43,28 @@ switch ($action) {
         <a href="test_status"><h2>Test Status</h2></a>
         <h4>Check enrolled count and proctoring teachers in a test.</h4>
     </div>
-    <div class="feature">
-        <a href="room"><h2>Edit Rooms</h2></a>
-        <h4>Manage rooms.</h4>
-    </div>
-    <div class="feature">
-        <a href="email"><h2>Email Proctors</h2></a>
-        <h4>Notify proctors of an upcoming test.</h4>
-    </div>
-    <div class="feature">
-        <a href="mimic_user"><h2>Mimic User</h2></a>
-        <h4>Log in as any user in the database and use the app as if you were them.</h4>
-    </div>
-    <div class="feature">
-        <a href="log_viewer"><h2>Log Viewer</h2></a>
-        <h4>View the application log.</h4>
-    </div>
+    <?php if ($user->getRole('TPOR') == 'ADM') { ?>
+        <div class="feature">
+            <a href="roles"><h2>Roles</h2></a>
+            <h4>Set user roles for proctoring.</h4>
+        </div>
+        <div class="feature">
+            <a href="room"><h2>Edit Rooms</h2></a>
+            <h4>Manage rooms.</h4>
+        </div>
+        <div class="feature">
+            <a href="email"><h2>Email Proctors</h2></a>
+            <h4>Notify proctors of an upcoming test.</h4>
+        </div>
+        <div class="feature">
+            <a href="mimic_user"><h2>Mimic User</h2></a>
+            <h4>Log in as any user in the database and use the app as if you were them.</h4>
+        </div>
+        <div class="feature">
+            <a href="log_viewer"><h2>Log Viewer</h2></a>
+            <h4>View the application log.</h4>
+        </div>
+    <?php } ?>
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </main>
 </body>

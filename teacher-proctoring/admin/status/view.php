@@ -7,6 +7,11 @@
 <body>
 
 <div id="content">
+    <header><a href="../index.php">
+            <button style="left: 15%"
+                    type="submit" id="return_button" name="return_button">Return to Admin Panel
+            </button>
+        </a></header>
     <h1>Proctoring Status</h1>
     <table id="ts">
         <tr>
