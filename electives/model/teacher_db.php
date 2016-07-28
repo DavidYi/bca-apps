@@ -26,7 +26,7 @@ function add_course($course_name, $course_desc) {
         exit();
     }
 }
-
+//
 function delete_course($course_id) {
     global $db;
     global $user;
@@ -89,6 +89,7 @@ function get_course_list_for_student ($usr_id, $order_by = null) {
             WHERE c.teacher_id = u.usr_id
             ORDER BY ";
 
+    // add order by clause
     if ($order_by == null) {
         $query .= "course_name";
     } else {

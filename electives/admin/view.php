@@ -15,86 +15,36 @@
     <table>
         <tr>
             <td>
-                <a href="signup_dates">
-                    <div class="feature">
-                        <h2>Signup Dates</h2>
-                        <h4>View and edit signup deadlines by grade.</h4>
-                    </div>
-                </a>
-            </td>
-            <td>
-                <a href="workshops">
-                    <div class="feature">
-                        <h2>Workshops</h2>
-                        <h4>Manage workshops.</h4>
-                    </div>
-                </a>
-            </td>
-            <td>
-                <a href="presentations">
-                    <div class="feature">
-                        <h2>Presentations</h2>
-                        <h4>Manage presentations.</h4>
-                    </div>
-                </a>
-            </td>
-            <td>
-                <a href="room">
-                    <div class="feature">
-                        <h2>Rooms</h2>
-                        <h4>Manage rooms.</h4>
-                    </div>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="format">
-                    <div class="feature">
-                        <h2>Formats</h2>
-                        <h4>Manage formats.</h4>
-                    </div>
-                </a>
-            </td>
-            <td>
-                <a href="session_times">
-                    <div class="feature">
-                        <h2>Session Times</h2>
-                        <h4>Manage when each session will take place.</h4>
-                    </div>
-                </a>
-            </td>
-            <td>
-                <a href="signins">
-                    <div class="feature">
-                        <h2>Signins</h2>
-                        <h4>Generates signin sheets, a presenter check-in sheet, and room signs.</h4>
-                    </div>
-                </a>
-            </td>
-            <td>
-                <a href="signup_status">
-                    <div class="feature">
-                        <h2>Signup Status</h2>
-                        <h4>View student registration statistics and automatically enroll students who have not yet registered.</h4>
-                    </div>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="teacher_sessions">
-                    <div class="feature">
-                        <h2>Teacher Sessions</h2>
-                        <h4>Assign teachers to sessions.</h4>
-                    </div>
-                </a>
-            </td>
-            <td>
                 <a href="roles">
                     <div class="feature">
                         <h2>Roles</h2>
                         <h4>Assign administrator roles.</h4>
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="log_viewer">
+                    <div class="feature">
+                        <h2>Log Viewer</h2>
+                        <h4>View the application log.</h4>
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="availability">
+                    <div class="feature">
+                        <h2>Availability</h2>
+                        <h4>Manage teachers' availability.</h4>
+                    </div>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="elective_list">
+                    <div class="feature">
+                        <h2>Elective List</h2>
+                        <h4>Manage all electives.</h4>
                     </div>
                 </a>
             </td>
@@ -107,10 +57,10 @@
                 </a>
             </td>
             <td>
-                <a href="log_viewer">
+                <a href="reports">
                     <div class="feature">
-                        <h2>Log Viewer</h2>
-                        <h4>View the application log.</h4>
+                        <h2>Reports</h2>
+                        <h4>View elective reports.</h4>
                     </div>
                 </a>
             </td>

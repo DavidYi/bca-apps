@@ -54,7 +54,7 @@
         <div class="vertical-center">
             <?php foreach ($sessions as $session) { ?>
 
-                <?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) { ?>
+                <?php if ($registrationOpen) { ?>
                     <a href="../register/index.php?session=<?php echo $session['ses_times'] ?>&action=register">
                 <?php } ?>
 
@@ -69,7 +69,7 @@
                     <?php } ?>
                 </div>
 
-                <?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) { ?>
+                <?php if ($registrationOpen) { ?>
                     </a>
                 <?php } ?>
 

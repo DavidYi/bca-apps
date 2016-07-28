@@ -83,8 +83,8 @@ switch ($action) {
                 change_test($test_id, $test_name, $test_cde, $room_id, $datetime, $proc_times);
                 header("Location: ../test_status");
             }
-        } if ($choice == 'Delete') {
-            del_test($test_id);
+        } if ($choice == 'Delete' || $choice == 'Return') {
+            if ($choice == 'Delete') del_test($test_id);
             header("Location: ../test_status");
         }
 

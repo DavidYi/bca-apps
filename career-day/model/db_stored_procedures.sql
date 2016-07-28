@@ -8,7 +8,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `fill_with_random_presentations`$$
-CREATE DEFINER=`atcsdevb_caradm`@`%` PROCEDURE `fill_with_random_presentations`(IN `gradeLvl` INT, IN `sesId` INT)
+CREATE  PROCEDURE `fill_with_random_presentations`(IN `gradeLvl` INT, IN `sesId` INT)
     MODIFIES SQL DATA
 BEGIN
 	DECLARE v_finished int(10) default 0;
@@ -95,7 +95,7 @@ BEGIN
 END$$
 
 DROP PROCEDURE IF EXISTS `log_error_message`$$
-CREATE DEFINER=`atcsdevb_caradm`@`%` PROCEDURE `log_error_message`(IN `message` VARCHAR(1000), IN `method` INT(100))
+CREATE  PROCEDURE `log_error_message`(IN `message` VARCHAR(1000), IN `method` INT(100))
     MODIFIES SQL DATA
 BEGIN
 	insert into log (log_lvl_cde, log_msg, log_src, log_mthd)
@@ -103,7 +103,7 @@ BEGIN
 END$$
 
 DROP PROCEDURE IF EXISTS `log_trace_message`$$
-CREATE DEFINER=`atcsdevb_caradm`@`%` PROCEDURE `log_trace_message`(IN `message` VARCHAR(1000), IN `method` VARCHAR(100))
+CREATE  PROCEDURE `log_trace_message`(IN `message` VARCHAR(1000), IN `method` VARCHAR(100))
     MODIFIES SQL DATA
 BEGIN
 	insert into log (log_lvl_cde, log_msg, log_src, log_mthd)
@@ -112,7 +112,7 @@ END$$
 
 
 DROP PROCEDURE IF EXISTS `update_presentation_enrollment`$$
-CREATE DEFINER=`atcsdevb_caradm`@`%` PROCEDURE `update_presentation_enrollment`(IN `presId` INT)
+CREATE  PROCEDURE `update_presentation_enrollment`(IN `presId` INT)
     NO SQL
 BEGIN
 
@@ -127,7 +127,7 @@ END$$
 
 
 DROP FUNCTION IF EXISTS `get_session_comma_list`$$
-CREATE DEFINER=`atcsdevb_caradm`@`%` FUNCTION `get_session_comma_list`(`ment_id` INT) RETURNS varchar(20) CHARSET latin1
+CREATE  FUNCTION `get_session_comma_list`(`ment_id` INT) RETURNS varchar(20) CHARSET latin1
     READS SQL DATA
 BEGIN
     declare output varchar(500) default "";
@@ -168,7 +168,7 @@ END$$
 
 
 DROP FUNCTION IF EXISTS `userHasSession`$$
-CREATE DEFINER=`atcsdevb_caradm`@`%` FUNCTION `userHasSession`(`usrId` INT, `sesId` INT) RETURNS tinyint(1)
+CREATE  FUNCTION `userHasSession`(`usrId` INT, `sesId` INT) RETURNS tinyint(1)
     READS SQL DATA
 BEGIN
 	declare v_count int;                     

@@ -48,9 +48,10 @@ switch($action) {
         $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="presentations.csv";');
-        fputcsv($output, array('Session', 'Room', 'Field', 'Title', 'Organization', 'Location', 'Description', 'Presenters',
-                                'Enrolled Stdnts','Max Stdnts', 'Remaining Stdnts',
-                                'Enrolled Tchrs','Max Tchrs', 'Remaining Tchrs'));
+        fputcsv($output, array('Session', 'Room', 'Field', 'Company',
+               'Profile', 'Mentor',
+                'Currently Enrolled', 'Max Capacity', 'Slots Left',
+                'Host Teacher'));
         foreach($student_list as $student) {
             fputcsv($output, $student);
         }
@@ -65,7 +66,7 @@ switch($action) {
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="all_registrations.csv";');
 
-        fputcsv($output, array('Last', 'First', 'Grade', 'Session', 'Room', 'Field', 'Title', 'Organization', 'Location', 'Presenting', 'Presentation ID', 'Field ID', 'User ID'));
+        fputcsv($output, array('Last', 'First', 'Grade', 'Session', 'Room', 'Field', 'Mentor First', 'Mentor Last', 'Mentor Company', 'Pres ID', 'User ID'));
         foreach($student_list as $student) {
             fputcsv($output, $student);
         }
@@ -118,7 +119,7 @@ switch($action) {
         fclose($output) or die("Can't close file");
         exit();
         break;
-    
+
     default:
         display_error("Invalid action: " . $action);
         break;
