@@ -10,18 +10,62 @@ function get_free_mods() {
     global $db;
 
     $query = "select u.usr_id, u.usr_first_name, u.usr_last_name,
-              group_concat(times.time_short_desc order by times.sort_order
-              SEPARATOR ', ') as mods_available
- 
-              from user u left join (
-                  select x.usr_id, t.time_short_desc, t.sort_order
+			monday.mods as mon, tuesday.mods as tues, wednesday.mods as weds, 
+            thursday.mods as thurs, friday.mods as fri
+  
+              from user u 
+              
+              left join (
+                  select x.usr_id, day_short, day, 
+					group_concat(mods order by t.sort_order SEPARATOR ', ') as mods
                   from elect_user_free_xref x, elect_time t
                   where x.time_id = t.time_id
-                  ) as times 
-                  on u.usr_id = times.usr_id
-                
+                  and day_short = 'M'
+                  group by x.usr_id
+                  ) as monday 
+                  on u.usr_id = monday.usr_id
+
+
+              left join (
+                  select x.usr_id, day_short, day, 
+					group_concat(mods order by t.sort_order SEPARATOR ', ') as mods
+                  from elect_user_free_xref x, elect_time t
+                  where x.time_id = t.time_id
+                  and day_short = 'T'
+                  group by x.usr_id
+                  ) as tuesday
+                  on u.usr_id = tuesday.usr_id
+
+             left join (
+                  select x.usr_id, day_short, day, 
+					group_concat(mods order by t.sort_order SEPARATOR ', ') as mods
+                  from elect_user_free_xref x, elect_time t
+                  where x.time_id = t.time_id
+                  and day_short = 'W'
+                  group by x.usr_id
+                  ) as wednesday
+                  on u.usr_id = wednesday.usr_id
+                  
+				left join (
+                  select x.usr_id, day_short, day, 
+					group_concat(mods order by t.sort_order SEPARATOR ', ') as mods
+                  from elect_user_free_xref x, elect_time t
+                  where x.time_id = t.time_id
+                  and day_short = 'R'
+                  group by x.usr_id
+                  ) as thursday
+                  on u.usr_id = thursday.usr_id
+                  
+				left join (
+                  select x.usr_id, day_short, day, 
+					group_concat(mods order by t.sort_order SEPARATOR ', ') as mods
+                  from elect_user_free_xref x, elect_time t
+                  where x.time_id = t.time_id
+                  and day_short = 'F'
+                  group by x.usr_id
+                  ) as friday
+                  on u.usr_id = friday.usr_id
                 where u.usr_type_cde = 'TCH'
-                group by u.usr_id
                 order by u.usr_last_name";
 
         try {
