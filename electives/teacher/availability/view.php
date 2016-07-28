@@ -70,6 +70,8 @@
         <form action="index.php" method="post">
             <input type="hidden" name="id_field" id="id_field" data-ids="">
             <input type="hidden" name="action" value="update_times">
+            <input type="hidden" name="next_page" value="<?php echo $next_page?>">
+
             <button onclick="update_times();" id="update" value="update_times" class="s submit" type="submit">Submit</button>
         </form>
 
