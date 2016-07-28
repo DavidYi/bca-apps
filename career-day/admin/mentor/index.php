@@ -29,6 +29,7 @@ switch ($action) {
         $mentorId = '';
         $mentor_first_name = '';
         $mentor_last_name = '';
+        $mentor_suffix = '';
         $mentor_position = '';
         $mentor_company = '';
         $pres_room = '';
@@ -49,6 +50,7 @@ switch ($action) {
         $mentorId = filter_input(INPUT_POST, 'mentorId');
         $mentor_first_name = filter_input(INPUT_POST, 'mentor_first_name');
         $mentor_last_name = filter_input(INPUT_POST, 'mentor_last_name');
+        $mentor_suffix = filter_input(INPUT_POST, 'mentor_suffix');
         $mentor_position = filter_input(INPUT_POST, 'mentor_position');
         $mentor_company = filter_input(INPUT_POST, 'mentor_company');
         $pres_room = filter_input(INPUT_POST, 'pres_room');
@@ -61,15 +63,22 @@ switch ($action) {
         $mentor_keywords = filter_input(INPUT_POST, 'mentor_keywords');
         $mentor_source = filter_input(INPUT_POST, 'mentor_source');
 
+        $mentor_session_1 = filter_input(INPUT_POST, 'mentor_session_1');
+        $mentor_session_2 = filter_input(INPUT_POST, 'mentor_session_2');
+        $mentor_session_3 = filter_input(INPUT_POST, 'mentor_session_3');
+        $mentor_session_4 = filter_input(INPUT_POST, 'mentor_session_4');
+
+        $mentor_sessions = [$mentor_session_1, $mentor_session_2, $mentor_session_3, $mentor_session_4];
+
 
         // The user either pressed Add or Cancel.
         // If Add, then add the mentor.
         // Otherwise, just skip down to the list redraw.
 
         if ($choice == 'Add') {
-            add_mentor($mentor_last_name, $mentor_first_name, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords
-                , null, null, null, null, null, null, $pres_room,
-                $pres_host_teacher, $pres_max_capacity);
+            add_mentor($mentor_last_name, $mentor_first_name, $mentor_suffix, $mentor_field,
+                $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords, $pres_room,
+                $pres_host_teacher, $pres_max_capacity, $mentor_sessions);
         }
 
         $mentorList = get_mentor_list();
