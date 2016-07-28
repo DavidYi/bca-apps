@@ -14,15 +14,15 @@ function get_free_mods() {
               SEPARATOR ', ') as mods_available
  
               from user u left join (
-  select x.usr_id, t.time_short_desc, t.sort_order
-from elect_user_free_xref x, elect_time t
-where x.time_id = t.time_id
-) as times 
-on u.usr_id = times.usr_id
-
-where u.usr_type_cde = \"TCH\"
-group by u.usr_id
-order by u.usr_last_name";
+                  select x.usr_id, t.time_short_desc, t.sort_order
+                  from elect_user_free_xref x, elect_time t
+                  where x.time_id = t.time_id
+                  ) as times 
+                  on u.usr_id = times.usr_id
+                
+                where u.usr_type_cde = 'TCH'
+                group by u.usr_id
+                order by u.usr_last_name";
 
         try {
             $statement = $db->prepare($query);
