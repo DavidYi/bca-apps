@@ -27,8 +27,16 @@ $time_strings = get_time_strings($usr_id);
 
 switch($action){
     case "logout":
-        session_destroy();
-        header("Location: ../index.php");
+        if (isset($action) and ($action == "logout")) {
+            if (isset($_SESSION['prev_usr_id'])) {
+                $_SESSION['user'] = User::getUserByUsrId($_SESSION['prev_usr_id']);
+                $_SESSION['prev_usr_id'] = NULL;
+                header("Location: ../admin/index.php");
+            } else {
+                session_destroy();
+                header("Location: ../index.php");
+            }
+        }
         break;
     case "delete_course":
 
