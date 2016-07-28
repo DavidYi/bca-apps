@@ -7,14 +7,14 @@
  */
 
 /* These messages are used to customize the login page. */
-$pageTitle = 'Off-hour Electives';
-$loginInfo = '<h1>Off-hour Electives</h1>
-	                <h3>
-						Schedule electives during your free mods. 
-					</h3>
-					<h3>
-						This app is brought to you by the students of ATCS.
-					</h3>';
+$pageTitle = 'Off-Hour Electives';
+$loginInfo = '<h1>Off-Hour Electives</h1>
+                <h2>
+                    Schedule electives during your free mods. 
+                </h2>
+                <h2>
+                    This app is brought to you by the students of ATCS.
+                </h2>';
 
 
 /* This call back function is called once the user is authenticated.  This function handles redirecting the user

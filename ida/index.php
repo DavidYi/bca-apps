@@ -9,13 +9,13 @@
 /* These messages are used to customize the login page. */
 $pageTitle = 'IDA Registration';
 $loginInfo = '<h1>International Day of Acceptance</h1>
-                <h3>
+                <h2>
                     BCA will celebrate IDA on <b>[DATE]</b>. During IDA, you will have the opportunity
                     to participate in 2 different presentations. [CONTINUED DESCRIPTION]
-                </h3>
-                <h3>
+                </h2>
+                <h2>
                     This app is brought to you by the students of ATCS.
-                </h3>';
+                </h2>';
 
 
 /* This call back function is called once the user is authenticated.  This function handles redirecting the user

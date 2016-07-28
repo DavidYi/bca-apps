@@ -9,12 +9,12 @@
 /* These messages are used to customize the login page. */
 $pageTitle = 'Teacher Proctoring';
 $loginInfo = '<h1>Teacher Proctoring</h1>
-	                <h3>
-						BCA needs teachers to proctor all standardized tests.
-					</h3>
-					<h3>
-						This app is brought to you by the students of ATCS.
-					</h3>';
+                <h2>
+                    BCA needs teachers to proctor all standardized tests.
+                </h2>
+                <h2>
+                    This app is brought to you by the students of ATCS.
+                </h2>';
 
 
 /* This call back function is called once the user is authenticated.  This function handles redirecting the user
