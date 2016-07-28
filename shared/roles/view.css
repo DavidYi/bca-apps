@@ -191,6 +191,12 @@ h4.delete:hover{
     font-size: 0.25em;
 }
 
+select#combobox.user_drop {
+    background-color: transparent !important;
+    border-color: rgb(182, 226, 249) !important;
+    color: rgb(84, 79, 84) !important;
+}
+
 .ui-button-icon-only .ui-icon {
     /*margin: auto !important;*/
     /*top: 50% !important;*/

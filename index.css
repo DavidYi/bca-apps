@@ -1,5 +1,5 @@
 html {
-    background: rgb(147, 146, 149);
+    background: rgb(182, 226, 249);
     height: 100%;
     width: 100%;
 }
@@ -19,6 +19,24 @@ nav {
 #home span {
     display: table-cell;
     vertical-align: middle;
+}
+
+#home ul {
+    display: inline-block;
+    margin-left: -3%;
+}
+
+#home li {
+    text-decoration: none;
+    list-style-type: none;
+    display: inline-block;
+    padding: 2%;
+}
+
+#home li a {
+    color: white;
+    font-weight: bold;
+    font-size: 120%;
 }
 
 div {

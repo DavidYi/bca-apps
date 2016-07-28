@@ -37,11 +37,6 @@ th {
     text-align: left;
 }
 
-h2.session {
-    color: rgb(247, 224, 97);
-    font-weight: bold;
-}
-
 tr td input {
     width: 12em;
     text-align: center;

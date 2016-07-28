@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/<?php echo $app_url_path ?>/../shared/roles/view.css" rel="stylesheet" type="text/css" />
     <link href="../../../shared/ss/main.css" rel="stylesheet" type="text/css" />
     <link href="../combobox.css" rel="stylesheet" type="text/css" />
+    <link href="/<?php echo $app_url_path ?>/../shared/roles/view.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -23,7 +23,7 @@
                 <h1 class="title">Admin Roles</h1>
 
                 <div id="users">
-                    <h2>User</strong></h2>
+                    <h2><strong>User</strong></h2>
                     <?php foreach($assigned_roles as $assigned_user) { ?>
                         <p class="user"><?php echo $assigned_user['usr_last_name'] ?>, <?php echo $assigned_user['usr_first_name'] ?></p>
                     <?php } ?>
@@ -31,7 +31,7 @@
 
                 <div id="se-wrap">
                     <div id="role">
-                        <h2>Role</strong></h2>
+                        <h2><strong>Role</strong></h2>
                         <?php foreach($assigned_roles as $assigned_user) { ?>
                             <p><?php echo $assigned_user['usr_role_desc'] ?></p>
                         <?php } ?>
@@ -46,7 +46,7 @@
 
             <div id="add">
                 <br>
-                <h2>Add Admin</h2>
+                <h2><strong>Add Admin</strong></h2>
 <!--                <select id="user_drop" name="user_drop">-->
 <!--                    --><?php //foreach($users as $user) { ?>
 <!--                        <option value="--><?php //echo $user['usr_id'] ?><!--">--><?php //echo $user['usr_last_name'] ?><!--, --><?php //echo $user['usr_first_name'] ?><!--</option>-->
@@ -54,7 +54,7 @@
 <!--                </select>-->
 
                 <div class="ui-widget">
-                    <select id="combobox" name="user_drop">
+                    <select id="combobox" class="user_drop" name="user_drop">
                         <option value="">Select one...</option>
                         <?php foreach($users as $user) { ?>
                             <option value="<?php echo $user['usr_id'] ?>"><?php echo $user['usr_last_name'] ?>, <?php echo $user['usr_first_name'] ?></option>
