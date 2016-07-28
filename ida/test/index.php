@@ -8,6 +8,11 @@
 require_once("../util/main.php");
 require_once("../../shared/model/user_db.php");
 
+if ($debugging_login_active !== true) {
+    header("Location: ..");
+}
+
+
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if ($action == NULL) {

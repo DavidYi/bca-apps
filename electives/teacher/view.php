@@ -75,24 +75,37 @@
     </div>
     <div class="view-signup enrollment">
         
-        <div class="vertical-center" style="padding-bottom:70px">
-            <h3><b>Availability</b> | <a href="availability/index.php?teacher=1">Modify Availability</a></h3>
-            <?php
-            if (empty($time_strings)) {
-                echo "<p>None</p>";
-            } else {
-                foreach ($time_strings as $string) {
-                    echo "<p>" . $string["day"] . ": " . $string["mods_available"];
-                }
-            }
-            ?>
-        </div>
-
         <div class="vertical-center">
+            <h3><b>Availability</b> | <a href="availability/index.php?teacher=1">Modify Availability</a></h3>
+            <table style="width:90%">
+                <?php
+                if (empty($time_strings)) {
+                    echo "<p>None</p>";
+                } else {
+                    echo "
+                        <thead>
+                            <th>Day</th>
+                            <th>Mods</th>
+                        </thead>
+                    ";
+                }
+                ?>
+                <?php foreach ($time_strings as $string) :
+                    ?>
+
+                    <tr>
+                        <td><?php echo "<p>" . $string["day"] ?></td>
+                        <td><?php echo $string["mods_available"] ?></td>
+                    </tr>
+
+                <?php endforeach; ?>
+            </table>
+
+            <br>
+            <br>
+
             <h3><b>Courses</b> | <a href="teacher_add_course/index.php">Add Course</a></h3>
-
-
-            <table style="width:75%">
+            <table style="width:90%">
                 <?php
                 if (empty($courses)) {
                     echo "<p>None</p>";
@@ -124,6 +137,8 @@
 
                 <?php endforeach; ?>
             </table>
+            <br>
+            <br>
         </div>
     </div>
 </section>

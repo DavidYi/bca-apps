@@ -182,6 +182,34 @@ function verify_admin() {
     }
 }
 
+function verify_teacher() {
+    global $app_cde;
+    global $app_url_path;
+    global $user;
+
+    verify_logged_in();
+
+    if ($user->usr_type_cde != 'TCH') {
+        log_error ("Permission exception in verify_teacher.  User id:" . $user->usr_id);
+        display_user_message("Permission denied.  You are not a teacher.", '/' . $app_url_path . '/index.php');
+        exit();
+    }
+}
+
+function verify_student() {
+    global $app_cde;
+    global $app_url_path;
+    global $user;
+
+    verify_logged_in();
+
+    if ($user->usr_type_cde != 'STD') {
+        log_error ("Permission exception in verify_student.  User id:" . $user->usr_id);
+        display_user_message("Permission denied.  You are not a student.", '/' . $app_url_path . '/index.php');
+        exit();
+    }
+}
+
 function include_analytics() {
     include_page_tracking();
     include_user_tracking();

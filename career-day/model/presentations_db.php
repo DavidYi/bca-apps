@@ -88,7 +88,6 @@ function get_presentation_by_user($usr_id, $ses_id) {
     }
 }
 
-
 function get_sessions_by_user($usr_id) {
     $query = 'select session_times.ses_id ses_times, my_ses.ses_id ses_id, pres_room, pres_max_capacity, pres_enrolled_count, pres_id, mentor_position, mentor_company, mentor_field, mentor_last_name, mentor_first_name, ses_name, ses_start, ses_end, session_times.sort_order
               from session_times
