@@ -71,8 +71,9 @@ switch ($action) {
                 , null, null, null, null, null, null, $pres_room,
                 $pres_host_teacher, $pres_max_capacity);
         }
+
         $mentorList = get_mentor_list();
-        include('mentor_list.php');
+        echo 'Mentor Added. Close inner page and refresh to see changes.';
         break;
 
     case 'show_modify_mentor':
