@@ -30,13 +30,14 @@
 
         <input type="hidden" name="action" value="modify_delete_test">
 
-        <input type="hidden" name="test_id" value="<?php echo $test_id?>">
+        <input type="hidden" name="test_id" value="<?php echo $test_id?>" required>
 
-        <input name="test_name" placeholder="Test Name" value="<?php echo $test_name?>">
+        <input name="test_name" placeholder="Test Name" value="<?php echo $test_name?>" required>
 
-        <input name="date" placeholder="Date" type="text" id="datepicker" value="<?php echo $test_date?>">
+        <input name="date" placeholder="Date" type="text" id="datepicker"
+               value="<?php echo $test_date?>" required>
 
-        <select name="test_cde" class="ui dropdown">
+        <select name="test_cde" class="ui dropdown" required>
             <i class="dropdown icon"></i>
             <option value="" disabled selected>Test Type</option>
             <?php foreach ($testTypes as $test) { ?>
@@ -50,7 +51,7 @@
 
         <!-- Test -->
 
-        <select name="room_id" class="ui dropdown">
+        <select name="room_id" class="ui dropdown" required>
             <i class="dropdown icon"></i>
             <option value="" disabled selected>Room Number</option>
             <?php

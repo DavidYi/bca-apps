@@ -189,6 +189,14 @@ function delete_mentor($mentor_id){
         $result = $statement->fetchAll();
         $statement->closeCursor();
 
+        foreach ($result as $id) {
+            $query = 'delete from pres_user_xref where pres_id = :pres_id';
+            $statement = $db->prepare($query);
+            $statement->bindValue(':pres_id', $id['pres_id']);
+            $statement->execute();
+            $statement->closeCursor();
+        }
+
         $query = 'delete from presentation where mentor_id = :mentor_id';
 
         $statement = $db->prepare($query);
@@ -202,14 +210,6 @@ function delete_mentor($mentor_id){
         $statement->bindValue(':mentor_id', $mentor_id);
         $statement->execute();
         $statement->closeCursor();
-
-        foreach ($result as $id) {
-            $query = 'delete from pres_user_xref where pres_id = :pres_id';
-            $statement = $db->prepare($query);
-            $statement->bindValue(':pres_id', $id['pres_id']);
-            $statement->execute();
-            $statement->closeCursor();
-        }
 
         $db->commit();
     } catch (PDOException $e) {
