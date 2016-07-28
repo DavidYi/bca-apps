@@ -141,7 +141,11 @@
         <button type="submit" name="choice" value="Modify">Modify</button>
         &nbsp;  &nbsp;  &nbsp;  &nbsp;
         <button type="submit" name="choice" value="Delete"
-            onclick="return confirm('Are you sure you want to delete this test?')">Delete</button>
+                onclick="return confirm('Are you sure you want to delete this test?')"
+                formnovalidate>Delete</button>
+        <BR>
+        <BR>
+        <button type="submit" name="choice" value="Return" formnovalidate>Back</button>
 
     </form>
 </div>

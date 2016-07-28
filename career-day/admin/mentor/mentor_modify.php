@@ -19,7 +19,7 @@
             <p class="title">Editing Mentor: <?php echo
                 htmlspecialchars($mentor_first_name . ', ' . $mentor_last_name); ?></p>
             <button style="margin-left:5%" class="submit back"
-                    type="submit" name="choice" value="Back">Back</button>
+                    type="submit" name="choice" value="Back" formnovalidate>Back</button>
             <div id="header_row">
                 <label>
                     <span id="name_header"><strong>Details</strong></span>

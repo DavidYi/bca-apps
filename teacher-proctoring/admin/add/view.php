@@ -125,6 +125,8 @@
         </table>
 
         <button type="submit" name="choice" value="Add">Add</button>
+        &nbsp; &nbsp;
+        <button type="submit" name="choice" value="Return" formnovalidate>Back</button>
 
     </form>
 </div>
