@@ -17,6 +17,7 @@ switch ($action) {
         $assigned_roles = get_assigned_roles();
         $users = get_users();
         $roles = get_roles();
+        $teacherList = get_teacher_list();
         include(__DIR__ . "/view.php");
         break;
     case 'modify_admin':

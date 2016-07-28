@@ -26,9 +26,7 @@ switch ($action) {
         $user = User::getUserByUsrId($usr_id);
         $_SESSION['user'] = $user;
 
-
-
-        header("Location: ../../teacher/availability/index.php");
+        header("Location: ../../teacher/availability/index.php?next_page=admin");
         break;
 
     default:
