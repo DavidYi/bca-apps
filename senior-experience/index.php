@@ -9,12 +9,12 @@
 /* These messages are used to customize the login page. */
 $pageTitle = 'Senior Expositions';
 $loginInfo = '<h1>Senior Expo</h1>
-	                <h3>
-						BCA will hold Senior Expositions on <b>June 1</b>.  
-					</h3>
-					<h3>
-						This app is brought to you by the students of BCA.
-					</h3>';
+                <h2>
+                    BCA will hold Senior Expositions on <b>June 1</b>.  
+                </h2>
+                <h2>
+                    This app is brought to you by the students of BCA.
+                </h2>';
 
 
 /* This call back function is called once the user is authenticated.  This function handles redirecting the user
