@@ -8,8 +8,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-
-
 .mods {
   /*display: none;*/
 }
@@ -22,13 +20,19 @@ div.table-title {
   width: 100%;
 }
 
+.table-title form {
+    margin: 0;
+}
+
 .table-title h3 {
-   color: black;
-   font-size: 30px;
-   font-weight: 400;
-   font-style:normal;
-   font-family: "Roboto", helvetica, arial, sans-serif;
-   text-transform:uppercase;
+    color: black;
+    font-size: 30px;
+    font-weight: 400;
+    font-style:normal;
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    text-transform:uppercase;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 
@@ -171,11 +175,6 @@ td.text-right {
   text-align: right;
 }
 
-.wrapper {
-  margin-top: 4%;
-  text-align: center;
-}
-
 /*.submit {
   font-family:  'Lato', arial;
   font-size: 15px;
@@ -199,7 +198,7 @@ label {
 .s {
   font-family:  'Lato', arial;
   font-size: 15px;
-  width: 120px;
+  width: 100px;
   height: 50px;
   color: white;
   text-align: center;
@@ -208,11 +207,9 @@ label {
   cursor: pointer;
 }
 
-
 .submit {
   background: rgb(108,174,224);
 }
-
 
 .back {
   background: rgb(247,181,125);
