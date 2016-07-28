@@ -177,17 +177,45 @@ function get_presentation_by_mentor_session($mentor_id, $ses_id) {
 
 function delete_mentor($mentor_id){
     global $db;
-    $query = 'delete from mentor where mentor_id = :mentor_id';
+
+    $query = 'select pres_id from presentation where mentor_id = :mentor_id';
+
     try {
+        $db->beginTransaction();
+
         $statement = $db->prepare($query);
         $statement->bindValue(':mentor_id', $mentor_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
 
+        $query = 'delete from presentation where mentor_id = :mentor_id';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':mentor_id', $mentor_id);
         $statement->execute();
         $statement->closeCursor();
+
+        $query = 'delete from mentor where mentor_id = :mentor_id';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':mentor_id', $mentor_id);
+        $statement->execute();
+        $statement->closeCursor();
+
+        foreach ($result as $id) {
+            $query = 'delete from pres_user_xref where pres_id = :pres_id';
+            $statement = $db->prepare($query);
+            $statement->bindValue(':pres_id', $id['pres_id']);
+            $statement->execute();
+            $statement->closeCursor();
+        }
+
+        $db->commit();
     } catch (PDOException $e) {
+        $db->rollBack();
         display_db_exception($e);
         exit();
     }
 }
-
 ?>

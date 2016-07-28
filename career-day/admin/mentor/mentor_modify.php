@@ -14,7 +14,8 @@
             <button class="submit s" type="submit" name="choice" value="Modify">Update</button>
             <button class="submit back" id="delButton" type="submit"
                     name="choice" value="Delete"
-                    onclick="return confirm('Are you sure you want to delete this mentor?');">Delete</button>
+                    onclick="return confirm('Are you sure you want to delete this mentor?');"
+                    formnovalidate>Delete</button>
             <p class="title">Editing Mentor: <?php echo
                 htmlspecialchars($mentor_first_name . ', ' . $mentor_last_name); ?></p>
             <button style="margin-left:5%" class="submit back"

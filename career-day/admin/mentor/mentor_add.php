@@ -71,7 +71,8 @@
                placeholder="Max Capacity" required><BR>
 
         <div class="button-container">
-            <button class="add">Add Mentor</button>
+            <button class="add" type="submit"
+                    name="choice" value="Add">Add Mentor</button>
         </div>
     </form>
 </div>
