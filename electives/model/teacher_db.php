@@ -26,7 +26,7 @@ function add_course($course_name, $course_desc) {
         exit();
     }
 }
-
+//
 function delete_course($course_id) {
     global $db;
     global $user;
