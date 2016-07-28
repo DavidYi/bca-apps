@@ -41,9 +41,9 @@
         </select>
         <div class="button-container">
             <button class="add" name="choice" type="submit" value="Add">Add Workshop</button>
-            <button class="add" name="choice" type="submit" value="Back">Go Back</button>
         </div>
     </form>
+    <a href="../workshops/index.php"<button class="add" name="choice" type="submit" value="Back">Go Back</button></a>
 </div>
 </body>
 </html>
