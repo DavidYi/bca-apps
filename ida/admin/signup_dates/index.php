@@ -2,6 +2,8 @@
 
 require_once('../../util/main.php');
 require_once('../../model/signup_dates_db.php');
+require_once('../../model/teacher_sessions_db.php');
+
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {

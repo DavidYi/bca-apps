@@ -57,8 +57,7 @@ tr td input {
 }
 
 #grades {
-    margin-left: 3em;
-    margin-right: 1em;
+    margin: 0 1em 0 3em;
     float: left;
     width: 5em;
 }
@@ -67,7 +66,6 @@ tr td input {
     float: left;
     margin-left: 5em;
     width: 15em;
-    /*margin-right: 2em;*/
 }
 
 #end {
@@ -82,31 +80,32 @@ tr td input {
 }
 
 .grade {
-    margin-top: 1em;
-    margin-bottom: 1.25em;
+    margin: 1em 0 1.25em 0;
 }
 
 .s {
     background-color: rgb(182, 226, 249);
     margin: 0 auto;
     margin-top: 4em;
-    margin-right: 2em;
+    margin-right: 1em;
     display: inline-block;
 }
 
 .s:hover{
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+    cursor: hand;
 }
 
 .cancel {
     background-color: rgb(247, 224, 97);
-    margin-top: 0px;
     margin: 0 auto;
+    margin-left: 1em;
     display: inline-block;
 }
 
 .cancel:hover {
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+    cursor: hand;
 }
 
 #columns {
@@ -119,7 +118,7 @@ tr td input {
 }
 
 #button-div {
-    width:auto;
-    height: auto;
-    margin: auto;
+    text-align: center;
+    /*width:100%;*/
+    margin: 0 auto;
 }

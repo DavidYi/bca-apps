@@ -65,12 +65,31 @@ order by usr_role_desc';
         exit();
     }
 }
-
-function add_admin($usr_id, $app_cde, $usr_role_cde) {
-    $query = 'insert into role_application_user_xref (usr_id, app_cde, usr_role_cde)
-values (:usr_id, :app_cde, :usr_role_cde)';
+function get_teacher_list(){
+    $query = "select concat('\"', usr_last_name, ', ', usr_first_name, '\"') as teachers, usr_id
+                from user u
+                where usr_type_cde = 'TCH'
+                order by usr_last_name";
 
     global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+function add_admin($usr_id, $app_cde, $usr_role_cde) {
+    $query = 'insert into role_application_user_xref (usr_id, app_cde, usr_role_cde)
+        values (:usr_id, :app_cde, :usr_role_cde)';
+
+    global $db;
+
     $statement = $db->prepare($query);
     $statement->bindValue(":usr_id", $usr_id);
     $statement->bindValue(":app_cde", $app_cde);
