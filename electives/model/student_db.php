@@ -27,7 +27,7 @@ function get_courses($id) {
     }
 }
 
-function student_add_course($usr_id, $course_id) {
+function student_add_course($usr_id, $course_id, $updt_id) {
     global $db;
 
     $query = "insert into elect_student_course_xref (usr_id, course_id, updt_usr_id)
@@ -37,6 +37,7 @@ function student_add_course($usr_id, $course_id) {
         $statement = $db->prepare($query);
         $statement->bindValue(':course_id', $course_id);
         $statement->bindValue(':usr_id', $usr_id);
+        $statement->bindValue(':updt_id', $updt_id);
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {

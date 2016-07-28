@@ -6,16 +6,17 @@
  * Time: 9:29 AM
  */
 
-function update_times($usr_id, $time) {
+function update_times($usr_id, $time, $updt_id) {
     global $db;
 
     $query = "insert into elect_user_free_xref(usr_id, time_id, updt_usr_id)
-              VALUES (:usr_id, :time_id, :usr_id)";
+              VALUES (:usr_id, :time_id, :updt_id)";
 
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':time_id', $time);
         $statement->bindValue(':usr_id', $usr_id);
+        $statement->bindValue(':updt_id', $updt_id);
         $statement->execute();
         $statement->closeCursor();
 
