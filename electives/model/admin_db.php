@@ -9,7 +9,7 @@
 function get_free_mods() {
     global $db;
 
-    $query = "select u.usr_first_name, u.usr_last_name,
+    $query = "select u.usr_id, u.usr_first_name, u.usr_last_name,
               group_concat(times.time_short_desc order by times.sort_order
               SEPARATOR ', ') as mods_available
  
