@@ -90,6 +90,10 @@
     <br>
     <br>
     <div class = "center body"><h3>Downloads</h3>
+        <a href = "#" onclick= "post('index.php', {action: 'presentation_status'}, 'post')">Presentation Status and List</a>
+        <br>
+        <a href = "#" onclick= "post('index.php', {action: 'all_registrants'}, 'post')">List of "All Registration Details" for all Students and Teachers</a>
+        <br>
         <a href = "#" onclick= "post('index.php', {action: 'all_download'}, 'post')">Fully Enrolled Students List</a>
         <br>
         <a href = "#" onclick= "post('index.php', {action: 'partial_download'}, 'post')">Partially Enrolled Students List</a>

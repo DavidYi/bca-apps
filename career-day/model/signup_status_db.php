@@ -1,5 +1,40 @@
 <?php
+function presentations_registration_status() {
+    $query =
+        'select p.ses_id, m.pres_room, m.mentor_field, m.mentor_company, 
+                m.mentor_profile, concat(m.mentor_first_name," ", m.mentor_last_name) as name,
+                p.pres_enrolled_count, m.pres_max_capacity, m.pres_max_capacity - p.pres_enrolled_count, 
+                m.pres_host_teacher
+        from presentation p, mentor m
+        where m.mentor_id = p.mentor_id
+        order by p.ses_id, m.mentor_field ';
 
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+
+function all_registrants_download() {
+    $query =
+        ' select usr_last_name, usr_first_name, usr_grade_lvl, p.ses_id, m.pres_room, m.mentor_field, m.mentor_first_name, m.mentor_last_name, m.mentor_company, p.pres_id, u.usr_id
+            from user u, pres_user_xref x, presentation p, mentor m
+            where u.usr_id = x.usr_id
+            and p.pres_id = x.pres_id
+            and m.mentor_id = p.mentor_id
+            order by usr_last_name, usr_first_name ';
+
+    return get_csv_list($query, 0);
+}
 function get_registered_users(){
     $query = 'select completed.grade_lvl, completed.num as Complete, partial.num as Partial, none.num as None
     from
