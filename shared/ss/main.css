@@ -39,6 +39,7 @@ html {
   -webkit-text-size-adjust: 100%; }
 
 html, body {
+  background-color: linear-gradient(227deg, #b6e2f9, #f1c5be, #fdfdfd);
   background: linear-gradient(227deg, #b6e2f9, #f1c5be, #fdfdfd);
   background-size: 600% 600%;
 
