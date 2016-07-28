@@ -21,8 +21,11 @@ if ($action == NULL) {
 $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
 $available_times = get_times($usr_id);
 
-// true: teacher, false:student
-$teacher_or_student = $_GET['teacher'];
+// If the user is being mimiced by an admin, use that id as the updt id.
+// Otherwise, use the id of the current user.
+$updateById = $_SESSION['prev_usr_id'];
+if (empty($updateById))
+    $updateById = $user->usr_id;
 
 switch ($action) {
     case "update_times":
@@ -30,10 +33,10 @@ switch ($action) {
         $decode = json_decode($free_mods, true);
         reset_times($usr_id);
         for ($i = 0; $i < $decode["length"]; $i++){
-            update_times($usr_id, $decode[$i]);
+            update_times($usr_id, $decode[$i], $updateById);
         }
 
-        if ($teacher_or_student) {
+        if ($user->usr_type_cde == 'TCH') {
             header("Location: ../index.php");
         } else {
             header("Location: ../../Student/index.php");

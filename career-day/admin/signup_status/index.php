@@ -15,6 +15,36 @@ if ($action == NULL) {
 $result = "";
 
 switch($action) {
+    case "presentation_status":
+        $student_list = presentations_registration_status();
+        $output = fopen('php://output', 'w') or die("Can't open file");
+        header("Content-Type:application/csv");
+        header('Content-Disposition: attachment; filename="presentations.csv";');
+        fputcsv($output, array('Session', 'Room', 'Field', 'Title', 'Organization', 'Location', 'Description', 'Presenters',
+            'Enrolled Stdnts','Max Stdnts', 'Remaining Stdnts',
+            'Enrolled Tchrs','Max Tchrs', 'Remaining Tchrs'));
+        foreach($student_list as $student) {
+            fputcsv($output, $student);
+        }
+        fpassthru($output);
+        fclose($output) or die("Can't close file");
+        exit();
+        break;
+    case "all_registrants":
+        $grade = filter_input(INPUT_POST, 'grade');
+        $student_list = all_registrants_download();
+        $output = fopen('php://output', 'w') or die("Can't open file");
+        header("Content-Type:application/csv");
+        header('Content-Disposition: attachment; filename="all_registrations.csv";');
+
+        fputcsv($output, array('Last', 'First', 'Grade', 'Session', 'Room', 'Field', 'Title', 'Organization', 'Location', 'Presenting', 'Presentation ID', 'Field ID', 'User ID'));
+        foreach($student_list as $student) {
+            fputcsv($output, $student);
+        }
+        fpassthru($output);
+        fclose($output) or die("Can't close file");
+        exit();
+        break;
     case "auto_enroll":
         $grade = filter_input(INPUT_POST, 'grade');
         if ($grade == NULL) {

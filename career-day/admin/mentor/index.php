@@ -71,8 +71,9 @@ switch ($action) {
                 , null, null, null, null, null, null, $pres_room,
                 $pres_host_teacher, $pres_max_capacity);
         }
+
         $mentorList = get_mentor_list();
-        include('mentor_list.php');
+        echo 'Mentor Added. Close inner page and refresh to see changes.';
         break;
 
     case 'show_modify_mentor':
@@ -80,7 +81,6 @@ switch ($action) {
         $mentor_id = filter_input(INPUT_GET, 'mentor_id');
 
         $mentor = get_mentor($mentor_id);
-
 
         $mentor_first_name = $mentor['mentor_first_name'];
         $mentor_last_name = $mentor['mentor_last_name'];
@@ -94,47 +94,57 @@ switch ($action) {
         $pres_host_teacher = $mentor['pres_host_teacher'];
         $pres_max_capacity = $mentor['pres_max_capacity'];
 
-        include 'mentor_modify.php';
+        $mentor_sessions_check = [false, false, false, false];
+
+        for ($i = 1; $i <= 4; $i++) {
+            if (!empty(get_presentation_by_mentor_session($mentor_id, $i))) {
+                $mentor_sessions_check[$i-1] = true;
+            }
+        }
+
+        include('mentor_modify.php');
         exit();
         break;
 
-
-
-
     case 'modify_mentor':
         $choice = filter_input(INPUT_POST, 'choice');
-        $mentorId = filter_input(INPUT_POST, 'mentor_id');
-        $mentor_first_name = filter_input(INPUT_POST, 'mentor_first_name');
-        $mentor_last_name = filter_input(INPUT_POST, 'mentor_last_name');
-        $mentor_suffix = filter_input(INPUT_POST, 'mentor_suffix');
-        $mentor_position = filter_input(INPUT_POST, 'mentor_position');
-        $mentor_company = filter_input(INPUT_POST, 'mentor_company');
-        $pres_room = filter_input(INPUT_POST, 'pres_room');
-        $pres_host_teacher = filter_input(INPUT_POST, 'pres_host_teacher');
-        $pres_max_teacher = filter_input(INPUT_POST, 'pres_max_teacher');
-        $pres_max_capacity = filter_input(INPUT_POST, 'pres_max_capacity');
-        $mentor_profile = filter_input(INPUT_POST, 'mentor_profile');
-        $mentor_field = filter_input(INPUT_POST, 'mentor_field');
-        $mentor_keywords = filter_input(INPUT_POST, 'mentor_keywords');
+        $mentor_id = filter_input(INPUT_POST, 'mentor_id');
 
-        if(filter_input(INPUT_POST, 'choice') == "Modify") {
+        if (filter_input(INPUT_POST, 'choice') == "Modify") {
+            $mentor_first_name = filter_input(INPUT_POST, 'mentor_first_name');
+            $mentor_last_name = filter_input(INPUT_POST, 'mentor_last_name');
+            $mentor_suffix = filter_input(INPUT_POST, 'mentor_suffix');
+            $mentor_position = filter_input(INPUT_POST, 'mentor_position');
+            $mentor_company = filter_input(INPUT_POST, 'mentor_company');
+            $pres_room = filter_input(INPUT_POST, 'pres_room');
+            $pres_host_teacher = filter_input(INPUT_POST, 'pres_host_teacher');
+            $pres_max_teacher = filter_input(INPUT_POST, 'pres_max_teacher');
+            $pres_max_capacity = filter_input(INPUT_POST, 'pres_max_capacity');
+            $mentor_profile = filter_input(INPUT_POST, 'mentor_profile');
+            $mentor_field = filter_input(INPUT_POST, 'mentor_field');
+            $mentor_keywords = filter_input(INPUT_POST, 'mentor_keywords');
+            $mentor_session_1 = filter_input(INPUT_POST, 'mentor_session_1');
+            $mentor_session_2 = filter_input(INPUT_POST, 'mentor_session_2');
+            $mentor_session_3 = filter_input(INPUT_POST, 'mentor_session_3');
+            $mentor_session_4 = filter_input(INPUT_POST, 'mentor_session_4');
 
-            modify_mentor($mentorId, $mentor_last_name, $mentor_first_name, $mentor_suffix, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords
-                ,  $pres_room,
-                $pres_host_teacher, $pres_max_capacity);
+            $mentor_sessions = [$mentor_session_1, $mentor_session_2, $mentor_session_3, $mentor_session_4];
+
+            modify_mentor($mentor_id, $mentor_last_name, $mentor_first_name, $mentor_suffix, $mentor_field,
+                $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords ,$pres_room,
+                $pres_host_teacher, $pres_max_capacity, $mentor_sessions);
+        } elseif (filter_input(INPUT_POST, 'choice') == "Delete") {
+            delete_mentor($mentor_id);
         }
-
 
         $mentorList = get_mentor_list();
         include('mentor_list.php');
         exit();
         break;
 
-
     case 'delete_mentor':
         $mentor_id = filter_input(INPUT_GET, 'mentor_id');
         delete_mentor($mentor_id);
-
         $mentorList = get_mentor_list();
         include('mentor_list.php');
         exit();

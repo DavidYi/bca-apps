@@ -36,7 +36,6 @@ switch ($action) {
                 if ($allFieldsFilled) {
                     add_course($courseName, $description);
                     echo "<script type='text/javascript'>
-                            alert('Course created successfully');
                             window.location.href='..';
                             </script>";
                     include('view.php?action=add_course');

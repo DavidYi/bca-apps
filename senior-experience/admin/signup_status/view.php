@@ -108,13 +108,9 @@
         <br>
         <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">List of "Not Enrolled" Students and Teachers</a>
         <br><br>
-        <a href = "../">Admin Index</a>
-    </div>
 
-    <div id = "logout">
-        <a href = "../index.php">Admin Menu</a> &nbsp &nbsp &nbsp
+        <a href = "../index.php">Admin Menu</a><br>
         <a href = "../../index.php?action=logout">Log Out</a>
     </div>
-    </section>
 </body>
 </html>

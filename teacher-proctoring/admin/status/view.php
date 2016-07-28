@@ -7,7 +7,13 @@
 <body>
 
 <div id="content">
-    <h1>Proctoring Status</h1>
+    <h1 style="position:relative">Proctoring Status</h1>
+    <a href="../index.php">
+        <button
+            type="submit" id="return_button" name="return_button">Return to Admin Panel
+        </button>
+    </a>
+
     <table id="ts">
         <tr>
 
@@ -91,21 +97,6 @@
         easing: 'easeInOutExpo',
         speed: 700
     });
-
-    /*
-     function postRegister(postObject) {
-     $.post(
-     "/index.php",
-     {
-     "pres_id": postObject
-     },
-     function (data) {
-     data = $.parseJSON(data);
-     },
-     "json"
-     );
-     });
-     */
 </script>
 
 </body>

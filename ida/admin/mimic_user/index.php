@@ -30,14 +30,7 @@ switch ($action) {
         $user = $_SESSION['user'];
         $_SESSION['prev_usr_id'] = $user->usr_id;
         $_SESSION['user'] = User::getUserByUsrId($usr_id);
-
-//        if ($user->getRole('CAR') == 'ADM') {
-//            // The user is an admin, so they are directed to  admin page
-//            header("Location: ../");
-//        } else {
-//            // The user is a student or teacher, they are directed to sign up page
-//            header("Location: ../../itinerary/index.php");
-//        }
+        
 
         header("Location: ../../itinerary/index.php");
 

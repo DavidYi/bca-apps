@@ -4,6 +4,8 @@ include('../util/main.php');
 require_once('../model/times_db.php');
 require_once('../model/student_db.php');
 
+verify_student();
+
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
@@ -35,9 +37,16 @@ switch ($action) {
         include('./times/view.php');
         break;
     case 'logout':
-        echo "will make a logout page later";
-        header ('Location: ./courses/index.php');
-        break;
+        if (isset($action) and ($action == "logout")) {
+            if (isset($_SESSION['prev_usr_id'])) {
+                $_SESSION['user'] = User::getUserByUsrId($_SESSION['prev_usr_id']);
+                $_SESSION['prev_usr_id'] = NULL;
+                header("Location: ../admin/index.php");
+            } else {
+                session_destroy();
+                header("Location: ../index.php");
+            }
+        }
     default:
         $courses = get_courses($usr_id);
         include('./view.php');
