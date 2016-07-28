@@ -1,7 +1,8 @@
 <?php
 
 //
-// The root directory of the application from the web perspective.  (In production, the "bca-apps" level does not exist.)
+// The root directory of the application from the web perspective.
+// In production, the "bca-apps" level does not exist.
 //
 $server_web_root = "bca-apps";
 
@@ -9,6 +10,11 @@ $server_web_root = "bca-apps";
 // Controls if errors display on the error page.  Should be off in production.
 //
 $debug_mode = true;
+
+//
+// Controls if the test page is active, allowing a user to log in as anyone without a password.
+//
+$debugging_login_active = true;
 
 //
 // Server containing the database
@@ -35,7 +41,8 @@ else {
 }
 
 //
-// For now, all applications share one username/password.  If this changes, the usernames and passwords could be put
+// For now, all applications share one username/password.
+// f this changes, the usernames and passwords could be put
 // in the cascading if statements above.
 //
 $username = 'atcsdevb_shrusr';
