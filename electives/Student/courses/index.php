@@ -40,7 +40,7 @@ switch ($action) {
         reset_courses_for_student($usr_id);
         $chosen_courses = $_POST["checkbox"];
         foreach($chosen_courses as $course_id) {
-            student_add_course($usr_id, $course_id);
+            student_add_course($usr_id, $course_id, $updateById);
         }
         if ($teacher_or_student) {
             header("Location: ../index.php");
