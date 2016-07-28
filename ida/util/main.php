@@ -6,8 +6,9 @@ $app_title = 'IDA Registration';
 // Provides environment specific configuration information.
 include(__DIR__ . "/../../config.php");
 
-$app_url_path = $server_web_root . '/ida';
 $shared_ss_url = '/' . $server_web_root . '/shared/ss/main.css';
+$app_url_path = $server_web_root . '/ida';
+
 
 function goToLandingPage()
 {
