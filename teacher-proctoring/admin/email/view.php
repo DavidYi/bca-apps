@@ -16,6 +16,11 @@
 </head>
 
 <body>
+<header><a href="../index.php">
+        <button style="left: 15%"
+                type="submit" id="return_button" name="return_button">Return to Admin Panel
+        </button>
+    </a></header>
 <table id="ts">
     <tr>
         <th>Test ID</th>
