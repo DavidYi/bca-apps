@@ -37,7 +37,7 @@ function directToHomePage() {
  * which contains the meat of the login handling code.
  */
 
-include (__DIR__ . "/model/database.php");
+require_once("util/main.php");
 include (__DIR__ . "/../shared/login/index.php");
 
 ?>
