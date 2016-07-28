@@ -3,7 +3,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,700&subset=latin-ext);
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 @import url(https://file.myfontastic.com/p563dRgdEAZiX2kTAygwkU/icons.css);
-
 /**********color reference chart**********
 comment ********* color ********
 
@@ -39,8 +38,37 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
 
-body {
-  margin: 0; }
+html, body {
+  background-color: linear-gradient(227deg, #b6e2f9, #f1c5be, #fdfdfd);
+  background: linear-gradient(227deg, #b6e2f9, #f1c5be, #fdfdfd);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 19s ease infinite;
+  -moz-animation: AnimationName 19s ease infinite;
+  -o-animation: AnimationName 19s ease infinite;
+  animation: AnimationName 19s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 9%}
+  50%{background-position:100% 92%}
+  100%{background-position:0% 9%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 9%}
+  50%{background-position:100% 92%}
+  100%{background-position:0% 9%}
+}
+@-o-keyframes AnimationName {
+  0%{background-position:0% 9%}
+  50%{background-position:100% 92%}
+  100%{background-position:0% 9%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 9%}
+  50%{background-position:100% 92%}
+  100%{background-position:0% 9%}
+}
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block; }

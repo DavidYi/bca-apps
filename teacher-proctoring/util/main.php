@@ -9,8 +9,8 @@ $app_title = 'Teacher Proctoring Registration';
 // Provides environment specific configuration information.
 include(__DIR__ . "/../../config.php");
 
-$app_url_path = $server_web_root . '/ida';
-$shared_ss_url = '/' .$server_web_root . '/shared/ss/main.css';
+$app_url_path = $server_web_root . '/teacher-proctoring';
+$shared_ss_url = '/' . $server_web_root . '/shared/ss/main.css';
 
 /* These includes depend on the variables above, therefore they should be at the end of the file. */
 require_once(__DIR__ . "/../../shared/util/main.php");

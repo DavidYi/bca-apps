@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="shared/ss/main.css" type="text/css" rel="stylesheet">
+    <link href="index.css" type="text/css" rel="stylesheet">
+    <title>BCA Apps</title>
+</head>
+<body>
+<div id="fp-nav" class="right">
+    <ul>
+        <li><a href="#home" class="active"><span></span></a>
+            <div class="fp-tooltip right">Home</div>
+        </li>
+        <li><a href="#senior-experience" class=""><span></span></a>
+            <div class="fp-tooltip right">Senior Experience</div>
+        </li>
+        <li><a href="#ida" class=""><span></span></a>
+            <div class="fp-tooltip right">IDA</div>
+        </li>
+        <li><a href="#electives" class=""><span></span></a>
+            <div class="fp-tooltip right">Electives</div>
+        </li>
+        <li><a href="#teacher-proctoring" class=""><span></span></a>
+            <div class="fp-tooltip right">Teacher Proctoring</div>
+        </li>
+        <li><a href="#career-day" class=""><span></span></a>
+            <div class="fp-tooltip right">Career Day</div>
+        </li>
+    </ul>
+</div>
+<section class="content">
+
+    <div id="home">
+        <span>
+        <center><h1>Welcome to BCA Apps</h1>
+            <p>Brought to you by the students of ATCS.</p>
+            <ul>
+                <li><a href="./senior-experience/">Senior Experience</a></li>
+                <li><a href="./ida/">IDA</a></li>
+                <li><a href="./electives/">Electives</a></li>
+                <li><a href="./teacher-proctoring/">Teacher Proctoring</a></li>
+                <li><a href="./career-day/">Career Day</a></li>
+            </ul></center>
+            </span>
+    </div>
+
+    <div id="app-list">
+        <div id="senior-experience" class="app-box" style="background: rgb(232, 135, 121);">
+            <div class="app-image"><h2>HAHA NOT RESPONSIVE</h2></div>
+            <h1>Senior Experience</h1>
+            <p>Lorem ipsum dolor sit amet, mucius putent iisque sed eu. Usu delenit neglegentur id, nam ne enim
+                argumentum. Sea fugit causae graecis an. Sea vide pericula complectitur ne, id vidit verear vis, putant
+                aeterno constituam cu vel. Ad vidisse torquatos definitionem sit. Cu eam aliquip eleifend consectetuer,
+                et idque consequat qui, has ubique commodo no.</p>
+            <button><a href="./senior-experience/" style="color: rgb(232, 135, 121);">Go</a></button>
+
+        </div>
+        <div id='ida' class="app-box" style="background: rgb(182, 226, 249);">
+            <div class="app-image"><h2>HAHA NOT RESPONSIVE</h2></div>
+            <h1>IDA</h1>
+            <p>Lorem ipsum dolor sit amet, mucius putent iisque sed eu. Usu delenit neglegentur id, nam ne enim
+                argumentum. Sea fugit causae graecis an. Sea vide pericula complectitur ne, id vidit verear vis, putant
+                aeterno constituam cu vel. Ad vidisse torquatos definitionem sit. Cu eam aliquip eleifend consectetuer,
+                et idque consequat qui, has ubique commodo no.</p>
+            <button><a href="./ida/" style="color: rgb(182, 226, 249);">Go</a></button>
+        </div>
+        <div id='electives' class="app-box" style="background: rgb(247, 224, 97);">
+            <div class="app-image"><h2>HAHA NOT RESPONSIVE</h2></div>
+            <h1>Electives Registration</h1>
+            <p>Lorem ipsum dolor sit amet, mucius putent iisque sed eu. Usu delenit neglegentur id, nam ne enim
+                argumentum. Sea fugit causae graecis an. Sea vide pericula complectitur ne, id vidit verear vis, putant
+                aeterno constituam cu vel. Ad vidisse torquatos definitionem sit. Cu eam aliquip eleifend consectetuer,
+                et idque consequat qui, has ubique commodo no.</p>
+            <button><a href="./electives/" style="color: rgb(247, 224, 97);">Go</a></button>
+        </div>
+        <div id='teacher-proctoring' class="app-box" style="background: rgb(232, 135, 121);">
+            <div class="app-image"><h2>HAHA NOT RESPONSIVE</h2></div>
+            <h1>Teacher Proctoring</h1>
+            <p>Lorem ipsum dolor sit amet, mucius putent iisque sed eu. Usu delenit neglegentur id, nam ne enim
+                argumentum. Sea fugit causae graecis an. Sea vide pericula complectitur ne, id vidit verear vis, putant
+                aeterno constituam cu vel. Ad vidisse torquatos definitionem sit. Cu eam aliquip eleifend consectetuer,
+                et idque consequat qui, has ubique commodo no.</p>
+            <button><a href="./teacher-proctoring/" style="color: rgb(232, 135, 121);">Go</a></button>
+        </div>
+        <div id="career-day" class="app-box" style="background: rgb(182, 226, 249);">
+            <div class="app-image"><h2>HAHA NOT RESPONSIVE</h2></div>
+            <h1>Career Day</h1>
+            <p>Lorem ipsum dolor sit amet, mucius putent iisque sed eu. Usu delenit neglegentur id, nam ne enim
+                argumentum. Sea fugit causae graecis an. Sea vide pericula complectitur ne, id vidit verear vis, putant
+                aeterno constituam cu vel. Ad vidisse torquatos definitionem sit. Cu eam aliquip eleifend consectetuer,
+                et idque consequat qui, has ubique commodo no.</p>
+            <button><a href="./career-day/" style="color: rgb(182, 226, 249);">Go</a></button>
+        </div>
+    </div>
+
+    <div id="team">
+
+
+    </div>
+
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">$(function () {
+    $('a[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+                return false;
+            }
+        }
+    });
+});</script>
+</body>
+</html>

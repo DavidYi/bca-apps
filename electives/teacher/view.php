@@ -64,15 +64,23 @@
     <div class="view-main">
         <div class="login-status">
             <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name); ?></b></h3>
-            <h3 class="log-out"><a href="./index.php?action=logout">Log Out</a></h3>
+            <h3 class="log-out"><a href="./index.php?action=logout">
+                    <?php if (isset($_SESSION['prev_usr_id'])) { ?> Return to Admin Panel <?php } else { ?> Log Out <?php } ?>
+                </a></h3>
         </div>
         <div class="vertical-center">
+            <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
             Teacher Page!
             <br>
             <br>
             Instructions here.
         </div>
+        <?php } else { ?>
+            <h1>Mimic User Mode</h1>
+        <?php } ?>
+        </div>
     </div>
+
     <div class="view-signup enrollment">
         
         <div class="vertical-center">

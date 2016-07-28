@@ -29,22 +29,23 @@ function get_mentor_list() {
     return get_list($query);
 }
 
-function add_mentor($mentor_last_name, $mentor_first_name, $mentor_field, $mentor_position, $mentor_company, $mentor_profile, $mentor_keywords
-    ,  $pres_room,
-                    $pres_host_teacher, $pres_max_capacity) {
+function add_mentor($mentor_last_name, $mentor_first_name, $mentor_suffix, $mentor_field, $mentor_position,
+                    $mentor_company, $mentor_profile, $mentor_keywords, $pres_room, $pres_host_teacher,
+                    $pres_max_capacity, $mentor_sessions) {
     global $db;
     $query = 'INSERT INTO mentor
-                 (mentor_last_name, mentor_first_name, mentor_field, mentor_position, mentor_company, mentor_profile, mentor_keywords
+                 (mentor_last_name, mentor_first_name, mentor_suffix, mentor_field, mentor_position, mentor_company, mentor_profile, mentor_keywords
                  , active, pres_room,
                  pres_host_teacher, pres_max_capacity)
               VALUES
-                 (:mentor_last_name, :mentor_first_name, :mentor_field, :mentor_position, :mentor_company, :mentor_profile, :mentor_keywords
+                 (:mentor_last_name, :mentor_first_name, :mentor_suffix, :mentor_field, :mentor_position, :mentor_company, :mentor_profile, :mentor_keywords
                  , 1, :pres_room,
                  :pres_host_teacher, :pres_max_capacity)';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':mentor_last_name', $mentor_last_name);
         $statement->bindValue(':mentor_first_name', $mentor_first_name);
+        $statement->bindValue(':mentor_suffix', $mentor_suffix);
         $statement->bindValue(':mentor_field', $mentor_field);
         $statement->bindValue(':mentor_position', $mentor_position);
         $statement->bindValue(':mentor_company', $mentor_company);
@@ -54,9 +55,21 @@ function add_mentor($mentor_last_name, $mentor_first_name, $mentor_field, $mento
         $statement->bindValue(':pres_host_teacher', $pres_host_teacher);
         $statement->bindValue(':pres_max_capacity', $pres_max_capacity);
 
-
         $statement->execute();
         $statement->closeCursor();
+
+        $mentor_id = $db->lastInsertId('mentor_id');
+
+        for ($i = 0; $i < 4; $i++) {
+            if (!empty($mentor_sessions[$i])) {
+                $query = 'insert into presentation values (NULL, :ses_id, :mentor_id, 0, NULL)';
+                $statement = $db->prepare($query);
+                $statement->bindValue(':mentor_id', $mentor_id);
+                $statement->bindValue(':ses_id', $i+1);
+                $statement->execute();
+                $statement->closeCursor();
+            }
+        }
     } catch (PDOException $e) {
         display_db_exception($e);
         exit();
@@ -189,6 +202,14 @@ function delete_mentor($mentor_id){
         $result = $statement->fetchAll();
         $statement->closeCursor();
 
+        foreach ($result as $id) {
+            $query = 'delete from pres_user_xref where pres_id = :pres_id';
+            $statement = $db->prepare($query);
+            $statement->bindValue(':pres_id', $id['pres_id']);
+            $statement->execute();
+            $statement->closeCursor();
+        }
+
         $query = 'delete from presentation where mentor_id = :mentor_id';
 
         $statement = $db->prepare($query);
@@ -202,14 +223,6 @@ function delete_mentor($mentor_id){
         $statement->bindValue(':mentor_id', $mentor_id);
         $statement->execute();
         $statement->closeCursor();
-
-        foreach ($result as $id) {
-            $query = 'delete from pres_user_xref where pres_id = :pres_id';
-            $statement = $db->prepare($query);
-            $statement->bindValue(':pres_id', $id['pres_id']);
-            $statement->execute();
-            $statement->closeCursor();
-        }
 
         $db->commit();
     } catch (PDOException $e) {

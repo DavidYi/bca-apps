@@ -23,16 +23,24 @@ switch ($action) {
         break;
 
     case 'login':
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
         $usr_id = filter_input(INPUT_POST, "usr_id");
-        $user = $_SESSION['user'];
         $_SESSION['prev_usr_id'] = $user->usr_id;
-        $_SESSION['user'] = User::getUserByUsrId($usr_id);
-        
 
-        header("Location: ../../itinerary/index.php");
+        $user = User::getUserByUsrId($usr_id);
+        $_SESSION['user'] = $user;
 
+        if ($user->usr_type_cde == 'TCH') {
+            // The user is an teacher, so they are directed to teacher page
+            header("Location: ../../teacher/index.php");
+
+        } else {
+            // The user is a student, they are directed to the student sign up page
+            header("Location: ../../Student/index.php");
+        }
+
+        break;
+
+    default:
+        echo ("No action found.");
         break;
 }

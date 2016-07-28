@@ -71,6 +71,8 @@ switch ($action) {
                 add_test($test_name, $datetime, $test_cde, $room_id, $proc_times);
                 header("Location: ../test_status");
             }
+        } else {
+            header("Location: ../test_status");
         }
 
         break;

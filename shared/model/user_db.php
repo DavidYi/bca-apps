@@ -71,11 +71,11 @@ function get_user($usr_id, $app_cde) {
 }
 
 function get_user_list() {
-    $query = 'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year,
+    $query = 'SELECT usr_id, usr_bca_id, usr_type_cde, usr_class_year, usr_grade_lvl, 
                  usr_first_name, usr_last_name, usr_active
               from user
               where usr_active = 1
-			  order by usr_display_name';
+			  order by usr_grade_lvl desc, usr_last_name, usr_first_name ';
 
     return get_list($query);
 }

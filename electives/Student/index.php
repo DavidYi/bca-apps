@@ -37,9 +37,16 @@ switch ($action) {
         include('./times/view.php');
         break;
     case 'logout':
-        echo "will make a logout page later";
-        header ('Location: ./courses/index.php');
-        break;
+        if (isset($action) and ($action == "logout")) {
+            if (isset($_SESSION['prev_usr_id'])) {
+                $_SESSION['user'] = User::getUserByUsrId($_SESSION['prev_usr_id']);
+                $_SESSION['prev_usr_id'] = NULL;
+                header("Location: ../admin/index.php");
+            } else {
+                session_destroy();
+                header("Location: ../index.php");
+            }
+        }
     default:
         $courses = get_courses($usr_id);
         include('./view.php');
