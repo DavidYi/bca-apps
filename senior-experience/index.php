@@ -19,15 +19,15 @@ $loginInfo = '<h1>Senior Expo</h1>
 
 /* This call back function is called once the user is authenticated.  This function handles redirecting the user
  to their home page. */
-function directToHomePage() {
-    $user = $_SESSION['user'];
-
-    if ($user->getRole('SENX') == 'ADM') {
-        header("Location: admin");
-    } else {
-        header("Location: senior");
-    }
-}
+//function directToHomePage() {
+//    $user = $_SESSION['user'];
+//
+//    if ($user->getRole('SENX') == 'ADM') {
+//        header("Location: admin");
+//    } else {
+//        header("Location: senior");
+//    }
+//}
 
 /** Include the database credentials and then transfer control to /shared/index,
  * which contains the meat of the login handling code.

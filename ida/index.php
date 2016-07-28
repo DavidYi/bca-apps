@@ -20,15 +20,15 @@ $loginInfo = '<h1>International Day of Acceptance</h1>
 
 /* This call back function is called once the user is authenticated.  This function handles redirecting the user
  to their home page. */
-function directToHomePage() {
-    $user = $_SESSION['user'];
-
-    if ($user->getRole('IDA') == 'ADM') {
-        header("Location: admin");
-    } else {
-        header("Location: itinerary");
-    }
-}
+//function directToHomePage() {
+//    $user = $_SESSION['user'];
+//
+//    if ($user->getRole('IDA') == 'ADM') {
+//        header("Location: admin");
+//    } else {
+//        header("Location: itinerary");
+//    }
+//}
 
 /** Include the database credentials and then transfer control to /shared/index,
  * which contains the meat of the login handling code.

@@ -19,19 +19,19 @@ $loginInfo = '<h1>Off-hour Electives</h1>
 
 /* This call back function is called once the user is authenticated.  This function handles redirecting the user
  to their home page. */
-function directToHomePage() {
-    $user = $_SESSION['user'];
-
-    echo $user;
-
-    if ($user->getRole('OELE') == 'ADM') {
-        header("Location: admin");
-    } elseif ($user->usr_type_cde == 'TCH'){
-        header("Location: teacher");
-    } else {
-        header("Location: student");
-    }
-}
+//function directToHomePage() {
+//    $user = $_SESSION['user'];
+//
+//    echo $user;
+//
+//    if ($user->getRole('OELE') == 'ADM') {
+//        header("Location: admin");
+//    } elseif ($user->usr_type_cde == 'TCH'){
+//        header("Location: teacher");
+//    } else {
+//        header("Location: student");
+//    }
+//}
 
 /** Include the database credentials and then transfer control to /shared/index,
  * which contains the meat of the login handling code.

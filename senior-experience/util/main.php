@@ -5,31 +5,30 @@
 //
 $app_cde = 'SENX';
 $app_title = 'Senior Expositions';
-$shared_ss_url = '/bca-apps/shared/ss/main.css';
 
-$doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING); // Looks like c:/xampp/htdocs
+$shared_ss_url = '/' . $server_web_root . '/shared/ss/main.css';
+$app_url_path = $server_web_root . '/senior-experience';    // Name of the app on the web server.  Change this if the directory changes.
 
-///////////////////
-// For Production
-// $app_url_path = 'careerday';     // Name of the app on the web server.  Change this if the directory changes.
-// $app_server_path =  "/home2/bryres/public_html/" . $app_url_path;   // Looks like c:/xampp/htdocs/bca-apps
+// Provides environment specific configuration information.
+include(__DIR__ . "/../../config.php");
 
-///////////////////
-// For Test Server
-// $app_url_path = 'bca-apps';     // Name of the app on the web server.  Change this if the directory changes.
-// $app_server_path =  "/home2/atcsdevbergen/public_html/" . $app_url_path;   // Looks like c:/xampp/htdocs/bca-apps
 
-//////////////////////////
-// For Developer Machines
-$app_url_path = 'bca-apps/senior-experience';     // Name of the app on the web server.  Change this if the directory changes.
-$app_server_path = $doc_root . "/" . $app_url_path;   // Looks like c:/xampp/htdocs/bca-apps
+/* This call back function is called once the user is authenticated.  This function handles redirecting the user
+ to their home page. */
+function goToLandingPage() {
 
-///////////////////////
-// Set the include path
-set_include_path($app_server_path . PATH_SEPARATOR . get_include_path());
+    global $server_web_root;
 
-/* These includes depend on the variables above, therefore they should be at the end of the file. */
-require_once(__DIR__ . "/../model/database.php");
+    global $user;
+
+    if ($user->getRole('SENX') == 'ADM') {
+        header("Location: /" . $server_web_root . "/senior-experience/admin");
+    } else {
+        header("Location: /" . $server_web_root . "/senior-experience/senior");
+    }
+}
+
 require_once(__DIR__ . "/../../shared/util/main.php");
 
 ?>
+
