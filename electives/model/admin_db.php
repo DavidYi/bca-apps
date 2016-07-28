@@ -54,7 +54,7 @@ function get_free_mods() {
                   and day_short = 'R'
                   group by x.usr_id
                   ) as thursday
-                  on u.usr_id = thursday.usr_id
+                  on u.usr_id = thursday.usr_id 
                   
 				left join (
                   select x.usr_id, day_short, day, 
