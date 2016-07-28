@@ -6,15 +6,30 @@
 
 </head>
 <body>
-
 <div class="table-title">
     <h3>Select Available Mods</h3>
-</div>
+    <form action="index.php" method="post">
+        <input type="hidden" name="id_field" id="id_field" data-ids="">
+        <input type="hidden" name="action" value="update_times">
+        <input type="hidden" name="next_page" value="<?php echo $next_page?>">
 
+        <button style="float: left" onclick="update_times();" id="update" value="update_times" class="s submit" type="submit">Submit</button>
+    </form>
+    <?php
+    if ($user->usr_type_cde == 'TCH') {
+        echo "<button style=\"float: right\" onclick=" . "\"location.href = '../index.php'\"" . "class='s back' type='submit'>Back</button>";
+    } else {
+        echo "<button style=\"float: right\" onclick=" . "\"location.href = '../../Student/index.php'\"" . "class='s back' type='submit'>Back</button>";
+    }
+    ?>
+</div>
 <div class="vertical-center">
+    <br>
+    <br>
+    <br>
     <table class="table-fill">
         <thead id="days">
-            <tr>
+        <tr>
                 <th>M</th>
                 <th>T</th>
                 <th>W</th>
@@ -66,24 +81,6 @@
         ?>
         </tbody>
     </table>
-    <div class="wrapper">
-        <form action="index.php" method="post">
-            <input type="hidden" name="id_field" id="id_field" data-ids="">
-            <input type="hidden" name="action" value="update_times">
-            <input type="hidden" name="next_page" value="<?php echo $next_page?>">
-
-            <button onclick="update_times();" id="update" value="update_times" class="s submit" type="submit">Submit</button>
-        </form>
-
-        <?php
-        if ($user->usr_type_cde == 'TCH') {
-            echo "<button onclick=" . "\"location.href = '../index.php'\"" . "class='s back' type='submit'>Back</button>";
-        } else {
-            echo "<button onclick=" . "\"location.href = '../../Student/index.php'\"" . "class='s back' type='submit'>Back</button>";
-        }
-        ?>
-
-    </div>
 
 </div>
 </body>
