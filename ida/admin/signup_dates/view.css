@@ -37,10 +37,6 @@ th {
     text-align: left;
 }
 
-h2.grade {
-    color: rgb(247, 224, 97);
-}
-
 tr td input {
     width: 12em;
     text-align: center;
@@ -88,6 +84,7 @@ tr td input {
     margin: 0 auto;
     margin-top: 4em;
     margin-right: 1em;
+    margin-left: -6em;
     display: inline-block;
 }
 
@@ -119,6 +116,6 @@ tr td input {
 
 #button-div {
     text-align: center;
-    /*width:100%;*/
+    width: 30em;
     margin: 0 auto;
 }
