@@ -28,13 +28,13 @@
     <form action="." method="post" id="inputs">
         <input type="hidden" name="action" value="add_test">
 
-        <input name="test_name" placeholder="Test Name">
+        <input name="test_name" placeholder="Test Name" required>
 
-        <input name="date" placeholder="Date" type="text" id="datepicker">
+        <input name="date" placeholder="Date" type="text" id="datepicker" required>
 
-        <select name="test_cde" class="ui dropdown">
+        <select name="test_cde" class="ui dropdown" required>
             <i class="dropdown icon"></i>
-            <option value="">Test Type</option>
+            <option value="" disabled>Test Type</option>
             <?php foreach ($testTypes as $test) { ?>
                 <?php if ($user->getRole("TPOR") == $test['test_type_cde'] || $user->getRole("TPOR") == "ADM") { ?>
                     <option value="<?php echo $test['test_type_cde']?>">
@@ -46,9 +46,9 @@
 
         <!-- Test -->
 
-        <select name="room_id" class="ui dropdown">
+        <select name="room_id" class="ui dropdown" required>
             <i class="dropdown icon"></i>
-            <option value="">Room Number</option>
+            <option value="" disabled>Room Number</option>
             <?php
             foreach ($rooms as $room) { ?>
                 <option value="<?php echo $room['rm_id']; ?>"><?php echo $room['rm_nbr']?></option>
@@ -125,6 +125,8 @@
         </table>
 
         <button type="submit" name="choice" value="Add">Add</button>
+        &nbsp; &nbsp;
+        <button type="submit" name="choice" value="Return" formnovalidate>Back</button>
 
     </form>
 </div>

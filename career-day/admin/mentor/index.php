@@ -142,6 +142,14 @@ switch ($action) {
         exit();
         break;
 
+    case 'delete_mentor':
+        $mentor_id = filter_input(INPUT_GET, 'mentor_id');
+        delete_mentor($mentor_id);
+        $mentorList = get_mentor_list();
+        include('mentor_list.php');
+        exit();
+        break;
+
     default:
         display_error('Unknown mentor action: ' . $action);
         break;
