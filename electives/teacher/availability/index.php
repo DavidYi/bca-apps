@@ -30,19 +30,30 @@ if (empty($updateById))
 switch ($action) {
     case "update_times":
         $free_mods = $_POST["id_field"];
+        $next_page = $_POST["next_page"];
         $decode = json_decode($free_mods, true);
         reset_times($usr_id);
-        for ($i = 0; $i < $decode["length"]; $i++){
+        for ($i = 0; $i < $decode["length"]; $i++) {
             update_times($usr_id, $decode[$i], $updateById);
         }
 
-        if ($user->usr_type_cde == 'TCH') {
+        if ($next_page == 'admin') {
+            $_SESSION['user'] = User::getUserByUsrId($_SESSION['prev_usr_id']);
+            $_SESSION['prev_usr_id'] = NULL;
+            header("Location: ../../admin/availability/index.php");
+        }
+        else if ($user->usr_type_cde == 'TCH') {
             header("Location: ../index.php");
         } else {
             header("Location: ../../Student/index.php");
         }
         break;
     default:
+        $next_page = filter_input(INPUT_GET, 'next_page');
+        if ($next_page == NULL) {
+            $next_page = 'default';
+        }
+
         include "view.php";
         break;
 }
