@@ -14,7 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
-    <link href="../../admin/ss/main.css" rel="stylesheet">
+    <link href="../../../shared/ss/main.css" rel="stylesheet" type="text/css" />
+    <link href="mentor_list.css" rel="stylesheet">
 </head>
 
 <body>
@@ -65,14 +66,14 @@
         $sessions = $mentor['sessions'];
 
     ?>
-        <div class="mentor">
-            <div class="session-filter name" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo($mentor_last_name . ', ' . $mentor_first_name); ?></div>
-            <div class="session-filter company" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $mentor_company; ?></div>
-            <div class="session-filter position" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $mentor_position; ?></div>
-            <div class="session-filter teacher" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $pres_host_teacher; ?></div>
-            <div class="session-filter sessions" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $sessions; ?></div>
-            <div class="session-filter room" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $pres_room; ?></div>
-            <div class="session-filter capacity" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $pres_max_capacity; ?></div>
+        <div class="mentor" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'">
+            <div class="session-filter name">&nbsp<?php echo($mentor_last_name . ', ' . $mentor_first_name); ?></div>
+            <div class="session-filter company">&nbsp<?php echo $mentor_company; ?></div>
+            <div class="session-filter position">&nbsp<?php echo $mentor_position; ?></div>
+            <div class="session-filter teacher">&nbsp<?php echo $pres_host_teacher; ?></div>
+            <div class="session-filter sessions">&nbsp<?php echo $sessions; ?></div>
+            <div class="session-filter room">&nbsp<?php echo $pres_room; ?></div>
+            <div class="session-filter capacity">&nbsp<?php echo $pres_max_capacity; ?></div>
             <div class="session-filter delete"><img src="../../../shared/images/deleteIcon.gif" id="<?php echo $mentor_id ?>"/></div>
         </div>
 
