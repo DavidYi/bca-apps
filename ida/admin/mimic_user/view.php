@@ -1,12 +1,15 @@
 <html>
     <head>
         <title>Mimic User</title>
+        <link href="../../../shared/ss/main.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
     </head>
     <body>
+    <div id="login">
         <form action="." method="post">
             <input type="hidden" name="action" value="login">
 
-            <label for="usr_id">Select User</label>
+            <h1>Select User</h1>
             <select name="usr_id" id="usr_id">
                 <?php foreach ($user_list as $user) { ?>
                     <option value="<?php echo $user['usr_id']?>">
@@ -16,8 +19,10 @@
                     </option>
                 <?php } ?>
             </select>
-
-            <input type="submit" value="Mimic User">
+            <br>
+            <div id="padding"></div>
+            <button type="submit" value="Mimic User">Mimic User</button>
         </form>
+    </div>
     </body>
 </html>
