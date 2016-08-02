@@ -33,50 +33,15 @@ m             modify  (pencil)
     transform: translate(-50%, -50%);
 }
 
-th {
-    text-align: left;
-}
-
-tr td input {
-    width: 12em;
-    text-align: center;
-}
-
 #wrapper {
     width: 85%;
     height: 100%;
     position: absolute;
     margin: auto;
+    text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-#grades {
-    margin: 0 1em 0 3em;
-    float: left;
-    width: 5em;
-}
-
-#start{
-    float: left;
-    margin-left: 5em;
-    width: 15em;
-}
-
-#end {
-    float: right;
-    width: 15em;
-    margin-right: 3em;
-}
-
-#se-wrap {
-    float: right;
-    width: 42em;
-}
-
-.grade {
-    margin: 1em 0 1.25em 0;
 }
 
 .s {
@@ -84,7 +49,7 @@ tr td input {
     margin: 0 auto;
     margin-top: 4em;
     margin-right: 1em;
-    margin-left: -6em;
+    margin-left: 0em;
     display: inline-block;
 }
 
@@ -96,7 +61,7 @@ tr td input {
 .cancel {
     background-color: rgb(247, 224, 97);
     margin: 0 auto;
-    margin-left: 1em;
+    margin-left: 0em;
     display: inline-block;
 }
 
@@ -118,4 +83,12 @@ tr td input {
     text-align: center;
     width: 30em;
     margin: 0 auto;
+}
+
+input {
+    width: 35em;
+}
+
+label {
+    margin-right: 1em;
 }

@@ -33,7 +33,7 @@ button{
     width: 10em;
 }
 
-#add_room {
+#add_workshop {
     background-color: rgb(182, 226, 249);
     margin-right: 2em;
 }
@@ -319,3 +319,8 @@ nav.navbar {
         border: 0;
     }
 }
+
+/* CODE FOR ADD PAGE */
+
+workshop_add
+{}
