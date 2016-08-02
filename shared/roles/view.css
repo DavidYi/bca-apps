@@ -196,7 +196,42 @@ select#combobox.user_drop {
     border-color: rgb(182, 226, 249) !important;
     color: rgb(84, 79, 84) !important;
 }
+.custom-combobox2 {
+    position: relative !important;
+    display: inline-block !important;
+    font-family: Lato, Sans-Serif !important;
+    font-size: 1em !important;
+}
 
+.custom-combobox2-toggle {
+    border-color: rgb(182, 226, 249) !important;
+    color: rgb(247, 224, 97) !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    margin-left: -1px !important;
+    padding: 0 !important;
+    border-radius: 0px 12px 12px 0px !important;
+    background-color: transparent !important;
+    font-family: Lato, Sans-Serif !important;
+    font-size: 1em !important;
+}
+
+.custom-combobox2-input {
+    border-color: rgb(182, 226, 249) !important;
+    margin: 0 !important;
+    padding: 5px 10px !important;
+    border-radius: 12px 0px 0px 12px !important;
+    background-color: transparent !important;
+    font-family: Lato, Sans-Serif !important;
+    font-size: 1em !important;
+}
+
+select#combobox2.user_drop {
+    background-color: transparent !important;
+    border-color: rgb(182, 226, 249) !important;
+    color: rgb(84, 79, 84) !important;
+}
 .ui-button-icon-only .ui-icon {
     /*margin: auto !important;*/
     /*top: 50% !important;*/

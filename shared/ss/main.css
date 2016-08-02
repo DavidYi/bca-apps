@@ -322,6 +322,26 @@ input {
   transition: all 175ms ease;
 }
 
+textarea {
+  height: 15em;
+  width: 35em;
+  margin: 0.5em 0 0.5em 0;
+  /*margin-bottom: 0.5em;*/
+  padding: 0 auto;
+  padding: 12px;
+  color: rgb(84, 79, 84);
+  background-color: transparent;
+  border: 1px solid rgb(182, 226, 249);
+  border-radius: 12px;
+  font: normal normal 300 1em "Lato", sans-serif;
+  text-align: left;
+  outline: none;
+  -webkit-transition: all 175ms ease;
+  -moz-transition: all 175ms ease;
+  transition: all 175ms ease;
+  resize: none;
+}
+
 html {
   box-sizing: border-box; }
 

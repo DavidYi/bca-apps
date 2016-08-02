@@ -131,6 +131,31 @@ function get_elective_list($order_by = null) {
     }
 }
 
+function get_best_course_availability()
+{
+    $query = "select ec.course_id, course_name, et.time_id, time_short_desc, count(*) as students
+                from elect_course ec, elect_time et, elect_user_free_xref eu, elect_student_course_xref escx 
+                where ec.course_id = escx.course_id
+                and et.time_id = eu.time_id
+                group by ec.course_id, et.time_id
+                having count(*) > 2
+                order by ec.course_id, count(*) desc";
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
 function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc) {
     $query = "UPDATE elect_course
             SET course_name = :name, course_desc = :desc, teacher_id = :teacher_id

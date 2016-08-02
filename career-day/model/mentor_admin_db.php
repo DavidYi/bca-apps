@@ -18,12 +18,14 @@ function get_user_mimic_list() {
 }
 
 function get_mentor_list() {
-    $query = 'SELECT mentor_id, mentor_last_name, mentor_first_name, mentor_field,
+    $query = 'SELECT mentor.mentor_id, mentor_last_name, mentor_first_name, mentor_field,
                  mentor_position, mentor_company, mentor_profile, mentor_keywords,
-                  active, pres_room, pres_host_teacher,
-                  pres_max_capacity
-              from mentor
+                  active, pres_room, pres_host_teacher, pres_max_capacity, 
+                  GROUP_CONCAT(ses_id order by ses_id SEPARATOR \', \') as sessions
+              from mentor, presentation
               where active = 1
+                and mentor.mentor_id = presentation.mentor_id
+              group by mentor.mentor_id
 			  order by mentor_last_name';
 
     return get_list($query);

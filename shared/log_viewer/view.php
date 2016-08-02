@@ -7,7 +7,7 @@
 
 <section>
     <h1>Log Viewer</h1>
-    <table class="gridtable">
+    <table class="gridtable" style="width:75%;">
 
 
 

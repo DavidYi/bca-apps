@@ -13,10 +13,11 @@
 </head>
 <body>
 <section class="main">
-    <header>
-        <h1 class="title main-title">Register for IDA</h1>
+    <header style="text-align:center;">
+        <h1 class="title main-title" style="color: rgb(253, 253, 253);">Register for IDA</h1>
+        <a href="../itinerary"><button style="background-color: rgb(182, 226, 249);">Go Back</button></a>
     </header>
-
+    <div style="padding-bottom:5vh;"></div>
     <nav class="navbar">
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>"><div class="session-filter tag">Title</div></a>
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=2&order=<?php if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>"><div class="session-filter presenter">Presenters</div></a>

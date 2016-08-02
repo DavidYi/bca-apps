@@ -116,17 +116,6 @@
 .enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time, .enrollment .view-session:hover .room-number, .enrollment .view-session:hover .session-title, .enrollment .view-session:hover .name {
     color: #fdfdfd; }
 
-/*might delete l8er*/
-.main-panel:hover{
-    background-color: #eee;
-}
-
-.main {
-    height: 100%;
-    overflow-y: hidden;
-    background: #e7e7e7; }
-
-
 
 /*popup*/
 .popup {
@@ -307,3 +296,15 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
     cursor: hand;
 }
 
+nav.navbar {
+    height: 3.75em;
+    width:75%;
+    min-width:75em;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 3.75em;
+    margin: 0 auto;
+    padding: 0 1.5625em;
+    background: rgba(232, 135, 121, 0.7);
+    box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
+}
