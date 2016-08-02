@@ -1,16 +1,18 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../../shared/ss/main.css" rel="stylesheet" type="text/css" />
-    <link href="../combobox.css" rel="stylesheet" type="text/css" />
     <link href="/<?php echo $app_url_path ?>/../shared/roles/view.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="../combobox/jquery-easyui-1.5/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../combobox/jquery-easyui-1.5/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../combobox/jquery-easyui-1.5/demo.css">
+    <script type="text/javascript" src="../combobox/jquery-easyui-1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="../combobox/jquery-easyui-1.5/jquery.easyui.min.js"></script>
 </head>
 <body>
 <form action="index.php" method="post">
@@ -52,14 +54,15 @@
 <!--                        <option value="--><?php //echo $user['usr_id'] ?><!--">--><?php //echo $user['usr_last_name'] ?><!--, --><?php //echo $user['usr_first_name'] ?><!--</option>-->
 <!--                    --><?php //} ?>
 <!--                </select>-->
-
-                <div class="ui-widget">
-                    <select id="combobox" class="user_drop" name="user_drop">
-                        <option value="">Select one...</option>
-                        <?php foreach($users as $user) { ?>
-                            <option value="<?php echo $user['usr_id'] ?>"><?php echo $user['usr_last_name'] ?>, <?php echo $user['usr_first_name'] ?></option>
-                        <?php } ?>
-                    </select>
+                <div style="margin:20px 0"></div>
+                <div class="easyui-panel" style="width:100%;max-width:400px;padding:30px 60px;">
+                    <div style="margin-bottom:20px">
+                        <select class="easyui-combobox" name="state" label="State:" labelPosition="top" style="width:100%;">
+                            <?php foreach($users as $user) { ?>
+                                <option value="<?php echo $user['usr_id'] ?>"><?php echo $user['usr_last_name'] ?>, <?php echo $user['usr_first_name'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="ui-widget">
