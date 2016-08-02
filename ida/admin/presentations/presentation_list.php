@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
-    <link href="../../admin/ss/main.css" rel="stylesheet">
+    <link href="../../../shared/ss/main.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
 
@@ -23,10 +23,10 @@
     <h1 class="title">Presentation</h1>
 </header>
 <div style="text-align:center;padding-bottom:2vh;">
-    <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_add_presentation"><button>Add Presentation</button></a>
-    <a href="../index.php"><button>Return Home</button></a>
+    <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_add_presentation"><button id="add_pres">Add Presentation</button></a>
+    <a href="../index.php"><button id="return_home">Return Home</button></a>
 </div>
-<nav class="navbar">
+<nav class="navbar" style="">
     <a href="#">
         <div class="session-filter organization">Workshop</div>
     </a>
@@ -54,7 +54,7 @@
 </nav>
 
 
-<div class="list-container">
+<div class="list-container" style="">
 
     <?php foreach ($presentationList as $presentation) {
         $pres_id = $presentation['pres_id'];
@@ -71,15 +71,15 @@
         ?>
             <div class="mentor row" id="workshop">
                 <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_modify_presentation">
-                <div class="session-filter organization"><?php echo($wkshp_nme); ?></div>
-                <div class="session-filter organization"><?php echo $presenter_names; ?></div>
-                <div class="session-filter organization"><?php echo $org_name; ?></div>
-                <div class="session-filter smallcol"><?php echo $ses_id; ?></div>
-                <div class="session-filter smallcol"><?php if($rm_nbr == null) {echo("Null");} else {echo($rm_nbr);} ?></div>
-                <div class="session-filter smallcol"><?php echo $pres_max_seats; ?></div>
-                <div class="session-filter smallcol"><?php echo $pres_enrolled_seats; ?></div>
+                <div class="session-filter organization"><h2><?php echo($wkshp_nme); ?></h2></div>
+                <div class="session-filter organization"><h2><?php echo $presenter_names; ?></h2></div>
+                <div class="session-filter organization"><h2><?php echo $org_name; ?></h2></div>
+                <div class="session-filter smallcol"><h2><?php echo $ses_id; ?></h2></div>
+                <div class="session-filter smallcol"><h2><?php if($rm_nbr == null) {echo("Null");} else {echo($rm_nbr);} ?></h2></div>
+                <div class="session-filter smallcol"><h2><?php echo $pres_max_seats; ?></h2></div>
+                <div class="session-filter smallcol"><h2><?php echo $pres_enrolled_seats; ?></h2></div>
                 </a>
-                <img class="session-filter smallcol2" style="z-index:90"src="../../../shared/images/garbage_can.png" onclick="deletePresentation(<?php echo $pres_id; ?>);">
+                <h4 class="del_icon" onclick="deletePresentation(<?php echo $pres_id; ?>);">d</h4>
             </div>
 
     <?php } ?>
