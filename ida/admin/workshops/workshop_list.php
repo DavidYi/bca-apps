@@ -20,7 +20,7 @@
 
     <body>
         <header>
-            <h1 style="margin:0;"class="title">Workshops</h1>
+            <h1 class="title">Workshops</h1>
         </header>
         <div style="text-align:center;padding-bottom:2vh;">
             <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_add_workshop"><button id="add_workshop">Add Workshop</button></a>
