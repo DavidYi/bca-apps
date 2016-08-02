@@ -27,7 +27,7 @@ m             modify  (pencil)
 }
 
 header {
-    height: 8%;
+    height: 4.25em;
 }
 
 button{
@@ -328,6 +328,10 @@ nav.navbar {
     .featherlight iframe {
         border: 0;
     }
+}
+
+button {
+    margin-bottom: 1em;
 }
 
 /* CODE FOR ADD PAGE */
