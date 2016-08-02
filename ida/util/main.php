@@ -17,9 +17,9 @@ function goToLandingPage()
     global $user;
 
     if ($user->getRole('IDA') == 'ADM') {
-        header("Location: /" . $server_web_root . "/ida/admin");
+        header("Location: /" . $server_web_root . "/ida/admin/");
     } else {
-        header("Location: /" . $server_web_root . "/ida/itinerary");
+        header("Location: /" . $server_web_root . "/ida/itinerary/");
 
     }
 }

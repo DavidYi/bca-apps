@@ -21,20 +21,32 @@
         <section class="main">
             <header>
                 <h1 class="title main-title">Teacher Availability</h1>
-                <a href="../index.php"><button style="float: right; width: 10em;"
+                <a href="../index.php"><button
                         data-value=>Back
                 </button></a>
             </header>
 
             <nav class="navbar" style="width:85%;">
                 <a href="">
-                    <div class="session-filter tag" style="width:25%;text-align:left">Teacher</div>
+                    <div class="session-filter tag">Teacher</div>
                 </a>
                 <a href="">
-                    <div class="session-filter company" style="width:65%;text-align:left">Free Mods</div>
+                    <div class="session-filter day">Monday</div>
                 </a>
                 <a href="">
-                    <div class="session-filter remaining" style="width: 5%; float: right; text-align: right">Modify</div>
+                    <div class="session-filter day">Tuesday</div>
+                </a>
+                <a href="">
+                    <div class="session-filter day">Wednesday</div>
+                </a>
+                <a href="">
+                    <div class="session-filter day">Thursday</div>
+                </a>
+                <a href="">
+                    <div class="session-filter day">Friday</div>
+                </a>
+                <a href="">
+                    <div class="session-filter remaining">Modify</div>
                 </a>
             </nav>
 
@@ -42,11 +54,39 @@
                 <?php foreach ($free_mods as $teacher) {
                     $firstName = $teacher['usr_first_name'];
                     $lastName = $teacher['usr_last_name'];
-                    $freeMods = $teacher['mods_available'];
                     ?>
-                    <div class="session makeDefault" data-value="what">
-                        <div class="tag" style="width: 25%"><?php echo $lastName ?>, <?php echo $firstName ?></div>
-                        <div class="company" style="width: 65%"><?php echo $freeMods ?></div>
+                    <div class="session makeDefault">
+                        <div class="tag"><?php echo $lastName ?>, <?php echo $firstName ?></div>
+                        <div class="company">
+                            <table>
+                                <!--<thead>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                </thead>-->
+                                <tbody>
+                                    <tr>
+                                        <td class="day">
+                                            <?php echo $teacher['mon'] ?>
+                                        </td>
+                                        <td class="day">
+                                            <?php echo $teacher['tues'] ?>
+                                        </td>
+                                        <td class="day">
+                                            <?php echo $teacher['wed'] ?>
+                                        </td>
+                                        <td class="day">
+                                            <?php echo $teacher['thurs'] ?>
+                                        </td>
+                                        <td class="day">
+                                            <?php echo $teacher['fri'] ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="remaining" style="width: 5%; float: right; text-align: right">
                             <a style="color: #555" href="index.php?action=modify&usr_id=<?php echo $teacher['usr_id'] ?>"><h4 style="line-height: inherit">m</h4></a>
 

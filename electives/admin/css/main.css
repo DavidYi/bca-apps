@@ -376,7 +376,7 @@ h1 {
 nav.navbar {
     height: 3.75em;
     width: 75%;
-    max-width: 1200px;
+    max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
     margin: 0 auto;
@@ -473,7 +473,7 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
 
 .enrollment {
     width: 85%;
-    max-width: 1200px;
+    max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
     margin: 0 auto;

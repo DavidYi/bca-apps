@@ -30,7 +30,7 @@ switch ($action) {
         $_SESSION['user'] = $user;
 
         if ($user->usr_type_cde == 'TCH') {
-            // The user is an teahcer, so they are directed to teacher page
+            // The user is an teacher, so they are directed to teacher page
             header("Location: ../../teacher/index.php");
 
         } else {

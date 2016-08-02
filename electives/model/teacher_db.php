@@ -7,18 +7,17 @@
  */
 
 // function needs teacher id
-function add_course($course_name, $course_desc) {
+function add_course($course_name, $course_desc, $usr_id) {
     $query = "INSERT INTO elect_course (course_name, course_desc, teacher_id) 
     VALUES (:course_name, :course_desc, :user_id)";
 
     global $db;
-    global $user;
 
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':course_name', $course_name);
         $statement->bindValue(':course_desc', $course_desc);
-        $statement->bindValue(':user_id', $user->usr_id);
+        $statement->bindValue(':user_id', $usr_id);
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
@@ -29,7 +28,6 @@ function add_course($course_name, $course_desc) {
 //
 function delete_course($course_id) {
     global $db;
-    global $user;
 
     $db->beginTransaction();
 
