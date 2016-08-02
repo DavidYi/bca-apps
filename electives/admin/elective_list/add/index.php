@@ -42,6 +42,7 @@ switch ($action) {
         header("Location: ../index.php");
         exit();
         break;
+    
     default:
         $teacher_list = admin_get_teachers();
         include("./view.php");

@@ -5,6 +5,16 @@
         <script type="text/javascript" src="../../js/jquery.min.js"></script>
         <script type="text/javascript" src="../../js/jquery.easing.min.js"></script>
         <script type="text/javascript" src="../../js/jquery.plusanchor.min.js"></script>
+        <script>
+            function deleteCourse(courseId)
+            {
+                if (confirm('Are you sure you would like to delete the course?'))
+                {
+                    window.parent.parent.location.href = 'index.php?action=delete_course&course_id=' + courseId;
+                }
+            }
+
+        </script>
         <style>
             button {
                 background-color: #ffcc00;
@@ -30,7 +40,7 @@
 
             .cell {
                 float: left;
-                display: block;
+                display: inline-block;
                 margin-right: 0%;
                 width: 15%;
                 height: 3.25em;
@@ -40,6 +50,7 @@
                 font-size: 1em;
                 font-weight: 500;
                 text-align: left;
+                vertical-align:middle;
             }
 
             .enrollment {
@@ -54,19 +65,57 @@
             }
 
             .teacher-name {
-                width: 15.5%;
+                width: 13%;
             }
 
             .course-name {
-                width: 17%;
+                width: 15%;
             }
 
             .course-desc {
-                width: 55%;
+                width: 53%;
+            }
+
+            .center-text {
+                line-height: 1.4em;
+                vertical-align: middle;
+                display:table;
             }
 
             .num-students {
-                width: 10%;
+                width: 6%;
+                text-align: center;
+            }
+
+            .icon {
+                vertical-align:middle;
+            }
+
+            .edit {
+                text-align:center;
+                width:6%;
+            }
+
+            .delete {
+                text-align:center;
+                width: 6%;
+            }
+
+            .helper {
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+            }
+
+            .center-text p {
+                display: table-cell;
+                vertical-align:middle;
+                font-size: 1em;
+                font-weight: 300;
+            }
+
+            #course-desc-p {
+                font-weight: 500;
             }
         </style>
     </head>
@@ -80,16 +129,24 @@
 
             <nav id="navbar" class="navbar">
                 <a href="./index.php">
-                    <div class="session-filter" style="width:15%;text-align:left">Teacher</div>
+                    <div class="session-filter" style="width:13%;">Teacher</div>
                 </a>
                 <a href="./index.php?action=sort_by_elective">
-                    <div class="session-filter" style="width:16.5%;text-align:left">Course Name</div>
+                    <div class="session-filter" style="width:14%;">Course Name</div>
                 </a>
                 <a>
-                    <div class="session-filter" style="width:54%;text-align:left">Description</div>
+                    <div class="session-filter" style="width:53%;">Description</div>
                 </a>
                 <a href="./index.php?action=sort_by_num_students">
-                    <div class="session-filter" style="width:13%;text-align:left">Number of Students</div>
+                    <div class="center-text session-filter" style="width:8%;">
+                        <p>Number of Students</p>
+                    </div>
+                </a>
+                <a>
+                    <div class="session-filter" style="width:5%;text-align:left">Edit</div>
+                </a>
+                <a>
+                    <div class="session-filter" style="width:5%;text-align:left">Delete</div>
                 </a>
             </nav>
 
@@ -99,14 +156,20 @@
                     $course_name = $elective['course_name'];
                     $course_desc = $elective['course_desc'];
                     $num_students = $elective['num_students'];
+                    $course_id = $elective['course_id'];
                     ?>
 
                     <div class="main-panel session">
                         <div class="cell teacher-name"><?php echo $teacher_name; ?></div>
                         <div class="cell course-name"><?php echo $course_name; ?></div>
-                        <div class="cell course-desc"><?php echo $course_desc; ?></div>
+                        <div class="cell course-desc center-text"><p id="course-desc-p"><?php echo $course_desc; ?></p></div>
                         <div class="cell num-students"><?php echo $num_students; ?></div>
-                        
+                        <div class="cell edit"><span class='helper'></span>
+                            <img class='icon' src="../../../shared/images/modifyIcon.gif" onclick="location.href='./index.php?action=edit&course_id=<?php echo $course_id; ?>'">
+                        </div>
+                        <div class="cell delete"><span class='helper'></span>
+                            <img class='icon' src="../../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $course_id ?>)">
+                        </div>
                     </div>
                     
                 <?php endforeach; ?>

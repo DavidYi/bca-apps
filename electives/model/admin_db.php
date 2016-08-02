@@ -102,7 +102,7 @@ function admin_get_teachers() {
 }
 
 function get_elective_list($order_by = null) {
-    $query = "select concat(u.usr_first_name, ' ', u.usr_last_name) as teacher_name, e.course_name, e.course_desc, count(x.usr_id) as num_students
+    $query = "select e.course_id, concat(u.usr_first_name, ' ', u.usr_last_name) as teacher_name, e.course_name, e.course_desc, count(x.usr_id) as num_students
             from user u, elect_course e 
             left join elect_student_course_xref x on e.course_id = x.course_id
             where e.teacher_id = u.usr_id
@@ -124,6 +124,48 @@ function get_elective_list($order_by = null) {
         $result = $statement->fetchAll();
         $statement->closeCursor();
 
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc) {
+    $query = "UPDATE elect_course
+            SET course_name = :name, course_desc = :desc, teacher_id = :teacher_id
+            WHERE course_id = :id;";
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':name', $course_name);
+        $statement->bindValue(':desc', $course_desc);
+        $statement->bindValue(':id', $course_id);
+        $statement->bindValue(':teacher_id', $teacher_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function get_course_info($course_id) {
+    $query = "select e.course_id, e.course_name, e.course_desc, e.teacher_id
+    from elect_course e, user u
+    where e.teacher_id = u.usr_id
+    and e.course_id = :id";
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $course_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
         display_db_exception($e);
