@@ -133,13 +133,16 @@ function get_elective_list($order_by = null) {
 
 function get_best_course_availability()
 {
-    $query = "select ec.course_id, course_name, et.time_id, time_short_desc, count(*) as students
-                from elect_course ec, elect_time et, elect_user_free_xref eu, elect_student_course_xref escx 
+    $query = "select ec.course_id, course_name, time_short_desc, count(*) as students
+                from elect_course ec, elect_time et, elect_user_free_xref eu, elect_user_free_xref ex, elect_student_course_xref escx
                 where ec.course_id = escx.course_id
                 and et.time_id = eu.time_id
+                and escx.usr_id = eu.usr_id
+                and ec.teacher_id = ex.usr_id
+                and ex.time_id = eu.time_id
                 group by ec.course_id, et.time_id
-                having count(*) > 2
-                order by ec.course_id, count(*) desc";
+                having count(*) > 1
+                order by ec.course_name, count(*) desc";
 
     global $db;
 
