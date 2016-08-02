@@ -20,7 +20,7 @@ $loginInfo = '<h1>Teacher Proctoring</h1>
 /* This call back function is called once the user is authenticated.  This function handles redirecting the user
  to their home page. */
 function directToHomePage() {
-    $user = $_SESSION['user'];
+    global $user;
 
     if ($user->getRole('TPOR') != NULL) {
         header("Location: admin");
