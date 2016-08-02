@@ -18,7 +18,6 @@ if ($action == NULL) {
     }
 }
 
-
 switch ($action) {
     case "edit":
         $name = $_POST['name'];

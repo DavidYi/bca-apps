@@ -38,8 +38,9 @@
         </label>
 
         <button class="submit s" type="submit" name="choice" value="Edit Course">Save</button>
+        <button class="submit back" onclick="location.href='../index.php'" name="choice" value="Back">Back</button>
+
     </form>
-    <button class="submit back" type="submit" name="choice" value="Back">Back</button>
 </div>
 
 </body>
