@@ -27,6 +27,7 @@ switch ($action) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
+    <link href="../../shared/ss/main.css" rel="stylesheet">
     <link href="../admin/ss/main.css" rel="stylesheet">
 </head>
 <body id="admin-tools">
@@ -35,6 +36,7 @@ switch ($action) {
         <div id="logout"><h2><a href="../index.php?action=logout">Log Out</a></h2></div>
     </header>
     <br>
+    <div id="wrapper">
     <table>
         <tr>
             <td>
@@ -139,6 +141,7 @@ switch ($action) {
             </td>
         </tr>
     </table>
+    </div>
 
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </main>
