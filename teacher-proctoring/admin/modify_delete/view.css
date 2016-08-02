@@ -33,23 +33,56 @@ m             modify  (pencil)
     transform: translate(-50%, -50%);
 }
 
+th {
+    text-align: left;
+}
+
+tr td input {
+    width: 12em;
+    text-align: center;
+}
+
 #wrapper {
     width: 85%;
     height: 100%;
     position: absolute;
     margin: auto;
-    text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+#grades {
+    margin: 0 1em 0 3em;
+    float: left;
+    width: 5em;
+}
+
+#start{
+    float: left;
+    margin-left: 5em;
+    width: 15em;
+}
+
+#end {
+    float: right;
+    width: 15em;
+    margin-right: 3em;
+}
+
+#se-wrap {
+    float: right;
+    width: 42em;
+}
+
+.grade {
+    margin: 1em 0 1.25em 0;
+}
+
 .s {
     background-color: rgb(182, 226, 249);
-    margin: 0 auto;
-    margin-top: 4em;
-    margin-right: 1em;
-    margin-left: 0em;
+    margin-right: 2em;
+    margin-left: 2em;
     display: inline-block;
 }
 
@@ -58,10 +91,17 @@ m             modify  (pencil)
     cursor: hand;
 }
 
+.k {
+    background-color: rgb(249, 182, 182);
+    margin-right: 1em;
+    margin-left: 3em;
+    display: inline-block;
+}
+
 .cancel {
     background-color: rgb(247, 224, 97);
     margin: 0 auto;
-    margin-left: 0em;
+    margin-left: 2em;
     display: inline-block;
 }
 
@@ -79,16 +119,35 @@ m             modify  (pencil)
     transform: translate(-50%, -50%);
 }
 
-#button-div {
+.button-div {
     text-align: center;
-    width: 30em;
-    margin: 0 auto;
+    width: 50em;
+    margin-top: 4%;
 }
 
-input {
-    width: 35em;
+.ui.input input{
+    max-width: 30%;
+    text-align: center;
 }
 
-label {
-    margin-right: 1em;
+.mod {
+    margin:0px auto !important;
+    display:block !important;
+    font: normal normal 300 1em "Lato", sans-serif;
+}
+
+select {
+    cursor: pointer;
+    position: relative;
+    outline: 0;
+    border: 1px solid rgba(34,36,38,.15);
+    height: 2.5em;
+}
+
+.right {
+    padding-left: 12%;
+}
+
+.center {
+    padding-left: 20%;
 }
