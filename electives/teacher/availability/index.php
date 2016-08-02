@@ -48,6 +48,20 @@ switch ($action) {
             header("Location: ../../Student/index.php");
         }
         break;
+    case "back":
+        $next_page = $_POST["next_page"];
+
+        if ($next_page == 'admin') {
+            $_SESSION['user'] = User::getUserByUsrId($_SESSION['prev_usr_id']);
+            $_SESSION['prev_usr_id'] = NULL;
+            header("Location: ../../admin/availability/index.php");
+        }
+        else if ($user->usr_type_cde == 'TCH') {
+            header("Location: ../index.php");
+        } else {
+            header("Location: ../../Student/index.php");
+        }
+        break;
     default:
         $next_page = filter_input(INPUT_GET, 'next_page');
         if ($next_page == NULL) {

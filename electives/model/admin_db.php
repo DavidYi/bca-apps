@@ -10,7 +10,7 @@ function get_free_mods() {
     global $db;
 
     $query = "select u.usr_id, u.usr_first_name, u.usr_last_name,
-			monday.mods as mon, tuesday.mods as tues, wednesday.mods as weds, 
+			monday.mods as mon, tuesday.mods as tues, wednesday.mods as wed, 
             thursday.mods as thurs, friday.mods as fri
   
               from user u 
