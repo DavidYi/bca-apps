@@ -1,49 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Add Workshop</title>
+    <head>
+        <title>Add Workshop</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-    <!-- Styles -->
-    <link href="../ss/main.css" rel="stylesheet">
-    
-    <style>
-        body {
-            font-size: 1.66em;
-        }
-    </style>
+        <!-- Styles -->
+        <link href="../../../shared/ss/main.css" rel="stylesheet">
+        <link href="styles_add.css" rel="stylesheet">
 
-</head>
-<header>
-    <h1 class="title">Admin: Workshop</h1>
-</header>
+    </head>
 
-<body>
-<div id="mentor_add">
+    <body>
+        <form action="." method="post">
+            <input type="hidden" name="action" value="add_workshop">
 
-    <?php echo $error_msg ?>
-    <BR>
-    
+            <div id="box">
+                <div id="wrapper">
+                    <div id ="columns">
+                        <h1 class="title">Add Workshop</h1>
 
-    <form action="." method="post">
-        <input type="hidden" name="action" value="add_workshop">
+                        <input type="text" placeholder="Name" name="wkshp_name" autofocus required>
+                        <br>
+                        
+                        <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc" value="<?php echo htmlspecialchars($wkshp_desc); ?>" placeholder="Description"></textarea>
+                        <br>
 
-        <label>Name</label>
-        <input type="text" placeholder="Name" name="wkshp_name" autofocus required>
-        <label>Description</label>
-    <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc" value="<?php echo htmlspecialchars($wkshp_desc);?>" placeholder="Description"></textarea>
-        <label>Format</label>
-        <select class="center" name="format_id">
-            <?php foreach ($formatList as $format) {?>
-                <option value=<?php echo($format['format_id']); ?>><?php echo($format['format_name']); ?></option>
-            <?php } ?>
-        </select>
-        <div class="button-container">
-            <button class="add" name="choice" type="submit" value="Add">Add Workshop</button>
-        </div>
-    </form>
-    <a href="../workshops/index.php"<button class="add" name="choice" type="submit" value="Back">Go Back</button></a>
-</div>
-</body>
+                        <label>Format</label>
+                        <select class="center" name="format_id">
+                            <?php foreach ($formatList as $format) { ?>
+                                <option value=<?php echo($format['format_id']); ?>><?php echo($format['format_name']); ?></option>
+                            <?php } ?>
+                        </select>
+                        <br>
+
+                        <div id="button-div">
+                            <button class="submit s" type="submit" name="choice" value="Add">Submit</button>
+                            <button class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
+                        </div>
+
+
+                    </div>
+                </div>
+        </form>
+    </body>
 </html>

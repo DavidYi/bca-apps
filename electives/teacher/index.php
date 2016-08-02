@@ -39,7 +39,7 @@ switch($action){
         }
         break;
     case "delete_course":
-
+        
         delete_course($_GET['course_id']);
         $courses = get_course_by_user($user->usr_id);
         include("./view.php");

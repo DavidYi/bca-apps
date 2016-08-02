@@ -153,6 +153,7 @@ public class BCASharedLoader {
 		String dbServer = "webdev01.bergen.org";
 		String dbPort = "3306";
 		String dbUser = "atcsdevb_shrusr";
+		String dbInstance = "atcsdevb_shared";
 
 		System.out.println("Update 'dev' or 'prod'?");
 		String environment = input.nextLine();
@@ -161,6 +162,7 @@ public class BCASharedLoader {
 			dbServer = "cpanel01.bergen.org";
 			dbPort = "3306";
 			dbUser = "bryres_shrusr";
+			dbInstance = "bryres_shared";
 		}
 		
 		System.out.println("\nEnter password for " +dbUser + "@" +  dbServer);
@@ -170,7 +172,7 @@ public class BCASharedLoader {
 		String adPw = input.nextLine();
 
 		// Creating instance of ActiveDirectory
-		SharedDB db = new SharedDB(dbServer, dbPort, dbUser, dbPassword);
+		SharedDB db = new SharedDB(dbServer, dbPort, dbUser, dbPassword,dbInstance);
 		ActiveDirectory activeDirectory = new ActiveDirectory(adPw);
 
 		updateStudentList(activeDirectory, db);

@@ -4,13 +4,28 @@
 // Add them here.
 //
 $app_cde = 'TPOR';
-$app_title = 'Teacher Proctoring Registration';
+$app_title = 'Teacher Proctoring';
 
 // Provides environment specific configuration information.
-include(__DIR__ . "/../../config.php");
+include(__DIR__ . "/../../../config.php");
 
-$app_url_path = $server_web_root . '/teacher-proctoring';
 $shared_ss_url = '/' . $server_web_root . '/shared/ss/main.css';
+$app_url_path = $server_web_root . '/teacher-proctoring';
+
+
+function goToLandingPage()
+{
+    global $server_web_root;
+    global $app_cde;
+    global $user;
+
+    if ($user->getRole($app_cde) == NULL) {
+        header("Location: /" . $server_web_root . "/teacher-proctoring/itinerary/");
+    } else {
+        header("Location: /" . $server_web_root . "/teacher-proctoring/admin/");
+
+    }
+}
 
 /* These includes depend on the variables above, therefore they should be at the end of the file. */
 require_once(__DIR__ . "/../../shared/util/main.php");
@@ -28,5 +43,4 @@ function verify_test_admin() {
         exit();
     }
 }
-
 ?>

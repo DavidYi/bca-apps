@@ -13,21 +13,21 @@ public class SharedDB {
 	
 	private Connection conn = null;
 
-	public SharedDB(String serverName, String port, String userName, String password) throws SQLException {
+	public SharedDB(String serverName, String port, String userName, String password, String db) throws SQLException {
 
 		Properties connectionProps = new Properties();
 		connectionProps.put("user", userName);
 		connectionProps.put("password", password);
 		connectionProps.put("password", password);
 
-		conn = DriverManager.getConnection("jdbc:mysql://" + serverName + ":" + port + "/atcsdevb_shared", connectionProps);
+		conn = DriverManager.getConnection("jdbc:mysql://" + serverName + ":" + port + "/" + db, connectionProps);
 		
 		System.out.println("Connected to database");
 	}
 
 	private void inactiveUserType(String userType) throws SQLException {
 		PreparedStatement updateStmt = null;
-
+ 
 		try {
 			String updateString = "update " + USER_TABLE + " set usr_active = 0 "
 					+ " where usr_ad_allow_updt = 1 and usr_type_cde=?";

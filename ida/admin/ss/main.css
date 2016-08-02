@@ -1,6 +1,17 @@
+/**********color reference chart**********
+comment ********* color ********
+
+P1, red           rgb(232, 135, 121)
+P2, blue          rgb(182, 226, 249)
+P3, yellow        rgb(247, 224, 97)
+G1, dark          rgb(84, 79, 84)
+G2, med           rgb(147, 146, 149)
+G3, light         rgb(253, 253, 253)
+
+*/
+
 @charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 
 img, legend {
@@ -179,7 +190,10 @@ table {
     border-spacing: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -25px;
+    /*margin-top: -25px;*/
+    position: relative;
+    top: 45%;
+    transform: translateY(-50%);
 }
 
 html, body {
@@ -272,7 +286,7 @@ html {
 
 body {
     color: #333;
-    font-family: "Roboto", sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 1.25em;
     font-weight: 400;
     line-height: 1.25;
@@ -303,7 +317,7 @@ h {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 400;
     line-height: 1.25;
     margin: 0 0 0.625em;
@@ -311,7 +325,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 1.125em;
     font-weight: 400;
     line-height: 1.8;
@@ -329,7 +343,7 @@ a:active, a:focus, a:hover {
 
 h1.title {
     color: black;
-    font: normal normal 500 2em "Roboto", sans-serif;
+    font: normal normal 500 2em "Lato", sans-serif;
     text-align: center;
 }
 
@@ -338,7 +352,7 @@ button {
     width: 12.5em;
     color: #fdfdfd;
     background-color: #f0c30f;
-    font: normal normal 400 0.32 "Roboto", sans-serif;
+    font: normal normal 400 0.32 "Lato", sans-serif;
     border: 0;
     border-radius: 1px;
     outline: none;
@@ -361,7 +375,7 @@ input {
     background-color: #fdfdfd;
     border: 0;
     border-radius: 1px;
-    font: normal normal 400 0.29091 "Roboto", sans-serif;
+    font: normal normal 400 0.29091 "Lato", sans-serif;
     text-align: left;
     outline: none;
     -webkit-transition: all 175ms ease;
@@ -415,7 +429,7 @@ html {
 }
 
 * {
-    font-family: "Roboto", sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 500;
 }
 
@@ -437,8 +451,7 @@ main {
     position: relative;
     top: 0;
     padding: 0.9375em 1.5625em;
-    background: rgba(0, 0, 0, 0.05);
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(253, 253, 253, 0.8);
     /*border-bottom: 0.625em solid #fbfcfc;*/
     -webkit-transition: all 175ms ease;
     -moz-transition: all 175ms ease;
@@ -456,14 +469,13 @@ main {
 
 .feature:hover {
     top: -5px;
-    background: #262626;
-    background: #262626;
+    background: rgb(84, 79, 84);
     box-shadow: 0 0.9375em 1.5625em rgba(0, 0, 0, 0.33);
-    border-bottom: 0.625em solid #262626;
+    border-bottom: 0.625em solid rgb(84, 79, 84);
 }
 
 .feature:hover h2, .feature:hover h4 {
-    color: #fdfdfd;
+    color: rgb(253, 253, 253);
 }
 
 .fab {
@@ -888,3 +900,15 @@ button.add:hover {
     padding: 0 1.5625em;
     box-shadow: 0 0em 0.25em rgba(0, 0, 0, 0.1);
 }
+
+#wrapper {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+/*tbody {*/
+    /*position: relative;*/
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
+/*}*/

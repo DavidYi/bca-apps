@@ -40,7 +40,7 @@ else {
     $_SESSION['user'] = $user;
 
     /* This method should be defined in the app specific default index.php file. */
-    directToHomePage();
+    goToLandingPage();
 }
 
 ?>
