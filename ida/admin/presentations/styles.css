@@ -198,6 +198,7 @@ nav.navbar {
     padding: 0 1.5625em;
     background: rgba(232, 135, 121, 0.7);
     box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
+    color:white;
 }
 
 .session-filter {
