@@ -37,7 +37,8 @@
         
         <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
         <button class="submit back" type="submit" name="choice" value="Back">Back</button>
+    </div>
 </form>
-</div>
+
 </body>
 </html>
