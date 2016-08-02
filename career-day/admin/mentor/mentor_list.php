@@ -62,6 +62,7 @@
         $pres_room = $mentor['pres_room'];
         $pres_host_teacher = $mentor['pres_host_teacher'];
         $pres_max_capacity = $mentor['pres_max_capacity'];
+        $sessions = $mentor['sessions'];
 
     ?>
         <div class="mentor">
@@ -69,7 +70,7 @@
             <div class="session-filter company" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $mentor_company; ?></div>
             <div class="session-filter position" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $mentor_position; ?></div>
             <div class="session-filter teacher" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $pres_host_teacher; ?></div>
-            <div class="session-filter sessions" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo '1,4'?></div>
+            <div class="session-filter sessions" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $sessions; ?></div>
             <div class="session-filter room" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $pres_room; ?></div>
             <div class="session-filter capacity" onclick="javascript:location.href='./index.php?mentor_id=<?php echo $mentor_id ?>&action=show_modify_mentor'"><?php echo $pres_max_capacity; ?></div>
             <div class="session-filter delete"><img src="../../../shared/images/deleteIcon.gif" id="<?php echo $mentor_id ?>"/></div>
