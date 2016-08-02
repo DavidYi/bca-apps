@@ -1,0 +1,149 @@
+/**********color reference chart**********
+comment ********* color ********
+
+P1, red           rgb(232, 135, 121)
+P2, blue          rgb(182, 226, 249)
+P3, yellow        rgb(247, 224, 97)
+G1, dark          rgb(84, 79, 84)
+G2, med           rgb(147, 146, 149)
+G3, light         rgb(253, 253, 253)
+
+*/
+
+/**********icon reference chart**********
+char ******** icon ********
+
+c             close   (X)
+p             plus    (+)
+i             info    (i)
+d             delete  (trashcan)
+m             modify  (pencil)
+
+*/
+
+#box {
+    display: block;
+    background-color: rgba(253, 253, 253, 0.9);
+    width: 60em;
+    height: 45em;
+    position:absolute;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+th {
+    text-align: left;
+}
+
+tr td input {
+    width: 12em;
+    text-align: center;
+}
+
+#wrapper {
+    width: 85%;
+    height: 100%;
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#grades {
+    margin: 0 1em 0 3em;
+    float: left;
+    width: 5em;
+}
+
+#start{
+    float: left;
+    margin-left: 5em;
+    width: 15em;
+}
+
+#end {
+    float: right;
+    width: 15em;
+    margin-right: 3em;
+}
+
+#se-wrap {
+    float: right;
+    width: 42em;
+}
+
+.grade {
+    margin: 1em 0 1.25em 0;
+}
+
+.s {
+    background-color: rgb(182, 226, 249);
+    margin: 0 auto;
+    margin-top: 4em;
+    margin-right: 1em;
+    margin-left: -6em;
+    display: inline-block;
+}
+
+.s:hover{
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+    cursor: hand;
+}
+
+.cancel {
+    background-color: rgb(247, 224, 97);
+    margin: 0 auto;
+    margin-left: 1em;
+    display: inline-block;
+}
+
+.cancel:hover {
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+    cursor: hand;
+}
+
+#columns {
+    width: 100%;
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#button-div {
+    text-align: center;
+    width: 30em;
+    margin-top: 2%;
+    margin-left: 30%;
+}
+
+.ui.input input{
+    max-width: 30%;
+    text-align: center;
+}
+
+.mod {
+    margin:0px auto !important;
+    display:block !important;
+    font: normal normal 300 1em "Lato", sans-serif;
+}
+
+select {
+    cursor: pointer;
+    position: relative;
+    outline: 0;
+    border: 1px solid rgba(34,36,38,.15);
+    height: 2.5em;
+}
+
+.right {
+    padding-left: 12%;
+}
+
+.center {
+    padding-left: 20%;
+}
