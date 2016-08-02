@@ -80,14 +80,41 @@ function get_free_mods() {
             exit();
         }
 }
-function get_elective_list() {
-    $query = "select concat(t.usr_first_name, ' ', t.usr_last_name) as teacher_name, e.course_name, e.course_desc, count(*) as num_students
-            from user t, elect_course e, elect_student_course_xref x
-            where t.usr_type_cde = 'TCH'
-                and e.course_id = x.course_id
-                and t.usr_id = e.teacher_id
-            group by teacher_name
-            order by t.usr_last_name;";
+function admin_get_teachers() {
+    $query = "select user.usr_id, concat(usr_first_name, ' ', usr_last_name) as name
+              from user
+              where usr_type_cde = 'TCH'
+              order by usr_last_name";
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function get_elective_list($order_by = null) {
+    $query = "select concat(u.usr_first_name, ' ', u.usr_last_name) as teacher_name, e.course_name, e.course_desc, count(x.usr_id) as num_students
+            from user u, elect_course e 
+            left join elect_student_course_xref x on e.course_id = x.course_id
+            where e.teacher_id = u.usr_id
+            group by e.course_id";
+
+    if ($order_by == null) {
+        $query .= " order by u.usr_last_name";
+    } else if ($order_by == 2) {
+        $query .= " order by count(x.usr_id) desc";
+    } else {
+        $query .= " order by e.course_name";
+    }
 
     global $db;
 
