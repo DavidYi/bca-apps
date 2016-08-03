@@ -34,56 +34,6 @@ nav.navbar::after {
         width: 100%;
     }
 }
-.name {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 21.5%;
-    color: #e1e1e1;
-    margin: 0;
-    padding: 0;
-    font-size: 1.125em;
-    font-weight: 500;
-    text-align: left;
-}
-
-.name:last-child {
-    margin-right: 0;
-}
-
-.company {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 23%;
-    color: #e1e1e1;
-    margin: 0;
-    padding: 0;
-    font-size: 1.125em;
-    font-weight: 500;
-    text-align: left;
-}
-
-.company:last-child {
-    margin-right: 0;
-}
-
-.position {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 18%;
-    color: #e1e1e1;
-    margin: 0;
-    padding: 0;
-    font-size: 1.125em;
-    font-weight: 500;
-    text-align: left;
-}
-
-.position:last-child {
-    margin-right: 0;
-}
 
 label {
     text-align: center;
@@ -92,88 +42,65 @@ label {
     font-size: 140%;
 }
 
-.teacher {
+.column {
     float: left;
     display: block;
     margin-right: 0%;
-    width: 14%;
     color: #e1e1e1;
     margin: 0;
     padding: 0;
-    font-size: 1.125em;
-    font-weight: 500;
+    font-size: 1.2em;
+    font-weight: 700;
     text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.teacher:last-child {
-    margin-right: 0;
+.name {
+    width: 23%;
+}
+
+.company {
+    width: 20%;
+}
+
+.position {
+    width: 16%;
+}
+
+.teacher {
+    width: 16%;
 }
 
 .sessions {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 9%;
-    color: #e1e1e1;
-    margin: 0;
-    padding: 0;
-    font-size: 1.125em;
-    font-weight: 500;
-    text-align: left;
-}
-
-.sessions:last-child {
-    margin-right: 0;
+    text-align: center;
+    width: 10%;
 }
 
 .room {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 6.50%;
-    color: #e1e1e1;
-    margin: 0;
-    padding: 0;
-    font-size: 1.125em;
-    font-weight: 500;
-    text-align: left;
+    width: 6%;
 }
 
-.room:last-child {
-    margin-right: 0;
+.capacity {
+    width: 6%;
 }
+
 
 .delete {
     float: right;
     display: block;
     margin-right: 0%;
-    width: 2%;
+    width: 3%;
     margin: 0;
     padding: 0;
     z-index: 10;
 }
 
-.capacity {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 6%;
-    color: #e1e1e1;
-    margin: 0;
-    padding: 0;
-    font-size: 1.125em;
-    font-weight: 500;
-    text-align: left;
-}
-
-.capacity:last-child {
-    margin-right: 0;
-}
-
 .list-container {
     height: auto;
-    width: 100%;
-    max-width: 180em;
+    width: 90%;
+    max-width: 90em;
     margin-left: auto;
     margin-right: auto;
     margin: 0 auto;
@@ -190,8 +117,6 @@ label {
 
 .list-container .mentor {
     height: 3.75em;
-    width: 100%;
-    max-width: 190em;
     line-height: 3.75em;
     padding: 0 1.5625em; /*1.5625em;*/
     border-bottom: 1px solid #aaa;
