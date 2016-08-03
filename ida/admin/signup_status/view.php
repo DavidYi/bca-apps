@@ -50,7 +50,7 @@
     </header>
     <div class="buttons" style="text-align:center;padding-bottom:2vh;">
         <a href="../index.php"><button class="back">Back</button></a>
-        <a href="../../index.php?action=logout"><button class="logout">Log Out</button></a>
+        <!--<a href="../../index.php?action=logout"><button class="logout">Log Out</button></a>-->
     </div>
 
 

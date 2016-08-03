@@ -21,11 +21,6 @@
 
 <body>
 <div id="mentor_add">
-
-    <?php echo $error_msg ?>
-    <BR>
-
-
     <form action="." method="post">
         <input type="hidden" name="action" value="modify_presentation">
 
@@ -62,8 +57,8 @@
                placeholder="Seats"><BR>
 
         <div class="button-container">
-            <button class="add" name="choice" type="submit" value="Modify">Modify Presentation</button>
-            <button class="add" name="choice" type="submit" value="Back">Go Back</button>
+            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Modify">Submit</button>
+            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Back">Cancel</button>
         </div>
     </form>
 </div>

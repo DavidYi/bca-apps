@@ -24,105 +24,102 @@ m             modify  (pencil)
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
 @import url('http://fonts.googleapis.com/css?family=Lato');
 
-html, body {
-    height: 100%;
-    width: 100%;
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-left: auto;
-    margin-right: auto;
-}
-header {
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 5px;
-    height: 10%;
-    -webkit-transform-stdle: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-}
+/*html, body {*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*min-height: 100%;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+/*}*/
+/*#admin-tools {*/
+    /*overflow: hidden;*/
+/*}*/
+/*#admin-tools header {*/
+    /*clear: both;*/
+    /*height: auto;*/
+/*}*/
+/*main {*/
+    /*width: 90%;*/
+    /*max-width: 90%;*/
+    /*margin: 0 auto;*/
+/*}*/
+/*header {*/
+    /*margin-left: 50px;*/
+    /*margin-right: 50px;*/
+    /*margin-top: 10px;*/
+    /*height: 10%;*/
+    /*-webkit-transform-stdle: preserve-3d;*/
+    /*-moz-transform-style: preserve-3d;*/
+    /*-ms-transform-style: preserve-3d;*/
+    /*-o-transform-style: preserve-3d;*/
+    /*transform-style: preserve-3d;*/
+/*}*/
 
-header h1 {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-header h2 {
-    float: left;
-}
-#logout {
-    float: right;
-}
-#logout a:hover {
-    font-weight: bolder;
-}
-.feature {
-    width: 15em;
-    height: 11em;
-    display: inline-block;
-    position: relative;
-    top: 0;
-    padding: 0.9375em 1.5625em;
-    background: rgba(0, 0, 0, 0.05);
-    background: rgba(0, 0, 0, 0.05);
-    -webkit-transition: all 175ms ease;
-    -moz-transition: all 175ms ease;
-    transition: all 175ms ease;
-}
-.feature h2 {
-    margin: 0.125em;
-}
-.feature p {
-    margin: 0.125em;
-    opacity: 0.8;
-}
-.feature:hover {
-    top: -5px;
-    background: #262626;
-    background: #262626;
-    box-shadow: 0 0.9375em 1.5625em rgba(0, 0, 0, 0.33);
-    border-bottom: 0.625em solid #262626;
-}
-.feature:hover h2, .feature:hover p {
-    color: #fdfdfd;
-}
-td {
-    padding: 2px;
-    background-color: rgba(253, 253, 253, 0.9);
-}
+/*header h1 {*/
+    /*text-align: center;*/
+    /*position: relative;*/
+    /*top: 50%;*/
+    /*-webkit-transform: translateY(-50%);*/
+    /*-moz-transform: translateY(-50%);*/
+    /*-ms-transform: translateY(-50%);*/
+    /*-o-transform: translateY(-50%);*/
+    /*transform: translateY(-50%);*/
+/*}*/
+/*!*#logout {*/
+    /*float: right;*/
+/*}*/
+/*#logout a:hover {*/
+    /*font-weight: bolder;*/
+/*}*/
+/*.feature {*/
+    /*width: 15em;*/
+    /*height: 11em;*/
+    /*display: inline-block;*/
+    /*position: relative;*/
+    /*top: 0;*/
+    /*padding: 0.9375em 1.5625em;*/
+    /*background: rgba(253, 253, 253, 0.8);*/
+    /*-webkit-transition: all 175ms ease;*/
+    /*-moz-transition: all 175ms ease;*/
+    /*transition: all 175ms ease;*/
+/*}*/
+/*.feature h2 {*/
+    /*margin: 0.125em;*/
+/*}*/
+/*.feature p {*/
+    /*margin: 0.125em;*/
+    /*opacity: 0.8;*/
+/*}*/
+/*.feature:hover {*/
+    /*top: -5px;*/
+    /*background: #262626;*/
+    /*box-shadow: 0 0.9375em 1.5625em rgba(0, 0, 0, 0.33);*/
+    /*border-bottom: 0.625em solid #262626;*/
+/*}*/
+/*.feature:hover h2, .feature:hover p {*/
+    /*color: #fdfdfd;*/
+/*}*/
+/*td {*/
+    /*padding: 2px;*/
+/*}*/
 
-tr {
-    border-color: rgba(253, 253, 253, 0.9);
-}
+/*a {*/
+    /*color: #333;*/
+    /*text-decoration: none;*/
+    /*transition: color 175ms ease;*/
+/*}*/
 
-a {
-    color: #333;
-    text-decoration: none;
-    transition: color 175ms ease;
-}
+/*.back {*/
+    /*width: 12.5em;*/
+    /*text-transform: uppercase;*/
+    /*-webkit-transition: all 175ms ease;*/
+    /*-moz-transition: all 175ms ease;*/
+    /*transition: all 175ms ease;*/
+    /*display: block;*/
+    /*margin: 0 auto;*/
+    /*text-align: center;*/
+/*}*/
 
-.back {
-    width: 12.5em;
-    text-transform: uppercase;
-    -webkit-transition: all 175ms ease;
-    -moz-transition: all 175ms ease;
-    transition: all 175ms ease;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-}
-
-#back {
-    background-color: rgb(182, 226, 249);
-}
+/*#back {*/
+    /*background-color: rgb(247, 224, 97);*/
+/*}*/

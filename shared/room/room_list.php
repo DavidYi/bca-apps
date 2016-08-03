@@ -23,10 +23,10 @@
         </header>
         <div style="text-align:center;padding-bottom:2vh;">
             <a href="./index.php?action=show_add_room">
-                <button id="add_room">Add Room</button>
+                <button style="cursor: pointer" id="add_room">Add Room</button>
             </a>
             <a href="../index.php">
-                <button id="return_home">Return Home</button>
+                <button style="cursor: pointer" id="return_home">Back</button>
             </a>
         </div>
         <nav style="width:40%" class="navbar">
