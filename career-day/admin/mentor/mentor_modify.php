@@ -115,14 +115,26 @@
                 <label>
                     <span class="teacher_name">Sessions</span>
                 </label>
-                <input type="checkbox" name="mentor_session_1" value="1" placeholder="Session 1"
-                    <?php echo ($mentor_sessions_check[0] ? 'checked' : '');?>>1
-                <input type="checkbox" name="mentor_session_2" value="2" placeholder="Session 2"
-                    <?php echo ($mentor_sessions_check[1] ? 'checked' : '');?>>2
-                <input type="checkbox" name="mentor_session_3" value="3" placeholder="Session 3"
-                    <?php echo ($mentor_sessions_check[2] ? 'checked' : '');?>>3
-                <input type="checkbox" name="mentor_session_4" value="4" placeholder="Session 4"
-                    <?php echo ($mentor_sessions_check[3] ? 'checked' : '');?>>4
+                <div class="check">
+                    <input type="checkbox" name="mentor_session_1" value="1" placeholder="Session 1"
+                        <?php echo ($mentor_sessions_check[0] ? 'checked' : '');?>>
+                    <h4>1</h4>
+                </div>
+                <div class="check">
+                    <input type="checkbox" name="mentor_session_2" value="2" placeholder="Session 2"
+                        <?php echo ($mentor_sessions_check[1] ? 'checked' : '');?>>
+                    <h4>2</h4>
+                </div>
+                <div class="check">
+                    <input type="checkbox" name="mentor_session_3" value="3" placeholder="Session 3"
+                        <?php echo ($mentor_sessions_check[2] ? 'checked' : '');?>>
+                    <h4>3</h4>
+                </div>
+                <div class="check">
+                    <input type="checkbox" name="mentor_session_4" value="4" placeholder="Session 4"
+                        <?php echo ($mentor_sessions_check[3] ? 'checked' : '');?>>
+                    <h4>4</h4>
+                </div>
             </div>
         </div>
     </div>

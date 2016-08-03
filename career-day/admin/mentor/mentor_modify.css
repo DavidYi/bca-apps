@@ -130,7 +130,7 @@ span {
 
 .row {
     position: relative;
-    width: 100%;
+    width: 1000px;
 }
 
 .odd {
@@ -144,13 +144,20 @@ textarea {
 }
 
 input[type='checkbox'] {
-    width:5%;
-    margin-left:10%;
-    padding:0px;
+    width: 10%;
     height:15px;
 }
 
 #header_row {
     position: absolute;
     bottom:0;
+}
+
+.check {
+    width: 15%;
+    display: inline-block;
+}
+
+.check > * {
+    display: inline-block;
 }
