@@ -232,12 +232,19 @@ function get_best_course_availability_students($course_id, $time_id)
 function clear_student_availability()
 {
     global $db;
-    $query = "delete * from elect_user_free_xref"; //Something to verify if student
+    $db->beginTransaction();
+
+
     try {
+        $query = "delete * from elect_user_free_xref"; //Something to verify if student
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
+
+        $db->commit();
+
     } catch (PDOException $e) {
+        $db->rollback();
         display_db_exception($e);
         exit();
     }
@@ -246,12 +253,18 @@ function clear_student_availability()
 function clear_student_interest()
 {
     global $db;
-    $query = "delete * from elect_student_course_xref"; //Something to verify if student
+    $db->beginTransaction();
+
     try {
+        $query = "delete * from elect_student_course_xref"; //Something to verify if student
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
+
+        $db->commit();
+
     } catch (PDOException $e) {
+        $db->rollback();
         display_db_exception($e);
         exit();
     }
@@ -260,12 +273,19 @@ function clear_student_interest()
 function clear_teacher_availability()
 {
     global $db;
-    $query = "delete * from elect_user_free_xref"; //Something to verify if teacher
+    $db->beginTransaction();
+
     try {
+        $query = "delete * from elect_user_free_xref"; //Something to verify if teacher
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
+
+        $db->commit();
+
+
     } catch (PDOException $e) {
+        $db->rollback();
         display_db_exception($e);
         exit();
     }
@@ -274,12 +294,18 @@ function clear_teacher_availability()
 function clear_all_courses()
 {
     global $db;
-    $query = "delete * from elect_course";
+    $db->beginTransaction();
+
     try {
+        $query = "delete * from elect_course"; //Lol not done time to break the app
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
+
+        $db->commit();
+
     } catch (PDOException $e) {
+        $db->rollback();
         display_db_exception($e);
         exit();
     }
