@@ -7,7 +7,7 @@
 
         <!-- Styles -->
         <link href="../../../shared/ss/main.css" rel="stylesheet">
-        <link href="styles_add.css" rel="stylesheet">
+        <link href="styles2.css" rel="stylesheet">
 
     </head>
 

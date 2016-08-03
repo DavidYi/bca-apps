@@ -1,7 +1,8 @@
 <html>
 
 <head>
-    <link rel = "stylesheet" type = "text/css" href = "../css/main.css" />
+    <link rel="stylesheet" href="../../../shared/ss/main.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Signup Status</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <script type="text/javascript">
@@ -47,18 +48,20 @@
             <h3 class = "title main-title" style ="text-align: center;"><?php echo $result; ?></h3>
         <?php } ?>
     </header>
+    <div class="buttons" style="text-align:center;padding-bottom:2vh;">
+        <a href="../index.php"><button class="back">Back</button></a>
+        <a href="../../index.php?action=logout"><button class="logout">Log Out</button></a>
+    </div>
 
 
     <nav class="navbar">
-        <a href="#">
-            <div class="session-filter grade">Grade Level</div>
-            <div class="session-filter full">Fully Enrolled</div>
-            <div class="session-filter partial">Partially Enrolled</div>
-            <div class="session-filter none">Not Enrolled</div>
-            <div class="session-filter auto">Auto-Enroll</div>
-        </a>
+        <a href="#"><div class="session-filter grade"><h2>Grade </h2></div></a>
+        <a href="#"><div class="session-filter full"><h2>Fully </h2></div></a>
+        <a href="#"><div class="session-filter partial"><h2>Partially </h2></div></a>
+        <a href="#"><div class="session-filter none"><h2>Not</h2></div></a>
+        <a href="#"><div class="session-filter auto"><h2>Auto-Enroll</h2></div></a>
     </nav>
-    <div class = "enrollment">
+    <div class = "list-container">
         <?php foreach ($enroll_list as $year) :
             $grade = $year['grade_lvl'];
             $full = $year['Complete'];
@@ -68,49 +71,45 @@
             <div class = "session">
                 <div class = "grade" style="font-weight: 400;">
                     <?php if ($grade != 13) { ?>
-                        <?php echo $grade; ?>
+                        <h2><?php echo $grade; ?></h2>
                     <?php } else { ?>
-                        Teachers
+                    <h2>Teachers</h2>
                     <?php } ?>
                 </div>
 
-                <a href="#" class="full" onclick= "post('index.php', {action: 'all_download', grade: <?php echo $grade ?> }, 'post')" style="font-weight: 400;">
-                    <?php echo $full; ?>
-                </a>
+                <div class="full" onclick= "post('index.php', {action: 'all_download', grade: <?php echo $grade ?> }, 'post')" style="font-weight: 400;"><h2>
+                    <?php echo $full; ?></h2>
+                </div>
 
-                <a href="#" class="partial" onclick="post('index.php', {action: 'partial_download', grade: <?php echo $grade ?>}, 'post')">
-                    <?php echo $partial ?>
-                </a>
+                <div class="partial" onclick="post('index.php', {action: 'partial_download', grade: <?php echo $grade ?>}, 'post')">
+                    <h2><?php echo $partial ?></h2>
+                </div>
 
-                <a href="#" class="none" onclick= "post('index.php', {action: 'no_download', grade: <?php echo $grade ?>}, 'post')">
-                    <?php echo $none; ?>
-                </a>
+                <div href="#" class="none" onclick= "post('index.php', {action: 'no_download', grade: <?php echo $grade ?>}, 'post')">
+                    <h2><?php echo $none; ?></h2>
+                </div>
 
                 <div class = "auto-enroll">
                     <?php if ($grade != 13) { ?>
-                        <button onclick= "autoEnroll(<?php echo $grade?>)">Enroll</button>
-                        <button onclick= "undoAutoEnroll(<?php echo $grade?>)">Undo</button>
+                        <a onclick= "autoEnroll(<?php echo $grade?>)"><h4>e</h4></a>
+                        <a onclick= "undoAutoEnroll(<?php echo $grade?>)"><h4>u</h4></a>
                     <?php } ?>
                 </div>
 
             </div>
         <?php endforeach; ?>
-        <br>
     </div>
     <br>
     <br>
-    <div class = "center body"><h3>Downloads</h3>
-        <a href = "#" onclick= "post('index.php', {action: 'presentation_status'}, 'post')">Presentation Status and List</a>
+    <div class = "center body"><h1 class="title">Downloads</h1>
+        <div class="downloads"><a href = "#" onclick= "post('index.php', {action: 'presentation_status'}, 'post')"><h4>h</h4><h2>Presentation Status and List</h2></a>
         <br>
-        <a href = "#" onclick= "post('index.php', {action: 'all_registrants'}, 'post')">List of "All Registration Details" for all Students and Teachers</a>
+        <a href = "#" onclick= "post('index.php', {action: 'all_registrants'}, 'post')"><h4>h</h4><h2>List of "All Registration Details" for all Students and Teachers</h2></a>
         <br>
-        <a href = "#" onclick= "post('index.php', {action: 'partial_download'}, 'post')">List of "Partially Enrolled" Students and Teachers</a>
+        <a href = "#" onclick= "post('index.php', {action: 'partial_download'}, 'post')"><h4>h</h4><h2>List of "Partially Enrolled" Students and Teachers</h2></a>
         <br>
-        <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">List of "Not Enrolled" Students and Teachers</a>
-        <br><br>
-
-        <a href = "../index.php">Admin Menu</a><br>
-        <a href = "../../index.php?action=logout">Log Out</a>
+        <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')"><h4>h</h4><h2>List of "Not Enrolled" Students and Teachers</h2></a>
+        </div>
     </div>
 </section>
 </body>
