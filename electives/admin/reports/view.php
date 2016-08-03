@@ -38,6 +38,7 @@
         $course_id = $course['course_id'];
         $course_name = $course['course_name'];
         $times = $course['time_short_desc'];
+        $time_id = $course['time_id'];
         $students = $course['students'];
 
         ?>
@@ -77,16 +78,19 @@
                                 <th>First Name</th>
                                 <th>Grade</th>
                             </tr>
-<!--                            --><?php
-//                            $teacher_selected_list = list_teacher_selected_tests($course_id);
-//                            foreach ($teacher_selected_list as $test) :
-//                                $test_name = $test['test_name'];
-//                                $test_date = $test['test_dt']; ?>
-<!--                                <tr>-->
-<!--                                    <td> --><?php //echo $test_name; ?><!-- </td>-->
-<!--                                    <td> --><?php //echo $test_date; ?><!-- </td>-->
-<!--                                </tr>-->
-<!--                            --><?php //endforeach; ?>
+                            <?php
+                            $student_list = get_best_course_availability_students($course_id, $time_id);
+                            foreach ($student_list as $student) :
+                                //Excellent naming choice
+                                $std_last = $student['usr_last_name'];
+                                $std_first = $student['usr_first_name'];
+                                $std_grade = $student['usr_grade_lvl']; ?>
+                                <tr>
+                                    <td> <?php echo $std_last; ?> </td>
+                                    <td> <?php echo $std_first; ?> </td>
+                                    <td><?php echo $std_grade; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
                         </table>
                     </div>
                 </div>
@@ -95,14 +99,54 @@
         </tr>
     <?php endforeach; ?>
 </table>
-<a href="index.php?action=availability_matrix_download">Availability List</a><br>
-<a href="index.php?action=electives_list_download">Electives List</a><br>
-<a href="index.php?action=availability_list_download">Teacher Availability List</a><br>
-<a href="index.php?action=course_interest_download">Course Interest List</a>
+<center>
+    <a href="index.php?action=availability_matrix_download">Availability List</a><br>
+    <a href="index.php?action=electives_list_download">Electives List</a><br>
+    <a href="index.php?action=availability_list_download">Teacher Availability List</a><br>
+    <a href="index.php?action=course_interest_download">Course Interest List</a>
+</center>
+<ul>
+    <li>
+        <button onclick="clearStudentAvailability()">Clear Student Availability</button>
+    </li>
+    <li>
+        <button onclick="clearStudentCourseInterest()">Clear Student Course Interest</button>
+    </li>
+    <li>
+        <button onclick="clearTeacherAvailability()">Clear Teacher Availability</button>
+    </li>
+    <li>
+        <button onclick="clearAllCourses()">Clear All Courses</button>
+    </li>
+</ul>
 <script type="text/javascript" src="../../js/popup.js"></script>
 <script type="text/javascript" src="../../js/cpopup.js"></script>
 <script type="text/javascript" src="../../js/jquery.min.js"></script>
 <script type="text/javascript" src="../../js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="../../js/jquery.plusanchor.min.js"></script>
+<script type="text/javascript">
+    function clearStudentAvailability() {
+        if (confirm("Are you sure you want to clear student availability?")) {
+            window.parent.location.href = 'index.php?action=clear_student_availability';
+        }
+    }</script>
+<script type="text/javascript">
+    function clearStudentCourseInterest() {
+        if (confirm("Are you sure you want to clear student course interest?")) {
+            window.parent.location.href = 'index.php?action=clear_student_interest';
+        }
+    }</script>
+<script type="text/javascript">
+    function clearTeacherAvailability() {
+        if (confirm("Are you sure you want to clear teacher availability?")) {
+            window.parent.location.href = 'index.php?action=clear_teacher_availability';
+        }
+    }</script>
+<script type="text/javascript">
+    function clearAllCourses() {
+        if (confirm("Are you sure you want to clear all courses?")) {
+            window.parent.location.href = 'index.php?action=clear_all_courses';
+        }
+    }</script>
 </body>
 </html>

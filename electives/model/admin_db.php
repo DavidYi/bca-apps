@@ -159,6 +159,7 @@ function get_best_course_availability()
     }
 }
 
+<<<<<<< Updated upstream
 function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc) {
     $query = "UPDATE elect_course
             SET course_name = :name, course_desc = :desc, teacher_id = :teacher_id
@@ -185,18 +186,45 @@ function get_course_info($course_id) {
     from elect_course e, user u
     where e.teacher_id = u.usr_id
     and e.course_id = :id";
+=======
+
+function get_best_course_availability_students($course_id, $time_id)
+{
+    $query = "select u.usr_first_name, u.usr_last_name, u.usr_grade_lvl
+	from elect_course ec, elect_time et, elect_user_free_xref eu, elect_student_course_xref escx, user u
+	where ec.course_id = :course_id
+	and ec.course_id = escx.course_id
+	and et.time_id = :time_id
+	and et.time_id = eu.time_id
+	and u.usr_id = escx.usr_id
+	and escx.usr_id = eu.usr_id
+	order by ec.course_name, count(*) desc";
+>>>>>>> Stashed changes
 
     global $db;
 
     try {
         $statement = $db->prepare($query);
+<<<<<<< Updated upstream
         $statement->bindValue(':id', $course_id);
         $statement->execute();
         $result = $statement->fetchAll();
         $statement->closeCursor();
+=======
+        $statement->bindValue(':course_id', $course_id);
+        $statement->bindValue(':time_id', $time_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+
+>>>>>>> Stashed changes
         return $result;
     } catch (PDOException $e) {
         display_db_exception($e);
         exit();
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
