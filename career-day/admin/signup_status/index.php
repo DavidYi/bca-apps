@@ -20,9 +20,8 @@ switch($action) {
         $output = fopen('php://output', 'w') or die("Can't open file");
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="presentations.csv";');
-        fputcsv($output, array('Session', 'Room', 'Field', 'Title', 'Organization', 'Location', 'Description', 'Presenters',
-            'Enrolled Stdnts','Max Stdnts', 'Remaining Stdnts',
-            'Enrolled Tchrs','Max Tchrs', 'Remaining Tchrs'));
+        fputcsv($output, array('Session', 'Room', 'Field', 'Organization', 'Description', 'Presenter', 'Currently Enrolled', 'Max Seats',
+            'Spots Left','Host Teacher'));
         foreach($student_list as $student) {
             fputcsv($output, $student);
         }

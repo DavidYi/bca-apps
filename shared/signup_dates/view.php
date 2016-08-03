@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="view.css" rel="stylesheet" type="text/css" />
+    <link href="/<?php echo $app_url_path ?>/../shared/signup_dates/view.css" rel="stylesheet" type="text/css" />
     <link href="../../../shared/ss/main.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -32,6 +32,7 @@
                     <input type="text" name="start_10" value="<?php echo $grade10['start']?>">
                     <input type="text" name="start_11" value="<?php echo $grade11['start']?>">
                     <input type="text" name="start_12" value="<?php echo $grade12['start']?>">
+                    <?php if($app_cde) ?>
                 </div>
 
                 <div id ="end">

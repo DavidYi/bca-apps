@@ -1,7 +1,7 @@
 <?php
 
 function get_signup_dates_by_grade($grade_lvl) {
-    $query = 'SELECT start, end
+    $query = 'SELECT start, end, app_cde
               FROM signup_dates
               WHERE grade_lvl = :grade_lvl';
 
