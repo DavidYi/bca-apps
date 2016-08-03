@@ -31,11 +31,14 @@ header {
 button {
     cursor: pointer;
 }
+.buttons a {
+    margin-right: 3em;
+}
 button.back {
-    background-color: rgb(182, 226, 249);
+    background-color: rgb(247, 224, 97);
 }
 button.logout {
-    background-color: rgb(247, 224, 97);
+    background-color: rgb(182, 226, 249);
 }
 
 h2 {
