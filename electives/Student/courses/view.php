@@ -19,15 +19,13 @@
 <form action="." method="POST">
     <input type="hidden" name="action" value="update_courses">
     <table class="table-fill">
-        <thead >
-            <tr style="width:80%;">
-                <th class="text-left"><a href="index.php?action=sort_courses_by_names">Elective</a></th>
-                <th class="text-left"><a href="index.php?action=sort_courses_by_teacher">Teacher</a></th>
-                <th class="text-left">Description</th>
-                <th class="text-left"><a href="index.php?action=sort_courses_by_interest">Express Interest</a></th>
-
+        <thead>
+            <tr id="head_row">
+                <th class="text-left nav"><a href="index.php?action=sort_courses_by_names">Elective</a></th>
+                <th class="text-left nav"><a href="index.php?action=sort_courses_by_teacher">Teacher</a></th>
+                <th class="text-left nav">Description</th>
+                <th class="text-left nav"><a href="index.php?action=sort_courses_by_interest">Express Interest</a></th>
             </tr>
-
         </thead>
 
         <tbody>
@@ -51,18 +49,15 @@
                     </td>
                 </tr>
             <?php endforeach; ?>
-
         </tbody>
-
-
     </table>
 
     <div class="wrapper">
         <button class="submit" type="submit">Submit</button>
+        <button class="submit back" onclick="location.href = './index.php'" type="submit">Back</button>
     </div>
 </form>
 
-<button class="s back" onclick="location.href = '../index.php'" type="submit">Back</button>
 
 </body>
 
