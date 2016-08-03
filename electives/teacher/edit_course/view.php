@@ -11,16 +11,16 @@
             <input type="hidden" name="course_id" value="<?php echo $course_id; ?>"
             <label class="spacing">
                 <span>Course Name</span>
-                <input type="text" name="new_course_name" value="<?php echo $course_name; ?>">
+                <input type="text" name="new_course_name" value="<?php echo $course_name; ?>" required>
             </label>
 
             <label class="spacing">
                 <span>Description</span>
-                <textarea name="new_course_desc"><?php echo $course_desc ?></textarea>
+                <textarea name="new_course_desc" required><?php echo $course_desc ?></textarea>
             </label>
 
-            <button class="submit s" type="submit" name="choice" value="Edit Course">Save</button>
-            <button class="submit back" type="submit" name="choice" value="Back">Back</button>
+            <button class="submit s" type="submit">Save</button>
+            <button class="submit back" type="button" onclick="location.href='../index.php'" formnovalidate>Back</button>
         </form>
     </div>
 

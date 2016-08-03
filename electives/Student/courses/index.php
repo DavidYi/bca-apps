@@ -29,7 +29,7 @@ $available_times = get_times($usr_id);
 // true: student, false:teacher
 $teacher_or_student = $_GET['student'];
 
-// If the user is being mimiced by an admin, use that id as the updt id.
+// If the user is being mimicked by an admin, use that id as the updt id.
 // Otherwise, use the id of the current user.
 $updateById = $_SESSION['prev_usr_id'];
 if (empty($updateById))

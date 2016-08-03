@@ -11,17 +11,17 @@
         <input type="hidden" name="course_id" value="<?php echo $course_id; ?>"
         <label class="spacing">
             <span>Course Name</span>
-            <input type="text" name="name" value="<?php echo $course_name; ?>">
+            <input type="text" name="name" value="<?php echo $course_name; ?>" required>
         </label>
 
         <label class="spacing">
             <span>Description</span>
-            <textarea name="desc"><?php echo $course_desc ?></textarea>
+            <textarea name="desc" required><?php echo $course_desc ?></textarea>
         </label>
 
         <label class="spacing">
             <span>Teacher</span>
-            <select id="teacher" name="teacher">
+            <select id="teacher" name="teacher" required>
                 <?php
                 $i;
                 for ($i = 0; $i < sizeof($teacher_list); $i++) {
@@ -38,7 +38,7 @@
         </label>
 
         <button class="submit s" type="submit" name="choice" value="Edit Course">Save</button>
-        <button class="submit back" onclick="location.href='../index.php'" name="choice" value="Back">Back</button>
+        <button class="submit back" type="button" onclick="location.href='../index.php'" formnovalidate>Back</button>
 
     </form>
 </div>

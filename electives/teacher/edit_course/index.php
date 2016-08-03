@@ -24,16 +24,12 @@ switch ($action) {
         include("view.php");
         break;
     case 'edit_course':
-        $choice = filter_input(INPUT_POST, 'choice');
-        if ($choice == "Edit Course") {
-            $new_course_name = $_POST["new_course_name"];
-            $new_course_desc = $_POST["new_course_desc"];
-            $course_id = $_POST["course_id"];
 
-            edit_course($course_id, $new_course_name, $new_course_desc);
-            header('Location: ..');
-        } else {
-            header('Location: ..');
-        }
+        $new_course_name = $_POST["new_course_name"];
+        $new_course_desc = $_POST["new_course_desc"];
+        $course_id = $_POST["course_id"];
+
+        edit_course($course_id, $new_course_name, $new_course_desc);
+        header('Location: ..');
         break;
 }
