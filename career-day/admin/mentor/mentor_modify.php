@@ -75,7 +75,7 @@
                 <label>
                     <span class="teacher_name" style="vertical-align:top;">Profile</span>
                 </label>
-                <textarea rows="3" cols="100" class = "center" type = "text" name="mentor_profile"
+                <textarea rows="6" cols="75" class = "center" type = "text" name="mentor_profile"
                           value="<?php echo htmlspecialchars($mentor_profile);?>"
                           placeholder="Profile" required>
                 </textarea>
@@ -84,7 +84,7 @@
                 <label>
                     <span class="teacher_name">Keywords</span>
                 </label>
-                <input style="margin-left:10%;width:60%" type="text" name="mentor_keywords"
+                <input style="width:60%" type="text" name="mentor_keywords"
                        value="<?php echo htmlspecialchars($mentor_keywords);?>" placeholder="Keywords">
             </div>
             <div class="row">

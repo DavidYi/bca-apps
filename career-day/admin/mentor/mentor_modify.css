@@ -60,9 +60,9 @@ input {
     width: 200px;
     height: 20px;
     padding-top: 12px;
+    padding-left: 12px;
     padding-bottom: 12px;
-    margin-left: 30%;
-    text-align: center;
+    text-align: left;
 }
 
 span {
@@ -126,6 +126,11 @@ span {
 #teacher_div {
     position: absolute;
     top: 13%;
+}
+
+.row {
+    position: relative;
+    width: 100%;
 }
 
 .odd {
