@@ -24,12 +24,12 @@
     <table class="table-fill">
         <thead>
             <tr id="head_row">
-                <th class="text-left nav"><a href="index.php?action=sort_courses&sort=1&order=<?php if 
+                <th class="text-left nav course"><a href="index.php?action=sort_courses&sort=1&order=<?php if
                     ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>">Elective</a></th>
-                <th class="text-left nav"><a href="index.php?action=sort_courses&sort=2&order=<?php if
+                <th class="text-left nav teacher"><a href="index.php?action=sort_courses&sort=2&order=<?php if
                     ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>">Teacher</a></th>
-                <th class="text-left nav" id="navdescription">Description</th>
-                <th class="text-left nav" id="navinterest"><a href="index.php?action=sort_courses&sort=3&order=<?php if
+                <th class="text-left nav description" id="navdescription">Description</th>
+                <th class="text-left nav interest" id="navinterest"><a href="index.php?action=sort_courses&sort=3&order=<?php if
                     ($sort_order == 2 && $sort_by == 3) { echo 1; } else { echo 2; } ?>">Express Interest</a></th>
             </tr>
         </thead>
@@ -37,10 +37,10 @@
         <tbody>
             <?php foreach ($courseList as $course) :?>
                 <tr>
-                    <td class="text-left"><label><?php echo $course['course_name']?></label></td>
-                    <td class="text-left"><label><?php echo $course['teacher']?></label></td>
-                    <td class="text-left" id="description"><label><?php echo $course['course_desc']?></label></td>
-                    <td class="text-left" id="interest">
+                    <td class="text-left course"><label><?php echo $course['course_name']?></label></td>
+                    <td class="text-left teacher"><label><?php echo $course['teacher']?></label></td>
+                    <td class="text-left description"><label><?php echo $course['course_desc']?></label></td>
+                    <td class="text-left interest">
                         <label class="switch">
                             <?php
                             if ($course["enrolled"] == 1) {
