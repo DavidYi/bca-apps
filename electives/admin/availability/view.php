@@ -11,10 +11,10 @@
             button {
                 background-color: #00b8e6;
                 position: absolute;
-                left: 20%;
-                top: 20%;
+                left: 1%;
+                top: 8%;
+                width: 10%;
             }
-
         </style>
     </head>
     <body>

@@ -123,8 +123,7 @@
                         <thead>
                             <th>Name</th>
                             <th>Description</th>
-                            <th></th>
-                            <th></th>
+                            <th>Actions</th>
                         </thead>
                     ";
                 }
@@ -139,9 +138,11 @@
                     <tr>
                         <td><?php echo $courseName ?></td>
                         <td><?php echo $courseDesc ?></td>
-                        <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>"><img src="../../shared/images/modifyIcon.gif"></a></td>
-
-                        <td><img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);"> </td>
+                        <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>">
+                                <img src="../../shared/images/modifyIcon.gif"></a>
+                            &nbsp; &nbsp; &nbsp; &nbsp;
+                            <img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);">
+                        </td>
                     </tr>
 
                 <?php endforeach; ?>

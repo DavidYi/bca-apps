@@ -6,7 +6,7 @@
 // Add them here.
 //
 require_once(__DIR__ . "/../model/database.php");
-require_once(__DIR__ . "    /../../shared/model/user_db.php");
+require_once(__DIR__ . "/../../shared/model/user_db.php");
 
 ////////////////////////////
 // Start Session and security check.

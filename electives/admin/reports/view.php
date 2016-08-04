@@ -58,7 +58,7 @@
                 </td>
             </tr>
 
-            <tr class="student-table columns" id="P<?php echo $course_id; ?><?php echo $time_id ?>">
+            <tr class="student-table columns" id="P<?php echo $course_id; ?><?php echo $time_id ?>" style="background-color: black;">
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Grade</th>
