@@ -19,8 +19,10 @@
                 <textarea name="new_course_desc" required><?php echo $course_desc ?></textarea>
             </label>
 
-            <button class="submit s" type="submit">Save</button>
-            <button class="submit back" type="button" onclick="location.href='../index.php'" formnovalidate>Back</button>
+            <div class="button_wrapper">
+                <button class="submit s" type="submit">Save</button>
+                <button class="submit back" type="button" onclick="location.href='../index.php'" formnovalidate>Back</button>
+            </div>
         </form>
     </div>
 

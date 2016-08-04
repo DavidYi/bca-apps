@@ -8,7 +8,7 @@
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link href="<?php echo $shared_ss_url?>" rel="stylesheet">
-		<link href="../shared/login/styles.css" rel="stylesheet">
+		<link href="styles.css" rel="stylesheet">
 	</head>
 	<body>
 		<section class="main login">

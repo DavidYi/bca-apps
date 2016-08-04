@@ -50,7 +50,7 @@
 
             ?>
 
-                <div class="mentor" id="workshop" onclick="javascript:location.href='./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop'">
+                <div class="mentor" id="workshop">
                     <a class="info" style="position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo ($workshop['wkshp_id']);?>,#P<?php echo ($workshop['wkshp_id']);?>')"><h4 class="info_icon">i</h4></a>
                     <div class="session-filter workshop_name" onclick="javascript:location.href='./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop'"><h2><?php echo($workshop_name); ?></h2></div>
                     <div style="float:right;">

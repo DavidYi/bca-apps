@@ -36,7 +36,7 @@
 <div id="content">
     <center>
     <table>
-        <tr>
+        <tr class="columns">
             <th>Course Name</th>
             <th>Time</th>
             <th>Available Students</th>
@@ -58,7 +58,7 @@
                 </td>
             </tr>
 
-            <tr class="student-table" id="P<?php echo $course_id; ?><?php echo $time_id ?>">
+            <tr class="student-table columns" id="P<?php echo $course_id; ?><?php echo $time_id ?>">
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Grade</th>

@@ -1,10 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
+
 html {
 
 }
 
 body {
     background: #636161;
-    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
 
 }
@@ -24,7 +26,7 @@ table {
     overflow-y: scroll;
 }
 
-td, th, tr {
+td, th {
     padding: 20px;
 }
 
@@ -41,6 +43,11 @@ th a:visited {
     color: #000000;
 }
 
+.columns {
+    background-color: black;
+    color: white;
+}
+
 tr {
     box-sizing: inherit;
     border: 1px solid #ccc;
@@ -49,23 +56,20 @@ tr {
     transition: all 175ms ease;
 }
 
-tr:hover{
-    background-color: #aaaaaa;
-
-}
-
-tr:hover {
+tr:not(.columns):hover {
+    background-color: #F2F2F2;
     -ms-transition-duration: 0.2s;
-    -ms-transform: scale(1.025);
+    -ms-transform: scale(1.005);
     -webkit-transition-duration: 0.2s;
-    -webkit-transform: scale(1.025);
+    -webkit-transform: scale(1.005);
     box-shadow: 0 0 0 0;
 }
+
 tr:active {
     -ms-transition-duration: 0.1s;
-    -ms-transform: scale(1.025);
+    -ms-transform: scale(1.005);
     -webkit-transition-duration: 0.1s;
-    -webkit-transform: scale(1.025);
+    -webkit-transform: scale(1.005);
     box-shadow: 0 0 0 0;
 }
 
@@ -74,6 +78,7 @@ h1 {
     top: 1%;
     text-align: center;
     margin-bottom: 3%;
+    color: white;
 }
 
 .info {
@@ -120,7 +125,6 @@ h1 {
     margin-bottom: 4%;
 }
 
-
 .popup-c {
     height: 100%;
     width: 90%;
@@ -163,8 +167,8 @@ a:hover {
     -moz-transition: all 175ms ease;
     transition: all 175ms ease;
     position: absolute;
-    left: 0;
-    top: 0.5%;
+    left: 5%;
+    top: 1%;
     cursor: pointer
 }
 
@@ -173,16 +177,21 @@ a:hover {
 }
 
 .student-table {
-    background-color: lightgrey;
+    background-color: #8CD4F5;
     display: none;
 }
 
-.student-table:hover{
+.student-table:hover {
+    transform: none;
 }
 
-.downloads a{
+.downloads a {
     text-decoration: none;
     color: white;
+}
+
+.downloads a:hover {
+    color: #8CD4F5;
 }
 
 .downloads {
@@ -191,7 +200,7 @@ a:hover {
 
 ul {
     display: inline-block;
-    width: 100%;
+    margin-left: -40px;
 }
 
 li {
@@ -216,4 +225,9 @@ button {
     -moz-transition: all 175ms ease;
     transition: all 175ms ease;
     cursor: pointer;
+}
+
+/*WHY IS THIS SO AMUSING OML*/
+button:hover {
+    background-color: tomato;
 }
