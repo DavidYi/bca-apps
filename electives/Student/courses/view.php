@@ -12,19 +12,25 @@
 
 <body>
 
-<div class="table-title">
-    <h3>Course Interests</h3>
-</div>
-
 <form action="." method="POST">
     <input type="hidden" name="action" value="update_courses">
+
+    <div class="table-title">
+        <button class="submit back" onclick="location.href = '../index.php'">Back</button>
+        <h3>Course Interests</h3>
+        <button class="submit" type="submit">Submit</button>
+    </div>
+
     <table class="table-fill">
         <thead>
             <tr id="head_row">
-                <th class="text-left nav"><a href="index.php?action=sort_courses_by_names">Elective</a></th>
-                <th class="text-left nav"><a href="index.php?action=sort_courses_by_teacher">Teacher</a></th>
-                <th class="text-left nav">Description</th>
-                <th class="text-left nav"><a href="index.php?action=sort_courses_by_interest">Express Interest</a></th>
+                <th class="text-left nav"><a href="index.php?action=sort_courses&sort=1&order=<?php if 
+                    ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>">Elective</a></th>
+                <th class="text-left nav"><a href="index.php?action=sort_courses&sort=2&order=<?php if
+                    ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>">Teacher</a></th>
+                <th class="text-left nav" id="navdescription">Description</th>
+                <th class="text-left nav" id="navinterest"><a href="index.php?action=sort_courses&sort=3&order=<?php if
+                    ($sort_order == 2 && $sort_by == 3) { echo 1; } else { echo 2; } ?>">Express Interest</a></th>
             </tr>
         </thead>
 
@@ -33,8 +39,8 @@
                 <tr>
                     <td class="text-left"><label><?php echo $course['course_name']?></label></td>
                     <td class="text-left"><label><?php echo $course['teacher']?></label></td>
-                    <td class="text-left"><label><?php echo $course['course_desc']?></label></td>
-                    <td class="text-left">
+                    <td class="text-left" id="description"><label><?php echo $course['course_desc']?></label></td>
+                    <td class="text-left" id="interest">
                         <label class="switch">
                             <?php
                             if ($course["enrolled"] == 1) {
@@ -51,11 +57,6 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-
-    <div class="wrapper">
-        <button class="submit" type="submit">Submit</button>
-        <button class="submit back" onclick="location.href = './index.php'" type="submit">Back</button>
-    </div>
 </form>
 </body>
 

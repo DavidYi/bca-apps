@@ -78,7 +78,7 @@ function get_course_by_user($usr_id) {
 }
 
 // returns all of the courses available and whether or not the student is enrolled in each one
-function get_course_list_for_student ($usr_id, $order_by = null) {
+function get_course_list_for_student ($usr_id, $sort_by, $sort_order) {
 
     $query = "SELECT c.course_id, course_name, course_desc, concat(u.usr_last_name, ', ', u.usr_first_name) AS teacher,
             !isnull(x.usr_id) AS enrolled
@@ -88,11 +88,11 @@ function get_course_list_for_student ($usr_id, $order_by = null) {
             ORDER BY ";
 
     // add order by clause
-    if ($order_by == null) {
-        $query .= "course_name";
-    } else {
-        $query .= $order_by;
-    }
+    if ($sort_by == 1) $query .= "course_name ";
+    elseif ($sort_by == 2) $query .= "teacher ";
+    elseif ($sort_by == 3) $query .= "enrolled ";
+
+    if ($sort_order == 2) $query .= "DESC";
 
     global $db;
 

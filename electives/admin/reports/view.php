@@ -27,6 +27,12 @@
         }</script>
 </head>
 <body>
+<h1>Electives Report</h1>
+<a href="../index.php">
+    <button
+        type="submit" id="return_button" name="return_button">Return to Admin Panel
+    </button>
+</a>
 <div id="content">
     <table>
         <tr>
@@ -38,7 +44,6 @@
             $course_id = $course['course_id'];
             $course_name = $course['course_name'];
             $times = $course['time_short_desc'];
-            $time_id = $course['time_id'];
             $students = $course['students'];
 
             ?>

@@ -104,7 +104,7 @@ function admin_get_teachers()
     }
 }
 
-function get_elective_list($order_by = null)
+function get_elective_list($sort_by, $sort_order)
 {
     $query = "select e.course_id, concat(u.usr_first_name, ' ', u.usr_last_name) as teacher_name, e.course_name, e.course_desc, count(x.usr_id) as num_students
             from user u, elect_course e 
@@ -112,14 +112,13 @@ function get_elective_list($order_by = null)
             where e.teacher_id = u.usr_id
             group by e.course_id";
 
-    if ($order_by == null) {
-        $query .= " order by u.usr_last_name";
-    } else if ($order_by == 2) {
-        $query .= " order by count(x.usr_id) desc";
-    } else {
-        $query .= " order by e.course_name";
-    }
 
+    if ($sort_by == 1)  $query .= " order by u.usr_last_name ";
+    elseif ($sort_by == 2) $query .= " order by e.course_name ";
+    elseif ($sort_by == 3) $query .= " order by num_students ";
+
+    if ($sort_order == 2)  $query .= " DESC";
+    
     global $db;
 
     try {
