@@ -23,8 +23,8 @@
             <h1 class="title">Workshops</h1>
         </header>
         <div style="text-align:center;padding-bottom:2vh;">
-            <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_add_workshop"><button id="add_workshop">Add Workshop</button></a>
-            <a href="../index.php"><button id="return_home">Return Home</button></a>
+            <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_add_workshop"><button style="cursor: pointer" id="add_workshop">Add Workshop</button></a>
+            <a href="../index.php"><button style="cursor: pointer" id="return_home">Back</button></a>
         </div>
         <nav  style="width:65%" class="navbar">
             <div id="navinside">
@@ -50,13 +50,11 @@
 
             ?>
 
-                <div class="mentor" id="workshop">
+                <div class="mentor" id="workshop" onclick="javascript:location.href='./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop'">
                     <a class="info" style="position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo ($workshop['wkshp_id']);?>,#P<?php echo ($workshop['wkshp_id']);?>')"><h4 class="plus_icon">p</h4></a>
-                    <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop">
-                    <div class="session-filter workshop_name"><h2><?php echo($workshop_name); ?></h2></div>
-                    </a>
+                    <div class="session-filter workshop_name" onclick="javascript:location.href='./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop'"><h2><?php echo($workshop_name); ?></h2></div>
                     <div style="float:right;">
-                        <div class="session-filter format_name"><h2><?php echo($format_name); ?></h2></div>
+                        <div class="session-filter format_name" onclick="javascript:location.href='./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop'"><h2><?php echo($format_name); ?></h2></div>
                         <h4 class="del_icon" onclick="deleteWorkshop(<?php echo $workshop_id; ?>);">d</h4>
                     </div>
                 </div>

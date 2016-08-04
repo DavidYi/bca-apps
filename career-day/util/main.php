@@ -3,7 +3,7 @@ $app_cde = 'CAR';
 $app_title = 'Career Day Registration';
 
 // Provides environment specific configuration information.
-include(__DIR__ . "/../../config.php");
+include(__DIR__ . "/../../../config.php");
 
 $app_url_path = $server_web_root . '/career-day';
 $shared_ss_url = '/' .$server_web_root . '/shared/ss/main.css';

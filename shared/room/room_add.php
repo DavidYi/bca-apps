@@ -33,8 +33,8 @@
         <input type="text" placeholder="Room" name="room_nbr" autofocus required>
 
         <div class="button-container">
-            <button class="add" name="choice" type="submit" value="Add">Add Room</button>
-            <button class="add" name="choice" type="submit" value="Back">Go Back</button>
+            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Add">Submit</button>
+            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Back">Cancel</button>
         </div>
     </form>
 </div>

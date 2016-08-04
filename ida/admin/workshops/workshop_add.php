@@ -7,7 +7,7 @@
 
         <!-- Styles -->
         <link href="../../../shared/ss/main.css" rel="stylesheet">
-        <link href="styles_add.css" rel="stylesheet">
+        <link href="styles2.css" rel="stylesheet">
 
     </head>
 
@@ -35,8 +35,8 @@
                         <br>
 
                         <div id="button-div">
-                            <button class="submit s" type="submit" name="choice" value="Add">Submit</button>
-                            <button class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
+                            <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Add">Submit</button>
+                            <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
                         </div>
 
 

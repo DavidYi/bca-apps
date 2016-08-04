@@ -31,8 +31,8 @@
         <label>Room</label>
         <input type="text" placeholder="Room" name="room_nbr" value="<?php echo htmlspecialchars($room_nbr);?>" autofocus required>
         <div class="button-container">
-            <button class="add" name="choice" type="submit" value="Modify">Modify Room</button>
-            <button class="add" name="choice" type="submit" value="Back">Go Back</button>
+            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Modify">Submit</button>
+            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Back">Cancel</button>
         </div>
     </form>
 </div>

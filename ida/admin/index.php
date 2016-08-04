@@ -33,7 +33,7 @@ switch ($action) {
 <body id="admin-tools">
 <main>
     <header><h1 class="title"><h2>Admin Tools</h2></h1>
-        <div id="logout"><h2><a href="../index.php?action=logout">Log Out</a></h2></div>
+        <div id="logout"><h2><a style="cursor: pointer" href="../index.php?action=logout">Log Out</a></h2></div>
     </header>
     <br>
     <div id="wrapper">

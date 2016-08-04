@@ -24,10 +24,10 @@
         </header>
         <div style="text-align:center;padding-bottom:2vh;">
             <a href="./index.php?format_id=<?php echo $format_id ?>&action=show_add_format">
-                <button id="add_format">Add Format</button>
+                <button style="cursor: pointer" id="add_format">Add Format</button>
             </a>
             <a href="../index.php">
-                <button id="return_home">Return Home</button>
+                <button style="cursor: pointer" id="return_home">Back</button>
             </a>
         </div>
         <nav style="width:40%" class="navbar">
