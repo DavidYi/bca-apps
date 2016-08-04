@@ -26,7 +26,7 @@
 
                 <div id="button-div">
                     <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Modify">Submit</button>
-                    <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
+                    <a href="index.php"><button style="cursor: pointer" class="submit cancel" type="button" name="choice" value="Back" formnovalidate>Cancel</button></a>
                 </div>
             </div>
         </div>
