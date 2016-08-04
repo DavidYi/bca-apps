@@ -61,7 +61,7 @@ m             modify  (pencil)
 .cancel {
     background-color: rgb(247, 224, 97);
     margin: 0 auto;
-    margin-left: 0em;
+    margin-left: 1em;
     display: inline-block;
 }
 
@@ -81,7 +81,7 @@ m             modify  (pencil)
 
 #button-div {
     text-align: center;
-    width: 30em;
+    width: 50em;
     margin: 0 auto;
 }
 
