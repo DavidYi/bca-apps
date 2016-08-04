@@ -60,9 +60,9 @@ input {
     width: 200px;
     height: 20px;
     padding-top: 12px;
+    padding-left: 12px;
     padding-bottom: 12px;
-    margin-left: 30%;
-    text-align: center;
+    text-align: left;
 }
 
 span {
@@ -128,6 +128,11 @@ span {
     top: 13%;
 }
 
+.row {
+    position: relative;
+    width: 1000px;
+}
+
 .odd {
     background-color: #e9e9e9;
 }
@@ -139,13 +144,20 @@ textarea {
 }
 
 input[type='checkbox'] {
-    width:5%;
-    margin-left:10%;
-    padding:0px;
+    width: 10%;
     height:15px;
 }
 
 #header_row {
     position: absolute;
     bottom:0;
+}
+
+.check {
+    width: 15%;
+    display: inline-block;
+}
+
+.check > * {
+    display: inline-block;
 }

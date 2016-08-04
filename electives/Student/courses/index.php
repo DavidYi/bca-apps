@@ -11,7 +11,6 @@ require_once("../../model/teacher_db.php");
 require_once("../../model/student_db.php");
 require_once("../../model/times_db.php");
 
-
 verify_logged_in();
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
@@ -26,14 +25,12 @@ if ($action == NULL) {
 $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
 $available_times = get_times($usr_id);
 
-// true: student, false:teacher
-$teacher_or_student = $_GET['student'];
+// true:student, false:teacher
+$student_or_teacher = ($user->usr_type_cde == 'STD') ? true : false;
 
 // If the user is being mimiced by an admin, use that id as the updt id.
 // Otherwise, use the id of the current user.
-$updateById = $_SESSION['prev_usr_id'];
-if (empty($updateById))
-    $updateById = $user->usr_id;
+$updateById = (isset($_SESSION['prev_usr_id'])) ? $_SESSION['prev_usr_id'] : $user->usr_id;
 
 switch ($action) {
     case "update_courses":
@@ -42,7 +39,7 @@ switch ($action) {
         foreach($chosen_courses as $course_id) {
             student_add_course($usr_id, $course_id, $updateById);
         }
-        if ($teacher_or_student) {
+        if ($student_or_teacher) {
             header("Location: ../index.php");
         } else {
             header("Location: ../../teacher/index.php");
