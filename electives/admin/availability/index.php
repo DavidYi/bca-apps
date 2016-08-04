@@ -20,7 +20,13 @@ if ($action == NULL) {
 
 switch ($action) {
     case 'modify':
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $usr_id = filter_input(INPUT_GET, "usr_id");
+
+        $user = $_SESSION['user'];
         $_SESSION['prev_usr_id'] = $user->usr_id;
 
         $user = User::getUserByUsrId($usr_id);

@@ -21,7 +21,8 @@
             </select>
             <br>
             <div id="padding"></div>
-            <button type="submit" value="Mimic User">Mimic User</button>
+            <button style="background-color: rgb(182, 226, 249); cursor: pointer" type="submit" value="Mimic User">Mimic User</button>
+            <a href="../index.php"><button style="background-color: rgb(247, 224, 97); cursor: pointer">Back</button></a>
         </form>
     </div>
     </body>

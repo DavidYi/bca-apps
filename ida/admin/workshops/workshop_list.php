@@ -23,7 +23,7 @@
             <h1 class="title">Workshops</h1>
         </header>
         <div class="button-wrap">
-            <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_add_workshop"><button id="add_workshop">Add Workshop</button></a>
+            <a href="./index.php?action=show_add_workshop"><button id="add_workshop">Add Workshop</button></a>
             <a href="../index.php"><button id="return_home">Return Home</button></a>
         </div>
         <nav  style="width:65%" class="navbar">

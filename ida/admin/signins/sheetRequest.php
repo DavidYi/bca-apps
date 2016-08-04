@@ -10,7 +10,6 @@
 <head>
     <title>Generate Sign in PDF</title>
     <link rel="stylesheet" type="text/css" href="../../../shared/ss/main.css">
-    <link rel="stylesheet" href="../../admin/ss/main.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="http://code.jquery.com/jquery.js"></script>
     <script type="text/javascript">
@@ -36,8 +35,7 @@
     </script>
 </head>
 
-<body id="admin-tools">
-<main>
+<body>
     <header>
         <h1 class="title"><h2>Admin Generator Tools</h2></h1>
         <div id="logout"><h2><a style="cursor: pointer" href="../index.php">Back
@@ -45,7 +43,7 @@
         <!--<div id="logout"><h2><a href="../index.php?action=logout">Log Out</a></h2></div>-->
     </header>
     <br>
-    <div id="wrapper" style="display: block; margin-left: auto; margin-right: auto">
+    <form action="." method="post">
         <table>
             <tr>
                 <td>
@@ -74,38 +72,10 @@
                 </td>
             </tr>
         </table>
-<!--        <table>-->
-<!--            <tr>-->
-<!--                <td>-->
-<!--                    <a href="./index.php?action=generate-session-signins" target="_blank">-->
-<!--                        <div class="feature">-->
-<!--                            <h2>Session Sign In Sheets</h2>-->
-<!--                            <h4>Generates sign in sheets for each presentation.</h4>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <a href="./index.php?action=generate-presenter-signin" target="_blank">-->
-<!--                        <div class="feature">-->
-<!--                            <h2>Presenter Sign In Sheet</h2>-->
-<!--                            <h4>Generates sign in sheet for visitors.</h4>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <a href="./index.php?action=generate-room-signs" target="_blank">-->
-<!--                        <div class="feature">-->
-<!--                            <h2>Room Signs</h2>-->
-<!--                            <h4>Generates the room signs.</h4>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--        </table>-->
-    </div>
+    </form>
+
     <!--<a href="../index.php" class="back">
         <button style="cursor: pointer" id="back">Back</button>
     </a>-->
-</main>
 </body>
 </html>

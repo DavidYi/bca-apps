@@ -104,7 +104,7 @@ function admin_get_teachers()
     }
 }
 
-function get_elective_list($order_by = null)
+function get_elective_list($sort_by, $sort_order)
 {
     $query = "select e.course_id, concat(u.usr_first_name, ' ', u.usr_last_name) as teacher_name, e.course_name, e.course_desc, count(x.usr_id) as num_students
             from user u, elect_course e 
@@ -112,14 +112,13 @@ function get_elective_list($order_by = null)
             where e.teacher_id = u.usr_id
             group by e.course_id";
 
-    if ($order_by == null) {
-        $query .= " order by u.usr_last_name";
-    } else if ($order_by == 2) {
-        $query .= " order by count(x.usr_id) desc";
-    } else {
-        $query .= " order by e.course_name";
-    }
 
+    if ($sort_by == 1)  $query .= " order by u.usr_last_name ";
+    elseif ($sort_by == 2) $query .= " order by e.course_name ";
+    elseif ($sort_by == 3) $query .= " order by num_students ";
+
+    if ($sort_order == 2)  $query .= " DESC";
+    
     global $db;
 
     try {
@@ -137,7 +136,7 @@ function get_elective_list($order_by = null)
 
 function get_best_course_availability()
 {
-    $query = "select ec.course_id, course_name, time_short_desc, count(*) as students
+    $query = "select ec.course_id, course_name, et.time_id, time_short_desc, count(*) as students
                 from elect_course ec, elect_time et, elect_user_free_xref eu, elect_user_free_xref ex, elect_student_course_xref escx
                 where ec.course_id = escx.course_id
                 and et.time_id = eu.time_id
@@ -189,16 +188,30 @@ function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc)
 function get_course_info($course_id)
 {
     $query = "select e.course_id, e.course_name, e.course_desc, e.teacher_id
-    from elect_course e, user u
-    where e.teacher_id = u.usr_id
-    and e.course_id = :id";
+                from elect_course e, user u
+                where e.teacher_id = u.usr_id
+                and e.course_id = :id";
 
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $course_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
 }
 
 
 function get_best_course_availability_students($course_id, $time_id)
 {
-    $query = "select ec.course_id, course_name, u.usr_id, usr_last_name, usr_first_name. usr_grade_lvl
+    global $db;
+    $query = "select ec.course_id, course_name, u.usr_id, usr_last_name, usr_first_name, usr_grade_lvl
 from elect_course ec, elect_time et, elect_user_free_xref eu, elect_user_free_xref ex, elect_student_course_xref escx, user u
 	where ec.course_id = :course_id
 	and ex.time_id = :time_id
@@ -210,8 +223,6 @@ from elect_course ec, elect_time et, elect_user_free_xref eu, elect_user_free_xr
 	and ex.time_id = eu.time_id
 	";
 
-
-    global $db;
 
     try {
         $statement = $db->prepare($query);
