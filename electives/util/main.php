@@ -3,7 +3,7 @@ $app_cde = 'OELE';
 $app_title = 'Off-hour Elective Registration';
 
 // Provides environment specific configuration information.
-include(__DIR__ . "/../../../config.php");
+include(__DIR__ . "/../../config.php");
 
 $app_url_path = $server_web_root . '/electives';
 $shared_ss_url = '/' .$server_web_root . '/shared/ss/main.css';
