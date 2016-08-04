@@ -28,25 +28,10 @@
             <a href="../index.php"><button id="return_home">Return Home</button></a>
         </div>
 
-
-<!--        <header>-->
-<!--            <h1 style="margin:0;" class="title">Formats</h1>-->
-<!--        </header>-->
-<!--        <div style="text-align:center;padding-bottom:2vh;">-->
-<!--            <a href="./index.php?format_id=--><?php //echo $format_id ?><!--&action=show_add_format">-->
-<!--                <button id="add_format">Add Format</button>-->
-<!--            </a>-->
-<!--            <a href="../index.php">-->
-<!--                <button id="return_home">Return Home</button>-->
-<!--            </a>-->
-<!--        </div>-->
         <nav style="width:40%" class="navbar">
             <div id="navinside">
                 <a href="#">
                     <div id="namenav" class="session-filter"><h2><strong>Format</strong></h2></div>
-                </a>
-                <a href="#">
-                    <div style="float:right;" id="delnav" class="session-filter"><h2><strong>Delete</strong></h2></div>
                 </a>
             </div>
         </nav>

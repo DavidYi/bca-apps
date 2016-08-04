@@ -18,6 +18,8 @@
     <header>
         <h1 class="title">Signup Dates</h1>
     </header>
+    <form action="index.php" method="post">
+        <input type="hidden" name="action" value="update_signup_dates">
     <div class="button-wrap" style="text-align:center;">
         <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Update Dates">Submit</button>
         <button id="return_home" style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
@@ -65,6 +67,7 @@
 
             <?php } ?>
         </div>
+        </form>
         <script type="text/javascript" src="../js/jquery.min.js"></script>
         <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
         <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
