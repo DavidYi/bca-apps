@@ -37,6 +37,8 @@ switch ($action) {
         <a href="signup_status"><h2>Signup Status</h2></a>
         <h4>View student registration statistics and automatically enroll students who have not yet registered.</h4></div>
     <div class="feature">
+        <a href="signup_dates"><h2>Signup Dates</h2></a></div>
+    <div class="feature">
         <a href="signins"><h2>PDF Generator</h2></a>
         <h4>Generate signin sheets and room signs.</h4></div>
     <div class="feature">
