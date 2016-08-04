@@ -19,20 +19,18 @@
 
 
                 <div id ="grades">
-                    <div style="padding-bottom:1.2em;"></div>
+                    <h2>&nbsp</h2>
                     <?php foreach ($signups as $signup){ ?>
                         <h2><?php echo($signup['grade_lvl']); ?></h2>
                     <?php } ?>
                 </div>
                 <div id ="grades">
-                    <div style="padding-bottom:1.2em;"></div>
+                    <h2>&nbsp</h2>
                     <?php foreach ($signups as $signup){ ?>
                         <h2><?php echo($signup['mode_desc']); ?></h2>
                     <?php } ?>
                 </div>
-            </div>
 
-            <div id="se-wrap">
                 <div id ="start">
                     <h2><strong>Start</strong></h2>
                     <?php foreach ($signups as $signup){ ?>

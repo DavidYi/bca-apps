@@ -56,6 +56,8 @@ tr td input {
     margin: 0 1em 0 3em;
     float: left;
     width: 5em;
+    height:10em;
+    line-height:10em;
 }
 
 #start{
@@ -68,9 +70,6 @@ tr td input {
     float: right;
     width: 15em;
     margin-right: 3em;
-}
-#grades h2{
-    padding-top:0.5em;
 }
 
 #se-wrap {

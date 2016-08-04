@@ -29,11 +29,12 @@
         </div>
         <div class="vertical-center">
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
-                    Student Page!
-                    <br>
-                    <br>
-                    Instructions here.
-                </div>
+
+            <h1>Student Instructions</h1>
+            <h3>If you wish to take an elective offered during mods 1-24, you need to do two things.  First, click "Modify Availability" to indicate all of the free mods when you can take an elective.  Don't forget to leave yourself lunch.  Lunch is required!</h3>
+            <h3>Second, select all of the courses that interest you.</h3>
+            <h3>Then, based upon student interests and common availability, BCA will schedule as many off-hour electives as possible.</h3>
+        </div>
             <?php } else { ?>
                 <h1>Mimic User Mode</h1>
             <?php } ?>
@@ -60,7 +61,7 @@
                     ?>
 
                     <tr>
-                        <td><?php echo "<p>" . $string["day"] ?></td>
+                        <td><?php echo $string["day"] ?></td>
                         <td><?php echo $string["mods_available"] ?></td>
                     </tr>
 
