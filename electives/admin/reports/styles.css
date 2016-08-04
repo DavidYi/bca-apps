@@ -44,6 +44,29 @@ th a:visited {
 tr {
     box-sizing: inherit;
     border: 1px solid #ccc;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease;
+}
+
+tr:hover{
+    background-color: #aaaaaa;
+
+}
+
+tr:hover {
+    -ms-transition-duration: 0.2s;
+    -ms-transform: scale(1.1);
+    -webkit-transition-duration: 0.2s;
+    -webkit-transform: scale(1.1);
+    box-shadow: 0 0 0 0;
+}
+tr:active {
+    -ms-transition-duration: 0.1s;
+    -ms-transform: scale(1.1);
+    -webkit-transition-duration: 0.1s;
+    -webkit-transform: scale(1.1);
+    box-shadow: 0 0 0 0;
 }
 
 h1 {
@@ -152,6 +175,9 @@ a:hover {
 .student-table {
     background-color: lightgrey;
     display: none;
+}
+
+.student-table:hover{
 }
 
 .downloads a{
