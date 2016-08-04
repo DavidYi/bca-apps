@@ -2,8 +2,8 @@
 
 function get_signup_dates() {
     $query = 'SELECT grade_lvl, mode_desc, start, end
-              FROM signup_dates, mode
-              WHERE signup_dates.mode_cde = mode.mode_cde';
+              FROM signup_dates, signup_dates_mode
+              WHERE signup_dates.mode_cde = signup_dates_mode.mode_cde';
 
     return get_list($query);
 }
