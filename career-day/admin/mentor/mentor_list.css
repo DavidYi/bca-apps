@@ -1,0 +1,322 @@
+@charset "UTF-8";
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+nav.navbar {
+    height: 3.75em;
+    width: 90%;
+    max-width: 90em;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 3.75em;
+    margin: 0 auto;
+    padding: 0 1.6em;/*1.5625em;*/
+    background: #262626;
+    border-right: 0.4375em solid #262626;
+    box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
+}
+
+nav.navbar::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+@media screen and (max-width: 800px) {
+    nav.navbar {
+        height: 3.75em;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    nav.navbar {
+        height: 3.75em;
+        width: 100%;
+    }
+}
+
+label {
+    text-align: center;
+    display: block;
+    color: black;
+    font-size: 140%;
+}
+
+.column {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    color: #e1e1e1;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.name {
+    width: 23%;
+}
+
+.company {
+    width: 20%;
+}
+
+.position {
+    width: 16%;
+}
+
+.teacher {
+    width: 16%;
+}
+
+.sessions {
+    text-align: center;
+    width: 10%;
+}
+
+.room {
+    width: 6%;
+}
+
+.capacity {
+    width: 6%;
+}
+
+
+.delete {
+    float: right;
+    display: block;
+    margin-right: 0%;
+    width: 3%;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+}
+
+.list-container {
+    height: auto;
+    width: 90%;
+    max-width: 90em;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+    background: #fdfdfd;
+    background: #fdfdfd;
+    box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
+}
+
+.list-container::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.list-container .mentor {
+    height: 3.75em;
+    line-height: 3.75em;
+    padding: 0 1.5625em; /*1.5625em;*/
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease;
+}
+
+.list-container .mentor .session-filter {
+    color: #555;
+}
+
+.list-container .mentor:hover {
+    background: #f0c30f;
+    background: #f0c30f;
+    border-bottom: 1px solid #f0c30f;
+    box-shadow: 0 -0.0625em 0 #f0c30f;
+}
+
+.list-container .mentor:hover .session-filter {
+    color: #fdfdfd;
+}
+
+input {
+    display: block;
+    margin: 0.4375em auto;
+    padding: 0 1.5625em;
+    box-shadow: 0 0em 0.25em rgba(0, 0, 0, 0.1);
+}
+input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #aaa;
+}
+
+input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #aaa;
+}
+
+input:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #aaa;
+}
+
+input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #aaa;
+}
+
+input:focus {
+    margin: 0.25em auto 0.625em;
+    box-shadow: 0 0.4375em 0.9375em rgba(0, 0, 0, 0.1);
+}
+
+input:focus::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #262626;
+}
+
+input:focus::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #262626;
+}
+
+input:focus:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #262626;
+}
+
+input:focus:-moz-placeholder {
+    /* Firefox 18- */
+    color: #262626;
+}
+
+form {
+    width: 100%;
+}
+
+.button-container {
+    width: 100%;
+    text-align: center;
+}
+
+button.add {
+    height: 3.4375em;
+    width: 30em;
+    background: #262626;
+    background: #262626;
+    margin: 0.9375em auto 0;
+    text-align: center;
+}
+
+button.add:hover {
+    margin: 0.625em auto 0.3125em;
+    background: #fdfdfd;
+    background: #fdfdfd;
+    color: #333;
+    box-shadow: 0 0.4375em 0.9375em rgba(0, 0, 0, 0.1);
+}
+
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.3.4 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2015, No├½l Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+@media all {
+    .featherlight {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2147483647;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        background: #333;
+        background: transparent;
+    }
+
+    .featherlight:last-of-type {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .featherlight:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.25em;
+    }
+
+    .featherlight .featherlight-content {
+        position: relative;
+        text-align: left;
+        vertical-align: middle;
+        display: inline-block;
+        overflow: auto;
+        padding: 25px 25px 0;
+        border-bottom: 25px solid transparent;
+        min-width: 30%;
+        margin-left: 5%;
+        margin-right: 5%;
+        max-height: 95%;
+        background: #fff;
+        cursor: auto;
+        white-space: normal;
+    }
+
+    .featherlight .featherlight-inner {
+        display: block;
+    }
+
+    .featherlight .featherlight-close-icon {
+        position: absolute;
+        z-index: 9999;
+        top: 0;
+        right: 0;
+        line-height: 25px;
+        width: 25px;
+        cursor: pointer;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background: #fff;
+        background: rgba(255, 255, 255, 0.3);
+        color: #000;
+    }
+
+    .featherlight .featherlight-image {
+        width: 100%;
+    }
+
+    .featherlight-iframe .featherlight-content {
+        border-bottom: 0;
+        padding: 0;
+    }
+
+    .featherlight iframe {
+        border: 0;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .featherlight .featherlight-content {
+        margin-left: 10px;
+        margin-right: 10px;
+        max-height: 98%;
+        padding: 10px 10px 0;
+        border-bottom: 10px solid transparent;
+    }
+}
+
+/*# sourceMappingURL=main.css.map */
+.center {
+    display: block;
+    margin: 0.4375em auto;
+    padding: 0 1.5625em;
+    box-shadow: 0 0em 0.25em rgba(0, 0, 0, 0.1);
+}

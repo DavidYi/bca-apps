@@ -5,7 +5,6 @@
  * Date: 12/18/2015
  * Time: 1:45 PM
  */
-require_once "database.php";
 
 function get_session_times()
 {

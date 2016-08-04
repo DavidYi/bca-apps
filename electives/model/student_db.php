@@ -77,4 +77,24 @@ function reset_courses_for_student($usr_id) {
         display_db_exception($e);
         exit();
     }
+}function course_interest_download() {
+    global $db;
+
+    $query = "select u.usr_id, u.usr_last_name, u.usr_first_name, x.course_id, c.course_name
+              from elect_student_course_xref x, elect_course c, user u
+              where x.course_id = c.course_id
+              and x.usr_id = u.usr_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
 }
+

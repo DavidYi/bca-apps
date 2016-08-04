@@ -7,13 +7,7 @@
 
         <!-- Styles -->
         <link href="../../../shared/ss/main.css" rel="stylesheet">
-        <link href="styles_add.css" rel="stylesheet">
-
-        <style>
-            body {
-                font-size: 1.66em;
-            }
-        </style>
+        <link href="styles2.css" rel="stylesheet">
 
     </head>
 
@@ -26,11 +20,9 @@
                     <div id ="columns">
                         <h1 class="title">Add Workshop</h1>
 
-                        <label>Name</label>
                         <input type="text" placeholder="Name" name="wkshp_name" autofocus required>
                         <br>
-
-                        <label>Description</label>
+                        
                         <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc" value="<?php echo htmlspecialchars($wkshp_desc); ?>" placeholder="Description"></textarea>
                         <br>
 
@@ -43,8 +35,8 @@
                         <br>
 
                         <div id="button-div">
-                            <button class="submit s" type="submit" name="choice" value="Add">Submit</button>
-                            <button class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
+                            <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Add">Submit</button>
+                            <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
                         </div>
 
 

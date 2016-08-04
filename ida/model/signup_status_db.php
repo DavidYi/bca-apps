@@ -17,9 +17,9 @@ function get_registered_users(){
     inner join user on user.usr_grade_lvl = signup_dates.grade_lvl
     inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
     where usr_active = 1
-    and usr_type_cde = \'STD\'
+    and usr_type_cde in (\'STD\',\'TCH\')
     group by grade_lvl, user.usr_id
-    having num_sessions = 4
+    having num_sessions = 2
     ) temp
     group by grade_lvl ) a
 
@@ -39,9 +39,9 @@ function get_registered_users(){
     inner join user on user.usr_grade_lvl = signup_dates.grade_lvl
     inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
     where usr_active = 1
-    and usr_type_cde = \'STD\'
+    and usr_type_cde in (\'STD\',\'TCH\')
     group by grade_lvl, user.usr_id
-    having num_sessions < 4
+    having num_sessions < 2
     ) temp
     group by grade_lvl
      ) a
@@ -64,7 +64,7 @@ function get_registered_users(){
     inner join signup_dates on signup_dates.grade_lvl= user.usr_grade_lvl
     left join pres_user_xref on pres_user_xref.usr_id= user.usr_id
     where pres_user_xref.usr_id is null
-    and usr_type_cde = \'STD\'
+    and usr_type_cde in (\'STD\',\'TCH\')
     and usr_active = 1
     group by grade_lvl
     ) a

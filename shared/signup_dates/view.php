@@ -47,8 +47,8 @@
                     <?php } ?>
                 </div>
                 <div id="button-div">
-                    <button class="submit s" type="submit" name="choice" value="Modify Dates">Submit</button>
-                    <button class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
+                    <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Modify Dates">Submit</button>
+                    <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
                 </div>
             </div>
         </div>

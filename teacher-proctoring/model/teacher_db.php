@@ -450,10 +450,14 @@ function change_user_tests($tests)
 function list_teacher_status($sort_by, $sort_order)
 {
 
-    $query = "select u.usr_id, u.usr_last_name as usrLast, u.usr_first_name as usrFirst, count(test_time_id) as usrHours
-              from test_updt_xref t, user u
-              where t.usr_id = u.usr_id
-              group by t.usr_id";
+    $query = "SELECT u.usr_id, usr_last_name AS usrLast, usr_first_name AS usrFirst, coalesce(usrHours, '0') AS usrHours
+                FROM user u
+                  LEFT JOIN (SELECT t.usr_id, count(test_time_id) as usrHours
+                  FROM test_updt_xref t, user uu WHERE t.usr_id = uu.usr_id
+                  GROUP BY t.usr_id) AS sq
+                  ON u.usr_id = sq.usr_id
+                WHERE u.usr_type_cde = 'TCH'
+                GROUP BY u.usr_id";
 
     if ($sort_by == 1) $query .= (' order by usrLast');
     else if ($sort_by == 2) $query .= (' order by usrFirst');

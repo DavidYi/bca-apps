@@ -20,7 +20,7 @@ function goToLandingPage()
     global $user;
 
     if ($user->getRole($app_cde) == NULL) {
-        header("Location: /" . $server_web_root . "/teacher-proctoring/itinerary/");
+        header("Location: /" . $server_web_root . "/teacher-proctoring/mainPage/");
     } else {
         header("Location: /" . $server_web_root . "/teacher-proctoring/admin/");
 

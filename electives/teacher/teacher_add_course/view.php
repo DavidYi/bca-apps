@@ -16,7 +16,7 @@
 
         <label class="spacing">
           <span>Course Name</span>
-          <input type="text" name="class_name">
+          <input type="text" required name="class_name">
         </label>
       
         <label class="spacing">
@@ -25,7 +25,7 @@
         </label>
 
         <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
-        <button class="submit back" type="submit" name="choice" value="Back">Back</button>
+        <button class="submit back" type="submit" name="choice" value="Back" formnovalidate>Back</button>
       </form>
   </div>
   </body>

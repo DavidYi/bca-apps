@@ -9,7 +9,7 @@
 
     </script>
     <head>
-        <title>Admin: Workshop</title>
+        <title>Admin: Workshops</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -20,9 +20,9 @@
 
     <body>
         <header>
-            <h1 style="margin:0;"class="title">Workshops</h1>
+            <h1 class="title">Workshops</h1>
         </header>
-        <div style="text-align:center;padding-bottom:2vh;">
+        <div class="button-wrap">
             <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_add_workshop"><button id="add_workshop">Add Workshop</button></a>
             <a href="../index.php"><button id="return_home">Return Home</button></a>
         </div>
@@ -51,7 +51,7 @@
             ?>
 
                 <div class="mentor" id="workshop">
-                    <a class="info" style="position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo ($workshop['wkshp_id']);?>,#P<?php echo ($workshop['wkshp_id']);?>')"><h4 class="plus_icon">p</h4></a>
+                    <a class="info" style="position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo ($workshop['wkshp_id']);?>,#P<?php echo ($workshop['wkshp_id']);?>')"><h4 class="info_icon">i</h4></a>
                     <a href="./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop">
                     <div class="session-filter workshop_name"><h2><?php echo($workshop_name); ?></h2></div>
                     </a>

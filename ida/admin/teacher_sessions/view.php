@@ -12,9 +12,9 @@
 
     <div id="box">
         <div id="fixed_div">
-            <button class="submit s" type="submit" name="choice" value="Update Teachers">Update</button>
+            <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Update Teachers">Submit</button>
             <p class="title">Teacher Sessions</p>
-            <button class="submit back" type="submit" name="choice" value="Back">Back</button>
+            <button style="cursor: pointer" class="submit back" type="submit" name="choice" value="Back">Back</button>
 
             <div id="header_row">
                 <label>

@@ -33,11 +33,6 @@ img, legend {
 legend, td, th {
   padding: 0; }
 
-html {
-  font-family: 'Lato', sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
-
 html, body {
   background-color: linear-gradient(227deg, #b6e2f9, #f1c5be, #fdfdfd);
   background: linear-gradient(227deg, #b6e2f9, #f1c5be, #fdfdfd);
@@ -48,6 +43,11 @@ html, body {
   -o-animation: AnimationName 19s ease infinite;
   animation: AnimationName 19s ease infinite;
 }
+
+html {
+  font-family: 'Lato', sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
 
 @-webkit-keyframes AnimationName {
   0%{background-position:0% 9%}
@@ -170,7 +170,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-html, body {
+html, feature {
   height: 100%;
   width: 100%;
   min-height: 100%;
@@ -199,7 +199,7 @@ header {
   -ms-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;
   transform-style: preserve-3d; }
-  header h1 {
+  feature {
     position: relative;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -222,24 +222,6 @@ html {
   @media screen and (min-width: 100em) {
     html {
       font-size: 92.5%; } }
-
-h {
-  font-size: 3em; }
-
-h {
-  font-size: 2.25em; }
-
-h {
-  font-size: 1.5em; }
-
-h {
-  font-size: 1.125em; }
-
-h {
-  font-size: 1em; }
-
-h {
-  font-size: 0.75em; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
@@ -286,11 +268,13 @@ a {
     opacity: 0.8; }
 
 h1.title {
-  text-align: center; }
+  text-align: center;
+  color: rgb(84, 79, 84);}
 
 button {
+  font-weight: 300;
   height: 2em;
-  width: 8em;
+  width: 10em;
   color: rgb(253, 253, 253);
   font-size: 1.5em;
   border: 0;
@@ -322,6 +306,26 @@ input {
   transition: all 175ms ease;
 }
 
+textarea {
+  height: 15em;
+  width: 35em;
+  margin: 0.5em 0 0.5em 0;
+  /*margin-bottom: 0.5em;*/
+  padding: 0 auto;
+  padding: 12px;
+  color: rgb(84, 79, 84);
+  background-color: transparent;
+  border: 1px solid rgb(182, 226, 249);
+  border-radius: 12px;
+  font: normal normal 300 1em "Lato", sans-serif;
+  text-align: left;
+  outline: none;
+  -webkit-transition: all 175ms ease;
+  -moz-transition: all 175ms ease;
+  transition: all 175ms ease;
+  resize: none;
+}
+
 html {
   box-sizing: border-box; }
 
@@ -346,8 +350,8 @@ html {
     content: "";
     display: table; }
 
-html {
-  background-color: rgba(232, 135, 121, 0.7); }
+/*html {*/
+  /*background-color: rgba(232, 135, 121, 0.7); }*/
 
 
 .register {

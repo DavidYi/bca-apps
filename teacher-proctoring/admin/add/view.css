@@ -117,5 +117,33 @@ tr td input {
 #button-div {
     text-align: center;
     width: 30em;
-    margin: 0 auto;
+    margin-top: 2%;
+    margin-left: 30%;
+}
+
+.ui.input input{
+    max-width: 30%;
+    text-align: center;
+}
+
+.mod {
+    margin:0px auto !important;
+    display:block !important;
+    font: normal normal 300 1em "Lato", sans-serif;
+}
+
+select {
+    cursor: pointer;
+    position: relative;
+    outline: 0;
+    border: 1px solid rgba(34,36,38,.15);
+    height: 2.5em;
+}
+
+.right {
+    padding-left: 12%;
+}
+
+.center {
+    padding-left: 20%;
 }
