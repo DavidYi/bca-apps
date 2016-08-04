@@ -156,4 +156,5 @@ a:hover {
 
 .student-table {
     background-color: lightgrey;
+    display: none;
 }
