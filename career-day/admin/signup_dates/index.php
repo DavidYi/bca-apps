@@ -1,6 +1,5 @@
 <?php
 require_once('../../util/main.php');
-require_once('../../model/database.php');
 require_once('../../model/signups_db.php');
 
 verify_admin();

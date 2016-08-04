@@ -6,7 +6,8 @@
  * Time: 10:58 AM
  */
 
-function get_free_mods() {
+function get_free_mods()
+{
     global $db;
 
     $query = "select u.usr_id, u.usr_first_name, u.usr_last_name,
@@ -68,19 +69,21 @@ function get_free_mods() {
                 where u.usr_type_cde = 'TCH'
                 order by u.usr_last_name";
 
-        try {
-            $statement = $db->prepare($query);
-            $statement->execute();
-            $result = $statement->fetchAll();
-            $statement->closeCursor();
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
 
-            return $result;
-        } catch (PDOException $e) {
-            display_db_exception($e);
-            exit();
-        }
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
 }
-function admin_get_teachers() {
+
+function admin_get_teachers()
+{
     $query = "select user.usr_id, concat(usr_first_name, ' ', usr_last_name) as name
               from user
               where usr_type_cde = 'TCH'
@@ -101,7 +104,8 @@ function admin_get_teachers() {
     }
 }
 
-function get_elective_list($order_by = null) {
+function get_elective_list($order_by = null)
+{
     $query = "select e.course_id, concat(u.usr_first_name, ' ', u.usr_last_name) as teacher_name, e.course_name, e.course_desc, count(x.usr_id) as num_students
             from user u, elect_course e 
             left join elect_student_course_xref x on e.course_id = x.course_id
@@ -159,7 +163,9 @@ function get_best_course_availability()
     }
 }
 
-function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc) {
+
+function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc)
+{
     $query = "UPDATE elect_course
             SET course_name = :name, course_desc = :desc, teacher_id = :teacher_id
             WHERE course_id = :id;";
@@ -180,22 +186,126 @@ function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc) 
     }
 }
 
-function get_course_info($course_id) {
+function get_course_info($course_id)
+{
     $query = "select e.course_id, e.course_name, e.course_desc, e.teacher_id
     from elect_course e, user u
     where e.teacher_id = u.usr_id
     and e.course_id = :id";
 
+}
+
+
+function get_best_course_availability_students($course_id, $time_id)
+{
+    $query = "select u.usr_first_name, u.usr_last_name, u.usr_grade_lvl
+	from elect_course ec, elect_time et, elect_user_free_xref eu, elect_student_course_xref escx, user u
+	where ec.course_id = :course_id
+	and ec.course_id = escx.course_id
+	and et.time_id = :time_id
+	and et.time_id = eu.time_id
+	and u.usr_id = escx.usr_id
+	and escx.usr_id = eu.usr_id
+	order by ec.course_name, count(*) desc";
+
+
     global $db;
 
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':id', $course_id);
+        $statement->bindValue(':course_id', $course_id);
+        $statement->bindValue(':time_id', $time_id);
         $statement->execute();
         $result = $statement->fetchAll();
         $statement->closeCursor();
+
         return $result;
     } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+//These will affect all rows
+//TODO: Add undo button or something
+
+function clear_student_availability()
+{
+    global $db;
+    $db->beginTransaction();
+
+
+    try {
+        $query = "delete * from elect_user_free_xref"; //Something to verify if student
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $db->commit();
+
+    } catch (PDOException $e) {
+        $db->rollback();
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function clear_student_interest()
+{
+    global $db;
+    $db->beginTransaction();
+
+    try {
+        $query = "delete * from elect_student_course_xref"; //Something to verify if student
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $db->commit();
+
+    } catch (PDOException $e) {
+        $db->rollback();
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function clear_teacher_availability()
+{
+    global $db;
+    $db->beginTransaction();
+
+    try {
+        $query = "delete * from elect_user_free_xref"; //Something to verify if teacher
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $db->commit();
+
+
+    } catch (PDOException $e) {
+        $db->rollback();
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function clear_all_courses()
+{
+    global $db;
+    $db->beginTransaction();
+
+    try {
+        $query = "delete * from elect_course"; //Lol not done time to break the app
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $statement->closeCursor();
+
+        $db->commit();
+
+    } catch (PDOException $e) {
+        $db->rollback();
         display_db_exception($e);
         exit();
     }

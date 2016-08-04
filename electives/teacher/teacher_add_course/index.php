@@ -18,8 +18,6 @@ if ($action == NULL) {
     }
 }
 
-$usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
-
 switch ($action) {
     case 'add_course':
         $choice = filter_input(INPUT_POST, 'choice');
@@ -36,7 +34,7 @@ switch ($action) {
                 } else $allFieldsFilled = false;
 
                 if ($allFieldsFilled) {
-                    add_course($courseName, $description, $usr_id);
+                    add_course($courseName, $description, $user->usr_id);
                     echo "<script type='text/javascript'>
                             window.location.href='..';
                             </script>";
