@@ -84,13 +84,12 @@ function get_course_list_for_student ($usr_id, $sort_by, $sort_order) {
             !isnull(x.usr_id) AS enrolled
             FROM user u, elect_course c
             LEFT JOIN elect_student_course_xref x ON c.course_id = x.course_id AND x.usr_id = :usr_id
-            WHERE c.teacher_id = u.usr_id
-            ORDER BY ";
+            WHERE c.teacher_id = u.usr_id ";
 
     // add order by clause
-    if ($sort_by == 1) $query .= "course_name ";
-    elseif ($sort_by == 2) $query .= "teacher ";
-    elseif ($sort_by == 3) $query .= "enrolled ";
+    if ($sort_by == 1) $query .= "ORDER BY course_name ";
+    elseif ($sort_by == 2) $query .= "ORDER BY teacher ";
+    elseif ($sort_by == 3) $query .= "ORDER BY enrolled ";
 
     if ($sort_order == 2) $query .= "DESC";
 
