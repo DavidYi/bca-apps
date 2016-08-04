@@ -24,8 +24,8 @@ m             modify  (pencil)
 #box {
     display: block;
     background-color: rgba(253, 253, 253, 0.9);
-    width: 60em;
-    height: 45em;
+    width: 74em;
+    height: 50em;
     position:absolute;
     margin: auto;
     top: 50%;
@@ -69,10 +69,14 @@ tr td input {
     width: 15em;
     margin-right: 3em;
 }
+#grades h2{
+    padding-top:0.5em;
+}
 
 #se-wrap {
     float: right;
     width: 42em;
+    margin-top:5%;
 }
 
 .grade {
