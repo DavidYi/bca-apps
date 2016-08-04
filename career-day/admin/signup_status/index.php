@@ -13,7 +13,7 @@ if ($action == NULL) {
     }
 }
 $result = "";
-
+//change
 switch($action) {
     case "presentation_status":
         $student_list = presentations_registration_status();

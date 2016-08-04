@@ -1,23 +1,11 @@
 <?php
 
-function get_signup_dates_by_grade($grade_lvl) {
-    $query = 'SELECT start, end, app_cde
-              FROM signup_dates
-              WHERE grade_lvl = :grade_lvl';
+function get_signup_dates() {
+    $query = 'SELECT grade_lvl, mode_desc, start, end
+              FROM signup_dates, mode
+              WHERE signup_dates.mode_cde = mode.mode_cde';
 
-    global $db;
-
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(':grade_lvl', $grade_lvl);
-        $statement->execute();
-        $result = $statement->fetch();
-        $statement->closeCursor();
-        return $result;
-    } catch (PDOException $e) {
-        display_db_exception($e);
-        exit();
-    }
+    return get_list($query);
 }
 
 //
@@ -60,6 +48,7 @@ function update_signup_dates ($start9, $end9, $start10, $end10, $start11, $end11
         exit();
     }
 }
+
 
 
 ?>

@@ -14,10 +14,8 @@ verify_admin();
 
 switch ($action) {
     case 'date_select':
-        $grade9 = get_signup_dates_by_grade(9);
-        $grade10 = get_signup_dates_by_grade(10);
-        $grade11 = get_signup_dates_by_grade(11);
-        $grade12 = get_signup_dates_by_grade(12);
+        $signups = get_signup_dates();
+        
         include(__DIR__ . "/view.php");
         break;
     case 'modify_dates':
