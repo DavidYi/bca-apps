@@ -191,7 +191,7 @@ a:hover {
 
 ul {
     display: inline-block;
-    width: 100%;
+    margin-left: -35px;
 }
 
 li {
