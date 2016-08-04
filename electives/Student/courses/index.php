@@ -25,7 +25,7 @@ if ($action == NULL) {
 $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
 $available_times = get_times($usr_id);
 
-// true: student, false:teacher
+// true:student, false:teacher
 $student_or_teacher = ($user->usr_type_cde == 'STD') ? true : false;
 
 // If the user is being mimiced by an admin, use that id as the updt id.

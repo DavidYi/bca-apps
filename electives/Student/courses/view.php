@@ -57,10 +57,7 @@
         <button class="submit back" onclick="location.href = './index.php'" type="submit">Back</button>
     </div>
 </form>
-
-
 </body>
-
 
 <script>
 
