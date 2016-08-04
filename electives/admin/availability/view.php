@@ -15,7 +15,6 @@
                 top: 8%;
                 width: 10%;
             }
-
         </style>
     </head>
     <body>
