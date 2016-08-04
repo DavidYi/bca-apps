@@ -1,124 +1,127 @@
-/**********color reference chart**********
-comment ********* color ********
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
-P1, red           rgb(232, 135, 121)
-P2, blue          rgb(182, 226, 249)
-P3, yellow        rgb(247, 224, 97)
-G1, dark          rgb(84, 79, 84)
-G2, med           rgb(147, 146, 149)
-G3, light         rgb(253, 253, 253)
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(242, 242, 242);
+}
 
-*/
-
-/**********icon reference chart**********
-char ******** icon ********
-
-c             close   (X)
-p             plus    (+)
-i             info    (i)
-d             delete  (trashcan)
-m             modify  (pencil)
-
-*/
+.title {
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-family: Roboto;
+    font-size: 23px;
+    color: black;
+    padding-bottom: 8px;
+    border-bottom: 4px solid #76c9d4;
+    width: 280px;
+    margin: 14px auto;
+    padding: 7px;
+    margin-left: 175px;
+}
 
 #box {
+    border-radius: 0px;
     display: block;
-    background-color: rgba(253, 253, 253, 0.9);
-    width: 74em;
-    height: 50em;
+    background-color: white;
     position:absolute;
-    margin: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 31%;
+    margin: 10px 0 20px -235px;
+    -moz-box-shadow: 1px 1px 1px #a8a8a8;
+    -webkit-box-shadow: 1px 1px 1px #a8a8a8;
+    box-shadow: 1px 1px 1px #a8a8a8;
 }
 
-th {
-    text-align: left;
+input {
+    color: #5f5f5f;
+    box-sizing: border-box;
+    width: 220px;
+    box-shadow: 1px 2px 4px 9px rgba(0, 0, 0, 0.08);
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+    margin-right: 20px;
 }
-
-tr td input {
-    width: 12em;
+span {
+    font-family: Roboto;
+    display: inline-block;
+    box-sizing: border-box;
+    color: #5F5F5F;
+    width: 200px;
     text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
-#wrapper {
-    width: 85%;
-    height: 100%;
-    position: absolute;
-    margin: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#grades {
-    margin: 0 1em 0 3em;
-    float: left;
-    width: 5em;
-    height:10em;
-    line-height:10em;
-}
-
-#start{
-    float: left;
-    margin-left: 5em;
-    width: 15em;
-}
-
-#end {
-    float: right;
-    width: 15em;
-    margin-right: 3em;
-}
-
-#se-wrap {
-    float: right;
-    width: 42em;
-    margin-top:5%;
+.header {
+    text-align: center;
 }
 
 .grade {
-    margin: 1em 0 1.25em 0;
+    text-align: center;
+    width: 100px;
+    margin-left: 0px;
+}
+
+.mode {
+    text-align: center;
+    width: 150px;
+    margin-left: 0px;
+}
+
+.start {
+    text-align: center;
+    width: 200px;
+    margin-left: 0px;
+}
+
+.end {
+    text-align: center;
+    width: 200px;
+    margin-left: 0px;
+}
+
+.submit {
+    display: inline-block;
+    /*border-radius: 2px;*/
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.08);
+    padding: 14px 22px;
+    border: 0;
+    /*margin: 100px 183px 0;*/
+    text-align: center;
 }
 
 .s {
-    background-color: rgb(182, 226, 249);
-    margin: 0 auto;
-    margin-top: 4em;
-    margin-right: 1em;
-    margin-left: -6em;
-    display: inline-block;
+    margin-left: 100px;
+    background-color: #6caee0;
+    margin-top: 0px;
 }
 
-.s:hover{
-    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
-    cursor: hand;
+.back {
+    background-color: #f7b57d;
+    margin-top: 0px;
+    margin-left: 175px;
 }
 
-.cancel {
-    background-color: rgb(247, 224, 97);
-    margin: 0 auto;
-    margin-left: 1em;
-    display: inline-block;
+#fixed_div {
+    position: fixed;
+    width: 1000px;
+    background-color: white;
+    top: 0px;
+    margin-top: 0px;
+    -moz-box-shadow: 1px 0px 0px #a8a8a8;
+    -webkit-box-shadow: 1px 0px 0px #a8a8a8;
+    box-shadow: 1px 0px 1px #a8a8a8;
 }
 
-.cancel:hover {
-    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
-    cursor: hand;
+#teacher_div {
+    margin-top: 110px;
 }
 
-#columns {
-    width: 100%;
-    position: absolute;
-    margin: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#button-div {
-    text-align: center;
-    width: 30em;
-    margin: 0 auto;
+.odd {
+    background-color: #e9e9e9;
 }

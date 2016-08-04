@@ -18,23 +18,24 @@ switch ($action) {
         
         include(__DIR__ . "/view.php");
         break;
-    case 'modify_dates':
+    case 'update_signup_dates':
         $choice = filter_input(INPUT_POST, 'choice');
-        if($choice == "Modify Dates"){
-            $start9 = filter_input(INPUT_POST, 'start_9');
-            $start10 = filter_input(INPUT_POST, 'start_10');
-            $start11 = filter_input(INPUT_POST, 'start_11');
-            $start12 = filter_input(INPUT_POST, 'start_12');
-            $end9 = filter_input(INPUT_POST, 'end_9');
-            $end10 = filter_input(INPUT_POST, 'end_10');
-            $end11 = filter_input(INPUT_POST, 'end_11');
-            $end12 = filter_input(INPUT_POST, 'end_12');
-            update_signup_dates ($start9, $end9, $start10, $end10, $start11, $end11, $start12, $end12);
+
+
+        if($choice == "Update Dates"){
+            $gradeList = $_POST['hdGrade'];
+            $modeList = $_POST['hdMode'];
+            $startList = $_POST['start'];
+            $endList = $_POST['end'];
+            update_signup_dates($gradeList, $modeList, $startList, $endList);
         }
+
         header("Location: ..");
+        exit();
         break;
+
     default:
-        display_error('Unknown account action: ' . $action);
+        display_error('Unknown action: ' . $action);
         exit();
         break;
 }
