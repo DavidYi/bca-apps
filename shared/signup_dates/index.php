@@ -16,7 +16,7 @@ switch ($action) {
     case 'date_select':
         $signups = get_signup_dates();
         
-        include(__DIR__ . "/view.php");
+        include(__DIR__ . "/signup_dates.php");
         break;
     case 'update_signup_dates':
         $choice = filter_input(INPUT_POST, 'choice');

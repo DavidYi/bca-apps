@@ -21,8 +21,8 @@ m             modify  (pencil)
 
 */
 .grade{
-    padding-left:2em;
-    padding-right:1em;
+    padding-left:3em;
+    padding-right:2em;
 }
 .mode{
     padding-right:2em;
@@ -31,7 +31,7 @@ m             modify  (pencil)
     padding-right:7em;
 }
 .end2{
-padding-right:9em;
+padding-right:8em;
 }
 #line{
     display: inline-block;
