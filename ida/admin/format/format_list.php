@@ -9,7 +9,7 @@
 
     </script>
     <head>
-        <title>Admin: Format</title>
+        <title>Admin: Formats</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -19,17 +19,27 @@
     </head>
 
     <body>
+
         <header>
-            <h1 style="margin:0;" class="title">Formats</h1>
+            <h1 class="title">Formats</h1>
         </header>
-        <div style="text-align:center;padding-bottom:2vh;">
-            <a href="./index.php?format_id=<?php echo $format_id ?>&action=show_add_format">
-                <button style="cursor: pointer" id="add_format">Add Format</button>
-            </a>
-            <a href="../index.php">
-                <button style="cursor: pointer" id="return_home">Back</button>
-            </a>
+        <div class="button-wrap">
+            <a href="./index.php?format_id=<?php echo $format_id ?>&action=show_add_format"><button id="add_format">Add Format</button></a>
+            <a href="../index.php"><button id="return_home">Return Home</button></a>
         </div>
+
+
+<!--        <header>-->
+<!--            <h1 style="margin:0;" class="title">Formats</h1>-->
+<!--        </header>-->
+<!--        <div style="text-align:center;padding-bottom:2vh;">-->
+<!--            <a href="./index.php?format_id=--><?php //echo $format_id ?><!--&action=show_add_format">-->
+<!--                <button id="add_format">Add Format</button>-->
+<!--            </a>-->
+<!--            <a href="../index.php">-->
+<!--                <button id="return_home">Return Home</button>-->
+<!--            </a>-->
+<!--        </div>-->
         <nav style="width:40%" class="navbar">
             <div id="navinside">
                 <a href="#">
