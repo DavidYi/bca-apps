@@ -56,16 +56,16 @@ tr:hover{
 
 tr:hover {
     -ms-transition-duration: 0.2s;
-    -ms-transform: scale(1.025);
+    -ms-transform: scale(1.01);
     -webkit-transition-duration: 0.2s;
-    -webkit-transform: scale(1.025);
+    -webkit-transform: scale(1.01);
     box-shadow: 0 0 0 0;
 }
 tr:active {
     -ms-transition-duration: 0.1s;
-    -ms-transform: scale(1.025);
+    -ms-transform: scale(1.01);
     -webkit-transition-duration: 0.1s;
-    -webkit-transform: scale(1.025);
+    -webkit-transform: scale(1.01);
     box-shadow: 0 0 0 0;
 }
 
