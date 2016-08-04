@@ -43,7 +43,7 @@ th a:visited {
     color: #000000;
 }
 
-.columns{
+.columns {
     background-color: black;
     color: white;
 }
@@ -64,6 +64,7 @@ tr:not(.columns):hover {
     -webkit-transform: scale(1.005);
     box-shadow: 0 0 0 0;
 }
+
 tr:active {
     -ms-transition-duration: 0.1s;
     -ms-transform: scale(1.005);
@@ -124,7 +125,6 @@ h1 {
     margin-bottom: 4%;
 }
 
-
 .popup-c {
     height: 100%;
     width: 90%;
@@ -177,20 +177,20 @@ a:hover {
 }
 
 .student-table {
-    background-color: #8CD4F5 ;
+    background-color: #8CD4F5;
     display: none;
 }
 
-.student-table:hover{
+.student-table:hover {
     transform: none;
 }
 
-.downloads a{
+.downloads a {
     text-decoration: none;
     color: white;
 }
 
-.downloads a:hover{
+.downloads a:hover {
     color: #8CD4F5;
 }
 
@@ -227,6 +227,7 @@ button {
     cursor: pointer;
 }
 
-button:hover{
+/*WHY IS THIS SO AMUSING OML*/
+button:hover {
     background-color: tomato;
 }
