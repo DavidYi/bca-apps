@@ -28,10 +28,11 @@ switch ($action) {
         admin_edit_course($course_id, $teacher, $name, $desc);
         header("Location: ../index.php");
         break;
+    
     default:
-        $course_id = $_GET['course_id'];
+        $course_id = filter_input(INPUT_GET, 'course_id');
         $teacher_list = admin_get_teachers();
-        $course_info = get_course_info($course_id)[0];
+        $course_info = get_course_info($course_id);
         $teacher_id = $course_info['teacher_id'];
         $course_name = $course_info['course_name'];
         $course_desc = $course_info['course_desc'];

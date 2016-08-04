@@ -37,8 +37,11 @@
             </select>
         </label>
 
-        <button class="submit s" type="submit" name="choice" value="Edit Course">Save</button>
-        <button class="submit back" type="button" onclick="location.href='../index.php'" formnovalidate>Back</button>
+        <div class="button_wrapper">
+            <button class="submit back" type="submit" name="choice" value="Back" formnovalidate>Back</button>
+            <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
+        </div>
+
 
     </form>
 </div>

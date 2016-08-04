@@ -188,10 +188,23 @@ function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc)
 function get_course_info($course_id)
 {
     $query = "select e.course_id, e.course_name, e.course_desc, e.teacher_id
-    from elect_course e, user u
-    where e.teacher_id = u.usr_id
-    and e.course_id = :id";
+                from elect_course e, user u
+                where e.teacher_id = u.usr_id
+                and e.course_id = :id";
 
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $course_id);
+        $statement->execute();
+        $statement->closeCursor();
+        $result = $statement->fetch();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
 }
 
 
