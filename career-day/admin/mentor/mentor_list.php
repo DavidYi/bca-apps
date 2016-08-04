@@ -20,7 +20,9 @@
 
 <body>
 <header>
+    <a href="../index.php"><button id="return_home">Return Home</button></a>
     <h1 class="title">Mentors</h1>
+
 </header>
 
 <nav class="navbar">

@@ -320,3 +320,7 @@ button.add:hover {
     padding: 0 1.5625em;
     box-shadow: 0 0em 0.25em rgba(0, 0, 0, 0.1);
 }
+
+#return_home {
+    background-color: rgb(247, 224, 97);
+}

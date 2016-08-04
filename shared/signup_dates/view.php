@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/<?php echo $app_url_path; ?>/../shared/signup_dates/view.css" rel="stylesheet" type="text/css" />
+    <link href="/<?php echo $app_url_path; ?>/../shared/signup_dates/styles2.css" rel="stylesheet" type="text/css" />
+    <link href="/<?php echo $app_url_path; ?>/../shared/ss/main.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -12,23 +13,21 @@
     <input type="hidden" name="action" value="update_signup_dates">
 
     <div id="box">
+        <h1 style="padding-top: 1em;">Signup Dates</h1>
         <div id="fixed_div">
-            <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Update Dates">Submit</button>
-            <p class="title">Modify Signup Dates</p>
-            <button style="cursor: pointer" class="submit back" type="submit" name="choice" value="Back">Back</button>
 
             <div id="header_row">
                 <label>
-                    <span class="grade header"><strong>Grade</strong></span>
+                    <h2 id="line" class="grade header">Grade</h2>
                 </label>
                 <label>
-                    <span class="mode header"><strong>Description</strong></span>
+                    <h2 id="line" class="mode header">Description</h2>
                 </label>
                 <label id="role">
-                    <span class="start header"><strong>Start</strong></span>
+                    <h2 id="line" class="start2 header">Start</h2>
                 </label>
                 <label id="role">
-                    <span class="end header"><strong>End</strong></span>
+                    <h2 id="line" class="end2 header">End</h2>
                 </label>
             </div>
         </div>
@@ -36,24 +35,28 @@
             <?php $i = 0; ?>
             <?php foreach ($signups as $signup){ ?>
 
-                <div class="row <?php if($i % 2 == 1) { ?>odd<?php } ?>">
+                <div class="row">
                     <input type="hidden" name="hdGrade[<?php echo $i ?>]" value="<?php echo $signup['grade_lvl'] ?>">
                     <input type="hidden" name="hdMode[<?php echo $i ?>]" value="<?php echo $signup['mode_cde'] ?>">
 
                     <label>
-                        <span class="grade"><?php echo $signup['grade_lvl'] ?></span>
+                        <h2 style="padding-right:4.7em;" id="line" class="grade"><?php echo $signup['grade_lvl'] ?></h2>
                     </label>
                     <label>
-                        <span class="mode"><?php echo $signup['mode_desc'] ?></span>
+                        <h2 style="padding-right:2em;" id="line" class="mode"><?php echo $signup['mode_desc'] ?></h2>
                     </label>
 
-                    <input type="text" class="start" name="start[<?php echo $i ?>]" value="<?php echo $signup['start']?>">
-                    <input type="text" class="end" name="end[<?php echo $i ?>]" value="<?php echo $signup['end']?>">
+                    <input id="line" type="text" class="start" name="start[<?php echo $i ?>]" value="<?php echo $signup['start']?>">
+                    <input id="line" type="text" class="end" name="end[<?php echo $i ?>]" value="<?php echo $signup['end']?>">
                 </div>
 
                 <?php $i = $i + 1; ?>
 
             <?php } ?>
+        </div>
+        <div class="button-div">
+            <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Update Dates">Submit</button>
+            <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
         </div>
     </div>
 </form>
