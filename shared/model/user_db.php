@@ -87,6 +87,7 @@ function get_user_list_test_page()
                   left join role_application_user_xref r
                   on u.usr_id = r.usr_id
                   and app_cde = :app_cde
+                  where u.usr_active = 1
                   order by usr_role_cde desc, usr_grade_lvl desc, usr_last_name, usr_first_name';
 
     global $app_cde;

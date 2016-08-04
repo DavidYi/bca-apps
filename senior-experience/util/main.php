@@ -3,7 +3,7 @@ $app_cde = 'SENX';
 $app_title = 'Senior Expositions';
 
 // Provides environment specific configuration information.
-include(__DIR__ . "/../../config.php");
+include(__DIR__ . "/../../../config.php");
 
 $shared_ss_url = '/' . $server_web_root . '/shared/ss/main.css';
 $app_url_path = $server_web_root . '/senior-experience';    // Name of the app on the web server.  Change this if the directory changes.
