@@ -32,25 +32,25 @@
         </div>
         <nav class="navbar" style="">
             <a href="#">
-                <div class="session-filter organization">Workshop</div>
+                <div class="session-filter organization"><h2><strong>Workshop</strong></h2></div>
             </a>
             <a href="#">
-                <div class="session-filter organization">Presenters</div>
+                <div class="session-filter organization"><h2><strong>Presenters</strong></h2></div>
             </a>
             <a href="#">
-                <div class="session-filter organization">Organization</div>
+                <div class="session-filter organization"><h2><strong>Organization</strong></h2></div>
             </a>
             <a href="#>">
-                <div class="session-filter smallcol">Session</div>
+                <div class="session-filter smallcol"><h2><strong>Session</strong></h2></div>
             </a>
             <a href="#>">
-                <div class="session-filter smallcol">Room</div>
+                <div class="session-filter smallcol"><h2><strong>Room</strong></h2></div>
             </a>
             <a href="#">
-                <div class="session-filter smallcol">Seats</div>
+                <div class="session-filter smallcol"><h2><strong>Seats</strong></h2></div>
             </a>
             <a href="#">
-                <div class="session-filter smallcol">Enrolled</div>
+                <div class="session-filter smallcol"><h2><strong>Enrolled</strong></h2></div>
             </a>
             <a href="#">
                 <div class="session-filter smallcol"></div>
