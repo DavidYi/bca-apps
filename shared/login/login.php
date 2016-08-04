@@ -21,7 +21,7 @@
             <div class="login-main">
             	<div class="vertical-center">
 	                <h1>Login</h1>
-					<form action="../" method="post">
+					<form action="." method="post">
 						<input type="hidden" name="action" value="login">
 
 						<h3 style="color:red">

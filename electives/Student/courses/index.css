@@ -15,6 +15,7 @@ body {
 div.table-title {
   display: block;
   margin: auto;
+  text-align: center;
   max-width: 600px;
   padding:5px;
   width: 100%;
@@ -137,7 +138,6 @@ td {
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
   width: 25%;
-
 }
 
 td:last-child {
@@ -170,6 +170,7 @@ td.text-right {
 
 .submit {
   font-family:  'Lato', arial;
+  margin: 0 auto;
   font-size: 15px;
   width: 120px;
   height: 50px;
@@ -181,11 +182,7 @@ td.text-right {
   background-color: white;
   text-align: center;
   margin-left: auto;
-  margin-right: auto;
-  display: block;
-  margin-top:10%;
-  margin-bottom:0%;
-
+  display: inline-block;
 }
 
 /*style="background-color:white;margin-left:auto;margin-right:auto;display:block;margin-top:10%;margin-bottom:0%"*/
@@ -213,13 +210,6 @@ div + input[type=checkbox]:checked {
 .btn.active span.glyphicon {
   opacity: 1;
 }
-
-
-
-
-
-
-
 
 .switch {
   position: relative;
@@ -293,49 +283,46 @@ input:checked + .slider:before {
 }
 
 tbody {
+  display: block;
   height: 600px;   /* Just for the demo          */
-  overflow-y: auto;   /* Trigger vertical scroll    */
- overflow-x: hidden; /* Hide the horizontal scroll */
+  overflow-y: scroll;   /* Trigger vertical scroll    */
+  overflow-x: hidden; /* Hide the horizontal scroll */
 }
 
+thead {
+  display: table;
+  width: 100%;
+}
+
+#head_row {
+  width: 100%;
+}
 
 #name-td {width:15%;}
 #teacher-td {width:15%;}
 #desc-td {width:60%;}
 #check-td {width:10%;}
 
+.nav {
+  width:19.75%;
+} .nav:last-child {
+  width: 20.65%;
+  }
 
-  nav.navbar {
-  height: 3.75em;
-  width: 75%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  margin: 0 auto;
-  padding: 0 1.5625em;
-  line-height: 3.75em;
-  background: #262626;
-  border-right: 0.4375em solid #262626; }
+a {
+  color: #D5DDE5;
+  text-decoration: none;
+}
 
+a:hover {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  border-bottom: 1px solid #D5DDE5;
+  width: 30px;
+  margin-right: 9px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.wrapper {
+  text-align: center;
+  margin-top: 3%;
+}

@@ -53,6 +53,7 @@ switch ($action) {
         fpassthru($output);
         fclose($output) or die("Can't close file");
         exit();
+
         break;
 
     case "availability_list_download":
@@ -87,9 +88,27 @@ switch ($action) {
         exit();
         break;
 
+    case "clear_student_availability":
+        include ('view.php');
+        break;
+
+    case "clear_student_interest":
+        include ('view.php');
+        break;
+
+    case "clear_teacher_availability":
+        include ('view.php');
+        break;
+
+    case "clear_all_courses":
+        include ('view.php');
+        break;
+
     default:
         echo ("No action found.");
         break;
 }
+
+
 
 ?>

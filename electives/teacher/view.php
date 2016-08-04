@@ -70,10 +70,11 @@
         </div>
         <div class="vertical-center">
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
-            Teacher Page!
-            <br>
-            <br>
-            Instructions here.
+            <h1>Teacher Instructions</h1>
+            <h3>If you wish to offer an elective during mods 1-24, you need to do two things.  First, click "Modify Availability" to indicate <em>all</em> of the free mods when you could teach the class.  </h3>
+            <h3>Second, click "Add Course" to create the class listing for students.  Then, students will indicate which electives interest them.</h3>
+            <h3>Finally, based upon student interests and common availability, BCA will schedule as many off-hour electives as possible.</h3>
+
         </div>
         <?php } else { ?>
             <h1>Mimic User Mode</h1>

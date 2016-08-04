@@ -31,8 +31,8 @@
         <label>Format name</label>
         <input type="text" placeholder="Format Name" name="format_name" value="<?php echo htmlspecialchars($format_name);?>" autofocus required>
         <div class="button-container">
-            <button class="add" name="choice" type="submit" value="Modify">Modify Format</button>
-            <button class="add" name="choice" type="submit" value="Back">Go Back</button>
+            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Modify">Submit</button>
+            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Back">Cancel</button>
         </div>
     </form>
 </div>

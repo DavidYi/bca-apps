@@ -21,156 +21,84 @@ m             modify  (pencil)
 
 */
 
-.button-wrap {
-    text-align:center;
-    padding-bottom:1em;
-}
-
 .title {
-    margin-top: 1.25em;
-    color: rgb(253, 253, 253);
+    color: white;
 }
 
 header {
-    height: 4.25em;
+    height: 10%;
 }
-
-h1 {
-    margin-bottom: 0.25em;
+button {
+    cursor: pointer;
 }
-
-h1.title {
-    color: rgb(253, 253, 253);
+.buttons a {
+    margin-right: 3em;
 }
-
-#add_workshop {
-    background-color: rgb(182, 226, 249);
-    margin-right: 2em;
-}
-
-#return_home {
+button.back {
     background-color: rgb(247, 224, 97);
 }
-
-#namenav {
-    margin-top: 0.7em;
-    margin-left: 3.25em;
+button.logout {
+    background-color: rgb(182, 226, 249);
 }
 
-#formatnav {
-    float: right;
-    margin-top: 0.6em;
-    margin-right: 13.2em;
+h2 {
+    line-height: inherit;
 }
 
-.workshop_name {
-    margin-left: 2em;
+nav .grade {
+    width: 20%;
+}
+nav .full {
+    width: 18%;
+}
+nav .partial {
+    width: 19%;
+}
+nav .none {
+    width: 18%;
+}
+nav .auto {
+    width: 20%;
 }
 
-.format_name {
-    margin-right: 2em;
-    text-align: left;
-    width: 15em;
-}
-
-.del_icon, .info_icon {
+.list-container .session .grade {
+    width: 20%;
     display: inline-block;
 }
+.list-container .session .full {
+    cursor: pointer;
+    width: 18%;
+    display: inline-block;
+}
+.list-container .session .partial {
+    cursor: pointer;
 
-.popup {
-    padding: 1% 0 2% 0;
-    display: none;
-    z-index: 100;
-    background-color: #f7f7f7;
-    width: 50%;
-    height: 60%;
-    margin-left: -1%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    /*word-wrap: break-word;*/
-    /*overflow: auto;*/ }
-
-.popup-c {
-    height: 90%;
-    width: 90%;
-    position: relative;
-    word-wrap: break-word;
-    overflow: auto;
-    display: block;
-    margin: auto;
-    top: 50%;
-    transform: translateY(-50%); }
-
-.popup-c h2 {
-    text-align: justify;
-    padding-right: 3%;
-    margin: auto;
-    margin-top: 0em;
-    font-size: 2em;
-    overflow-y: auto;
-    height: 80%;
+    width: 19%;
+    display: inline-block;
+}
+.list-container .session .none {
+    cursor: pointer;
+    width: 18%;
+    display: inline-block;
+}
+.list-container .session .auto-enroll {
+    width: 20%;
+    display: inline-block;
+    padding-left: 1em;
+}
+.list-container .auto-enroll a {
+    cursor: pointer;
+    display: inline-block;
+    color: #555;
+    font-size: 16px;
+    margin-right: 1em;
 }
 
-.close {
-    padding: 0 4% 0;
-    font-size: 150%;
-    width: 100%;
-    float: right; }
-
-.x {
-    text-align: right;
-    position: absolute;
-    margin-top: 0.25em;
-    right: 1.5em;
-}
-
-#x {
-    font-size: 200%;
-}
-
-.popup-bg {
-    display: none;
-    opacity: 0.7;
-    background-color: rgb(84, 79, 84);
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    position: fixed; }
-
-.presenter {
-    z-index: 10; }
-
-.presname {
-    margin-top: 3em;
-    float: left;
-    font-size: 75%;
-}
-
-.presname h1 {
-    margin-bottom: 0;
-}
-
-.entpop {
-    width: 100%;
-    height: 80%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); }
-
-/* CODE FROM ORIGINAL SS/MAIN.CSS */
 
 html, body {
     height: 100%;
     width: 100%;
     min-height: 100%;
-    margin: 0;
     margin: 0;
     padding: 0;
 }
@@ -191,10 +119,8 @@ html {
 
 nav.navbar {
     height: 3.75em;
-    width: 85%;
-    max-width: 75em;
-    margin-left: auto;
-    margin-right: auto;
+    width: 50%;
+    max-width: 50em;
     line-height: 3.75em;
     margin: 0 auto;
     padding: 0 1.5625em;
@@ -214,18 +140,14 @@ nav.navbar {
 
 .list-container {
     height: auto;
-    width: 85%;
-    max-width: 75em;
-    min-width: 40em;
-    margin-left: auto;
-    margin-right: auto;
+    width: 50%;
+    max-width: 50em;
     margin: 0 auto;
     background: rgba(253, 253, 253, 0.8);
     box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
-    margin-bottom: 3em;
 }
 
-.list-container .mentor {
+.list-container .session {
     height: 3.75em;
     width: 100%;
     line-height: 3.75em;
@@ -237,14 +159,42 @@ nav.navbar {
     transition: all 175ms ease;
 }
 
-.list-container .mentor .session-filter {
+.list-container .session .session-filter {
     color: #555;
 }
 
-.list-container .mentor:hover {
+.list-container .session:hover {
+    cursor: auto;
     background: rgba(247, 224, 97, 0.7);
     border-bottom: 1px solid rgba(247, 224, 97, 0.7);
     box-shadow: 0 -0.0625em 0 rgba(247, 224, 97, 0.7);
+}
+
+.center .title {
+    margin-bottom: .5em;
+    color: rgba(232, 135, 121, 0.7);
+}
+.center {
+    display: block;
+    margin: auto;
+    width: 50%;
+    max-width: 50em;
+    padding: 2em;
+    background-color: rgba(253, 253, 253, 0.8);
+}
+.center a {
+    cursor: pointer;
+    color: #555;
+    margin: 0;
+}
+.center h2, .center h4 {
+    display: inline;
+}
+.center h4 {
+    margin-right: 1em;
+}
+.center h2:hover {
+    font-weight: 600;
 }
 
 /**
@@ -331,12 +281,3 @@ nav.navbar {
         border: 0;
     }
 }
-
-button {
-    margin-bottom: 1em;
-}
-
-/* CODE FOR ADD PAGE */
-
-workshop_add
-{}
