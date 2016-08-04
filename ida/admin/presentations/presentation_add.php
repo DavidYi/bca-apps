@@ -1,71 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Add Mentor</title>
+    <head>
+        <title>Add Presentation</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-    <!-- Styles -->
-    <link href="../ss/main.css" rel="stylesheet">
-    
-    <style>
-        body {
-            font-size: 1.66em;
-        }
-    </style>
+        <!-- Styles -->
+        <link href="../../../shared/ss/main.css" rel="stylesheet">
+        <link href="styles2.css" rel="stylesheet">
 
-</head>
-<header>
-    <h1 class="title">Add Presentation</h1>
-</header>
+    </head>
 
-<body>
-<div id="mentor_add">
+    <body>
+        <form action="." method="post">
+            <input type="hidden" name="action" value="add_presentation">
 
-    <?php echo $error_msg ?>
-    <BR>
-    
+            <div id="box">
+                <div id="wrapper">
+                    <div id ="columns">
+                        <h1 class="title">Add Presentation</h1>
 
-    <form action="." method="post">
-        <input type="hidden" name="action" value="add_presentation">
+                        <label id="workshop">Workshop</label>
+                        <select class="center" name="workshop">
+                            <?php foreach ($workshopList as $workshop) { ?>
+                                <option value=<?php echo($workshop['wkshp_id']); ?>><?php echo($workshop['wkshp_nme']); ?></option>
+                            <?php } ?>
+                        </select><br>
 
-        <label>Workshop</label>
-        <select class="center" name="workshop">
-            <?php foreach ($workshopList as $workshop) {?>
-                <option value=<?php echo($workshop['wkshp_id']); ?>><?php echo($workshop['wkshp_nme']); ?></option>
-            <?php } ?>
-        </select><br>
+                        <input title="" type="text" name="presenters" value="" placeholder="Presenter Names" required><BR>
 
-        <label>Presenters</label>
-        <input title="" type="text" name="presenters" value=""
-               placeholder="Presenter Names" required><BR>
+                        <input title="" type="text" name="organization" value=""
+                               placeholder="Organization" required><BR>
 
-        <label>Organization</label>
-        <input title="" type="text" name="organization" value=""
-               placeholder="Affiliation" required><BR>
+                        <input title="" type="number" name="pres_max_capacity" value=""
+                               placeholder="Max Capacity"><BR>
 
-        <label>Session</label>
-        <select class="center" name="session">
-                <option value="1">1</option>
-                <option value="2">2</option>
-        </select><br>
+                        <div id="combo-row">
+                            <div id="session">
+                                <label>Session</label>
+                                <select class="center" name="session">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
 
-        <label>Room</label>
-        <select class="center" name="room">
-            <?php foreach ($roomList as $room) {?>
-                <option value=<?php echo($room['rm_id']); ?>><?php echo($room['rm_nbr']); ?></option>
-            <?php } ?>
-        </select><br>
+                            <div id="room">
+                                <label>Room</label>
+                                <select class="center" name="room">
+                                    <?php foreach ($roomList as $room) { ?>
+                                        <option value=<?php echo($room['rm_id']); ?>><?php echo($room['rm_nbr']); ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
 
-        <label>Max Capacity</label>
-        <input title="" type="number" name="pres_max_capacity" value=""
-               placeholder="Seats"><BR>
+                        <div id="button-div">
+                            <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Add">Submit</button>
+                            <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
+                        </div>
 
-        <div class="button-container">
-            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Add">Submit</button>
-            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Back">Cancel</button>
-        </div>
-    </form>
-</div>
-</body>
+
+                    </div>
+                </div>
+        </form>
+    </body>
 </html>

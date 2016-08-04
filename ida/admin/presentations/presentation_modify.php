@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Edit Presentation</title>
+    <head>
+        <title>Edit Presentation</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-    <!-- Styles -->
-    <link href="../ss/main.css" rel="stylesheet">
+        <!-- Styles -->
+        <link href="../../../shared/ss/main.css" rel="stylesheet">
+        <link href="styles2.css" rel="stylesheet">
+    </head>
 
-    <style>
-        body {
-            font-size: 1.66em;
-        }
-    </style>
+    <body>
+        <form action="." method="post">
+            <input type="hidden" name="action" value="modify_presentation">
 
-</head>
-<header>
-    <h1 class="title">Edit Presentation</h1>
-</header>
+            <div id="box">
+                <div id="wrapper">
+                    <div id ="columns">
+                        <h1 class="title">Edit Presentation</h1>
 
-<body>
-<div id="mentor_add">
-    <form action="." method="post">
-        <input type="hidden" name="action" value="modify_presentation">
+                        <label>Workshop</label>
+                        <select class="center" name="workshop">
+                            <?php foreach ($workshopList as $workshop) { ?>
+                                <option
+                                    value=<?php echo($workshop['wkshp_id']); ?> <?php if ($workshop['wkshp_id'] == $presentation['wkshp_id']) { ?>selected="selected"<?php } ?>><?php echo($workshop['wkshp_nme']); ?></option>
+                            <?php } ?>
+                        </select><br>
+                        
+                        <input title="" type="text" name="presenters" value="<?php echo htmlspecialchars($presenter_names); ?>"
+                               placeholder="Presenter Names" required><BR>
 
-        <label>Workshop</label>
-        <select class="center" name="workshop">
-            <?php foreach ($workshopList as $workshop) {?>
-                <option value=<?php echo($workshop['wkshp_id']); ?>><?php echo($workshop['wkshp_nme']); ?></option>
-            <?php } ?>
-        </select><br>
+                        <input title="" type="text" name="organization" value="<?php echo htmlspecialchars($org_name); ?>"
+                               placeholder="Organization" required><BR>
 
-        <label>Presenters</label>
-        <input title="" type="text" name="presenters" value="<?php echo htmlspecialchars($presenter_names); ?>"
-               placeholder="Presenter Names" required><BR>
+                        <input title="" type="number" name="pres_max_capacity" value="<?php echo htmlspecialchars($pres_max_seats); ?>"
+                               placeholder="Max Capacity"><BR>
 
-        <label>Organization</label>
-        <input title="" type="text" name="organization" value="<?php echo htmlspecialchars($org_name); ?>"
-               placeholder="Affiliation" required><BR>
+                        <div id="combo-row">
+                            <div id="session">
+                                <label>Session</label>
+                                <select class="center" name="session">
+                                    <option value="1" <?php if ($presentation['ses_id'] == 1){ ?>selected="selected"<?php } ?>>1</option>
+                                    <option value="2" <?php if ($presentation['ses_id'] == 2){ ?>selected="selected"<?php } ?>>2</option>
+                                </select>
+                            </div>
 
-        <label>Session</label>
-        <select class="center" name="session">
-            <option value="1">1</option>
-            <option value="2">2</option>
-        </select><br>
+                            <div id="room">
+                                <label>Room</label>
+                                <select class="center" name="room">
+                                    <?php foreach ($roomList as $room) { ?>
+                                        <option
+                                            value=<?php echo($room['rm_id']); ?> <?php if ($presentation['rm_id'] == $room['rm_id']){ ?>selected="selected"<?php } ?>><?php echo($room['rm_nbr']); ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
 
-        <label>Room</label>
-        <select class="center" name="room">
-            <?php foreach ($roomList as $room) {?>
-                <option value=<?php echo($room['rm_id']); ?>><?php echo($room['rm_nbr']); ?></option>
-            <?php } ?>
-        </select><br>
+                        <div id="button-div">
+                            <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Modify">Submit</button>
+                            <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
+                        </div>
 
-        <label>Max Capacity</label>
-        <input title="" type="number" name="pres_max_capacity" value="<?php echo htmlspecialchars($pres_max_seats); ?>"
-               placeholder="Seats"><BR>
 
-        <div class="button-container">
-            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Modify">Submit</button>
-            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Back">Cancel</button>
-        </div>
-    </form>
-</div>
-</body>
+                    </div>
+                </div>
+        </form>
+    </body>
 </html>
