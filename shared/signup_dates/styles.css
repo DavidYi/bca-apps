@@ -1,0 +1,316 @@
+#workshop{
+    color:black;
+    height:auto;
+    width:100%;
+}
+#formatnav{
+    float:right;
+    padding:0;
+    margin:0;
+}
+.organization{
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 20%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+.org2{
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+.organization h2{
+    padding-right:3%;
+}
+.smallcol h2{
+    padding-right:3%;
+}
+
+.presenter {
+    z-index: 10; }
+
+.presname {
+    float: left;
+    font-weight: 500; }
+
+/**********color reference chart**********
+comment ********* color ********
+
+P1, red           rgb(232, 135, 121)
+P2, blue          rgb(182, 226, 249)
+P3, yellow        rgb(247, 224, 97)
+G1, dark          rgb(84, 79, 84)
+G2, med           rgb(147, 146, 149)
+G3, light         rgb(253, 253, 253)
+
+*/
+
+/**********icon reference chart**********
+char ******** icon ********
+
+c             close   (X)
+p             plus    (+)
+i             info    (i)
+d             delete  (trashcan)
+m             modify  (pencil)
+
+*/
+
+.title {
+    margin-top: 1.25em !important;
+    color: rgb(253, 253, 253) !important;
+}
+
+header {
+    height: 4.25em;
+}
+
+button{
+    margin-bottom: 1em;
+}
+
+
+#add_pres {
+    background-color: rgb(182, 226, 249);
+    margin-right: 2em;
+}
+
+#return_home {
+    background-color: rgb(247, 224, 97);
+}
+
+#namenav {
+    margin-top: 0.7em;
+    margin-left: 3.25em;
+}
+
+#formatnav {
+    float: right;
+    margin-top: 0.6em;
+    margin-right: 13.2em;
+}
+
+.workshop_name {
+    margin-left: 2em;
+}
+
+.format_name {
+    margin-right: 2em;
+    text-align: left;
+    width: 15em;
+}
+
+.del_icon {
+    display: inline-block;
+    padding-left:3%;
+}
+h4{
+    font-size:2em;
+}
+.x {
+    text-align: right;
+    position: absolute;
+    margin-top: 0.25em;
+    right: 1.5em;
+}
+
+#x {
+    font-size: 200%;
+}
+
+.popup-bg {
+    display: none;
+    opacity: 0.7;
+    background-color: rgb(84, 79, 84);
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    position: fixed; }
+
+.presenter {
+    z-index: 10; }
+
+.presname {
+    margin-top: 3em;
+    float: left;
+    font-size: 75%;
+}
+
+.presname h1 {
+    margin-bottom: 0;
+}
+
+
+/* CODE FROM ORIGINAL SS/MAIN.CSS */
+
+html, body {
+    margin: 0;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (min-width: 33.75em) {
+    html {
+        font-size: 65%;
+    }
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+nav.navbar {
+    height: 3.75em;
+    width:75%;
+    min-width:70em;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 3.75em;
+    margin: 0 auto;
+    padding: 0 1.5625em;
+    background: rgba(232, 135, 121, 0.7);
+    box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
+    color:white;
+}
+
+.session-filter {
+    display: inline-block;
+    height: 100%;
+    padding: 0;
+    color: white;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease;
+}
+
+.list-container {
+    height: auto;
+    width: 75%;
+    min-width:70em;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+    background: rgba(253, 253, 253, 0.8);
+    box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
+    margin-bottom: 3em;
+}
+
+.list-container .mentor {
+    height: 3.75em;
+    width: 100%;
+    line-height: 3.75em;
+    padding: 0 1.5625em;
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease;
+}
+
+.list-container .mentor .session-filter {
+    color: #555;
+}
+
+.list-container .mentor:hover {
+    background: rgba(247, 224, 97, 0.7);
+    border-bottom: 1px solid rgba(247, 224, 97, 0.7);
+    box-shadow: 0 -0.0625em 0 rgba(247, 224, 97, 0.7);
+}
+
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.3.4 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2015, No├½l Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+@media all {
+    .featherlight {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2147483647;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        background: #333;
+        background: transparent;
+    }
+
+    .featherlight:last-of-type {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .featherlight:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.25em;
+    }
+
+    .featherlight .featherlight-content {
+        position: relative;
+        text-align: left;
+        vertical-align: middle;
+        display: inline-block;
+        overflow: auto;
+        padding: 25px 25px 0;
+        border-bottom: 25px solid transparent;
+        min-width: 30%;
+        margin-left: 5%;
+        margin-right: 5%;
+        max-height: 95%;
+        background: #fff;
+        cursor: auto;
+        white-space: normal;
+    }
+
+    .featherlight .featherlight-inner {
+        display: block;
+    }
+
+    .featherlight .featherlight-close-icon {
+        position: absolute;
+        z-index: 9999;
+        top: 0;
+        right: 0;
+        line-height: 25px;
+        width: 25px;
+        cursor: pointer;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background: #fff;
+        background: rgba(255, 255, 255, 0.3);
+        color: #000;
+    }
+
+    .featherlight .featherlight-image {
+        width: 100%;
+    }
+
+    .featherlight-iframe .featherlight-content {
+        border-bottom: 0;
+        padding: 0;
+    }
+
+    .featherlight iframe {
+        border: 0;
+    }
+}

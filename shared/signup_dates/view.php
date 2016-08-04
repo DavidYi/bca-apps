@@ -40,7 +40,7 @@
                     <input type="hidden" name="hdMode[<?php echo $i ?>]" value="<?php echo $signup['mode_cde'] ?>">
 
                     <label>
-                        <h2 style="padding-right:4.7em;" id="line" class="grade"><?php echo $signup['grade_lvl'] ?></h2>
+                        <h2 style="padding-right:4.3em;" id="line" class="grade"><?php echo $signup['grade_lvl'] ?></h2>
                     </label>
                     <label>
                         <h2 style="padding-right:2em;" id="line" class="mode"><?php echo $signup['mode_desc'] ?></h2>

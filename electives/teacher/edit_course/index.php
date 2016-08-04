@@ -23,8 +23,8 @@ switch ($action) {
         $course_id = $_GET["course_id"];
         include("view.php");
         break;
-    case 'edit_course':
 
+    case 'edit_course':
         $new_course_name = $_POST["new_course_name"];
         $new_course_desc = $_POST["new_course_desc"];
         $course_id = $_POST["course_id"];

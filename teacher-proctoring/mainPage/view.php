@@ -45,7 +45,7 @@ require_once('../model/teacher_db.php');
     <div class="view-signup enrollment">
         <div class="vertical-center">
 
-        <h7 style="left:18%">These are your current registration times: </h7>
+        <h7 style="left:18%;text-align:center">These are your current registration times: </h7>
 
             <nav class="navbar">
                 <h1></h1>
