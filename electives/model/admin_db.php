@@ -136,7 +136,7 @@ function get_elective_list($sort_by, $sort_order)
 
 function get_best_course_availability()
 {
-    $query = "select ec.course_id, course_name, time_short_desc, count(*) as students
+    $query = "select ec.course_id, course_name, et.time_id, time_short_desc, count(*) as students
                 from elect_course ec, elect_time et, elect_user_free_xref eu, elect_user_free_xref ex, elect_student_course_xref escx
                 where ec.course_id = escx.course_id
                 and et.time_id = eu.time_id
@@ -197,7 +197,8 @@ function get_course_info($course_id)
 
 function get_best_course_availability_students($course_id, $time_id)
 {
-    $query = "select ec.course_id, course_name, u.usr_id, usr_last_name, usr_first_name. usr_grade_lvl
+    global $db;
+    $query = "select ec.course_id, course_name, u.usr_id, usr_last_name, usr_first_name, usr_grade_lvl
 from elect_course ec, elect_time et, elect_user_free_xref eu, elect_user_free_xref ex, elect_student_course_xref escx, user u
 	where ec.course_id = :course_id
 	and ex.time_id = :time_id
@@ -209,8 +210,6 @@ from elect_course ec, elect_time et, elect_user_free_xref eu, elect_user_free_xr
 	and ex.time_id = eu.time_id
 	";
 
-
-    global $db;
 
     try {
         $statement = $db->prepare($query);

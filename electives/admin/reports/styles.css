@@ -147,6 +147,13 @@ a:hover {
     position: absolute;
     left: 0;
     top: 0.5%;
-    cursor: pointer }
+    cursor: pointer
+}
+
 #return_button:hover {
-    background-color: #aaaaaa; }
+    background-color: #aaaaaa;
+}
+
+.student-table {
+    background-color: lightgrey;
+}
