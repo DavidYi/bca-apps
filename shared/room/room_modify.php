@@ -1,40 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Modify Room</title>
+    <title>Add Room</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
-    <link href="../ss/main.css" rel="stylesheet">
-
-    <style>
-        body {
-            font-size: 1.66em;
-        }
-    </style>
+    <link href="../../../shared/ss/main.css" rel="stylesheet">
+    <link href="../../../shared/room/styles2.css" rel="stylesheet">
 
 </head>
-<header>
-    <h1 class="title">Admin: Room</h1>
-</header>
-
 <body>
-<div id="mentor_add">
+<form action="." method="post">
+    <input type="hidden" name="action" value="add_room">
+    <div id="box">
+        <div id="wrapper">
+            <div id ="columns">
+                <h1 class="title">Modify Room</h1>
 
-    <BR>
+                <input type="hidden" name="action" value="modify_room">
+                <input type="hidden" name="room_id" value="<?php echo htmlspecialchars($room_id); ?>">
+                <label>Room</label>
+                <input type="text" placeholder="Room" name="room_nbr" value="<?php echo htmlspecialchars($room_nbr);?>" autofocus required>
 
-
-    <form action="." method="post">
-        <input type="hidden" name="action" value="modify_room">
-        <input type="hidden" name="room_id" value="<?php echo htmlspecialchars($room_id); ?>">
-        <label>Room</label>
-        <input type="text" placeholder="Room" name="room_nbr" value="<?php echo htmlspecialchars($room_nbr);?>" autofocus required>
-        <div class="button-container">
-            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Modify">Submit</button>
-            <button style="cursor: pointer" class="add" name="choice" type="submit" value="Back">Cancel</button>
+                <div id="button-div">
+                    <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Modify">Submit</button>
+                    <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
+                </div>
+            </div>
         </div>
-    </form>
-</div>
+</form>
 </body>
 </html>

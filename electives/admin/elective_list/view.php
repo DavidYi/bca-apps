@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="view.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <script type="text/javascript" src="../../js/jquery.min.js"></script>
         <script type="text/javascript" src="../../js/jquery.easing.min.js"></script>
@@ -13,110 +14,8 @@
                     window.parent.parent.location.href = 'index.php?action=delete_course&course_id=' + courseId;
                 }
             }
-
         </script>
         <style>
-            button {
-                background-color: #ffcc00;
-                position: absolute;
-                top: 20%;
-                height: 80px;
-                width: 120px;
-                font-size: 20px;
-            }
-
-            #add_button {
-                right:25%;
-                line-height: 1.5em;
-            }
-
-            #back_button {
-                left: 25%;
-            }
-
-            #navbar {
-                width: 85%;
-            }
-
-            .cell {
-                float: left;
-                display: inline-block;
-                margin-right: 0%;
-                width: 15%;
-                height: 3.25em;
-                color: #555;
-                margin: 0;
-                padding: 0;
-                font-size: 1em;
-                font-weight: 500;
-                text-align: left;
-                vertical-align:middle;
-            }
-
-            .enrollment {
-                height:75%;
-                width 85%;
-            }
-
-            .main-panel {
-                width: 100%;
-                height: 3.25em;
-                position: relative;
-            }
-
-            .teacher-name {
-                width: 13%;
-            }
-
-            .course-name {
-                width: 15%;
-            }
-
-            .course-desc {
-                width: 53%;
-            }
-
-            .center-text {
-                line-height: 1.4em;
-                vertical-align: middle;
-                display:table;
-            }
-
-            .num-students {
-                width: 6%;
-                text-align: center;
-            }
-
-            .icon {
-                vertical-align:middle;
-            }
-
-            .edit {
-                text-align:center;
-                width:6%;
-            }
-
-            .delete {
-                text-align:center;
-                width: 6%;
-            }
-
-            .helper {
-                display: inline-block;
-                height: 100%;
-                vertical-align: middle;
-            }
-
-            .center-text p {
-                display: table-cell;
-                vertical-align:middle;
-                font-size: 1em;
-                font-weight: 300;
-            }
-
-            #course-desc-p {
-                font-weight: 500;
-            }
         </style>
     </head>
     <body>
@@ -128,16 +27,18 @@
             </header>
 
             <nav id="navbar" class="navbar">
-                <a href="./index.php">
-                    <div class="session-filter" style="width:13%;">Teacher</div>
+                <a href="index.php?action=sort_electives&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>">
+                    <div class="session-filter" style="width:12.5%;">Teacher</div>
                 </a>
-                <a href="./index.php?action=sort_by_elective">
-                    <div class="session-filter" style="width:14%;">Course Name</div>
+                <a href="index.php?action=sort_electives&sort=2&order=<?php if
+                ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>">
+                    <div class="session-filter" style="width:14.75%;">Course Name</div>
                 </a>
                 <a>
-                    <div class="session-filter" style="width:53%;">Description</div>
+                    <div class="session-filter" style="width:52.5%;">Description</div>
                 </a>
-                <a href="./index.php?action=sort_by_num_students">
+                <a href="index.php?action=sort_electives&sort=3&order=<?php if
+                ($sort_order == 2 && $sort_by == 3) { echo 1; } else { echo 2; } ?>">
                     <div class="center-text session-filter" style="width:8%;">
                         <p>Number of Students</p>
                     </div>
@@ -156,8 +57,7 @@
                     $course_name = $elective['course_name'];
                     $course_desc = $elective['course_desc'];
                     $num_students = $elective['num_students'];
-                    $course_id = $elective['course_id'];
-                    ?>
+                    $course_id = $elective['course_id']; ?>
 
                     <div class="main-panel session">
                         <div class="cell teacher-name"><?php echo $teacher_name; ?></div>
@@ -171,7 +71,6 @@
                             <img class='icon' src="../../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $course_id ?>)">
                         </div>
                     </div>
-                    
                 <?php endforeach; ?>
             </div>
         </div>

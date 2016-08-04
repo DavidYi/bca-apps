@@ -11,7 +11,7 @@
             button {
                 background-color: #00b8e6;
                 position: absolute;
-                left: 70%;
+                left: 20%;
                 top: 20%;
             }
 
@@ -20,7 +20,7 @@
     <body>
         <section class="main">
             <header>
-                <h1 class="title main-title">Teacher Availability</h1>
+                <BR><h1 class="title main-title">Teacher Availability</h1>
                 <a href="../index.php"><button
                         data-value=>Back
                 </button></a>
@@ -75,7 +75,7 @@
                                             <?php echo $teacher['tues'] ?>
                                         </td>
                                         <td class="day">
-                                            <?php echo $teacher['wed'] ?>
+                                            <?php echo $teacher['weds'] ?>
                                         </td>
                                         <td class="day">
                                             <?php echo $teacher['thurs'] ?>
@@ -89,11 +89,7 @@
                         </div>
                         <div class="remaining" style="width: 5%; float: right; text-align: right">
                             <a style="color: #555" href="index.php?action=modify&usr_id=<?php echo $teacher['usr_id'] ?>"><h4 style="line-height: inherit">m</h4></a>
-
-
                         </div>
-
-
                     </div>
                 <?php } ?>
             </div>

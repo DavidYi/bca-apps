@@ -25,10 +25,10 @@ if ($action == NULL) {
 $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
 $available_times = get_times($usr_id);
 
-// true:student, false:teacher
+// true:    student, false:teacher
 $student_or_teacher = ($user->usr_type_cde == 'STD') ? true : false;
 
-// If the user is being mimiced by an admin, use that id as the updt id.
+// If the user is being mimicked by an admin, use that id as the updt id.
 // Otherwise, use the id of the current user.
 $updateById = (isset($_SESSION['prev_usr_id'])) ? $_SESSION['prev_usr_id'] : $user->usr_id;
 
@@ -45,22 +45,24 @@ switch ($action) {
             header("Location: ../../teacher/index.php");
         }
         break;
-    case "sort_courses_by_name":
+    case "sort_courses":
         // sorting by course_name is the default
-        $courseList = get_course_list_for_student($usr_id);
-        include("./view.php");
-        break;
-    case "sort_courses_by_teacher":
-        $courseList = get_course_list_for_student($usr_id, "teacher");
-        include("./view.php");
-        break;
-    case "sort_courses_by_interest":
-        // !enrolled will make the enrolled courses to be listed first
-        $courseList = get_course_list_for_student($usr_id, "!enrolled");
+        $sort_by = filter_input(INPUT_GET, 'sort');
+        if ($sort_by == NULL) {
+            $sort_by = 0;
+        }
+
+        $sort_order = filter_input(INPUT_GET, 'order');
+        if ($sort_order == NULL) {
+            $sort_order = 0;
+        }
+        $courseList = get_course_list_for_student($usr_id, $sort_by, $sort_order);
         include("./view.php");
         break;
     default:
-        $courseList = get_course_list_for_student($usr_id);
+        $courseList = get_course_list_for_student($usr_id, 0, 0);
+        $sort_by = 0;
+        $sort_order = 0;
         include ("./view.php");
         break;
 }

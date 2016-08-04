@@ -5,20 +5,20 @@
 
 
 </head>
-<body>
+<body style="padding-top:3%">
     <div class="table-title" style="text-align: center;">
         <form action="index.php" method="post">
             <input type="hidden" name="id_field" id="id_field" data-ids="">
             <input type="hidden" name="action" value="update_times">
             <input type="hidden" name="next_page" value="<?php echo $next_page?>">
 
-            <button style="float: left" onclick="update_times();" id="update" value="update_times" class="s submit" type="submit">Submit</button>
+            <button style="float: right" onclick="update_times();" id="update" value="update_times" class="s submit" type="submit">Submit</button>
         </form>
         <h3 style="display: inline;">Select Available Mods</h3>
         <form style="display: inline;" action="index.php" method="post">
             <input type="hidden" name="action" value="back">
             <input type="hidden" name="next_page" value="<?php echo $next_page?>">
-            <button style="display: inline; float: right" class="s back" type="submit">Back</button>
+            <button style="display: inline; float: left" class="s back" type="submit">Back</button>
         </form>
     </div>
 
@@ -27,7 +27,7 @@
     
     <table class="table-fill">
         <thead id="days">
-        <tr>
+            <tr>
                 <th>M</th>
                 <th>T</th>
                 <th>W</th>

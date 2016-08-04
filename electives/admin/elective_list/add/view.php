@@ -15,18 +15,18 @@
 
         <label class="spacing">
             <span>Course Name</span>
-            <input type="text" name="course_name">
+            <input type="text" name="course_name" required>
         </label>
 
         <label class="spacing">
             <span>Description</span>
-            <textarea name="course_desc"></textarea>
+            <textarea name="course_desc" required></textarea>
         </label>
 
         <label class="spacing">
             <span>Teacher</span>
-            <select id="teacher" name="teacher">
-                <option value="none">-- Choose Teacher --</option>
+            <select id="teacher" name="teacher" required>
+                <option value="">-- Choose Teacher --</option>
                 <?php foreach($teacher_list as $teacher) :
                     $name = $teacher['name'];
                     $id = $teacher['usr_id']?>
@@ -36,7 +36,7 @@
         </label>
         
         <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
-        <button class="submit back" type="submit" name="choice" value="Back">Back</button>
+        <button class="submit back" type="button" onclick="location.href='../index.php'" name="choice" value="Back" formnovalidate>Back</button>
     </div>
 </form>
 
