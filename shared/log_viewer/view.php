@@ -1,13 +1,14 @@
 <html>
 <title>Log Viewer</title>
 
-<link rel="stylesheet" type="text/css" href="../css/mentor_list.css">
+<link rel="stylesheet" type="text/css" href="../../../shared/ss/main.css">
+<link rel="stylesheet" type="text/css" href="../../../shared/log_viewer/styles.css">
 
 <html>
 
-<section>
+<section style="margin:5em;padding:0;">
     <h1>Log Viewer</h1>
-    <table class="gridtable" style="width:75%;">
+    <table class="gridtable" style="width:50%;">
 
 
 
