@@ -248,9 +248,10 @@ function clear_student_availability()
 
 
     try {
-        $query = "delete from elect_user_free_xref e, user u
-                    where e.usr_id = u.usr_id
-                    and usr_type_cde = 'STD'";
+        $query = "delete elect_user_free_xref
+                    from elect_user_free_xref
+                    INNER JOIN user ON elect_user_free_xref.usr_id = user.usr_id
+                    where usr_type_cde = 'STD'";
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
@@ -270,9 +271,10 @@ function clear_student_interest()
     $db->beginTransaction();
 
     try {
-        $query = "delete from elect_student_course_xref e, user u 
-                    where e.usr_id = u.usr_id
-                    and usr_type_cde = 'STD'";
+        $query = "delete elect_student_course_xref
+                    from elect_student_course_xref
+                    INNER JOIN user ON elect_student_course_xref.usr_id = user.usr_id
+                    where usr_type_cde = 'STD'";
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
@@ -292,9 +294,10 @@ function clear_teacher_availability()
     $db->beginTransaction();
 
     try {
-        $query = "delete from elect_user_free_xref e, user u 
-                    where e.usr_id = u.usr_id
-                    and usr_type_cde = 'TCH'";
+        $query = "delete elect_user_free_xref
+                    from elect_user_free_xref
+                    INNER JOIN user ON elect_user_free_xref.usr_id = user.usr_id
+                    where usr_type_cde = 'TCH'";
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
