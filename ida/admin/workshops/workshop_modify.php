@@ -37,7 +37,7 @@
     </select>
     <div class="button-container">
             <button class="add" name="choice" type="submit" value="Modify">Save Changes</button>
-            <button class="add" name="choice" type="submit" value="Back">Go Back</button>
+            <button class="add" name="choice" type="submit" value="Back" formnovalidate>Go Back</button>
     </div>
 </form>
 
