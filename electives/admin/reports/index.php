@@ -88,19 +88,25 @@ switch ($action) {
         exit();
         break;
 
+    //Everything below this line feels dangerous
+
     case "clear_student_availability":
+        clear_student_availability();
         include ('view.php');
         break;
 
     case "clear_student_interest":
+        clear_student_interest();
         include ('view.php');
         break;
 
     case "clear_teacher_availability":
+        clear_teacher_availability();
         include ('view.php');
         break;
 
     case "clear_all_courses":
+        clear_all_courses();
         include ('view.php');
         break;
 

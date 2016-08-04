@@ -198,15 +198,17 @@ function get_course_info($course_id)
 
 function get_best_course_availability_students($course_id, $time_id)
 {
-    $query = "select u.usr_first_name, u.usr_last_name, u.usr_grade_lvl
-	from elect_course ec, elect_time et, elect_user_free_xref eu, elect_student_course_xref escx, user u
+    $query = "select ec.course_id, course_name, u.usr_id, usr_last_name, usr_first_name. usr_grade_lvl
+from elect_course ec, elect_time et, elect_user_free_xref eu, elect_user_free_xref ex, elect_student_course_xref escx, user u
 	where ec.course_id = :course_id
+	and ex.time_id = :time_id
 	and ec.course_id = escx.course_id
-	and et.time_id = :time_id
 	and et.time_id = eu.time_id
 	and u.usr_id = escx.usr_id
 	and escx.usr_id = eu.usr_id
-	order by ec.course_name, count(*) desc";
+	and ec.teacher_id = ex.usr_id
+	and ex.time_id = eu.time_id
+	";
 
 
     global $db;
@@ -226,8 +228,6 @@ function get_best_course_availability_students($course_id, $time_id)
     }
 }
 
-//These will affect all rows
-//TODO: Add undo button or something
 
 function clear_student_availability()
 {
@@ -236,7 +236,9 @@ function clear_student_availability()
 
 
     try {
-        $query = "delete * from elect_user_free_xref"; //Something to verify if student
+        $query = "delete * from elect_user_free_xref e, user u
+                    where e.usr_id = u.usr_id
+                    and usr_type_cde = 'STD'";
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
@@ -256,7 +258,9 @@ function clear_student_interest()
     $db->beginTransaction();
 
     try {
-        $query = "delete * from elect_student_course_xref"; //Something to verify if student
+        $query = "delete * from elect_student_course_xref e, user u 
+                    where e.usr_id = u.usr_id
+                    and usr_type_cde = 'STD'";
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
@@ -276,7 +280,9 @@ function clear_teacher_availability()
     $db->beginTransaction();
 
     try {
-        $query = "delete * from elect_user_free_xref"; //Something to verify if teacher
+        $query = "delete * from elect_user_free_xref e, user u 
+                    where e.usr_id = u.usr_id
+                    and usr_type_cde = 'TCH'";
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
@@ -297,7 +303,7 @@ function clear_all_courses()
     $db->beginTransaction();
 
     try {
-        $query = "delete * from elect_course"; //Lol not done time to break the app
+        $query = "delete * from elect_course"; //Lol time to break the app
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();

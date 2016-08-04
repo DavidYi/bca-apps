@@ -27,28 +27,28 @@
         }</script>
 </head>
 <body>
-
-<table>
-    <tr>
-        <th>Course Name</th>
-        <th>Times</th>
-        <th>Available Students</th>
-    </tr>
-    <?php foreach ($availability_list as $course) :
-        $course_id = $course['course_id'];
-        $course_name = $course['course_name'];
-        $times = $course['time_short_desc'];
-        $time_id = $course['time_id'];
-        $students = $course['students'];
-
-        ?>
+<div id="content">
+    <table>
         <tr>
-            <td> <?php echo $course_name; ?> </td>
-            <td> <?php echo $times; ?> </td>
-            <!--TODO: List students on click, write query for it gg-->
-            <td><a class="info" style="float: left; position: relative; color: #555555;"
-                   onclick="popup('#B<?php echo $course_id ?>,#P<?php echo $course_id ?>')">✚&nbsp;&nbsp;</a> <?php echo $students; ?>
-                <div class="popup-bg" id="B<?php echo $course_id ?>" style="display: none;
+            <th>Course Name</th>
+            <th>Time</th>
+            <th>Available Students</th>
+        </tr>
+        <?php foreach ($availability_list as $course) :
+            $course_id = $course['course_id'];
+            $course_name = $course['course_name'];
+            $times = $course['time_short_desc'];
+            $time_id = $course['time_id'];
+            $students = $course['students'];
+
+            ?>
+            <tr>
+                <td> <?php echo $course_name; ?> </td>
+                <td> <?php echo $times; ?> </td>
+                <!--TODO: List students on click, write query for it gg-->
+                <td><a class="info" style="float: left; position: relative; color: #555555;"
+                       onclick="popup('#B<?php echo $course_id ?>,#P<?php echo $course_id ?>')">✚&nbsp;&nbsp;</a> <?php echo $students; ?>
+                    <div class="popup-bg" id="B<?php echo $course_id ?>" style="display: none;
   opacity: 0.7;
   background: #000;
   width: 100%;
@@ -57,48 +57,46 @@
   top: 0;
   left: 0;
   position: fixed;">
-
-                </div>
-                <div class="popup" id="P<?php echo $course_id ?>">
-                    <div class="entpop">
-                        <div class="close">
-                            <div class="x"
-                            "=""><a href="#"
-                                    style="color:#f0c30f; text-decoration: none; float: right; text-align: right;"
-                                    onclick="cpopup('#B<?php echo $course_id ?>,#P<?php echo $course_id ?>')">✖</a>
-                            <div class="presname" style="'text-align: left;"> <?php echo $course_name; ?></div>
+                    </div>
+                    <div class="popup" id="P<?php echo $course_id ?>">
+                        <div class="entpop">
+                            <div class="close">
+                                <div class="x"
+                                "=""><a href="#"
+                                        style="color:#f0c30f; text-decoration: none; float: right; text-align: right;"
+                                        onclick="cpopup('#B<?php echo $course_id ?>,#P<?php echo $course_id ?>')">✖</a>
+                                <div class="presname" style="'text-align: left;"> <?php echo $course_name; ?></div>
+                            </div>
 
                         </div>
-
-                    </div>
-                    <div class="popup-c">
-                        <table id="ts">
-                            <tr>
-                                <th>Last Name</th>
-                                <th>First Name</th>
-                                <th>Grade</th>
-                            </tr>
-                            <?php
-                            $student_list = get_best_course_availability_students($course_id, $time_id);
-                            foreach ($student_list as $student) :
-                                //Excellent naming choice
-                                $std_last = $student['usr_last_name'];
-                                $std_first = $student['usr_first_name'];
-                                $std_grade = $student['usr_grade_lvl']; ?>
+                        <div class="popup-c">
+                            <table id="ts">
                                 <tr>
-                                    <td> <?php echo $std_last; ?> </td>
-                                    <td> <?php echo $std_first; ?> </td>
-                                    <td><?php echo $std_grade; ?></td>
+                                    <th>Last Name</th>
+                                    <th>First Name</th>
+                                    <th>Grade</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        </table>
+                                <?php
+                                $student_list = get_best_course_availability_students($course_id, $time_id);
+                                foreach ($student_list as $student) :
+                                    //Excellent naming choice
+                                    $std_last = $student['usr_last_name'];
+                                    $std_first = $student['usr_first_name'];
+                                    $std_grade = $student['usr_grade_lvl']; ?>
+                                    <tr>
+                                        <td> <?php echo $std_last; ?> </td>
+                                        <td> <?php echo $std_first; ?> </td>
+                                        <td><?php echo $std_grade; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                </div>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</table>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
 <center>
     <a href="index.php?action=availability_matrix_download">Availability List</a><br>
     <a href="index.php?action=electives_list_download">Electives List</a><br>
