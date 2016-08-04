@@ -27,7 +27,7 @@
     
     <table class="table-fill">
         <thead id="days">
-        <tr>
+            <tr>
                 <th>M</th>
                 <th>T</th>
                 <th>W</th>
