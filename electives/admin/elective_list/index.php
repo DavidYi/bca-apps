@@ -19,26 +19,36 @@ if ($action == NULL) {
 }
 
 switch ($action) {
-    case "sort_by_elective":
-        $elective_list = get_elective_list(1);
+    case "sort_electives":
+        $sort_by = filter_input(INPUT_GET, 'sort');
+        if ($sort_by == NULL) {
+            $sort_by = 1;
+        }
+
+        $sort_order = filter_input(INPUT_GET, 'order');
+        if ($sort_order == NULL) {
+            $sort_order = 0;
+        }
+        $elective_list = get_elective_list($sort_by, $sort_order);
         include('./view.php');
         break;
-    case "sort_by_num_students":
-        $elective_list = get_elective_list(2);
-        include('./view.php');
-        break;
+
     case "delete_course":
         $course_id = $_GET['course_id'];
         delete_course($course_id);
-        $elective_list = get_elective_list();
+        $elective_list = get_elective_list(1, 0);
         include('./view.php');
         break;
+
     case "edit":
         $course_id = $_GET['course_id'];
         header("Location: edit/index.php?course_id=" . $course_id);
         break;
+
     default:
-        $elective_list = get_elective_list();
+        $sort_order = 1;
+        $sort_by = 1;
+        $elective_list = get_elective_list(1, 0);
         include('./view.php');
         break;
 }

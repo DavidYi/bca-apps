@@ -23,9 +23,9 @@ $available_times = get_times($usr_id);
 
 // If the user is being mimicked by an admin, use that id as the updt id.
 // Otherwise, use the id of the current user.
-$updateById = $_SESSION['prev_usr_id'];
-if (empty($updateById))
-    $updateById = $user->usr_id;
+if (isset($_SESSION['prev_usr_id'])) {
+    $updateById = $_SESSION['prev_usr_id'];
+} else $updateById = $user->usr_id;
 
 switch ($action) {
     case "update_times":
