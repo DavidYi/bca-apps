@@ -84,10 +84,11 @@ function get_free_mods()
 
 function admin_get_teachers()
 {
-    $query = "select user.usr_id, concat(usr_first_name, ' ', usr_last_name) as name
-              from user
-              where usr_type_cde = 'TCH'
-              order by usr_last_name";
+    $query = "select user.usr_id, concat(usr_last_name, ', ', usr_first_name) as name
+            from user
+            where usr_type_cde = 'TCH'
+                and usr_active = 1
+            order by usr_last_name";
 
     global $db;
 
