@@ -34,6 +34,7 @@
     </button>
 </a>
 <div id="content">
+    <center>
     <table>
         <tr>
             <th>Course Name</th>
@@ -44,46 +45,51 @@
             $course_id = $course['course_id'];
             $course_name = $course['course_name'];
             $times = $course['time_short_desc'];
+            $time_id = $course['time_id'];
             $students = $course['students'];
 
             ?>
             <tr>
                 <td> <?php echo $course_name; ?> </td>
                 <td> <?php echo $times; ?> </td>
-                <td><a class="info" onclick="toggleTable('#P<?php echo $course_id; ?>')"
+                <td><a class="info" onclick="toggleTable('#P<?php echo $course_id; ?><?php echo $time_id ?>')"
                        style="float: left; position: relative; color: #555555;"
                     >✚&nbsp;&nbsp;</a> <?php echo $students; ?>
                 </td>
             </tr>
-            <div id="P<?php echo $course_id; ?>">
-                <tr class='student-table'>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Grade</th>
+
+            <tr class="student-table" id="P<?php echo $course_id; ?><?php echo $time_id ?>">
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Grade</th>
+            </tr>
+            <?php
+            $student_list = get_best_course_availability_students($course_id, $time_id);
+            foreach ($student_list as $student) :
+                //Excellent naming choice
+                $std_last = $student['usr_last_name'];
+                $std_first = $student['usr_first_name'];
+                $std_grade = $student['usr_grade_lvl']; ?>
+                <tr class="student-table" id="P<?php echo $course_id; ?><?php echo $time_id ?>">
+                    <td> <?php echo $std_last; ?> </td>
+                    <td> <?php echo $std_first; ?> </td>
+                    <td><?php echo $std_grade; ?></td>
                 </tr>
-                <?php
-                $student_list = get_best_course_availability_students($course_id, $time_id);
-                foreach ($student_list as $student) :
-                    //Excellent naming choice
-                    $std_last = $student['usr_last_name'];
-                    $std_first = $student['usr_first_name'];
-                    $std_grade = $student['usr_grade_lvl']; ?>
-                    <tr class='student-table'>
-                        <td> <?php echo $std_last; ?> </td>
-                        <td> <?php echo $std_first; ?> </td>
-                        <td><?php echo $std_grade; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </div>
+            <?php endforeach; ?>
+
         <?php endforeach; ?>
     </table>
+    </center>
+</div>
+<div class="downloads">
+    <center>
+        <a href="index.php?action=availability_matrix_download">Availability List</a><br>
+        <a href="index.php?action=electives_list_download">Electives List</a><br>
+        <a href="index.php?action=availability_list_download">Teacher Availability List</a><br>
+        <a href="index.php?action=course_interest_download">Course Interest List</a>
+    </center>
 </div>
 <center>
-    <a href="index.php?action=availability_matrix_download">Availability List</a><br>
-    <a href="index.php?action=electives_list_download">Electives List</a><br>
-    <a href="index.php?action=availability_list_download">Teacher Availability List</a><br>
-    <a href="index.php?action=course_interest_download">Course Interest List</a>
-</center>
 <ul>
     <li>
         <button onclick="clearStudentAvailability()">Clear Student Availability</button>
@@ -98,6 +104,7 @@
         <button onclick="clearAllCourses()">Clear All Courses</button>
     </li>
 </ul>
+</center>
 <script type="text/javascript" src="../../js/popup.js"></script>
 <script type="text/javascript" src="../../js/cpopup.js"></script>
 <script type="text/javascript" src="../../js/jquery.min.js"></script>
@@ -129,7 +136,8 @@
     }</script>
 <script type="text/javascript">
     function toggleTable(str) {
-        $(str).slideToggle();
+        $(str).toggle();
+        $(str).siblings(str).toggle();
     }
 </script>
 </body>

@@ -81,16 +81,18 @@ m             modify  (pencil)
 */
 
 .title {
-    color: white;
+    margin-top: 1.25em !important;
+    color: rgb(253, 253, 253) !important;
 }
 
 header {
-    height: 10%;
+    height: 4.25em;
 }
 
 button{
-    width: 12em;
+    margin-bottom: 1em;
 }
+
 
 #add_pres {
     background-color: rgb(182, 226, 249);
@@ -220,6 +222,7 @@ nav.navbar {
     margin: 0 auto;
     background: rgba(253, 253, 253, 0.8);
     box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
+    margin-bottom: 3em;
 }
 
 .list-container .mentor {
