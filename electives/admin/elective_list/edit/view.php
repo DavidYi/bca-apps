@@ -38,7 +38,7 @@
         </label>
 
         <div class="button_wrapper">
-            <button class="submit back" type="submit" name="choice" value="Back" formnovalidate>Back</button>
+            <a href="../index.php"><button class="submit back" type="button" formnovalidate>Back</button></a>
             <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
         </div>
 

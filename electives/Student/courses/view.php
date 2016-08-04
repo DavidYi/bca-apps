@@ -16,7 +16,7 @@
     <input type="hidden" name="action" value="update_courses">
 
     <div class="table-title">
-        <button class="submit back" onclick="location.href = '../index.php'">Back</button>
+        <button class="submit back" type="button" onclick="location.href = '../index.php'">Back</button>
         <h3>Course Interests</h3>
         <button class="submit" type="submit">Submit</button>
     </div>

@@ -198,8 +198,8 @@ function get_course_info($course_id)
         $statement = $db->prepare($query);
         $statement->bindValue(':id', $course_id);
         $statement->execute();
-        $statement->closeCursor();
         $result = $statement->fetch();
+        $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
         display_db_exception($e);
