@@ -1,132 +1,349 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
-
-html, body {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgb(242, 242, 242);
-}
-
-.title {
-    display: inline-block;
-    text-align: center;
-    font-weight: bold;
-    font-family: Roboto;
-    font-size: 23px;
-    color: black;
-    padding-bottom: 8px;
-    border-bottom: 4px solid #76c9d4;
-    width: 280px;
-    margin: 14px auto;
-    padding: 7px;
-    margin-left: 175px;
-}
-
-#box {
-    border-radius: 0px;
-    display: block;
-    background-color: white;
-    width: 1000px;
-    height: 4410px;
-    position:absolute;
-    left: 31%;
-    margin: 10px 0 20px -235px;
-    -moz-box-shadow: 1px 1px 1px #a8a8a8;
-    -webkit-box-shadow: 1px 1px 1px #a8a8a8;
-    box-shadow: 1px 1px 1px #a8a8a8;
-}
-
-#name_header {
-    text-align: left;
-    margin-left: 60px;
-}
-
-#s1_header{
-    text-align: right;
-    margin-left: 108px;
-    width: 243px;
-}
-
-#s2_header {
-    text-align: right;
-    margin-left: 38px;
-    width: 283px;
-}
-
-input {
-    color: #5f5f5f;
-    box-sizing: border-box;
-    width: 220px;
-    box-shadow: 1px 2px 4px 9px rgba(0, 0, 0, 0.08);
-    padding: 12px;
-    border: 1px solid #dbdbdb;
-    margin-right: 20px;
-}
-span {
-    font-family: Roboto;
-    display: inline-block;
-    box-sizing: border-box;
-    color: #5F5F5F;
-    width: 200px;
-    text-align: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-
 .teacher_name {
     text-align: left;
-    width: 200px;
-    margin-left: 60px;
+    width: 13em;
+    margin-left: 2em;
+    float: left;
+}
+
+.wrapper {
+    float: right;
+    padding-right: 2.5em;
+
+}
+
+select {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .s1_select {
-    margin-left: 50px;
+    text-align: left;
+    width: 20em;
+    float: left;
 }
 
 .s2_select {
-    margin-left: 30px;
-}
+    width: 20em;
+    /*margin-right: 2.5em;*/
+    float: right;
 
-.submit {
-    display: inline-block;
-    /*border-radius: 2px;*/
-    color: #ffffff;
-    font-weight: bold;
-    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.08);
-    padding: 14px 22px;
-    border: 0;
-    /*margin: 100px 183px 0;*/
-    text-align: center;
 }
 
 .s {
-    margin-left: 100px;
-    background-color: #6caee0;
-    margin-top: 0px;
+    background-color: rgb(182, 226, 249);
+    margin: 0 auto;
+    margin-right: 1em;
+    display: inline-block;
 }
 
-.back {
-    background-color: #f7b57d;
-    margin-top: 0px;
-    margin-left: 175px;
+.s:hover{
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+    cursor: hand;
 }
 
-#fixed_div {
-    position: fixed;
-    width: 1000px;
-    background-color: white;
-    top: 0px;
-    margin-top: 0px;
-    -moz-box-shadow: 1px 0px 0px #a8a8a8;
-    -webkit-box-shadow: 1px 0px 0px #a8a8a8;
-    box-shadow: 1px 0px 1px #a8a8a8;
+.cancel {
+    background-color: rgb(247, 224, 97);
+    margin: 0 auto;
+    margin-left: 1em;
+    display: inline-block;
 }
 
-#teacher_div {
-    margin-top: 110px;
+.cancel:hover {
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+    cursor: hand;
 }
 
-.odd {
-    background-color: #e9e9e9;
+
+/**********color reference chart**********
+comment ********* color ********
+
+P1, red           rgb(232, 135, 121)
+P2, blue          rgb(182, 226, 249)
+P3, yellow        rgb(247, 224, 97)
+G1, dark          rgb(84, 79, 84)
+G2, med           rgb(147, 146, 149)
+G3, light         rgb(253, 253, 253)
+
+*/
+
+/**********icon reference chart**********
+char ******** icon ********
+
+c             close   (X)
+p             plus    (+)
+i             info    (i)
+d             delete  (trashcan)
+m             modify  (pencil)
+
+*/
+
+.button-wrap {
+    text-align:center;
+    padding-bottom:1em;
+}
+
+.title {
+    margin-top: 1.25em;
+    color: rgb(253, 253, 253) !important;
+}
+
+header {
+    height: 4.25em !important;
+}
+
+h1 {
+    margin-bottom: 0.25em;
+}
+
+h1.title {
+    color: rgb(253, 253, 253);
+}
+
+#add_workshop {
+    background-color: rgb(182, 226, 249);
+    margin-right: 2em;
+}
+
+#return_home {
+    background-color: rgb(247, 224, 97);
+}
+
+#name_header {
+    width: 10em;
+    margin-top: 0.7em;
+    margin-left: 2.5em;
+}
+
+#s1_header {
+    margin-top: 0.6em;
+    margin-right: 12.75em;
+    margin-left: 10.25em;
+}
+
+h2 {
+    font-size: 1.5em !important;
+}
+
+#s2_header {
+    margin-top: 0.6em;
+    margin-right: 12.75em;
+    margin-left: 6em;
+}
+
+.workshop_name {
+    margin-left: 2em;
+}
+
+.format_name {
+    margin-right: 2em;
+    text-align: left;
+    width: 15em;
+}
+
+.del_icon, .info_icon {
+    display: inline-block;
+}
+
+.presenter {
+    z-index: 10; }
+
+.presname {
+    margin-top: 3em;
+    float: left;
+    font-size: 75%;
+}
+
+.presname h1 {
+    margin-bottom: 0;
+}
+
+/* CODE FROM ORIGINAL SS/MAIN.CSS */
+
+html, body {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (min-width: 33.75em) {
+    html {
+        font-size: 65%;
+    }
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+nav.navbar {
+    height: 3.75em;
+    width: 85%;
+    max-width: 75em;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 3.75em;
+    margin: 0 auto;
+    padding: 0 1.5625em;
+    background: rgba(232, 135, 121, 0.7);
+    box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
+}
+
+.session-filter {
+    display: inline-block;
+    height: 100%;
+    padding: 0;
+    color: white;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease;
+}
+
+.list-container {
+    height: auto;
+    width: 85%;
+    max-width: 75em;
+    min-width: 40em;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+    background: rgba(253, 253, 253, 0.8);
+    box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
+    margin-bottom: 3em;
+}
+
+.list-container .mentor {
+    height: 3.75em;
+    width: 100%;
+    line-height: 3.75em;
+    padding: 0 1.5625em;
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease;
+}
+
+.list-container .mentor .session-filter {
+    color: #555;
+}
+
+.list-container .mentor:hover {
+    background: rgba(247, 224, 97, 0.7);
+    border-bottom: 1px solid rgba(247, 224, 97, 0.7);
+    box-shadow: 0 -0.0625em 0 rgba(247, 224, 97, 0.7);
+}
+
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.3.4 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2015, No├½l Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+@media all {
+    .featherlight {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2147483647;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        background: #333;
+        background: transparent;
+    }
+
+    .featherlight:last-of-type {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .featherlight:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.25em;
+    }
+
+    .featherlight .featherlight-content {
+        position: relative;
+        text-align: left;
+        vertical-align: middle;
+        display: inline-block;
+        overflow: auto;
+        padding: 25px 25px 0;
+        border-bottom: 25px solid transparent;
+        min-width: 30%;
+        margin-left: 5%;
+        margin-right: 5%;
+        max-height: 95%;
+        background: #fff;
+        cursor: auto;
+        white-space: normal;
+    }
+
+    .featherlight .featherlight-inner {
+        display: block;
+    }
+
+    .featherlight .featherlight-close-icon {
+        position: absolute;
+        z-index: 9999;
+        top: 0;
+        right: 0;
+        line-height: 25px;
+        width: 25px;
+        cursor: pointer;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background: #fff;
+        background: rgba(255, 255, 255, 0.3);
+        color: #000;
+    }
+
+    .featherlight .featherlight-image {
+        width: 100%;
+    }
+
+    .featherlight-iframe .featherlight-content {
+        border-bottom: 0;
+        padding: 0;
+    }
+
+    .featherlight iframe {
+        border: 0;
+    }
+}
+
+button {
+    margin-bottom: 1em !important;
+}
+
+.wrapper2 {
+    width: 20em;
+    height: 3.75em;
+    float: left;
+    margin-left: 0.5em;
+}
+
+.wrapper3 {
+    width: 25em;
+    height: 3.75em;
+    float: right;
+    margin-right: 3.75em;
+}
+
+span {
+    font-size: 1.5em;
 }
