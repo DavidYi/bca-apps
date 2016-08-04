@@ -1,10 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
+
 html {
 
 }
 
 body {
     background: #636161;
-    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
 
 }
@@ -75,6 +77,7 @@ h1 {
     top: 1%;
     text-align: center;
     margin-bottom: 3%;
+    color: white;
 }
 
 .info {
@@ -164,8 +167,8 @@ a:hover {
     -moz-transition: all 175ms ease;
     transition: all 175ms ease;
     position: absolute;
-    left: 0;
-    top: 0.5%;
+    left: 5%;
+    top: 1%;
     cursor: pointer
 }
 
@@ -187,13 +190,17 @@ a:hover {
     color: white;
 }
 
+.downloads a:hover{
+    color: #8CD4F5;
+}
+
 .downloads {
     padding-top: 1%;
 }
 
 ul {
     display: inline-block;
-    margin-left: -35px;
+    margin-left: -40px;
 }
 
 li {
@@ -218,4 +225,8 @@ button {
     -moz-transition: all 175ms ease;
     transition: all 175ms ease;
     cursor: pointer;
+}
+
+button:hover{
+    background-color: #aaaaaa;
 }
