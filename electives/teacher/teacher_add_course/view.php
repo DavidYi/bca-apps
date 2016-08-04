@@ -9,24 +9,25 @@
   </head>
   <body>
     <form action="index.php" method="post">
-    <input type="hidden" name="action" value="add_course">
+      <input type="hidden" name="action" value="add_course">
 
-    <div id="box">
-      <p class="title">Create Course</p>
+      <div id="box">
+        <p class="title">Create Course</p>
 
-        <label class="spacing">
-          <span>Course Name</span>
-          <input type="text" required name="class_name">
-        </label>
-      
-        <label class="spacing">
-            <span>Description</span>
-            <textarea name="description"></textarea>
-        </label>
+          <label class="spacing">
+            <span>Course Name</span>
+            <input type="text" name="course_name" required>
+          </label>
 
-        <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
-        <button class="submit back" type="submit" name="choice" value="Back" formnovalidate>Back</button>
-      </form>
-  </div>
+          <label class="spacing">
+              <span>Description</span>
+              <textarea name="course_desc" required></textarea>
+          </label>
+
+          <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
+          <button class="submit back" type="button" onclick="location.href='../index.php'">Back</button>
+      </div>
+    </form>
+
   </body>
 </html>
