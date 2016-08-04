@@ -46,9 +46,7 @@
                 ?>
 
                 <div class="mentor" id="format">
-                    <a href="./index.php?format_id=<?php echo $format_id ?>&action=show_modify_format">
-                        <div class="session-filter format_name"><h2><?php echo($format_name); ?></h2></div>
-                    </a>
+                    <div class="session-filter format_name" onclick="javascript:location.href='./index.php?format_id=<?php echo $format_id ?>&action=show_modify_format'"><h2><?php echo($format_name); ?></h2></div>
                     <div style="float:right;">
                         <div class="session-filter delete">
                             <h4 class="del_icon" onclick="deleteWorkshop(<?php echo $format_id; ?>);">d</h4>

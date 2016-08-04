@@ -74,20 +74,22 @@
 
                 ?>
                 <div class="mentor row" id="workshop">
-                    <div class="clickable" onclick="javascript:location.href='./index.php?pres_id=<?php echo $pres_id ?>&action=show_modify_presentation'">
-                        <div class="session-filter organization"><h2><?php echo($wkshp_nme); ?></h2></div>
-                        <div class="session-filter organization"><h2><?php echo $presenter_names; ?></h2></div>
-                        <div class="session-filter organization"><h2><?php echo $org_name; ?></h2></div>
-                        <div class="session-filter smallcol"><h2><?php echo $ses_id; ?></h2></div>
-                        <div class="session-filter smallcol"><h2><?php if ($rm_nbr == null) {
-                                    echo("Null");
-                                } else {
-                                    echo($rm_nbr);
-                                } ?></h2></div>
-                        <div class="session-filter smallcol"><h2><?php echo $pres_max_seats; ?></h2></div>
-                        <div class="session-filter smallcol"><h2><?php echo $pres_enrolled_seats; ?></h2></div>
+                    <div class="wrapper">
+                        <div class="clickable" onclick="javascript:location.href='./index.php?pres_id=<?php echo $pres_id ?>&action=show_modify_presentation'">
+                            <div class="session-filter organization"><h2><?php echo($wkshp_nme); ?></h2></div>
+                            <div class="session-filter organization"><h2><?php echo $presenter_names; ?></h2></div>
+                            <div class="session-filter organization"><h2><?php echo $org_name; ?></h2></div>
+                            <div class="session-filter smallcol"><h2><?php echo $ses_id; ?></h2></div>
+                            <div class="session-filter smallcol"><h2><?php if ($rm_nbr == null) {
+                                        echo("Null");
+                                    } else {
+                                        echo($rm_nbr);
+                                    } ?></h2></div>
+                            <div class="session-filter smallcol"><h2><?php echo $pres_max_seats; ?></h2></div>
+                            <div class="session-filter smallcol"><h2><?php echo $pres_enrolled_seats; ?></h2></div>
+                        </div>
+                        <h4 class="del_icon" onclick="deletePresentation(<?php echo $pres_id; ?>);">d</h4>
                     </div>
-                    <h4 class="del_icon" onclick="deletePresentation(<?php echo $pres_id; ?>);">d</h4>
                 </div>
 
             <?php } ?>
