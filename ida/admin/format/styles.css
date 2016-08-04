@@ -69,6 +69,7 @@ button{
 
 .format_name {
     margin-left: 2em;
+    width: 67%;
 }
 
 .delete {
@@ -80,6 +81,7 @@ button{
 .del_icon {
     display: inline-block;
     margin-left: 8.5em;
+    z-index: 100;
 }
 
 /* CODE FROM ORIGINAL SS/MAIN.CSS */
