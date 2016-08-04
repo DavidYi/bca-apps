@@ -7,7 +7,8 @@
 <html>
 
 <section style="margin:5em;padding:0;">
-    <h1>Log Viewer</h1>
+    <h1 style="display:inline-block;">Log Viewer</h1>
+    <a style="display:inline-block; padding-left:3em;" href=".."><button>Go Back</button></a>
     <table class="gridtable" style="width:50%;">
 
 
