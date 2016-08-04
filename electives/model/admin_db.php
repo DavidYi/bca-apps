@@ -247,7 +247,7 @@ function clear_student_availability()
 
 
     try {
-        $query = "delete * from elect_user_free_xref e, user u
+        $query = "delete from elect_user_free_xref e, user u
                     where e.usr_id = u.usr_id
                     and usr_type_cde = 'STD'";
         $statement = $db->prepare($query);
@@ -269,7 +269,7 @@ function clear_student_interest()
     $db->beginTransaction();
 
     try {
-        $query = "delete * from elect_student_course_xref e, user u 
+        $query = "delete from elect_student_course_xref e, user u 
                     where e.usr_id = u.usr_id
                     and usr_type_cde = 'STD'";
         $statement = $db->prepare($query);
@@ -291,7 +291,7 @@ function clear_teacher_availability()
     $db->beginTransaction();
 
     try {
-        $query = "delete * from elect_user_free_xref e, user u 
+        $query = "delete from elect_user_free_xref e, user u 
                     where e.usr_id = u.usr_id
                     and usr_type_cde = 'TCH'";
         $statement = $db->prepare($query);
@@ -314,7 +314,7 @@ function clear_all_courses()
     $db->beginTransaction();
 
     try {
-        $query = "delete * from elect_course"; //Lol time to break the app
+        $query = "delete from elect_course"; //Lol time to break the app
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
