@@ -5,7 +5,7 @@
 
 
 </head>
-<body>
+<body style="padding-top:3%">
     <div class="table-title" style="text-align: center;">
         <form action="index.php" method="post">
             <input type="hidden" name="id_field" id="id_field" data-ids="">

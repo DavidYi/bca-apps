@@ -35,7 +35,7 @@
                     <div class="session-filter" style="width:14.75%;">Course Name</div>
                 </a>
                 <a>
-                    <div class="session-filter" style="width:53%;">Description</div>
+                    <div class="session-filter" style="width:52.5%;">Description</div>
                 </a>
                 <a href="index.php?action=sort_electives&sort=3&order=<?php if
                 ($sort_order == 2 && $sort_by == 3) { echo 1; } else { echo 2; } ?>">
