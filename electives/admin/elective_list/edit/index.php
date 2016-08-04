@@ -36,6 +36,7 @@ switch ($action) {
         $teacher_id = $course_info['teacher_id'];
         $course_name = $course_info['course_name'];
         $course_desc = $course_info['course_desc'];
+
         include("./view.php");
         break;
 }
