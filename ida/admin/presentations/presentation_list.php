@@ -74,7 +74,7 @@
 
                 ?>
                 <div class="mentor row" id="workshop">
-                    <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_modify_presentation">
+                    <div class="clickable" onclick="javascript:location.href='./index.php?pres_id=<?php echo $pres_id ?>&action=show_modify_presentation'">
                         <div class="session-filter organization"><h2><?php echo($wkshp_nme); ?></h2></div>
                         <div class="session-filter organization"><h2><?php echo $presenter_names; ?></h2></div>
                         <div class="session-filter organization"><h2><?php echo $org_name; ?></h2></div>
@@ -86,7 +86,7 @@
                                 } ?></h2></div>
                         <div class="session-filter smallcol"><h2><?php echo $pres_max_seats; ?></h2></div>
                         <div class="session-filter smallcol"><h2><?php echo $pres_enrolled_seats; ?></h2></div>
-                    </a>
+                    </div>
                     <h4 class="del_icon" onclick="deletePresentation(<?php echo $pres_id; ?>);">d</h4>
                 </div>
 

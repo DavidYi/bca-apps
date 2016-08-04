@@ -69,6 +69,7 @@ button{
 
 .room_name {
     margin-left: 2em;
+    width: 65%;
 }
 
 .delete {
@@ -154,8 +155,8 @@ nav.navbar {
     transition: all 175ms ease;
 }
 
-.list-container .mentor .session-filter {
-    color: #555;
+.list-container .mentor .session-filter, h4 {
+    color: rgb(84, 79, 84);
 }
 
 .list-container .mentor:hover {
