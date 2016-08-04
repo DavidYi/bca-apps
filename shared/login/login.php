@@ -35,9 +35,9 @@
             	</div>
             </div>
 		</section>
-		<script type="text/javascript" src="../../career-day/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../career-day/js/jquery.easing.min.js"></script>
-		<script type="text/javascript" src="../../career-day/js/jquery.plusanchor.min.js"></script>
+		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/../shared/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/../shared/js/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/../shared/jquery.plusanchor.min.js"></script>
 		<script type="text/javascript">
 		    $('body').plusAnchor({
 		        easing: 'easeInOutExpo',
