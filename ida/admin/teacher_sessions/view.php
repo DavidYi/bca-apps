@@ -39,7 +39,7 @@
         <?php $i = 0; ?>
         <?php foreach ($teachers as $teacher) { ?>
 
-        <div class="mentor" id="workshop" <?php if ($i % 2 == 1) { ?>odd<?php } ?>">
+        <div class="mentor" id="workshop">
         <label>
             <span class="teacher_name"><?php echo $teacher['usr_name'] ?></span>
         </label>
