@@ -8,7 +8,7 @@
 
 require_once("../util/main.php");
 require_once("../../shared/model/user_db.php");
-require_once("../model/signup_dates_db.php");
+require_once("../../shared/model/signup_dates_db.php");
 require_once ("../model/presentations_db.php");
 
 verify_logged_in();
@@ -40,7 +40,7 @@ foreach ($sessions as $session) {
 }
 
 
-$signup_dates = get_signup_dates_by_grade($user->usr_grade_lvl);
+$signup_dates = get_signup_dates_for_grade($user->usr_grade_lvl);
 
 date_default_timezone_set('America/New_York');
 $currentTime = time();

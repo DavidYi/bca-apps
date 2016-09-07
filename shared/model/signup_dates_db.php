@@ -7,7 +7,19 @@ function get_signup_dates() {
 
     return get_list($query);
 }
+function get_signup_dates_for_grade($grade) {
+    $query = 'SELECT grade_lvl, start, end
+              FROM signup_dates
+              WHERE grade_lvl = :grade';
 
+    global $db;
+
+
+    $statement = $db->prepare($query);
+    $statement->bindValue(':grade', $grade);
+    $statement->execute();
+    $statement->closeCursor();
+}
 //
 // This method provides no exception handling as the errors are handled in update_signup_dates.
 // Do not call this method directly.
