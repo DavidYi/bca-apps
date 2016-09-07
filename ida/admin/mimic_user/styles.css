@@ -5,3 +5,16 @@
 #padding{
     padding-bottom:5vh;
 }
+
+h1.title {
+    color: rgb(253, 253, 253);
+}
+
+#button-div {
+    display: inline-block;
+    text-align: center;
+}
+
+#submit {
+    margin-right: 1.25em;
+}

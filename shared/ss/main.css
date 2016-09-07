@@ -34,12 +34,11 @@ legend, td, th {
   padding: 0; }
 
 html, body {
-  background: linear-gradient(270deg, #b6e2f9, #f1c5be);
+  background: linear-gradient(227deg, #b6e2f9, #f1c5be, #ededfd);
   background-size: 600% 600%;
 
   -webkit-animation: AnimationName 19s ease infinite;
   -moz-animation: AnimationName 19s ease infinite;
-  -o-animation: AnimationName 19s ease infinite;
   animation: AnimationName 19s ease infinite;
 }
 

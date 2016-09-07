@@ -21,9 +21,16 @@ m             modify  (pencil)
 
 */
 
-.title {
-    color: white;
+h1.title {
+    color: rgb(147, 146, 149);
+    margin-bottom: 0.5em;
 }
+
+h1.main-title {
+    color: rgb(253, 253, 253);
+    margin-top: 1.25em;
+}
+
 
 header {
     height: 10%;
@@ -31,9 +38,7 @@ header {
 button {
     cursor: pointer;
 }
-.buttons a {
-    margin-right: 3em;
-}
+
 button.back {
     background-color: rgb(247, 224, 97);
 }
@@ -170,10 +175,6 @@ nav.navbar {
     box-shadow: 0 -0.0625em 0 rgba(247, 224, 97, 0.7);
 }
 
-.center .title {
-    margin-bottom: .5em;
-    color: rgba(232, 135, 121, 0.7);
-}
 .center {
     display: block;
     margin: auto;
