@@ -134,18 +134,25 @@ td {
   font-size:18px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
-  width: 20%;
 }
 
 td:last-child {
   border-right: 0px;
 }
 
-#description {
+.course {
+  width: 20%;
+}
+
+.teacher {
+  width: 20%;
+}
+
+.description {
     width: 50%;
 }
 
-#interest {
+.interest {
     width: 10%;
 }
 

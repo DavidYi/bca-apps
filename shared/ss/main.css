@@ -34,8 +34,7 @@ legend, td, th {
   padding: 0; }
 
 html, body {
-  background-color: linear-gradient(227deg, #b6e2f9, #f1c5be, #fdfdfd);
-  background: linear-gradient(227deg, #b6e2f9, #f1c5be, #fdfdfd);
+  background: linear-gradient(270deg, #b6e2f9, #f1c5be);
   background-size: 600% 600%;
 
   -webkit-animation: AnimationName 19s ease infinite;
