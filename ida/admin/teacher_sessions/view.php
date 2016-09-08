@@ -20,7 +20,7 @@
         <button type="submit" class="submit s" name="choice" value="Update Teachers">Submit</button>
         <button type="submit" class="submit cancel" name="choice" value="Back">Back</button>
     </div>
-    <nav style="width:65%" class="navbar">
+    <nav class="navbar">
         <div id="navinside">
             <a href="#">
                 <div id="name_header" class="session-filter"><h2><strong>Name</strong></h2></div>
@@ -34,7 +34,7 @@
         </div>
     </nav>
 
-    <div style="width:65%;" class="list-container" id="teacher_div">
+    <div style="width:75em;" class="list-container" id="teacher_div">
 
         <?php $i = 0; ?>
         <?php foreach ($teachers as $teacher) { ?>

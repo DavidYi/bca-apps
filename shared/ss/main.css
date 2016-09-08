@@ -34,12 +34,12 @@ legend, td, th {
   padding: 0; }
 
 html, body {
-  background: linear-gradient(227deg, #b6e2f9, #f1c5be, #ededfd);
-  background-size: 600% 600%;
+  background: linear-gradient(227deg, #f1c5be, #b6e2f9, #ededfd);
+  background-size: 100% 1100%;
 
-  -webkit-animation: AnimationName 19s ease infinite;
-  -moz-animation: AnimationName 19s ease infinite;
-  animation: AnimationName 19s ease infinite;
+  /*-webkit-animation: AnimationName 19s ease infinite;*/
+  /*-moz-animation: AnimationName 19s ease infinite;*/
+  /*animation: AnimationName 19s ease infinite;*/
 }
 
 html {
@@ -47,26 +47,26 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
 
-@-webkit-keyframes AnimationName {
-  0%{background-position:0% 9%}
-  50%{background-position:100% 92%}
-  100%{background-position:0% 9%}
-}
-@-moz-keyframes AnimationName {
-  0%{background-position:0% 9%}
-  50%{background-position:100% 92%}
-  100%{background-position:0% 9%}
-}
-@-o-keyframes AnimationName {
-  0%{background-position:0% 9%}
-  50%{background-position:100% 92%}
-  100%{background-position:0% 9%}
-}
-@keyframes AnimationName {
-  0%{background-position:0% 9%}
-  50%{background-position:100% 92%}
-  100%{background-position:0% 9%}
-}
+/*@-webkit-keyframes AnimationName {*/
+  /*0%{background-position:0% 9%}*/
+  /*50%{background-position:100% 92%}*/
+  /*100%{background-position:0% 9%}*/
+/*}*/
+/*@-moz-keyframes AnimationName {*/
+  /*0%{background-position:0% 9%}*/
+  /*50%{background-position:100% 92%}*/
+  /*100%{background-position:0% 9%}*/
+/*}*/
+/*@-o-keyframes AnimationName {*/
+  /*0%{background-position:0% 9%}*/
+  /*50%{background-position:100% 92%}*/
+  /*100%{background-position:0% 9%}*/
+/*}*/
+/*@keyframes AnimationName {*/
+  /*0%{background-position:0% 9%}*/
+  /*50%{background-position:100% 92%}*/
+  /*100%{background-position:0% 9%}*/
+/*}*/
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block; }

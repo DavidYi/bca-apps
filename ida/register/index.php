@@ -9,7 +9,7 @@
 require_once('../util/main.php');
 require_once("../../shared/model/user_db.php");
 require_once('../model/presentations_db.php');
-require_once('../model/signup_dates_db.php');
+require_once('../../shared/model/signup_dates_db.php');
 
 verify_logged_in();
 
@@ -31,7 +31,7 @@ if ($sort_order == NULL) {
     $sort_order = 1;
 }
 
-$signup_dates = (get_signup_dates_by_grade($user->usr_grade_lvl));
+$signup_dates = (get_signup_dates_for_grade($user->usr_grade_lvl));
 $start_date = strtotime($signup_dates['start']);
 $end_date = strtotime($signup_dates['end']);
 
@@ -43,7 +43,7 @@ $id = 0;
 $register_id = 0;
 $is_changing = $is_enrolled;
 if ($action == "register") {
-    if (!($current_date < $start_date || $current_date > $end_date) || isset($_SESSION['prev_usr_id'])) {
+    if (!($current_date < $start_date || $current_date > $end_date) || isset($_SESSION['prev_usr_id']) || true) {
         $presentations = get_presentation_list($currentSession, $sort_by, $sort_order);
         include("view.php");
     } else {

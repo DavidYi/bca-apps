@@ -24,6 +24,7 @@
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
                 <h1>IDA ([DATE])</h1>
 
+
                 <?php if ($startTime > $currentTime) { ?>
                     <h3> Registration <b>has not opened</b>!</h3>
                     <h3> Opens: <?php echo $startTimeFormatted ?> </h3>
@@ -54,7 +55,7 @@
         <div class="vertical-center">
             <?php foreach ($sessions as $session) { ?>
 
-                <?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) { ?>
+                <?php if (true || $registrationOpen || isset($_SESSION['prev_usr_id'])) { ?>                <!--added true-->
                     <a href="../register/index.php?session=<?php echo $session['ses_times'] ?>&action=register">
                 <?php } ?>
 

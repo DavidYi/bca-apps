@@ -1,3 +1,7 @@
+#teacher_div {
+    min-width: 779px;
+}
+
 .teacher_name {
     text-align: left;
     width: 13em;
@@ -185,7 +189,8 @@ html {
 
 nav.navbar {
     height: 3.75em;
-    width: 85%;
+    width: 75em;
+    min-width: 747px;
     max-width: 75em;
     margin-left: auto;
     margin-right: auto;
@@ -225,7 +230,6 @@ nav.navbar {
     line-height: 3.75em;
     padding: 0 1.5625em;
     border-bottom: 1px solid #aaa;
-    cursor: pointer;
     -webkit-transition: all 175ms ease;
     -moz-transition: all 175ms ease;
     transition: all 175ms ease;

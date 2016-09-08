@@ -92,7 +92,7 @@ table {
     box-shadow: 0 0.9375em 1.5625em rgba(0, 0, 0, 0.33);
     border-bottom: 0.625em solid #262626;
 }
-.feature:hover h2, .feature:hover h4 {
+.feature:hover h2, .feature:hover h4, .feature:hover p {
     color: #fdfdfd;
 }
 td {
