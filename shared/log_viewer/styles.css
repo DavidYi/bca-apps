@@ -3,3 +3,8 @@ td{
     padding-right:1em;
     border-bottom: solid;
 }
+
+section {
+    width: 110%;
+    height: 110%;
+}

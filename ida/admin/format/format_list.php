@@ -28,7 +28,7 @@
             <a href="../index.php"><button id="return_home">Return Home</button></a>
         </div>
 
-        <nav style="width:40%" class="navbar">
+        <nav style="width:60em;" class="navbar">
             <div id="navinside">
                 <a href="#">
                     <div id="namenav" class="session-filter"><h2><strong>Format</strong></h2></div>
@@ -37,7 +37,7 @@
         </nav>
 
 
-        <div style="width:40%;" class="list-container">
+        <div style="width:60em;" class="list-container">
 
             <?php foreach ($formatList as $format) {
                 $format_id = $format['format_id'];

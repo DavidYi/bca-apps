@@ -4,9 +4,7 @@
 <link rel="stylesheet" type="text/css" href="../../../shared/ss/main.css">
 <link rel="stylesheet" type="text/css" href="../../../shared/log_viewer/styles.css">
 
-<html>
-
-<section style="margin:5em;padding:0;">
+<section style="margin:0;padding:5em;">
     <h1 style="display:inline-block;">Log Viewer</h1>
     <a style="display:inline-block; padding-left:3em;" href=".."><button>Go Back</button></a>
     <table class="gridtable" style="width:50%;">
