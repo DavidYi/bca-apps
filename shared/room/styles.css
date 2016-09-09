@@ -69,13 +69,13 @@ button{
 
 .room_name {
     margin-left: 2em;
-    width: 65%;
+    width: 30em;
 }
 
 .delete {
     margin-right: 0em;
     text-align: left;
-    width: 15em;
+    width: 10em;
 }
 
 .del_icon {

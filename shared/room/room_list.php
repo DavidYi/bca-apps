@@ -30,7 +30,7 @@
             <a href="../index.php"><button id="return_home">Return Home</button></a>
         </div>
 
-        <nav style="width:40%" class="navbar">
+        <nav style="width:50em" class="navbar">
             <div id="navinside">
                 <a href="#">
                     <div id="namenav" class="session-filter"><h2><strong>Room</strong></h2></div>
@@ -42,7 +42,7 @@
         </nav>
 
 
-        <div style="width:40%;" class="list-container">
+        <div style="width:50em;" class="list-container">
 
             <?php foreach ($roomList as $room) {
                 $room_id = $room['rm_id'];
@@ -53,7 +53,7 @@
                         <div class="session-filter room_name" onclick="javascript:location.href='./index.php?room_id=<?php echo $room_id ?>&action=show_modify_room'"><h2><?php echo($room_nbr); ?></h2></div>
                     <div style="float:right;">
                         <div class="session-filter delete">
-                            <h4 class="del_icon" onclick="deleteWorkshop(<?php echo $room_id; ?>);">d</h4>
+                            <h4 class="del_icon" onclick="deleteRoom(<?php echo $room_id; ?>);">d</h4>
                         </div>
                     </div>
                 </div>
