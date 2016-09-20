@@ -18,9 +18,11 @@
 
 	            </div>
 			</div>
+			<div class="login-header">
+				<h1>Login</h1>
+			</div>
             <div class="login-main">
             	<div class="vertical-center">
-	                <h1>Login</h1>
 					<form action="." method="post">
 						<input type="hidden" name="action" value="login">
 
