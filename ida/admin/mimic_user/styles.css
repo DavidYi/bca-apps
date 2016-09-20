@@ -17,4 +17,9 @@ h1.title {
 
 #submit {
     margin-right: 1.25em;
+    background-color: rgb(182, 226, 249);
+    cursor: pointer;
+}
+#back{
+    background-color: rgb(247, 224, 97);
 }

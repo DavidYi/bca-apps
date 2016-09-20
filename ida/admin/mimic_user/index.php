@@ -23,16 +23,25 @@ switch ($action) {
         break;
 
     case 'login':
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
         $usr_id = filter_input(INPUT_POST, "usr_id");
-        $user = $_SESSION['user'];
-        $_SESSION['prev_usr_id'] = $user->usr_id;
-        $_SESSION['user'] = User::getUserByUsrId($usr_id);
-        
+        $choice = filter_input(INPUT_POST, 'choice');
+        if($choice == "submit") {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
 
-        header("Location: ../../itinerary/index.php");
+            $user = $_SESSION['user'];
+            $_SESSION['prev_usr_id'] = $user->usr_id;
+            $_SESSION['user'] = User::getUserByUsrId($usr_id);
+
+
+            header("Location: ../../itinerary/index.php");
+
+        }
+        else if($choice == "back"){
+            header("Location: ../index.php");
+        }
 
         break;
+
 }
