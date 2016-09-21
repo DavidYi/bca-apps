@@ -27,7 +27,7 @@ require_once('../model/teacher_db.php');
 <section class="main view">
     <div class="view-main">
         <div class="login-status">
-            <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name);?></b></h3>
+            <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name); ?></b></h3>
             <h3 class="log-out"><a href="./index.php?action=logout">
                     <?php if (isset($_SESSION['prev_usr_id'])) { ?> Return to Admin Panel <?php } else { ?> Log Out <?php } ?>
                 </a></h3>
@@ -45,23 +45,25 @@ require_once('../model/teacher_db.php');
     <div class="view-signup enrollment">
         <div class="vertical-center">
 
-        <h7 style="left:18%;text-align:center">These are your current registration times: </h7>
+            <h7 style="left:18%;text-align:center">These are your current registration times:</h7>
 
             <nav class="navbar">
                 <h1></h1>
-                <div class="session-filter tag">Date</div>
-                <div class="session-filter company">Mods</div>
-                <div class="session-filter presenter">Test Name</div>
+                <div class="session-filter tag" style="width: 25%;">Date</div>
+                <div class="session-filter company" style="width: 25%;">Mods</div>
+                <div class="session-filter presenter" style="width: 25%;">Test Name</div>
+                <div class="session-filter position" style="width: 25%;">Location</div>
             </nav>
 
             <div style="overflow-y:scroll; height:300px;">
 
                 <?php foreach ($testSelectedList as $test) { ?>
-                 <div class="session view-session">
+                    <div class="session view-session">
                         <?php if ($test != NULL) { ?>
-                            <div class="time"><?php echo $test['test_dt']?></div>
-                            <div class="mods"><?php echo $test['test_time_desc']?></div>
-                            <div class="name"><?php echo $test['test_name']?></div>
+                            <div class="time" style="width: 25%;"><?php echo $test['test_dt'] ?></div>
+                            <div class="mods" style="width: 25%;"><?php echo $test['test_time_desc'] ?></div>
+                            <div class="name" style="width: 25%;"><?php echo $test['test_name'] ?></div>
+                            <div class="position" style="width: 25%; text-align: center;"><?php echo $test['rm_nbr']?></div>
                         <?php } ?>
                     </div>
                 <?php } ?>
@@ -72,7 +74,7 @@ require_once('../model/teacher_db.php');
             <form action="." method="post">
                 <input type="hidden" name="action" value="show_itinerary">
                 <br>
-                <button type = "submit" value="Add/Delete">Add/Delete</button>
+                <button type="submit" value="Add/Delete">Add/Delete</button>
             </form>
 
         </div>
@@ -87,7 +89,7 @@ require_once('../model/teacher_db.php');
 <script type="text/javascript">
     $('body').plusAnchor({
         easing: 'easeInOutExpo',
-        speed:  700
+        speed: 700
     });
 </script>
 </body>
