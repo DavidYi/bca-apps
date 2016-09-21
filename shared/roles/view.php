@@ -8,6 +8,21 @@
     <link href="/<?php echo $app_url_path ?>/../shared/roles/view.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
     <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script>
+        $(function() {
+            var availableTutorials = [
+                <?php foreach($users as $user) { ?>
+                "<?php echo $user['usr_last_name']?>, <?php echo $user['usr_first_name'] ?>",
+            <?php } ?>
+            ];
+            $( "#automplete-1" ).autocomplete({
+                source: availableTutorials
+            });
+        });
+    </script>
 </head>
 <body>
 <form action="index.php" method="post">
@@ -44,20 +59,13 @@
             <div id="add">
                 <br>
                 <h2><strong>Add Admin</strong></h2>
-<!--                <select id="user_drop" name="user_drop">-->
-<!--                    --><?php //foreach($users as $user) { ?>
-<!--                        <option value="--><?php //echo $user['usr_id'] ?><!--">--><?php //echo $user['usr_last_name'] ?><!--, --><?php //echo $user['usr_first_name'] ?><!--</option>-->
-<!--                    --><?php //} ?>
-<!--                </select>-->
+                <select id="user_drop">
+                    <?php foreach($users as $user) { ?>
+                        <option value="<?php echo $user['usr_id'] ?>"><?php echo $user['usr_last_name'] ?>, <?php echo $user['usr_first_name'] ?></option>
+                    <?php } ?>
+                </select>
+                <input id="automplete-1" name="user_drop">
                 <div style="margin:20px 0"></div>
-
-                <div style="margin-bottom:20px">
-                    <select class="ui search dropdown" labelPosition="top" style="width:100%;">
-                        <?php foreach($users as $user) { ?>
-                            <option value="<?php echo $user['usr_id'] ?>"><?php echo $user['usr_last_name'] ?>, <?php echo $user['usr_first_name'] ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
 
                 <div class="ui-widget">
                     <select class="ui search dropdown" name="role_drop" name="role_drop">
