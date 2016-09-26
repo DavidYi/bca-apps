@@ -22,9 +22,9 @@ function get_mentor_list() {
                  mentor_position, mentor_company, mentor_profile, mentor_keywords,
                   active, pres_room, pres_host_teacher, pres_max_capacity, 
                   GROUP_CONCAT(ses_id order by ses_id SEPARATOR \', \') as sessions
-              from mentor, presentation
+              from mentor
+              left join presentation on mentor.mentor_id = presentation.mentor_id
               where active = 1
-                and mentor.mentor_id = presentation.mentor_id
               group by mentor.mentor_id
 			  order by mentor_last_name';
 
