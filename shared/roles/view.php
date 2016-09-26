@@ -52,7 +52,7 @@
                 <div style="margin:20px 0"></div>
 
                 <div style="margin-bottom:20px">
-                    <select class="ui search dropdown" labelPosition="top" style="width:100%;">
+                    <select name="user_drop" class="ui search dropdown" labelPosition="top" style="width:100%;">
                         <?php foreach($users as $user) { ?>
                             <option value="<?php echo $user['usr_id'] ?>"><?php echo $user['usr_last_name'] ?>, <?php echo $user['usr_first_name'] ?></option>
                         <?php } ?>
