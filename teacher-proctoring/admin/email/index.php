@@ -28,7 +28,7 @@ switch ($action) {
 
         require("sendgrid-php/sendgrid-php.php");
         //          $apiKey = getenv('SENDGRID_API_KEY');
-        $apiKey = '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';
+        $apiKey = 'blank';
         $sg = new \SendGrid($apiKey);
 
 
