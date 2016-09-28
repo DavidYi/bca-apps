@@ -14,12 +14,12 @@
     <script>
         $(document).ready(function () {
 
-            <?php $test = get_selected_test($test_id) ?>
+            <?php $test = get_selected_test($test_id); ?>
 
             $('#basicExample').timepicker();
             $('.ui.dropdown').selectmenu();
-            $("#test_cde").val(<?php echo $test[$test_type_cde]?>);
-            $("#test_room").val(<?php echo $test[$rm_nbr]?>);
+            $("#test_cde").val(<?php echo $test['test_type_cde'];?>);
+            $("#test_room").val(<?php echo $test['rm_nbr'];?>);
 
         });
     </script>
