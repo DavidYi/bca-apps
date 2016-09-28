@@ -1,16 +1,7 @@
-ul {
-    display: inline-block;
-    margin-left: -40px;
-    text-align: justify;
+.downloads a {
+    text-decoration: none;
 }
 
-li {
-    display: inline-block;
-    list-style-type: none;
-}
-p{
-    display:inline;
-}
 button {
     height: 3em;
     width: 20em;
@@ -28,12 +19,11 @@ button {
     -moz-transition: all 175ms ease;
     transition: all 175ms ease;
     cursor: pointer;
+    display: inline-block;
 }
 
+/*WHY IS THIS SO AMUSING OML*/
 button:hover {
     background-color: tomato;
 }
-#centerthis{
-    text-align: center;
-    padding-top:2em;
-}
+
