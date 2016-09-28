@@ -5,10 +5,11 @@ date_default_timezone_set('America/New_York');
 function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
 {
     $query = 'SELECT test_time_xref.test_id, test_time_xref.test_time_id, test_time_desc,
-              test_name, test.test_type_cde, rm_id, test_dt, proc_needed, proc_enrolled,
+              test_name, test.test_type_cde, test.rm_id, room.rm_nbr, test_dt, proc_needed, proc_enrolled,
               proc_needed - proc_enrolled as remaining, sort_order
               FROM test_time_xref
                 INNER JOIN test ON test_time_xref.test_id = test.test_id
+                INNER JOIN room ON test.rm_id = room.rm_id
                 INNER JOIN test_time ON test_time_xref.test_time_id = test_time.test_time_id
                 INNER JOIN test_type ON test.test_type_cde = test_type.test_type_cde ';
 
@@ -23,10 +24,11 @@ function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
 
     $query .= ("UNION 
         SELECT test_time_xref.test_id, test_time_xref.test_time_id, test_time_desc,
-          test_name, test.test_type_cde, rm_id, test_dt, proc_needed, proc_enrolled,
+          test_name, test.test_type_cde, test.rm_id, room.rm_nbr, test_dt, proc_needed, proc_enrolled,
           proc_needed - proc_enrolled as remaining, sort_order
         FROM test_updt_xref
           INNER JOIN test ON test.test_id = test_updt_xref.test_id
+          INNER JOIN room ON test.rm_id = room.rm_id
           INNER JOIN test_time ON test_time.test_time_id = test_updt_xref.test_time_id
           INNER JOIN test_time_xref ON test_time_xref.test_id = test_updt_xref.test_id
                                        AND test_time_xref.test_time_id = test_updt_xref.test_time_id
@@ -39,6 +41,7 @@ function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
     else if ($sort_by == 5) $query .= ('ORDER BY remaining');
     else if ($sort_by == 6) $query .= ('ORDER BY proc_needed');
     else if ($sort_by == 7) $query .= ('ORDER BY proc_enrolled');
+    else if ($sort_by == 8) $query .= ('ORDER BY rm_id');
     else $query .= ('ORDER BY test_dt, test_id, test_time_id');
     if ($order_by == 2) $query .= (' DESC');
 
@@ -59,10 +62,11 @@ function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
 
 function get_selected_test_list($usr_id)
 {
-    $query = 'SELECT distinct test_updt_xref.test_id, test_name, rm_id, test_dt,
+    $query = 'SELECT distinct test_updt_xref.test_id, test_name, test.rm_id, room.rm_nbr, test_dt,
                   test_time_desc, usr_id, test_updt_xref.test_time_id
               FROM test_updt_xref
                   INNER JOIN test ON test.test_id = test_updt_xref.test_id
+                  INNER JOIN room ON test.rm_id = room.rm_id
                   INNER JOIN test_time ON test_time.test_time_id = test_updt_xref.test_time_id
                   INNER JOIN test_time_xref ON test_time_xref.test_id = test_updt_xref.test_id
                     AND test_time_xref.test_time_id = test_updt_xref.test_time_id
@@ -554,7 +558,7 @@ function update_reminder_sent($test_id)
     try {
         $db->beginTransaction();
         $query = 'UPDATE test_time_xref
-                    SET reminder_sent_dt = CURRENT_DATE
+                    SET reminder_sent_dt = CURRENT_TIMESTAMP 
                     WHERE test_id = :test_id';
 
         $statement = $db->prepare($query);

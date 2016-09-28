@@ -82,8 +82,12 @@
         <a href="index.php?action=<?php echo $action ?>&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>">
             <div class="session-filter tag" style="width:40%;text-align:left">Test Name</div>
         </a>
-        <a href="index.php?action=<?php echo $action ?>&sort=2&order=<?php if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>">
-            <div class="session-filter company" style="width:15%;text-align:left">Test Type</div>
+<!--        <a href="index.php?action=--><?php //echo $action ?><!--&sort=2&order=--><?php //if ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?><!--">-->
+<!--            <div class="session-filter company" style="width:15%;text-align:left">Test Type</div>-->
+<!--        </a>-->
+<!--        ADD LOCATION-->
+        <a href="index.php?action=<?php echo $action ?>&sort=8&order=<?php if ($sort_order == 1 && $sort_by == 8) { echo 2; } else { echo 1; } ?>">
+            <div class="session-filter company" style="width:15%;text-align:left">Room</div>
         </a>
         <a href="index.php?action=<?php echo $action ?>&sort=3&order=<?php if ($sort_order == 1 && $sort_by == 3) { echo 2; } else { echo 1; } ?>">
             <div class="session-filter position" style="width:15%;text-align: left">Mods</div>
@@ -102,7 +106,7 @@
             $testText = $test['test_id'] . ":" . $test['test_time_id'];?>
             <div class="session makeDefault" data-value="<?php echo $testText?>">
                 <div class="tag"><?php echo $test['test_name']?></div>
-                <div class="company"><?php echo $test['test_type_cde']?></div>
+                <div class="company"><?php echo $test['rm_nbr']?></div>
                 <div class="position"><?php echo $test['test_time_desc']?></div>
                 <div class="presenter"><?php echo $test['test_dt']?></div>
                 <div class="remaining" style="text-align: right"><?php echo $test['remaining']?></div>

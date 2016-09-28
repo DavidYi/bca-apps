@@ -29,7 +29,8 @@
         <th>Test Date</th>
         <th>Days Away</th>
         <th>Mail</th>
-        <th>Email Sent</th>
+<!--        <th>Email Sent</th>-->
+        <th>Last Sent Date</th>
     </tr>
 
     <?php foreach ($upcoming_tests as $test) :
@@ -94,7 +95,7 @@
             <td> <?php echo $test_dt; ?> </td>
             <td> <?php echo $test_days_away; ?> </td>
             <td>
-                <a href="index.php?action=<?php if ($test_sent == null) {
+                <a href="index.php?action=<?php if (true) {
                     echo 'send_email';
                 } else {
                     echo 'list_upcoming_tests';
@@ -104,13 +105,14 @@
                         title="Send Email"
                         style="cursor:pointer"></i></a>
             </td>
-            <td> <?php if ($test_sent == null) {
-                    echo '<i class="fa fa-times"
-                        aria-hidden="true"></i>';
-                } else {
-                    echo '<i class="fa fa-check"
-                        aria-hidden="true"></i>';
-                }; ?></td>
+<!--            <td> --><?php //if ($test_sent == null) {
+//                    echo '<i class="fa fa-times"
+//                        aria-hidden="true"></i>';
+//                } else {
+//                    echo '<i class="fa fa-check"
+//                        aria-hidden="true"></i>';
+//                }; ?><!--</td>-->
+            <td> <?php echo $test_sent; ?> </td>
 
         </tr>
 
