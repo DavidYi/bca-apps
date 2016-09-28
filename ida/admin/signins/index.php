@@ -61,6 +61,23 @@ switch ($action) {
         $pdf->Output('signin.pdf', 'I');
         break;
 
+    case 'generate-presenter-signin':
+        $presenters = get_presenters();
+        $header = array("Presenters", "Signature");
+        $pdf = new signinPDF();
+
+        $pdf->AddPage("P", "Letter");
+        $pdf->SetFont('Arial', '', 12);
+
+        $pdf->SetY(10);
+
+        $pdf->FancyPresenter($header, $presenters);
+
+        $pdf->Output('presenters.pdf', 'I');
+
+        
+        break;
+
     case 'generate-room-signs':
         $rooms = get_rooms();
         $pdf = new signinPDF();

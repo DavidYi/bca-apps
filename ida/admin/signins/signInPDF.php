@@ -85,6 +85,72 @@ class signinPDF extends FPDF
         $this->Cell(array_sum($w), 0, '', 'T');
     }
 
+    function FancyPresenter($header, $data)
+    {
+        $headHeight = 10;
+        $height = 7;
+        $fontSize = 10;
+        // Colors, line width and bold font
+        $this->SetFillColor(88, 88, 88);
+        $this->SetTextColor(255);
+        $this->SetDrawColor(0);
+        $this->SetLineWidth(.4);
+        $this->SetFont('', 'B', 12);
+
+        // Header
+        $w = array(110, 75);
+
+        $this->Ln();
+
+        for ($i = 0; $i < count($header); $i++)
+            $this->Cell($w[$i], $headHeight, $header[$i], 1, 0, 'C', true);
+
+        $this->Ln();
+
+        // Color and font restoration
+        $this->SetFillColor(224, 235, 255);
+        $this->SetTextColor(0);
+        $this->SetFont('', '', $fontSize);
+//todo: add host teacher, mentor name, rm number
+        // Data
+        $fill = false;
+        foreach ($data as $row) {
+            $fontSizeTemp = $fontSize;
+
+            if (($this->GetY() >= 250) && ($this->GetY() <= 256)) {
+                $this->Cell(array_sum($w), 0, '', 'T');
+                $this->Ln();
+                $this->SetFillColor(88, 88, 88);
+                $this->SetTextColor(255);
+                $this->SetDrawColor(0);
+                $this->SetLineWidth(.4);
+                $this->SetFont('', 'B', 12);
+
+                for ($i = 0; $i < count($header); $i++)
+                    $this->Cell($w[$i], $headHeight, $header[$i], 1, 0, 'C', true);
+
+                $this->SetFillColor(224, 235, 255);
+                $this->SetTextColor(0);
+                $this->SetFont('', '', $fontSize);
+                $this->Ln();
+            }
+
+            $presenterNames = $row[0];
+
+            // Name
+            $this->AdjustFontSize($fontSizeTemp, $presenterNames, $w[0]);
+            $this->Cell($w[0], $height, $presenterNames, 'LR', 0, 'L', $fill);
+
+            //Signature
+            $this->Cell($w[1], $height, ' ', 'LR', 0, 'L', $fill);
+
+            $this->Ln();
+            $fill = !$fill;
+        }
+        // Closing line
+        $this->Cell(array_sum($w), 0, '', 'T');
+    }
+
     function FancyTeacher($header, $data)
     {
         $headHeight = 15;
