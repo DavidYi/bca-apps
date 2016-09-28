@@ -15,6 +15,8 @@
         $(document).ready(function () {
             $('#basicExample').timepicker();
             $('.ui.dropdown').selectmenu();
+            $('#test_cde').val(<?php $test = get_selected_test(filter_input(INPUT_POST, 'test_id')); echo $test['test_type_cde'];?>);
+            $('#test_room').val(<?php $test = get_selected_test(filter_input(INPUT_POST, 'test_id')); echo $test['rm_id'];?>);
 
 
         });
@@ -43,7 +45,7 @@
                 <input class="mod" name="date" placeholder="Date" type="text" id="datepicker"
                        value="<?php echo $test_date ?>" required><BR>
 
-                <select name="test_cde" class="mod" id="test_cde" value="<?php echo $test_cde ?>" required>
+                <select name="test_cde" class="mod" id="test_cde" value="<?php echo $test_type_cde; ?>" required>
                     <i class="dropdown icon"></i>
                     <option disabled value="<?php echo $test['test_type_cde'] ?>">Test Type</option>
                     <?php foreach ($testTypes as $test) { ?>
@@ -59,7 +61,7 @@
 
                 <!-- Test -->
 
-                <select name="room_id" class="mod" id="test_room" required>
+                <select name="room_id" class="mod" id="test_room" value="<?php echo $test_room; ?>" required>
                     <i class="dropdown icon"></i>
                     <option disabled>Room Number</option>
                     <?php

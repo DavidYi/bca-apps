@@ -38,6 +38,14 @@
                     </div>
                 </a>
             </td>
+            <td>
+                <a href="reports_download">
+                    <div class="feature">
+                        <h2>Download Reports</h2>
+                        <h4>Download Reports in CSV format.</h4>
+                    </div>
+                </a>
+            </td>
         </tr>
         <tr>
             <td>
