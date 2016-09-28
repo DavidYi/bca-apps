@@ -14,12 +14,11 @@
     <script>
         $(document).ready(function () {
 
-            <?php $test = get_selected_test($test_id); ?>
+
 
             $('#basicExample').timepicker();
             $('.ui.dropdown').selectmenu();
-            $("#test_cde").val(<?php echo $test['test_type_cde'];?>);
-            $("#test_room").val(<?php echo $test['rm_nbr'];?>);
+
 
         });
     </script>
@@ -46,9 +45,9 @@
                 <input class="mod" name="date" placeholder="Date" type="text" id="datepicker"
                        value="<?php echo $test_date ?>" required><BR>
 
-                <select name="test_cde" class="mod" id="test_cde" required>
+                <select name="test_cde" class="mod" id="test_cde" value="<?php echo $test_cde ?>" required>
                     <i class="dropdown icon"></i>
-                    <option disabled>Test Type</option>
+                    <option disabled value="<?php echo $test['test_type_cde'] ?>">Test Type</option>
                     <?php foreach ($testTypes as $test) { ?>
                         <?php if ($user->getRole("TPOR") == $test['test_type_cde'] || $user->getRole("TPOR") == "ADM") { ?>
                             <option value="<?php echo $test['test_type_cde'] ?>">
