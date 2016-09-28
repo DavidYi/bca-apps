@@ -64,6 +64,14 @@
                     </div>
                 </a>
             </td>
+            <td>
+                <a href="clear_data">
+                    <div class="feature">
+                        <h2>Clear Data</h2>
+                        <h4>Clear Data from Database.</h4>
+                    </div>
+                </a>
+            </td>
         </tr>
     </table>
 
