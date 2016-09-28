@@ -90,10 +90,11 @@ function get_selected_test_list($usr_id)
 function get_selected_test($test_id)
 {
     $query = 'SELECT test_time_xref.test_id, test_time_xref.test_time_id, test_time_desc,
-              test_name, test.test_type_cde, rm_id, test_dt, proc_needed, proc_enrolled,
+              test_name, test.test_type_cde, test.rm_id, room.rm_nbr, test_dt, proc_needed, proc_enrolled,
               proc_needed - proc_enrolled as remaining, sort_order
               FROM test_time_xref
                 INNER JOIN test ON test_time_xref.test_id = test.test_id
+                 INNER JOIN room ON test.rm_id = room.rm_id
                 INNER JOIN test_time ON test_time_xref.test_time_id = test_time.test_time_id
                 INNER JOIN test_type ON test.test_type_cde = test_type.test_type_cde
               WHERE test_time_xref.test_id = :test_id';
