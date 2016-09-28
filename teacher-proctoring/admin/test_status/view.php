@@ -59,13 +59,19 @@
 
     <nav class="navbar" style="width:85%;">
         <a href="index.php?action=<?php echo $action ?>&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>">
-            <div class="session-filter tag" style="width:30%;text-align:left">Test Name</div>
+            <div class="session-filter tag" style="width:20%;text-align:left">Test Name</div>
         </a>
         <a href="index.php?action=<?php echo $action ?>&sort=3&order=<?php if ($sort_order == 1 && $sort_by == 3) { echo 2; } else { echo 1; } ?>">
             <div class="session-filter company" style="width:15%;text-align:left">Mods</div>
         </a>
+
+<!--        ROOM -->
+        <a href="index.php?action=<?php echo $action ?>&sort=8&order=<?php if ($sort_order == 1 && $sort_by == 8) { echo 2; } else { echo 1; } ?>">
+            <div class="session-filter company" style="width:15%;text-align:left">Room</div>
+        </a>
+
         <a href="index.php?action=<?php echo $action ?>&sort=4&order=<?php if ($sort_order == 1 && $sort_by == 4) { echo 2; } else { echo 1; } ?>">
-            <div class="session-filter position" style="width:20%;text-align: left">Time</div>
+            <div class="session-filter position" style="width:10%;text-align: left">Date</div>
         </a>
         <a href="index.php?action=<?php echo $action ?>&sort=6&order=<?php if ($sort_order == 1 && $sort_by == 6) { echo 2; } else { echo 1; } ?>">
             <div class="session-filter presenter" style="width:6.5%;text-align: right">Total</div>
@@ -86,12 +92,13 @@
             <div class="main-panel" style="position: relative;">
                 <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="../modify_delete/index.php?action=list_test&test_id=<?php echo $test['test_id']?>">
                 <div class="session makeDefault" style="position:relative">
-                    <div class="tag" style="width:30%"><a class="info" style="float: left; position: relative; z-index: 9; color: #555555;" onclick="popup('#B<?php echo $test_num?>,#P<?php echo $test_num?>')">&#x271A;&#xa0;&nbsp;</a><?php echo $test['test_name']?></div>
-                    <div class="company"><?php echo $test['test_time_desc']?></div>
-                    <div class="position" style="width:20%"><?php echo $test['test_dt']?></div>
-                    <div class="presenter" style="width:7%; text-align: right"><?php echo $test['proc_needed']?></div>
-                    <div class="remaining" style="width:12.5%; text-align: right"><?php echo $test['proc_enrolled']?></div>
-                    <div class="proctorsleft" style="text-align:right"><?php echo $test['remaining']?></div>
+                    <div class="tag" style="width:20%"><a class="info" style="float: left; position: relative; z-index: 9; color: #555555;" onclick="popup('#B<?php echo $test_num?>,#P<?php echo $test_num?>')">&#x271A;&#xa0;&nbsp;</a><?php echo $test['test_name']?></div>
+                    <div class="company" style="width:15%"><?php echo $test['test_time_desc']?></div>
+                    <div class="company" style="width:15%"><?php echo $test['rm_nbr']?></div>
+                    <div class="position" style="width:10%"><?php echo $test['test_dt']?></div>
+                    <div class="presenter" style="width:6.5%; text-align: right"><?php echo $test['proc_needed']?></div>
+                    <div class="remaining" style="width:13%; text-align: right"><?php echo $test['proc_enrolled']?></div>
+                    <div class="proctorsleft" style="width: 15%; text-align:right"><?php echo $test['remaining']?></div>
                 </div>
                 </a>
 
