@@ -21,6 +21,7 @@
                     form.appendChild(hiddenField);
                 }
             }
+            //random
             document.body.appendChild(form);
             form.submit();
         }</script>
