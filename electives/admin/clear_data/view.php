@@ -3,7 +3,8 @@
 ?>
 <html>
 <head>
-    <link rel="stylesheet" href="/../../../shared/ss/main.css">
+    <link rel="stylesheet" href="/../../../bca-apps/shared/ss/main.css">
+    <link rel="stylesheet" href="styles.css">
 <!--    <link rel="stylesheet" href="styles.css">-->
     <script type="text/javascript">function post(path, params, method) { //sends a post request; used to avoid having to use get to change the url since that looks sloppy and i don't want to bother with an inline form, especially if i want the confirmation prompt
             method = method || "post"; //also ripped straight off stackoverflow
@@ -27,21 +28,30 @@
         }</script>
 </head>
 <body>
+<a href="../index.php"><button>Back</button></a>
+
 <div id="centerthis">
-    <h2>Data Clearing</h2>
-    <p>Warning: This Is Irreversible</p>
+    <h1>Data Clearing</h1>
+    <h2>Use this page to clear user data on a periodic basis, see instructions below.</h2>
     <ul>
         <li>
             <button onclick="clearStudentAvailability()">Clear Student Availability</button>
+            <p>Should be run every summer to clear student availability.</p>
         </li>
+        <br>
         <li>
             <button onclick="clearStudentCourseInterest()">Clear Student Course Interest</button>
+            <p>Should be run every trimester to clear the students interest.</p>
         </li>
+        <br>
         <li>
             <button onclick="clearTeacherAvailability()">Clear Teacher Availability</button>
+            <p>Should be run every summer to clear teacher availability.</p>
         </li>
+        <br>
         <li>
             <button onclick="clearAllCourses()">Clear All Courses</button>
+            <p>Should may be run over the summer. This clears ALL COURSES from the database.</p>
         </li>
     </ul>
 </div>

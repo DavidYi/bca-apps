@@ -21,7 +21,7 @@ switch ($action) {
         include ('view.php');
         break;
 
-    //Everything below this line feels dangerous
+    //Everything below this line is dangerous
 
     case "clear_student_availability":
         clear_student_availability();
