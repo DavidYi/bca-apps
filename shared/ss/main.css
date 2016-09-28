@@ -379,4 +379,9 @@ a.info:hover {
   cursor: hand; }
 
 
-
+select {
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  background-color: rgb(253, 253, 253);
+}
