@@ -43,7 +43,7 @@
 <section class="main">
 
     <header>
-        <h1 class = "title main-title">Signup Status</h1>
+        <h1 class = "title main-titled">Signup Status</h1>
         <?php if ($result != "") { ?>
             <h3 class = "title main-title" style ="text-align: center;"><?php echo $result; ?></h3>
         <?php } ?>
