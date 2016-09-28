@@ -59,15 +59,15 @@
             <div id="add">
                 <br>
                 <h2><strong>Add Admin</strong></h2>
-                <select id="user_drop">
+                <select id="user_drop" name="user_drop">
                     <?php foreach($users as $user) { ?>
                         <option value="<?php echo $user['usr_id'] ?>"><?php echo $user['usr_last_name'] ?>, <?php echo $user['usr_first_name'] ?></option>
                     <?php } ?>
                 </select>
-                <input id="automplete-1" name="user_drop">
+
                 <div style="margin:20px 0"></div>
 
-                <div class="ui-widget">
+                <div>
                     <select class="ui search dropdown" name="role_drop" name="role_drop">
                         <option value="">Select one...</option>
                         <?php foreach($roles as $role) { ?>

@@ -95,7 +95,7 @@ switch ($action) {
     case 'send_email_all':
         $upcoming_tests = list_upcoming_tests();
         foreach ($upcoming_tests as $test) :
-            if ($test['difference'] <= 7 and $test['reminder_sent_dt'] == null) {
+            if (($test['difference'] == 7 or $test['difference'] == 7) and $test['reminder_sent_dt'] == null) {
 
                 $list = array('celper19@bergen.org', 'cel.peralta.jmj@gmail.com');
 
@@ -119,7 +119,7 @@ switch ($action) {
                 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
 //Going to use getenv() later but for now hardcoding it
-                $apiKey = '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';
+                $apiKey = 'blank';
                 $sg = new \SendGrid($apiKey);
 
                 $response = $sg->client->mail()->send()->post($mail);
