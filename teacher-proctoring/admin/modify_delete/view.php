@@ -13,9 +13,6 @@
     <script src="../add/semantic/dist/semantic.min.js"></script>
     <script>
         $(document).ready(function () {
-
-
-
             $('#basicExample').timepicker();
             $('.ui.dropdown').selectmenu();
 
@@ -30,6 +27,7 @@
 <header>
     <h1 style="margin:0;" class="title">Modify Test</h1>
 </header>
+
 <div id="box">
     <div id="wrapper">
         <div id="columns">
@@ -50,7 +48,9 @@
                     <option disabled value="<?php echo $test['test_type_cde'] ?>">Test Type</option>
                     <?php foreach ($testTypes as $test) { ?>
                         <?php if ($user->getRole("TPOR") == $test['test_type_cde'] || $user->getRole("TPOR") == "ADM") { ?>
-                            <option value="<?php echo $test['test_type_cde'] ?>">
+                            <option value="<?php echo $test['test_type_cde'] ?>"
+                                <?php if ($test_cde == $test['test_type_cde']) echo (" selected "); ?>
+                                >
                                 <?php echo $test['test_type_desc'] ?>
                             </option>
                         <?php }
@@ -64,7 +64,10 @@
                     <option disabled>Room Number</option>
                     <?php
                     foreach ($rooms as $room) { ?>
-                        <option value="<?php echo $room['rm_id']; ?>"><?php echo $room['rm_nbr'] ?></option>
+                        <option value="<?php echo $room['rm_id']; ?>"
+                            <?php if ($test_room == $room['rm_id']) echo (" selected "); ?>
+                        >
+                            <?php echo $room['rm_nbr'] ?></option>
                     <?php } ?>
                 </select><BR>
 
