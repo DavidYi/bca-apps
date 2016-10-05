@@ -3,7 +3,7 @@
 function get_signup_dates() {
     $query = 'SELECT grade_lvl, mode_desc, signup_dates_mode.mode_cde, start, end
               FROM signup_dates, signup_dates_mode
-              WHERE signup_dates.mode_cde = signup_dates_mode.mode_cde';
+              WHERE signup_dates.mode_cde = signup_dates_mode.mode_cde and grade_lvl != 13';
 
     return get_list($query);
 }
@@ -18,7 +18,10 @@ function get_signup_dates_for_grade($grade) {
     $statement = $db->prepare($query);
     $statement->bindValue(':grade', $grade);
     $statement->execute();
+    $result = $statement->fetch();
     $statement->closeCursor();
+
+    return $result;
 }
 //
 // This method provides no exception handling as the errors are handled in update_signup_dates.
