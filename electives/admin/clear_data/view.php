@@ -28,7 +28,7 @@
         }</script>
 </head>
 <body>
-<a href="../index.php"><button>Back</button></a>
+<a href="../index.php"><button>Return To Admin Panel</button></a>
 
 <div id="centerthis">
     <h1>Data Clearing</h1>

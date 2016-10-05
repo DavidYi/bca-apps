@@ -113,7 +113,6 @@ function get_elective_list($sort_by, $sort_order)
             where e.teacher_id = u.usr_id
             group by e.course_id";
 
-
     if ($sort_by == 1)  $query .= " order by u.usr_last_name ";
     elseif ($sort_by == 2) $query .= " order by e.course_name ";
     elseif ($sort_by == 3) $query .= " order by num_students ";
@@ -127,7 +126,6 @@ function get_elective_list($sort_by, $sort_order)
         $statement->execute();
         $result = $statement->fetchAll();
         $statement->closeCursor();
-
         return $result;
     } catch (PDOException $e) {
         display_db_exception($e);

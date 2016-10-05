@@ -7,7 +7,7 @@
 <head>
     <link rel="stylesheet" href="styles.css">
     <script type="text/javascript">function post(path, params, method) { //sends a post request; used to avoid having to use get to change the url since that looks sloppy and i don't want to bother with an inline form, especially if i want the confirmation prompt
-            method = method || "post"; //also ripped straight off stackoverflow
+            method = method || "post";
             var form = document.createElement("form");
             form.setAttribute("method", method);
             form.setAttribute("action", path);
@@ -66,7 +66,6 @@
             <?php
             $student_list = get_best_course_availability_students($course_id, $time_id);
             foreach ($student_list as $student) :
-                //Excellent naming choice
                 $std_last = $student['usr_last_name'];
                 $std_first = $student['usr_first_name'];
                 $std_grade = $student['usr_grade_lvl']; ?>
