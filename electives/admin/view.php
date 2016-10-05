@@ -67,8 +67,8 @@
             <td>
                 <a href="reports">
                     <div class="feature">
-                        <h2>Reports</h2>
-                        <h4>View elective reports.</h4>
+                        <h2>Student / Course Interest Matrix</h2>
+                        <h4>View the Student / Course Interest Matrix.</h4>
                     </div>
                 </a>
             </td>
