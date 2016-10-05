@@ -22,7 +22,7 @@
         </div>
         <div class="vertical-center">
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
-                <h1>Career Day (Feb. 2)</h1>
+                <h1>Career Day (Feb. 9)</h1>
 
                 <?php if ($startTime > $currentTime) { ?>
                     <h3> Registration <b>has not opened</b>!</h3>

@@ -572,4 +572,25 @@ function update_reminder_sent($test_id)
     }
 }
 
+function get_active_tests_teachers()
+{
+    global $db;
+
+    $query = 'SELECT distinct t.test_name, td.test_time_desc, usr_last_name, usr_first_name
+                FROM user, test_updt_xref tx, test_time td, test t
+                WHERE t.test_id = tx.test_id AND td.test_time_id = tx.test_time_id
+                  AND tx.usr_id = user.usr_id
+                ORDER BY test_name, test_time_desc, usr_last_name, usr_first_name';
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+}
+
 ?>

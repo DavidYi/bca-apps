@@ -46,6 +46,14 @@ function get_rooms(){
     return get_list($query);
 }
 
+function get_presenters(){
+    $query = 'select distinct presenter_names
+                from presentation
+                order by presenter_names';
+
+    return get_list($query);
+}
+
 
 function get_session_by_room($rm_id, $ses_id){
     $query = 'select p.ses_id, org_name, presenter_names, ses_start_time, wkshp_nme

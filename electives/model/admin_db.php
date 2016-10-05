@@ -72,7 +72,7 @@ function get_free_mods()
     try {
         $statement = $db->prepare($query);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         $statement->closeCursor();
 
         return $result;
@@ -124,7 +124,7 @@ function get_elective_list($sort_by, $sort_order)
     try {
         $statement = $db->prepare($query);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
@@ -151,7 +151,7 @@ function get_best_course_availability()
     try {
         $statement = $db->prepare($query);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         $statement->closeCursor();
 
         return $result;

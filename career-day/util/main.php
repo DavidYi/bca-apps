@@ -16,7 +16,7 @@ function goToLandingPage() {
     if ($user->getRole('CAR') == 'ADM') {
         header("Location: /" . $server_web_root . "/career-day/admin");
     } else {
-        header("Location: /" . $server_web_root . "/career-day/admin");
+        header("Location: /" . $server_web_root . "/career-day/itinerary");
     }
 }
 
