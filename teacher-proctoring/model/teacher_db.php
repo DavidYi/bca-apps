@@ -582,7 +582,15 @@ function get_active_tests_teachers()
                   AND tx.usr_id = user.usr_id
                 ORDER BY test_name, test_time_desc, usr_last_name, usr_first_name';
 
-    return get_list($query);
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
 }
 
 ?>

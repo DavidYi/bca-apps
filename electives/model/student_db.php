@@ -88,7 +88,7 @@ function reset_courses_for_student($usr_id) {
     try {
         $statement = $db->prepare($query);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         $statement->closeCursor();
 
         return $result;

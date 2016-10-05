@@ -30,10 +30,13 @@ switch ($action) {
         $output = fopen('php://output', 'w');
 
         fputcsv($output, array('Test Name', 'Test Time', 'Last Name', 'First Name'));
+
         foreach ($test_list as $test) {
             fputcsv($output, $test);
         }
-        fpassthru($output);
+
+        //fpassthru($output);
+
         fclose($output) or die("Can't close file");
         exit();
         break;
