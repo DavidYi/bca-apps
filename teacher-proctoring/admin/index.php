@@ -64,6 +64,10 @@ switch ($action) {
             <a href="log_viewer"><h2>Log Viewer</h2></a>
             <h4>View the application log.</h4>
         </div>
+        <div class="feature">
+            <a href="pdfs"><h2>Downloads</h2></a>
+            <h4>Generate and download CSV sheets.</h4>
+        </div>
     <?php } ?>
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
 </main>

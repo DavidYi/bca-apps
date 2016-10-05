@@ -168,18 +168,18 @@ body {
     text-align: left; }
 .enrollment .session .name:last-child {
     margin-right: 0; }
-.enrollment .session:hover {
-    background: #eee;
-    -webkit-transition: all 175ms ease;
-    -moz-transition: all 175ms ease;
-    transition: all 175ms ease; }
+/*.enrollment .session:hover {*/
+    /*background: #eee;*/
+    /*-webkit-transition: all 175ms ease;*/
+    /*-moz-transition: all 175ms ease;*/
+    /*transition: all 175ms ease; }*/
 .enrollment .view-session {
     border-bottom: 1px solid #333; }
 .enrollment .view-session .time, .enrollment .view-session .room-number {
     font-weight: 400; }
-.enrollment .view-session:hover {
+.enrollment .view-session-student:hover {
     background: #333; }
-.enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time, .enrollment .view-session:hover .room-number, .enrollment .view-session:hover .session-title, .enrollment .view-session:hover .name {
+.enrollment .view-session-student:hover .session-number, .enrollment .view-session-student:hover .time, .enrollment .view-session-student:hover .room-number, .enrollment .view-session-student:hover .session-title, .enrollment .view-session-student:hover .name {
     color: #fdfdfd; }
 
 
@@ -239,7 +239,7 @@ body {
     -o-transform: translateY(-40%);
     transform: translateY(-40%); }
 
-.view .view-main h3 {
+.view .view-main h3 a {
     color: #555; }
 @media screen and (max-width: 800px) {
     .view .view-main {
@@ -256,7 +256,7 @@ body {
     display: inline-block; }
 .view .login-status .log-out {
     float: right;
-    text-decoration: underline; }
+ }
 .view {
     height: 100%;
     width: 100%;

@@ -72,7 +72,7 @@ function get_free_mods()
     try {
         $statement = $db->prepare($query);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         $statement->closeCursor();
 
         return $result;
@@ -113,7 +113,6 @@ function get_elective_list($sort_by, $sort_order)
             where e.teacher_id = u.usr_id
             group by e.course_id";
 
-
     if ($sort_by == 1)  $query .= " order by u.usr_last_name ";
     elseif ($sort_by == 2) $query .= " order by e.course_name ";
     elseif ($sort_by == 3) $query .= " order by num_students ";
@@ -125,9 +124,8 @@ function get_elective_list($sort_by, $sort_order)
     try {
         $statement = $db->prepare($query);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         $statement->closeCursor();
-
         return $result;
     } catch (PDOException $e) {
         display_db_exception($e);
@@ -153,7 +151,7 @@ function get_best_course_availability()
     try {
         $statement = $db->prepare($query);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         $statement->closeCursor();
 
         return $result;
