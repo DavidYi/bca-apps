@@ -72,6 +72,7 @@ function get_registered_users(){
     group by grade_lvl
 
     ) none on completed.grade_lvl = none.grade_lvl
+    where completed.grade_lvl != 13
     order by grade_lvl';
     return get_list($query);
 }
