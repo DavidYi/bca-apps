@@ -14,13 +14,18 @@ $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
     if ($action == NULL) {
-        include("view.php");
+        $action = 'show_downloads';
     }
 }
 
 switch ($action) {
-    case 'generate_teachers_csv':
 
+    case "show_downloads":
+
+        include("view.php");
+        break;
+
+    case 'generate_teachers_csv':
         $test_list = get_active_tests_teachers();
 
         $output = fopen('php://output', 'w') or die("Can't open file");
