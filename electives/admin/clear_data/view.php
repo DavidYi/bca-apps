@@ -84,10 +84,5 @@
             window.parent.location.href = 'index.php?action=clear_all_courses';
         }
     }</script>
-<script type="text/javascript">
-    function toggleTable(str) {
-        $(str).toggle();
-        $(str).siblings(str).toggle();
-    }
-</script>
 </body>
+</html>
