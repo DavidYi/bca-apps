@@ -110,7 +110,7 @@ switch ($action) {
             $pdf->SetFont('Arial', 'B');
             $pdf->Cell(0, $pdf->getH()/6, "BCA Career Day", 0, 1, "C");
             $pdf->SetFont('', '', 35);
-            $pdf->Cell(0, $pdf->getH()/7, "February 2, 2016", 0, 1, "C");
+            $pdf->Cell(0, $pdf->getH()/7, "February 9, 2017", 0, 1, "C");
             $pdf->Cell(0, $pdf->getH()/10, "", 0 , 1);
 
             //add 2 lines

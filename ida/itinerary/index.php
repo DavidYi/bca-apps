@@ -27,6 +27,12 @@ if (isset($action) and ($action == "logout")) {
 
 $sessions = get_sessions_by_user($user->usr_id);
 
+$isTeacher = false;
+
+if($user->usr_type_cde == "TCH"){
+    $isTeacher = true;
+}
+
 
 //
 // Check if the user has mentors for all of the sessions.
