@@ -237,7 +237,6 @@ h1 {
 
 h2 {
   font-weight: 300;
-  font-size: 2em;
   line-height: 2.5em;
 }
 
@@ -273,7 +272,7 @@ h1.title {
 button {
   font-weight: 700;
   height: 2em;
-  width: 8em;
+  width: 10em;
   color: rgb(253, 253, 253);
   font-size: 1.8em;
   border: 0;
