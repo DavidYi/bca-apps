@@ -24,28 +24,32 @@
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
                 <h1>IDA ([DATE])</h1>
 
+                <?php if(!$isTeacher) { ?>
 
-                <?php if ($startTime > $currentTime) { ?>
-                    <h3> Registration <b>has not opened</b>!</h3>
-                    <h3> Opens: <?php echo $startTimeFormatted ?> </h3>
+                    <?php if ($startTime > $currentTime) { ?>
+                        <h3> Registration <b>has not opened</b>!</h3>
+                        <h3> Opens: <?php echo $startTimeFormatted ?> </h3>
 
-                <?php } elseif ($endTime < $currentTime) { ?>
-                    <h3> Registration has <b>ended</b>. </h3>
-                    <h3> If you did not finish registering, a session will be assigned to you. </h3>
+                    <?php } elseif ($endTime < $currentTime) { ?>
+                        <h3> Registration has <b>ended</b>. </h3>
+                        <h3> If you did not finish registering, a session will be assigned to you. </h3>
 
-                <?php } elseif ($registration_complete) { ?>
-                    <h3> Registration <b>complete</b>! </h3>
-                    <h3> Feedback <a
-                            href="https://docs.google.com/forms/d/1WIjMjkT5w48ZM-T7vB1A2fo0Ipv-aAVnX0NDsstdF_c/viewform">survey</a>
-                        about this site. </h3>
+                    <?php } elseif ($registration_complete) { ?>
+                        <h3> Registration <b>complete</b>! </h3>
+                        <h3> Feedback <a
+                                href="https://docs.google.com/forms/d/1WIjMjkT5w48ZM-T7vB1A2fo0Ipv-aAVnX0NDsstdF_c/viewform">survey</a>
+                            about this site. </h3>
 
-                <?php } else { ?>
-                    <h3> Registration is <b>open</b>! </h3>
-                    <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
+                    <?php } else { ?>
+                        <h3> Registration is <b>open</b>! </h3>
+                        <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
+                    <?php } ?>
+
+                    <h3> Click <a href="../../CareerDayMentors.pdf" download>here</a> to read about the presentations.</h3>
+                    <h3> Email <a href="mailto:katbla@bergen.org"> Mrs. Blake </a> with any questions.</h3>
+
                 <?php } ?>
 
-                <h3> Click <a href="../../CareerDayMentors.pdf" download>here</a> to read about the presentations.</h3>
-                <h3> Email <a href="mailto:katbla@bergen.org"> Mrs. Blake </a> with any questions.</h3>
             <?php } else { ?>
                 <h1>Mimic User Mode</h1>
             <?php } ?>
@@ -55,11 +59,11 @@
         <div class="vertical-center">
             <?php foreach ($sessions as $session) { ?>
 
-                <?php if (true || $registrationOpen || isset($_SESSION['prev_usr_id'])) { ?>                <!--added true-->
+                <?php if (!$isTeacher && ($registrationOpen || isset($_SESSION['prev_usr_id']))) { ?>
                     <a href="../register/index.php?session=<?php echo $session['ses_times'] ?>&action=register">
                 <?php } ?>
 
-                <div class="session view-session" onclick="">
+                <div class="session view-session <?php if(!$isTeacher) { ?>view-session-student<?php }?>" onclick="">
                     <div class="session-number"><?php echo $session['ses_times'] ?></div>
                     <div class="time"><?php echo $session['ses_start_time'] ?></div>
                     <?php if ($session['ses_id'] != NULL) { ?>
@@ -68,7 +72,7 @@
                     <?php } ?>
                 </div>
 
-                <?php if ($registrationOpen || isset($_SESSION['prev_usr_id'])) { ?>
+                <?php if (!$isTeacher && ($registrationOpen || isset($_SESSION['prev_usr_id']))) { ?>
                     </a>
                 <?php } ?>
 

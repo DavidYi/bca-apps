@@ -24,12 +24,15 @@
 </head>
 <body>
 <div class="downloads">
+    <a href="../index.php"><button>Return to Admin Panel</button></a>
     <center>
         <h1>Download Reports</h1>
-        <a href="index.php?action=electives_list_download"><button>Electives List</button></a><br>
-        <a href="index.php?action=availability_matrix_download"><button>Availability List</button></a><br>
-        <a href="index.php?action=availability_list_download"><button>Teacher Availability List</button></a><br>
-        <a href="index.php?action=course_interest_download"><button>Course Interest List</button></a>
+        <div id="downloads">
+            <a href="index.php?action=electives_list_download"><button>Electives List</button></a>Lists all electives and number of students interested.<br>
+            <a href="index.php?action=availability_matrix_download"><button>Availability Matrix</button></a>Lists the courses where teacher and student availability overlap.<br>
+            <a href="index.php?action=availability_list_download"><button>Teacher Availability List</button></a>Lists the teacher availability.<br>
+            <a href="index.php?action=course_interest_download"><button>Course Interest List</button></a>Lists the Students and their course interests.
+        </div>
     </center>
 </div>
 </body>

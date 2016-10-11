@@ -30,7 +30,7 @@ switch ($action) {
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="availability_matrix.csv";');
 
-        fputcsv($output, array('Course ID', 'Course Name', 'Times', 'Students'));
+        fputcsv($output, array('Course ID', 'Course Name', 'Time ID', 'Times', 'Students'));
         foreach ($availability_list as $item) {
             fputcsv($output, $item);
         }
@@ -46,7 +46,7 @@ switch ($action) {
         header("Content-Type:application/csv");
         header('Content-Disposition: attachment; filename="electives_list.csv";');
 
-        fputcsv($output, array('Teacher Name', 'Course Name', 'Course Description', '# of Students'));
+        fputcsv($output, array('Course ID', 'Teacher Name', 'Course Name', 'Course Description', '# of Students'));
         foreach ($electives_list as $elective) {
             fputcsv($output, $elective);
         }
