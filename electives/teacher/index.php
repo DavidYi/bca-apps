@@ -22,7 +22,7 @@ if ($action == NULL) {
     }
 }
 
-$usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
+$usr_id = $user->usr_id;
 $time_strings = get_time_strings($usr_id);
 
 switch($action){
@@ -47,7 +47,7 @@ switch($action){
 
     default:
         $courses = get_course_by_user($user->usr_id);
-        $usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
+        $usr_id = $user->usr_id;
         $available_times = get_times($usr_id);
         include("./view.php");
         break;

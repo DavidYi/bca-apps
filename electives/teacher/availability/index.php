@@ -18,16 +18,13 @@ if ($action == NULL) {
     }
 }
 
-$usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
-$available_times = get_times($usr_id);
+$available_times = get_times($user->usr_id);
 
 // If the user is being mimicked by an admin, use that id as the updt id.
 // Otherwise, use the id of the current user.
-$updateById;
+$updateById = $user->usr_id;
 
-if (!isset($_SESSION['prev_usr_id'])) {
-    $updateById = $user->usr_id;
-} else {
+if (isset($_SESSION['prev_usr_id'])) {
     $updateById = $_SESSION['prev_usr_id'];
 }
 
