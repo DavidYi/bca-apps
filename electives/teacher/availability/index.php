@@ -33,9 +33,9 @@ switch ($action) {
         $free_mods = $_POST["id_field"];
         $next_page = $_POST["next_page"];
         $decode = json_decode($free_mods, true);
-        reset_times($usr_id);
+        reset_times($user->usr_id);
         for ($i = 0; $i < $decode["length"]; $i++) {
-            update_times($usr_id, $decode[$i], $updateById);
+            update_times($user->usr_id, $decode[$i], $updateById);
         }
 
         if ($next_page == 'admin') {

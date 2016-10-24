@@ -11,11 +11,6 @@ function get_course_signup_matrix_heading($course_id) {
     global $db;
     global $app_cde;
 
-    // If the user is not an administrator, they can only see their own courses.
-    if ($user->getRole($app_cde) != 'ADM') {
-        $teacher_id_clause = 'and c.teacher_id = ' . $user->usr_id;
-    }
-
     $query =
         'select t.time_id, time_short_desc, count(*) as cnt
         from elect_course c, elect_student_course_xref sc, elect_user_free_xref ta, 
@@ -26,7 +21,7 @@ function get_course_signup_matrix_heading($course_id) {
         and c.course_id = sc.course_id
         and c.teacher_id = ta.usr_id
         and ta.time_id =t.time_id
-        and c.course_id = :course_id ' . $teacher_id_clause . '
+        and c.course_id = :course_id 
         group by t.time_id
         having count(*) > 0
         order by time_id, time_short_desc';
@@ -49,11 +44,6 @@ function get_course_signup_matrix_body($course_id) {
     global $db;
     global $app_cde;
 
-    // If the user is not an administrator, they can only see their own courses.
-    if ($user->getRole($app_cde) != 'ADM') {
-        $teacher_id_clause = 'and c.teacher_id = ' . $user->usr_id;
-    }
-
     $query =
         'SELECT time_short_desc, ut.usr_id, usr_last_name, usr_first_name, IF(sa.usr_id IS NULL, \' \', \'X\') as mark
         FROM elect_course c, elect_student_course_xref sc,      
@@ -66,7 +56,7 @@ function get_course_signup_matrix_body($course_id) {
                     AND c.course_id = sc.course_id
                     AND c.teacher_id = ta.usr_id
                     AND ta.time_id =t.time_id
-                    and c.course_id = :course_id ' . $teacher_id_clause . '
+                    and c.course_id = :course_id 
                     GROUP BY t.time_id
                     HAVING count(*) > 0
                     ORDER BY c.course_id, course_name, time_id, time_short_desc) valid_times,
@@ -87,6 +77,27 @@ function get_course_signup_matrix_body($course_id) {
         $statement->bindValue(':course_id', $course_id);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function get_course_by_course_id($course_id) {
+    $query = "SELECT c.course_id, course_name, course_desc, teacher_id, CONCAT(u.usr_last_name, ', ', u.usr_first_name) as name
+              FROM elect_course c, user u
+              WHERE c.teacher_id = u.usr_id
+              and course_id = :course_id";
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':course_id', $course_id);
+        $statement->execute();
+        $result = $statement->fetch();
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {

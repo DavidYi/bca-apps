@@ -12,6 +12,22 @@ body {
   /*display: none;*/
 }
 
+button {
+  background-color: #ffcc00;
+  position: absolute;
+  top: 20%;
+  height: 40px;
+  width: 120px;
+  font-size: 20px;
+}
+
+#back_button {
+  right: 10%;
+}
+
+.centerthis {
+  text-align: center;
+}
 div.table-title {
   margin: auto;
   max-width: 600px;

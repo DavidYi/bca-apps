@@ -1,14 +1,21 @@
 <html>
 <head>
+    <link rel="stylesheet" href="../../ss/main.css">
     <link rel="stylesheet" href="./index.css">
     <script src="../../js/jquery.min.js"></script>
 
 
 </head>
 <body style="padding-top:3%">
-    <div class="table-title" style="text-align: center;">
-    </div>
 
+<header>
+    <h1 class="title">Course Student Matrix</h1>
+    <button type="button" id="back_button"><a href="#" onclick="history.back();">Back</a></button>
+</header>
+
+<div class="centerthis">
+    <h2><?php echo ($course['course_name']) ?> (<?php echo ($course['name']) ?>)
+    </h2>
     <br>
     <br>
 
@@ -41,7 +48,6 @@
                     $rownum++;
 
                     if ($rownum % 2 == 0) {
-                        echo "<tr class='even'>";
                     } else {
                         echo "<tr class='odd'>";
                     }
@@ -53,6 +59,7 @@
         ?>
         </tbody>
     </table>
+
 </body>
 
 </html>
