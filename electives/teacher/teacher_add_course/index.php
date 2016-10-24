@@ -19,7 +19,7 @@ if ($action == NULL) {
     }
 }
 
-$usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
+$usr_id = $user->usr_id;
 
 switch ($action) {
     case 'add_course':
