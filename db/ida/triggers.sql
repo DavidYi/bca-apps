@@ -1,0 +1,17 @@
+DROP TRIGGER IF EXISTS TRIG_AFTER_PRES_USER_XREF_INSERT;
+CREATE TRIGGER `TRIG_AFTER_PRES_USER_XREF_INSERT` AFTER INSERT ON `pres_user_xref`
+ FOR EACH ROW begin
+call update_presentation_enrollment (new.pres_id);
+END;
+
+DROP TRIGGER IF EXISTS TRIG_AFTER_PRES_USER_XREF_UPDATE;
+CREATE TRIGGER `TRIG_AFTER_PRES_USER_XREF_UPDATE` AFTER UPDATE ON `pres_user_xref`
+ FOR EACH ROW begin
+call update_presentation_enrollment (new.pres_id);
+END;
+
+DROP TRIGGER IF EXISTS TRIG_AFTER_PRES_USER_XREF_DELETE;
+CREATE TRIGGER `TRIG_AFTER_PRES_USER_XREF_DELETE` AFTER DELETE ON `pres_user_xref`
+ FOR EACH ROW begin
+call update_presentation_enrollment (old.pres_id);
+END;
