@@ -8,6 +8,11 @@
 require_once(__DIR__ . "/../model/database.php");
 require_once(__DIR__ . "/../../shared/model/user_db.php");
 
+//
+// Key for SendGrid emails
+//
+$SENDGRID_API_KEY = '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';
+
 ////////////////////////////
 // Start Session and security check.
 // If the user is not logged in, send them to the login page.
