@@ -66,6 +66,7 @@ h1.title {
 
 .s {
     background-color: rgb(110, 41, 135);
+    margin-right: 2em;
 }
 
 .s:hover {
@@ -84,10 +85,6 @@ h1.title {
 
 a:hover, a:active {
     opacity: inherit;
-}
-
-#add_workshop {
-    margin-right: 2em;
 }
 
 #namenav {

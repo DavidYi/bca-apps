@@ -24,10 +24,10 @@
         </header>
         <div style="text-align:center;padding-bottom:2vh;">
             <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_add_presentation">
-                <button style="cursor: pointer" id="add_pres">Add Presentation</button>
+                <button style="cursor: pointer" id="add_pres" class="s">Add New</button>
             </a>
             <a href="../index.php">
-                <button style="cursor: pointer" id="return_home">Back</button>
+                <button style="cursor: pointer" id="return_home" class="b">Back</button>
             </a>
         </div>
         <nav class="navbar" style="">
@@ -105,6 +105,23 @@
                     easing: 'easeInOutExpo',
                     speed: 700
                 });
+
+                //              background size code
+                $divHeight = $('.list-container').height();
+                $divPosition = $('.list-container').offset().top;
+                $bodyHeight = $('body').height();
+                $percentage = ((($divHeight + $divPosition + 300) * 1.0) / $bodyHeight) * 100;
+                $percentageStr = $percentage.toString() + "%";
+                console.log("divHeight: " + $divHeight + "\ndivPosition: " + $divPosition + "\nbodyHeight: " + $bodyHeight + "\npercentage: " + $percentage);
+                $("body").css("background-size", "100% " + $percentageStr);
+            });
+
+            $(window).resize(function(){
+                $divHeight = $('.list-container').css("height");
+                $divPosition = $('.list-container').offset().top;
+                $bodyHeight = $('body').css("height");
+                $percentage = ((($divHeight + $divPosition + 100) * 1.0) / $bodyHeight) * 100;
+                $("body").css("background-size", "100% " + $percentageStr);
             });
 
             $('#fab-action').click(function () {

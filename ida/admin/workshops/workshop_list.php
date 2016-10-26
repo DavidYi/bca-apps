@@ -24,7 +24,7 @@
         </header>
         <div class="button-wrap">
             <a href="./index.php?action=show_add_workshop"><button class="s" id="add_workshop">Add Workshop</button></a>
-            <a href="../index.php"><button class="b" id="return_home">Return Home</button></a>
+            <a href="../index.php"><button class="b" id="return_home">Back</button></a>
         </div>
         <nav  style="width:65%; min-width:588px;" class="navbar">
             <div id="navinside">
