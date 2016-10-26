@@ -81,8 +81,9 @@ tr td input {
 
 .s {
     background-color: rgb(182, 226, 249);
-    margin-right: 2em;
-    margin-left: 2em;
+
+    margin-right: .2em;
+    margin-left: .2em;
     display: inline-block;
 }
 
@@ -93,15 +94,15 @@ tr td input {
 
 .k {
     background-color: rgb(249, 182, 182);
-    margin-right: 1em;
-    margin-left: 3em;
+    margin-right: .2em;
+    margin-left: .2em;
     display: inline-block;
 }
 
 .cancel {
     background-color: rgb(247, 224, 97);
-    margin: 0 auto;
-    margin-left: 2em;
+    margin-left: .2em;
+    margin-right: .2em;
     display: inline-block;
 }
 
@@ -122,7 +123,17 @@ tr td input {
 .button-div {
     text-align: center;
     width: 50em;
-    margin-top: 4%;
+    margin-top: 3%;
+
+}
+
+.button-div ul {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.button-div li {
+    display: inline-block;
 }
 
 .ui.input input{

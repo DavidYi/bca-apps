@@ -36,12 +36,12 @@ switch ($action) {
     </header>
     <br>
     <div class="feature">
-        <a href="status"><h2>Teacher Status</h2></a>
-        <h4>Check tests that an individual teacher signed up for.</h4>
-    </div>
-    <div class="feature">
         <a href="test_status"><h2>Test Status</h2></a>
         <h4>Check enrolled count and proctoring teachers in a test.</h4>
+    </div>
+    <div class="feature">
+        <a href="status"><h2>Teacher Status</h2></a>
+        <h4>Check tests that an individual teacher signed up for.</h4>
     </div>
     <?php if ($user->getRole('TPOR') == 'ADM') { ?>
         <div class="feature">
@@ -65,7 +65,7 @@ switch ($action) {
             <h4>View the application log.</h4>
         </div>
         <div class="feature">
-            <a href="pdfs"><h2>Downloads</h2></a>
+            <a href="downloads"><h2>Downloads</h2></a>
             <h4>Generate and download CSV sheets.</h4>
         </div>
     <?php } ?>
