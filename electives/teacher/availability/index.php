@@ -18,16 +18,13 @@ if ($action == NULL) {
     }
 }
 
-$usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
-$available_times = get_times($usr_id);
+$available_times = get_times($user->usr_id);
 
 // If the user is being mimicked by an admin, use that id as the updt id.
 // Otherwise, use the id of the current user.
-$updateById;
+$updateById = $user->usr_id;
 
-if (!isset($_SESSION['prev_usr_id'])) {
-    $updateById = $user->usr_id;
-} else {
+if (isset($_SESSION['prev_usr_id'])) {
     $updateById = $_SESSION['prev_usr_id'];
 }
 
@@ -36,9 +33,9 @@ switch ($action) {
         $free_mods = $_POST["id_field"];
         $next_page = $_POST["next_page"];
         $decode = json_decode($free_mods, true);
-        reset_times($usr_id);
+        reset_times($user->usr_id);
         for ($i = 0; $i < $decode["length"]; $i++) {
-            update_times($usr_id, $decode[$i], $updateById);
+            update_times($user->usr_id, $decode[$i], $updateById);
         }
 
         if ($next_page == 'admin') {

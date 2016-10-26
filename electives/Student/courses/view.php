@@ -30,7 +30,7 @@
                     ($sort_order == 1 && $sort_by == 2) { echo 2; } else { echo 1; } ?>">Teacher</a></th>
                 <th class="text-left nav description" id="navdescription">Description</th>
                 <th class="text-left nav interest" id="navinterest"><a href="index.php?action=sort_courses&sort=3&order=<?php if
-                    ($sort_order == 2 && $sort_by == 3) { echo 1; } else { echo 2; } ?>">Express Interest</a></th>
+                    ($sort_order == 2 && $sort_by == 3) { echo 1; } else { echo 2; } ?>">Interested</a></th>
             </tr>
         </thead>
 

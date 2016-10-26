@@ -63,7 +63,16 @@
                         <div class="cell teacher-name"><?php echo $teacher_name; ?></div>
                         <div class="cell course-name"><?php echo $course_name; ?></div>
                         <div class="cell course-desc center-text"><p id="course-desc-p"><?php echo $course_desc; ?></p></div>
-                        <div class="cell num-students"><?php echo $num_students; ?></div>
+                        <div class="cell num-students">
+                            <td>
+                                <?php
+                                if ($num_students == 0)
+                                    echo ("0");
+                                else
+                                    echo ('<a href="../../teacher/course_signup_matrix/index.php?course_id='.$course_id . '">' . $num_students . '</a>');
+                                ?>
+                            </td>
+                        </div>
                         <div class="cell edit"><span class='helper'></span>
                             <img class='icon' src="../../../shared/images/modifyIcon.gif" onclick="location.href='./index.php?action=edit&course_id=<?php echo $course_id; ?>'">
                         </div>

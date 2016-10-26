@@ -152,7 +152,9 @@
             var tData = $(this).data('value');
             if (picked.indexOf(tData) !== -1) {
                 $(this).toggleClass("makeActive makeDefault");
-                if ($(this).find('.remaining').text() === '0' && !$(this).hasClass("makeActive")) {
+
+
+                if ($(this).find('.remaining').text() === '0' && !$(this).hasClass("makeActive")) { //This line
                     $(this).toggleClass("makeDefault makeDisabled");
                 }
                 var chosen = $(this);
@@ -160,7 +162,7 @@
                     checkForSameTimes($(this), chosen);
                 });
             } else {
-                if ($(this).find('.remaining').text() === '0') {
+                if ($(this).find('.remaining').text() === '0') { //This line
                     $(this).toggleClass("makeDefault makeDisabled");
                 }
             }

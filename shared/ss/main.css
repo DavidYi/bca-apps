@@ -4,14 +4,33 @@
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 @import url(https://file.myfontastic.com/p563dRgdEAZiX2kTAygwkU/icons.css);
 /**********color reference chart**********
-comment ********* color ********
+comment ****************** color ********
 
-P1, red           rgb(232, 135, 121)
-P2, blue          rgb(182, 226, 249)
-P3, yellow        rgb(247, 224, 97)
-G1, dark          rgb(84, 79, 84)
-G2, med           rgb(147, 146, 149)
-G3, light         rgb(253, 253, 253)
+P1, blue                  rgb(89, 89, 171)   #5959AB 
+P2, purple                rgb(139, 74, 162)  #8B4AA2 
+P3, green                  rgb(67, 155, 140)   #439B8C
+
+S1-1, bright blue          rgb(51, 51,161)    #3333A1
+S1-2, bright purple        rgb(121, 35, 152)  #792398
+S1-3, bright green         rgb(28, 145, 126)  #1C917E
+
+S2-1, dark blue            rgb(54, 54, 143)   #36368F
+S2-2, dark purple          rgb(110, 41, 135)  #6E2987
+S2-3, dark green           rgb(35, 129, 113)  #238171
+
+S3-1, light blue           rgb(142, 142, 207)  #8E8ECF
+S3-2, light purple         rgb(183, 129, 201)  #B781C9
+S3-3, light green          rgb(123, 197, 184)  #7BC5B8
+
+S4-1, lighter blue         rgb(157, 157, 203)  #9D9DCB
+S4-2, lighter purple       rgb(183, 146, 197)  #B792C5
+S4-3, lighter green        rgb(140, 191, 183)  #8CBFB7
+
+
+
+G1, dark                   rgb(84, 79, 84)
+G2, med                    rgb(147, 146, 149)
+G3, light                  rgb(253, 253, 253)
 
 */
 
@@ -34,8 +53,8 @@ legend, td, th {
   padding: 0; }
 
 html, body {
-  background: linear-gradient(227deg, #f1c5be, #b6e2f9, #ededfd);
-  background-size: 100% 1100%;
+  background: linear-gradient(250deg, #5959ab, #439b8c);
+  background-size: 100% 100%;
 
   /*-webkit-animation: AnimationName 19s ease infinite;*/
   /*-moz-animation: AnimationName 19s ease infinite;*/
@@ -237,8 +256,7 @@ h1 {
 
 h2 {
   font-weight: 300;
-  font-size: 1.5em;
-  line-height: 1.5em;
+  line-height: 2.5em;
 }
 
 h3 {
@@ -267,14 +285,15 @@ a {
 
 h1.title {
   text-align: center;
+  margin-bottom: 6em;
   color: rgb(84, 79, 84);}
 
 button {
-  font-weight: 300;
+  font-weight: 700;
   height: 2em;
-  width: 12em;
+  width: 10em;
   color: rgb(253, 253, 253);
-  font-size: 1.5em;
+  font-size: 1.8em;
   border: 0;
   border-radius: 12px;
   outline: none;
@@ -290,11 +309,12 @@ input {
   width: 15em;
   margin: 0.5em 0 0.5em 0;
   /*margin-bottom: 0.5em;*/
+  line-height: 2.5em;
   padding: 0 auto;
   padding: 12px;
   color: rgb(84, 79, 84);
   background-color: transparent;
-  border: 1px solid rgb(182, 226, 249);
+  border: none;
   border-radius: 12px;
   font: normal normal 300 1em "Lato", sans-serif;
   text-align: left;

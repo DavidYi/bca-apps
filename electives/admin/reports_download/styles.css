@@ -27,3 +27,7 @@ button:hover {
     background-color: tomato;
 }
 
+#downloads{
+    text-align: justify;
+    padding-left:30%;
+}

@@ -22,7 +22,7 @@ if ($action == NULL) {
 }
 
 
-$usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
+$usr_id = $user->usr_id;
 $available_times = get_times($usr_id);
 
 // true:    student, false:teacher

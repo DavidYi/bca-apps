@@ -1,3 +1,4 @@
+
 DROP VIEW IF EXISTS user;
 CREATE VIEW user AS SELECT * FROM atcsdevb_shared.user;
 

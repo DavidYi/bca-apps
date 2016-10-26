@@ -14,7 +14,7 @@ if ($action == NULL) {
     }
 }
 
-$usr_id = get_usr_id($user->usr_first_name, $user->usr_last_name);
+$usr_id = $user->usr_id;
 
 // get the strings telling the available mods for each day
 $time_strings = get_time_strings($usr_id);

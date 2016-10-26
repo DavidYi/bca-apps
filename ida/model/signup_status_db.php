@@ -72,23 +72,23 @@ function get_registered_users(){
     group by grade_lvl
 
     ) none on completed.grade_lvl = none.grade_lvl
+    where completed.grade_lvl != 13
     order by grade_lvl';
     return get_list($query);
 }
-function undo_enroll($year) {
+function undo_enroll($grade_lvl) {
     $query = "delete from pres_user_xref
     where usr_id in (
       SELECT usr_id
       FROM user
-        INNER JOIN signup_dates ON user.usr_grade_lvl = signup_dates.grade_lvl
-      WHERE grade_lvl = :year
+      where usr_grade_lvl = :grade_lvl
     )
     AND pres_user_updt_usr_id = -1";
     global $db;
 
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':year', $year);
+        $statement->bindValue(':grade_lvl', $grade_lvl);
         $statement->execute();
         $statement->closeCursor();
         return;
@@ -110,13 +110,13 @@ function all_registrants_download() {
     return get_csv_list($query, 0);
 }
 
-function random_enroll($year) {
-    $query = 'CALL fill_with_random_presentations(:year)';
+function random_enroll($grade_lvl) {
+    $query = 'CALL fill_with_random_presentations(:gradeLvl)';
     global $db;
 
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':year', $year);
+        $statement->bindParam(':gradeLvl', $grade_lvl, PDO::PARAM_INT);
         $statement->execute();
         $statement->closeCursor();
         return;

@@ -1,6 +1,7 @@
 <?php
 require_once("../../util/main.php");
 require_once("../../model/teacher_db.php");
+include(__DIR__ . "/../../../config.php");
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
@@ -19,17 +20,12 @@ switch ($action) {
     case 'send_email':
 
 
-        $list = array('celper19@bergen.org', 'cel.peralta.jmj@gmail.com');
-
         $email_address = 'celper19@bergen.org'; //Change to array of addresses of teachers proctoring test
         $test_id = strtolower(filter_input(INPUT_GET, 'test_id'));
         $test_name = (filter_input(INPUT_GET, 'test_name'));
         $test_dt = (filter_input(INPUT_GET, 'test_dt'));
 
         require("sendgrid-php/sendgrid-php.php");
-        //          $apiKey = getenv('SENDGRID_API_KEY');
-        $apiKey = 'blank';
-        $sg = new \SendGrid($apiKey);
 
 
         $message = "Hello, you are scheduled to proctor for the following test:";
@@ -44,36 +40,9 @@ switch ($action) {
         $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
 
-        $request_body = json_decode('{
-  "personalizations": [
-    {
-      "to": [
-        {
-          "email": "celper19@bergen.org",
-          "email": "cel.peralta.jmj@gmail.com"
-        }
-      ],
-      "subject": "Upcoming Test"
-    }
-  ],
-  "from": {
-    "email": "celper19@bergen.org"
-  },
-  "content": [
-    {
-      "type": "text/plain",
-      "value": "Hello, Email!"
-    }
-  ]
-}');
 
-        $apiKey = getenv('SENDGRID_API_KEY');
+        $apiKey = $SENDGRID_API_KEY;
         $sg = new \SendGrid($apiKey);
-
-        $response = $sg->client->mail()->send()->post($request_body);
-        echo $response->statusCode();
-        echo $response->body();
-        echo $response->headers();
 
 
         $response = $sg->client->mail()->send()->post($mail);
@@ -95,7 +64,7 @@ switch ($action) {
     case 'send_email_all':
         $upcoming_tests = list_upcoming_tests();
         foreach ($upcoming_tests as $test) :
-            if (($test['difference'] == 7 or $test['difference'] == 7) and $test['reminder_sent_dt'] == null) {
+            if (($test['difference'] == 7 or $test['difference'] == 1) and $test['reminder_sent_dt'] == null) {
 
                 $list = array('celper19@bergen.org', 'cel.peralta.jmj@gmail.com');
 
@@ -118,8 +87,7 @@ switch ($action) {
                 $content = new SendGrid\Content("text/plain", $message);
                 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
-//Going to use getenv() later but for now hardcoding it
-                $apiKey = 'blank';
+                $apiKey = $SENDGRID_API_KEY;
                 $sg = new \SendGrid($apiKey);
 
                 $response = $sg->client->mail()->send()->post($mail);

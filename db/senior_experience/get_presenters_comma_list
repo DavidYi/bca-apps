@@ -1,0 +1,41 @@
+DROP FUNCTION IF EXISTS get_presenters_comma_list;
+
+CREATE FUNCTION `get_presenters_comma_list`(presId INT) RETURNS varchar(300) CHARSET latin1
+BEGIN
+    declare output varchar(500) default "";
+	declare v_finished int(10) default 0;
+	DECLARE v_time varchar(100) DEFAULT "";
+
+    declare cur cursor for
+		SELECT usr_last_name
+        from user_presentation_xref x, user u
+        where x.usr_id= u.usr_id
+		and x.pres_id = presId
+        and x.presenting = 1
+        order by usr_last_name;
+
+    -- declare NOT FOUND handler
+    DECLARE CONTINUE HANDLER
+    FOR NOT FOUND SET v_finished = 1;
+
+    open cur;
+
+    get_list: LOOP
+     FETCH cur INTO v_time;
+     IF v_finished = 1 THEN
+	     LEAVE get_list;
+     END IF;
+
+-- build list
+	if output = '' then
+		set output = v_time;
+	else
+     SET output = CONCAT(output,", ",v_time);
+	end if;
+
+    END LOOP get_list;
+
+	close cur;
+
+	return output;
+END;

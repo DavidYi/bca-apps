@@ -1,14 +1,33 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 /**********color reference chart**********
-comment ********* color ********
+comment ****************** color ********
 
-P1, red           rgb(232, 135, 121)
-P2, blue          rgb(182, 226, 249)
-P3, yellow        rgb(247, 224, 97)
-G1, dark          rgb(84, 79, 84)
-G2, med           rgb(147, 146, 149)
-G3, light         rgb(253, 253, 253)
+P1, blue                  rgb(89, 89, 171)//#5959AB 
+P2, purple                rgb(139, 74, 162)//#8B4AA2 
+P3, green                  rgb(67, 155, 140)//#439B8C
+
+S1-1, bright blue          rgb(51, 51,161)//#3333A1
+S1-2, bright purple        rgb(121, 35, 152)//#792398
+S1-3, bright green         rgb(28, 145, 126)//#1C917E
+
+S2-1, dark blue            rgb(54, 54, 143)//#36368F
+S2-2, dark purple          rgb(110, 41, 135)//#6E2987
+S2-3, dark green           rgb(35, 129, 113)//#238171
+
+S3-1, light blue           rgb(142, 142, 207)//#8E8ECF
+S3-2, light purple         rgb(183, 129, 201)//#B781C9
+S3-3, light green          rgb(123, 197, 184)//#7BC5B8
+
+S4-1, lighter blue         rgb(157, 157, 203)//#9D9DCB
+S4-2, lighter purple       rgb(183, 146, 197)//#B792C5
+S4-3, lighter green        rgb(140, 191, 183)//#8CBFB7
+
+
+
+G1, dark                   rgb(84, 79, 84)
+G2, med                    rgb(147, 146, 149)
+G3, light                  rgb(253, 253, 253)
 
 */
 
@@ -60,7 +79,7 @@ button:hover {
     -webkit-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
-    background-color: rgba(232, 135, 121, 0.7);
+    background-color: #5959AB;
     height: 100%; }
 .login .login-intro:last-child {
     margin-right: 0; }
@@ -99,7 +118,7 @@ button:hover {
     width: 100%; }
 .login .login-main button {
     /*font-size: 1em;*/
-    background-color: rgb(182, 226, 249);
+    background-color: #8B4AA2;
     color: rgb(253, 253, 253);
     font-size: 2em;
     margin: 60px 0;
@@ -144,7 +163,7 @@ button:hover {
     display: block;
     width: 33.33333%;
     height: 15em;
-    background-color: rgba(247, 224, 97, 0.9);
+    background-color: #439B8C;
     color: rgb(253, 253, 253);
 }
 
@@ -178,4 +197,8 @@ button:hover {
         text-align: center;
         margin-top: 1em;
     }
+}
+
+input {
+    border: 1px solid #B781C9;
 }
