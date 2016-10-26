@@ -57,9 +57,10 @@
                     $course_name = $elective['course_name'];
                     $course_desc = $elective['course_desc'];
                     $num_students = $elective['num_students'];
-                    $course_id = $elective['course_id']; ?>
+                    $course_id = $elective['course_id'];
+                    $active = $elective['active'];?>
 
-                    <div class="main-panel session">
+                    <div class="<?php if($active == 1) {?>main-panel<?php }else {?>inactive<?php }?> session">
                         <div class="cell teacher-name"><?php echo $teacher_name; ?></div>
                         <div class="cell course-name"><?php echo $course_name; ?></div>
                         <div class="cell course-desc center-text"><p id="course-desc-p"><?php echo $course_desc; ?></p></div>

@@ -27,51 +27,56 @@
 <body>
 
 <header>
-    <h1 style="margin:0;" class="title">Modify Test</h1>
+    <h1 style="margin-top: 2%;" class="title">Modify Test</h1>
 </header>
 
-<div id="box">
+<div id="box" style="margin-top: 2%; margin-bottom: 3%;">
     <div id="wrapper">
         <div id="columns">
             <form action="." method="post" id="inputs">
+                <div id="top">
+                    <input type="hidden" name="action" value="modify_delete_test">
 
-                <input type="hidden" name="action" value="modify_delete_test">
+                    <input type="hidden" name="test_id" value="<?php echo $test_id ?>" required><BR>
 
-                <input type="hidden" name="test_id" value="<?php echo $test_id ?>" required><BR>
+                    <label>Test Name</label><input class="mod" style="text-align: center; width: 12em;" name="test_name"
+                                                   placeholder="Test Name"
+                                                   value="<?php echo $test_name ?>" required><BR><br>
 
-                <input class="mod" name="test_name" placeholder="Test Name"
-                       value="<?php echo $test_name ?>" required><BR>
+                    <label>Test Date</label><input class="mod" style="text-align: center; width: 12em;" name="date" placeholder="Date"
+                                                   type="text" id="datepicker"
+                                                   value="<?php echo $test_date ?>" required><BR><br>
 
-                <input class="mod" name="date" placeholder="Date" type="text" id="datepicker"
-                       value="<?php echo $test_date ?>" required><BR>
-
-                <select name="test_cde" class="mod" id="test_cde" value="<?php echo $test_type_cde; ?>" required>
-                    <i class="dropdown icon"></i>
-                    <option disabled value="<?php echo $test['test_type_cde'] ?>">Test Type</option>
-                    <?php foreach ($testTypes as $test) { ?>
-                        <?php if ($user->getRole("TPOR") == $test['test_type_cde'] || $user->getRole("TPOR") == "ADM") { ?>
-                            <option value="<?php echo $test['test_type_cde'] ?>"
-                                <?php if ($test_cde == $test['test_type_cde']) echo (" selected "); ?>
+                    <label>Test Type</label> <select name="test_cde" style="width: 12em;" class="mod" id="test_cde"
+                                                     value="<?php echo $test_type_cde; ?>" required>
+                        <i class="dropdown icon"></i>
+                        <option disabled value="<?php echo $test['test_type_cde'] ?>">Test Type</option>
+                        <?php foreach ($testTypes as $test) { ?>
+                            <?php if ($user->getRole("TPOR") == $test['test_type_cde'] || $user->getRole("TPOR") == "ADM") { ?>
+                                <option value="<?php echo $test['test_type_cde'] ?>"
+                                    <?php if ($test_cde == $test['test_type_cde']) echo(" selected "); ?>
                                 >
-                                <?php echo $test['test_type_desc'] ?>
-                            </option>
-                        <?php }
-                    } ?>
-                </select><BR>
+                                    <?php echo $test['test_type_desc'] ?>
+                                </option>
+                            <?php }
+                        } ?>
+                    </select><BR><br>
 
-                <!-- Test -->
+                    <!-- Test -->
 
-                <select name="room_id" class="mod" id="test_room" value="<?php echo $test_room; ?>" required>
-                    <i class="dropdown icon"></i>
-                    <option disabled>Room Number</option>
-                    <?php
-                    foreach ($rooms as $room) { ?>
-                        <option value="<?php echo $room['rm_id']; ?>"
-                            <?php if ($test_room == $room['rm_id']) echo (" selected "); ?>
-                        >
-                            <?php echo $room['rm_nbr'] ?></option>
-                    <?php } ?>
-                </select><BR>
+                    <label>Location &nbsp</label> <select name="room_id" class="mod" style="width: 12em;" id="test_room"
+                                                          value="<?php echo $test_room; ?>" required>
+                        <i class="dropdown icon"></i>
+                        <option disabled>Room Number</option>
+                        <?php
+                        foreach ($rooms as $room) { ?>
+                            <option value="<?php echo $room['rm_id']; ?>"
+                                <?php if ($test_room == $room['rm_id']) echo(" selected "); ?>
+                            >
+                                <?php echo $room['rm_nbr'] ?></option>
+                        <?php } ?>
+                    </select><BR><br>
+                </div>
 
                 <!-- Time -->
 
@@ -152,15 +157,21 @@
                 </table>
 
                 <div class="button-div">
-                    <button class="submit s" type="submit" name="choice" value="Modify">Modify</button>
-                    <button class="submit k" type="submit"
-                            name="choice" value="Delete" formnovalidate>Delete
-                    </button>
-                </div>
-                <div class="button-div">
-                    <button class="submit cancel" type="submit"
-                            name="choice" value="Return" formnovalidate>Cancel
-                    </button>
+                    <ul>
+                        <li>
+                            <button class="submit s" type="submit" name="choice" value="Modify">Modify</button>
+                        </li>
+                        <li>
+                            <button class="submit k" type="submit"
+                                    name="choice" value="Delete" formnovalidate>Delete
+                            </button>
+                        </li>
+                        <li>
+                            <button class="submit cancel" type="submit"
+                                    name="choice" value="Return" formnovalidate>Cancel
+                            </button>
+                        </li>
+                    </ul>
                 </div>
             </form>
         </div>

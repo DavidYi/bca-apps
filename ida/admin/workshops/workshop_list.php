@@ -23,8 +23,8 @@
             <h1 class="title">Workshops</h1>
         </header>
         <div class="button-wrap">
-            <a href="./index.php?action=show_add_workshop"><button id="add_workshop">Add Workshop</button></a>
-            <a href="../index.php"><button id="return_home">Return Home</button></a>
+            <a href="./index.php?action=show_add_workshop"><button class="s" id="add_workshop">Add Workshop</button></a>
+            <a href="../index.php"><button class="b" id="return_home">Back</button></a>
         </div>
         <nav  style="width:65%; min-width:588px;" class="navbar">
             <div id="navinside">
@@ -85,6 +85,24 @@
                     easing: 'easeInOutExpo',
                     speed: 700
                 });
+
+//              background size code
+                $divHeight = $('.list-container').height();
+                $divPosition = $('.list-container').offset().top;
+                $bodyHeight = $('body').height();
+                $percentage = ((($divHeight + $divPosition + 300) * 1.0) / $bodyHeight) * 100;
+                $percentageStr = $percentage.toString() + "%";
+                console.log("divHeight: " + $divHeight + "\ndivPosition: " + $divPosition + "\nbodyHeight: " + $bodyHeight + "\npercentage: " + $percentage);
+                $("body").css("background-size", "100% " + $percentageStr);
+            });
+
+            //more background size code
+            $(window).resize(function(){
+                $divHeight = $('.list-container').css("height");
+                $divPosition = $('.list-container').offset().top;
+                $bodyHeight = $('body').css("height");
+                $percentage = ((($divHeight + $divPosition + 100) * 1.0) / $bodyHeight) * 100;
+                $("body").css("background-size", "100% " + $percentageStr);
             });
 
             $('#fab-action').click(function () {

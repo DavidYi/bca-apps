@@ -8,7 +8,7 @@
 require_once("../../../util/main.php");
 require_once("../../../model/admin_db.php");
 require_once("../../../model/teacher_db.php");
-
+verify_admin();
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {

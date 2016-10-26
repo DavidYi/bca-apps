@@ -159,7 +159,7 @@ function delete_course($course_id) {
 }
 
 function get_course_by_user($usr_id) {
-    $query = 'SELECT c.course_id, course_name, course_desc, teacher_id, count(x.course_id) as num_students
+    $query = 'SELECT c.course_id, c.active, course_name, course_desc, teacher_id, count(x.course_id) as num_students
               FROM elect_course c
               left join elect_student_course_xref x on x.course_id = c.course_id
               WHERE teacher_id = :usr_id
@@ -188,7 +188,8 @@ function get_course_list_for_student ($usr_id, $sort_by, $sort_order) {
             !isnull(x.usr_id) AS enrolled
             FROM user u, elect_course c
             LEFT JOIN elect_student_course_xref x ON c.course_id = x.course_id AND x.usr_id = :usr_id
-            WHERE c.teacher_id = u.usr_id ";
+            WHERE c.teacher_id = u.usr_id
+            and active = 1";
 
     // add order by clause
     if ($sort_by == 1) $query .= "ORDER BY course_name ";
@@ -212,14 +213,10 @@ function get_course_list_for_student ($usr_id, $sort_by, $sort_order) {
     }
 }
 
-function edit_course($course_id, $new_course_name, $new_course_desc) {
+function edit_course($course_id, $new_course_name, $new_course_desc, $active) {
     global $db;
-    echo $course_id;
-    echo $new_course_desc;
-    echo $new_course_name;
-
     $query = "UPDATE elect_course
-    SET course_name = :new_course_name, course_desc = :new_course_desc
+    SET course_name = :new_course_name, course_desc = :new_course_desc, active = :active
     WHERE course_id = :course_id";
 
     try {
@@ -228,6 +225,7 @@ function edit_course($course_id, $new_course_name, $new_course_desc) {
         $statement->bindValue(':new_course_name', $new_course_name);
         $statement->bindValue(':new_course_desc', $new_course_desc);
         $statement->bindValue(':course_id', $course_id);
+        $statement->bindValue(':active', $active);
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {

@@ -8,6 +8,6 @@
 
 require_once (__DIR__ . "/../../util/main.php");
 include ("../../../shared/log_viewer/index.php");
-
+verify_admin();
 
 ?>

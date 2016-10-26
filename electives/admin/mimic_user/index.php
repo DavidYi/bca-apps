@@ -9,7 +9,7 @@
 require_once ("../../util/main.php");
 require_once (__DIR__ . "/../../../shared/model/user_db.php");
 require_once (__DIR__ . "/../../../shared/model/database.php");
-
+verify_admin();
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 
 if (empty($action))

@@ -45,7 +45,12 @@ button {
     height: 3.25em;
     position: relative;
 }
-
+.inactive{
+    width: 100%;
+    height: 3.25em;
+    position: relative;
+    background-color:grey;
+}
 .teacher-name {
     width: 13%;
 }

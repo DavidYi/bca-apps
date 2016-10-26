@@ -7,7 +7,7 @@
  */
 require_once(__DIR__ . "/../../util/main.php");
 require_once(__DIR__ . "/../../model/teacher_db.php");
-
+verify_teacher();
 $course_id = filter_input(INPUT_GET, 'course_id');
 $course = get_course_by_course_id($course_id);
 

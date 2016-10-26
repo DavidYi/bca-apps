@@ -25,7 +25,7 @@ m             modify  (pencil)
     display: block;
     background-color: rgba(253, 253, 253, 0.9);
     width: 60em;
-    height: 45em;
+    height: 40em;
     position:absolute;
     margin: auto;
     top: 50%;
@@ -38,8 +38,12 @@ th {
 }
 
 tr td input {
-    width: 12em;
+    width: 10em;
     text-align: center;
+}
+
+label {
+    display: inline-block;
 }
 
 #wrapper {
@@ -81,8 +85,9 @@ tr td input {
 
 .s {
     background-color: rgb(182, 226, 249);
-    margin-right: 2em;
-    margin-left: 2em;
+
+    margin-right: .2em;
+    margin-left: .2em;
     display: inline-block;
 }
 
@@ -93,15 +98,15 @@ tr td input {
 
 .k {
     background-color: rgb(249, 182, 182);
-    margin-right: 1em;
-    margin-left: 3em;
+    margin-right: .2em;
+    margin-left: .2em;
     display: inline-block;
 }
 
 .cancel {
     background-color: rgb(247, 224, 97);
-    margin: 0 auto;
-    margin-left: 2em;
+    margin-left: .2em;
+    margin-right: .2em;
     display: inline-block;
 }
 
@@ -120,9 +125,22 @@ tr td input {
 }
 
 .button-div {
-    text-align: center;
-    width: 50em;
-    margin-top: 4%;
+    text-align: left;
+    width: 70em;
+    margin-top: 3%;
+    margin-left: -11%;
+
+}
+
+.button-div ul {
+    list-style-type: none;
+    display: inline-block;
+    text-align: left;
+    margin-left: 0;
+}
+
+.button-div li {
+    display: inline-block;
 }
 
 .ui.input input{
@@ -132,7 +150,7 @@ tr td input {
 
 .mod {
     margin:0px auto !important;
-    display:block !important;
+    display:inline-block !important;
     font: normal normal 300 1em "Lato", sans-serif;
 }
 
@@ -150,4 +168,8 @@ select {
 
 .center {
     padding-left: 20%;
+}
+
+#top{
+    text-align: center;
 }
