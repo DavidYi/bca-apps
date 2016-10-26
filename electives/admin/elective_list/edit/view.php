@@ -37,6 +37,8 @@
             </select>
         </label>
 
+        <div style="text-align: center;padding-left:4em;">Status: <input type="checkbox" name="active" value="Yes" <?php if($active == 1){ ?> checked <?php }?>></div>
+
         <div class="button_wrapper">
             <a href="../index.php"><button class="submit back" type="button" formnovalidate>Back</button></a>
             <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>

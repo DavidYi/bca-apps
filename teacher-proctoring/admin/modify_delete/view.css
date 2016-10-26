@@ -25,7 +25,7 @@ m             modify  (pencil)
     display: block;
     background-color: rgba(253, 253, 253, 0.9);
     width: 60em;
-    height: 45em;
+    height: 40em;
     position:absolute;
     margin: auto;
     top: 50%;
@@ -38,8 +38,12 @@ th {
 }
 
 tr td input {
-    width: 12em;
+    width: 10em;
     text-align: center;
+}
+
+label {
+    display: inline-block;
 }
 
 #wrapper {
@@ -121,15 +125,18 @@ tr td input {
 }
 
 .button-div {
-    text-align: center;
-    width: 50em;
+    text-align: left;
+    width: 70em;
     margin-top: 3%;
+    margin-left: -11%;
 
 }
 
 .button-div ul {
     list-style-type: none;
     display: inline-block;
+    text-align: left;
+    margin-left: 0;
 }
 
 .button-div li {
@@ -143,7 +150,7 @@ tr td input {
 
 .mod {
     margin:0px auto !important;
-    display:block !important;
+    display:inline-block !important;
     font: normal normal 300 1em "Lato", sans-serif;
 }
 
@@ -161,4 +168,8 @@ select {
 
 .center {
     padding-left: 20%;
+}
+
+#top{
+    text-align: center;
 }

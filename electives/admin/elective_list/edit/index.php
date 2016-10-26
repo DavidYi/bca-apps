@@ -9,7 +9,7 @@ require_once("../../../util/main.php");
 require_once("../../../model/admin_db.php");
 require_once("../../../model/teacher_db.php");
 
-
+verify_admin();
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
@@ -24,8 +24,8 @@ switch ($action) {
         $desc = $_POST['desc'];
         $teacher = $_POST['teacher'];
         $course_id = $_POST['course_id'];
-
-        admin_edit_course($course_id, $teacher, $name, $desc);
+        $active = $_POST['active'];
+        admin_edit_course($course_id, $teacher, $name, $desc, $active);
         header("Location: ../index.php");
         break;
     
@@ -36,6 +36,7 @@ switch ($action) {
         $teacher_id = $course_info['teacher_id'];
         $course_name = $course_info['course_name'];
         $course_desc = $course_info['course_desc'];
+        $active = $course_info['active'];
 
         include("./view.php");
         break;

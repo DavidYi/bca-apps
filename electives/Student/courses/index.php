@@ -11,7 +11,7 @@ require_once("../../model/teacher_db.php");
 require_once("../../model/student_db.php");
 require_once("../../model/times_db.php");
 
-verify_logged_in();
+verify_student();
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {

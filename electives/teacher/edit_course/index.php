@@ -7,7 +7,7 @@
  */
 require_once(__DIR__ . "/../../util/main.php");
 require_once(__DIR__ . "/../../model/teacher_db.php");
-
+verify_teacher();
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));

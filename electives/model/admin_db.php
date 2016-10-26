@@ -165,7 +165,7 @@ function get_best_course_availability()
 function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc)
 {
     $query = "UPDATE elect_course
-            SET course_name = :name, course_desc = :desc, teacher_id = :teacher_id
+            SET course_name = :name, course_desc = :desc, teacher_id = :teacher_id, active = :active
             WHERE course_id = :id;";
 
     global $db;
@@ -176,6 +176,7 @@ function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc)
         $statement->bindValue(':desc', $course_desc);
         $statement->bindValue(':id', $course_id);
         $statement->bindValue(':teacher_id', $teacher_id);
+        $statement->bindValue(':active', $active);
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
@@ -186,7 +187,7 @@ function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc)
 
 function get_course_info($course_id)
 {
-    $query = "select e.course_id, e.course_name, e.course_desc, e.teacher_id
+    $query = "select e.course_id, e.course_name, e.active, e.course_desc, e.teacher_id
                 from elect_course e, user u
                 where e.teacher_id = u.usr_id
                 and e.course_id = :id";

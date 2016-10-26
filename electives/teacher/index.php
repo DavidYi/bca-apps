@@ -11,7 +11,6 @@ require_once(__DIR__ . "/../../shared/model/user_db.php");
 require_once(__DIR__ . "/../model/teacher_db.php");
 require_once(__DIR__ . "/../model/times_db.php");
 
-verify_logged_in();
 verify_teacher();
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
