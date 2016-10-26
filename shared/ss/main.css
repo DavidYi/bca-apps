@@ -256,7 +256,6 @@ h1 {
 
 h2 {
   font-weight: 300;
-  line-height: 2.5em;
 }
 
 h3 {
@@ -280,8 +279,8 @@ a {
   color: rgb(182, 226, 249);
   text-decoration: none;
   transition: color 175ms ease; }
-  a:active, a:focus, a:hover {
-    opacity: 0.8; }
+a:active, a:focus, a:hover {
+  opacity: 0.8; }
 
 h1.title {
   text-align: center;
@@ -352,10 +351,10 @@ html {
 
 .row {
   display: block; }
-  .row::after {
-    clear: both;
-    content: "";
-    display: table; }
+.row::after {
+  clear: both;
+  content: "";
+  display: table; }
 
 .container, .register {
   width: 70%;
@@ -363,13 +362,13 @@ html {
   margin-left: auto;
   margin-right: auto;
   margin: 0 auto; }
-  .container::after, .register::after {
-    clear: both;
-    content: "";
-    display: table; }
+.container::after, .register::after {
+  clear: both;
+  content: "";
+  display: table; }
 
 /*html {*/
-  /*background-color: rgba(232, 135, 121, 0.7); }*/
+/*background-color: rgba(232, 135, 121, 0.7); }*/
 
 
 .register {

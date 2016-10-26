@@ -27,10 +27,10 @@
 <body>
 
 <header>
-    <h1 style="margin:0;" class="title">Modify Test</h1>
+    <h1 style="margin:4;" class="title">Modify Test</h1>
 </header>
 
-<div id="box">
+<div id="box" style="margin-top: 5%;">
     <div id="wrapper">
         <div id="columns">
             <form action="." method="post" id="inputs">
@@ -38,7 +38,7 @@
                 <input type="hidden" name="action" value="modify_delete_test">
 
                 <input type="hidden" name="test_id" value="<?php echo $test_id ?>" required><BR>
-
+                <p class="proctortitle">Test Name</p>
                 <input class="mod" name="test_name" placeholder="Test Name"
                        value="<?php echo $test_name ?>" required><BR>
 
@@ -51,8 +51,8 @@
                     <?php foreach ($testTypes as $test) { ?>
                         <?php if ($user->getRole("TPOR") == $test['test_type_cde'] || $user->getRole("TPOR") == "ADM") { ?>
                             <option value="<?php echo $test['test_type_cde'] ?>"
-                                <?php if ($test_cde == $test['test_type_cde']) echo (" selected "); ?>
-                                >
+                                <?php if ($test_cde == $test['test_type_cde']) echo(" selected "); ?>
+                            >
                                 <?php echo $test['test_type_desc'] ?>
                             </option>
                         <?php }
@@ -67,7 +67,7 @@
                     <?php
                     foreach ($rooms as $room) { ?>
                         <option value="<?php echo $room['rm_id']; ?>"
-                            <?php if ($test_room == $room['rm_id']) echo (" selected "); ?>
+                            <?php if ($test_room == $room['rm_id']) echo(" selected "); ?>
                         >
                             <?php echo $room['rm_nbr'] ?></option>
                     <?php } ?>
@@ -152,15 +152,21 @@
                 </table>
 
                 <div class="button-div">
-                    <button class="submit s" type="submit" name="choice" value="Modify">Modify</button>
-                    <button class="submit k" type="submit"
-                            name="choice" value="Delete" formnovalidate>Delete
-                    </button>
-                </div>
-                <div class="button-div">
-                    <button class="submit cancel" type="submit"
-                            name="choice" value="Return" formnovalidate>Cancel
-                    </button>
+                    <ul>
+                        <li>
+                            <button class="submit s" type="submit" name="choice" value="Modify">Modify</button>
+                        </li>
+                        <li>
+                            <button class="submit k" type="submit"
+                                    name="choice" value="Delete" formnovalidate>Delete
+                            </button>
+                        </li>
+                        <li>
+                            <button class="submit cancel" type="submit"
+                                    name="choice" value="Return" formnovalidate>Cancel
+                            </button>
+                        </li>
+                    </ul>
                 </div>
             </form>
         </div>
