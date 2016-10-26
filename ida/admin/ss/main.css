@@ -242,7 +242,14 @@ header h1 {
 
 #admin-tools {
     overflow: hidden;
+    margin-top: -90px;
 }
+@media (max-width: 900px) {
+    #admin-tools{
+        overflow: visible;
+    }
+}
+
 #admin-tools header {
     clear: both;
     height: auto;
