@@ -125,6 +125,7 @@
                             <th>Description</th>
                             <th>Students</th>
                             <th>Actions</th>
+                            <th>Status</th>
                         </thead>
                     ";
                 }
@@ -135,7 +136,7 @@
                     $courseDesc = trim($course['course_desc']);
                     $numStudents = $course['num_students'];
                     $courseID = $course['course_id'];
-
+                    $active = $course['active'];
                     ?>
                     
                     <tr>
@@ -150,10 +151,18 @@
                             ?>
                         </td>
 
-                        <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>">
+                        <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>&active=<?php echo $active?>">
                                 <img src="../../shared/images/modifyIcon.gif"></a>
                             &nbsp; &nbsp; &nbsp; &nbsp;
                             <img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);">
+                        </td>
+                        <td>
+                            <?php if($active == 1){
+                                echo("Active");
+                            }
+                            else {
+                                echo("Inactive");
+                            }?>
                         </td>
                     </tr>
 

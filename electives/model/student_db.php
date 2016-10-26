@@ -11,7 +11,8 @@ function get_courses($id) {
     $query = "select x.course_id, c.course_name, c.course_desc
               from elect_student_course_xref x, elect_course c
               where x.course_id = c.course_id
-              and x.usr_id = :usr_id";
+              and x.usr_id = :usr_id
+              and active = 1";
 
     try {
         $statement = $db->prepare($query);
