@@ -36,8 +36,11 @@
                 ?>
             </select>
         </label>
+        <label class="spacing">
+        <span>Active</span>
 
-        <div style="text-align: center;padding-left:4em;">Status: <input type="checkbox" name="active" value="Yes" <?php if($active == 1){ ?> checked <?php }?>></div>
+        <input type="checkbox" class="active_box" name="active" value="Yes" <?php if($active == 1){ ?> checked <?php }?>>
+        </label>
 
         <div class="button_wrapper">
             <a href="../index.php"><button class="submit back" type="button" formnovalidate>Back</button></a>

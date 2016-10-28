@@ -34,9 +34,12 @@
                 <?php endforeach; ?>
             </select>
         </label>
-        
-        <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
-        <button class="submit back" type="button" onclick="location.href='../index.php'" name="choice" value="Back" formnovalidate>Back</button>
+
+        <div class="button_wrapper">
+            <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
+            <button class="submit back" type="button" onclick="location.href='../index.php'" name="choice" value="Back" formnovalidate>Back</button>
+        </div>
+
     </div>
 </form>
 
