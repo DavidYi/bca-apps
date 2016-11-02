@@ -13,7 +13,7 @@
             <select name="usr_id" id="usr_id">
                 <?php foreach ($user_list as $user) { ?>
                     <option value="<?php echo $user['usr_id']?>">
-                        <?php echo $user['usr_class_year']?>,
+                         <?php echo $user['usr_class_year']?>,
                         <?php echo $user['usr_last_name']?>,
                         <?php echo $user['usr_first_name'] ?>
                     </option>

@@ -18,7 +18,7 @@
                 <div id ="columns">
                     <h1 class="title">Add Room</h1>
                     
-                    <input type="text" placeholder="Room" name="room_nbr" autofocus required>
+                    <label>Room</label><input type="text" name="room_nbr" autofocus required>
 
                     <div id="button-div">
                         <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Add">Submit</button>
