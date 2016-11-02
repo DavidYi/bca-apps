@@ -54,6 +54,7 @@ legend, td, th {
 
 html, body {
   background: linear-gradient(250deg, #5959ab, #439b8c);
+  background-attachment: fixed;
 
   /*-webkit-animation: AnimationName 19s ease infinite;*/
   /*-moz-animation: AnimationName 19s ease infinite;*/
