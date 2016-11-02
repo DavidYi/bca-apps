@@ -552,6 +552,35 @@ function list_upcoming_teacher_emails($test_id)
     return get_list($query);
 }
 
+//This is so bad sorry
+
+function get_upcoming_emails($test_id)
+{
+    global $db;
+
+    $query = 'select distinct user_email
+              from user u, test t, test_time_xref ttx, test_updt_xref tux, test_time tt
+                where u.usr_id = tux.usr_id
+                and tux.test_id = :test_id
+                and tux.test_id =  ttx.test_id
+                and ttx.test_id = t.test_id
+                and ttx.test_time_id = tt.test_time_id
+                order by u.usr_last_name, test_time_desc
+';
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+    return get_list($query);
+}
+
 function update_reminder_sent($test_id)
 {
     global $db;

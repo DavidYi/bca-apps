@@ -26,8 +26,8 @@
             <h1 class="title">Rooms</h1>
         </header>
         <div class="button-wrap">
-            <a href="./index.php?action=show_add_room"><button id="add_room">Add Room</button></a>
-            <a href="../index.php"><button id="return_home">Return Home</button></a>
+            <a href="./index.php?action=show_add_room"><button id="add_room" class="s">Add Room</button></a>
+            <a href="../index.php"><button id="return_home" class="b">Back</button></a>
         </div>
 
         <nav style="width:50em" class="navbar">

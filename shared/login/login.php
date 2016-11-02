@@ -26,7 +26,7 @@
 					<form action="." method="post">
 						<input type="hidden" name="action" value="login">
 
-						<h3 style="color:red">
+						<h3 style="color:red; text-align: center;">
 							<?php echo $message ?>
 						</h3>
 

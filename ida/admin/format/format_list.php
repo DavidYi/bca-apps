@@ -24,8 +24,8 @@
             <h1 class="title">Formats</h1>
         </header>
         <div class="button-wrap">
-            <a href="./index.php?format_id=<?php echo $format_id ?>&action=show_add_format"><button id="add_format">Add Format</button></a>
-            <a href="../index.php"><button id="return_home">Return Home</button></a>
+            <a href="./index.php?format_id=<?php echo $format_id ?>&action=show_add_format"><button id="add_format" class="s">Add Format</button></a>
+            <a href="../index.php"><button id="return_home" class="b">Back</button></a>
         </div>
 
         <nav style="width:60em;" class="navbar">
