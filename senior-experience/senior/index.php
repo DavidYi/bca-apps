@@ -5,6 +5,14 @@ require_once('../util/main.php');
 require('../model/senior_db.php');
 require('../model/presentations_db.php');
 
+verify_logged_in();
+
+$action = filter_input(INPUT_GET, 'action');
+if (isset($action) and ($action == "logout")) {
+    session_destroy();
+    header("Location: ../index.php");
+}
+
 if(!isSeniortime()){
     header("Location: ../itinerary");
 }
@@ -13,6 +21,8 @@ $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
 }
+
+
 
 switch ($action) {
     case 'show_add_presentation':
