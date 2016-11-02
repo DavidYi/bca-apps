@@ -43,13 +43,13 @@
 <section class="main">
 
     <header>
-        <h1 class = "title main-titled">Signup Status</h1>
+        <h1 class = "title main-title">Signup Status</h1>
         <?php if ($result != "") { ?>
             <h3 class = "title main-title" style ="text-align: center;"><?php echo $result; ?></h3>
         <?php } ?>
     </header>
     <div class="buttons" style="text-align:center;padding-bottom:2vh;">
-        <a href="../index.php"><button class="back">Back</button></a>
+        <a href="../index.php"><button class="b">Back</button></a>
         <!--<a href="../../index.php?action=logout"><button class="logout">Log Out</button></a>-->
     </div>
 

@@ -54,6 +54,7 @@ legend, td, th {
 
 html, body {
   background: linear-gradient(250deg, #5959ab, #439b8c);
+  background-attachment: fixed;
 
   /*-webkit-animation: AnimationName 19s ease infinite;*/
   /*-moz-animation: AnimationName 19s ease infinite;*/
@@ -400,4 +401,37 @@ select {
   -moz-border-radius: 12px;
   border-radius: 12px;
   background-color: rgb(253, 253, 253);
+}
+
+.s {
+  background-color: rgb(110, 41, 135);
+  margin-right: 2em;
+}
+
+.s:hover {
+  background-color: rgb(121, 35, 152);
+  cursor: pointer;
+}
+
+.b {
+  background-color: rgb(54, 54, 143);
+}
+
+.b:hover {
+  background-color: rgb(51, 51, 161);
+  cursor: pointer;
+}
+
+a:hover, a:active {
+  opacity: inherit;
+}
+
+.list-container .mentor:hover {
+  background: rgb(183, 146, 197);
+  border-bottom: 1px solid rgb(183, 146, 197);
+  box-shadow: 0 -0.0625em 0 rgb(183, 146, 197);
+}
+
+nav.navbar {
+  background: rgb(35, 129, 113);
 }
