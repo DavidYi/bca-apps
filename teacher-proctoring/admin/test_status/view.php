@@ -99,8 +99,6 @@
         <form name="test" action="." method="post">
         <?php $test_num = 0?>
         <?php foreach ($testList as $test) { ?>
-            <?php if ($user->getRole('TPOR') == $test['test_type_cde'] || $user->getRole('TPOR') == 'ADM') { ?>
-
             <input type="hidden" name="action" value="<?php echo 'listpdf'?>">
             <input type="hidden" name="test_id">
             <div class="main-panel" style="position: relative;">
@@ -109,10 +107,11 @@
                     <div class="tag" style="width:20%">
                         <a class="info" style="float: left; position: relative; z-index: 9; color: #555555;" onclick="popup('#B<?php echo $test_num?>,#P<?php echo $test_num?>')">
                             &#x271A;&#xa0;&nbsp;</a>
-                        <a id="pdf" onclick="listPDF(<?php echo $test['test_id']?>)">
+                        <?php  /*Commented out for release.  Uncomment to continue development
+                            <a id="pdf" onclick="listPDF(<?php echo $test['test_id']?>)">
                             <img src="pdf/pdf.png" id="pdf">
                             &#xa0;&nbsp;
-                        </a>
+                        </a> */?>
                         <?php echo $test['test_name']?>
                     </div>
                     <div class="company" style="width:15%"><?php echo $test['test_time_desc']?></div>
@@ -148,7 +147,7 @@
                 </div>
             </div>
             <?php $test_num++?>
-        <?php } } ?>
+        <?php } ?>
         </form>
     </div>
 </section>

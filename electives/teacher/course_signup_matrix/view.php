@@ -10,7 +10,7 @@
 
 <header>
     <h1 class="title">Course Student Matrix</h1>
-    <button type="button" id="back_button"><a href="#" onclick="history.back();">Back</a></button>
+    <a href="#" onclick="history.back();"><button id="return_home" class="b">Back</button></a>
 </header>
 
 <div class="centerthis">
