@@ -28,9 +28,8 @@ switch ($action) {
         $test_dt = (filter_input(INPUT_GET, 'test_dt'));
 
 //        Get teacher emails
-        list_upcoming_teacher_emails($test_id);
+        $teachers = get_upcoming_emails($test_id);
 
-//        $email_address = array(list_upcoming_teacher_emails($test_id));
         $email_address = array('celper19@bergen.org', 'celinanperalta@gmail.com'); //Change to array of addresses of teachers proctoring test
 
         $message = "Hello, you are scheduled to proctor for the following test:";
@@ -42,10 +41,10 @@ switch ($action) {
 
         $content = new SendGrid\Content("text/plain", $message);
 
-
+        // foreach($teachers as $teacher)
         foreach ($email_address as $email) {
-        $to = new SendGrid\Email(null, $email);
-        $mail = new SendGrid\Mail($from, $subject, $to, $content);
+            $to = new SendGrid\Email(null, $email);
+            $mail = new SendGrid\Mail($from, $subject, $to, $content);
             $response = $sg->client->mail()->send()->post($mail);
         }
 
@@ -66,7 +65,11 @@ switch ($action) {
                 $apiKey = $SENDGRID_API_KEY;
                 $sg = new \SendGrid($apiKey);
 
-                $email_address = $list; //Change to array of addresses of teachers proctoring test
+                //        Get teacher emails
+                $teachers = get_upcoming_emails($test_id);
+
+
+                $email_address = array('celper19@bergen.org', 'celinanperalta@gmail.com'); //Change to array of addresses of teachers proctoring test
                 $test_id = $test['test_id'];
                 $test_name = $test['test_name'];
                 $test_dt = $test['test_dt'];
@@ -89,11 +92,6 @@ switch ($action) {
                 }
 
                 update_reminder_sent($test_id);
-
-
-
-
-
             }
         endforeach;
         $action = 'list_upcoming_tests';
@@ -106,12 +104,5 @@ switch ($action) {
         break;
 
 }
-
-//function send_email($email_address, $test_id, $test_name, $test_dt)
-//{
-//
-//
-//}
-
 
 ?>
