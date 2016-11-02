@@ -49,7 +49,7 @@ function get_registered_users(){
     from (
     SELECT grade_lvl, user.usr_id, count(*) as num_sessions
     from signup_dates
-    inner join user on user.usr_class_year = signup_dates.class_year
+    inner join user on user.usr_class_year = signup_dates.grade_lvl
     inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
     where usr_active = 1
     and usr_type_cde = \'STD\'
@@ -71,7 +71,7 @@ function get_registered_users(){
     from (
     SELECT grade_lvl, user.usr_id, count(*) as num_sessions
     from signup_dates
-    inner join user on user.usr_class_year = signup_dates.class_year
+    inner join user on user.usr_class_year = signup_dates.grade_lvl
     inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
     where usr_active = 1
     and usr_type_cde = \'STD\'
@@ -96,7 +96,7 @@ function get_registered_users(){
     union
     SELECT grade_lvl, count(*) as num
     from user
-    inner join signup_dates on signup_dates.class_year= user.usr_class_year
+    inner join signup_dates on signup_dates.grade_lvl= user.usr_class_year
     left join pres_user_xref on pres_user_xref.usr_id= user.usr_id
     where pres_user_xref.usr_id is null
     and usr_type_cde = \'STD\'
@@ -115,7 +115,7 @@ function undo_enroll($year) {
     where usr_id in (
       SELECT usr_id
       FROM user
-        INNER JOIN signup_dates ON user.usr_class_year = signup_dates.class_year
+        INNER JOIN signup_dates ON user.usr_class_year = signup_dates.grade_lvl
       WHERE grade_lvl = :year
     )
     AND pres_user_updt_usr_id = -1";
@@ -158,7 +158,7 @@ function all_enroll_download($grade) {
     from (
         SELECT grade_lvl, user.usr_id, count(*) as num_sessions
            from signup_dates
-             inner join user on user.usr_class_year = signup_dates.class_year
+             inner join user on user.usr_class_year = signup_dates.grade_lvl
              inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
            where usr_active = 1
     and usr_type_cde = \'STD\'
@@ -180,7 +180,7 @@ function partial_enroll_download($grade) {
     from (
         SELECT grade_lvl, user.usr_id, count(*) as num_sessions
            from signup_dates
-             inner join user on user.usr_class_year = signup_dates.class_year
+             inner join user on user.usr_class_year = signup_dates.grade_lvl
              inner join pres_user_xref on pres_user_xref.usr_id = user.usr_id
            where usr_active = 1
     and usr_type_cde = \'STD\'
@@ -202,7 +202,7 @@ function no_enroll_download($grade) {
     FROM (
         SELECT user.usr_id
            FROM user
-             INNER JOIN signup_dates ON signup_dates.class_year= user.usr_class_year
+             INNER JOIN signup_dates ON signup_dates.grade_lvl= user.usr_class_year
              LEFT JOIN pres_user_xref ON pres_user_xref.usr_id= user.usr_id
            WHERE pres_user_xref.usr_id IS NULL
     AND usr_type_cde = \'STD\'

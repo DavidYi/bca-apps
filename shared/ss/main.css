@@ -306,7 +306,7 @@ input {
   height: 3em;
   width: 15em;
   margin: 0.5em 0 0.5em 0;
-  border: 1px solid rgb(182, 226, 249);
+  border: 1px solid #B781C9;
   /*margin-bottom: 0.5em;*/
   line-height: 2.5em;
   padding: 12px 20px;
@@ -330,7 +330,7 @@ textarea {
   padding: 12px;
   color: rgb(84, 79, 84);
   background-color: transparent;
-  border: 1px solid rgb(182, 226, 249);
+  border: 1px solid #B781C9;
   border-radius: 12px;
   font: normal normal 300 1em "Lato", sans-serif;
   text-align: left;
