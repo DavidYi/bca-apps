@@ -25,6 +25,12 @@ switch ($action) {
         $teacher = $_POST['teacher'];
         $course_id = $_POST['course_id'];
         $active = $_POST['active'];
+
+        if ($active === 'Yes')
+            $active = 1;
+        else
+            $active = 0;
+
         admin_edit_course($course_id, $teacher, $name, $desc, $active);
         header("Location: ../index.php");
         break;

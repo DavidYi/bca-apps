@@ -12,5 +12,5 @@
  */
 require_once("../../util/main.php");
 include ("../../../shared/roles/index.php");
-verify_admin();
+
 ?>

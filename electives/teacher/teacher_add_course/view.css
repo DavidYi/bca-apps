@@ -107,6 +107,11 @@ textarea {
   margin-top: 15px;
 }
 
+.active_box {
+  text-align: left;
+  margin-top: 15px;
+  width:auto;
+}
 /*.title {
   text-align: center;
   padding-bottom: 10%;
