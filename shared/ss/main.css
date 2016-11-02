@@ -283,15 +283,14 @@ a:active, a:focus, a:hover {
 
 h1.title {
   text-align: center;
-  margin-bottom: 6em;
   color: rgb(84, 79, 84);}
 
 button {
-  font-weight: 700;
+  font-weight: 300;
   height: 2em;
-  width: 10em;
+  width: 12em;
   color: rgb(253, 253, 253);
-  font-size: 1.8em;
+  font-size: 1.5em;
   border: 0;
   border-radius: 12px;
   outline: none;
@@ -306,13 +305,12 @@ input {
   height: 3em;
   width: 15em;
   margin: 0.5em 0 0.5em 0;
+  border: 1px solid rgb(182, 226, 249);
   /*margin-bottom: 0.5em;*/
   line-height: 2.5em;
-  padding: 0 auto;
-  padding: 12px;
+  padding: 12px 20px;
   color: rgb(84, 79, 84);
   background-color: transparent;
-  border: none;
   border-radius: 12px;
   font: normal normal 300 1em "Lato", sans-serif;
   text-align: left;

@@ -20,10 +20,11 @@
                     <div id ="columns">
                         <h1 class="title">Add Workshop</h1>
 
-                        <input type="text" placeholder="Name" name="wkshp_name" autofocus required>
+                        <label>Name</label><input type="text" name="wkshp_name" autofocus required>
                         <br>
                         
-                        <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc" value="<?php echo htmlspecialchars($wkshp_desc); ?>" placeholder="Description"></textarea>
+                        <label>Description</label>
+                            <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc" value="<?php echo htmlspecialchars($wkshp_desc); ?>"></textarea>
                         <br>
 
                         <label>Format</label>
