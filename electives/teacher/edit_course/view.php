@@ -18,8 +18,11 @@
                 <span>Description</span>
                 <textarea name="new_course_desc" required><?php echo $course_desc ?></textarea>
             </label>
-            <br>
-            <div style="text-align: center;padding-left:4em;">Status: <input type="checkbox" name="active" value="Yes" <?php if($active == 1){ ?> checked <?php }?>></div>
+            <label class="spacing">
+                <span>Active</span>
+
+                <input type="checkbox" class="active_box" name="active" value="Yes" <?php if($active == 1){ ?> checked <?php }?>>
+            </label>
             <div class="button_wrapper">
                 <button class="submit s" type="submit">Save</button>
                 <button class="submit back" type="button" onclick="location.href='../index.php'" formnovalidate>Back</button>

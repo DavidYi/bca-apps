@@ -1,9 +1,8 @@
 <?php
 require_once ("../../util/main.php");
-require_once (__DIR__ . "/../../../shared/model/user_db.php");
-require_once (__DIR__ . "/../../../shared/model/database.php");
 require_once("../../model/admin_db.php");
 require_once("../../model/student_db.php");
+
 verify_admin();
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
@@ -38,8 +37,8 @@ switch ($action) {
         include ('view.php');
         break;
 
-    case "clear_all_courses":
-        clear_all_courses();
+    case "inactivate_all_courses":
+        inactivate_all_courses();
         include ('view.php');
         break;
 

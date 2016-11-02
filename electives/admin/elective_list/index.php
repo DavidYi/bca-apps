@@ -5,10 +5,11 @@
  * Date: 7/27/2016
  * Time: 9:06 AM
  */
+require_once("../../util/main.php");
 require_once("../../model/admin_db.php");
 require_once("../../model/teacher_db.php");
 
-require_once("../../util/main.php");
+
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {

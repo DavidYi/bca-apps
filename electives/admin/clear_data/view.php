@@ -31,7 +31,7 @@
 <a href="../index.php"><button>Return To Admin Panel</button></a>
 
 <div id="centerthis">
-    <h1>Data Clearing</h1>
+    <h1 class="title">Data Clearing</h1>
     <h2>Use this page to clear user data on a periodic basis, see instructions below.</h2>
     <ul>
         <li>
@@ -50,8 +50,8 @@
         </li>
         <br>
         <li>
-            <button onclick="clearAllCourses()">Clear All Courses</button>
-            <p>Should may be run over the summer. This clears ALL COURSES from the database.</p>
+            <button onclick="inactivateAllCourses()">Inactivate All Courses</button>
+            <p>Should may be run over the summer. This inactivates ALL COURSES in the database.</p>
         </li>
     </ul>
 </div>
@@ -79,9 +79,9 @@
         }
     }</script>
 <script type="text/javascript">
-    function clearAllCourses() {
-        if (confirm("Are you sure you want to clear all courses?")) {
-            window.parent.location.href = 'index.php?action=clear_all_courses';
+    function inactivateAllCourses() {
+        if (confirm("Are you sure you want to inactivate all courses?")) {
+            window.parent.location.href = 'index.php?action=inactivate_all_courses';
         }
     }</script>
 </body>

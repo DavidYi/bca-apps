@@ -107,7 +107,7 @@ function admin_get_teachers()
 
 function get_elective_list($sort_by, $sort_order)
 {
-    $query = "select e.course_id, concat(u.usr_first_name, ' ', u.usr_last_name) as teacher_name, e.course_name, e.course_desc, count(x.usr_id) as num_students
+    $query = "select e.course_id, concat(u.usr_last_name, ', ', u.usr_first_name) as teacher_name, e.course_name, e.course_desc, active, count(x.usr_id) as num_students
             from user u, elect_course e 
             left join elect_student_course_xref x on e.course_id = x.course_id
             where e.teacher_id = u.usr_id
@@ -162,7 +162,7 @@ function get_best_course_availability()
 }
 
 
-function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc)
+function admin_edit_course($course_id, $teacher_id, $course_name, $course_desc, $active)
 {
     $query = "UPDATE elect_course
             SET course_name = :name, course_desc = :desc, teacher_id = :teacher_id, active = :active
@@ -311,13 +311,13 @@ function clear_teacher_availability()
     }
 }
 
-function clear_all_courses()
+function inactivate_all_courses()
 {
     global $db;
     $db->beginTransaction();
 
     try {
-        $query = "delete from elect_course"; //Lol time to break the app
+        $query = "update elect_course set active = 0";
         $statement = $db->prepare($query);
         $statement->execute();
         $statement->closeCursor();
