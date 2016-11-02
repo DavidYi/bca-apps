@@ -22,8 +22,8 @@
             <br>
             <div id="padding"></div>
             <div id="button-div">
-                <button name="choice" value="submit" id="submit">Mimic User</button>
-                <button name="choice" value="back" id="back">Back</button>
+                <button name="choice" value="submit" id="submit" class="s">Mimic User</button>
+                <button name="choice" value="back" id="back" class="b">Back</button>
             </div>
         </form>
     </div>

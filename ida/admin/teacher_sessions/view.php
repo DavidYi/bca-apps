@@ -18,7 +18,7 @@
     </header>
     <div class="button-wrap">
         <button type="submit" class="submit s" name="choice" value="Update Teachers">Submit</button>
-        <button type="submit" class="submit cancel" name="choice" value="Back">Back</button>
+        <button type="submit" class="submit b" name="choice" value="Back">Back</button>
     </div>
     <nav class="navbar">
         <div id="navinside">

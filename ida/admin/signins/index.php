@@ -138,6 +138,9 @@ switch ($action) {
             if (empty($ses_1['org_name'])) {
                 $org = '';
             }
+            if (empty($ses_1['presenter_names']) and empty($ses_1['wkshp_nme'])) {
+                $pres = '';
+            }
 
             $pdf->Cell(0, $lineSpacing, $pres, 0, 2, "L");
             $pdf->Cell(0, $lineSpacing, $org, 0, 2, "L");
@@ -151,8 +154,12 @@ switch ($action) {
             $pdf->SetFont('Arial', '', 24);
             $pres = '       by ' . $ses_2['presenter_names'];
             $org = '       ' . $ses_2['org_name'];
-            if (empty($ses_1['org_name'])) {
+            if (empty($ses_2['org_name'])) {
                 $org = '';
+            }
+
+            if (empty($ses_2['presenter_names']) and empty($ses_2['wkshp_nme'])) {
+                $pres = '';
             }
 
             $pdf->Cell(0, $lineSpacing, $pres, 0, 2, "L");

@@ -244,9 +244,14 @@ header h1 {
     overflow: hidden;
     margin-top: -90px;
 }
-@media (max-width: 900px) {
+@media (max-width: 1000px){
     #admin-tools{
         overflow: visible;
+    }
+}
+@media (max-height: 3000px) {
+    #admin-tools {
+        overflow-y: visible;
     }
 }
 
