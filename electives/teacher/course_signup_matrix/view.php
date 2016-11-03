@@ -38,22 +38,24 @@
         <tbody class="table-hover">
         <?php
             $rownum = 0;
-            $lastStudentId = -1;
             foreach ($body_array as $row) {
-                if ($lastStudentId !== $row['usr_id']) {
-                    if ($lastStudentId !== -1) {
+
+                if ($row['time_short_desc'] === 'first') {
+                    if ($rownum !== 0) {
                         echo ("</tr>");
                     }
-                    $lastStudentId = $row['usr_id'];
                     $rownum++;
 
                     if ($rownum % 2 == 0) {
+                        echo "<tr class='even'>";
                     } else {
                         echo "<tr class='odd'>";
                     }
                     echo ("<td class='student-name'>" . $row['usr_last_name'] . ', ' . $row['usr_first_name'] . "</td>");
                 }
-                echo ("<td>" . $row['mark'] . "</td>");
+                else {
+                    echo("<td>" . $row['mark'] . "</td>");
+                }
             }
             echo "</tr>";
         ?>
