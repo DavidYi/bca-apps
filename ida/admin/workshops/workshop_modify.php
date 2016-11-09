@@ -29,7 +29,10 @@
                 <label>Format</label>
                 <select class="center" name="format_id">
                     <?php foreach ($formatList as $format) { ?>
-                        <option value=<?php echo($format['format_id']); ?>><?php echo($format['format_name']); ?></option>
+                        <option value=<?php echo($format['format_id']); ?>
+                                <?php if ($format_id == $format['format_id']) echo(" selected "); ?>
+                        ><?php echo($format['format_name']); ?>
+                        </option>
                     <?php } ?>
                 </select>
                 <br>
