@@ -15,10 +15,10 @@
 <section class="main view">
     <div class="view-main">
         <div class="login-status">
-            <h3><b><?php echo($user->usr_first_name . " " . $user->usr_last_name); ?></b></h3>
-            <h3 class="log-out"><a href="./index.php?action=logout">
+            <h2><b><?php echo($user->usr_first_name . " " . $user->usr_last_name); ?></b></h2>
+            <h2 class="log-out"><a href="./index.php?action=logout">
                     <?php if (isset($_SESSION['prev_usr_id'])) { ?> Return to Admin Panel <?php } else { ?> Log Out <?php } ?>
-                </a></h3>
+                </a></h2>
         </div>
         <div class="vertical-center">
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
@@ -31,14 +31,14 @@
                         <h2> Opens: <?php echo $startTimeFormatted ?> </h2>
 
                     <?php } elseif ($endTime < $currentTime) { ?>
-                        <h3> Registration has <b>ended</b>. </h3>
-                        <h3> If you did not finish registering, a session will be assigned to you. </h3>
+                        <h2> Registration has <b>ended</b>. </h2>
+                        <h2> If you did not finish registering, a session will be assigned to you. </h2>
 
                     <?php } elseif ($registration_complete) { ?>
-                        <h3> Registration <b>complete</b>! </h3>
-                        <h3> Feedback <a
+                        <h2> Registration <b>complete</b>! </h2>
+                        <h2> Feedback <a
                                 href="https://docs.google.com/forms/d/1WIjMjkT5w48ZM-T7vB1A2fo0Ipv-aAVnX0NDsstdF_c/viewform">survey</a>
-                            about this site. </h3>
+                            about this site. </h2>
 
                     <?php } else { ?>
                         <h2> Registration is <b>open</b>! </h2>
