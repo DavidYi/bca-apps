@@ -25,10 +25,11 @@ BEGIN
 		where pres_enrolled_seats < pres_max_seats
 		and pres_permit_auto_enroll = 1
 		and ses_id = sesId
-		and pres_id not in (
-            select pres_id
-            from pres_user_xref
-            where usr_id = userId
+		and wkshp_id not in (
+            select wkshp_id
+            from presentation p, pres_user_xref x
+            where p.pres_id = x.pres_id
+						and usr_id = userId
         )
         order by remaining desc
         limit 1;

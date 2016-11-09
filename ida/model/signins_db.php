@@ -80,7 +80,7 @@ function get_session_by_room($rm_id, $ses_id){
 
 function get_presentation_list(){
     $query = 'SELECT workshop.wkshp_nme, presentation.pres_id, presentation.org_name, presentation.rm_id,
-                    pres_max_teachers, pres_max_seats, pres_enrolled_teachers, pres_enrolled_seats,
+                    pres_max_teachers, pres_max_seats, pres_enrolled_teachers, pres_enrolled_seats, 
                     pres_max_seats - presentation.pres_enrolled_seats as remaining, 
                     presenter_names, rm_nbr, ses_start_time, ses_end_time, presentation.ses_id, presentation.wkshp_id
                 FROM presentation, room, session_times, workshop 

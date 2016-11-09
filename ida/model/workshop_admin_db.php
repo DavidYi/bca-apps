@@ -15,7 +15,7 @@ function get_workshop_list() {
     return get_list($query);
 }
 function get_presentation_list() {
-    $query = 'SELECT p.pres_id, presenter_names, org_name, r.rm_id, r.rm_nbr, pres_max_seats, pres_enrolled_seats, w.wkshp_id, w.wkshp_nme, p.ses_id
+    $query = 'SELECT p.pres_id, presenter_names, org_name, r.rm_id, r.rm_nbr, pres_max_seats, pres_enrolled_seats, w.wkshp_id, w.wkshp_nme, pres_permit_auto_enroll, p.ses_id
               from  workshop w, session_times s, presentation p
                 left join room r
                 on p.rm_id = r.rm_id
