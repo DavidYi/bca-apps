@@ -78,7 +78,7 @@
 
                 <br>
                 <button class="submit s" type="submit" name="choice" value="Add Admin">Add</button>
-                <button class="submit back" type="submit" name="choice" value="Back">Back</button>
+                <button class="submit b" type="submit" name="choice" value="Back">Back</button>
             </div>
         </div>
             </div>

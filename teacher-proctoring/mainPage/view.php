@@ -45,7 +45,7 @@ require_once('../model/teacher_db.php');
     <div class="view-signup enrollment">
         <div class="vertical-center">
 
-            <h7 style="left:18%;text-align:center">These are your current registration times:</h7>
+            <!--            <h7 style="left:18%;text-align:center">These are your current registration times:</h7>-->
 
             <nav class="navbar">
                 <h1></h1>
@@ -58,12 +58,13 @@ require_once('../model/teacher_db.php');
             <div style="overflow-y:scroll; height:300px;">
 
                 <?php foreach ($testSelectedList as $test) { ?>
-                    <div class="session view-session">
+                    <div class="session view-session" style="height: 15%; font-size: 75%; background-color: white;">
                         <?php if ($test != NULL) { ?>
                             <div class="time" style="width: 25%;"><?php echo $test['test_dt'] ?></div>
                             <div class="mods" style="width: 25%;"><?php echo $test['test_time_desc'] ?></div>
                             <div class="name" style="width: 25%;"><?php echo $test['test_name'] ?></div>
-                            <div class="position" style="width: 25%; text-align: center;"><?php echo $test['rm_nbr']?></div>
+                            <div class="position"
+                                 style="width: 25%; text-align: center;"><?php echo $test['rm_nbr'] ?></div>
                         <?php } ?>
                     </div>
                 <?php } ?>
@@ -91,6 +92,41 @@ require_once('../model/teacher_db.php');
         easing: 'easeInOutExpo',
         speed: 700
     });
+
+    $(document).ready(function () {
+
+        //If test date has passed, grey out test.
+
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = yyyy + '-' + mm + '-' + dd;
+
+        $('.view-session').each(function () {
+
+            if ($(this).find('.time').text() < today)
+        {
+                $(this).css("background-color", "lightgrey");
+            $(this).css("opacity", ".8");
+
+               console.log("lol");
+        }
+
+    });
+    })
+    ;
+
+
 </script>
 </body>
 </html>
