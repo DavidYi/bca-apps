@@ -1,0 +1,233 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
+
+html {
+
+}
+
+body {
+    background: #636161;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+
+}
+
+table {
+    background: white;
+    border-collapse: collapse;
+    width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    box-shadow: 0 0.1875em 0.4375em 0 rgba(0, 0, 0, 0.15);
+}
+
+#ts {
+    overflow-y: scroll;
+}
+
+td, th {
+    padding: 20px;
+}
+
+td {
+
+}
+
+th a {
+    color: #000000;
+    text-decoration: none;
+}
+
+th a:visited {
+    color: #000000;
+}
+
+.columns {
+    background-color: black;
+    color: white;
+}
+
+tr {
+    box-sizing: inherit;
+    border: 1px solid #ccc;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease;
+}
+
+tr:not(.columns):hover {
+    background-color: #F2F2F2;
+    -ms-transition-duration: 0.2s;
+    -ms-transform: scale(1.005);
+    -webkit-transition-duration: 0.2s;
+    -webkit-transform: scale(1.005);
+    box-shadow: 0 0 0 0;
+}
+
+tr:active {
+    -ms-transition-duration: 0.1s;
+    -ms-transform: scale(1.005);
+    -webkit-transition-duration: 0.1s;
+    -webkit-transform: scale(1.005);
+    box-shadow: 0 0 0 0;
+}
+
+h1 {
+    position: relative;
+    top: 1%;
+    text-align: center;
+    margin-bottom: 3%;
+    color: white;
+}
+
+.info {
+    float: left;
+    position: relative;
+    color: #555555;
+}
+
+.popup {
+    padding: 1% 0 2% 0;
+    display: none;
+    z-index: 100;
+    background-color: #f7f7f7;
+    width: 50%;
+    height: 90%;
+    margin-left: -1%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    /* word-wrap: break-word; */
+    /* overflow: auto; */
+}
+
+.entpop {
+    width: 100%;
+    height: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+.close {
+    padding: 0 4% 0;
+    font-size: 150%;
+    text-align: left;
+    width: 90%;
+    float: left;
+    margin-bottom: 4%;
+}
+
+.popup-c {
+    height: 100%;
+    width: 90%;
+    position: relative;
+    word-wrap: break-word;
+    overflow: auto;
+    display: block;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.popup-c h3 {
+    text-align: center;
+}
+
+.popup table {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+#return_button {
+    height: 3em;
+    width: 15em;
+    color: #000000;
+    background-color: #ffffff;
+    font: normal normal 400 0.32 "Roboto", sans-serif;
+    font-size: 10pt;
+    border: 0;
+    border-radius: 1px;
+    outline: none;
+    margin: 0.4em;
+    line-height: 2.25em;
+    text-transform: uppercase;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease;
+    position: absolute;
+    left: 5%;
+    top: 1%;
+    cursor: pointer
+}
+
+#return_button:hover {
+    background-color: #aaaaaa;
+}
+
+.student-table {
+    background-color: #8CD4F5;
+    display: none;
+}
+
+.student-table:hover {
+    transform: none;
+}
+
+.downloads a {
+    text-decoration: none;
+    color: white;
+}
+
+.downloads a:hover {
+    color: #8CD4F5;
+}
+
+.downloads {
+    padding-top: 1%;
+}
+
+ul {
+    display: inline-block;
+    margin-left: -40px;
+}
+
+li {
+    display: inline-block;
+    list-style-type: none;
+}
+
+button {
+    height: 3em;
+    width: 20em;
+    color: #000000;
+    background-color: #ffffff;
+    font: normal normal 400 0.30 "Roboto", sans-serif;
+    font-size: 10pt;
+    border: 0;
+    border-radius: 1px;
+    outline: none;
+    margin: 0.4em;
+    line-height: 2.25em;
+    text-transform: uppercase;
+    -webkit-transition: all 175ms ease;
+    -moz-transition: all 175ms ease;
+    transition: all 175ms ease;
+    cursor: pointer;
+}
+
+/*WHY IS THIS SO AMUSING OML*/
+button:hover {
+    background-color: tomato;
+}
