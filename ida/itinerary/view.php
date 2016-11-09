@@ -63,7 +63,7 @@
                     <a href="../register/index.php?session=<?php echo $session['ses_times'] ?>&action=register">
                 <?php } ?>
 
-                <div class="session view-session <?php if(!$isTeacher) { ?>view-session-student<?php }?>" onclick="">
+                <div class="session view-session <?php if(!$isTeacher) { ?>view-session-student<?php } else { ?>view-session-teacher<?php } ?>" onclick="">
                     <div class="session-number"><?php echo $session['ses_times'] ?></div>
                     <div class="time"><?php echo $session['ses_start_time'] ?></div>
                     <?php if ($session['ses_id'] != NULL) { ?>

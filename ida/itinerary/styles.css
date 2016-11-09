@@ -245,7 +245,9 @@ body {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%); }
-.view .view-signup a:last-child .session {
+.view .view-signup a:last-child .session{
+    border-bottom: none; }
+.view .view-signup .view-session-teacher:last-child{
     border-bottom: none; }
 @media screen and (max-width: 800px) {
     .view .view-signup {
