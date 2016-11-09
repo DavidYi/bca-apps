@@ -15,18 +15,10 @@
     <table>
         <tr>
             <td>
-                <a href="roles">
+                <a href="elective_list">
                     <div class="feature">
-                        <h2>Roles</h2>
-                        <h4>Assign administrator roles.</h4>
-                    </div>
-                </a>
-            </td>
-            <td>
-                <a href="log_viewer">
-                    <div class="feature">
-                        <h2>Log Viewer</h2>
-                        <h4>View the application log.</h4>
+                        <h2>Elective List</h2>
+                        <h4>Manage all electives.</h4>
                     </div>
                 </a>
             </td>
@@ -39,9 +31,17 @@
                 </a>
             </td>
             <td>
+                <a href="roles">
+                    <div class="feature">
+                        <h2>User Roles</h2>
+                        <h4>Assign administrator roles.</h4>
+                    </div>
+                </a>
+            </td>
+            <td>
                 <a href="reports_download">
                     <div class="feature">
-                        <h2>Download Reports</h2>
+                        <h2>Reports</h2>
                         <h4>Download Reports in CSV format.</h4>
                     </div>
                 </a>
@@ -49,18 +49,18 @@
         </tr>
         <tr>
             <td>
-                <a href="elective_list">
-                    <div class="feature">
-                        <h2>Elective List</h2>
-                        <h4>Manage all electives.</h4>
-                    </div>
-                </a>
-            </td>
-            <td>
                 <a href="mimic_user">
                     <div class="feature">
                         <h2>Mimic User</h2>
                         <h4>Log in as any user in the database and use the app as if you were them.</h4>
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="clear_data">
+                    <div class="feature">
+                        <h2>Clear Data</h2>
+                        <h4>Clear Data from Database.</h4>
                     </div>
                 </a>
             </td>
@@ -73,10 +73,10 @@
                 </a>
             </td>
             <td>
-                <a href="clear_data">
+                <a href="log_viewer">
                     <div class="feature">
-                        <h2>Clear Data</h2>
-                        <h4>Clear Data from Database.</h4>
+                        <h2>Log Viewer</h2>
+                        <h4>View the application log.</h4>
                     </div>
                 </a>
             </td>

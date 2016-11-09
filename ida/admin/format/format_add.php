@@ -21,7 +21,7 @@
                 <input type="hidden" name="action" value="add_format">
 
                 <label>Format Name</label>
-                <input type="text" placeholder="Name" name="format_name" autofocus required>
+                <input type="text" name="format_name" autofocus required>
 
                 <div id="button-div">
                     <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Add">Submit</button>

@@ -53,6 +53,38 @@ switch ($action) {
         include "view.php";
         break;
 
+    case 'listpdf':
+        /*
+        $test_id = filter_input(INPUT_POST, 'test_id');
+        $session_id = filter_input(INPUT_POST, 'session');
+        $presentations = get_presentation_list($mentor_id, $session_id);
+        $header = array("Year", "Academy", "Name", "Signature");
+        $pdf = new listPDF();
+
+        foreach ($presentations as $pres) {
+            $title = $pres['ses_name'] . " sign in";
+            $students = get_students_in_ses($pres["pres_id"]);
+            $pdf->AddPage("P", "Letter");
+            $pdf->SetFont('Arial', '', 12);
+
+            $pdf->SetY(20);
+            $pdf->Cell(100, 9, "Mentor: " . $pres['mentor_first_name'] . " " . $pres['mentor_last_name']);
+            $pdf->Ln();
+            $pdf->Cell(100, 9, "Company: " . $pres['mentor_company']);
+            $pdf->Ln();
+            $pdf->Cell(100, 9, "Host Teacher: " . $pres['pres_host_teacher']);
+            $pdf->Ln();
+            $pdf->Cell(100, 9, "Room Number: " . $pres['pres_room']);
+            $pdf->Ln();
+            $pdf->SetX(50);
+            $pdf->SetDrawColor(50, 60, 100);
+            $pdf->Cell(100, 10, $title, 1, 0, 'C', 0);
+
+            $pdf->FancyStudent($header, $students);
+        }
+*/
+        $pdf->Output('listPDF.pdf', 'I');
+        break;
 
     default:
         echo('Unknown account action: ' . $action);

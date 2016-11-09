@@ -45,29 +45,7 @@ m             modify  (pencil)
 }
 
 .s {
-    background-color: rgb(182, 226, 249);
-    margin: 0 auto;
     margin-top: 4em;
-    margin-right: 1em;
-    margin-left: 0em;
-    display: inline-block;
-}
-
-.s:hover{
-    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
-    cursor: hand;
-}
-
-.cancel {
-    background-color: rgb(247, 224, 97);
-    margin: 0 auto;
-    margin-left: 1em;
-    display: inline-block;
-}
-
-.cancel:hover {
-    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
-    cursor: hand;
 }
 
 #columns {
