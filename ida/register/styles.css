@@ -52,11 +52,11 @@ body {
     margin-top: 1.25em;
     margin-bottom: 0.5em;
 }
-::-webkit-scrollbar-track {
-    background: #f7f7f7; }
 
-::-webkit-scrollbar-thumb {
-    background: #f7f7f7; }
+::-webkit-scrollbar {
+    display: none;
+}
+
 .enrollment {
     height: 75%;
     width: 85%;
@@ -345,7 +345,8 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
     border-bottom: 1px solid rgb(121, 35, 152) !important;
     -webkit-box-shadow: 0 0 1.5625em 0 rgb(110, 41, 135);
     -moz-box-shadow: 0 0 1.5625em 0 rgb(110, 41, 135);
-    box-shadow: 0 0 1.5625em 0 rgb(110, 41, 135); }
+    box-shadow: 0 0 1.5625em 0 rgb(110, 41, 135);
+}
 .session-selected .tag, .session-selected .company, .session-selected .position, .session-selected .presenter, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
     color: #fdfdfd !important; }
 .session-selected:hover {
