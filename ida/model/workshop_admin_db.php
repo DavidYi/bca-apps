@@ -161,12 +161,12 @@ function display_db_exception_v2 ($pdo_exception) {
     exit();
 }
 
-function modify_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id, $pres_id) {
+function modify_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id, $pres_id, $pres_permit_auto_enroll) {
     global $db;
     $query = 'update presentation set
                  presenter_names = :presenter_names, org_name = :org_name,
                  rm_id = :rm_id, pres_max_seats = :pres_max_seats,
-                 wkshp_id = :wkshp_id, ses_id = :ses_id
+                 wkshp_id = :wkshp_id, ses_id = :ses_id, pres_permit_auto_enroll = :pres_permit_auto_enroll
                  where pres_id = :pres_id';
     try {
         $statement = $db->prepare($query);
@@ -176,6 +176,7 @@ function modify_presentation($presenter_names, $org_name, $rm_id, $pres_max_seat
         $statement->bindValue(':pres_max_seats', $pres_max_seats);
         $statement->bindValue(':wkshp_id', $wkshp_id);
         $statement->bindValue(':ses_id', $ses_id);
+        $statement->bindValue(':pres_permit_auto_enroll', $pres_permit_auto_enroll);
         $statement->bindValue(':pres_id', $pres_id);
 
         $statement->execute();
