@@ -37,8 +37,8 @@ switch ($action) {
     </header>
     <br>
     <div class="feature">
-        <a href="test_status"><h2>Test Status</h2></a>
-        <h4>Check enrolled count and proctoring teachers in a test.</h4>
+        <a href="test_status"><h2>Test List</h2></a>
+        <h4>Create and modify tests and check their sign-up status.</h4>
     </div>
     <div class="feature">
         <a href="status"><h2>Teacher Status</h2></a>
