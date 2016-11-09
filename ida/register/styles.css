@@ -1,5 +1,44 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
-@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+/**********color reference chart**********
+comment ****************** color ********
+
+P1, blue                  rgb(89, 89, 171)   #5959AB 
+P2, purple                rgb(139, 74, 162)  #8B4AA2 
+P3, green                  rgb(67, 155, 140)   #439B8C
+
+S1-1, bright blue          rgb(51, 51,161)    #3333A1
+S1-2, bright purple        rgb(121, 35, 152)  #792398
+S1-3, bright green         rgb(28, 145, 126)  #1C917E
+
+S2-1, dark blue            rgb(54, 54, 143)   #36368F
+S2-2, dark purple          rgb(110, 41, 135)  #6E2987
+S2-3, dark green           rgb(35, 129, 113)  #238171
+
+S3-1, light blue           rgb(142, 142, 207)  #8E8ECF
+S3-2, light purple         rgb(183, 129, 201)  #B781C9
+S3-3, light green          rgb(123, 197, 184)  #7BC5B8
+
+S4-1, lighter blue         rgb(157, 157, 203)  #9D9DCB
+S4-2, lighter purple       rgb(183, 146, 197)  #B792C5
+S4-3, lighter green        rgb(140, 191, 183)  #8CBFB7
+
+
+
+G1, dark                   rgb(84, 79, 84)
+G2, med                    rgb(147, 146, 149)
+G3, light                  rgb(253, 253, 253)
+
+*/
+
+/**********icon reference chart**********
+char ******** icon ********
+
+c             close   (X)
+p             plus    (+)
+i             info    (i)
+d             delete  (trashcan)
+m             modify  (pencil)
+
+*/
 
 body {
     margin: 0;
@@ -216,7 +255,6 @@ nav.navbar {
     line-height: 3.75em;
     margin: 0 auto;
     padding: 0 1.5625em;
-    background: #262626;
      }
 nav.navbar::after {
     clear: both;
@@ -302,12 +340,12 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
     text-decoration: underline; }
 
 .session-selected {
-    background-color: #f0c30f;
+    background-color: rgb(121, 35, 152);
     color: #fdfdfd !important;
-    border-bottom: 1px solid #f0c30f;
-    -webkit-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
-    -moz-box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66);
-    box-shadow: 0 0 1.5625em 0 rgba(240, 195, 15, 0.66); }
+    border-bottom: 1px solid rgb(121, 35, 152) !important;
+    -webkit-box-shadow: 0 0 1.5625em 0 rgb(110, 41, 135);
+    -moz-box-shadow: 0 0 1.5625em 0 rgb(110, 41, 135);
+    box-shadow: 0 0 1.5625em 0 rgb(110, 41, 135); }
 .session-selected .tag, .session-selected .company, .session-selected .position, .session-selected .presenter, .session-selected .remaining, .session-selected .session-number, .session-selected .time, .session-selected .room-number, .session-selected .session-number, .session-selected .name {
     color: #fdfdfd !important; }
 .session-selected:hover {
@@ -328,7 +366,6 @@ nav.navbar {
     line-height: 3.75em;
     margin: 0 auto;
     padding: 0 1.5625em;
-    background: rgba(232, 135, 121, 0.7);
     box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
 }
 
