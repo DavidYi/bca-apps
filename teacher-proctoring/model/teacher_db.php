@@ -445,8 +445,8 @@ function change_user_tests($tests)
         $db->rollback();
 
         // log any errors to file
-        log_pdo_exception($e, $user->usr_id, "Changing User's Tests:" . $user->usr_id, "change_user_tests");
-
+        log_pdo_exception($e, $user->usr_id, "teacher_db.php", "change_user_tests");
+        
         display_error($e);
         exit();
     }
