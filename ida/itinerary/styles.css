@@ -318,3 +318,6 @@ body {
     height: 100%;
     overflow-y: hidden;
     background: #e7e7e7; }
+a{
+    color: rgb(89, 89, 171);
+}

@@ -27,8 +27,8 @@
                 <?php if(!$isTeacher) { ?>
 
                     <?php if ($startTime > $currentTime) { ?>
-                        <h3> Registration <b>has not opened</b>!</h3>
-                        <h3> Opens: <?php echo $startTimeFormatted ?> </h3>
+                        <h2> Registration <b>has not opened</b>!</h2>
+                        <h2> Opens: <?php echo $startTimeFormatted ?> </h2>
 
                     <?php } elseif ($endTime < $currentTime) { ?>
                         <h3> Registration has <b>ended</b>. </h3>
@@ -41,12 +41,12 @@
                             about this site. </h3>
 
                     <?php } else { ?>
-                        <h3> Registration is <b>open</b>! </h3>
-                        <h3> Closes: <?php echo $endTimeFormatted ?> </h3>
+                        <h2> Registration is <b>open</b>! </h2>
+                        <h2> Closes: <?php echo $endTimeFormatted ?> </h2>
                     <?php } ?>
 
-                    <h3> Click <a href="../../CareerDayMentors.pdf" download>here</a> to read about the presentations.</h3>
-                    <h3> Email <a href="mailto:katbla@bergen.org"> Mrs. Blake </a> with any questions.</h3>
+                    <h2> Click <b><a href="../../CareerDayMentors.pdf" download>here</a></b> to read about the presentations.</h2>
+                    <h2> Email <b><a href="mailto:katbla@bergen.org"> Mrs. Blake </a></b> with any questions.</h2>
 
                 <?php } ?>
 
