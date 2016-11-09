@@ -40,6 +40,7 @@ switch ($action) {
     <div id="wrapper">
         <table>
             <tr>
+
                 <td>
                     <a href="test_status">
                         <div class="feature">

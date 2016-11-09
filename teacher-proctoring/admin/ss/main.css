@@ -192,7 +192,7 @@ table {
     margin-right: auto;
     /*margin-top: -25px;*/
     position: relative;
-    top: 45%;
+    top: 30%;
     transform: translateY(-50%);
 }
 
@@ -298,7 +298,7 @@ html {
 body {
     color: #333;
     font-family: "Lato", sans-serif;
-    font-size: 1.25em;
+    font-size: 1em;
     font-weight: 400;
     line-height: 1.25;
 }
@@ -337,7 +337,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     font-family: "Lato", sans-serif;
-    font-size: 1.125em;
+    font-size: 1em;
     font-weight: 400;
     line-height: 1.8;
 }
@@ -354,7 +354,7 @@ a:active, a:focus, a:hover {
 
 h1.title {
     color: black;
-    font: normal normal 500 2em "Lato", sans-serif;
+    font: normal normal 500 1.5em "Lato", sans-serif;
     text-align: center;
 }
 
@@ -450,8 +450,8 @@ a {
 }
 
 main {
-    width: 100%;
-    max-width: 100%;
+    width: 90%;
+    max-width: 90%;
     margin: 0 auto;
 }
 
@@ -461,7 +461,7 @@ main {
     display: inline-block;
     position: relative;
     top: 0;
-    padding: 1em 1.5625em;
+    padding: 1em 1em;
     background: rgba(253, 253, 253, 0.8);
     /*border-bottom: 0.625em solid #fbfcfc;*/
     -webkit-transition: all 175ms ease;
