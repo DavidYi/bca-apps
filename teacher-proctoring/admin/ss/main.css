@@ -24,6 +24,7 @@ legend, th {
 
 td {
     padding: 2px;
+    display: inline-block;
 }
 
 
@@ -192,7 +193,7 @@ table {
     margin-right: auto;
     /*margin-top: -25px;*/
     position: relative;
-    top: 30%;
+    top: 35%;
     transform: translateY(-50%);
 }
 
