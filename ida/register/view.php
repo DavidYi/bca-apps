@@ -29,7 +29,9 @@
         <?php if ($is_changing) {
             $presentation = get_sessions_by_user($user->usr_id)[$currentSession - 1];
             $id = $presentation['pres_id'] ?>
-            <a class="default-link" style="position: absolute; width: 90%; height: 10%; z-index: 1;" href="/<?php echo $app_url_path ?>/itinerary"></a>
+        <div class="main-panel" style="position: relative;">
+
+        <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="/<?php echo $app_url_path ?>/itinerary"></a>
                 <div class="session session-selected">
                     <div class="tag"><?php echo $presentation['wkshp_nme']?></div>
                     <div class="presenter">
@@ -66,12 +68,13 @@ position: fixed;">
                         </div>
                     </div>
                 </div>
+            </div>
         <?php } ?>
     <?php foreach ($presentations as $presentation) {
         if ($id != $presentation['pres_id']) {?>
             <div class="main-panel" style="position: relative;">
                 <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="index.php?session=<?php echo $currentSession?>&action=commit&pres_id=<?php echo $presentation['pres_id']?>"></a>
-                <div class="session" style="position: relative;">
+                <div class="session">
                     <div class="tag"><?php echo $presentation['wkshp_nme']?>&nbsp;</div>
                     <div class="presenter"><a class="info" style="float: left; position: relative; z-index: 9; color: #555555;" onclick="popup('#B<?php echo $presentation['pres_id']?>,#P<?php echo $presentation['pres_id']?>')">&#x271A;&#xa0;&nbsp;</a><?php echo $presentation['presenter_names']?></div>
                     <div class="position"><?php echo $presentation['format_name']?>&nbsp;</div>
