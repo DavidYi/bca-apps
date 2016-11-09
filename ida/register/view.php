@@ -15,7 +15,7 @@
 <section class="main">
     <header style="text-align:center;">
         <h1 class="title main-title" style="color: rgb(253, 253, 253);">Register for IDA</h1>
-        <a href="../itinerary"><button id="back" style="background-color: rgb(182, 226, 249);">Go Back</button></a>
+        <a href="../itinerary"><button id="back" class="b">Back</button></a>
     </header>
     <nav class="navbar">
         <a href="index.php?session=<?php echo $currentSession ?>&action=<?php echo $action ?>&sort=1&order=<?php if ($sort_order == 1 && $sort_by == 1) { echo 2; } else { echo 1; } ?>"><div class="session-filter tag">Title</div></a>
