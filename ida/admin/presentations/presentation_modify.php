@@ -13,7 +13,8 @@
     <body>
         <form action="." method="post">
             <input type="hidden" name="action" value="modify_presentation">
-
+            <input type="hidden" name="pres_id" value="<?php echo($pres_id); ?>">
+s
             <div id="box">
                 <div id="wrapper">
                     <div id ="columns">
