@@ -5,27 +5,31 @@
 		<!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
 		<!-- Styles -->
-        <link href="/<?php echo $app_url_path; ?>/ss/main.css" rel="stylesheet">
-		<link href="styles.css" rel="stylesheet">
+		<link href="/<?php echo $shared_ss_url; ?>" rel="stylesheet">
+		<link href="/<?php echo $shared_url_path; ?>/messages/styles.css" rel="stylesheet">
 		<!-- <?php include_analytics(); ?> -->
 	</head>
 	<body>
 		<form action="" method="get">
-		<section class="main login">
 			<div class="error">
-				<div class="vertical-center">
 	                <h1><i>oops...</i></h1>
 	                <h3><i>
 	                	<?php echo $error_message ?>
 	                </i></h3>
-	                <button type="button"><a href="#" onclick="history.back();">Go Back</a></button>
-	            </div>
+
+				<div id="button-div">
+					<button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Back" onclick="history.back();">
+						Ok
+					</button>
+				</div>
+
+
 			</div>
-		</section>
-			</form>
-		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/js/jquery.min.js"></script>
-		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/js/jquery.easing.min.js"></script>
-		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/js/jquery.plusanchor.min.js"></script>
+		</form>
+
+		<script type="text/javascript" src="/<?php echo $shared_url_path; ?>/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/<?php echo $shared_url_path; ?>/js/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="/<?php echo $shared_url_path; ?>/js/jquery.plusanchor.min.js"></script>
 		<script type="text/javascript">
 		    $('body').plusAnchor({
 		        easing: 'easeInOutExpo',

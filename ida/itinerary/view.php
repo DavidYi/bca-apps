@@ -9,7 +9,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="../../shared/ss/main.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
-    <?php include_analytics(); ?>
 </head>
 <body>
 <section class="main view">
@@ -22,7 +21,7 @@
         </div>
         <div class="vertical-center">
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
-                <h1>IDA ([DATE])</h1>
+                <h1>IDA (Jan. 26)</h1>
 
                 <?php if(!$isTeacher) { ?>
 
@@ -36,16 +35,14 @@
 
                     <?php } elseif ($registration_complete) { ?>
                         <h2> Registration <b>complete</b>! </h2>
-                        <h2> Feedback <a
-                                href="https://docs.google.com/forms/d/1WIjMjkT5w48ZM-T7vB1A2fo0Ipv-aAVnX0NDsstdF_c/viewform">survey</a>
-                            about this site. </h2>
+                        <h2> You are all set for IDA. </h2>
 
                     <?php } else { ?>
                         <h2> Registration is <b>open</b>! </h2>
                         <h2> Closes: <?php echo $endTimeFormatted ?> </h2>
                     <?php } ?>
 
-                    <h2> Click <b><a href="../../CareerDayMentors.pdf" download>here</a></b> to read about the presentations.</h2>
+                    <h2> Click <b><a href="../../IDAWorkshopList.pdf" download>here</a></b> to preview the workshops.</h2>
                     <h2> Email <b><a href="mailto:katbla@bergen.org"> Mrs. Blake </a></b> with any questions.</h2>
 
                 <?php } ?>

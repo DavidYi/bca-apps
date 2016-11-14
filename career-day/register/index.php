@@ -43,7 +43,7 @@ $id = 0;
 $register_id = 0;
 $is_changing = $is_enrolled;
 if ($action == "register") {
-    if (!($current_date < $start_date || $current_date > $end_date) || isset($_SESSION['prev_usr_id'])) {
+    if (($current_date > $start_date && $current_date < $end_date) || isset($_SESSION['prev_usr_id'])) {
         $presentations = get_presentation_list($currentSession, $sort_by, $sort_order);
         include("view.php");
     } else {
