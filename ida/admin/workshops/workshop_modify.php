@@ -20,26 +20,44 @@
             <div id ="columns">
                 <h1 class="title">Modify: <?php echo htmlspecialchars($wkshp_nme); ?></h1>
 
-                <input type="text" placeholder="Name" name="wkshp_name" value="<?php echo htmlspecialchars($wkshp_nme); ?>" autofocus required>
-                <br>
+                <table>
+                    <tr>
+                        <td>
+                            <label>Name</label>
+                        </td>
+                        <td>
+                            <input type="text" name="wkshp_name" value="<?php echo htmlspecialchars($wkshp_nme); ?>" autofocus required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Description</label>
+                        </td>
+                        <td>
+                            <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc" value="<?php echo htmlspecialchars($wkshp_desc); ?>"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Format</label>
+                        </td>
+                        <td>
+                            <select class="center" name="format_id">
+                                <?php foreach ($formatList as $format) { ?>
+                                    <option value=<?php echo($format['format_id']); ?>
+                                            <?php if ($format_id == $format['format_id']) echo(" selected "); ?>
+                                    ><?php echo($format['format_name']); ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
 
-                <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc" placeholder="Description"><?php echo htmlspecialchars($wkshp_desc); ?></textarea>
-                <br>
-
-                <label>Format</label>
-                <select class="center" name="format_id">
-                    <?php foreach ($formatList as $format) { ?>
-                        <option value=<?php echo($format['format_id']); ?>
-                                <?php if ($format_id == $format['format_id']) echo(" selected "); ?>
-                        ><?php echo($format['format_name']); ?>
-                        </option>
-                    <?php } ?>
-                </select>
-                <br>
 
                 <div id="button-div">
-                    <button class="submit s" type="submit" name="choice" value="Modify">Save Changes</button>
-                    <button class="submit cancel" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
+                    <button class="submit s" type="submit" name="choice" value="Modify">Submit</button>
+                    <button class="submit b" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
                 </div>
 
             </div>

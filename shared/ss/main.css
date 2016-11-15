@@ -341,6 +341,10 @@ textarea {
   resize: none;
 }
 
+select:focus {
+  outline-color: #B781C9;
+}
+
 html {
   box-sizing: border-box; }
 
