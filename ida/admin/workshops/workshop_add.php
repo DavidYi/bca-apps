@@ -34,7 +34,7 @@
                                     <label>Description</label>
                                 </td>
                                 <td>
-                                    <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc" value="<?php echo htmlspecialchars($wkshp_desc); ?>"></textarea>
+                                    <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -50,7 +50,7 @@
                                 </td>
                             </tr>
                         </table>
-                        
+
 
                         <div id="button-div">
                             <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Add">Submit</button>
