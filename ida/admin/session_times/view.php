@@ -39,7 +39,7 @@
 
                 <div id="button-div">
                     <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Modify">Submit</button>
-                    <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back">Cancel</button>
+                    <button style="cursor: pointer" class="submit b" type="submit" name="choice" value="Back">Back</button>
                 </div>
             </div>
         </div>

@@ -32,24 +32,25 @@ if ($sort_order == NULL) {
 }
 
 $signup_dates = (get_signup_dates_for_grade($user->usr_grade_lvl));
-$start_date = strtotime($signup_dates['start']);
-$end_date = strtotime($signup_dates['end']);
 
 date_default_timezone_set('America/New_York');
 $current_date = time();
+$start_date = strtotime($signup_dates['start']);
+$end_date = strtotime($signup_dates['end']);
 
 $action = filter_input(INPUT_GET, 'action');
 $id = 0;
 $register_id = 0;
 $is_changing = $is_enrolled;
 if ($action == "register") {
-    if (!($current_date < $start_date || $current_date > $end_date) || isset($_SESSION['prev_usr_id']) || true) {
+    if (($current_date > $start_date && $current_date < $end_date) || isset($_SESSION['prev_usr_id'])) {
         $presentations = get_presentation_list($currentSession, $sort_by, $sort_order);
         include("view.php");
     } else {
         display_user_message("It's not time to enroll yet", "/" . $app_url_path . "/itinerary");
     }
-}  else if ($action == "commit") {
+}
+else if ($action == "commit") {
     $pres_id = filter_input(INPUT_GET, 'pres_id');
     $presentation = Presentation::getPresentation($pres_id);
 

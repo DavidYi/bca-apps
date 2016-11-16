@@ -71,7 +71,7 @@ body {
         width: 100%; } }
 .enrollment .session {
     display: block;
-    height: 3.75em;
+    height: 4.5em;
     overflow: hidden;
     line-height: 3.75em;
     padding: 0 1.5625em;
@@ -153,7 +153,7 @@ body {
     color: #d6d9da;
     margin: 0;
     padding: 0;
-    font-size: 1.125em;
+    font-size: 1.525em;
     font-weight: 500;
     text-align: left; }
 .enrollment .session .session-number:last-child {
@@ -166,7 +166,7 @@ body {
     color: #d6d9da;
     margin: 0;
     padding: 0;
-    font-size: 1.125em;
+    font-size: 1.525em;
     font-weight: 500;
     text-align: left; }
 .enrollment .session .time:last-child {
@@ -245,7 +245,9 @@ body {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%); }
-.view .view-signup a:last-child .session {
+.view .view-signup a:last-child .session{
+    border-bottom: none; }
+.view .view-signup .view-session-teacher:last-child{
     border-bottom: none; }
 @media screen and (max-width: 800px) {
     .view .view-signup {
@@ -294,7 +296,7 @@ body {
 
 .view .login-status {
     padding: 1.25em 0; }
-.view .login-status h3 {
+.view .login-status h2 {
     display: inline-block; }
 .view .login-status .log-out {
     float: right;
@@ -318,3 +320,6 @@ body {
     height: 100%;
     overflow-y: hidden;
     background: #e7e7e7; }
+a{
+    color: rgb(89, 89, 171);
+}

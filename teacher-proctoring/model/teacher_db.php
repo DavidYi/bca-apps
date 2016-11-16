@@ -622,4 +622,53 @@ function get_active_tests_teachers()
     }
 }
 
+function get_pdf_test($test_id)
+{
+    $query = 'SELECT r.rm_nbr, test_name, test_dt, test_type_desc
+              FROM test t, room r, test_type tt
+              WHERE t.rm_id = r.rm_id
+                AND t.test_type_cde = tt.test_type_cde
+                AND t.test_id = :test_id';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+    return get_list($query);
+}
+
+function get_pdf_user($test_id)
+{
+    $query = 'SELECT test_time_desc, usr_last_name, usr_first_name
+              FROM test_time_xref ttx, test_updt_xref tux, test_time tt, user u
+              WHERE ttx.test_id = tux.test_id
+                AND ttx.test_time_id = tux.test_time_id
+                AND ttx.test_time_id = tt.test_time_id
+                AND tux.usr_id = u.usr_id
+                AND ttx.test_id = :test_id
+              ORDER BY test_time_desc, usr_last_name, usr_first_name';
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':test_id', $test_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+    return get_list($query);
+}
+
 ?>

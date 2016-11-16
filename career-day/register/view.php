@@ -73,7 +73,7 @@
                             <div class="popup-c">
                               <p><?php echo ($presentation['mentor_profile']);?></p>
                             </div>
-                         </div>
+                        </div>
                     </div>
 
                 </div>
