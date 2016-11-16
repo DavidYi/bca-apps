@@ -29,7 +29,7 @@
 
                         <label>Presenter Names</label><input title="" type="text" name="presenters" value="" required><BR>
 
-                        <label>Organization</label><input title="" type="text" value=""  required><BR>
+                        <label>Organization</label><input title="" type="text" name="organization" value=""  required><BR>
 
                         <label>Max Capacity</label><input title="" type="number" name="pres_max_capacity" value=""><BR>
 

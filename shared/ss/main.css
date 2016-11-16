@@ -276,11 +276,11 @@ h4 {
 }
 
 a {
-  color: rgb(182, 226, 249);
+/*  color: rgb(182, 226, 249); */
   text-decoration: none;
   transition: color 175ms ease; }
 a:active, a:focus, a:hover {
-  opacity: 0.8; }
+  opacity: 0.9; }
 
 h1.title {
   text-align: center;
@@ -339,6 +339,10 @@ textarea {
   -moz-transition: all 175ms ease;
   transition: all 175ms ease;
   resize: none;
+}
+
+select:focus {
+  outline-color: #B781C9;
 }
 
 html {

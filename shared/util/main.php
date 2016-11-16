@@ -8,6 +8,9 @@
 require_once(__DIR__ . "/../model/database.php");
 require_once(__DIR__ . "/../../shared/model/user_db.php");
 
+$shared_ss_url = $server_web_root . '/shared/ss/main.css';
+$shared_url_path = $server_web_root . '/shared';
+
 ////////////////////////////
 // Start Session and security check.
 // If the user is not logged in, send them to the login page.
@@ -18,7 +21,8 @@ if (isset($_SESSION['user']))
 
 /* Displays a message to the user.  When the user presses ok, redirects user to $next_page. */
 function display_user_message ($message, $next_page) {
-    global $app_url_path;
+    global $shared_url_path;
+    global $shared_ss_url;
     global $app_title;
     include __DIR__ . '/../messages/message.php';;
     exit();
@@ -26,7 +30,8 @@ function display_user_message ($message, $next_page) {
 
 /* Displays an error to the user.  When the user presses ok, goes to the prior page in history. */
 function display_error($error_message) {
-    global $app_url_path;
+    global $shared_url_path;
+    global $shared_ss_url;
     global $app_title;
     include __DIR__ . '/../messages/error.php';;
     exit();
@@ -211,8 +216,9 @@ function verify_student() {
 }
 
 function include_analytics() {
+    /* Discontinued analytics tracking.
     include_page_tracking();
-    include_user_tracking();
+    include_user_tracking();*/
 }
 
 function include_page_tracking() {

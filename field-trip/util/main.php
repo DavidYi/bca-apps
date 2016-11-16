@@ -14,7 +14,7 @@ function goToLandingPage() {
     global $server_web_root;
     global $user;
 
-    if ($user->getRole('OELE') == 'ADM') {
+    if ($user->getRole('FTR') == 'ADM') {
         header("Location: /" . $server_web_root . "/field-trip/admin");
     } elseif ($user->usr_type_cde == 'TCH'){
         header("Location: /" . $server_web_root . "/field-trip/teacher");

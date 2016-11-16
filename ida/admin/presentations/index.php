@@ -69,6 +69,8 @@ switch ($action) {
         $rm_id = $presentation['rm_id'];
         $pres_max_seats = $presentation['pres_max_seats'];
         $ses_id = $presentation['ses_id'];
+        $pres_permit_auto_enroll = $presentation['pres_permit_auto_enroll'];
+        
         $workshopList = get_workshop_list();
         $roomList = get_room_list();
         include 'presentation_modify.php';
@@ -83,12 +85,13 @@ switch ($action) {
         $pres_max_seats = filter_input(INPUT_POST, 'pres_max_capacity');
         $wkshp_id = filter_input(INPUT_POST, 'workshop');
         $ses_id = filter_input(INPUT_POST, 'session');
+        $pres_id = filter_input(INPUT_POST, 'pres_id');
+        $pres_permit_auto_enroll = filter_input(INPUT_POST, 'pres_permit_auto_enroll');
 
         if(filter_input(INPUT_POST, 'choice') == "Modify") {
-            modify_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id);
+            modify_presentation($presenter_names, $org_name, $rm_id, $pres_max_seats, $wkshp_id, $ses_id,$pres_id,$pres_permit_auto_enroll);
         }
-
-
+        
         $presentationList = get_presentation_list();
         include('presentation_list.php');
         exit();

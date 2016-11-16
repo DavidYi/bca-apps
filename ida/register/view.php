@@ -9,7 +9,6 @@
     <link href="styles.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <?php include_analytics(); ?>
 </head>
 <body>
 <section class="main">
