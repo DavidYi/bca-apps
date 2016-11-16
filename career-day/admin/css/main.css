@@ -292,7 +292,7 @@ a:active, a:focus, a:hover {
     opacity: 0.8; }
 
 h1.title {
-    color: #262626;
+    color: white;
     font: normal normal 500 2em "Roboto", sans-serif;
     text-align: center; }
 
@@ -364,7 +364,7 @@ h1 {
 .main {
     height: 100%;
     overflow-y: hidden;
-    background: #e7e7e7; }
+    background: linear-gradient(250deg, #5959ab, #439b8c); }
 
 .body {
     width: 75%;
@@ -376,7 +376,7 @@ h1 {
 nav.navbar {
     height: 3.75em;
     width: 75%;
-    max-width: 1200px;
+    max-width: 75%;
     margin-left: auto;
     margin-right: auto;
     margin: 0 auto;
@@ -473,7 +473,7 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
 
 .enrollment {
     width: 75%;
-    max-width: 1200px;
+    max-width: 75%;
     margin-left: auto;
     margin-right: auto;
     margin: 0 auto;
