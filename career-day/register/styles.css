@@ -268,8 +268,8 @@ nav.navbar {
     line-height: 3.75em;
     margin: 0 auto;
     padding: 0 1.5625em;
-    background: #262626;
-    border-right: 0.4375em solid #262626; }
+    background: rgb(35, 129, 113);
+    border-right: 0.4375em solid rgb(35, 129, 113); }
 nav.navbar::after {
     clear: both;
     content: "";
@@ -360,7 +360,7 @@ nav.navbar .remaining {
 nav.navbar .remaining:last-child {
     margin-right: 0; }
 nav.navbar .tag, nav.navbar .company, nav.navbar .position, nav.navbar .presenter, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
-    color: #aaa; }
+    color: white; }
 nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
     color: #eee;
     text-decoration: underline; }
