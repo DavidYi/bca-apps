@@ -34,14 +34,14 @@
                             <label>Description</label>
                         </td>
                         <td>
-                            <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc" value="<?php echo htmlspecialchars($wkshp_desc); ?>"></textarea>
+                            <textarea rows="4" cols="50" class="center" type="text" name="wkshp_desc"><?php echo htmlspecialchars($wkshp_desc); ?></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Format</label>
                         </td>
-                        <td>
+                        <td class="dropdown">
                             <select class="center" name="format_id">
                                 <?php foreach ($formatList as $format) { ?>
                                     <option value=<?php echo($format['format_id']); ?>
