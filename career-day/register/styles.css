@@ -379,3 +379,10 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
     color: #fdfdfd !important; }
 .session-selected:hover {
     background-color: #f0c30f !important; }
+
+@media screen and (min-width: 33.75em){
+    nav.navbar .auto{
+        font-size: 10px;
+    }
+
+}
