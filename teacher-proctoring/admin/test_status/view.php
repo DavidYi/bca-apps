@@ -107,11 +107,10 @@
                     <div class="tag" style="width:20%">
                         <a class="info" style="float: left; position: relative; z-index: 9; color: #555555;" onclick="popup('#B<?php echo $test_num?>,#P<?php echo $test_num?>')">
                             &#x271A;&#xa0;&nbsp;</a>
-                        <?php  /*Commented out for release.  Uncomment to continue development
-                            <a id="pdf" onclick="listPDF(<?php echo $test['test_id']?>)">
-                            <img src="pdf/pdf.png" id="pdf">
+                        <a id="pdf" onclick="listPDF(<?php echo $test['test_id']?>)">
+                            <img src="pdf.png" id="pdf">
                             &#xa0;&nbsp;
-                        </a> */?>
+                        </a>
                         <?php echo $test['test_name']?>
                     </div>
                     <div class="company" style="width:15%"><?php echo $test['test_time_desc']?></div>

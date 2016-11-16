@@ -41,7 +41,7 @@
                                 <td>
                                     <label>Format</label>
                                 </td>
-                                <td>
+                                <td class="dropdown">
                                     <select class="center" name="format_id">
                                         <?php foreach ($formatList as $format) { ?>
                                             <option value=<?php echo($format['format_id']); ?>><?php echo($format['format_name']); ?></option>

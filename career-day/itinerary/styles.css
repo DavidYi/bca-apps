@@ -1,3 +1,6 @@
+body{
+    margin:0;
+}
 .enrollment {
     height: 75%;
     width: 85%;
@@ -104,7 +107,7 @@
     display: block;
     margin-right: 0%;
     width: 6.25%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
@@ -117,7 +120,7 @@
     display: block;
     margin-right: 0%;
     width: 18.75%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
@@ -170,13 +173,13 @@
     -moz-transition: all 175ms ease;
     transition: all 175ms ease; }
 .enrollment .view-session {
-    border-bottom: 1px solid #333; }
+    border-bottom: 1px solid #d6d9da; }
 .enrollment .view-session .time, .enrollment .view-session .room-number {
     font-weight: 400; }
 .enrollment .view-session:hover {
-    background: #333; }
+        background: #fdfdfd; }
 .enrollment .view-session:hover .session-number, .enrollment .view-session:hover .time, .enrollment .view-session:hover .room-number, .enrollment .view-session:hover .session-title, .enrollment .view-session:hover .name {
-    color: #fdfdfd; }
+    color: #333; }
 
 
 .view .view-signup {
@@ -188,7 +191,7 @@
     height: 100%;
     margin: 0;
     padding: 0 4.6875em;
-    background-color: rgba(240, 195, 15, 0.66); }
+    background-color: rgb(89, 89, 171); }
 .view .view-signup:last-child {
     margin-right: 0; }
 .view .view-signup .vertical-center {
@@ -252,7 +255,8 @@
     display: inline-block; }
 .view .login-status .log-out {
     float: right;
-    text-decoration: underline; }
+    text-decoration: none;
+    color: rgb(89, 89, 171);}
 .view {
     height: 100%;
     width: 100%;

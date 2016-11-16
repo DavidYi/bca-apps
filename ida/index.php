@@ -10,7 +10,7 @@
 $pageTitle = 'IDA Registration';
 $loginInfo = '<h1>International Day of Acceptance</h1>
                 <h2>
-                    BCA will celebrate IDA on <b>January 26th</b>. During IDA, you will have the opportunity
+                    BCA will celebrate IDA on <b>Thursday, January 26th</b>. During IDA, you will have the opportunity
                     to participate in 2 different presentations, helping us to deepen our understanding of 
                     diversity.  
                 </h2>

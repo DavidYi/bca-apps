@@ -113,3 +113,7 @@ select {
 h1 {
     margin-bottom: 0.75em;
 }
+
+.dropdown {
+    text-align: left;
+}
