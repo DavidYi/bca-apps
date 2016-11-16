@@ -190,7 +190,7 @@ body{
 .main {
     height: 100%;
     overflow-y: hidden;
-    background: rgb(84, 79, 84); }
+    background: linear-gradient(250deg, #5959ab, #439b8c); }
 
 
 
