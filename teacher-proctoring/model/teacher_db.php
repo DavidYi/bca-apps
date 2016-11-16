@@ -636,7 +636,7 @@ function get_pdf_test($test_id)
         $statement = $db->prepare($query);
         $statement->bindValue(':test_id', $test_id);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetch();
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {

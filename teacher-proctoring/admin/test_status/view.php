@@ -100,7 +100,7 @@
         <?php $test_num = 0?>
         <?php foreach ($testList as $test) { ?>
             <input type="hidden" name="action" value="<?php echo 'listpdf'?>">
-            <input type="hidden" name="test_id">
+            <input type="hidden" name="test_id" id="test_id_input">
             <div class="main-panel" style="position: relative;">
                 <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="../modify_delete/index.php?action=list_test&test_id=<?php echo $test['test_id']?>">
                 <div class="session makeDefault" style="position:relative">
