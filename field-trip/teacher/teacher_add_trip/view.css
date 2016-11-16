@@ -117,3 +117,7 @@ textarea:focus {
 .picker__box {
     box-shadow: 10px 25px 110px -25px rgba(0,0,0,0.24);
 }
+
+.picker--opened .picker__frame {
+  top: 4% !important; 
+}
