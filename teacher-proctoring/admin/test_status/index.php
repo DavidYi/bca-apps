@@ -8,6 +8,7 @@
 
 require_once("../../util/main.php");
 require_once("../../model/teacher_db.php");
+include "listPDF.php";
 
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
@@ -54,15 +55,22 @@ switch ($action) {
         break;
 
     case 'listpdf':
-        /*
-        $test_id = filter_input(INPUT_POST, 'test_id');
-        $session_id = filter_input(INPUT_POST, 'session');
-        $presentations = get_presentation_list($mentor_id, $session_id);
-        $header = array("Year", "Academy", "Name", "Signature");
-        $pdf = new listPDF();
 
-        foreach ($presentations as $pres) {
-            $title = $pres['ses_name'] . " sign in";
+        $test_id = filter_input(INPUT_POST, 'test_id');
+
+        $test = get_pdf_test($test_id);//gets specific test info
+        $sessions = get_pdf_user($test_id);//gets mods and users
+        $pdf = new listPDF();
+        $title = $test['test_name'];
+
+        $pdf->AddPage("P", "Letter");
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->SetXY(50, 20);
+        $pdf->SetDrawColor(50, 60, 100);
+        $pdf->Cell(100, 10, $title, 1, 0, 'C', 0);
+
+
+        foreach ($sessions as $ses) {
             $students = get_students_in_ses($pres["pres_id"]);
             $pdf->AddPage("P", "Letter");
             $pdf->SetFont('Arial', '', 12);
@@ -82,7 +90,7 @@ switch ($action) {
 
             $pdf->FancyStudent($header, $students);
         }
-*/
+
         $pdf->Output('listPDF.pdf', 'I');
         break;
 
