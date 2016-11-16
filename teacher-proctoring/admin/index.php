@@ -19,6 +19,7 @@ switch ($action) {
         exit();
         break;
 }
+
 ?>
 
 <html>
@@ -30,6 +31,7 @@ switch ($action) {
     <link href="../../shared/ss/main.css" rel="stylesheet">
     <link href="../admin/ss/main.css" rel="stylesheet">
 </head>
+
 <body id="admin-tools">
 <main>
     <header>

@@ -287,6 +287,7 @@ h1.title {
   color: rgb(84, 79, 84);}
 
 button {
+  margin-left: 1.3em;
   font-weight: 300;
   height: 2em;
   width: 12em;
