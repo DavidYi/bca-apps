@@ -200,7 +200,8 @@ function get_course_list_for_student ($usr_id, $sort_by, $sort_order) {
             FROM user u, elect_course c
             LEFT JOIN elect_student_course_xref x ON c.course_id = x.course_id AND x.usr_id = :usr_id
             WHERE c.teacher_id = u.usr_id
-            and active = 1";
+            and active = 1
+            order by teacher";
 
     // add order by clause
     if ($sort_by == 1) $query .= "ORDER BY course_name ";
