@@ -67,7 +67,7 @@ switch ($action) {
         $pdf->SetXY(50, 20);
         $pdf->SetDrawColor(50, 60, 100);
         $pdf->SetY(20);
-        $pdf->Cell(30, 9, "Test: ");
+        $pdf->Cell(40, 9, "Test: ");
         $pdf->SetFont('Arial', '', 18);
         $pdf->Cell(50, 9, $test_info['test_name']);
         $pdf->Ln();
@@ -79,7 +79,7 @@ switch ($action) {
         $pdf->Ln();
 
         $pdf->SetFont('Arial', 'B', 18);
-        $pdf->Cell(30, 9, "Date: ");
+        $pdf->Cell(40, 9, "Date: ");
         $pdf->SetFont('Arial', '', 18);
 
         $originalDate = $test_info['test_dt'];
@@ -100,6 +100,7 @@ switch ($action) {
                 $pdf->Ln();
             }
             $pdf->SetFont('Arial', '', 12);
+            $pdf->Cell(10,0,'');
             $pdf->Cell(100, 9, $ses['usr_last_name'] . ', ' . $ses['usr_first_name']);
             $pdf->Ln();
 
