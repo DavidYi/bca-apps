@@ -38,7 +38,7 @@ from presentation p, workshop w, room r
 where p.wkshp_id = w.wkshp_id
 and p.rm_id = r.rm_id
 and p.ses_id = :session_id
-order by wkshp_nme, rm_nbr';
+order by rm_nbr, wkshp_nme';
 
     global $db;
 
@@ -56,34 +56,71 @@ order by wkshp_nme, rm_nbr';
 
 }
 
-function update_teacher_sessions($presId, $usrId, $sesId, $currentUserId){
-    $query = 'call insert_update_delete_user_pres(:presId, :usrId, :sesId, :currentUserId);';
+function delete_teacher_from_presentation ($teacher_id, $pres_id) {
+    $query = 'delete from pres_user_xref where pres_id=:pres_id and usr_id=:teacher_id';
+
     global $db;
+    $statement = $db->prepare($query);
+    $statement->bindValue(":pres_id", $pres_id);
+    $statement->bindValue(":teacher_id", $teacher_id);
+    $statement->execute();
+    $statement->closeCursor();
+}
 
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(":usrId", $usrId, PDO::PARAM_INT);
-        $statement->bindValue(":presId", $presId, PDO::PARAM_INT || PDO::PARAM_NULL);
-        $statement->bindValue(":sesId", $sesId, PDO::PARAM_INT);
-        $statement->bindValue(":currentUserId", $currentUserId, PDO::PARAM_INT);
+function add_teacher_to_presentation ($teacher_id, $pres_id, $usr_id) {
+    $query = 'insert into pres_user_xref (pres_id, usr_id, pres_user_updt_usr_id) 
+              values (:pres_id, :teacher_id, :usr_id)';
 
-        $statement->execute();
-        $statement->closeCursor();
-    } catch (PDOException $e) {
-        display_db_exception($e);
-        exit();
+    global $db;
+    $statement = $db->prepare($query);
+    $statement->bindValue(":pres_id", $pres_id);
+    $statement->bindValue(":teacher_id", $teacher_id);
+    $statement->bindValue(":usr_id", $usr_id);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+function update_teacher_session ($newPresId, $origPresId, $teacherId)
+{
+    # Perhaps we should include a third case to handle updates, but this works fine.
+
+    global $user;
+    if ($origPresId != "") {
+        delete_teacher_from_presentation($teacherId, $origPresId);
+    }
+    if ($newPresId != "") {
+        add_teacher_to_presentation($teacherId, $newPresId, $user->usr_id);
     }
 }
 
-function update_all_teacher_sessions($teachers, $session1, $session2){
-    global $user;
-    for($i = 0; $i < count($teachers); $i++){
-        $presId1 = $session1[$i] == "null" ? null : $session1[$i];
-        $presId2 = $session2[$i] == "null" ? null : $session2[$i];
-        $usrId = $teachers[$i];
-        $currentUserId = $user->usr_id;
-        update_teacher_sessions($presId1, $usrId, 1, $currentUserId);
-        update_teacher_sessions($presId2, $usrId, 2, $currentUserId);
+function update_all_teacher_sessions($teachers, $s1Original, $session1, $s2Original, $session2){
+
+    // begin transaction
+    global $db, $user;
+    $db->beginTransaction();
+
+    try {
+        for($i = 0; $i < count($teachers); $i++) {
+            $teacher_id = $teachers[$i];
+
+            if ($session1[$i] != $s1Original[$i])
+                update_teacher_session($session1[$i], $s1Original[$i], $teacher_id);
+
+            if ($session2[$i] != $s2Original[$i])
+                update_teacher_session($session2[$i], $s2Original[$i], $teacher_id);
+        }
+        $db->commit();
+    } // any errors from the above database queries will be caught here
+    catch (PDOException $e) {
+        // roll back transaction
+        $db->rollback();
+
+        // log any errors to file
+        log_pdo_exception ($e, $user->usr_id, "update_all_teacher_sessions");
+
+        display_db_exception($e);
+        // display_error("Error saving data.");
+        exit();
     }
 }
 
