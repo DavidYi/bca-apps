@@ -21,6 +21,9 @@ if ($action == NULL) {
 
 verify_logged_in();
 
+
+
+
 if (isset($action) and ($action == "logout")) {
     if (isset($_SESSION['prev_usr_id'])) {
         $_SESSION['user'] = User::getUserByUsrId($_SESSION['prev_usr_id']);
@@ -31,6 +34,7 @@ if (isset($action) and ($action == "logout")) {
         header("Location: ../index.php");
     }
 }
+
 
 switch ($action) {
 

@@ -93,7 +93,7 @@
             <div class="session-filter position" style="width:15%;text-align: left">Mods</div>
         </a>
         <a href="index.php?action=<?php echo $action ?>&sort=4&order=<?php if ($sort_order == 1 && $sort_by == 4) { echo 2; } else { echo 1; } ?>">
-            <div class="session-filter presenter" style="width:17.5%;text-align: left">Time</div>
+            <div class="session-filter presenter" style="width:17.5%;text-align: left">Date</div>
         </a>
         <a href="index.php?action=<?php echo $action ?>&sort=5&order=<?php if ($sort_order == 1 && $sort_by == 5) { echo 2; } else { echo 1; } ?>">
             <div class="session-filter remaining" style="text-align: right">Remaining</div>

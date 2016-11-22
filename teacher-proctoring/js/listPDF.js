@@ -3,6 +3,6 @@
  */
 
 function listPDF(value) {
-    document.test.test_id.value = value;
-    document.test.submit();
+    $("input[name='test_id']").val(value);
+    document.forms['test'].submit();
 }

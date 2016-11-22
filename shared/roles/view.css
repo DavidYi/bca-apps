@@ -6,7 +6,7 @@ h4 {
     display: block;
     background-color: rgba(253, 253, 253, 0.8);
     width: 60em;
-    height: 45em;
+    height: 50em;
     position: absolute;
     margin: auto;
     top: 50%;
@@ -56,6 +56,7 @@ tr td input {
 }
 
 #delete {
+
     float: right;
     width: 5em;
     margin-right: 3em;
@@ -63,6 +64,7 @@ tr td input {
 }
 
 #se-wrap {
+    z-index: 100;
     float: right;
     width: 31em;
 }
@@ -84,11 +86,12 @@ tr td input {
 }
 
 #add {
+    z-index: -2;
     display: block;
     width: 100%;
     position: relative;
     margin: auto;
-    margin-left: 3em;
+    margin-left: em;
     margin-top: 18em;
 }
 
