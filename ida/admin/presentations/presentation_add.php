@@ -20,43 +20,72 @@
                     <div id ="columns">
                         <h1 class="title">Add Presentation</h1>
 
-                        <label id="workshop">Workshop</label>
-                        <select class="center" name="workshop">
-                            <?php foreach ($workshopList as $workshop) { ?>
-                                <option value=<?php echo($workshop['wkshp_id']); ?>><?php echo($workshop['wkshp_nme']); ?></option>
-                            <?php } ?>
-                        </select><br>
-
-                        <label>Presenter Names</label><input title="" type="text" name="presenters" value="" required><BR>
-
-                        <label>Organization</label><input title="" type="text" name="organization" value=""  required><BR>
-
-                        <label>Max Capacity</label><input title="" type="number" name="pres_max_capacity" value=""><BR>
-
-                        <div id="combo-row">
-                            <div id="session">
-                                <label>Session</label>
-                                <select class="center" name="session">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
-                            </div>
-
-                            <div id="room">
-                                <label>Room</label>
-                                <select class="center" name="room">
-                                    <?php foreach ($roomList as $room) { ?>
-                                        <option value=<?php echo($room['rm_id']); ?>><?php echo($room['rm_nbr']); ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                        </div>
+                        <table>
+                            <tr>
+                                <td nowrap>
+                                    <label>Workshop</label>
+                                </td>
+                                <td class="dropdown">
+                                    <select name="workshop">
+                                        <?php foreach ($workshopList as $workshop) { ?>
+                                            <option value=<?php echo($workshop['wkshp_id']); ?>><?php echo($workshop['wkshp_nme']); ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td nowrap>
+                                    <label>Presenter Names</label>
+                                </td>
+                                <td>
+                                    <input title="" type="text" name="presenters" value="" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td nowrap>
+                                    <label>Organization</label>
+                                </td>
+                                <td>
+                                    <input title="" type="text" name="organization" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td nowrap>
+                                    <label>Max Capacity</label>
+                                </td>
+                                <td>
+                                    <input title="" type="number" min="1" name="pres_max_capacity" value="">
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr id="combo-row">
+                                <td nowrap>
+                                    <label>Session</label>
+                                </td>
+                                <td class="dropdown">
+                                    <select name="session" class="small">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
+                                </td>
+                                <td nowrap>
+                                    <label>Room</label>
+                                </td>
+                                <td class="dropdown">
+                                    <select name="room" class="small">
+                                        <?php foreach ($roomList as $room) { ?>
+                                            <option value=<?php echo($room['rm_id']); ?>><?php echo($room['rm_nbr']); ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
 
                         <div id="button-div">
                             <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Add">Submit</button>
                             <button style="cursor: pointer" class="submit b" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
                         </div>
-
 
                     </div>
                 </div>
