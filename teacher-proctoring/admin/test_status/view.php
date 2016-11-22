@@ -108,7 +108,7 @@
                         <a class="info" style="float: left; position: relative; z-index: 9; color: #555555;" onclick="popup('#B<?php echo $test_num?>,#P<?php echo $test_num?>')">
                             &#x271A;&#xa0;&nbsp;</a>
                         <a id="pdf" onclick="listPDF(<?php echo $test['test_id']?>)">
-                            <img src="pdf.png" id="pdf">
+                            <img src="../../../shared/images/pdf.png" id="pdf">
                             &#xa0;&nbsp;
                         </a>
                         <?php echo $test['test_name']?>
