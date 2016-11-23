@@ -1,25 +1,32 @@
 <html>
-    <head>
-        <title>Mimic User</title>
-    </head>
-    <body>
-        <form action="." method="post">
-            <input type="hidden" name="action" value="login">
+<head>
+    <title>Mimic User</title>
+    <link href="../../../shared/ss/main.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+<div id="login">
+    <form action="." method="post">
+        <input type="hidden" name="action" value="login">
 
-            <label for="usr_id">Select User</label>
-            <select name="usr_id" id="usr_id">
-                <?php foreach ($user_list as $user) { ?>
-                    <option value="<?php echo $user['usr_id']?>">
-                        <?php echo $user['usr_class_year']?>,
-                        <?php echo $user['usr_last_name']?>,
-                        <?php echo $user['usr_first_name'] ?>
-                    </option>
-                <?php } ?>
-            </select>
-
-            <input type="submit" value="Mimic User">
-
-            <input type="checkbox" name="bypass_time" value="Allow Signups"> Allow Signups
-        </form>
-    </body>
+        <h1 class="title">Select User</h1>
+        <select name="usr_id" id="usr_id">
+            <?php foreach ($user_list as $user) { ?>
+                <option value="<?php echo $user['usr_id']?>">
+                    <?php echo $user['usr_class_year']?>,
+                    <?php echo $user['usr_last_name']?>,
+                    <?php echo $user['usr_first_name'] ?>
+                </option>
+            <?php } ?>
+        </select>
+        <br>
+        <input type="checkbox" name="bypass_time" value="Allow Signups"> Allow Signups
+        <div id="padding"></div>
+        <div id="button-div">
+            <button name="choice" value="submit" id="submit" class="s">Mimic User</button>
+            <button name="choice" value="back" id="back" class="b">Back</button>
+        </div>
+    </form>
+</div>
+</body>
 </html>
