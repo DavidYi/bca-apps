@@ -21,12 +21,18 @@ if ($action == NULL) {
 $usr_id = $user->usr_id;
 
 switch ($action) {
-    case 'add_course':
+    case 'add_trip':
 
-        $course_name = $_POST['course_name'];
-        $course_desc = $_POST['course_desc'];
+        $trip_name = $_POST['trip_name'];
+        $destination = $_POST['destination'];
+        $num_students = $_POST['num_students'];
+        $start_date = $_POST['start_date'];
+        $start_time = $_POST['start_time'];
+        $end_date = $_POST['end_date'];
+        $end_time = $_POST['end_time'];
+        $purpose = $_POST['purpose']; 
 
-        add_course($course_name, $course_desc, $usr_id);
+        add_trip($trip_name, $destination, $num_students, $start_date, $start_time, $end_date, $end_time, $usr_id, $purpose);
         header("Location: ../index.php");
 
         break;
