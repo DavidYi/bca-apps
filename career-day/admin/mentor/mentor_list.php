@@ -21,7 +21,7 @@
 <body>
 <header>
     <h1 class="title">Mentors</h1>
-    <div class="centerit"><a href="../index.php"><button id="return_home">Back\</button></a></div>
+    <div class="centerit"><a href="../index.php"><button id="return_home">Back</button></a></div>
 </header>
 
 <nav class="navbar">
