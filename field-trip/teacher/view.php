@@ -122,7 +122,8 @@
                     echo "
                         <thead>
                             <th>Trip Name</th>
-                            <th>Date</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
                             <th>Destination</th>
                         </thead>
                     ";
@@ -132,28 +133,21 @@
                 <?php foreach ($trips as $trip) :
                     $tripName = $trip['title'];
                     $startDate = $trip['start_date'];
+                    $endDate = $trip['end_date'];
                     $destination = $trip['destination'];
                     ?>
                     
                     <tr>
                         <td><?php echo $tripName ?></td>
                         <td><?php echo $startDate ?></td>
-                        <td>
-                            $destination
+                        <td><?php echo $endDate ?></td>
+                        <td><?php echo $destination ?>
                         </td>
 
                         <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>&active=<?php echo $active?>">
                                 <img src="../../shared/images/modifyIcon.gif"></a>
                             &nbsp; &nbsp; &nbsp; &nbsp;
                             <img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);">
-                        </td>
-                        <td>
-                            <?php if($active == 1){
-                                echo("Active");
-                            }
-                            else {
-                                echo("Inactive");
-                            }?>
                         </td>
                     </tr>
 
