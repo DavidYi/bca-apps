@@ -125,6 +125,7 @@
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Destination</th>
+                            <th>Modify/Delete</th>
                         </thead>
                     ";
                 }
