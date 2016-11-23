@@ -10,7 +10,8 @@ require_once(__DIR__ . "/../../shared/model/user_db.php");
 
 $shared_ss_url = $server_web_root . '/shared/ss/main.css';
 $shared_url_path = $server_web_root . '/shared';
-
+$version_number = 1;
+    
 ////////////////////////////
 // Start Session and security check.
 // If the user is not logged in, send them to the login page.
@@ -222,7 +223,7 @@ function include_analytics() {
 }
 
 function include_page_tracking() {
-    echo (
+/*    echo (
     "<script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -231,11 +232,11 @@ function include_page_tracking() {
         ga('create', 'UA-71500783-1', 'auto');
         ga('send', 'pageview');
     </script>"
-    );
+    );*/
 }
 
 function include_user_tracking() {
-    if (isset($_SESSION)) {
+  /*  if (isset($_SESSION)) {
         $cur_user = $_SESSION['user'];
         if ($cur_user != NULL) {
             echo(
@@ -250,7 +251,13 @@ function include_user_tracking() {
                 </script>'
             );
         }
-    }
+    }*/
+}
+
+function getVersionString() {
+    global $version_number;
+    
+    return "?v=" . $version_number;
 }
 
 
