@@ -20,9 +20,8 @@
 
 <body>
 <header>
-    <a href="../index.php"><button id="return_home">Return Home</button></a>
     <h1 class="title">Mentors</h1>
-
+    <div class="centerit"><a href="../index.php"><button id="return_home">Return Home</button></a></div>
 </header>
 
 <nav class="navbar">
@@ -62,8 +61,7 @@
             <div class="session-filter column sessions">&nbsp<?php echo $sessions; ?></div>
             <div class="session-filter column room">&nbsp<?php echo $pres_room; ?></div>
             <div class="session-filter column capacity">&nbsp<?php echo $pres_max_capacity; ?></div>
-            <div class="session-filter delete"><img src="../../../shared/images/deleteIcon.gif"
-                                                    id="<?php echo $mentor_id ?>"/></div>
+            <div class="session-filter delete"><h4 class="del_icon" onclick="deleteWorkshop(<?php echo $mentor_id ?>);">d</h4></div>
         </div>
 
 
