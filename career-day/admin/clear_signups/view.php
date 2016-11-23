@@ -25,7 +25,7 @@
 
     <div class="button-container">
         <button class="s" name="choice" type="submit" value="Delete">Clear All</button>
-        <button class="b" name="choice" type="submit" value="Back">Go Back</button>
+        <button class="b" name="choice" type="submit" value="Back">Back</button>
     </div>
     </form>
 </body>
