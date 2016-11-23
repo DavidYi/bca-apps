@@ -88,23 +88,27 @@
             <h3><b>Students Missing</b></h3>
             <table style="width:90%">
                 <?php
-                if (empty($time_strings)) {
+                if (empty($students_missing)) {
                     echo "<p>None</p>";
                 } else {
                     echo "
                         <thead>
-                            <th>Day</th>
-                            <th>Mods</th>
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Grade Level</th>
+                            <th>Email</th>
                         </thead>
                     ";
                 }
                 ?>
-                <?php foreach ($time_strings as $string) :
+                <?php foreach ($students_missing as $student) :
                     ?>
 
                     <tr>
-                        <td><?php echo "<p>" . $string["day"] ?></td>
-                        <td><?php echo $string["mods_available"] ?></td>
+                        <td><?php echo "<p>" . $student["usr_last_name"] ?></td>
+                        <td><?php echo $student["usr_first_name"] ?></td>
+                        <td><?php echo $student["usr_grade_lvl"] ?></td>
+                        <td><?php echo $student["user_email"] ?></td>
                     </tr>
 
                 <?php endforeach; ?>
