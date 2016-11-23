@@ -159,7 +159,7 @@ function delete_course($course_id) {
 }
 
 function get_trip_by_user($usr_id) {
-    $query = 'SELECT trip_id, title, start_date, destination
+    $query = 'SELECT trip_id, title, start_date, end_date, destination
             from trip
             where lead_teacher_id = :usr_id';
 
