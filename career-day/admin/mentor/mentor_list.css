@@ -131,10 +131,9 @@ label {
 }
 
 .list-container .mentor:hover {
-    background: #f0c30f;
-    background: #f0c30f;
-    border-bottom: 1px solid #f0c30f;
-    box-shadow: 0 -0.0625em 0 #f0c30f;
+    background: rgb(183, 146, 197);
+    border-bottom: 1px solid rgb(183, 146, 197);
+    box-shadow: 0 -0.0625em 0 rgb(183, 146, 197);
 }
 
 .list-container .mentor:hover .session-filter {
@@ -330,6 +329,6 @@ button.add:hover {
 }
 h1.title{
     color:white;
-    margin-bottom:1em;
+    margin-bottom:0.5em;
     padding-left:0.5em;
 }

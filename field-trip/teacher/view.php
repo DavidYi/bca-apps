@@ -116,39 +116,30 @@
             <h3><b>Trips</b> | <a href="teacher_add_trip/index.php">Add Trip</a></h3>
             <table style="width:90%">
                 <?php
-                if (empty($courses)) {
+                if (empty($trips)) {
                     echo "<p>None</p>";
                 } else {
                     echo "
                         <thead>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Students</th>
-                            <th>Actions</th>
-                            <th>Status</th>
+                            <th>Trip Name</th>
+                            <th>Date</th>
+                            <th>Destination</th>
                         </thead>
                     ";
                 }
                 ?>
 
-                <?php foreach ($courses as $course) :
-                    $courseName = trim($course['course_name']);
-                    $courseDesc = trim($course['course_desc']);
-                    $numStudents = $course['num_students'];
-                    $courseID = $course['course_id'];
-                    $active = $course['active'];
+                <?php foreach ($trips as $trip) :
+                    $tripName = $trip['title'];
+                    $startDate = $trip['start_date'];
+                    $destination = $trip['destination'];
                     ?>
                     
                     <tr>
-                        <td><?php echo $courseName ?></td>
-                        <td><?php echo $courseDesc ?></td>
+                        <td><?php echo $tripName ?></td>
+                        <td><?php echo $startDate ?></td>
                         <td>
-                            <?php
-                            if ($numStudents == 0)
-                                echo ("0");
-                            else
-                                echo ("<a href=\"course_signup_matrix/index.php?course_id=".$courseID . "\">" . $numStudents . "</a>");
-                            ?>
+                            $destination
                         </td>
 
                         <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>&active=<?php echo $active?>">

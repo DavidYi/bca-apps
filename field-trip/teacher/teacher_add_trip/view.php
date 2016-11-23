@@ -10,7 +10,7 @@
     </head>
     <body>
         <form action="index.php" method="post">
-            <input type="hidden" name="action" value="add_course">
+            <input type="hidden" name="action" value="add_trip">
 
             <div id="box">
                 <p class="title">Create Trip</p>
@@ -20,14 +20,34 @@
                     <input type="text" name="trip_name" required>
                 </div>
 
-                <div class = "trip_input">
+                <div class = "trip_input destination">
+                    <label class="spacing" for= "destination">Destination</label>
+                    <input type="text" name="destination" required>
+                </div>
+
+                <div class = "trip_input num_students">
+                    <label class="spacing" for= "num_students"># of Students</label>
+                    <input type="text" name="num_students" required>
+                </div>
+
+                <div class = "trip_input date_time date">
                     <label class="spacing" for= "start_date">Start Date</label>
                     <input type="date" name="start_date" class="datepicker">
                 </div>
 
-                <div class = "trip_input">
+                <div class = "trip_input date_time time">
+                    <label class="spacing" for= "start_time">Start Time</label>
+                    <input type="text" name="start_time" class="timepicker">
+                </div>
+ 
+                <div class = "trip_input date_time date">
                     <label class="spacing" for= "end_date">End Date</label>
                     <input type="date" name="end_date" class="datepicker">
+                </div>
+
+                <div class = "trip_input date_time time">
+                    <label class="spacing" for= "end_time">End Time</label>
+                    <input type="text" name="end_time" class="timepicker">
                 </div>
 
                <div class = "trip_input">
@@ -37,19 +57,23 @@
 
                 <div class="button_wrapper">
                     <button class="submit back" type="button" onclick="location.href='../index.php'">Back</button>
-                    <button class="submit s" type="submit" name="choice" value="Add Course">Submit</button>
+                    <button class="submit s" type="submit" name="choice" value="Add Trip">Submit</button>
                 </div>
             </div>
         </form>
 
   </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../../js/picker.js"></script>
+    <script src="../../js/picker.time.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
    <script>
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15 // Creates a dropdown of 15 years to control year
+            selectYears: 15, // Creates a dropdown of 15 years to control year
+            format: 'yyyy-mm-dd'
           });
+
+        $('.timepicker').pickatime();
         </script>
 </html>
