@@ -55,27 +55,57 @@ switch ($action) {
         break;
 
     case 'listpdf':
-
         $test_id = filter_input(INPUT_POST, 'test_id');
 
-        $test = get_pdf_test($test_id);//gets specific test info
+        $test_info = get_pdf_test($test_id);//gets specific test info
         $sessions = get_pdf_user($test_id);//gets mods and users
         $pdf = new listPDF();
-        $title = $test['test_name'];
+        $cur_mods = ' ';
 
         $pdf->AddPage("P", "Letter");
-        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->SetFont('Arial', 'B', 18);
         $pdf->SetXY(50, 20);
         $pdf->SetDrawColor(50, 60, 100);
-        $pdf->Cell(100, 10, $title, 1, 0, 'C', 0);
+        $pdf->SetY(20);
+        $pdf->Cell(40, 9, "Test: ");
+        $pdf->SetFont('Arial', '', 18);
+        $pdf->Cell(50, 9, $test_info['test_name']);
+        $pdf->Ln();
 
+        $pdf->SetFont('Arial', 'B', 18);
+        $pdf->Cell(40, 9, "Location: ");
+        $pdf->SetFont('Arial', '', 18);
+        $pdf->Cell(50, 9, $test_info['rm_nbr']);
+        $pdf->Ln();
+
+        $pdf->SetFont('Arial', 'B', 18);
+        $pdf->Cell(40, 9, "Date: ");
+        $pdf->SetFont('Arial', '', 18);
+
+        $originalDate = $test_info['test_dt'];
+        $newDate = date("F d, Y", strtotime($originalDate));
+
+        $pdf->Cell(30, 9, $newDate);
+        $pdf->Ln();
+//
+//        $pdf->Cell(100, 10, $title, 1, 0, 'C', 0);
+//        $pdf->Ln();
 
         foreach ($sessions as $ses) {
-            $students = get_students_in_ses($pres["pres_id"]);
-            $pdf->AddPage("P", "Letter");
+            if ($cur_mods != $ses['test_time_desc']){
+                $pdf->Ln();
+                $pdf->SetFont('Arial', 'B', 20);
+                $pdf->Cell(100, 9, $ses['test_time_desc']);
+                $cur_mods = $ses['test_time_desc'];
+                $pdf->Ln();
+            }
             $pdf->SetFont('Arial', '', 12);
+            $pdf->Cell(10,0,'');
+            $pdf->Cell(100, 9, $ses['usr_last_name'] . ', ' . $ses['usr_first_name']);
+            $pdf->Ln();
 
-            $pdf->SetY(20);
+
+            /*
             $pdf->Cell(100, 9, "Mentor: " . $pres['mentor_first_name'] . " " . $pres['mentor_last_name']);
             $pdf->Ln();
             $pdf->Cell(100, 9, "Company: " . $pres['mentor_company']);
@@ -89,6 +119,7 @@ switch ($action) {
             $pdf->Cell(100, 10, $title, 1, 0, 'C', 0);
 
             $pdf->FancyStudent($header, $students);
+            */
         }
 
         $pdf->Output('listPDF.pdf', 'I');

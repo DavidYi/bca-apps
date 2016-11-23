@@ -43,30 +43,32 @@
         <label>
             <span class="teacher_name"><?php echo $teacher['usr_name'] ?></span>
         </label>
-        <input type="hidden" name="hdUserID[<?php echo $i ?>]" value="<?php echo $teacher['usr_id'] ?>">
+            <input type="hidden" name="hdUserID[<?php echo $i ?>]" value="<?php echo $teacher['usr_id'] ?>">
+            <input type="hidden" name="hdSes1[<?php echo $i ?>]" value="<?php echo $teacher['ses_1_pres_id'] ?>">
+            <input type="hidden" name="hdSes2[<?php echo $i ?>]" value="<?php echo $teacher['ses_2_pres_id'] ?>">
 
         <div id="wrapper">
             <div class="wrapper2">
                 <select name="session1[<?php echo $i ?>]" class="s1_select">
-                    <option value="null"></option>
+                    <option value=""></option>
                     <?php foreach ($session1 as $pres) { ?>
                         <?php echo $teacher['ses_1_pres_id'] ?> <BR>
                         <?php echo $pres['pres_id'] ?> <BR>
 
                         <option value="<?php echo $pres['pres_id'] ?>"
-                                <?php if ($teacher['ses_1_pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?>
-                            (<?php echo $pres['rm_nbr'] ?>)
+                                <?php if ($teacher['ses_1_pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>>
+                            <?php echo ($pres['rm_nbr'] . ' (' . $pres['pres_enrolled_teachers'] . '): ' . $pres['wkshp_nme']) ?>
                         </option>
                     <?php } ?>
                 </select>
             </div>
             <div class="wrapper3">
                 <select name="session2[<?php echo $i ?>]" class="s2_select">
-                    <option value="null"></option>
+                    <option value=""></option>
                     <?php foreach ($session2 as $pres) { ?>
                         <option value="<?php echo $pres['pres_id'] ?>"
-                                <?php if ($teacher['ses_2_pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>><?php echo $pres['wkshp_nme'] ?>
-                            (<?php echo $pres['rm_nbr'] ?>)
+                                <?php if ($teacher['ses_2_pres_id'] == $pres['pres_id']) { ?>selected="selected"<?php } ?>>
+                            <?php echo ($pres['rm_nbr'] . ' (' . $pres['pres_enrolled_teachers'] . '): ' . $pres['wkshp_nme']) ?>
                         </option>
                     <?php } ?>
                 </select>

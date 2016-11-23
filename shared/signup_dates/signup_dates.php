@@ -28,16 +28,16 @@
         <nav style="width:70%" class="navbar">
             <div id="navinside">
                 <a href="#">
-                    <div class="session-filter organization"><h2>Grade</h2></div>
+                    <div id="namenav" class="session-filter organization"><h2><strong>Grade</strong></h2></div>
                 </a>
                 <a href="#">
-                    <div class="session-filter organization"><h2>Description</h2></div>
+                    <div id="namenav" class="session-filter organization"><h2><strong>Description</strong></h2></div>
                 </a>
                 <a href="#>">
-                    <div class="session-filter org2"><h2>Start</h2></div>
+                    <div id="namenav" class="session-filter organization"><h2><strong>Start</strong></h2></div>
                 </a>
                 <a href="#>">
-                    <div class="session-filter org2"><h2>End</h2></div>
+                    <div id="namenav" class="session-filter organization"><h2><strong>End</strong></h2></div>
                 </a>
             </div>
         </nav>
@@ -47,8 +47,8 @@
 
             <?php $i = 0; ?>
             <?php foreach ($signups as $signup){ ?>
-
-                <div class="row" style="padding-top:1em;padding-bottom:1em;padding-left:1.5em;">
+<!--                //padding-top:1em;padding-bottom:1em;padding-left:1.5em;
+-->                <div class="row" style="padding-top:1em;padding-bottom:1em; margin-left: 5em;">
                     <input type="hidden" name="hdGrade[<?php echo $i ?>]" value="<?php echo $signup['grade_lvl'] ?>">
                     <input type="hidden" name="hdMode[<?php echo $i ?>]" value="<?php echo $signup['mode_cde'] ?>">
 
