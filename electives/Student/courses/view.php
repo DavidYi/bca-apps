@@ -20,7 +20,7 @@
         <h3>Course Interests</h3>
         <button class="submit" type="submit">Submit</button>
     </div>
-
+/*help*/
     <table class="table-fill">
         <thead>
             <tr id="head_row">

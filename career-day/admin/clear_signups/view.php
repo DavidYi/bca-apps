@@ -14,13 +14,18 @@
         Understand that this option should only be done once per year, just before setting up for a new Career Day. </p>
     <br>
     <form action="index.php?action=delete_all" method="post">
-    <input style=""type="checkbox" name="box1"><label>I understand that this will clear all student signups.</label>
-    <br>
-    <label><input style=""type="checkbox" name="box2">I understand that this operation can not be undone.</label>
-    <br>
+        <table>
+            <tr><td><input style=""type="checkbox"></td>
+                <td>I understand that this will clear all student signups.</td>
+            </tr>
+            <tr><td><input style=""type="checkbox"></td>
+                <td>I understand that this operation can not be undone.</td>
+            </tr>
+        </table>
+
     <div class="button-container">
-        <button class="add" name="choice" type="submit" value="Delete">Clear All</button>
-        <button class="add" name="choice" type="submit" value="Back">Go Back</button>
+        <button class="s" name="choice" type="submit" value="Delete">Clear All</button>
+        <button class="b" name="choice" type="submit" value="Back">Back</button>
     </div>
     </form>
 </body>
