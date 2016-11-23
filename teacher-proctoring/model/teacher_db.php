@@ -647,14 +647,14 @@ function get_pdf_test($test_id)
 
 function get_pdf_user($test_id)
 {
-    $query = 'SELECT test_time_desc, usr_last_name, usr_first_name
+    $query = 'SELECT test_time_desc, usr_last_name, usr_first_name, sort_order
               FROM test_time_xref ttx, test_updt_xref tux, test_time tt, user u
               WHERE ttx.test_id = tux.test_id
                 AND ttx.test_time_id = tux.test_time_id
                 AND ttx.test_time_id = tt.test_time_id
                 AND tux.usr_id = u.usr_id
                 AND ttx.test_id = :test_id
-              ORDER BY test_time_desc, usr_last_name, usr_first_name';
+              ORDER BY sort_order, usr_last_name, usr_first_name';
 
     global $db;
 
