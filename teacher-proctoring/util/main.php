@@ -20,16 +20,16 @@ function goToLandingPage()
     global $app_cde;
     global $user;
 
-    if ($user->getRole($app_cde) === 'STD' || $user->getRole($app_cde) === 'OTH') {
+    if ($user->usr_type_cde == 'STD' || $user->usr_type_cde == 'OTH' ) {
         display_user_message("Permission denied. You are not a teacher/administrator.", '/' . $app_url_path . '/index.php');
         exit();
     }
-
-    if ($user->getRole($app_cde) == NULL) {
-        header("Location: /" . $server_web_root . "/teacher-proctoring/mainPage/");
-    } else {
-        header("Location: /" . $server_web_root . "/teacher-proctoring/admin/");
-    }
+        if ($user->getRole($app_cde) == NULL) {
+            log_error("User role: " . $user->getRole($app_cde));
+            header("Location: /" . $server_web_root . "/teacher-proctoring/mainPage/");
+        } else {
+            header("Location: /" . $server_web_root . "/teacher-proctoring/admin/");
+        }
 }
 
 /* These includes depend on the variables above, therefore they should be at the end of the file. */
