@@ -1,9 +1,13 @@
+body{
+    margin:0;
+}
 .enrollment {
     height: 75%;
     width: 85%;
     max-width: 75em;
     margin-left: auto;
     margin-right: auto;
+    margin: 0 auto;
     margin: 0 auto;
     background: #f7f7f7;
     overflow-y: scroll;
@@ -186,7 +190,7 @@
 .main {
     height: 100%;
     overflow-y: hidden;
-    background: #e7e7e7; }
+    background: linear-gradient(250deg, #5959ab, #439b8c); }
 
 
 
@@ -267,8 +271,8 @@ nav.navbar {
     line-height: 3.75em;
     margin: 0 auto;
     padding: 0 1.5625em;
-    background: #262626;
-    border-right: 0.4375em solid #262626; }
+    background: rgb(35, 129, 113);
+    border-right: 0.4375em solid rgb(35, 129, 113); }
 nav.navbar::after {
     clear: both;
     content: "";
@@ -359,7 +363,7 @@ nav.navbar .remaining {
 nav.navbar .remaining:last-child {
     margin-right: 0; }
 nav.navbar .tag, nav.navbar .company, nav.navbar .position, nav.navbar .presenter, nav.navbar .remaining, nav.navbar .session-number, nav.navbar .time, nav.navbar .room-number, nav.navbar .session-title, nav.navbar .name {
-    color: #aaa; }
+    color: white; }
 nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.navbar .company:active, nav.navbar .position:hover, nav.navbar .position:active, nav.navbar .presenter:hover, nav.navbar .presenter:active, nav.navbar .remaining:hover, nav.navbar .remaining:active, nav.navbar .session-number:hover, nav.navbar .session-number:active, nav.navbar .time:hover, nav.navbar .time:active, nav.navbar .room-number:hover, nav.navbar .room-number:active, nav.navbar .session-title:hover, nav.navbar .session-title:active, nav.navbar .name:hover, nav.navbar .name:active {
     color: #eee;
     text-decoration: underline; }
@@ -375,3 +379,10 @@ nav.navbar .tag:hover, nav.navbar .tag:active, nav.navbar .company:hover, nav.na
     color: #fdfdfd !important; }
 .session-selected:hover {
     background-color: #f0c30f !important; }
+
+@media screen and (min-width: 33.75em){
+    nav.navbar .auto{
+        font-size: 10px;
+    }
+
+}

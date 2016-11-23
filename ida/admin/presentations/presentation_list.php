@@ -53,6 +53,9 @@
                 <div class="session-filter smallcol"><h2><strong>Enrolled</strong></h2></div>
             </a>
             <a href="#">
+                <div class="session-filter smallcol"><h2><strong>Auto</strong></h2></div>
+            </a>
+            <a href="#">
                 <div class="session-filter smallcol"></div>
             </a>
         </nav>
@@ -70,6 +73,7 @@
                 $wkshp_nme = $presentation['wkshp_nme'];
                 $pres_max_seats = $presentation['pres_max_seats'];
                 $pres_enrolled_seats = $presentation['pres_enrolled_seats'];
+                $pres_auto_enroll = $presentation['pres_permit_auto_enroll'];
                 $ses_id = $presentation['ses_id'];
 
                 ?>
@@ -87,6 +91,7 @@
                                     } ?></h2></div>
                             <div class="session-filter smallcol"><h2><?php echo $pres_max_seats; ?></h2></div>
                             <div class="session-filter smallcol"><h2><?php echo $pres_enrolled_seats; ?></h2></div>
+                            <div class="session-filter smallcol"><h2><?php echo $pres_auto_enroll==1 ? "Y" : "N"; ?></h2></div>
                         </div>
                         <h4 class="del_icon" onclick="deletePresentation(<?php echo $pres_id; ?>);">d</h4>
                     </div>

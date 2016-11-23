@@ -164,7 +164,7 @@ function all_enroll_download($grade) {
            where usr_active = 1
     and usr_type_cde = \'STD\'
            group by grade_lvl, user.usr_id
-           having num_sessions = 4
+           having num_sessions = 2
          ) temp
     inner join user on user.usr_id = temp.usr_id ' . $gradeClause . '
     order by usr_last_name, usr_first_name';
@@ -186,7 +186,7 @@ function partial_enroll_download($grade) {
            where usr_active = 1
     and usr_type_cde = \'STD\'
            group by grade_lvl, user.usr_id
-           having num_sessions <4
+           having num_sessions <2
          ) temp
     inner join user on user.usr_id = temp.usr_id ' . $gradeClause . '
     order by usr_last_name, usr_first_name';

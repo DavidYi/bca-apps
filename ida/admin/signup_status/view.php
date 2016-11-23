@@ -77,17 +77,18 @@
                     <?php } ?>
                 </div>
 
-                <div class="full" onclick= "post('index.php', {action: 'all_download', grade: <?php echo $grade ?> }, 'post')" style="font-weight: 400;"><h2>
-                    <?php echo $full; ?></h2>
-                </div>
+                <a href="#" class="full" onclick= "post('index.php', {action: 'all_download', grade: <?php echo $grade ?> }, 'post')" style="font-weight: 400;">
+                    <h2><?php echo $full; ?></h2>
+                </a>
 
-                <div class="partial" onclick="post('index.php', {action: 'partial_download', grade: <?php echo $grade ?>}, 'post')">
+                <a href="#" class="partial" onclick="post('index.php', {action: 'partial_download', grade: <?php echo $grade ?>}, 'post')">
                     <h2><?php echo $partial ?></h2>
-                </div>
+                </a>
 
-                <div href="#" class="none" onclick= "post('index.php', {action: 'no_download', grade: <?php echo $grade ?>}, 'post')">
+                <a href="#" class="none" onclick= "post('index.php', {action: 'no_download', grade: <?php echo $grade ?>}, 'post')">
                     <h2><?php echo $none; ?></h2>
-                </div>
+                </a>
+
 
                 <div class = "auto-enroll">
                     <?php if ($grade != 13) { ?>

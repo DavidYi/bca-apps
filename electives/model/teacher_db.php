@@ -24,7 +24,7 @@ function get_course_signup_matrix_heading($course_id) {
         and c.course_id = :course_id 
         group by t.time_id
         having count(*) > 0
-        order by time_id, time_short_desc';
+        order by sort_order';
 
     try {
         $statement = $db->prepare($query);
@@ -45,32 +45,43 @@ function get_course_signup_matrix_body($course_id) {
     global $app_cde;
 
     $query =
-        'SELECT time_short_desc, ut.usr_id, usr_last_name, usr_first_name, IF(sa.usr_id IS NULL, \' \', \'X\') as mark
-        FROM elect_course c, elect_student_course_xref sc,      
-            (SELECT t.time_id, count(*)
-                    FROM elect_course c, elect_student_course_xref sc, elect_user_free_xref ta, elect_time t, 
-                          user u, elect_user_free_xref sa 
-                    WHERE u.usr_id = sa.usr_id
-                    AND t.time_id = sa.time_id
-                    AND sc.usr_id = u.usr_id
-                    AND c.course_id = sc.course_id
-                    AND c.teacher_id = ta.usr_id
-                    AND ta.time_id =t.time_id
-                    and c.course_id = :course_id 
-                    GROUP BY t.time_id
-                    HAVING count(*) > 0
-                    ORDER BY c.course_id, course_name, time_id, time_short_desc) valid_times,
-            (SELECT time_id, time_short_desc, sort_order, usr_id, usr_last_name, usr_first_name FROM user, elect_time) ut
+        '
+          SELECT time_short_desc, usr_id, usr_last_name, usr_first_name, mark
+          from (
+              select \'first\' as time_short_desc, u.usr_id, usr_last_name, usr_first_name, \'first\' as mark, -1 as sort_order
+              from elect_student_course_xref sc, user u
+              where sc.usr_id = u.usr_id
+              and sc.course_id = :course_id
+              
+              union
 
-        LEFT JOIN elect_user_free_xref sa 
-          ON ut.usr_id = sa.usr_id
-          AND ut.time_id = sa.time_id
-        
-        WHERE sc.usr_id = ut.usr_id
-        AND c.course_id = sc.course_id
-        AND valid_times.time_id = ut.time_id
-        AND c.course_id = :course_id
-        ORDER BY usr_last_name, usr_first_name, sort_order';
+            SELECT time_short_desc, ut.usr_id, usr_last_name, usr_first_name, IF(sa.usr_id IS NULL, \' \', \'X\') as mark, sort_order
+            FROM elect_course c, elect_student_course_xref sc,      
+                (SELECT t.time_id, count(*)
+                        FROM elect_course c, elect_student_course_xref sc, elect_user_free_xref ta, elect_time t, 
+                              user u, elect_user_free_xref sa 
+                        WHERE u.usr_id = sa.usr_id
+                        AND t.time_id = sa.time_id
+                        AND sc.usr_id = u.usr_id
+                        AND c.course_id = sc.course_id
+                        AND c.teacher_id = ta.usr_id
+                        AND ta.time_id =t.time_id
+                        and c.course_id = :course_id 
+                        GROUP BY t.time_id
+                        HAVING count(*) > 0
+                        ORDER BY c.course_id, course_name, time_id, time_short_desc) valid_times,
+                (SELECT time_id, time_short_desc, sort_order, usr_id, usr_last_name, usr_first_name FROM user, elect_time) ut
+    
+            LEFT JOIN elect_user_free_xref sa 
+              ON ut.usr_id = sa.usr_id
+              AND ut.time_id = sa.time_id
+            
+            WHERE sc.usr_id = ut.usr_id
+            AND c.course_id = sc.course_id
+            AND valid_times.time_id = ut.time_id
+            AND c.course_id = :course_id
+            ) temp
+            ORDER BY usr_last_name, usr_first_name, sort_order';
 
     try {
         $statement = $db->prepare($query);
@@ -189,12 +200,13 @@ function get_course_list_for_student ($usr_id, $sort_by, $sort_order) {
             FROM user u, elect_course c
             LEFT JOIN elect_student_course_xref x ON c.course_id = x.course_id AND x.usr_id = :usr_id
             WHERE c.teacher_id = u.usr_id
-            and active = 1";
+            and active = 1 ";
 
     // add order by clause
     if ($sort_by == 1) $query .= "ORDER BY course_name ";
     elseif ($sort_by == 2) $query .= "ORDER BY teacher ";
     elseif ($sort_by == 3) $query .= "ORDER BY enrolled ";
+    else $query .= "ORDER BY teacher ";
 
     if ($sort_order == 2) $query .= "DESC";
 

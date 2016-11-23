@@ -29,6 +29,16 @@
             top: 40%;
         }
 
+        #pdf{
+            float: left;
+            position: relative;
+            z-index: 9;
+            height: 80%;
+            vertical-align: middle;
+            display: inline-block;
+            padding-top: 7%;
+        }
+
         .filter-off {
             background-color : #ffffff;
             color : #ffcc00;
@@ -86,13 +96,22 @@
 
 
     <div class="enrollment">
+        <form name="test" action="." method="post">
         <?php $test_num = 0?>
         <?php foreach ($testList as $test) { ?>
-            <?php if ($user->getRole('TPOR') == $test['test_type_cde'] || $user->getRole('TPOR') == 'ADM') { ?>
+            <input type="hidden" name="action" value="<?php echo 'listpdf'?>">
+            <input type="hidden" name="test_id" id="test_id_input">
             <div class="main-panel" style="position: relative;">
                 <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="../modify_delete/index.php?action=list_test&test_id=<?php echo $test['test_id']?>">
                 <div class="session makeDefault" style="position:relative">
-                    <div class="tag" style="width:20%"><a class="info" style="float: left; position: relative; z-index: 9; color: #555555;" onclick="popup('#B<?php echo $test_num?>,#P<?php echo $test_num?>')">&#x271A;&#xa0;&nbsp;</a><?php echo $test['test_name']?></div>
+                    <div class="tag" style="width:20%">
+                        <a class="info" style="float: left; position: relative; z-index: 9; color: #555555;" onclick="popup('#B<?php echo $test_num?>,#P<?php echo $test_num?>')">
+                            &#x271A;&#xa0;&nbsp;</a>
+                        <a id="pdf" target="_blank" onclick="listPDF(<?php echo $test['test_id']?>)">
+                            <img src="../../../shared/images/pdf.png" id="pdf">
+                        </a>
+                        <?php echo $test['test_name']?>
+                    </div>
                     <div class="company" style="width:15%"><?php echo $test['test_time_desc']?></div>
                     <div class="company" style="width:15%"><?php echo $test['rm_nbr']?></div>
                     <div class="position" style="width:10%"><?php echo $test['test_dt']?></div>
@@ -126,9 +145,11 @@
                 </div>
             </div>
             <?php $test_num++?>
-        <?php } } ?>
+        <?php } ?>
+        </form>
     </div>
 </section>
+<script type="text/javascript" src="../../js/listPDF.js"></script>
 <script type="text/javascript" src="../../js/popup.js"></script>
 <script type="text/javascript" src="../../js/cpopup.js"></script>
 <script type="text/javascript" src="../../js/jquery.min.js"></script>
@@ -146,5 +167,6 @@
         }
     });
 </script>
+
 </body>
 </html>

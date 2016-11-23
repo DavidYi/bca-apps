@@ -12,7 +12,8 @@ function get_courses($id) {
               from elect_student_course_xref x, elect_course c
               where x.course_id = c.course_id
               and x.usr_id = :usr_id
-              and active = 1";
+              and active = 1
+              order by c.course_name";
 
     try {
         $statement = $db->prepare($query);

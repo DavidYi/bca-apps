@@ -1,3 +1,45 @@
+/**********color reference chart**********
+comment ****************** color ********
+
+P1, blue                  rgb(89, 89, 171)   #5959AB 
+P2, purple                rgb(139, 74, 162)  #8B4AA2 
+P3, green                  rgb(67, 155, 140)   #439B8C
+
+S1-1, bright blue          rgb(51, 51,161)    #3333A1
+S1-2, bright purple        rgb(121, 35, 152)  #792398
+S1-3, bright green         rgb(28, 145, 126)  #1C917E
+
+S2-1, dark blue            rgb(54, 54, 143)   #36368F
+S2-2, dark purple          rgb(110, 41, 135)  #6E2987
+S2-3, dark green           rgb(35, 129, 113)  #238171
+
+S3-1, light blue           rgb(142, 142, 207)  #8E8ECF
+S3-2, light purple         rgb(183, 129, 201)  #B781C9
+S3-3, light green          rgb(123, 197, 184)  #7BC5B8
+
+S4-1, lighter blue         rgb(157, 157, 203)  #9D9DCB
+S4-2, lighter purple       rgb(183, 146, 197)  #B792C5
+S4-3, lighter green        rgb(140, 191, 183)  #8CBFB7
+
+
+
+G1, dark                   rgb(84, 79, 84)
+G2, med                    rgb(147, 146, 149)
+G3, light                  rgb(253, 253, 253)
+
+*/
+
+/**********icon reference chart**********
+char ******** icon ********
+
+c             close   (X)
+p             plus    (+)
+i             info    (i)
+d             delete  (trashcan)
+m             modify  (pencil)
+
+*/
+
 body {
     margin: 0;
 }
@@ -29,7 +71,7 @@ body {
         width: 100%; } }
 .enrollment .session {
     display: block;
-    height: 3.75em;
+    height: 4.5em;
     overflow: hidden;
     line-height: 3.75em;
     padding: 0 1.5625em;
@@ -43,7 +85,7 @@ body {
     display: block;
     margin-right: 0%;
     width: 18.75%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
@@ -56,7 +98,7 @@ body {
     display: block;
     margin-right: 0%;
     width: 25%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
@@ -69,7 +111,7 @@ body {
     display: block;
     margin-right: 0%;
     width: 31.25%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
@@ -82,7 +124,7 @@ body {
     display: block;
     margin-right: 0%;
     width: 18.75%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
@@ -95,7 +137,7 @@ body {
     display: block;
     margin-right: 0%;
     width: 6.25%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
@@ -108,10 +150,10 @@ body {
     display: block;
     margin-right: 0%;
     width: 6.25%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
-    font-size: 1.125em;
+    font-size: 1.525em;
     font-weight: 500;
     text-align: left; }
 .enrollment .session .session-number:last-child {
@@ -121,10 +163,10 @@ body {
     display: block;
     margin-right: 0%;
     width: 10%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
-    font-size: 1.125em;
+    font-size: 1.525em;
     font-weight: 500;
     text-align: left; }
 .enrollment .session .time:last-child {
@@ -134,7 +176,7 @@ body {
     display: block;
     margin-right: 0%;
     width: 12.5%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
@@ -147,7 +189,7 @@ body {
     display: block;
     margin-right: 0%;
     width: 71%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
@@ -160,7 +202,7 @@ body {
     display: block;
     margin-right: 0%;
     width: 31.25%;
-    color: #555;
+    color: #d6d9da;
     margin: 0;
     padding: 0;
     font-size: 1.125em;
@@ -174,13 +216,13 @@ body {
     /*-moz-transition: all 175ms ease;*/
     /*transition: all 175ms ease; }*/
 .enrollment .view-session {
-    border-bottom: 1px solid #333; }
+    border-bottom: 1px solid #d6d9da; }
 .enrollment .view-session .time, .enrollment .view-session .room-number {
     font-weight: 400; }
 .enrollment .view-session-student:hover {
-    background: #333; }
+    background: #d6d9da; }
 .enrollment .view-session-student:hover .session-number, .enrollment .view-session-student:hover .time, .enrollment .view-session-student:hover .room-number, .enrollment .view-session-student:hover .session-title, .enrollment .view-session-student:hover .name {
-    color: #fdfdfd; }
+    color: #333; }
 
 
 .view .view-signup {
@@ -192,7 +234,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0 4.6875em;
-    background-color: rgba(240, 195, 15, 0.66); }
+    background-color: rgb(89, 89, 171) }
 .view .view-signup:last-child {
     margin-right: 0; }
 .view .view-signup .vertical-center {
@@ -203,7 +245,9 @@ body {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%); }
-.view .view-signup a:last-child .session {
+.view .view-signup a:last-child .session{
+    border-bottom: none; }
+.view .view-signup .view-session-teacher:last-child{
     border-bottom: none; }
 @media screen and (max-width: 800px) {
     .view .view-signup {
@@ -252,7 +296,7 @@ body {
 
 .view .login-status {
     padding: 1.25em 0; }
-.view .login-status h3 {
+.view .login-status h2 {
     display: inline-block; }
 .view .login-status .log-out {
     float: right;
@@ -276,3 +320,6 @@ body {
     height: 100%;
     overflow-y: hidden;
     background: #e7e7e7; }
+a{
+    color: rgb(89, 89, 171);
+}

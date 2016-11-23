@@ -5,9 +5,8 @@
  * Date: 10/26/2016
  * Time: 9:48 AM
  */
-require("../../../../shared/fpdf/fpdf.php");
-
-
+require("../../../shared/fpdf/fpdf.php");
+    
 class listPDF extends FPDF
 {
 

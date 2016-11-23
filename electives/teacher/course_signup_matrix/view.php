@@ -10,7 +10,7 @@
 
 <header>
     <h1 class="title">Course Student Matrix</h1>
-    <button type="button" id="back_button"><a href="#" onclick="history.back();">Back</a></button>
+    <a href="#" onclick="history.back();"><button id="return_home" class="b">Back</button></a>
 </header>
 
 <div class="centerthis">
@@ -38,22 +38,24 @@
         <tbody class="table-hover">
         <?php
             $rownum = 0;
-            $lastStudentId = -1;
             foreach ($body_array as $row) {
-                if ($lastStudentId !== $row['usr_id']) {
-                    if ($lastStudentId !== -1) {
+
+                if ($row['time_short_desc'] === 'first') {
+                    if ($rownum !== 0) {
                         echo ("</tr>");
                     }
-                    $lastStudentId = $row['usr_id'];
                     $rownum++;
 
                     if ($rownum % 2 == 0) {
+                        echo "<tr class='even'>";
                     } else {
                         echo "<tr class='odd'>";
                     }
                     echo ("<td class='student-name'>" . $row['usr_last_name'] . ', ' . $row['usr_first_name'] . "</td>");
                 }
-                echo ("<td>" . $row['mark'] . "</td>");
+                else {
+                    echo("<td>" . $row['mark'] . "</td>");
+                }
             }
             echo "</tr>";
         ?>

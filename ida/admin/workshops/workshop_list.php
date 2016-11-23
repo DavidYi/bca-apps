@@ -52,9 +52,9 @@
 
                 <div class="mentor" id="workshop">
                     <a class="info" style="position: relative; z-index: 90; color: #555555;" onclick="popup('#B<?php echo ($workshop['wkshp_id']);?>,#P<?php echo ($workshop['wkshp_id']);?>')"><h4 class="info_icon">i</h4></a>
-                    <div class="session-filter workshop_name" onclick="javascript:location.href='./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop'"><h2><?php echo($workshop_name); ?></h2></div>
+                    <div class="session-filter workshop_name" onclick="javascript:location.href='./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop'"><h2><?php echo htmlspecialchars($workshop_name); ?></h2></div>
                     <div style="float:right;">
-                        <div class="session-filter format_name" onclick="javascript:location.href='./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop'"><h2><?php echo($format_name); ?></h2></div>
+                        <div class="session-filter format_name" onclick="javascript:location.href='./index.php?workshop_id=<?php echo $workshop_id ?>&action=show_modify_workshop'"><h2><?php echo htmlspecialchars($format_name); ?></h2></div>
                         <h4 class="del_icon" onclick="deleteWorkshop(<?php echo $workshop_id; ?>);">d</h4>
                     </div>
                 </div>
@@ -64,11 +64,11 @@
                 <div class="popup" id="P<?php echo ($workshop['wkshp_id']);?>"
                     <div class="entpop" >
                         <div class="close">
-                            <div class="presname"><h1><?php echo ($workshop['wkshp_nme']);?></h1></div>
+                            <div class="presname"><h1><?php echo htmlspecialchars($workshop['wkshp_nme']);?></h1></div>
                             <div class="x""><a href="#" style="color:#f0c30f" onclick="cpopup('#B<?php echo $workshop['wkshp_id']?>,#P<?php echo $workshop['wkshp_id']?>')"><h4 id="x">c</h4></a></div>
                     </div>
                     <div class="popup-c">
-                        <h2><?php echo ($workshop['wkshp_desc']);?></h2>
+                        <h2><?php echo htmlspecialchars($workshop['wkshp_desc']);?></h2>
                     </div>
                 </div>
 

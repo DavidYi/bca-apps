@@ -183,12 +183,13 @@ nav.navbar {
     color: #555;
 }
 
+/*
 .list-container .session:hover {
     cursor: auto;
     background: rgb(183, 146, 197);
     border-bottom: 1px solid rgb(183, 146, 197);
     box-shadow: 0 -0.0625em 0 rgb(183, 146, 197);
-}
+}*/
 
 .center {
     display: block;

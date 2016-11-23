@@ -13,7 +13,8 @@
     <body>
         <form action="." method="post">
             <input type="hidden" name="action" value="modify_presentation">
-
+            <input type="hidden" name="pres_id" value="<?php echo($pres_id); ?>">
+s
             <div id="box">
                 <div id="wrapper">
                     <div id ="columns">
@@ -35,6 +36,13 @@
 
                         <input title="" type="number" name="pres_max_capacity" value="<?php echo htmlspecialchars($pres_max_seats); ?>"
                                placeholder="Max Capacity"><BR>
+
+                        <label>Auto-Enroll</label>
+                        <select class="center" name="pres_permit_auto_enroll">
+                            <option value="1" <?php if ($pres_permit_auto_enroll == 1){ ?>selected="selected"<?php } ?>>Yes</option>
+                            <option value="0" <?php if ($pres_permit_auto_enroll == 0){ ?>selected="selected"<?php } ?>>No</option>
+                        </select>
+                        <BR>
 
                         <div id="combo-row">
                             <div id="session">

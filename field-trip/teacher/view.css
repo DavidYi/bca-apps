@@ -1,0 +1,144 @@
+.popup {
+    width:100%;
+    height:100%;
+    display:none;
+    position:fixed;
+    top:0px;
+    left:0px;
+    background:rgba(0,0,0,0.75);
+}
+
+/* Inner */
+.popup-inner {
+    max-width:700px;
+    width:90%;
+    padding:40px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%, -50%);
+    transform:translate(-50%, -50%);
+    box-shadow:0px 2px 6px rgba(0,0,0,1);
+    border-radius:3px;
+    background:#fff;
+}
+
+/* Close Button */
+.popup-close {
+    width:30px;
+    height:30px;
+    padding-top:4px;
+    display:inline-block;
+    position:absolute;
+    top:0px;
+    right:0px;
+    transition:ease 0.25s all;
+    -webkit-transform:translate(50%, -50%);
+    transform:translate(50%, -50%);
+    border-radius:1000px;
+    background:rgba(0,0,0,0.8);
+    font-family:Arial, Sans-Serif;
+    font-size:20px;
+    text-align:center;
+    line-height:100%;
+    color:#fff;
+}
+
+.popup-close:hover {
+    -webkit-transform:translate(50%, -50%) rotate(180deg);
+    transform:translate(50%, -50%) rotate(180deg);
+    background:rgba(0,0,0,1);
+    text-decoration:none;
+}
+
+.table-fill {
+    background: white;
+    border-radius:3px;
+    border-collapse: collapse;
+    height: 320px;
+    margin: auto;
+    max-width: 600px;
+    padding:5px;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    animation: float 5s infinite;
+}
+
+th {
+    color:#D5DDE5;
+    background:#1b1e24;
+    border-bottom: 4px solid rgb(118,201,212);
+    border-right: 1px solid #343a45;
+    font-size:20px;
+    font-weight: 100;
+    padding:20px;
+    text-align:left;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    vertical-align:middle;
+}
+
+tr {
+    border-top: 1px solid #C1C3D1;
+    border-bottom: 1px solid #C1C3D1;
+    color: #666B85;
+    font-size:14px;
+    font-weight:normal;
+    text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+
+tr:first-child {
+    border-top:none;
+}
+
+tr:last-child {
+    border-bottom:none;
+}
+
+tr:nth-child(odd) td {
+    background:#EBEBEB;
+}
+
+
+td:nth-child(odd):hover {
+    background: rgb(213,221,229);
+}
+
+td:nth-child(even):hover {
+    background: rgb(213,221,229);
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius:3px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius:3px;
+}
+
+td {
+    background: #d3d3d3;
+    text-align:left;
+    vertical-align:middle;
+    font-weight:400;
+    font-size:15px;
+    padding: 20px;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #C1C3D1;
+    height: 21px;
+    padding: 20px 0px;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #333333;
+}
+
+.view .view-signup .vertical-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 90%;
+    bottom: 10%;
+}

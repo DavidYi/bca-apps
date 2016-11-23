@@ -27,13 +27,11 @@
                             <?php } ?>
                         </select><br>
 
-                        <input title="" type="text" name="presenters" value="" placeholder="Presenter Names" required><BR>
+                        <label>Presenter Names</label><input title="" type="text" name="presenters" value="" required><BR>
 
-                        <input title="" type="text" name="organization" value=""
-                               placeholder="Organization" required><BR>
+                        <label>Organization</label><input title="" type="text" name="organization" value=""  required><BR>
 
-                        <input title="" type="number" name="pres_max_capacity" value=""
-                               placeholder="Max Capacity"><BR>
+                        <label>Max Capacity</label><input title="" type="number" name="pres_max_capacity" value=""><BR>
 
                         <div id="combo-row">
                             <div id="session">
@@ -56,7 +54,7 @@
 
                         <div id="button-div">
                             <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Add">Submit</button>
-                            <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
+                            <button style="cursor: pointer" class="submit b" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
                         </div>
 
 
