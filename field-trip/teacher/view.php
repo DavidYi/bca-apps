@@ -72,7 +72,7 @@
             <?php if (!isset($_SESSION['prev_usr_id'])) { ?>
             <h1>Teacher Instructions</h1>
             <h3>If you wish to offer an elective during mods 1-24, you need to do two things.  First, click "Modify Availability" to indicate <em>all</em> of the free mods when you could teach the class.  </h3>
-            <h3>Second, click "Add Course" to create the class listing for students.  Then, students will indicate which electives interest them.</h3>
+            <h3>Second, click "Add Trip" to create a trip for students.</h3>
             <h3>Finally, based upon student interests and common availability, BCA will schedule as many off-hour electives as possible.</h3>
 
         </div>
@@ -85,7 +85,7 @@
     <div class="view-signup enrollment">
         
         <div class="vertical-center">
-            <h3><b>Availability</b> | <a href="availability/index.php?teacher=1">Modify Availability</a></h3>
+            <h3><b>Students Missing</b></h3>
             <table style="width:90%">
                 <?php
                 if (empty($time_strings)) {
@@ -113,7 +113,7 @@
             <br>
             <br>
 
-            <h3><b>Courses</b> | <a href="teacher_add_course/index.php">Add Course</a></h3>
+            <h3><b>Trips</b> | <a href="teacher_add_trip/index.php">Add Trip</a></h3>
             <table style="width:90%">
                 <?php
                 if (empty($courses)) {

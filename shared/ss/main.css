@@ -288,6 +288,7 @@ h1.title {
   color: white;}
 
 button {
+  margin-left: 1.3em;
   font-weight: 300;
   height: 2em;
   width: 12em;

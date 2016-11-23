@@ -26,12 +26,13 @@ switch ($action) {
             header("Location: ..");
         }
         
-        
         $teacherList = $_POST['hdUserID'];
+        $s1Original = $_POST['hdSes1'];
+        $s2Original = $_POST['hdSes2'];
         $s1Choice = $_POST['session1'];
         $s2Choice = $_POST['session2'];
         if($choice == "Update Teachers"){
-            update_all_teacher_sessions($teacherList, $s1Choice, $s2Choice);
+            update_all_teacher_sessions($teacherList, $s1Original, $s1Choice, $s2Original, $s2Choice);
         }
         
         

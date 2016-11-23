@@ -255,7 +255,8 @@ body{
     display: inline-block; }
 .view .login-status .log-out {
     float: right;
-    text-decoration: underline; }
+    text-decoration: none;
+    color: rgb(89, 89, 171);}
 .view {
     height: 100%;
     width: 100%;

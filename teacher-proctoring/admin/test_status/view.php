@@ -100,16 +100,15 @@
         <?php $test_num = 0?>
         <?php foreach ($testList as $test) { ?>
             <input type="hidden" name="action" value="<?php echo 'listpdf'?>">
-            <input type="hidden" name="test_id">
+            <input type="hidden" name="test_id" id="test_id_input">
             <div class="main-panel" style="position: relative;">
                 <a class="default-link" style="position: absolute; width: 100%; height: 100%; z-index: 1;" href="../modify_delete/index.php?action=list_test&test_id=<?php echo $test['test_id']?>">
                 <div class="session makeDefault" style="position:relative">
                     <div class="tag" style="width:20%">
                         <a class="info" style="float: left; position: relative; z-index: 9; color: #555555;" onclick="popup('#B<?php echo $test_num?>,#P<?php echo $test_num?>')">
                             &#x271A;&#xa0;&nbsp;</a>
-                        <a id="pdf" onclick="listPDF(<?php echo $test['test_id']?>)">
-                            <img src="pdf.png" id="pdf">
-                            &#xa0;&nbsp;
+                        <a id="pdf" target="_blank" onclick="listPDF(<?php echo $test['test_id']?>)">
+                            <img src="../../../shared/images/pdf.png" id="pdf">
                         </a>
                         <?php echo $test['test_name']?>
                     </div>

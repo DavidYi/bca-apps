@@ -47,7 +47,7 @@
             <table class="course-table" style="width:90%">
                 <?php
                 if (empty($time_strings)) {
-                    echo "<p>None</p>";
+                    echo "<p style='color: white; background-color: #c82229'>None selected - enter your availability.</p>";
                 } else {
                     echo "
                 <thead>
@@ -75,7 +75,7 @@
             <table class="course-table" style="width:90%">
                 <?php
                 if (empty($courses)) {
-                    echo "<p>None</p>";
+                    echo "<p style='color: white; background-color: #c82229'>None selected - pick the courses that interest you!</p>";
                 } else {
                     echo "
                         <thead>
