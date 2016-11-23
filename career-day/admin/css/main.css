@@ -216,7 +216,7 @@ html, body {
     transition: all 175ms ease; }
 
 header {
-    height: 15%;
+    height: 10%;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
@@ -294,11 +294,13 @@ a:active, a:focus, a:hover {
 h1.title {
     color: white;
     font: normal normal 500 2em "Roboto", sans-serif;
-    text-align: center; }
+    text-align: center;
+    margin: 0px;
+}
 
 button {
-    height: 2.5em;
-    width: 5em;
+    height: 3em;
+    width: 6em;
     color: #fdfdfd;
     background-color: rgb(54, 54, 143);
     font: normal normal 400 0.32 "Roboto", sans-serif;
