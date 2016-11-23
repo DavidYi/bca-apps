@@ -228,4 +228,25 @@ function edit_course($course_id, $new_course_name, $new_course_desc, $active) {
     }
 }
 
+function students_missing($usr_id) {
+    $query = "select usr_last_name, usr_first_name, usr_grade_lvl
+              from classes_missed c, user u
+              where teacher_id = :usr_id
+              and c.teacher_id = u.usr_id";
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
 ?>
