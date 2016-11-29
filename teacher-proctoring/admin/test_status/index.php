@@ -60,7 +60,7 @@ switch ($action) {
         $test_info = get_pdf_test($test_id);//gets specific test info
         $sessions = get_pdf_user($test_id);//gets mods and users
         $pdf = new listPDF();
-        $cur_mods = ' ';
+        $cur_mods = '';
 
         $pdf->AddPage("P", "Letter");
         $pdf->SetFont('Arial', 'B', 18);
