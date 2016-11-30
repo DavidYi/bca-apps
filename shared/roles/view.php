@@ -36,7 +36,7 @@
                     <div id="users">
                         <h2><strong>User</strong></h2>
                         <?php foreach ($assigned_roles as $assigned_user) { ?>
-                            <p class="user"><?php echo $assigned_user['usr_last_name'] ?>
+                            <p class="user" style="margin-bottom: 13.5px;"><?php echo $assigned_user['usr_last_name'] ?>
                                 , <?php echo $assigned_user['usr_first_name'] ?></p>
                         <?php } ?>
                     </div>
@@ -45,7 +45,7 @@
                         <div id="role">
                             <h2><strong>Role</strong></h2>
                             <?php foreach ($assigned_roles as $assigned_user) { ?>
-                                <p><?php echo $assigned_user['usr_role_desc'] ?></p>
+                                <p style="margin-bottom: 13.5px;"><?php echo $assigned_user['usr_role_desc'] ?></p>
                             <?php } ?>
                         </div>
                         <div id="delete">
