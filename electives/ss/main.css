@@ -721,7 +721,7 @@ nav.navbar {
         width: 100%; } }
     @media screen and (max-width: 600px) {
       .view .view-main {
-        height: 50%;
+        height: 70%;
         width: 100%; } }
   .view .login-status {
     padding: 1.25em 0; }
@@ -756,13 +756,13 @@ nav.navbar {
       .view .view-signup {
         height: 50%;
         width: 100%;
-        padding: 0;
+        padding: 10px;
         font-size: 0.75em; } }
     @media screen and (max-width: 600px) {
       .view .view-signup {
         height: 50%;
         width: 100%;
-        padding: 0;
+        padding: 10px;
         font-size: 0.625em; } }
 
 .error {

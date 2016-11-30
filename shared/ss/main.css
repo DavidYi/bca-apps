@@ -283,8 +283,9 @@ a:active, a:focus, a:hover {
   opacity: 0.9; }
 
 h1.title {
+  padding-top: 0.5em;
   text-align: center;
-  color: rgb(84, 79, 84);}
+  color: white;}
 
 button {
   margin-left: 1.3em;
@@ -440,3 +441,4 @@ a:hover, a:active {
 nav.navbar {
   background: rgb(35, 129, 113);
 }
+

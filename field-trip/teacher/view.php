@@ -88,23 +88,27 @@
             <h3><b>Students Missing</b></h3>
             <table style="width:90%">
                 <?php
-                if (empty($time_strings)) {
+                if (empty($students_missing)) {
                     echo "<p>None</p>";
                 } else {
                     echo "
                         <thead>
-                            <th>Day</th>
-                            <th>Mods</th>
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Grade Level</th>
+                            <th>Email</th>
                         </thead>
                     ";
                 }
                 ?>
-                <?php foreach ($time_strings as $string) :
+                <?php foreach ($students_missing as $student) :
                     ?>
 
                     <tr>
-                        <td><?php echo "<p>" . $string["day"] ?></td>
-                        <td><?php echo $string["mods_available"] ?></td>
+                        <td><?php echo "<p>" . $student["usr_last_name"] ?></td>
+                        <td><?php echo $student["usr_first_name"] ?></td>
+                        <td><?php echo $student["usr_grade_lvl"] ?></td>
+                        <td><?php echo $student["user_email"] ?></td>
                     </tr>
 
                 <?php endforeach; ?>
@@ -116,53 +120,39 @@
             <h3><b>Trips</b> | <a href="teacher_add_trip/index.php">Add Trip</a></h3>
             <table style="width:90%">
                 <?php
-                if (empty($courses)) {
+                if (empty($trips)) {
                     echo "<p>None</p>";
                 } else {
                     echo "
                         <thead>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Students</th>
-                            <th>Actions</th>
-                            <th>Status</th>
+                            <th>Trip Name</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Destination</th>
+                            <th>Modify/Delete</th>
                         </thead>
                     ";
                 }
                 ?>
 
-                <?php foreach ($courses as $course) :
-                    $courseName = trim($course['course_name']);
-                    $courseDesc = trim($course['course_desc']);
-                    $numStudents = $course['num_students'];
-                    $courseID = $course['course_id'];
-                    $active = $course['active'];
+                <?php foreach ($trips as $trip) :
+                    $tripName = $trip['title'];
+                    $startDate = $trip['start_date'];
+                    $endDate = $trip['end_date'];
+                    $destination = $trip['destination'];
                     ?>
                     
                     <tr>
-                        <td><?php echo $courseName ?></td>
-                        <td><?php echo $courseDesc ?></td>
-                        <td>
-                            <?php
-                            if ($numStudents == 0)
-                                echo ("0");
-                            else
-                                echo ("<a href=\"course_signup_matrix/index.php?course_id=".$courseID . "\">" . $numStudents . "</a>");
-                            ?>
+                        <td><?php echo $tripName ?></td>
+                        <td><?php echo $startDate ?></td>
+                        <td><?php echo $endDate ?></td>
+                        <td><?php echo $destination ?>
                         </td>
 
                         <td><a href="edit_course/index.php?course_name=<?php echo $courseName ?>&course_desc=<?php echo $courseDesc?>&course_id=<?php echo $courseID?>&active=<?php echo $active?>">
                                 <img src="../../shared/images/modifyIcon.gif"></a>
                             &nbsp; &nbsp; &nbsp; &nbsp;
                             <img src="../../shared/images/deleteIcon.gif" onclick="deleteCourse(<?php echo $courseID; ?>);">
-                        </td>
-                        <td>
-                            <?php if($active == 1){
-                                echo("Active");
-                            }
-                            else {
-                                echo("Inactive");
-                            }?>
                         </td>
                     </tr>
 

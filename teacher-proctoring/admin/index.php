@@ -100,14 +100,6 @@ switch ($action) {
                             </div>
                         </a>
                     </td>
-                    <td>
-                        <a href="downloads">
-                            <div class="feature">
-                                <h2>Downloads</h2>
-                                <h4>Generate and download CSV sheets.</h4>
-                            </div>
-                        </a>
-                    </td>
                 <?php } ?>
             </tr>
         </table>

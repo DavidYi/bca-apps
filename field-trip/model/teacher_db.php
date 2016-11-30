@@ -102,17 +102,23 @@ function get_course_by_course_id($course_id) {
 
 
 // function needs teacher id
-function add_trip($course_name, $course_desc, $usr_id) {
-    $query = "INSERT INTO elect_course (course_name, course_desc, teacher_id) 
-    VALUES (:course_name, :course_desc, :user_id)";
+function  add_trip($trip_name, $destination, $num_students, $start_date, $start_time, $end_date, $end_time, $usr_id, $purpose) {
+    $query = "INSERT INTO trip (title, destination, num_students, start_date, start_time, end_date, end_time, lead_teacher_id, purpose) 
+    VALUES (:trip_name, :destination, :num_students, :start_date, :start_time, :end_date, :end_time, :usr_id, :purpose)";
 
     global $db;
 
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':course_name', $course_name);
-        $statement->bindValue(':course_desc', $course_desc);
-        $statement->bindValue(':user_id', $usr_id);
+        $statement->bindValue(':trip_name', $trip_name);
+        $statement->bindValue(':destination', $destination);
+        $statement->bindValue(':num_students', $num_students);
+        $statement->bindValue(':start_date', $start_date);
+        $statement->bindValue(':start_time', $start_time);
+        $statement->bindValue(':end_date', $end_date);
+        $statement->bindValue(':end_time', $end_time);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->bindValue(':purpose', $purpose);
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
@@ -152,13 +158,10 @@ function delete_course($course_id) {
 
 }
 
-function get_course_by_user($usr_id) {
-    $query = 'SELECT c.course_id, c.active, course_name, course_desc, teacher_id, count(x.course_id) as num_students
-              FROM elect_course c
-              left join elect_student_course_xref x on x.course_id = c.course_id
-              WHERE teacher_id = :usr_id
-              group by course_id
-              order by course_name ';
+function get_trip_by_user($usr_id) {
+    $query = 'SELECT trip_id, title, start_date, end_date, destination
+            from trip
+            where lead_teacher_id = :usr_id';
 
     global $db;
 
@@ -222,6 +225,28 @@ function edit_course($course_id, $new_course_name, $new_course_desc, $active) {
         $statement->bindValue(':active', $active);
         $statement->execute();
         $statement->closeCursor();
+    } catch (PDOException $e) {
+        display_db_exception($e);
+        exit();
+    }
+}
+
+function students_missing($usr_id) {
+    $query = "select usr_last_name, usr_first_name, usr_grade_lvl, user_email
+              from classes_missed c, user u
+              where teacher_id = :usr_id
+              and c.teacher_id = u.usr_id
+              order by usr_last_name";
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
     } catch (PDOException $e) {
         display_db_exception($e);
         exit();

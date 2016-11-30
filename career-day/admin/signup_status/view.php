@@ -46,6 +46,11 @@
             <h3 class = "title main-title" style ="text-align: center;"><?php echo $result; ?></h3>
         <?php } ?>
     </header>
+
+    <div class="buttons" style="text-align:center;padding-bottom:2vh;">
+        <a href="../index.php"><button class="b">Back</button></a>
+    </div>
+
     <nav class="navbar">
         <a href="#">
             <div class="session-filter grade">Grade Level</div>
@@ -101,10 +106,8 @@
         <a href = "#" onclick= "post('index.php', {action: 'no_download'}, 'post')">Unenrolled Students List</a>
         <br>
         <a href = "#" onclick= "post('index.php', {action: 'mentor_download'}, 'post')">Mentor List</a>
-        <br><br>
-        <a href = "../">Admin Index</a>
+
     </div>
-    <div id = "logout"><a href = "../../index.php?action=logout">Log Out</a></div> <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->
-</section>
+   </section>
 </body>
 </html>
