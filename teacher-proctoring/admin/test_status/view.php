@@ -137,7 +137,7 @@
                         <div class="session makeDefault" style="position:relative">
                             <div class="tag" style="width:20%">
 
-                                <a id="pdf" target="_blank" onclick="listPDF(<?php echo $test['test_id'] ?>);">
+                                <a id="pdf" target="_blank" onclick="listPDF(<?php echo $test['test_id'] ?>)">
                                     <img src="../../../shared/images/pdf.png" id="pdf">
                                 </a>
                                 <?php echo $test['test_name'] ?>

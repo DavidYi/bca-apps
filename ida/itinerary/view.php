@@ -42,10 +42,12 @@
                         <h2> Closes: <?php echo $endTimeFormatted ?> </h2>
                     <?php } ?>
 
-                    <h2> Click <b><a href="../../IDAWorkshopList.pdf" download>here</a></b> to preview the workshops.</h2>
-                    <h2> Email <b><a href="mailto:katbla@bergen.org"> Mrs. Blake </a></b> with any questions.</h2>
-
                 <?php } ?>
+
+                <h2> Click <b><a href="../../IDAWorkshopList.pdf" download>here</a></b> to preview the workshops.</h2>
+                <h2> Email <b><a href="mailto:katbla@bergen.org"> Mrs. Blake </a></b> with any questions.</h2>
+
+
 
             <?php } else { ?>
                 <h1>Mimic User Mode</h1>

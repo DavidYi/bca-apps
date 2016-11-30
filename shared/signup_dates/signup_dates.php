@@ -52,10 +52,10 @@
                     <input type="hidden" name="hdMode[<?php echo $i ?>]" value="<?php echo $signup['mode_cde'] ?>">
 
                     <label>
-                        <h2 id="line" id="line" class="grade organization"><?php echo $signup['grade_lvl'] ?></h2>
+                        <h2 id="line" class="grade organization"><?php echo $signup['grade_lvl'] ?></h2>
                     </label>
                     <label>
-                        <h2 id="line" id="line" class="mode organization"><?php echo $signup['mode_desc'] ?></h2>
+                        <h2 id="line" class="mode organization"><?php echo $signup['mode_desc'] ?></h2>
                     </label>
 
                     <input id="time" type="text" class="start org2"  name="start[<?php echo $i ?>]" value="<?php echo $signup['start']?>">

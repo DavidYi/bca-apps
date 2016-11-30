@@ -122,15 +122,16 @@ button{
 }
 
 .endText{
-    margin-left: 4.2em;
+    margin-left: 7.4em;
 }
 #time{
-    border-radius: 0;
-    border-left: none;
-    border-top: none;
-    border-right: none;
-    border-bottom: 2px solid black;
     font-size: 1.5em;
+    padding: 1em;
+    margin-right: 2em;
+}
+
+.grade, .mode{
+    font-size: 1.8em;
 }
 
 #formatnav {
