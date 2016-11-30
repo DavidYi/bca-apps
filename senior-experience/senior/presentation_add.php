@@ -5,10 +5,10 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700italic,700,500italic,500,400italic,300italic,300' rel='stylesheet' type='text/css'>
 
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js<?php echo(getVersionString()); ?>"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="../ss-add/ss/main.css" >
+    <link rel="stylesheet" type="text/css" href="../ss-add/ss/main.css<?php echo(getVersionString()); ?>" >
 
 
 </head>
@@ -100,8 +100,8 @@
         </form>
     </section>
     <!--JavaScript -->
-    <script src="../ss-add/js/classie.js"></script>
-    <script src="../ss-add/js/semantic.min.js"></script>
+    <script src="../ss-add/js/classie.js<?php echo(getVersionString()); ?>"></script>
+    <script src="../ss-add/js/semantic.min.js<?php echo(getVersionString()); ?>"></script>
     <script type="text/javascript">
         $('.ui.dropdown')
             .dropdown()

@@ -9,8 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
         <!-- Styles -->
-        <link href="../../../shared/ss/main.css" rel="stylesheet">
-        <link href="../../../shared/signup_dates/styles.css" rel="stylesheet">
+        <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+        <link href="../../../shared/signup_dates/styles.css<?php echo(getVersionString()); ?>" rel="stylesheet">
     </head>
 
     <body>
@@ -68,9 +68,9 @@
             <?php } ?>
         </div>
         </form>
-        <script type="text/javascript" src="../js/jquery.min.js"></script>
-        <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
-        <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+        <script type="text/javascript" src="../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+        <script type="text/javascript" src="../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('body').plusAnchor({

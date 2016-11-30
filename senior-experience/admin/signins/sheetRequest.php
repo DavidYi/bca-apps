@@ -9,11 +9,11 @@
 <html>
 <head>
     <title>Generate Sign in PDF</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../signins.css">
-    <link href="../../ss/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css<?php echo(getVersionString()); ?>">
+    <link rel="stylesheet" type="text/css" href="../signins.css<?php echo(getVersionString()); ?>">
+    <link href="../../ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 
-    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery.js<?php echo(getVersionString()); ?>"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('input[type="radio"]').click(function () {

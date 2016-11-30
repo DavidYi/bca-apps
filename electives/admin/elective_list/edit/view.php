@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../../../teacher/teacher_add_course/view.css" type="text/css" />
+    <link rel="stylesheet" href="../../../teacher/teacher_add_course/view.css<?php echo(getVersionString()); ?>" type="text/css" />
 </head>
 <body>
 

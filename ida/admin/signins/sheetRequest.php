@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>Generate Sign in PDF</title>
-    <link rel="stylesheet" type="text/css" href="../../../shared/ss/main.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="http://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>">
+    <link rel="stylesheet" type="text/css" href="styles.css<?php echo(getVersionString()); ?>">
+    <script src="http://code.jquery.com/jquery.js<?php echo(getVersionString()); ?>"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('input[type="radio"]').click(function () {

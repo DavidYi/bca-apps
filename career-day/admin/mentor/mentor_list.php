@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
-    <link href="../../../shared/ss/main.css" rel="stylesheet" type="text/css"/>
-    <link href="mentor_list.css" rel="stylesheet">
+    <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet" type="text/css"/>
+    <link href="mentor_list.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 </head>
 
 <body>
@@ -75,10 +75,10 @@
 </div>
 
 
-<script type="text/javascript" src="../../admin/js/jquery.min.js"></script>
-<script type="text/javascript" src="../../admin/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="../../admin/js/jquery.plusanchor.min.js"></script>
-<script type="text/javascript" src="../../admin/js/featherlight.min.js"></script>
+<script type="text/javascript" src="../../admin/js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../admin/js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../admin/js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../admin/js/featherlight.min.js<?php echo(getVersionString()); ?>"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('body').plusAnchor({

@@ -6,7 +6,7 @@
 
 		<!-- Styles -->
 		<link href="/<?php echo $shared_ss_url; ?>" rel="stylesheet">
-		<link href="/<?php echo $shared_url_path; ?>/messages/styles.css" rel="stylesheet">
+		<link href="/<?php echo $shared_url_path; ?>/messages/styles.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 		<!-- <?php include_analytics(); ?> -->
 	</head>
 	<body>
@@ -21,9 +21,9 @@
 	            </div>
 			</div>
 			</form>
-		<script type="text/javascript" src="/<?php echo $shared_url_path; ?>/js/jquery.min.js"></script>
-		<script type="text/javascript" src="/<?php echo $shared_url_path; ?>/js/jquery.easing.min.js"></script>
-		<script type="text/javascript" src="/<?php echo $shared_url_path; ?>/js/jquery.plusanchor.min.js"></script>
+		<script type="text/javascript" src="/<?php echo $shared_url_path; ?>/js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+		<script type="text/javascript" src="/<?php echo $shared_url_path; ?>/js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+		<script type="text/javascript" src="/<?php echo $shared_url_path; ?>/js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
 		<script type="text/javascript">
 		    $('body').plusAnchor({
 		        easing: 'easeInOutExpo',
