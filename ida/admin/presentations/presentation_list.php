@@ -9,7 +9,7 @@
 
     </script>
     <head>
-        <title>Admin: Presentation</title>
+        <title>Admin: Presentations</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -20,7 +20,7 @@
 
     <body>
         <header>
-            <h1 class="title">Presentation</h1>
+            <h1 class="title">Presentations</h1>
         </header>
         <div style="text-align:center;padding-bottom:2vh;">
             <a href="./index.php?pres_id=<?php echo $pres_id ?>&action=show_add_presentation">

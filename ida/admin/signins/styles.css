@@ -40,9 +40,6 @@ m             modify  (pencil)
 
 */
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
-@import url(https://fonts.googleapis.com/css?family=Lato);
-
 html, body {
     height: 100%;
     min-height: 100%;
