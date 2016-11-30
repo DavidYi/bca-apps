@@ -8,9 +8,9 @@
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
     <link href="styles.css<?php echo(getVersionString()); ?>" rel="stylesheet">
     <script src="../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
-    <link rel="shortcut icon" hrcon.ico" type="image/x-icon">
-    <?php include_analytics(); ?ef="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favi>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <?php include_analytics(); ?>
 </head>
 <body>
 <section class="main view">
