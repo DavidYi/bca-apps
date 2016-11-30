@@ -54,14 +54,14 @@
                                     <label>Max Capacity</label>
                                 </td>
                                 <td>
-                                    <input title="" type="number" min="1" name="pres_max_capacity" value="">
+                                    <input title="" type="number" min="1" name="pres_max_capacity" value="" required>
                                 </td>
                             </tr>
                         </table>
-                        <table>
+                        <table id="combo-table">
                             <tr id="combo-row">
-                                <td nowrap>
-                                    <label>Session</label>
+                                <td id="session-td" nowrap>
+                                    <label id="session-label">Session</label>
                                 </td>
                                 <td class="dropdown">
                                     <select name="session" class="small">
@@ -70,13 +70,22 @@
                                     </select>
                                 </td>
                                 <td nowrap>
-                                    <label>Room</label>
+                                    <label id="room-label">Room</label>
                                 </td>
                                 <td class="dropdown">
                                     <select name="room" class="small">
                                         <?php foreach ($roomList as $room) { ?>
                                             <option value=<?php echo($room['rm_id']); ?>><?php echo($room['rm_nbr']); ?></option>
                                         <?php } ?>
+                                    </select>
+                                </td>
+                                <td nowrap>
+                                    <label id="auto-label">Auto-Enroll</label>
+                                </td>
+                                <td class="dropdown">
+                                    <select class="small" name="pres_permit_auto_enroll">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     </select>
                                 </td>
                             </tr>

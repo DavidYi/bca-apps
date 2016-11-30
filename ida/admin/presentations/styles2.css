@@ -96,12 +96,12 @@ label {
 table {
     margin-right: auto;
     margin-left: auto;
-    width: 36em;
+    width: 37em;
 }
 
 td:first-child {
     text-align: right;
-    width: 11em;
+    width: 12em;
 }
 
 select {
@@ -119,13 +119,33 @@ h1 {
 
 .dropdown {
     text-align: left;
+    padding-right: 1em;
 }
 
 .small {
-    width: 11em;
+    width: 9em;
+    margin-right: 10px;
 }
 
-.combo-table {
-    display: inline-block;
-    width: 25em;
+#session-label {
+    margin-right: 10px;
+    padding-left: 0em;
+}
+
+#room-label, #auto-label {
+    margin-right: 7px;
+}
+
+#combo-table {
+    width: 40em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#session-td {
+    width: 9em;
+}
+
+#combo-row td:last-child {
+    padding-right: 5em;
 }

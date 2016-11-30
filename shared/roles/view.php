@@ -76,7 +76,7 @@
                             <div>
                                 <h2><strong>Select Role</strong></h2>
                                 <select class="ui search dropdown" name="role_drop" name="role_drop">
-                                    <option value="">Select one...</option>
+                                    
                                     <?php foreach ($roles as $role) { ?>
                                         <option
                                             value="<?php echo $role['usr_role_cde'] ?>"><?php echo $role['usr_role_desc'] ?></option>
