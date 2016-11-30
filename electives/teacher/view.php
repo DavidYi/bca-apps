@@ -7,8 +7,8 @@
     <!-- Styles -->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link href="../ss/main.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="view.css">
+    <link href="../ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="view.css<?php echo(getVersionString()); ?>">
     <?php include_analytics(); ?>
     <style>
         th, td {
@@ -18,9 +18,9 @@
         }
     </style>
 
-    <script src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
+    <script src="../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+    <script type="text/javascript" src="../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+    <script type="text/javascript" src="../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
     <script type="text/javascript">
         function deleteCourse(courseId)
         {

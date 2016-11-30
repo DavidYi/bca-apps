@@ -10,8 +10,8 @@
 
 <html>
 <head>
-    <link rel="stylesheet" type='text/css' href="style.css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type='text/css' href="style.css<?php echo(getVersionString()); ?>">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css<?php echo(getVersionString()); ?>">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 </head>
 
@@ -125,11 +125,11 @@
             aria-hidden="true"
             title="Send All Emails"
             style="cursor:pointer text-align: center;"></i>Mail All</a></center>
-<script type="text/javascript" src="../../js/popup.js"></script>
-<script type="text/javascript" src="../../js/cpopup.js"></script>
-<script type="text/javascript" src="../../js/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="../../js/jquery.plusanchor.min.js"></script>
+<script type="text/javascript" src="../../js/popup.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/cpopup.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
 </body>
 </html>
 

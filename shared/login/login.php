@@ -8,7 +8,7 @@
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link href="/<?php echo $shared_ss_url; ?>" rel="stylesheet">
-		<link href="/<?php echo $shared_url_path; ?>/login/styles.css" rel="stylesheet">
+		<link href="/<?php echo $shared_url_path; ?>/login/styles.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 	</head>
 	<body>
 		<section class="main login">
@@ -37,9 +37,9 @@
             	</div>
             </div>
 		</section>
-		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/../shared/js/jquery.min.js"></script>
-		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/../shared/js/jquery.easing.min.js"></script>
-		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/../shared/js/jquery.plusanchor.min.js"></script>
+		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/../shared/js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/../shared/js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+		<script type="text/javascript" src="/<?php echo $app_url_path; ?>/../shared/js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
 		<script type="text/javascript">
 		    $('body').plusAnchor({
 		        easing: 'easeInOutExpo',

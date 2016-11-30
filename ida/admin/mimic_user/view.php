@@ -1,8 +1,8 @@
 <html>
     <head>
         <title>Mimic User</title>
-        <link href="../../../shared/ss/main.css" rel="stylesheet">
-        <link href="styles.css" rel="stylesheet">
+        <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+        <link href="styles.css<?php echo(getVersionString()); ?>" rel="stylesheet">
     </head>
     <body>
     <div id="login">

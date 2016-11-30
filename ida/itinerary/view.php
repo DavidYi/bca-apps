@@ -7,8 +7,8 @@
     <!-- Styles -->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link href="../../shared/ss/main.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <link href="../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+    <link href="styles.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 </head>
 <body>
 <section class="main view">
@@ -80,9 +80,9 @@
         </div>
     </div>
 </section>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
 <script type="text/javascript">
     $('body').plusAnchor({
         easing: 'easeInOutExpo',

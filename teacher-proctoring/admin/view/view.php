@@ -6,8 +6,8 @@
 
     <!-- Styles -->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
-    <link href="styles.css" rel="stylesheet">
-    <script src="../js/jquery.min.js"></script>
+    <link href="styles.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+    <script src="../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
     <link rel="shortcut icon" hrcon.ico" type="image/x-icon">
     <?php include_analytics(); ?ef="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favi>
@@ -39,9 +39,9 @@
     </div>
 
 </section>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
 <script type="text/javascript">
     $('body').plusAnchor({
         easing: 'easeInOutExpo',

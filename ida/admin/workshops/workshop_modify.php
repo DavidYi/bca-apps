@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
-    <link href="../../../shared/ss/main.css" rel="stylesheet">
-    <link href="styles2.css" rel="stylesheet">
+    <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+    <link href="styles2.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 </head>
 <body>
 <form action="index.php?action=modify_workshop" method="post">
