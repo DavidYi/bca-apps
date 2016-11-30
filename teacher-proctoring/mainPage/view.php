@@ -20,6 +20,17 @@ require_once('../model/teacher_db.php');
             height: 4.5em;
             width: 20em;
             left: 35%;
+            background-color: #f0c30f;
+        }
+        #past_button {
+            float: left;
+            width: auto;
+         }
+
+        .filter-off {
+            background-color : #ffffff;
+            color : #00b8e6;
+            border: 1px solid #00b8e6;
         }
     </style>
 </head>
@@ -76,6 +87,11 @@ require_once('../model/teacher_db.php');
             <form action="." method="post">
                 <input type="hidden" name="action" value="show_itinerary">
                 <br>
+                <button style="left: 25%; width: 9em;"
+                        type="submit" id="past_button" class="filter-off"
+                        name="past_button"
+                        value="Past Selected"
+                        >Include Past Sessions</button>
                 <button type="submit" value="Add/Delete">Add/Delete</button>
             </form>
 

@@ -59,6 +59,37 @@ function get_test_list($usr_id, $sort_by, $order_by, $filter_full, $filter_past)
         exit();
     }
 }
+function get_selected_test_list2($usr_id, $filter_past)
+{
+    $query = 'SELECT distinct test_updt_xref.test_id, test_name, test.rm_id, room.rm_nbr, test_dt,
+                  test_time_desc, usr_id, test_updt_xref.test_time_id
+              FROM test_updt_xref,test, room, test_time, test_time_xref
+              WHERE test.test_id = test_updt_xref.test_id
+              AND test.rm_id = room.rm_id
+              AND test_time.test_time_id = test_updt_xref.test_time_id
+              AND test_time_xref.test_id = test_updt_xref.test_id';
+
+    if ($filter_past == 0) {
+        $query .= ("AND test_dt > DATE_SUB(CURDATE(), INTERVAL 7 DAY) ");
+    }
+
+    $query .= ("AND usr_id = :usr_id
+              ORDER BY test_dt, sort_order");
+
+    global $db;
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':usr_id', $usr_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        display_db_exception($e);
+    }
+    return get_list($query);
+}
 
 function get_selected_test_list($usr_id)
 {

@@ -39,8 +39,11 @@ if (isset($action) and ($action == "logout")) {
 switch ($action) {
 
     case 'list_selected_tests':
+        $filter_past = filter_input(INPUT_POST, 'past_button');
+        $past_num = $_SESSION['filter_past'] ? 1 : 0;
+        
         $count = get_count($user->usr_id);
-        $testSelectedList = get_selected_test_list($user->usr_id);
+        $testSelectedList = get_selected_test_list2($user->usr_id, $past_num);
 
         include ('./view.php');
         break;
