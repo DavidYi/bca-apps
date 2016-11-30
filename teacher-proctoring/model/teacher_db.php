@@ -67,14 +67,14 @@ function get_selected_test_list2($usr_id, $filter_past)
               WHERE test.test_id = test_updt_xref.test_id
               AND test.rm_id = room.rm_id
               AND test_time.test_time_id = test_updt_xref.test_time_id
-              AND test_time_xref.test_id = test_updt_xref.test_id';
+              AND test_time_xref.test_id = test_updt_xref.test_id ';
 
     if ($filter_past == 0) {
-        $query .= ("AND test_dt > DATE_SUB(CURDATE(), INTERVAL 7 DAY) ");
+        $query .= (" AND test_dt > DATE_SUB(CURDATE(), INTERVAL 7 DAY) ");
     }
 
-    $query .= ("AND usr_id = :usr_id
-              ORDER BY test_dt, sort_order");
+    $query .= (" AND usr_id = :usr_id
+              ORDER BY test_dt, sort_order ");
 
     global $db;
 
