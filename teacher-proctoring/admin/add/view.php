@@ -1,16 +1,16 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link href="../../../shared/ss/main.css" rel="stylesheet">
-    <link href="view.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css<?php echo(getVersionString()); ?>">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css<?php echo(getVersionString()); ?>">
+    <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+    <link href="view.css<?php echo(getVersionString()); ?>" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="jquery.timepicker.js"></script>
-    <script src="functions.js"></script>
-    <script src="semantic/dist/semantic.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js<?php echo(getVersionString()); ?>"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js<?php echo(getVersionString()); ?>"></script>
+    <script src="jquery.timepicker.js<?php echo(getVersionString()); ?>"></script>
+    <script src="functions.js<?php echo(getVersionString()); ?>"></script>
+    <script src="semantic/dist/semantic.min.js<?php echo(getVersionString()); ?>"></script>
     <script>
         $(document).ready(function () {
             $('#basicExample').timepicker();

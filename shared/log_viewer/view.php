@@ -1,8 +1,8 @@
 <html>
 <title>Log Viewer</title>
 
-<link rel="stylesheet" type="text/css" href="../../../shared/ss/main.css">
-<link rel="stylesheet" type="text/css" href="../../../shared/log_viewer/styles.css">
+<link rel="stylesheet" type="text/css" href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>">
+<link rel="stylesheet" type="text/css" href="../../../shared/log_viewer/styles.css<?php echo(getVersionString()); ?>">
 
 <section style="margin:0;padding:5em;">
     <h1 style="display:inline-block;">Log Viewer</h1>

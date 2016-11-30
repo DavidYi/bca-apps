@@ -5,7 +5,7 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="../../ss/main.css" rel="stylesheet">
+    <link href="../../ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php include_analytics(); ?>
@@ -137,7 +137,7 @@
                         <div class="session makeDefault" style="position:relative">
                             <div class="tag" style="width:20%">
 
-                                <a id="pdf" target="_blank" onclick="listPDF(<?php echo $test['test_id'] ?>);">
+                                <a id="pdf" target="_blank" onclick="listPDF(<?php echo $test['test_id'] ?>)">
                                     <img src="../../../shared/images/pdf.png" id="pdf">
                                 </a>
                                 <?php echo $test['test_name'] ?>
@@ -192,12 +192,12 @@
         </form>
     </div>
 </section>
-<script type="text/javascript" src="../../js/listPDF.js"></script>
-<script type="text/javascript" src="../../js/popup.js"></script>
-<script type="text/javascript" src="../../js/cpopup.js"></script>
-<script type="text/javascript" src="../../js/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="../../js/jquery.plusanchor.min.js"></script>
+<script type="text/javascript" src="../../js/listPDF.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/popup.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/cpopup.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
 <script type="text/javascript">
     $('body').plusAnchor({
         easing: 'easeInOutExpo',
