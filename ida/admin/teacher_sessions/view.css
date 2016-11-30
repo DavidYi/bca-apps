@@ -61,6 +61,7 @@ select {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    font-size: 1.5em;
 }
 
 .s1_select {
@@ -111,7 +112,7 @@ h1.title {
 }
 
 h2 {
-    font-size: 1.5em !important;
+    font-size: 2em !important;
 }
 
 #s2_header {
@@ -327,5 +328,5 @@ button {
 }
 
 span {
-    font-size: 1.5em;
+    font-size: 1.7em;
 }

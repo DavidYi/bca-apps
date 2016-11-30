@@ -33,26 +33,28 @@
             <div id="wrapper2">
                 <div id="columns">
                     <h1 class="title">Admin Roles</h1>
-                    <div id="users">
-                        <h2><strong>User</strong></h2>
-                        <?php foreach ($assigned_roles as $assigned_user) { ?>
-                            <p class="user"><?php echo $assigned_user['usr_last_name'] ?>
-                                , <?php echo $assigned_user['usr_first_name'] ?></p>
-                        <?php } ?>
-                    </div>
-
-                    <div id="se-wrap">
-                        <div id="role">
-                            <h2><strong>Role</strong></h2>
+                    <div id="viewroles">
+                        <div id="users">
+                            <h2><strong>User</strong></h2>
                             <?php foreach ($assigned_roles as $assigned_user) { ?>
-                                <p><?php echo $assigned_user['usr_role_desc'] ?></p>
+                                <p class="user"><?php echo $assigned_user['usr_last_name'] ?>
+                                    , <?php echo $assigned_user['usr_first_name'] ?></p>
                             <?php } ?>
                         </div>
-                        <div id="delete">
-                            <?php foreach ($assigned_roles as $assigned_user) { ?>
-                                <a href="index.php?action=delete_admin&usrID=<?php echo $assigned_user['usr_id'] ?>&roleID=<?php echo $assigned_user['usr_role_cde'] ?>">
-                                    <h4 class="delete" style="color: rgb(54, 54, 143); z-index: 100;">d</h4></a>
-                            <?php } ?>
+
+                        <div id="se-wrap">
+                            <div id="role">
+                                <h2><strong>Role</strong></h2>
+                                <?php foreach ($assigned_roles as $assigned_user) { ?>
+                                    <p><?php echo $assigned_user['usr_role_desc'] ?></p>
+                                <?php } ?>
+                            </div>
+                            <div id="delete">
+                                <?php foreach ($assigned_roles as $assigned_user) { ?>
+                                    <a href="index.php?action=delete_admin&usrID=<?php echo $assigned_user['usr_id'] ?>&roleID=<?php echo $assigned_user['usr_role_cde'] ?>">
+                                        <h4 class="delete" style="color: rgb(54, 54, 143); z-index: 100;">d</h4></a>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
                 </div>

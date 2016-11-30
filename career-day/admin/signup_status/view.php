@@ -47,9 +47,7 @@
         <?php } ?>
     </header>
 
-    <div class="buttons" style="text-align:center;padding-bottom:2vh;">
-        <a href="../index.php"><button class="b">Back</button></a>
-    </div>
+    <div style="text-align:center;"><a href="../index.php"><button id="return_home">Back</button></a></div>
 
     <nav class="navbar">
         <a href="#">

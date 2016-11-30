@@ -735,6 +735,9 @@ nav.navbar .grade:hover, nav.navbar .grade:active, nav.navbar .full:hover, nav.n
     text-align: right;
     text-decoration: underline;
 }
+#return_home {
+    background-color: rgb(110, 41, 135);
+}
 
 /*# sourceMappingURL=main.css.map */
 
