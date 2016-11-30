@@ -3,8 +3,8 @@
     <meta charset="utf-8" />
     <title>Table Style</title>
 <!--    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">-->
-    <link rel="stylesheet" href="index.css">
-    <script src="../../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="index.css<?php echo(getVersionString()); ?>">
+    <script src="../../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
 
 
 

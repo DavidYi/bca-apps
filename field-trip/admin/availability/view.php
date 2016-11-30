@@ -1,8 +1,8 @@
 <html>
     <head>
         <title>Elective Availability</title>
-        <link rel="stylesheet" href="view.css">
-        <link rel="stylesheet" href="../../../shared/ss/main.css">
+        <link rel="stylesheet" href="view.css<?php echo(getVersionString()); ?>">
+        <link rel="stylesheet" href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>">
         <style>
             .enrollment .session:hover {
                 background: #cce6ff;

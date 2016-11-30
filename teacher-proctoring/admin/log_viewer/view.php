@@ -1,7 +1,7 @@
 <html>
 <title>Log Viewer</title>
 
-<link rel="stylesheet" type="text/css" href="../css/mentor_list.css">
+<link rel="stylesheet" type="text/css" href="../css/mentor_list.css<?php echo(getVersionString()); ?>">
 
 <html>
 

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
-    <link href="../../../shared/ss/main.css" rel="stylesheet">
-    <link href="../../../shared/room/styles2.css" rel="stylesheet">
+    <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+    <link href="../../../shared/room/styles2.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 
 </head>
 <body>
@@ -26,7 +26,7 @@
 
                 <div id="button-div">
                     <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Modify">Submit</button>
-                    <a href="index.php"><button style="cursor: pointer" class="submit cancel" type="button" name="choice" value="Back" formnovalidate>Cancel</button></a>
+                    <a href="index.php"><button style="cursor: pointer" class="submit b" type="button" name="choice" value="Back" formnovalidate>Cancel</button></a>
                 </div>
             </div>
         </div>

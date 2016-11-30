@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel = "stylesheet" type = "text/css" href = "../css/main.css" />
+    <link rel = "stylesheet" type = "text/css" href = "../css/main.css<?php echo(getVersionString()); ?>" />
     <title>Signup Status</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <script type="text/javascript">
@@ -47,9 +47,7 @@
         <?php } ?>
     </header>
 
-    <div class="buttons" style="text-align:center;padding-bottom:2vh;">
-        <a href="../index.php"><button class="b">Back</button></a>
-    </div>
+    <div style="text-align:center;"><a href="../index.php"><button id="return_home">Back</button></a></div>
 
     <nav class="navbar">
         <a href="#">

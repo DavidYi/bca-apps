@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
     <title>Table Style</title>
     <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
-    <link rel="stylesheet" href="times/index.css">
+    <link rel="stylesheet" href="times/index.css<?php echo(getVersionString()); ?>">
 </head>
 
 <body>

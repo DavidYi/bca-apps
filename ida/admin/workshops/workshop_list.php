@@ -14,8 +14,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
         <!-- Styles -->
-        <link href="../../../shared/ss/main.css" rel="stylesheet">
-        <link href="styles.css" rel="stylesheet">
+        <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+        <link href="styles.css<?php echo(getVersionString()); ?>" rel="stylesheet">
     </head>
 
     <body>
@@ -26,7 +26,7 @@
             <a href="./index.php?action=show_add_workshop"><button class="s" id="add_workshop">Add Workshop</button></a>
             <a href="../index.php"><button class="b" id="return_home">Back</button></a>
         </div>
-        <nav  style="width:65%; min-width:588px;" class="navbar">
+        <nav  style="width:85%; min-width:800px;" class="navbar">
             <div id="navinside">
                 <a href="#">
                     <div id="namenav"class="session-filter"><h2><strong>Name</strong></h2></div>
@@ -38,7 +38,7 @@
         </nav>
 
 
-        <div style="width:65%;" class="list-container">
+        <div style="width: 85%; min-width:800px;" class="list-container">
 
             <?php foreach ($workshopList as $workshop) {
                 $workshop_id = $workshop['wkshp_id'];
@@ -74,11 +74,11 @@
 
              <?php } ?>
         </div>
-        <script type="text/javascript" src="../../js/popup.js"></script>
-        <script type="text/javascript" src="../../js/cpopup.js"></script>
-        <script type="text/javascript" src="../../js/jquery.min.js"></script>
-        <script type="text/javascript" src="../../js/jquery.easing.min.js"></script>
-        <script type="text/javascript" src="../../js/jquery.plusanchor.min.js"></script>
+        <script type="text/javascript" src="../../js/popup.js<?php echo(getVersionString()); ?>"></script>
+        <script type="text/javascript" src="../../js/cpopup.js<?php echo(getVersionString()); ?>"></script>
+        <script type="text/javascript" src="../../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+        <script type="text/javascript" src="../../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+        <script type="text/javascript" src="../../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('body').plusAnchor({

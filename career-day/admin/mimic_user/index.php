@@ -24,15 +24,27 @@ switch ($action) {
         break;
 
     case 'login':
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
         $usr_id = filter_input(INPUT_POST, "usr_id");
-        $user = $_SESSION['user'];
-        $_SESSION['prev_usr_id'] = $user->usr_id;
-        $_SESSION['user'] = User::getUserByUsrId($usr_id);
+        $choice = filter_input(INPUT_POST, "choice");
 
-        $_SESSION['allow_signups'] = !empty(filter_input(INPUT_POST, 'bypass_time')) ? true : false;
+        if($choice == "submit"){
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            $user = $_SESSION['user'];
+            $_SESSION['prev_usr_id'] = $user->usr_id;
+            $_SESSION['user'] = User::getUserByUsrId($usr_id);
+
+            $_SESSION['allow_signups'] = !empty(filter_input(INPUT_POST, 'bypass_time')) ? true : false;
+
+            header("Location: ../../itinerary/index.php");
+        }
+        else{
+            header("Location: ../");
+        }
+
+
 
 //        if ($user->getRole('CAR') == 'ADM') {
 //            // The user is an admin, so they are directed to admin page
@@ -42,7 +54,6 @@ switch ($action) {
 //            header("Location: ../../itinerary/index.php");
 //        }
 
-        header("Location: ../../itinerary/index.php");
 
         break;
 }

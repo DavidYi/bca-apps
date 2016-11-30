@@ -1,7 +1,7 @@
 <html>
 <head>
-    <link rel="stylesheet" href="/<?php echo $app_url_path; ?>/../shared/ss/main.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/<?php echo $app_url_path; ?>/../shared/ss/main.css<?php echo(getVersionString()); ?>">
+    <link rel="stylesheet" href="styles.css<?php echo(getVersionString()); ?>">
     <script type="text/javascript">function post(path, params, method) { //sends a post request; used to avoid having to use get to change the url since that looks sloppy and i don't want to bother with an inline form, especially if i want the confirmation prompt
             method = method || "post"; //also ripped straight off stackoverflow
             var form = document.createElement("form");

@@ -5,7 +5,7 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="../../../shared/ss/main.css" rel="stylesheet">
+    <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 
 </head>
 <body style="text-align:center; padding-top:10%">

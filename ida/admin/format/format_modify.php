@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
-    <link href="../../../shared/ss/main.css" rel="stylesheet">
-    <link href="styles2.css" rel="stylesheet">
+    <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+    <link href="styles2.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 
 </head>
 
@@ -26,7 +26,7 @@
 
                 <div id="button-div">
                     <button style="cursor: pointer" class="submit s" type="submit" name="choice" value="Modify">Submit</button>
-                    <button style="cursor: pointer" class="submit cancel" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
+                    <button style="cursor: pointer" class="submit b" type="submit" name="choice" value="Back" formnovalidate>Cancel</button>
                 </div>
             </div>
         </div>
