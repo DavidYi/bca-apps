@@ -355,13 +355,3 @@ button {
     margin-bottom: 1em;
 }
 
-.start{
-    margin-right: 5em;
-}
-
-@media only screen and (min-width: 1000px) {
-    .workshop_name{
-        font-size: 1000em;
-    }
-
-}

@@ -26,7 +26,7 @@
             <a href="./index.php?action=show_add_workshop"><button class="s" id="add_workshop">Add Workshop</button></a>
             <a href="../index.php"><button class="b" id="return_home">Back</button></a>
         </div>
-        <nav  style="width:65%; min-width:588px;" class="navbar">
+        <nav  style="width:85%; min-width:800px;" class="navbar">
             <div id="navinside">
                 <a href="#">
                     <div id="namenav"class="session-filter"><h2><strong>Name</strong></h2></div>
@@ -38,7 +38,7 @@
         </nav>
 
 
-        <div style="width:65%;" class="list-container">
+        <div style="width: 85%; min-width:800px;" class="list-container">
 
             <?php foreach ($workshopList as $workshop) {
                 $workshop_id = $workshop['wkshp_id'];
