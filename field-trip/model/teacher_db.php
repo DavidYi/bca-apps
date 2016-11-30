@@ -235,7 +235,7 @@ function students_missing($usr_id) {
     $query = "select usr_last_name, usr_first_name, usr_grade_lvl, user_email
               from classes_missed c, user u
               where teacher_id = :usr_id
-              and c.teacher_id = u.usr_id
+              and c.student_id = u.usr_id
               order by usr_last_name";
 
     global $db;
