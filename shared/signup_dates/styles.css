@@ -73,7 +73,7 @@ body {
     text-align: left;
 }
 .organization h2{
-    font-size: 2em;
+    font-size: 1.75em;
     padding-right:3%;
 }
 .smallcol h2{
@@ -116,7 +116,21 @@ button{
 
 #namenav {
     margin-top: 0.7em;
-    margin-left: 3.25em;
+}
+.desc{
+    margin-left: -0.7em;
+}
+
+.endText{
+    margin-left: 4.2em;
+}
+#time{
+    border-radius: 0;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid black;
+    font-size: 1.5em;
 }
 
 #formatnav {
@@ -140,14 +154,6 @@ button{
     padding-left:3%;
 }
 
-.s {
-    background-color: rgb(110, 41, 135);
-}
-
-.s:hover {
-    background-color: rgb(121, 35, 152);
-}
-
 .cancel {
     margin-left: 1em;
 }
@@ -165,6 +171,7 @@ h4{
 #x {
     font-size: 200%;
 }
+
 
 .popup-bg {
     display: none;
@@ -214,14 +221,13 @@ html {
 }
 
 nav.navbar {
-    height: 6em;
+    height: 4.5em;
     width:75%;
     min-width:70em;
     margin-left: auto;
     margin-right: auto;
     line-height: 3.75em;
     margin: 0 auto;
-    padding: 0 1.5625em;
     background: rgb(35, 129, 113);
     box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.33);
     color:white;
@@ -354,4 +360,7 @@ nav.navbar {
     .featherlight iframe {
         border: 0;
     }
+}
+.first{
+    margin-left: 3em;
 }
