@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="mentor_modify.css" rel="stylesheet" type="text/css" />
+    <link href="mentor_modify.css<?php echo(getVersionString()); ?>" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <form action="index.php?action=modify_mentor" method="post">

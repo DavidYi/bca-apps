@@ -5,8 +5,8 @@
 
     <!-- Styles comment so i can push -->
 
-    <link href="../ss/main.css" rel="stylesheet">
-    <link href="../teacher/view.css" rel="stylesheet">
+    <link href="../ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+    <link href="../teacher/view.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 
     <script>
         function deleteCourse(courseId)

@@ -34,7 +34,14 @@ switch ($action) {
          * usr_role_cde
          * user_type_cde
          */
-        $user_from_post = filter_input(INPUT_POST, 'usr_id');
+        $choice = filter_input(INPUT_POST, 'choice');
+        if($choice == "Login ADM"){
+            $user_from_post = filter_input(INPUT_POST, 'usr_id_adm');
+        } else if($choice == "Login TCH") {
+            $user_from_post = filter_input(INPUT_POST, 'usr_id_tch');
+        } else {
+            $user_from_post = filter_input(INPUT_POST, 'usr_id_std');
+        }
         $user = User::getUserByUsrId($user_from_post);
         $_SESSION['user'] = $user;
 

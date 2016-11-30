@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css<?php echo(getVersionString()); ?>">
     <script type="text/javascript">function post(path, params, method) { //sends a post request; used to avoid having to use get to change the url since that looks sloppy and i don't want to bother with an inline form, especially if i want the confirmation prompt
             method = method || "post"; //also ripped straight off stackoverflow
             var form = document.createElement("form");
@@ -76,11 +76,11 @@
         </table>
     </center>
 </div>
-<script type="text/javascript" src="../../js/popup.js"></script>
-<script type="text/javascript" src="../../js/cpopup.js"></script>
-<script type="text/javascript" src="../../js/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="../../js/jquery.plusanchor.min.js"></script>
+<script type="text/javascript" src="../../js/popup.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/cpopup.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
 <script type="text/javascript">
     function toggleTable(str) {
         $(str).toggle();

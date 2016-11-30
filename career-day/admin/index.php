@@ -27,8 +27,8 @@ switch ($action) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- Styles -->
-    <link href="../../shared/ss/main.css" rel="stylesheet">
-    <link href="../admin/ss/main.css" rel="stylesheet">
+    <link href="../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+    <link href="../admin/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
 </head>
 <body>
 <main>
@@ -95,6 +95,14 @@ switch ($action) {
                     <div class="feature">
                         <h2>Clear Signups</h2>
                         <h4>Clear All Student Signups.</h4>
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="roles">
+                    <div class="feature">
+                        <h2>User Roles</h2>
+                        <h4>View and change user roles.</h4>
                     </div>
                 </a>
             </td>

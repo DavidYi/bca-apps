@@ -1,8 +1,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="../../../shared/ss/main.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>">
+    <link rel="stylesheet" href="styles.css<?php echo(getVersionString()); ?>">
     <title>Signup Status</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <script type="text/javascript">

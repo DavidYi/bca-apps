@@ -9,8 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
         <!-- Styles -->
-        <link href="../../../shared/ss/main.css" rel="stylesheet">
-        <link href="../../../shared/signup_dates/styles.css" rel="stylesheet">
+        <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
+        <link href="../../../shared/signup_dates/styles.css<?php echo(getVersionString()); ?>" rel="stylesheet">
     </head>
 
     <body>
@@ -28,16 +28,16 @@
         <nav style="width:70%" class="navbar">
             <div id="navinside">
                 <a href="#">
-                    <div id="namenav" class="session-filter organization"><h2><strong>Grade</strong></h2></div>
+                    <div id="namenav" class="first session-filter organization"><h2><strong>Grade</strong></h2></div>
                 </a>
                 <a href="#">
-                    <div id="namenav" class="session-filter organization"><h2><strong>Description</strong></h2></div>
+                    <div id="namenav" class="desc session-filter organization"><h2><strong>Description</strong></h2></div>
                 </a>
                 <a href="#>">
                     <div id="namenav" class="session-filter organization"><h2><strong>Start</strong></h2></div>
                 </a>
                 <a href="#>">
-                    <div id="namenav" class="session-filter organization"><h2><strong>End</strong></h2></div>
+                    <div id="namenav" class="endText session-filter organization"><h2><strong>End</strong></h2></div>
                 </a>
             </div>
         </nav>
@@ -47,8 +47,7 @@
 
             <?php $i = 0; ?>
             <?php foreach ($signups as $signup){ ?>
-<!--                //padding-top:1em;padding-bottom:1em;padding-left:1.5em;
--->                <div class="row" style="padding-top:1em;padding-bottom:1em; margin-left: 5em;">
+                    <div class="row" style="padding-top:1em;padding-bottom:1em; margin-left: 3em;">
                     <input type="hidden" name="hdGrade[<?php echo $i ?>]" value="<?php echo $signup['grade_lvl'] ?>">
                     <input type="hidden" name="hdMode[<?php echo $i ?>]" value="<?php echo $signup['mode_cde'] ?>">
 
@@ -59,8 +58,8 @@
                         <h2 id="line" id="line" class="mode organization"><?php echo $signup['mode_desc'] ?></h2>
                     </label>
 
-                    <input id="line" type="text" class="start org2" style="width:calc(25% - 5em);" name="start[<?php echo $i ?>]" value="<?php echo $signup['start']?>">
-                    <input id="line" type="text" class="end org2" style="margin-left:5em; width:calc(25% - 5em)" name="end[<?php echo $i ?>]" value="<?php echo $signup['end']?>">
+                    <input id="time" type="text" class="start org2"  name="start[<?php echo $i ?>]" value="<?php echo $signup['start']?>">
+                    <input id="time" type="text" class="end org2" name="end[<?php echo $i ?>]" value="<?php echo $signup['end']?>">
                 </div>
 
                 <?php $i = $i + 1; ?>
@@ -68,9 +67,9 @@
             <?php } ?>
         </div>
         </form>
-        <script type="text/javascript" src="../js/jquery.min.js"></script>
-        <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
-        <script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+        <script type="text/javascript" src="../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+        <script type="text/javascript" src="../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('body').plusAnchor({

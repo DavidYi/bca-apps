@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../../../shared/ss/main.css" rel="stylesheet" type="text/css"/>
-    <link href="/<?php echo $app_url_path ?>/../shared/roles/view.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
-    <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <link href="../../../shared/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet" type="text/css"/>
+    <link href="/<?php echo $app_url_path ?>/../shared/roles/view.css<?php echo(getVersionString()); ?>" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css<?php echo(getVersionString()); ?>">
+    <script src="Semantic-UI-CSS-master/semantic.min.js<?php echo(getVersionString()); ?>"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js<?php echo(getVersionString()); ?>"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js<?php echo(getVersionString()); ?>"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css<?php echo(getVersionString()); ?>" rel="stylesheet">
     <script>
         $(function () {
             var availableTutorials = [
@@ -33,6 +33,7 @@
             <div id="wrapper2">
                 <div id="columns">
                     <h1 class="title">Admin Roles</h1>
+<<<<<<< HEAD
                     <div id="users">
                         <h2><strong>User</strong></h2>
                         <?php foreach ($assigned_roles as $assigned_user) { ?>
@@ -46,13 +47,30 @@
                             <h2><strong>Role</strong></h2>
                             <?php foreach ($assigned_roles as $assigned_user) { ?>
                                 <p style="margin-bottom: 13.5px;"><?php echo $assigned_user['usr_role_desc'] ?></p>
+=======
+                    <div id="viewroles">
+                        <div id="users">
+                            <h2><strong>User</strong></h2>
+                            <?php foreach ($assigned_roles as $assigned_user) { ?>
+                                <p class="user"><?php echo $assigned_user['usr_last_name'] ?>
+                                    , <?php echo $assigned_user['usr_first_name'] ?></p>
+>>>>>>> origin/master
                             <?php } ?>
                         </div>
-                        <div id="delete">
-                            <?php foreach ($assigned_roles as $assigned_user) { ?>
-                                <a href="index.php?action=delete_admin&usrID=<?php echo $assigned_user['usr_id'] ?>&roleID=<?php echo $assigned_user['usr_role_cde'] ?>">
-                                    <h4 class="delete" style="color: rgb(54, 54, 143); z-index: 100;">d</h4></a>
-                            <?php } ?>
+
+                        <div id="se-wrap">
+                            <div id="role">
+                                <h2><strong>Role</strong></h2>
+                                <?php foreach ($assigned_roles as $assigned_user) { ?>
+                                    <p><?php echo $assigned_user['usr_role_desc'] ?></p>
+                                <?php } ?>
+                            </div>
+                            <div id="delete">
+                                <?php foreach ($assigned_roles as $assigned_user) { ?>
+                                    <a href="index.php?action=delete_admin&usrID=<?php echo $assigned_user['usr_id'] ?>&roleID=<?php echo $assigned_user['usr_role_cde'] ?>">
+                                        <h4 class="delete" style="color: rgb(54, 54, 143); z-index: 100;">d</h4></a>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
                 </div>

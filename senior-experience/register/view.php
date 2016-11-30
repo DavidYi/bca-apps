@@ -15,7 +15,7 @@
     <!-- <link rel="shortcut icon" href="images/logo.ico"> -->
 
     <!-- Styles -->
-    <link href="/<?php echo $app_url_path ?>/ss/main.css" rel="stylesheet">
+    <link href="/<?php echo $app_url_path ?>/ss/main.css<?php echo(getVersionString()); ?>" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <?php // include_analytics(); ?>
@@ -112,11 +112,11 @@
     <?php } } ?>
     </div>
 </section>
-<script type="text/javascript" src="../js/popup.js"></script>
-<script type="text/javascript" src="../js/cpopup.js"></script>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="../js/jquery.plusanchor.min.js"></script>
+<script type="text/javascript" src="../js/popup.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../js/cpopup.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+<script type="text/javascript" src="../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
 <script type="text/javascript">
     $('body').plusAnchor({
         easing: 'easeInOutExpo',

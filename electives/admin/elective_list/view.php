@@ -1,11 +1,11 @@
 <html>
     <head>
-        <link rel="stylesheet" href="../css/main.css">
-        <link rel="stylesheet" href="view.css">
+        <link rel="stylesheet" href="../css/main.css<?php echo(getVersionString()); ?>">
+        <link rel="stylesheet" href="view.css<?php echo(getVersionString()); ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <script type="text/javascript" src="../../js/jquery.min.js"></script>
-        <script type="text/javascript" src="../../js/jquery.easing.min.js"></script>
-        <script type="text/javascript" src="../../js/jquery.plusanchor.min.js"></script>
+        <script type="text/javascript" src="../../js/jquery.min.js<?php echo(getVersionString()); ?>"></script>
+        <script type="text/javascript" src="../../js/jquery.easing.min.js<?php echo(getVersionString()); ?>"></script>
+        <script type="text/javascript" src="../../js/jquery.plusanchor.min.js<?php echo(getVersionString()); ?>"></script>
         <script>
             function deleteCourse(courseId)
             {
