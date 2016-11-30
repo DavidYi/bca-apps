@@ -98,6 +98,14 @@ switch ($action) {
                     </div>
                 </a>
             </td>
+            <td>
+                <a href="roles">
+                    <div class="feature">
+                        <h2>User Roles</h2>
+                        <h4>View and change user roles.</h4>
+                    </div>
+                </a>
+            </td>
         </tr>
     </table>
     <!-- should probably be /index.php?action=logout in the final, but that won't work right on localhost since everything's in bca-apps rn -->

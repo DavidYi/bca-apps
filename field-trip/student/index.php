@@ -13,6 +13,17 @@ if ($action == NULL) {
     }
 }
 
+if (isset($action) and ($action == "logout")) {
+    if (isset($_SESSION['prev_usr_id'])) {
+        $_SESSION['user'] = User::getUserByUsrId($_SESSION['prev_usr_id']);
+        unset($_SESSION['prev_usr_id']);
+        header("Location: ../admin/index.php");
+    } else {
+        session_destroy();
+        header("Location: ../index.php");
+    }
+}
+
 include('./view.php');
 
 ?>
