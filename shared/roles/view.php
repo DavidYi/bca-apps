@@ -1,4 +1,3 @@
-<!doctype html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -33,28 +32,12 @@
             <div id="wrapper2">
                 <div id="columns">
                     <h1 class="title">Admin Roles</h1>
-<<<<<<< HEAD
-                    <div id="users">
-                        <h2><strong>User</strong></h2>
-                        <?php foreach ($assigned_roles as $assigned_user) { ?>
-                            <p class="user" style="margin-bottom: 13.5px;"><?php echo $assigned_user['usr_last_name'] ?>
-                                , <?php echo $assigned_user['usr_first_name'] ?></p>
-                        <?php } ?>
-                    </div>
-
-                    <div id="se-wrap">
-                        <div id="role">
-                            <h2><strong>Role</strong></h2>
-                            <?php foreach ($assigned_roles as $assigned_user) { ?>
-                                <p style="margin-bottom: 13.5px;"><?php echo $assigned_user['usr_role_desc'] ?></p>
-=======
                     <div id="viewroles">
                         <div id="users">
                             <h2><strong>User</strong></h2>
                             <?php foreach ($assigned_roles as $assigned_user) { ?>
                                 <p class="user"><?php echo $assigned_user['usr_last_name'] ?>
                                     , <?php echo $assigned_user['usr_first_name'] ?></p>
->>>>>>> origin/master
                             <?php } ?>
                         </div>
 
@@ -115,5 +98,3 @@
 </body>
 
 </html>
-
-
