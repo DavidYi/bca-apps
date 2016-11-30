@@ -2,6 +2,8 @@
 require_once("../../util/main.php");
 require_once("../../model/teacher_db.php");
 
+verify_test_admin();
+
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));

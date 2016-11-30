@@ -10,6 +10,8 @@ require_once("../../util/main.php");
 require_once("../../model/teacher_db.php");
 include "listPDF.php";
 
+verify_test_admin();
+
 $action = strtolower(filter_input(INPUT_POST, 'action'));
 if ($action == NULL) {
     $action = strtolower(filter_input(INPUT_GET, 'action'));
@@ -55,7 +57,7 @@ switch ($action) {
         break;
 
     case 'listpdf':
-        $test_id = filter_input(INPUT_POST, 'test_id');
+        $test_id = filter_input(INPUT_GET, 'test_id');
 
         $test_info = get_pdf_test($test_id);//gets specific test info
         $sessions = get_pdf_user($test_id);//gets mods and users

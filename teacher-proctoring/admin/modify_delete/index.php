@@ -2,6 +2,8 @@
 
 require_once("../../util/main.php");
 require_once("../../model/teacher_db.php");
+
+verify_test_admin();
 $testTypes = get_test_types();
 $rooms = get_rooms();
 
